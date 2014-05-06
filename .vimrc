@@ -50,62 +50,77 @@ set runtimepath^=$HOME/.vim
 set runtimepath+=$HOME/.vim/after
 "}}}
 
-" Vundle {{{
+" neoBundle {{{
+set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-" 利用中のプラグインをBundle
-Bundle 'gmarik/vundle'
-Bundle 'Shougo/neocomplcache'
-"Bundle 'Shougo/unite.vim'
-Bundle 'scrooloose/nerdcommenter'
-"Bundle 'thinca/vim-quickrun'
-Bundle 'thinca/vim-ref'
-"Bundle 'kana/vim-fakeclip'
-"Bundle 'mattn/zencoding-vim' "emmet is new ver
-Bundle 'mattn/emmet-vim'
-"Bundle 'scrooloose/nerdtree'
-"Bundle 'vim-scripts/The-NERD-tree'
-"Bundle 'yanktmp.vim'
-Bundle 'vim-scripts/YankRing.vim'
-Bundle 'mbbill/undotree'
-Bundle 'kana/vim-textobj-user'
-Bundle 'h1mesuke/textobj-wiw'
-Bundle 'tpope/vim-surround'
-Bundle 'gcmt/wildfire.vim'
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+filetype plugin indent on
+
+" Installation check.
+if neobundle#exists_not_installed_bundles()
+  echomsg 'Not installed bundles : ' .
+        \ string(neobundle#get_not_installed_bundle_names())
+  echomsg 'Please execute ":NeoBundleInstall" command.'
+  "finish
+endif
+
+"
+"プラグインをNeoBundle
+"
+NeoBundle 'gmarik/vundle'
+NeoBundle 'Shougo/neocomplcache'
+"NeoBundle 'Shougo/unite.vim'
+NeoBundle 'scrooloose/nerdcommenter'
+"NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-ref'
+"NeoBundle 'kana/vim-fakeclip'
+"NeoBundle 'mattn/zencoding-vim' "emmet is new ver
+NeoBundle 'mattn/emmet-vim'
+"NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'vim-scripts/The-NERD-tree'
+"NeoBundle 'yanktmp.vim'
+NeoBundle 'vim-scripts/YankRing.vim'
+NeoBundle 'mbbill/undotree'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'h1mesuke/textobj-wiw'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'gcmt/wildfire.vim'
 
 " solarized カラースキーム
-Bundle 'altercation/vim-colors-solarized'
+NeoBundle 'altercation/vim-colors-solarized'
 " mustang カラースキーム
-Bundle 'croaker/mustang-vim'
+NeoBundle 'croaker/mustang-vim'
 " wombat カラースキーム
-Bundle 'jeffreyiacono/vim-colors-wombat'
+NeoBundle 'jeffreyiacono/vim-colors-wombat'
 " jellybeans カラースキーム
-Bundle 'nanotech/jellybeans.vim'
+NeoBundle 'nanotech/jellybeans.vim'
 " lucius カラースキーム
-Bundle 'vim-scripts/Lucius'
+NeoBundle 'vim-scripts/Lucius'
 " zenburn カラースキーム
-Bundle 'vim-scripts/Zenburn'
+NeoBundle 'vim-scripts/Zenburn'
 " mrkn256 カラースキーム
-Bundle 'mrkn/mrkn256.vim'
+NeoBundle 'mrkn/mrkn256.vim'
 
-Bundle 'w0ng/vim-hybrid'
-Bundle 'chriskempson/vim-tomorrow-theme'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
 
 " railscasts カラースキーム
 " railscastsの Comment からitalic切る 2014/04/06
-Bundle 'jpo/vim-railscasts-theme'
+NeoBundle 'jpo/vim-railscasts-theme'
 
 " pyte カラースキーム
-Bundle 'therubymug/vim-pyte'
+NeoBundle 'therubymug/vim-pyte'
 " molokai カラースキーム
-Bundle 'tomasr/molokai'
+NeoBundle 'tomasr/molokai'
 " カラースキーム一覧表示に Unite.vim を使う
-Bundle 'Shougo/unite.vim'
-Bundle 'ujihisa/unite-colorscheme'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
 
-filetype plugin indent on
-""" }}} Vundle
+" }}} neoBundle
 
 " General"{{{
 
