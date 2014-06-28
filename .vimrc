@@ -217,8 +217,13 @@ set whichwrap=b,s,h,l,<,> ",[,] 行末はやめとく
 set columns=180
 set lines=90
 set linespace=1
-set guioptions-=T
-set guioptions+=b
+" menu setting
+set guioptions-=T "ツールバーなし
+set guioptions-=m "メニューバーなし
+set guioptions-=R
+set guioptions-=l "左スクロールバーなし
+set guioptions-=L
+set guioptions-=b "下スクロールバーなし
 winpos 100 100
 
 "}}}
