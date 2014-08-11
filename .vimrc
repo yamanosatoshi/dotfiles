@@ -1,6 +1,8 @@
 "文字コードの自動認識 "{{{
 " Win用
-set termencoding=cp932
+if has('win16') || has('win32')
+  set termencoding=cp932
+endif
 
 "http://www.kawaz.jp/pukiwiki/?vim#content_1_7 
 if &encoding !=# 'utf-8'
@@ -89,6 +91,7 @@ NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'h1mesuke/textobj-wiw'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'gcmt/wildfire.vim'
+NeoBundle 'chriskempson/base16-vim'
 
 " solarized カラースキーム
 NeoBundle 'altercation/vim-colors-solarized'
@@ -104,6 +107,8 @@ NeoBundle 'vim-scripts/Lucius'
 NeoBundle 'vim-scripts/Zenburn'
 " mrkn256 カラースキーム
 NeoBundle 'mrkn/mrkn256.vim'
+NeoBundle 'sickill/vim-monokai'
+NeoBundle 'daylerees/colour-schemes'
 
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
@@ -147,7 +152,8 @@ set title
 set shortmess+=I
 set nobackup
 syn on
-gui
+
+
 "set gfn=Osaka－等幅:h12:cSHIFTJIS
 "set gfn=Courier_New:h12:cSHIFTJIS
 set gfn=Migu_1M:h8:cDEFAULT
@@ -217,13 +223,6 @@ set whichwrap=b,s,h,l,<,> ",[,] 行末はやめとく
 set columns=180
 set lines=90
 set linespace=1
-" menu setting
-set guioptions-=T "ツールバーなし
-set guioptions-=m "メニューバーなし
-set guioptions-=R
-set guioptions-=l "左スクロールバーなし
-set guioptions-=L
-set guioptions-=b "下スクロールバーなし
 winpos 100 100
 
 "}}}
@@ -307,23 +306,34 @@ endif
 "augroup END
 "}}}
 
-"ウィンドウの位置とサイズを記憶する"{{{
-let g:save_window_file = expand('~/_vimwinpos')
-augroup SaveWindow
-  autocmd!
-  autocmd VimLeavePre * call s:save_window()
-  function! s:save_window()
-    let options = [
-      \ 'set columns=' . &columns,
-      \ 'set lines=' . &lines,
-      \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
-      \ ]
-    call writefile(options, g:save_window_file)
-  endfunction
-augroup END
 
-if filereadable(g:save_window_file)
-  execute 'source' g:save_window_file
+"ウィンドウの位置とサイズを記憶する" {{{
+if has('gui')
+  gui
+  set guioptions-=T "ツールバーなし
+  set guioptions-=m "メニューバーなし
+  set guioptions-=R
+  set guioptions-=l "左スクロールバーなし
+  set guioptions-=L
+  set guioptions-=b "下スクロールバーなし
+
+  let g:save_window_file = expand('~/_vimwinpos')
+  augroup SaveWindow
+    autocmd!
+    autocmd VimLeavePre * call s:save_window()
+    function! s:save_window()
+      let options = [
+        \ 'set columns=' . &columns,
+        \ 'set lines=' . &lines,
+        \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
+        \ ]
+      call writefile(options, g:save_window_file)
+    endfunction
+  augroup END
+
+  if filereadable(g:save_window_file)
+    execute 'source' g:save_window_file
+  endif
 endif
 "}}}
 
