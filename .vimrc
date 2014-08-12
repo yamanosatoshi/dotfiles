@@ -154,6 +154,16 @@ set nobackup
 syn on
 
 
+if has('gui')
+  gui
+  set guioptions-=T "ツールバーなし
+  set guioptions-=m "メニューバーなし
+  set guioptions-=R
+  set guioptions-=l "左スクロールバーなし
+  set guioptions-=L
+  set guioptions-=b "下スクロールバーなし
+endif
+
 "set gfn=Osaka－等幅:h12:cSHIFTJIS
 "set gfn=Courier_New:h12:cSHIFTJIS
 set gfn=Migu_1M:h8:cDEFAULT
@@ -309,14 +319,6 @@ endif
 
 "ウィンドウの位置とサイズを記憶する" {{{
 if has('gui')
-  gui
-  set guioptions-=T "ツールバーなし
-  set guioptions-=m "メニューバーなし
-  set guioptions-=R
-  set guioptions-=l "左スクロールバーなし
-  set guioptions-=L
-  set guioptions-=b "下スクロールバーなし
-
   let g:save_window_file = expand('~/_vimwinpos')
   augroup SaveWindow
     autocmd!
