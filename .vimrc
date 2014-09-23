@@ -92,6 +92,7 @@ NeoBundle 'h1mesuke/textobj-wiw'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'gcmt/wildfire.vim'
 NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'othree/html5.vim'
 
 " solarized カラースキーム
 NeoBundle 'altercation/vim-colors-solarized'
@@ -142,7 +143,7 @@ set ignorecase
 set smartcase
 set wrapscan
 set showmatch
-set number
+set relativenumber
 set ruler
 set nolist
 set wrap
@@ -531,7 +532,7 @@ let g:wildfire_fuel_map = "<ENTER>"
 " This selects the previous closest text object.
 let g:wildfire_water_map = "<BS>"
 
-let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "a'", 'a"', "a)", "a]", "a}", "a>", "ap", "at", "i,w"]
+let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "a'", 'a"', "a)", "a]", "a}", "a>", "ap", "at"]
 "}}}
 
 "}}}
