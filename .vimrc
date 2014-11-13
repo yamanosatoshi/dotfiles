@@ -143,7 +143,7 @@ set ignorecase
 set smartcase
 set wrapscan
 set showmatch
-set relativenumber
+set number
 set ruler
 set nolist
 set wrap
