@@ -21,7 +21,7 @@ if has('iconv')
     let s:enc_euc = 'euc-jisx0213'
     let s:enc_jis = 'iso-2022-jp-3'
   endif
-  " fileencodingsを構築 
+  " fileencodingsを構築
   if &encoding ==# 'utf-8'
     let s:fileencodings_default = &fileencodings
     let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
