@@ -1,3 +1,25 @@
+" Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
+
+" environment detect"{{{
+let s:is_windows = has('win16') || has('win32') || has('win64')
+let s:is_cygwin = has('win32unix')
+let s:is_sudo = $SUDO_USER != '' && $USER !=# $SUDO_USER
+      \ && $HOME !=# expand('~'.$USER)
+      \ && $HOME ==# expand('~'.$SUDO_USER)
+
+function! IsWindows()
+  return s:is_windows
+endfunction
+
+function! IsMac()
+  return !s:is_windows && !s:is_cygwin
+      \ && (has('mac') || has('macunix') || has('gui_macvim') ||
+      \   (!executable('xdg-open') &&
+      \     system('uname') =~? '^darwin'))
+endfunction
+"}}}
+
 "文字コードの自動認識 "{{{
 " Win用
 if has('win16') || has('win32')
@@ -50,6 +72,7 @@ endif
 " runtimepath追加"{{{
 set runtimepath^=$HOME/.vim
 set runtimepath+=$HOME/.vim/after
+"set runtimepath+=$HOME/.vim/bundle/vital.vim
 "}}}
 
 " neoBundle {{{
@@ -73,6 +96,7 @@ endif
 "
 "プラグインをNeoBundle
 "
+NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'gmarik/vundle'
 NeoBundle 'Shougo/neocomplcache'
 "NeoBundle 'Shougo/unite.vim'
@@ -80,7 +104,6 @@ NeoBundle 'scrooloose/nerdcommenter'
 "NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 "NeoBundle 'kana/vim-fakeclip'
-"NeoBundle 'mattn/zencoding-vim' "emmet is new ver
 NeoBundle 'mattn/emmet-vim'
 "NeoBundle 'scrooloose/nerdtree'
 "NeoBundle 'vim-scripts/The-NERD-tree'
@@ -93,6 +116,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'gcmt/wildfire.vim'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'othree/html5.vim'
+NeoBundle 'haya14busa/vim-migemo'
 
 " solarized カラースキーム
 NeoBundle 'altercation/vim-colors-solarized'
@@ -130,6 +154,15 @@ call neobundle#end()
 
 " }}} neoBundle
 
+" vital.vim"{{{
+let g:V = vital#of('vital').load(
+\  ['Math'],
+\  ['DateTime'],
+\  ['System.Filepath'],
+\  ['Data.List'],
+\  ['Data.String'])
+"}}}
+
 " General"{{{
 
 "保存しなくても別ファイルをオープン出来るようにする
@@ -149,13 +182,11 @@ set number
 set ruler
 set nolist
 set wrap
-set laststatus=2
 set cmdheight=2
 set title
 set shortmess+=I
 set nobackup
 syn on
-
 
 if has('gui')
   gui
@@ -167,34 +198,10 @@ if has('gui')
   set guioptions-=b "下スクロールバーなし
 endif
 
-"set gfn=Osaka－等幅:h12:cSHIFTJIS
-"set gfn=Courier_New:h12:cSHIFTJIS
-set gfn=Migu_1M:h8:cDEFAULT
-
-"半角文字の表示
-"set guifont=MingLiu:h10:cDEFAULT
-"全角文字の表示
-"set guifontwide=MingLiu:h10:cDEFAULT
-
-
 set showcmd
 set incsearch
 set nocompatible
 set hlsearch
-
-"検索結果のハイライトをオフ
-nmap <ESC><ESC> :nohlsearch<CR><ESC>
-"選択した文字列を検索
-vnoremap <silent> // y/<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
-""選択した文字列を置換
-vnoremap /r "xy:%s/<C-R>=escape(@x, '\\/.*$^~[]')<CR>//gc<Left><Left><Left>
-"s*置換後文字列/g<Cr>でカーソル下のキーワードを置換
-nnoremap <expr> s* ':%substitute/\<' . expand('<cword>') . '\>/'
-
-"<C-^>で編集ファイルを入れ替え
-nmap <C-^> :b#<CR>
-"<C-@>で:filesから選択
-nmap <C-@> :files<CR>:b
 
 " OSのクリップボードを使用する
 set clipboard+=unnamed
@@ -218,13 +225,14 @@ set foldmarker={{{,}}}
 
 " コマンド実行中は再描画しない
 set lazyredraw
+
 " 高速ターミナル接続を行う
 set ttyfast
 
 
-" 入力関係
-set backspace=indent,eol,start  "BSでなんでも消せるようにする
-set formatoptions+=mM           "整形オプションにマルチバイト系を追加
+" input
+set backspace=indent,eol,start
+set formatoptions+=mM
 set autoindent
 set smartindent
 set iminsert=0
@@ -232,11 +240,32 @@ set imsearch=-1
 set cindent
 set whichwrap=b,s,h,l,<,> ",[,] 行末はやめとく
 
-" 表示関係
+" display
 set columns=180
 set lines=90
 set linespace=1
 winpos 100 100
+
+
+"fonts
+"set gfn=Courier_New:h12:cSHIFTJIS
+set gfn=Migu_1M:h8:cDEFAULT
+
+"半角文字の表示
+"set guifont=MingLiu:h10:cDEFAULT
+"全角文字の表示
+"set guifontwide=MingLiu:h10:cDEFAULT
+
+" Don't show :intro when startup.
+set shortmess& shortmess+=I
+
+if has('kaoriya') && IsWindows() && has('gui_running')
+  set ambiwidth=auto
+else
+  set ambiwidth=double
+endif
+
+set helplang=ja,en
 
 "}}}
 
@@ -342,8 +371,22 @@ if has('gui')
 endif
 "}}}
 
+" migemo search "{{{
+"set grepprg=internal
+if has('migemo')
+  " a 'migemo' option changes the behavior of "g?".
+  " NOTE: 'migemo' option is local to buffer.
+  set nomigemo migemodict=$HOME/.vim/dict/utf-8/migemo-dict
+  nnoremap / g/
+endif
+"}}}
+
+
 " statusline settings"{{{
-set statusline=%<%f\ %m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%l,%c][%p%%]\ [LEN=%L]\ %{'['.(&fenc!=''?&fenc:&enc).']'}%=%V%8P
+set laststatus=2
+set showtabline=2
+
+set statusline=%<%f\ %m%r%h%w\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%l,%c][%p%%]\ [LEN=%L]\ %{'['.(&fenc!=''?&fenc:&enc)}:%{&ff}]\ [%Y]%=%V%8P
 "}}}
 
 set dir=~/
@@ -371,6 +414,23 @@ endfunction
 nmap ,l :call PHPLint()<CR>
 "}}}
 
+
+" mappings "{{{
+
+"検索結果のハイライトをオフ
+nmap <ESC><ESC> :nohlsearch<CR><ESC>
+"選択した文字列を検索
+vnoremap <silent> // y/<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
+"選択した文字列を置換
+vnoremap /r "xy:%s/<C-R>=escape(@x, '\\/.*$^~[]')<CR>//gc<Left><Left><Left>
+"s*置換後文字列/g<Cr>でカーソル下のキーワードを置換
+nnoremap <expr> s* ':%substitute/\<' . expand('<cword>') . '\>/'
+
+"<C-^>で編集ファイルを入れ替え
+nmap <C-^> :b#<CR>
+"<C-@>で:filesから選択
+nmap <C-@> :files<CR>:b
+"}}}
 
 " {{{ Automatic close char mapping
 
@@ -436,10 +496,8 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 " }}} Autocompletion using the TAB key
 
 
-
-
-
 " Plugin Settings"{{{
+
 
 "neocomplcache"{{{
 " Use smartcase.
