@@ -58,7 +58,7 @@ filetype off
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 filetype plugin indent on
 
@@ -125,6 +125,8 @@ NeoBundle 'tomasr/molokai'
 " カラースキーム一覧表示に Unite.vim を使う
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
+
+call neobundle#end()
 
 " }}} neoBundle
 
