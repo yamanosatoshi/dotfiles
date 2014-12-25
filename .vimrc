@@ -430,6 +430,21 @@ nnoremap <expr> s* ':%substitute/\<' . expand('<cword>') . '\>/'
 nmap <C-^> :b#<CR>
 "<C-@>で:filesから選択
 nmap <C-@> :files<CR>:b
+
+" Current line at center of window and open the folding.
+noremap n nzzzv
+noremap N Nzzzv
+
+" Very magic by default.
+nnoremap / /\v
+nnoremap ? ?\v
+cnoremap <expr> s/ getcmdline() =~# '^\A*$' ? 's/\v' : 's/'
+cnoremap <expr> g/ getcmdline() =~# '^\A*$' ? 'g/\v' : 'g/'
+cnoremap <expr> v/ getcmdline() =~# '^\A*$' ? 'v/\v' : 'v/'
+cnoremap s// s//
+cnoremap g// g//
+cnoremap v// v//
+
 "}}}
 
 " {{{ Automatic close char mapping
