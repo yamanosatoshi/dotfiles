@@ -185,6 +185,7 @@ set wrap
 set cmdheight=2
 set title
 set shortmess+=I
+set nrformats=
 set nobackup
 syn on
 
