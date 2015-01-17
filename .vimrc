@@ -98,7 +98,6 @@ endif
 "
 NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'gmarik/vundle'
-NeoBundle 'Shougo/neocomplcache'
 "NeoBundle 'Shougo/unite.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 "NeoBundle 'thinca/vim-quickrun'
@@ -117,6 +116,19 @@ NeoBundle 'gcmt/wildfire.vim'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'haya14busa/vim-migemo'
+
+" neocon
+function! s:meet_neocomplete_requirements()
+	return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+endfunction
+
+if s:meet_neocomplete_requirements()
+	NeoBundle 'Shougo/neocomplete.vim'
+	NeoBundleFetch 'Shougo/neocomplcache.vim'
+else
+	NeoBundleFetch 'Shougo/neocomplete.vim'
+	NeoBundle 'Shougo/neocomplcache.vim'
+endif
 
 " solarized カラースキーム
 NeoBundle 'altercation/vim-colors-solarized'
@@ -265,6 +277,8 @@ if has('kaoriya') && IsWindows() && has('gui_running')
 else
   set ambiwidth=double
 endif
+
+set undodir=$HOME.'/.vim/undo
 
 set helplang=ja,en
 
@@ -516,20 +530,41 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 
 "neocomplcache"{{{
-" Use smartcase.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 0
-" Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 0
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 2
-" Set manual completion length.
-let g:neocomplcache_auto_completion_start_length = 0
 
-let g:neocomplcache_snippets_dir = $HOME.'/.vim/dict/funclist.txt'
+if s:meet_neocomplete_requirements()
+	let g:neocomplete#enable_at_startup = 1
+	let g:neocomplete#max_list = 20
+
+	" Use smartcase.
+	let g:neocomplete#enable_smart_case = 1
+	" Use camel case completion.
+	let g:neocomplete#enable_camel_case_completion = 0
+	" Use underbar completion.
+	let g:neocomplete#enable_underbar_completion = 0
+	" Set minimum syntax keyword length.
+	let g:neocomplete#min_syntax_length = 3
+	" Set manual completion length.
+	let g:neocomplete#auto_completion_start_length = 2
+
+	let g:neocomplete#snippets_dir = $HOME.'/.vim/dict/funclist.txt'
+else
+	let g:neocomplcache_enable_at_startup = 1
+	let g:neocomplcache_max_list = 20
+
+	" Use smartcase.
+	let g:neocomplcache_enable_smart_case = 1
+	" Use camel case completion.
+	let g:neocomplcache_enable_camel_case_completion = 0
+	" Use underbar completion.
+	let g:neocomplcache_enable_underbar_completion = 0
+	" Set minimum syntax keyword length.
+	let g:neocomplcache_min_syntax_length = 3
+	" Set manual completion length.
+	let g:neocomplcache_auto_completion_start_length = 2
+
+	let g:neocomplcache_snippets_dir = $HOME.'/.vim/dict/funclist.txt'
+endif
+
 "}}}
 
 "emmet-vim"{{{
