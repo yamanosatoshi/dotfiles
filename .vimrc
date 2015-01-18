@@ -190,6 +190,7 @@ set ignorecase
 set smartcase
 set wrapscan
 set showmatch
+set matchtime=1
 set number
 set ruler
 set nolist
@@ -258,6 +259,7 @@ set columns=180
 set lines=90
 set linespace=1
 winpos 100 100
+set display=lastline
 
 
 "fonts
@@ -365,25 +367,25 @@ endif
 
 
 "ウィンドウの位置とサイズを記憶する" {{{
-if has('gui')
-  let g:save_window_file = expand('~/_vimwinpos')
-  augroup SaveWindow
-    autocmd!
-    autocmd VimLeavePre * call s:save_window()
-    function! s:save_window()
-      let options = [
-        \ 'set columns=' . &columns,
-        \ 'set lines=' . &lines,
-        \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
-        \ ]
-      call writefile(options, g:save_window_file)
-    endfunction
-  augroup END
+"if has('gui')
+  "let g:save_window_file = expand('~/_vimwinpos')
+  "augroup SaveWindow
+    "autocmd!
+    "autocmd VimLeavePre * call s:save_window()
+    "function! s:save_window()
+      "let options = [
+        "\ 'set columns=' . &columns,
+        "\ 'set lines=' . &lines,
+        "\ 'winpos ' . getwinposx() . ' ' . getwinposy(),
+        "\ ]
+      "call writefile(options, g:save_window_file)
+    "endfunction
+  "augroup END
 
-  if filereadable(g:save_window_file)
-    execute 'source' g:save_window_file
-  endif
-endif
+  "if filereadable(g:save_window_file)
+    "execute 'source' g:save_window_file
+  "endif
+"endif
 "}}}
 
 " migemo search "{{{
