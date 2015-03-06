@@ -255,11 +255,13 @@ set cindent
 set whichwrap=b,s,h,l,<,> ",[,] 行末はやめとく
 
 " display
-set columns=180
-set lines=90
-set linespace=1
-winpos 100 100
-set display=lastline
+if has('gui')
+	set columns=180
+	set lines=90
+	set linespace=1
+	winpos 100 100
+	set display=lastline
+endif
 
 
 "fonts
@@ -401,7 +403,9 @@ endif
 
 " statusline settings"{{{
 set laststatus=2
-set showtabline=2
+if has('gui')
+	set showtabline=2
+endif
 
 set statusline=%<%f\ %m%r%h%w\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%l,%c][%p%%]\ [LEN=%L]\ %{'['.(&fenc!=''?&fenc:&enc)}:%{&ff}]\ [%Y]%=%V%8P
 "}}}
