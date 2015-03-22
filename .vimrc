@@ -72,7 +72,7 @@ endif
 " runtimepath追加"{{{
 set runtimepath^=$HOME/.vim
 set runtimepath+=$HOME/.vim/after
-"set runtimepath+=$HOME/.vim/bundle/vital.vim
+set runtimepath+=$HOME/.vim/bundle/vital.vim
 "}}}
 
 " neoBundle {{{
@@ -98,13 +98,12 @@ endif
 "
 NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'gmarik/vundle'
-"NeoBundle 'Shougo/unite.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 "NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 "NeoBundle 'kana/vim-fakeclip'
 NeoBundle 'mattn/emmet-vim'
-"NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdtree'
 "NeoBundle 'vim-scripts/The-NERD-tree'
 "NeoBundle 'yanktmp.vim'
 NeoBundle 'vim-scripts/YankRing.vim'
@@ -282,7 +281,7 @@ else
   set ambiwidth=double
 endif
 
-set undodir=$HOME.'/.vim/undo
+set undodir=$HOME/.vim/undo
 
 set helplang=ja,en
 
@@ -417,7 +416,6 @@ if has("autocmd")
 endif
 
 
-
 "php checker"{{{
 set makeprg=php\ -l\ %
 set errorformat=%m\ in\ %f\ on\ line\ %l
@@ -434,7 +432,6 @@ endfunction
 
 nmap ,l :call PHPLint()<CR>
 "}}}
-
 
 " mappings "{{{
 
@@ -577,6 +574,11 @@ endif
 let g:user_emmet_leader_key = '<C-E>'
 "}}}
 
+
+"NERDTree"{{{
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+"}}}
+
 " {{{ ref.vim
 let $PATH = $PATH . ';C:\Program Files (x86)\Lynx for Win32'
 nmap ,ra :<C-u>Ref alc<Space>
@@ -590,7 +592,7 @@ let g:ref_phpmanual_path = $HOME . '/.vim/dict/php-chunked-xhtml/'
 " let g:unite_enable_start_insert=1
 " 待ち時間を増やす
 let g:unite_update_time = 300
-let g:unite_enable_start_insert=1
+"let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
 
