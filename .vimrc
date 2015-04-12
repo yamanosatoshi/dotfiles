@@ -265,18 +265,21 @@ endif
 
 "fonts
 "set gfn=Courier_New:h12:cSHIFTJIS
-set gfn=Migu_1M:h8:cDEFAULT
+"set gfn=Migu_1M:h8:cDEFAULT
+"set gfn=Ricty:h8:cDEFAULT
+"set gfw=Migu_1M:h8:cDEFAULT
+set gfn=Inconsolata:h9:cDEFAULT
 
 "半角文字の表示
-"set guifont=MingLiu:h10:cDEFAULT
+"set guifont=Migu_1M:h8:cDEFAULT
 "全角文字の表示
-"set guifontwide=MingLiu:h10:cDEFAULT
+"set guifontwide=Migu_1M:h8:cDEFAULT
 
 " Don't show :intro when startup.
 set shortmess& shortmess+=I
 
 if has('kaoriya') && IsWindows() && has('gui_running')
-  set ambiwidth=auto
+  set ambiwidth=double
 else
   set ambiwidth=double
 endif
@@ -331,8 +334,8 @@ hi SpecialKey   guifg=#cccccc   gui=italic
 " GUI時複数起動禁止"{{{
 if v:servername == 'GVIM1'
     let file = expand('%:p')
-    bwipeout
-    call remote_send('GVIM', '<ESC>:tabnew ' .file .'<CR>')
+	bwipeout
+    call remote_send('GVIM', '<ESC>:tabnew ' .escape(file, "%") .'<CR>')
     call remote_foreground('GVIM')
     quit
 endif
@@ -414,6 +417,13 @@ set dir=~/
 if has("autocmd")
 	autocmd BufNewFile,Bufread *.php,*.php3,*.php4 set keywordprg="help"
 endif
+
+
+" VDsplit windowsの%入りパス対応版
+command! -nargs=1 -complete=file VDS call <SID>EscVDsplit('<args>')
+function! s:EscVDsplit(file)
+	execute "vertical diffsplit " . escape(a:file, "%")
+endfunction
 
 
 "php checker"{{{
