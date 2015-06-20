@@ -129,37 +129,42 @@ else
 	NeoBundle 'Shougo/neocomplcache.vim'
 endif
 
-" solarized カラースキーム
-NeoBundle 'altercation/vim-colors-solarized'
-" mustang カラースキーム
-NeoBundle 'croaker/mustang-vim'
-" wombat カラースキーム
-NeoBundle 'jeffreyiacono/vim-colors-wombat'
-" jellybeans カラースキーム
-NeoBundle 'nanotech/jellybeans.vim'
-" lucius カラースキーム
-NeoBundle 'vim-scripts/Lucius'
-" zenburn カラースキーム
-NeoBundle 'vim-scripts/Zenburn'
-" mrkn256 カラースキーム
-NeoBundle 'mrkn/mrkn256.vim'
-NeoBundle 'sickill/vim-monokai'
-NeoBundle 'daylerees/colour-schemes'
 
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'chriskempson/vim-tomorrow-theme'
+" 封印"{{{
 
-" railscasts カラースキーム
-" railscastsの Comment からitalic切る 2014/04/06
-NeoBundle 'jpo/vim-railscasts-theme'
+"" カラースキーム一覧表示に Unite.vim を使う
+"NeoBundle 'Shougo/unite.vim'
+"NeoBundle 'ujihisa/unite-colorscheme'
+"
+"" solarized カラースキーム
+"NeoBundle 'altercation/vim-colors-solarized'
+"" mustang カラースキーム
+"NeoBundle 'croaker/mustang-vim'
+"" wombat カラースキーム
+"NeoBundle 'jeffreyiacono/vim-colors-wombat'
+"" jellybeans カラースキーム
+"NeoBundle 'nanotech/jellybeans.vim'
+"" lucius カラースキーム
+"NeoBundle 'vim-scripts/Lucius'
+"" zenburn カラースキーム
+"NeoBundle 'vim-scripts/Zenburn'
+"" mrkn256 カラースキーム
+"NeoBundle 'mrkn/mrkn256.vim'
+"NeoBundle 'sickill/vim-monokai'
+"NeoBundle 'daylerees/colour-schemes'
 
-" pyte カラースキーム
-NeoBundle 'therubymug/vim-pyte'
-" molokai カラースキーム
-NeoBundle 'tomasr/molokai'
-" カラースキーム一覧表示に Unite.vim を使う
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'ujihisa/unite-colorscheme'
+"NeoBundle 'w0ng/vim-hybrid'
+"NeoBundle 'chriskempson/vim-tomorrow-theme'
+
+"" railscasts カラースキーム
+"" NeoBundle 'jpo/vim-railscasts-theme' // ruby 以外が見難くなった。。
+"NeoBundle 'jgdavey/vim-railscasts'
+"
+"" pyte カラースキーム
+"NeoBundle 'therubymug/vim-pyte'
+"" molokai カラースキーム
+"NeoBundle 'tomasr/molokai'"}}}
+
 
 call neobundle#end()
 
@@ -276,10 +281,10 @@ set gfn=Inconsolata:h9:cDEFAULT
 "set guifontwide=Migu_1M:h8:cDEFAULT
 
 " Don't show :intro when startup.
-set shortmess& shortmess+=I
+"set shortmess& shortmess+=I
 
 if has('kaoriya') && IsWindows() && has('gui_running')
-  set ambiwidth=double
+  set ambiwidth=auto
 else
   set ambiwidth=double
 endif
@@ -327,8 +332,12 @@ augroup cch
 augroup END
 
 
-hi CursorLine   guibg=#eeeeee
-hi SpecialKey   guifg=#cccccc   gui=italic
+" カーソルライン
+"hi CursorLine   guibg=#eeeeee
+
+" listchars
+"hi SpecialKey   guifg=#cccccc   gui=italic
+
 "}}}
 
 " GUI時複数起動禁止"{{{
