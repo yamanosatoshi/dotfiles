@@ -15,11 +15,15 @@
   <p class="para">
  pthreads はオブジェクト指向の API で、ユーザーランドでのマルチスレッド処理を PHP で行うためのものです。
  ウェブやコンソールをターゲットにしたマルチスレッドアプリケーションを作るのに必要な、あらゆるツールが含まれています。
- PHP アプリケーションで、Thread や Worker そして Stackable を作ったり読み書きしたり実行したりできるようになります。
+ PHP アプリケーションで、Thread や Worker そして Threaded を作ったり読み書きしたり実行したりできるようになります。
+  </p>
+  <p class="para">
+ A Threaded Object:
+ A Threaded Object forms the basis of the functionality that allows pthreads to operate. It exposes synchronization methods and some useful interfaces for the programmer.
   </p>
   <p class="para">
  Thread オブジェクト:
- ユーザーがスレッドを実装するには、pthreads が用意した Thread の宣言を継承します。
+ ユーザーがスレッドを実装するには、pthreads が用意した Thread の宣言を継承して run メソッドを実装します。
  Thread を参照すれば、あらゆるコンテキストから任意のメンバーの読み書きができ、
  すべての public メソッドおよび protected メソッドを任意のコンテキストで実行できます。
  run メソッドは、この実装オブジェクトの start メソッドを呼んだコンテキスト
@@ -31,16 +35,21 @@
  ワーカースレッドは永続的な状態を保持し、start を呼んだ時点からオブジェクトがスコープ外に消えるまで
  (あるいは明示的に shutdown するまで) 使えます。
  このオブジェクトを参照する任意のコンテキストから、
- Stackable 型のオブジェクトを Worker に渡せます。これを、Worker が別スレッドで実行します。
+ オブジェクトを Worker に渡せます。これを、Worker が別スレッドで実行します。
  Worker の run メソッドは、あらゆるオブジェクトがスタックに積まれる前に実行されます。
- そのため、Stackable で必要となるリソースの初期化に使えます。
+ そのため、オブジェクトで必要となるリソースの初期化に使えます。
   </p>
   <p class="para">
- Stackable オブジェクト:
- Stackable オブジェクトは、実行時に Worker の読み書きや実行ができ、
- 実行前に適切なオブジェクトへの参照を提供します。
- さらに、Stackable への参照があるあらゆるコンテキストは、実行前と実行後の間にそのメソッドの読み書きや実行ができます。
+ プール:
+ ワーカースレッドのプールを使って、プログラマーが宣言したワーカークラス群の間で Threaded オブジェクトを分散させることができます。
+ Pool クラスがこの機能を実装しており、きちんと参照を管理してくれます。
+ これは v1.0.0 で導入されました。複数スレッドを扱う際に最も簡単かつ効率的な方法です。
   </p>
+  <div class="caution"><strong class="caution">警告</strong>
+  <p class="para">
+ プールは通常の PHP オブジェクトなので、そのインスタンスをコンテキスト間で共有してはいけません。
+  </p>
+  </div>
   <p class="para">
  同期処理:
  pthreds が用意するすべてのオブジェクトには、
@@ -49,18 +58,11 @@
  が呼ばれるのを待つようになります。
  これを使えば、PHP 内のスレッド化されたオブジェクト (Threaded Object) どうしで強力な同期処理ができるようになります。
   </p>
+  <div class="caution"><strong class="caution">警告</strong>
   <p class="para">
- スレッド化されたオブジェクトって？
- Stackable や Thread、そして Worker はスレッド化された stdClass とみなせて、実際そのように使えます。
- Thread、Worker そして Stackable のいずれも、参照を含むあらゆるコンテキストで同じように振舞います。
- マルチスレッド対応の部分で使うことを想定したあらゆるオブジェクトは、
- Stackable か Thread あるいは Worker のいずれかを継承しなければいけません。
- つまり、run メソッドを実装する必要があるけれども、それが必ずしも実行されるとは限らないということです。
- マルチスレッド環境で使われるオブジェクトの多くは、実行されることを意図しています。
- つまり、参照付きのあらゆるコンテキスト (Thread/Worker/Stackable/Process)
- は、スレッド化されたオブジェクトのメンバーの読み書きや実行を、
- 実行前/実行中/実行後 にできるということです。
-  </p>
+ Any objects that are intended for use in the multi-threaded parts of your application should extend Threaded.
+  </p> 
+  </div>
   <p class="para">
  メソッドの修飾子:
  スレッド化されたオブジェクトの protected メソッドは、pthreads がプロテクトします。
@@ -83,9 +85,8 @@
   </p>
   <p class="para">
  静的メンバー:
- 新しいコンテキスト (Thread あるいは Worker) を作るときには、
- 単純型の静的メンバーだけがコピーされます。
- リソースやオブジェクトは、静的なクラスメンバーからスレッドのコンテキストにはコピーされません。
+ 新しいコンテキスト (Thread あるいは Worker) を作るときには、一般的にそれらはコピーされます。
+ しかし、リソースおよび内部状態を持つオブジェクトは、安全性を考慮して null 化されます。
  これを、一種のスレッドローカルストレージとして使えます。
  たとえば、データベースサーバーへの接続情報と接続そのものを静的メンバーとして持つクラスがあるとします。
  コンテキストを開始するときには接続情報だけがコピーされ、接続自体はコピーされません。

@@ -21,7 +21,25 @@
   <div class="section" id="yaf-request-http.intro">
    <h2 class="title">導入</h2>
    <p class="para">
-
+    クライアントからのあらゆるリクエストは、
+    <strong class="classname">Yaf_Request_Http</strong> として初期化されます。
+    URI のクエリ文字列や POST パラメータなどの情報は、このクラスのメソッド経由で取得できます。
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      セキュリティの観点から、Yaf では $_GET/$_POST が読み込み専用となっています。つまり、
+      これらのグローバル変数の値を書き換えたとしても、
+      <span class="methodname"><strong>Yaf_Request_Http::getQurey()</strong></span> や
+      <span class="methodname"><a href="yaf-request-http.getpost.html" class="methodname">Yaf_Request_Http::getPost()</a></span> からはそれを取得できないということです。
+     </p>
+     <p class="para">
+      しかし、ユニットテストの際などに、どうしても書き換えが必要になることもあります。
+      Yaf のビルド時に --enable-yaf-debug を指定すると、ユーザーがスクリプトで設定した値も Yaf で読み込めるようになります。
+     </p>
+     <p class="para">
+      その際に、Yaf は E_STRICT レベルの警告
+      「Strict Standards: you are running yaf in debug mode」を発します。
+     </p>
+    </p></blockquote>
    </p>
   </div>
 
@@ -54,7 +72,7 @@
     ( <span class="methodparam">void</span>
    )</div>
 <div class="methodsynopsis dc-description">
-    <span class="methodname"><a href="yaf-request-http.construct.html" class="methodname">__construct</a></span>
+   <span class="methodname"><a href="yaf-request-http.construct.html" class="methodname">__construct</a></span>
     ( <span class="methodparam">void</span>
    )</div>
 <div class="methodsynopsis dc-description">
@@ -225,105 +243,105 @@
    <h2 class="title">プロパティ</h2>
    <dl>
 
-    <dt id="yaf-request-http.props.module">
-     <span class="term"><var class="varname"><var class="varname">module</var></var></span>
+    
+     <dt id="yaf-request-http.props.module"><var class="varname"><var class="varname">module</var></var></dt>
+
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-request-http.props.controller"><var class="varname"><var class="varname">controller</var></var></dt>
 
-    <dt id="yaf-request-http.props.controller">
-     <span class="term"><var class="varname"><var class="varname">controller</var></var></span>
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-request-http.props.action"><var class="varname"><var class="varname">action</var></var></dt>
 
-    <dt id="yaf-request-http.props.action">
-     <span class="term"><var class="varname"><var class="varname">action</var></var></span>
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-request-http.props.method"><var class="varname"><var class="varname">method</var></var></dt>
 
-    <dt id="yaf-request-http.props.method">
-     <span class="term"><var class="varname"><var class="varname">method</var></var></span>
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-request-http.props.params"><var class="varname"><var class="varname">params</var></var></dt>
 
-    <dt id="yaf-request-http.props.params">
-     <span class="term"><var class="varname"><var class="varname">params</var></var></span>
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-request-http.props.language"><var class="varname"><var class="varname">language</var></var></dt>
 
-    <dt id="yaf-request-http.props.language">
-     <span class="term"><var class="varname"><var class="varname">language</var></var></span>
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-request-http.props.exception"><var class="varname"><var class="varname">_exception</var></var></dt>
 
-    <dt id="yaf-request-http.props.exception">
-     <span class="term"><var class="varname"><var class="varname">_exception</var></var></span>
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-request-http.props.base-uri"><var class="varname"><var class="varname">_base_uri</var></var></dt>
 
-    <dt id="yaf-request-http.props.base-uri">
-     <span class="term"><var class="varname"><var class="varname">_base_uri</var></var></span>
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-request-http.props.uri"><var class="varname"><var class="varname">uri</var></var></dt>
 
-    <dt id="yaf-request-http.props.uri">
-     <span class="term"><var class="varname"><var class="varname">uri</var></var></span>
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-request-http.props.dispatched"><var class="varname"><var class="varname">dispatched</var></var></dt>
 
-    <dt id="yaf-request-http.props.dispatched">
-     <span class="term"><var class="varname"><var class="varname">dispatched</var></var></span>
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-request-http.props.routed"><var class="varname"><var class="varname">routed</var></var></dt>
 
-    <dt id="yaf-request-http.props.routed">
-     <span class="term"><var class="varname"><var class="varname">routed</var></var></span>
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </div>

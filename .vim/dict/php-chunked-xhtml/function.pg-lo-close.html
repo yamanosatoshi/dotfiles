@@ -25,8 +25,8 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_lo_close()</strong></span> はラージオブジェクトをクローズします。
-   <em><code class="parameter">large_object</code></em> は、 <span class="function"><a href="function.pg-lo-open.html" class="function">pg_lo_open()</a></span>
+   <span class="function"><strong>pg_lo_close()</strong></span> はラージオブジェクトをクローズします。
+   <code class="parameter">large_object</code> は、<span class="function"><a href="function.pg-lo-open.html" class="function">pg_lo_open()</a></span>
    でオープンされたラージオブジェクトのリソースです。
   </p>
   <p class="para">
@@ -35,7 +35,7 @@
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    This function used to be called  <span class="function"><strong>pg_loclose()</strong></span>.
+    This function used to be called <span class="function"><strong>pg_loclose()</strong></span>.
    </p>
   </p></blockquote>
  </div>
@@ -46,18 +46,18 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result</code></dt>
 
-     <span class="term"><em><code class="parameter">result</code></em></span>
      <dd>
 
       <p class="para">
-       PostgreSQL large object (LOB) resource, returned by  <span class="function"><a href="function.pg-lo-open.html" class="function">pg_lo_open()</a></span>.
+       PostgreSQL large object (LOB) resource, returned by <span class="function"><a href="function.pg-lo-open.html" class="function">pg_lo_open()</a></span>.
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -75,8 +75,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-lo-close-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2079">
-    <p><strong>例1  <span class="function"><strong>pg_lo_close()</strong></span> example</strong></p>
+   <div class="example" id="example-2275">
+    <p><strong>例1 <span class="function"><strong>pg_lo_close()</strong></span> example</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;$database&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=jacarta"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"begin"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$oid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_lo_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$oid</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_lo_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$oid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$handle</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_lo_write</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"large&nbsp;object&nbsp;data"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_lo_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"commit"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -93,9 +93,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-lo-open.html" class="function" rel="rdfs-seeAlso">pg_lo_open()</a> - ラージオブジェクトをオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-lo-create.html" class="function" rel="rdfs-seeAlso">pg_lo_create()</a> - ラージオブジェクトを生成する</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-lo-import.html" class="function" rel="rdfs-seeAlso">pg_lo_import()</a> - ファイルからラージオブジェクトをインポートする</span></li>
+    <li class="member"><span class="function"><a href="function.pg-lo-open.html" class="function" rel="rdfs-seeAlso">pg_lo_open()</a> - ラージオブジェクトをオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.pg-lo-create.html" class="function" rel="rdfs-seeAlso">pg_lo_create()</a> - ラージオブジェクトを生成する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-lo-import.html" class="function" rel="rdfs-seeAlso">pg_lo_import()</a> - ファイルからラージオブジェクトをインポートする</span></li>
    </ul>
   </p>
  </div>

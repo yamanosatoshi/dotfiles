@@ -27,7 +27,7 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pcntl_signal()</strong></span> 関数は、<em><code class="parameter">signo</code></em>
+   <span class="function"><strong>pcntl_signal()</strong></span> 関数は、<code class="parameter">signo</code>
    が指すシグナルに関するハンドラを新たに設定するか、既存のハンドラを置き換えます。
   </p>
  </div>
@@ -38,9 +38,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">signo</code></dt>
 
-     <span class="term"><em><code class="parameter">signo</code></em></span>
      <dd>
 
       <p class="para">
@@ -48,11 +49,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">handler</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">handler</code></em></span>
      <dd>
 
       <p class="para">
@@ -71,9 +72,10 @@
 
        <dl>
 
-        <dt>
+        
+         <dt>
+<code class="parameter">signo</code></dt>
 
-         <span class="term"><em><code class="parameter">signo</code></em></span>
          <dd>
 
           <span class="simpara">
@@ -81,8 +83,7 @@
           </span>
          </dd>
 
-        </dt>
-
+        
        </dl>
 
       </p>
@@ -95,11 +96,11 @@
       </p></blockquote>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">restart_syscalls</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">restart_syscalls</code></em></span>
      <dd>
 
       <p class="para">
@@ -107,8 +108,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -140,24 +140,10 @@
       <tr>
        <td>4.3.0</td>
        <td>
-        パラメータ <em><code class="parameter">restart_syscalls</code></em> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        オブジェクトのメソッドをコールバックとして使用できるようになりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.3.0</td>
-       <td>
         PHP 4.3.0 以降、PCNTL はシグナルハンドルコールバックの仕組みとして ticks
         を使用しており、これは以前の仕組みよりずっと高速です。この変更は
         &quot;<a href="control-structures.declare.html#control-structures.declare.ticks" class="link">user ticks</a>&quot;
-        を使用するのと同じことです。上の例で示したように、
+        を使用するのと同じことです。次の例で示すように、
         <a href="control-structures.declare.html" class="link">declare()</a> を使用して
         プログラム中でコールバックの発生を許可する場所を指定し、シグナルハンドラが
         正しく動作するようにする必要があります。
@@ -175,11 +161,11 @@
  <div class="refsect1 examples" id="refsect1-function.pcntl-signal-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3626">
-    <p><strong>例1  <span class="function"><strong>pcntl_signal()</strong></span> の例</strong></p>
+   <div class="example" id="example-4050">
+    <p><strong>例1 <span class="function"><strong>pcntl_signal()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;4.3.0&nbsp;以降では&nbsp;tick&nbsp;を使用しなければなりません<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;シグナルハンドラ関数<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">sig_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$signo</span><span style="color: #007700">)<br />{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(</span><span style="color: #0000BB">$signo</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">SIGTERM</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;シャットダウンの処理<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;再起動の処理<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"SIGUSR1&nbsp;を受け取りました...\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;それ以外のシグナルの処理<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br /><br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">"シグナルハンドラを設定します...\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;シグナルハンドラを設定します<br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGTERM</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"sig_handler"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #DD0000">"sig_handler"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"sig_handler"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;あるいは&nbsp;PHP&nbsp;4.3.0&nbsp;以降ならオブジェクトも指定できます<br />//&nbsp;pcntl_signal(SIGUSR1,&nbsp;array($obj,&nbsp;"do_something"));<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"自分自身に&nbsp;SIGTERM&nbsp;シグナルを送信します...\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;SIGUSR1&nbsp;をカレントのプロセス&nbsp;ID&nbsp;に送信します<br /></span><span style="color: #0000BB">posix_kill</span><span style="color: #007700">(</span><span style="color: #0000BB">posix_getpid</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"終了\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;4.3.0&nbsp;以降では&nbsp;tick&nbsp;を使用しなければなりません<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;シグナルハンドラ関数<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">sig_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$signo</span><span style="color: #007700">)<br />{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(</span><span style="color: #0000BB">$signo</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">SIGTERM</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;シャットダウンの処理<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;再起動の処理<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"SIGUSR1&nbsp;を受け取りました...\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;それ以外のシグナルの処理<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br /><br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">"シグナルハンドラを設定します...\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;シグナルハンドラを設定します<br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGTERM</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"sig_handler"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #DD0000">"sig_handler"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"sig_handler"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;あるいは&nbsp;PHP&nbsp;4.3.0&nbsp;以降ならオブジェクトも指定できます<br />//&nbsp;pcntl_signal(SIGUSR1,&nbsp;array($obj,&nbsp;"do_something"));<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"自分自身に&nbsp;SIGUSR1&nbsp;シグナルを送信します...\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;SIGUSR1&nbsp;をカレントのプロセス&nbsp;ID&nbsp;に送信します<br />//&nbsp;posix_*&nbsp;関数を使うには&nbsp;posix&nbsp;拡張モジュールが必要です<br /></span><span style="color: #0000BB">posix_kill</span><span style="color: #007700">(</span><span style="color: #0000BB">posix_getpid</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"終了\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -192,7 +178,7 @@
  <div class="refsect1 notes" id="refsect1-function.pcntl-signal-notes">
   <h3 class="title">注意</h3>
   <p class="para">
-    <span class="function"><strong>pcntl_signal()</strong></span> は、既存のシグナルハンドラがある場合にはそれを上書きします。
+   <span class="function"><strong>pcntl_signal()</strong></span> は、既存のシグナルハンドラがある場合にはそれを上書きします。
   </p>
  </div>
 
@@ -201,8 +187,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pcntl-fork.html" class="function" rel="rdfs-seeAlso">pcntl_fork()</a> - 現在実行中のプロセスをフォークする</span></li>
-    <li class="member"> <span class="function"><a href="function.pcntl-waitpid.html" class="function" rel="rdfs-seeAlso">pcntl_waitpid()</a> - 待つかフォークした子プロセスのステータスを返す</span></li>
+    <li class="member"><span class="function"><a href="function.pcntl-fork.html" class="function" rel="rdfs-seeAlso">pcntl_fork()</a> - 現在実行中のプロセスをフォークする</span></li>
+    <li class="member"><span class="function"><a href="function.pcntl-waitpid.html" class="function" rel="rdfs-seeAlso">pcntl_waitpid()</a> - 待つかフォークした子プロセスのステータスを返す</span></li>
    </ul>
   </p>
  </div>

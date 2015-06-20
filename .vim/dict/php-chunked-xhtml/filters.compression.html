@@ -38,19 +38,19 @@
    実装したものです。<em>deflate</em> フィルタには、次の 3 つの
    パラメータを連想配列形式で渡すことができます:
 
-   <em><code class="parameter">level</code></em> は、圧縮の度合いを 1から9 までで表した
+   <code class="parameter">level</code> は、圧縮の度合いを 1から9 までで表した
    ものです。数字が大きいほど圧縮後のサイズが小さくなりますが、そのぶん
    処理時間が長くかかります。次の2つの値は特別な意味を持ちます。
    0 (一切圧縮しない)、そして -1 (zlib のデフォルト設定 -- 現在は 6)。
 
-   <em><code class="parameter">window</code></em> は、圧縮用ループバックウィンドウのサイズを
+   <code class="parameter">window</code> は、圧縮用ループバックウィンドウのサイズを
    （2 を底とする）対数で指定します。大きな値 (15 -- つまり 32768 バイトまで
    引き上げる) を指定するとメモリをふんだんに利用してより小さく圧縮されます。
    一方、小さな値 (9 -- つまり 512 バイトまで絞り込む) を指定すると、圧縮の
    効率は落ちますがメモリの消費量を抑えられます。値を指定しなかった際の
-   <em><code class="parameter">window</code></em> の初期値は、現在 <strong><code>15</code></strong> です。
+   <code class="parameter">window</code> の初期値は、現在 <strong><code>15</code></strong> です。
 
-   <em><code class="parameter">memory</code></em> は、作業用の一時メモリをどの程度割り当てるかを
+   <code class="parameter">memory</code> は、作業用の一時メモリをどの程度割り当てるかを
    指定します。1 (最小限) から 9 (最大限) の間で指定できます。この値は
    圧縮の速度のみに影響し、圧縮後のデータのサイズには影響しません。
   </p>
@@ -68,10 +68,10 @@
     また、<a href="http://pecl.php.net/" class="link external">&raquo;&nbsp;PECL</a> から
     <a href="http://pecl.php.net/package/zlib_filter" class="link external">&raquo;&nbsp;zlib_filter</a>
     パッケージをインストールすることで、バージョン <em>5.0.x</em>
-    でも利用可能になります。これらのフィルタは、PHP 4 では利用<em class="emphasis">できません</em>。
+    でも利用可能になります。
   </p>
 
-  <div class="example" id="example-5597">
+  <div class="example" id="example-6054">
    <p><strong>例1 
     <em>zlib.deflate</em> と
     <em>zlib.inflate</em>
@@ -85,7 +85,7 @@
 
   </div>
 
-  <div class="example" id="example-5598">
+  <div class="example" id="example-6055">
    <p><strong>例2 
     <em>zlib.deflate</em> のシンプルな例
    </strong></p>
@@ -106,10 +106,10 @@
    <em>bzip2.compress</em>  フィルタには、次の 2 つの
    パラメータを連想配列形式で渡すことができます:
 
-   <em><code class="parameter">blocks</code></em> は 1 から 9 までの整数値を設定します。
+   <code class="parameter">blocks</code> は 1 から 9 までの整数値を設定します。
    これは一時領域として割り当てるメモリのサイズを 100kバイトブロックの
    数で示したものです。
-   <em><code class="parameter">work</code></em> も整数値で、0 から 250 までの値を設定します。
+   <code class="parameter">work</code> も整数値で、0 から 250 までの値を設定します。
    これは、通常の圧縮方法がうまくいかなかった際に、どのくらい再試行した後で
    速度の遅い（ただしより確実な）方法に切りかえるかを示します。
    このパラメータは圧縮の速度のみに影響します。圧縮後のデータのサイズや
@@ -118,10 +118,10 @@
 
    <em>bzip2.decompress</em> フィルタには 1 つのパラメータを
    渡すことができます。このパラメータは普通に論理型の値として渡すことも
-   できますし、連想配列形式で <em><code class="parameter">small</code></em> という名前の
+   できますし、連想配列形式で <code class="parameter">small</code> という名前の
    要素として渡すこともできます。
 
-   <em><code class="parameter">small</code></em> を <strong><code>TRUE</code></strong> に設定した場合、bzip ライブラリは
+   <code class="parameter">small</code> を <strong><code>TRUE</code></strong> に設定した場合、bzip ライブラリは
    メモリ使用量をできるだけ抑えるようになり、その分、処理速度は遅くなります。
   </p>
 
@@ -131,10 +131,10 @@
     また、<a href="http://pecl.php.net/" class="link external">&raquo;&nbsp;PECL</a> から
     <a href="http://pecl.php.net/package/bz2_filter" class="link external">&raquo;&nbsp;bz2_filter</a>
     パッケージをインストールすることで、バージョン <em>5.0.x</em>
-    でも利用可能になります。これらのフィルタは、PHP 4 では利用<em class="emphasis">できません</em>。
+    でも利用可能になります。
   </p>
 
-  <div class="example" id="example-5599">
+  <div class="example" id="example-6056">
    <p><strong>例3 
     <em>bzip2.compress</em> と
     <em>bzip2.decompress</em>

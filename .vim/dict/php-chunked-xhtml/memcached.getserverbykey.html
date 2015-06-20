@@ -25,9 +25,9 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>Memcached::getServerByKey()</strong></span> は、
-    <span class="function"><strong>Memcached::*ByKey()</strong></span> 系の操作で指定された
-   <em><code class="parameter">server_key</code></em> に対応するサーバーを返します。
+   <span class="function"><strong>Memcached::getServerByKey()</strong></span> は、
+   <span class="function"><strong>Memcached::*ByKey()</strong></span> 系の操作で指定された
+   <code class="parameter">server_key</code> に対応するサーバーを返します。
   </p>
  </div>
 
@@ -37,9 +37,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">server_key</code></dt>
 
-     <span class="term"><em><code class="parameter">server_key</code></em></span>
      <dd>
 
       <p class="para">
@@ -49,8 +50,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -63,7 +63,7 @@
    成功した場合に配列を返します。この配列には <em>host</em>、
    <em>port</em> そして <em>weight</em> の三つのキーが含まれます。
    失敗した場合は <strong><code>FALSE</code></strong> を返します。
-   必要に応じて  <span class="methodname"><a href="memcached.getresultcode.html" class="methodname">Memcached::getResultCode()</a></span> を使用しましょう。
+   必要に応じて <span class="methodname"><a href="memcached.getresultcode.html" class="methodname">Memcached::getResultCode()</a></span> を使用しましょう。
   </p>
  </div>
 
@@ -71,8 +71,8 @@
  <div class="refsect1 examples" id="refsect1-memcached.getserverbykey-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4425">
-    <p><strong>例1  <span class="function"><strong>Memcached::getServerByKey()</strong></span> の例</strong></p>
+   <div class="example" id="example-4871">
+    <p><strong>例1 <span class="function"><strong>Memcached::getServerByKey()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServers</span><span style="color: #007700">(array(<br />&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'mem1.domain.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">40</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'mem2.domain.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">40</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'mem3.domain.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">),<br />));<br /><br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOption</span><span style="color: #007700">(</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">::</span><span style="color: #0000BB">OPT_LIBKETAMA_COMPATIBLE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getServerByKey</span><span style="color: #007700">(</span><span style="color: #DD0000">'user'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getServerByKey</span><span style="color: #007700">(</span><span style="color: #DD0000">'log'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getServerByKey</span><span style="color: #007700">(</span><span style="color: #DD0000">'ip'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -34,9 +34,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">name</code></dt>
 
-     <span class="term"><em><code class="parameter">name</code></em></span>
      <dd>
 
       <p class="para">
@@ -44,11 +45,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
@@ -70,8 +71,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -86,8 +86,8 @@
 
  <div class="refsect1 examples" id="refsect1-ziparchive.locatename-examples">
   <h3 class="title">例</h3>
-    <div class="example" id="example-797">
-     <p><strong>例1 アーカイブを作成し、 <span class="function"><strong>ZipArchive::locateName()</strong></span> を使用する</strong></p>
+    <div class="example" id="example-839">
+     <p><strong>例1 アーカイブを作成し、<span class="function"><strong>ZipArchive::locateName()</strong></span> を使用する</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'testlocate.zip'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$zip&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">::</span><span style="color: #0000BB">CREATE</span><span style="color: #007700">)&nbsp;!==&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;exit(</span><span style="color: #DD0000">'失敗'</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFromString</span><span style="color: #007700">(</span><span style="color: #DD0000">'entry1.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'entry&nbsp;#1'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFromString</span><span style="color: #007700">(</span><span style="color: #DD0000">'entry2.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'entry&nbsp;#2'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFromString</span><span style="color: #007700">(</span><span style="color: #DD0000">'dir/entry2d.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'entry&nbsp;#2'</span><span style="color: #007700">);<br /><br />if&nbsp;(!</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">status&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">::</span><span style="color: #0000BB">ER_OK</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"zip&nbsp;の書き込みに失敗\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /><br />if&nbsp;(</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">)&nbsp;!==&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;exit(</span><span style="color: #DD0000">'失敗'</span><span style="color: #007700">);<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">locateName</span><span style="color: #007700">(</span><span style="color: #DD0000">'entry1.txt'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">locateName</span><span style="color: #007700">(</span><span style="color: #DD0000">'eNtry2.txt'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">locateName</span><span style="color: #007700">(</span><span style="color: #DD0000">'eNtry2.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">::</span><span style="color: #0000BB">FL_NOCASE</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">locateName</span><span style="color: #007700">(</span><span style="color: #DD0000">'enTRy2d.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">::</span><span style="color: #0000BB">FL_NOCASE</span><span style="color: #007700">|</span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">::</span><span style="color: #0000BB">FL_NODIR</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>

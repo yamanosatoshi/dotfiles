@@ -29,7 +29,7 @@
   </p>
   <p class="para">
    この関数の非管理者向けバージョンは、
-   PHP の  <span class="function"><a href="function.imap-get-quotaroot.html" class="function">imap_get_quotaroot()</a></span> 関数を参照ください。
+   PHP の <span class="function"><a href="function.imap-get-quotaroot.html" class="function">imap_get_quotaroot()</a></span> 関数を参照ください。
   </p>
  </div>
 
@@ -39,26 +39,26 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-imap_stream</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
+<code class="parameter">
+imap_stream</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
 が返す IMAP ストリーム。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">quota_root</code></dt>
 
-     <span class="term"><em><code class="parameter">quota_root</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">quota_root</code></em> は、通常
+       <code class="parameter">quota_root</code> は、通常
        <em>user.name</em> という形式にする必要があります。
        name は、情報を取得したいメールボックスの名前です。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -90,8 +90,8 @@ imap_stream</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imap-get-quota-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3340">
-    <p><strong>例1  <span class="function"><strong>imap_get_quota()</strong></span> の例</strong></p>
+   <div class="example" id="example-3764">
+    <p><strong>例1 <span class="function"><strong>imap_get_quota()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$mbox&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_open</span><span style="color: #007700">(</span><span style="color: #DD0000">"{imap.example.org}"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mailadmin"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OP_HALFOPEN</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"接続できません:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">imap_last_error</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">$quota_value&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_get_quota</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user.kalowsky"</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$quota_value</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Usage&nbsp;level&nbsp;is:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$quota_value</span><span style="color: #007700">[</span><span style="color: #DD0000">'usage'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Limit&nbsp;level&nbsp;is:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$quota_value</span><span style="color: #007700">[</span><span style="color: #DD0000">'limit'</span><span style="color: #007700">];<br />}<br /><br /></span><span style="color: #0000BB">imap_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -102,8 +102,8 @@ imap_stream</code></em></span><dd>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3341">
-    <p><strong>例2 4.3 以降のバージョンでの  <span class="function"><strong>imap_get_quota()</strong></span> の例</strong></p>
+   <div class="example" id="example-3765">
+    <p><strong>例2 4.3 以降のバージョンでの <span class="function"><strong>imap_get_quota()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$mbox&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_open</span><span style="color: #007700">(</span><span style="color: #DD0000">"{imap.example.org}"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mailadmin"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OP_HALFOPEN</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"接続できません:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">imap_last_error</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">$quota_values&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_get_quota</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user.kalowsky"</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$quota_values</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$storage&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$quota_values</span><span style="color: #007700">[</span><span style="color: #DD0000">'STORAGE'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"STORAGE&nbsp;usage&nbsp;level&nbsp;is:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;&nbsp;</span><span style="color: #0000BB">$storage</span><span style="color: #007700">[</span><span style="color: #DD0000">'usage'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"STORAGE&nbsp;limit&nbsp;level&nbsp;is:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;&nbsp;</span><span style="color: #0000BB">$storage</span><span style="color: #007700">[</span><span style="color: #DD0000">'limit'</span><span style="color: #007700">];<br /><br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$quota_values</span><span style="color: #007700">[</span><span style="color: #DD0000">'MESSAGE'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"MESSAGE&nbsp;usage&nbsp;level&nbsp;is:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">[</span><span style="color: #DD0000">'usage'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"MESSAGE&nbsp;limit&nbsp;is:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">[</span><span style="color: #DD0000">'limit'</span><span style="color: #007700">];<br /><br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;&nbsp;*/<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #0000BB">imap_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -121,7 +121,7 @@ imap_stream</code></em></span><dd>
    この関数は、現在、c-client2000 以降のライブラリを使用しているユーザーのみ使用可能です。
   </p>
   <p class="para">
-   指定する <em><code class="parameter">imap_stream</code></em> は、
+   指定する <code class="parameter">imap_stream</code> は、
    メールの管理者としてオープンしたものである必要があります。
    そうでない場合は、この関数は失敗します。
   </p>
@@ -131,9 +131,9 @@ imap_stream</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imap-open.html" class="function" rel="rdfs-seeAlso">imap_open()</a> - メールボックスへの IMAP ストリームをオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.imap-set-quota.html" class="function" rel="rdfs-seeAlso">imap_set_quota()</a> - 指定したメールボックスにクォータを設定する</span></li>
-    <li class="member"> <span class="function"><a href="function.imap-get-quotaroot.html" class="function" rel="rdfs-seeAlso">imap_get_quotaroot()</a> - ユーザー単位のクォータ設定を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.imap-open.html" class="function" rel="rdfs-seeAlso">imap_open()</a> - メールボックスへの IMAP ストリームをオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.imap-set-quota.html" class="function" rel="rdfs-seeAlso">imap_set_quota()</a> - 指定したメールボックスにクォータを設定する</span></li>
+    <li class="member"><span class="function"><a href="function.imap-get-quotaroot.html" class="function" rel="rdfs-seeAlso">imap_get_quotaroot()</a> - ユーザー単位のクォータ設定を取得する</span></li>
    </ul>
   </p>
  </div>

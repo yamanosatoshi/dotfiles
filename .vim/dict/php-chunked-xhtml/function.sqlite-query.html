@@ -47,7 +47,7 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-   指定したデータベースにより <em><code class="parameter">query</code></em> で指定した
+   指定したデータベースにより <code class="parameter">query</code> で指定した
    SQL ステートメントを実行します。
   </p>
  </div>
@@ -58,24 +58,25 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">dbhandle</code></dt>
 
-     <span class="term"><em><code class="parameter">dbhandle</code></em></span>
      <dd>
 
       <p class="para">
        SQLite データベースリソース。手続きに従って、
-        <span class="function"><a href="function.sqlite-open.html" class="function">sqlite_open()</a></span> から返されます。
+       <span class="function"><a href="function.sqlite-open.html" class="function">sqlite_open()</a></span> から返されます。
        このパラメータは、
        オブジェクト指向言語型メソッドを使用する場合は不要です。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -87,14 +88,14 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">result_type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">result_type</code></em></span>
      <dd>
 
-      <p class="para">オプションの <em><code class="parameter">result_type</code></em>
+      <p class="para">オプションの <code class="parameter">result_type</code>
 パラメータには定数を指定でき、返される配列の添字を定義します。
 <strong><code>SQLITE_ASSOC</code></strong> を用いると、連想配列の添字(名前フィールド)のみが
 返されます。一方、<strong><code>SQLITE_NUM</code></strong> は、
@@ -103,22 +104,21 @@
 <strong><code>SQLITE_BOTH</code></strong> がこの関数のデフォルトです。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">error_msg</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">error_msg</code></em></span>
      <dd>
 
       <p class="para">
        もしエラーが発生した場合、ここに保存されます。SQL 構文のエラーは
-        <span class="function"><a href="function.sqlite-last-error.html" class="function">sqlite_last_error()</a></span> 関数で取得することが
+       <span class="function"><a href="function.sqlite-last-error.html" class="function">sqlite_last_error()</a></span> 関数で取得することが
        できないため、このパラメータが特に重要となります。
       </p>
      </dd>
 
-    </dt>
-
+    
 
    </dl>
 
@@ -126,7 +126,7 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">
 (MySQL のような)他のデータベースエクステンションとの互換性のため、
 2 種類の構文がサポートされています。
-推奨されるのは最初の構文で、<em><code class="parameter">dbhandle</code></em> パラメータを
+推奨されるのは最初の構文で、<code class="parameter">dbhandle</code> パラメータを
 関数の最初のパラメータとするものです。</span></p></blockquote>
  </div>
 
@@ -136,21 +136,21 @@
   <p class="para">
    この関数は結果ハンドルを返します。失敗した場合に <strong><code>FALSE</code></strong> を返します。
    レコードを返すクエリの場合、結果ハンドルは
-    <span class="function"><a href="function.sqlite-fetch-array.html" class="function">sqlite_fetch_array()</a></span> や
-    <span class="function"><a href="function.sqlite-seek.html" class="function">sqlite_seek()</a></span> のような関数で使用することができます。
+   <span class="function"><a href="function.sqlite-fetch-array.html" class="function">sqlite_fetch_array()</a></span> や
+   <span class="function"><a href="function.sqlite-seek.html" class="function">sqlite_seek()</a></span> のような関数で使用することができます。
   </p>
   <p class="para">
    クエリの型によらず、この関数はクエリが失敗した場合に<strong><code>FALSE</code></strong> を返し
    ます。
   </p>
   <p class="para">
-    <span class="function"><strong>sqlite_query()</strong></span> は、バッファリングされ、シーク可
+   <span class="function"><strong>sqlite_query()</strong></span> は、バッファリングされ、シーク可
    能な結果ハンドルを返します。これは、レコードにランダムにアクセスす
    る必要がある小さなクエリの場合に有用です。バッファリングされた結果
    ハンドルは、結果全体を保持するためのメモリを確保し、結果が取得され
    るまでは値を返しません。
    データに連続的にアクセスしたい場合、かわりにより高性能な
-    <span class="function"><a href="function.sqlite-unbuffered-query.html" class="function">sqlite_unbuffered_query()</a></span> を使用することが
+   <span class="function"><a href="function.sqlite-unbuffered-query.html" class="function">sqlite_unbuffered_query()</a></span> を使用することが
    推奨されます。
   </p>
  </div>
@@ -173,7 +173,7 @@
       <tr>
        <td>5.1.0</td>
        <td>
-        <em><code class="parameter">error_msg</code></em> パラメータが追加されました。
+        <code class="parameter">error_msg</code> パラメータが追加されました。
        </td>
       </tr>
 
@@ -194,7 +194,7 @@
     をバッチ実行することができます。
     しかしながら、これは関数の結果が使用されない場合のみ動作します。
     使用されない場合、最初の SQL ステートメントのみ実行されます。
-    関数  <span class="function"><a href="function.sqlite-exec.html" class="function">sqlite_exec()</a></span> は常に複数の SQL
+    関数 <span class="function"><a href="function.sqlite-exec.html" class="function">sqlite_exec()</a></span> は常に複数の SQL
     ステートメントを実行します。
    </p>
    <p class="simpara">
@@ -210,8 +210,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.sqlite-unbuffered-query.html" class="function" rel="rdfs-seeAlso">sqlite_unbuffered_query()</a> - 事前取得していないクエリを実行し、全てのデータをバッファリングする</span></li>
-    <li class="member"> <span class="function"><a href="function.sqlite-array-query.html" class="function" rel="rdfs-seeAlso">sqlite_array_query()</a> - 指定したデータベースに対してクエリを実行し、配列を返す</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-unbuffered-query.html" class="function" rel="rdfs-seeAlso">sqlite_unbuffered_query()</a> - 事前取得していないクエリを実行し、全てのデータをバッファリングする</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-array-query.html" class="function" rel="rdfs-seeAlso">sqlite_array_query()</a> - 指定したデータベースに対してクエリを実行し、配列を返す</span></li>
    </ul>
   </p>
  </div>

@@ -33,11 +33,12 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">query</code></em>
-     </span>
+      <code class="parameter">query</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -45,7 +46,7 @@
        MongoDB のクエリ言語は極めて幅広いものです。
        PHP ドライバはほとんどの場合クエリをそのままサーバーに流すので、
        MongoDB コアドキュメントの
-       <a href="http://dochub.mongodb.org/core/find" class="link external">&raquo;&nbsp;find</a> を読むといいでしょう。
+       <a href="http://docs.mongodb.org/manual/reference/method/db.collection.find/" class="link external">&raquo;&nbsp;find</a> を読むといいでしょう。
       </p>
       <div class="warning"><strong class="warning">警告</strong>
        <p class="para">
@@ -57,13 +58,13 @@
       </div>
      </dd>
 
-    </dt>
-   
-    <dt>
+       
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">fields</code></em>
-     </span>
+      <code class="parameter">fields</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -73,8 +74,7 @@
       </p>
      </dd>
 
-    </dt>
-   
+       
    </dl>
 
   </p>
@@ -91,8 +91,8 @@
 
  <div class="refsect1 examples" id="refsect1-mongocollection.find-examples">
   <h3 class="title">例</h3>
-   <div class="example" id="example-1443">
-   <p><strong>例1  <span class="function"><strong>MongoCollection::find()</strong></span> の例</strong></p>
+   <div class="example" id="example-1515">
+   <p><strong>例1 <span class="function"><strong>MongoCollection::find()</strong></span> の例</strong></p>
    <div class="example-contents"><p>この例は、基本的な検索オプションを示します。</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -166,8 +166,8 @@ array(4) {
      カーソルの使いかたについての詳しい情報は <a href="class.mongocursor.html" class="classname">MongoCursor</a> を参照ください。
    </p></div>
   </div>
-  <div class="example" id="example-1444">
-   <p><strong>例2  <span class="function"><strong>MongoCollection::find()</strong></span> の例</strong></p>
+  <div class="example" id="example-1516">
+   <p><strong>例2 <span class="function"><strong>MongoCollection::find()</strong></span> の例</strong></p>
    <div class="example-contents"><p>この例は、範囲指定検索の方法を示します。</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -203,8 +203,8 @@ array(2) {
      カーソルの挙動についての詳細な情報は <a href="class.mongocursor.html" class="classname">MongoCursor</a> を参照ください。
    </p></div>
   </div>
-  <div class="example" id="example-1445">
-   <p><strong>例3  <span class="function"><strong>MongoCollection::find()</strong></span> での $where の使用例</strong></p>
+  <div class="example" id="example-1517">
+   <p><strong>例3 <span class="function"><strong>MongoCollection::find()</strong></span> での $where の使用例</strong></p>
    <div class="example-contents"><p>この例は、コレクションの検索に javascript コードを使って結果セットを小さくする方法を示します。</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -230,8 +230,8 @@ array(3) {
 </pre></div>
    </div>
   </div>
-  <div class="example" id="example-1446">
-   <p><strong>例4  <span class="function"><strong>MongoCollection::find()</strong></span> での $in の使用例</strong></p>
+  <div class="example" id="example-1518">
+   <p><strong>例4 <span class="function"><strong>MongoCollection::find()</strong></span> での $in の使用例</strong></p>
    <div class="example-contents"><p>この例は、コレクションの検索に $in 演算子を使う方法を示します。</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -258,12 +258,12 @@ array(3) {
    </div>
   </div>
 
-  <div class="example" id="example-1447">
+  <div class="example" id="example-1519">
    <p><strong>例5 配列形式での結果の取得</strong></p>
    <div class="example-contents"><p>
     このメソッドは <a href="class.mongocursor.html" class="classname">MongoCursor</a> を返します。
     しかし、配列形式のほうが使いやすいという人もいるでしょう。
-    カーソルを配列に変換するには  <span class="function"><a href="function.iterator-to-array.html" class="function">iterator_to_array()</a></span>
+    カーソルを配列に変換するには <span class="function"><a href="function.iterator-to-array.html" class="function">iterator_to_array()</a></span>
     関数を使います。
    </p></div>
    <div class="example-contents">
@@ -313,14 +313,14 @@ array(3) {
 </pre></div>
    </div>
    <div class="example-contents"><p>
-     <span class="function"><a href="function.iterator-to-array.html" class="function">iterator_to_array()</a></span> を使うと、結果全体をメモリに展開することになります。
+    <span class="function"><a href="function.iterator-to-array.html" class="function">iterator_to_array()</a></span> を使うと、結果全体をメモリに展開することになります。
     メモリサイズを超える結果セットではこれを使わないでください!
    </p></div>
    <div class="example-contents"><p>
     また、一部のシステムコレクションには <em>_id</em>
     フィールドを持たないものがあります。<em>_id</em>
     がないドキュメントを含むかもしれないコレクションを扱う場合は、
-     <span class="function"><a href="function.iterator-to-array.html" class="function">iterator_to_array()</a></span> の二番目の引数に <strong><code>FALSE</code></strong>
+    <span class="function"><a href="function.iterator-to-array.html" class="function">iterator_to_array()</a></span> の二番目の引数に <strong><code>FALSE</code></strong>
     を渡します (そうすれば、存在しない
     <em>_id</em> の値をキーとして使うことがなくなります)。
    </p></div>
@@ -331,9 +331,9 @@ array(3) {
  <div class="refsect1 seealso" id="refsect1-mongocollection.find-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="mongocollection.findone.html" class="function" rel="rdfs-seeAlso">MongoCollection::findOne()</a> - コレクションに問い合わせ、単一の要素を返す</span></li>
-   <li class="member"> <span class="function"><a href="mongocollection.insert.html" class="function" rel="rdfs-seeAlso">MongoCollection::insert()</a> - ドキュメントをコレクションに追加する</span></li>
-   <li class="member">MongoDB コアドキュメントの <a href="http://dochub.mongodb.org/core/find" class="link external">&raquo;&nbsp;find</a></li>
+   <li class="member"><span class="function"><a href="mongocollection.findone.html" class="function" rel="rdfs-seeAlso">MongoCollection::findOne()</a> - コレクションに問い合わせ、単一の要素を返す</span></li>
+   <li class="member"><span class="function"><a href="mongocollection.insert.html" class="function" rel="rdfs-seeAlso">MongoCollection::insert()</a> - ドキュメントをコレクションに追加する</span></li>
+   <li class="member">MongoDB コアドキュメントの <a href="http://docs.mongodb.org/manual/reference/method/db.collection.find/" class="link external">&raquo;&nbsp;find</a></li>
   </ul>
  </div>
 

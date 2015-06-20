@@ -37,9 +37,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">fp</code></dt>
 
-     <span class="term"><em><code class="parameter">fp</code></em></span>
      <dd>
 
       <p class="para">
@@ -47,8 +48,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -85,8 +85,8 @@
  <div class="refsect1 examples" id="refsect1-function.mailparse-uudecode-all-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3369">
-    <p><strong>例1  <span class="function"><strong>mailparse_uudecode_all()</strong></span> の例</strong></p>
+   <div class="example" id="example-3793">
+    <p><strong>例1 <span class="function"><strong>mailparse_uudecode_all()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$text&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;EOD<br /></span><span style="color: #DD0000">To:&nbsp;fred@example.com<br /><br />hello,&nbsp;this&nbsp;is&nbsp;some&nbsp;text&nbsp;hello.<br />blah&nbsp;blah&nbsp;blah.<br /><br />begin&nbsp;644&nbsp;test.txt<br />/=&amp;AI&lt;R!I&lt;R!A('1E&lt;W0*<br />`<br />end<br /><br /></span><span style="color: #007700">EOD;<br /><br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">tmpfile</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mailparse_uudecode_all</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"BODY\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #DD0000">"filename"</span><span style="color: #007700">]);<br />echo&nbsp;</span><span style="color: #DD0000">"UUE&nbsp;(</span><span style="color: #007700">{</span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #DD0000">'origfilename'</span><span style="color: #007700">]}</span><span style="color: #DD0000">)\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #DD0000">"filename"</span><span style="color: #007700">]);<br /><br /></span><span style="color: #FF8000">//&nbsp;後始末をします<br /></span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #DD0000">"filename"</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #DD0000">"filename"</span><span style="color: #007700">]);<br /><br /></span><span style="color: #0000BB">?&gt;</span>

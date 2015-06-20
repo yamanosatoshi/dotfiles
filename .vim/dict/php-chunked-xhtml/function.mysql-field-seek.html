@@ -27,9 +27,12 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli-result.field-seek.html" class="function">mysqli_field_seek()</a></span></li>
-    
-    <li class="member"> <span class="methodname"><a href="pdostatement.fetch.html" class="methodname">PDOStatement::fetch()</a></span> でオプションのパラメータを使う</li>
+    <li class="member"><span class="function"><a href="mysqli-result.field-seek.html" class="function">mysqli_field_seek()</a></span></li>
+    <li class="member">
+     <span class="methodname"><a href="pdostatement.fetch.html" class="methodname">PDOStatement::fetch()</a></span> で
+     <code class="parameter">cursor_orientation</code> パラメータおよび
+     <code class="parameter">offset</code> パラメータを使う
+    </li>
    </ul>
   </div>
  </div>
@@ -44,8 +47,8 @@
 
   <p class="para rdfs-comment">
    指定したフィールドオフセットに移動します。
-    <span class="function"><strong>mysql_field_seek()</strong></span> をコールした後、
-    <span class="function"><a href="function.mysql-fetch-field.html" class="function">mysql_fetch_field()</a></span> をフィールドオフセットを付けずに
+   <span class="function"><strong>mysql_field_seek()</strong></span> をコールした後、
+   <span class="function"><a href="function.mysql-fetch-field.html" class="function">mysql_fetch_field()</a></span> をフィールドオフセットを付けずに
    コールした場合、このフィールドが返されます。
   </p>
  </div>
@@ -57,21 +60,21 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
+<code class="parameter">
+result</code></dt>
+<dd>
 <p class="para">評価された結果 <span class="type"><span class="type リソース">リソース</span></span>。
-この結果は、 <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
+この結果は、<span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
 </dd>
-</dt>
 
     <dt>
-<span class="term"><em><code class="parameter">
-field_offset</code></em></span><dd>
+<code class="parameter">
+field_offset</code></dt>
+<dd>
 <p class="para">数値フィールドオフセット。
-<em><code class="parameter">field_offset</code></em> は <em>0</em> から始まります。
-<em><code class="parameter">field_offset</code></em> が存在しない場合、
+<code class="parameter">field_offset</code> は <em>0</em> から始まります。
+<code class="parameter">field_offset</code> が存在しない場合、
 <strong><code>E_WARNING</code></strong> レベルのエラーが発行されます。</p></dd>
-</dt>
 
    </dl>
 
@@ -91,7 +94,7 @@ field_offset</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-fetch-field.html" class="function" rel="rdfs-seeAlso">mysql_fetch_field()</a> - 結果からカラム情報を取得し、オブジェクトとして返す</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-field.html" class="function" rel="rdfs-seeAlso">mysql_fetch_field()</a> - 結果からカラム情報を取得し、オブジェクトとして返す</span></li>
    </ul>
   </p>
  </div>

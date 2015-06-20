@@ -28,7 +28,7 @@
   <p class="para rdfs-comment">
    このメソッドを使用すると、任意の文字列を tar/zip アーカイブに追加することができます。
    アーカイブ内のファイル名は <em>localname</em> で指定したものとなります。
-   このメソッドは  <span class="function"><a href="ziparchive.addfromstring.html" class="function">ZipArchive::addFromString()</a></span> と同じようなものです。
+   このメソッドは <span class="function"><a href="ziparchive.addfromstring.html" class="function">ZipArchive::addFromString()</a></span> と同じようなものです。
   </p>
 
  </div>
@@ -38,9 +38,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">localname</code></dt>
 
-     <span class="term"><em><code class="parameter">localname</code></em></span>
      <dd>
 
       <p class="para">
@@ -48,11 +49,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">contents</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">contents</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,8 +61,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -79,8 +79,8 @@
  <div class="refsect1 examples" id="refsect1-phardata.addfromstring-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-704">
-    <p><strong>例1  <span class="function"><strong>PharData::addFromString()</strong></span> の例</strong></p>
+   <div class="example" id="example-745">
+    <p><strong>例1 <span class="function"><strong>PharData::addFromString()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PharData</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/my.tar'</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFromString</span><span style="color: #007700">(</span><span style="color: #DD0000">'path/to/file.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my&nbsp;simple&nbsp;file'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'path/to/file.txt'</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">getContent</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;大きなファイル用にストリームハンドルから追加するには&nbsp;offsetSet()&nbsp;を使用します<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/hugefile.bin'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'largefile.bin'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">);<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;ここでエラー処理をします<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -97,10 +97,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="phardata.offsetset.html" class="function" rel="rdfs-seeAlso">PharData::offsetSet()</a> - tar/zip の内部のファイルに、外部ファイルあるいは文字列の内容を設定する</span></li>
-    <li class="member"> <span class="function"><a href="phar.addfromstring.html" class="function" rel="rdfs-seeAlso">Phar::addFromString()</a> - ファイルシステム上のファイルを phar アーカイブに追加する</span></li>
-    <li class="member"> <span class="function"><a href="phardata.addfile.html" class="function" rel="rdfs-seeAlso">PharData::addFile()</a> - ファイルシステム上のファイルを tar/zip アーカイブに追加する</span></li>
-    <li class="member"> <span class="function"><a href="phardata.addemptydir.html" class="function" rel="rdfs-seeAlso">PharData::addEmptyDir()</a> - 空のディレクトリを tar/zip アーカイブに追加する</span></li>
+    <li class="member"><span class="function"><a href="phardata.offsetset.html" class="function" rel="rdfs-seeAlso">PharData::offsetSet()</a> - tar/zip の内部のファイルに、外部ファイルあるいは文字列の内容を設定する</span></li>
+    <li class="member"><span class="function"><a href="phar.addfromstring.html" class="function" rel="rdfs-seeAlso">Phar::addFromString()</a> - 文字列から、ファイルを phar アーカイブに追加する</span></li>
+    <li class="member"><span class="function"><a href="phardata.addfile.html" class="function" rel="rdfs-seeAlso">PharData::addFile()</a> - ファイルシステム上のファイルを tar/zip アーカイブに追加する</span></li>
+    <li class="member"><span class="function"><a href="phardata.addemptydir.html" class="function" rel="rdfs-seeAlso">PharData::addEmptyDir()</a> - 空のディレクトリを tar/zip アーカイブに追加する</span></li>
    </ul>
   </p>
  </div>

@@ -26,7 +26,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">charlist</code></em>
+   <code class="parameter">charlist</code>
    パラメータに羅列された文字の前にバックスラッシュを付けた文字列を返します。
   </p>
  </div>
@@ -37,9 +37,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">str</code></dt>
 
-     <span class="term"><em><code class="parameter">str</code></em></span>
      <dd>
 
       <p class="para">
@@ -47,16 +48,16 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">charlist</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">charlist</code></em></span>
      <dd>
 
       <p class="para">
        エスケープの対象となる文字を並べたもの。
-       <em><code class="parameter">charlist</code></em>
+       <code class="parameter">charlist</code>
        が <em>\n</em>, <em>\r</em> 等の文字を含んでいる場合、
        C言語と同様の手法によりエスケープされます。
        アスキーコードが32未満または126より大きい文字は、8進表現に変換されます。
@@ -77,7 +78,7 @@
        ASCII 値を有している場合、範囲は定義されません。
        最初と最後の文字とピリオド文字のみがエスケープされます。
        ある文字の ASCII 値を見つけるには、
-        <span class="function"><a href="function.ord.html" class="function">ord()</a></span> 関数を使用してください。
+       <span class="function"><a href="function.ord.html" class="function">ord()</a></span> 関数を使用してください。
        <div class="informalexample">
         <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -93,14 +94,13 @@
        変換結果はそれぞれ \0, \a, \b, \f, \n, \r, \t そして \v となりますが、
        これらはすべて、C 言語では定義済みのエスケープシーケンスです。
        その多くは C 言語に由来する他の言語でもエスケープシーケンスとして定義されており、
-       PHP も例外ではありません。つまり、<em><code class="parameter">charlist</code></em> にこれらの文字を定義した状態で
-        <span class="function"><strong>addcslashes()</strong></span> を使って他の言語のコードを生成したときに、
+       PHP も例外ではありません。つまり、<code class="parameter">charlist</code> にこれらの文字を定義した状態で
+       <span class="function"><strong>addcslashes()</strong></span> を使って他の言語のコードを生成したときに、
        期待通りの結果が得られない可能性があるということです。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -147,11 +147,11 @@
  <div class="refsect1 examples" id="refsect1-function.addcslashes-examples">
   <h3 class="title">例</h3>
   <p class="para">
-    &quot;\0..\37&quot; のように <em><code class="parameter">charlist</code></em>
+    &quot;\0..\37&quot; のように <code class="parameter">charlist</code>
     に範囲を指定可能です。この場合、アスキーコードが 0 から 31
     の範囲の文字は全てエスケープされます。
-   <div class="example" id="example-4795">
-    <p><strong>例1  <span class="function"><strong>addcslashes()</strong></span> の例</strong></p>
+   <div class="example" id="example-5273">
+    <p><strong>例1 <span class="function"><strong>addcslashes()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$escaped&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">addcslashes</span><span style="color: #007700">(</span><span style="color: #0000BB">$not_escaped</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\0..\37!@\177..\377"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -168,11 +168,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.stripcslashes.html" class="function" rel="rdfs-seeAlso">stripcslashes()</a> - addcslashes でクォートされた文字列をアンクォートする</span></li>
-    <li class="member"> <span class="function"><a href="function.stripslashes.html" class="function" rel="rdfs-seeAlso">stripslashes()</a> - クォートされた文字列のクォート部分を取り除く</span></li>
-    <li class="member"> <span class="function"><a href="function.addslashes.html" class="function" rel="rdfs-seeAlso">addslashes()</a> - 文字列をスラッシュでクォートする</span></li>
-    <li class="member"> <span class="function"><a href="function.htmlspecialchars.html" class="function" rel="rdfs-seeAlso">htmlspecialchars()</a> - 特殊文字を HTML エンティティに変換する</span></li>
-    <li class="member"> <span class="function"><a href="function.quotemeta.html" class="function" rel="rdfs-seeAlso">quotemeta()</a> - メタ文字をクォートする</span></li>
+    <li class="member"><span class="function"><a href="function.stripcslashes.html" class="function" rel="rdfs-seeAlso">stripcslashes()</a> - addcslashes でクォートされた文字列をアンクォートする</span></li>
+    <li class="member"><span class="function"><a href="function.stripslashes.html" class="function" rel="rdfs-seeAlso">stripslashes()</a> - クォートされた文字列のクォート部分を取り除く</span></li>
+    <li class="member"><span class="function"><a href="function.addslashes.html" class="function" rel="rdfs-seeAlso">addslashes()</a> - 文字列をスラッシュでクォートする</span></li>
+    <li class="member"><span class="function"><a href="function.htmlspecialchars.html" class="function" rel="rdfs-seeAlso">htmlspecialchars()</a> - 特殊文字を HTML エンティティに変換する</span></li>
+    <li class="member"><span class="function"><a href="function.quotemeta.html" class="function" rel="rdfs-seeAlso">quotemeta()</a> - メタ文字をクォートする</span></li>
    </ul>
   </p>
  </div>

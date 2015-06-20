@@ -29,16 +29,16 @@
 
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>Memcache::set()</strong></span> は、キー
-   <em><code class="parameter">key</code></em> に <em><code class="parameter">var</code></em> という値を
-   関連付け、memcached サーバーに格納します。パラメータ <em><code class="parameter">expire</code></em>
+   <span class="function"><strong>Memcache::set()</strong></span> は、キー
+   <code class="parameter">key</code> に <code class="parameter">var</code> という値を
+   関連付け、memcached サーバーに格納します。パラメータ <code class="parameter">expire</code>
    は、データの有効期限を秒単位で指定します。もし 0 を指定した場合は
    その項目が期限切れになることはありません (これは、その項目のデータが
    memcached サーバー上にずっと残り続けることを保証するものではありません。
    他の項目をキャッシュするための場所を確保するためにサーバーから
    削除されてしまうこともあります)。
    (zlib を使用して) その場でのデータの圧縮を行いたい場合は、
-   <em><code class="parameter">flag</code></em> の値として、定数
+   <code class="parameter">flag</code> の値として、定数
    <strong><code>MEMCACHE_COMPRESSED</code></strong> を指定します。
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <p class="para">
@@ -48,7 +48,7 @@
      できないためです。
     </p> 
    </p></blockquote>
-    <span class="function"><strong>memcache_set()</strong></span> 関数を使用することも可能です。
+   <span class="function"><strong>memcache_set()</strong></span> 関数を使用することも可能です。
   </p>
 
  </div>
@@ -59,9 +59,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">key</code></dt>
 
-     <span class="term"><em><code class="parameter">key</code></em></span>
      <dd>
 
       <p class="para">
@@ -69,11 +70,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">var</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">var</code></em></span>
      <dd>
 
       <p class="para">
@@ -82,11 +83,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flag</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flag</code></em></span>
      <dd>
 
       <p class="para">
@@ -95,11 +96,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">expire</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">expire</code></em></span>
      <dd>
 
       <p class="para">
@@ -110,8 +111,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -129,8 +129,8 @@
  <div class="refsect1 examples" id="refsect1-memcache.set-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4401">
-    <p><strong>例1  <span class="function"><strong>Memcache::set()</strong></span> の例</strong></p>
+   <div class="example" id="example-4847">
+    <p><strong>例1 <span class="function"><strong>Memcache::set()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;手続き型の&nbsp;API&nbsp;*/<br /><br />/*&nbsp;memcached&nbsp;サーバーに接続します&nbsp;*/<br /></span><span style="color: #0000BB">$memcache_obj&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">memcache_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*<br />キー&nbsp;'var_key'&nbsp;の項目の値を設定します。<br />flag&nbsp;の値として&nbsp;0&nbsp;を使用し、圧縮は使用しません。<br />有効期限は&nbsp;30&nbsp;秒です。<br />*/<br /></span><span style="color: #0000BB">memcache_set</span><span style="color: #007700">(</span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'var_key'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'some&nbsp;variable'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">30</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">memcache_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'var_key'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -139,8 +139,8 @@
     </div>
 
    </div>
-   <div class="example" id="example-4402">
-    <p><strong>例2  <span class="function"><strong>Memcache::set()</strong></span> の例</strong></p>
+   <div class="example" id="example-4848">
+    <p><strong>例2 <span class="function"><strong>Memcache::set()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;オブジェクト指向の&nbsp;API&nbsp;*/<br /><br /></span><span style="color: #0000BB">$memcache_obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcache</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*&nbsp;memcached&nbsp;サーバーに接続します&nbsp;*/<br /></span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*<br />キー&nbsp;'var_key'&nbsp;に対応する値を設定します。その際、データの圧縮を行います。<br />有効期限は&nbsp;50&nbsp;秒です。<br />*/<br /></span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #DD0000">'var_key'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'some&nbsp;really&nbsp;big&nbsp;variable'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MEMCACHE_COMPRESSED</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #DD0000">'var_key'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -157,8 +157,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="memcache.add.html" class="function" rel="rdfs-seeAlso">Memcache::add()</a> - サーバーに項目を追加する</span></li>
-    <li class="member"> <span class="function"><a href="memcache.replace.html" class="function" rel="rdfs-seeAlso">Memcache::replace()</a> - 既存項目の値を置換する</span></li>
+    <li class="member"><span class="function"><a href="memcache.add.html" class="function" rel="rdfs-seeAlso">Memcache::add()</a> - サーバーに項目を追加する</span></li>
+    <li class="member"><span class="function"><a href="memcache.replace.html" class="function" rel="rdfs-seeAlso">Memcache::replace()</a> - 既存項目の値を置換する</span></li>
    </ul>
   </p>
  </div>

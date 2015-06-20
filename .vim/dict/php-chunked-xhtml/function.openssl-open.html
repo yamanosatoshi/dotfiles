@@ -29,13 +29,13 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>openssl_open()</strong></span> は、キー ID
-   <em><code class="parameter">priv_key_id</code></em> およびエンベロープキー
-   <em><code class="parameter">env_key</code></em> に関連する公開鍵を使用して、
-   <em><code class="parameter">sealed_data</code></em> をオープン(復号)します。
+   <span class="function"><strong>openssl_open()</strong></span> は、キー ID
+   <code class="parameter">priv_key_id</code> およびエンベロープキー
+   <code class="parameter">env_key</code> に関連する公開鍵を使用して、
+   <code class="parameter">sealed_data</code> をオープン(復号)します。
    エンベロープキーは、データがシール(暗号化)された際に生成され、特定の
    一つの公開鍵でのみ使用することが可能です。詳細な情報については、
-    <span class="function"><a href="function.openssl-seal.html" class="function">openssl_seal()</a></span> を参照ください。
+   <span class="function"><a href="function.openssl-seal.html" class="function">openssl_seal()</a></span> を参照ください。
   </p>
  </div>
 
@@ -45,20 +45,21 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">sealed_data</code></dt>
 
-     <span class="term"><em><code class="parameter">sealed_data</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">open_data</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">open_data</code></em></span>
      <dd>
 
       <p class="para">
@@ -66,30 +67,29 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">env_key</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">env_key</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">priv_key_id</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">priv_key_id</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -107,8 +107,8 @@
  <div class="refsect1 examples" id="refsect1-function.openssl-open-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-861">
-    <p><strong>例1  <span class="function"><strong>openssl_open()</strong></span> の例</strong></p>
+   <div class="example" id="example-906">
+    <p><strong>例1 <span class="function"><strong>openssl_open()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;$sealed&nbsp;および&nbsp;$env_key&nbsp;に暗号化されたデータおよびエンベロープキー<br />//&nbsp;が含まれていると仮定。共にシール元(暗号化側)から与えられる。<br /><br />//&nbsp;ファイルから公開鍵を取得し、使用可能とする<br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"/src/openssl-0.9.6/demos/sign/key.pem"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$priv_key&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8192</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$pkeyid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_get_privatekey</span><span style="color: #007700">(</span><span style="color: #0000BB">$priv_key</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;データを復号化し、$open&nbsp;に保存<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">openssl_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$sealed</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$open</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$env_key</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$pkeyid</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"here&nbsp;is&nbsp;the&nbsp;opened&nbsp;data:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$open</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"failed&nbsp;to&nbsp;open&nbsp;data"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;公開鍵をメモリから開放<br /></span><span style="color: #0000BB">openssl_free_key</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkeyid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -125,7 +125,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.openssl-seal.html" class="function" rel="rdfs-seeAlso">openssl_seal()</a> - データをシール(暗号化)する</span></li>
+    <li class="member"><span class="function"><a href="function.openssl-seal.html" class="function" rel="rdfs-seeAlso">openssl_seal()</a> - データをシール(暗号化)する</span></li>
    </ul>
   </p>
  </div>

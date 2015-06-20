@@ -26,9 +26,9 @@
    )</div>
 
   <p class="para rdfs-comment">
-   The  <span class="function"><strong>cubrid_lob2_import()</strong></span> function is used to save the
+   The <span class="function"><strong>cubrid_lob2_import()</strong></span> function is used to save the
    contents of BLOB/CLOB data from a file. To use this function, you must use
-    <span class="function"><a href="function.cubrid-lob2-new.html" class="function">cubrid_lob2_new()</a></span> or fetch a lob object from CUBRID database
+   <span class="function"><a href="function.cubrid-lob2-new.html" class="function">cubrid_lob2_new()</a></span> or fetch a lob object from CUBRID database
    first. If the file already exists, the operation will fail. 
    This function will not influence the cursor position of the lob object. 
    It operates the entire lob object.
@@ -41,26 +41,26 @@
  <p class="para">
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">lob_identifier</code></dt>
 
-    <span class="term"><em><code class="parameter">lob_identifier</code></em></span>
     <dd>
 
-     <p class="para">Lob identifier as a result of  <span class="function"><a href="function.cubrid-lob2-new.html" class="function">cubrid_lob2_new()</a></span> or get from the result set.</p>
+     <p class="para">Lob identifier as a result of <span class="function"><a href="function.cubrid-lob2-new.html" class="function">cubrid_lob2_new()</a></span> or get from the result set.</p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">filename</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">filename</code></em></span>
     <dd>
 
      <p class="para">File name you want to import BLOB/CLOB data. It also supports the path of the file.</p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
   </p>
@@ -77,8 +77,8 @@
  
  <div class="refsect1 examples" id="refsect1-function.cubrid-lob2-import-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1033">
-   <p><strong>例1  <span class="function"><a href="function.cubrid-lob2-export.html" class="function">cubrid_lob2_export()</a></span> example</strong></p>
+  <div class="example" id="example-1091">
+   <p><strong>例1 <span class="function"><a href="function.cubrid-lob2-export.html" class="function">cubrid_lob2_export()</a></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dba"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,</span><span style="color: #DD0000">"DROP&nbsp;TABLE&nbsp;if&nbsp;exists&nbsp;test_lob"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;test_lob&nbsp;(id&nbsp;INT,&nbsp;contents&nbsp;CLOB)"</span><span style="color: #007700">);<br />&nbsp;<br /></span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;test_lob&nbsp;VALUES&nbsp;(?,&nbsp;?)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$lob&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_lob2_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"clob"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_lob2_import</span><span style="color: #007700">(</span><span style="color: #0000BB">$lob</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"doc_1.txt"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_lob2_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$lob</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'CLOB'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;or&nbsp;cubrid_lob2_bind($req,&nbsp;2,&nbsp;$lob);<br /><br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_lob2_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$lob</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -94,10 +94,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="function.cubrid-lob2-new.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_new()</a> - Create a lob object.</span></li>
-   <li class="member"> <span class="function"><a href="function.cubrid-lob2-close.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_close()</a> - Close LOB object.</span></li>
-   <li class="member"> <span class="function"><a href="function.cubrid-lob2-export.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_export()</a> - Export the lob object to a file.</span></li>
-   <li class="member"> <span class="function"><a href="function.cubrid-lob2-bind.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_bind()</a> - Bind a lob object or a string as a lob object to a prepared statement as parameters.</span></li>
+   <li class="member"><span class="function"><a href="function.cubrid-lob2-new.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_new()</a> - Create a lob object.</span></li>
+   <li class="member"><span class="function"><a href="function.cubrid-lob2-close.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_close()</a> - Close LOB object.</span></li>
+   <li class="member"><span class="function"><a href="function.cubrid-lob2-export.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_export()</a> - Export the lob object to a file.</span></li>
+   <li class="member"><span class="function"><a href="function.cubrid-lob2-bind.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_bind()</a> - Bind a lob object or a string as a lob object to a prepared statement as parameters.</span></li>
    </ul>
   </p>
  </div>

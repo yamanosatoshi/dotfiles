@@ -13,7 +13,7 @@
 </div><hr /><div id="function.rename" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">rename</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">rename</span> &mdash; <span class="dc-title">ファイルをリネームする</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">rename</span> &mdash; <span class="dc-title">ファイルをリネームする</span></p>
 
  </div>
  
@@ -27,9 +27,9 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">oldname</code></em> を
-   <em><code class="parameter">newname</code></em> にリネームし、必要ならディレクトリを移動しようと試みます。
-   <em><code class="parameter">newname</code></em> が存在する場合は、上書きします。
+   <code class="parameter">oldname</code> を
+   <code class="parameter">newname</code> にリネームし、必要ならディレクトリを移動しようと試みます。
+   <code class="parameter">newname</code> が存在する場合は、上書きします。
   </p>
  </div>
 
@@ -39,9 +39,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">oldname</code></dt>
 
-     <span class="term"><em><code class="parameter">oldname</code></em></span>
      <dd>
 
       <p class="para">
@@ -49,18 +50,18 @@
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
         変更前の名前。
-        <em><code class="parameter">oldname</code></em> で使用されるラッパーは、
-        <em><code class="parameter">newname</code></em> で使用するラッパーと適合
+        <code class="parameter">oldname</code> で使用されるラッパーは、
+        <code class="parameter">newname</code> で使用するラッパーと適合
         <em class="emphasis">している必要があります</em> 。
        </p>
       </p></blockquote>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">newname</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">newname</code></em></span>
      <dd>
 
       <p class="para">
@@ -68,11 +69,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">context</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">context</code></em></span>
      <dd>
 
       <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">コンテキストのサポートは、
@@ -80,8 +81,7 @@ PHP 5.0.0 で追加されました。<em>contexts</em> の説明に関しては�
 <a href="book.stream.html" class="xref">ストリーム</a> を参照してください。</span></p></blockquote>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -113,7 +113,7 @@ PHP 5.0.0 で追加されました。<em>contexts</em> の説明に関しては�
       <tr>
        <td>5.3.1</td>
        <td>
-         <span class="function"><strong>rename()</strong></span> は
+        <span class="function"><strong>rename()</strong></span> は
         Windows で別のドライブにリネームできるようになりました。
        </td>
       </tr>
@@ -121,9 +121,9 @@ PHP 5.0.0 で追加されました。<em>contexts</em> の説明に関しては�
       <tr>
        <td>5.0.0</td>
        <td>
-         <span class="function"><strong>rename()</strong></span> は
+        <span class="function"><strong>rename()</strong></span> は
         <em class="emphasis">いくつかの</em> URL ラッパーを併用することができるようになりました。
-         <span class="function"><strong>rename()</strong></span> をサポートしているラッパーの一覧については、
+        <span class="function"><strong>rename()</strong></span> をサポートしているラッパーの一覧については、
         <a href="wrappers.html" class="xref">サポートするプロトコル/ラッパー</a> を参照ください。
        </td>
       </tr>
@@ -131,7 +131,7 @@ PHP 5.0.0 で追加されました。<em>contexts</em> の説明に関しては�
       <tr>
        <td>4.3.3</td>
        <td>
-         <span class="function"><strong>rename()</strong></span> は *nix ベースシステムで
+        <span class="function"><strong>rename()</strong></span> は *nix ベースシステムで
         パーティション越しにファイル名を変更できるようになりました。
         適切なパーミッションが保持されます。
         移動先のファイルシステムで <em>chown()</em>
@@ -152,8 +152,8 @@ PHP 5.0.0 で追加されました。<em>contexts</em> の説明に関しては�
  <div class="refsect1 examples" id="refsect1-function.rename-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2419">
-    <p><strong>例1  <span class="function"><strong>rename()</strong></span> の例</strong></p>
+   <div class="example" id="example-2618">
+    <p><strong>例1 <span class="function"><strong>rename()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />rename</span><span style="color: #007700">(</span><span style="color: #DD0000">"/tmp/tmp_file.txt"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"/home/user/login/docs/my_file.txt"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -170,9 +170,9 @@ PHP 5.0.0 で追加されました。<em>contexts</em> の説明に関しては�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.copy.html" class="function" rel="rdfs-seeAlso">copy()</a> - ファイルをコピーする</span></li>
-    <li class="member"> <span class="function"><a href="function.unlink.html" class="function" rel="rdfs-seeAlso">unlink()</a> - ファイルを削除する</span></li>
-    <li class="member"> <span class="function"><a href="function.move-uploaded-file.html" class="function" rel="rdfs-seeAlso">move_uploaded_file()</a> - アップロードされたファイルを新しい位置に移動する</span></li>
+    <li class="member"><span class="function"><a href="function.copy.html" class="function" rel="rdfs-seeAlso">copy()</a> - ファイルをコピーする</span></li>
+    <li class="member"><span class="function"><a href="function.unlink.html" class="function" rel="rdfs-seeAlso">unlink()</a> - ファイルを削除する</span></li>
+    <li class="member"><span class="function"><a href="function.move-uploaded-file.html" class="function" rel="rdfs-seeAlso">move_uploaded_file()</a> - アップロードされたファイルを新しい位置に移動する</span></li>
    </ul>
   </p>
  </div>

@@ -20,7 +20,7 @@
   (もしあれば、オプションで) ユーザー名およびパスワードの指定を行います。
  </p>
  <p class="para">
-  <div class="example" id="example-896">
+  <div class="example" id="example-953">
    <p><strong>例1 MySQL への接続</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -35,11 +35,11 @@
   接続時になんらかのエラーが発生した場合、<em>PDOException</em>
   オブジェクトがスローされます。エラー処理を行いたい場合はこの例外を
   キャッチします。あるいはこれを無視して、
-   <span class="function"><a href="function.set-exception-handler.html" class="function">set_exception_handler()</a></span> で設定した
+  <span class="function"><a href="function.set-exception-handler.html" class="function">set_exception_handler()</a></span> で設定した
   グローバル例外ハンドラに処理を任せることもできます。
  </p>
  <p class="para">
-  <div class="example" id="example-897"><p><strong>例2 接続エラーの処理</strong></p>
+  <div class="example" id="example-954"><p><strong>例2 接続エラーの処理</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$dbh&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysql:host=localhost;dbname=test'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$user</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$pass</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;*&nbsp;from&nbsp;FOO'</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$row</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$dbh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">PDOException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"エラー!:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br/&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;die();<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -56,7 +56,7 @@
    このバックトレースを見れば、データベースへの接続の詳細がわかってしまいます。
    その中にはユーザー名やパスワードも含まれます。
    (<em>catch</em> 文を使用して) 明示的に例外をキャッチするか、
-   あるいは  <span class="function"><a href="function.set-exception-handler.html" class="function">set_exception_handler()</a></span> を使用して
+   あるいは <span class="function"><a href="function.set-exception-handler.html" class="function">set_exception_handler()</a></span> を使用して
    暗黙的に例外をキャッチするようにしましょう。
   </p>
  </div>
@@ -71,7 +71,7 @@
   接続が閉じられます。
  </p>
  <p class="para">
-  <div class="example" id="example-898">
+  <div class="example" id="example-955">
    <p><strong>例3 接続を閉じる</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -93,7 +93,7 @@
   なります。
  </p>
  <p class="para">
-  <div class="example" id="example-899">
+  <div class="example" id="example-956">
    <p><strong>例4 持続的な接続</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -109,7 +109,7 @@
    持続的な接続を使用したい場合は、ドライバのオプションを表す配列に
    <strong><code>PDO::ATTR_PERSISTENT</code></strong> を設定して
    PDO のコンストラクタに渡す必要があります。この属性を
-    <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span>
+   <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span>
    を用いてインスタンス作成後に設定した場合は、
    そのドライバは持続的な接続を使用しません。
   </p>

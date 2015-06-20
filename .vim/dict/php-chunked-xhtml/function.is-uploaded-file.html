@@ -13,7 +13,7 @@
 </div><hr /><div id="function.is-uploaded-file" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">is_uploaded_file</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5)</p><p class="refpurpose"><span class="refname">is_uploaded_file</span> &mdash; <span class="dc-title">HTTP POST でアップロードされたファイルかどうかを調べる</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">is_uploaded_file</span> &mdash; <span class="dc-title">HTTP POST でアップロードされたファイルかどうかを調べる</span></p>
 
  </div>
  
@@ -38,7 +38,7 @@
    暴かれる可能性があるため、特に重要です。
   </p>
   <p class="para">
-   適切に動作させるため、関数  <span class="function"><strong>is_uploaded_file()</strong></span>
+   適切に動作させるため、関数 <span class="function"><strong>is_uploaded_file()</strong></span>
    は <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['tmp_name']</a></var></var> のような引数を必要とします。
    アップロードされたファイルのクライアントマシン上での名前
    <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['name']</a></var></var> では動作しません。
@@ -51,9 +51,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -61,8 +62,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -80,8 +80,8 @@
  <div class="refsect1 examples" id="refsect1-function.is-uploaded-file-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2395">
-    <p><strong>例1  <span class="function"><strong>is_uploaded_file()</strong></span> の例</strong></p>
+   <div class="example" id="example-2594">
+    <p><strong>例1 <span class="function"><strong>is_uploaded_file()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_uploaded_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'tmp_name'</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"ファイル&nbsp;"</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'name'</span><span style="color: #007700">]&nbsp;.</span><span style="color: #DD0000">"&nbsp;のアップロードに成功しました。\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"その中身を表示します\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'tmp_name'</span><span style="color: #007700">]);<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"おそらく何らかの攻撃を受けました。"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"ファイル名&nbsp;'"</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'tmp_name'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"'."</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -98,7 +98,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.move-uploaded-file.html" class="function" rel="rdfs-seeAlso">move_uploaded_file()</a> - アップロードされたファイルを新しい位置に移動する</span></li>
+    <li class="member"><span class="function"><a href="function.move-uploaded-file.html" class="function" rel="rdfs-seeAlso">move_uploaded_file()</a> - アップロードされたファイルを新しい位置に移動する</span></li>
     <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var></var></li>
     <li class="member">簡単な使用例については <a href="features.file-upload.html" class="link">ファイルアップロードの処理</a></li>
    </ul>

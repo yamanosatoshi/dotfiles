@@ -13,7 +13,7 @@
 </div><hr /><div id="function.intval" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">intval</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">intval</span> &mdash; <span class="dc-title">変数の整数としての値を取得する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">intval</span> &mdash; <span class="dc-title">変数の整数としての値を取得する</span></p>
 
  </div>
 
@@ -26,9 +26,9 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   指定された値 <em><code class="parameter">base</code></em> を基数（デフォルトは 10）とする、
-   <em><code class="parameter">var</code></em> の <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> としての値を返します。
-   オブジェクトに  <span class="function"><strong>intval()</strong></span> を使用することはできません。
+   指定された値 <code class="parameter">base</code> を基数（デフォルトは 10）とする、
+   <code class="parameter">var</code> の <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> としての値を返します。
+   オブジェクトに <span class="function"><strong>intval()</strong></span> を使用することはできません。
    その場合は <strong><code>E_NOTICE</code></strong> レベルのエラーを発して 1 を返します。
   </p>
  </div>
@@ -39,9 +39,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">var</code></dt>
 
-     <span class="term"><em><code class="parameter">var</code></em></span>
      <dd>
 
       <p class="para">
@@ -49,11 +50,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">base</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">base</code></em></span>
      <dd>
 
       <p class="para">
@@ -61,8 +62,8 @@
       </p>
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
-        <em><code class="parameter">base</code></em> が 0 の場合は、
-        <em><code class="parameter">var</code></em> のフォーマットに基づいて利用する基数を決めます。
+        <code class="parameter">base</code> が 0 の場合は、
+        <code class="parameter">var</code> のフォーマットに基づいて利用する基数を決めます。
         <ul class="itemizedlist">
          <li class="listitem">
           <span class="simpara">
@@ -85,8 +86,7 @@
       </p></blockquote>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -96,7 +96,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.intval-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功時は <em><code class="parameter">var</code></em> の整数値、失敗時は 0。
+   成功時は <code class="parameter">var</code> の整数値、失敗時は 0。
    空の配列の場合は 0、空でない配列の場合は
    1 を返します。
   </p>
@@ -120,8 +120,8 @@
  <div class="refsect1 examples" id="refsect1-function.intval-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5232">
-    <p><strong>例1  <span class="function"><strong>intval()</strong></span> の例</strong></p>
+   <div class="example" id="example-5712">
+    <p><strong>例1 <span class="function"><strong>intval()</strong></span> の例</strong></p>
     <div class="example-contents"><p>
      以下の例は 32 ビットシステムに基づきます。
     </p></div>
@@ -141,8 +141,8 @@
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    パラメータ <em><code class="parameter">base</code></em> はパラメータ
-    <em><code class="parameter">var</code></em> が文字列でない限り意味がありません。
+    パラメータ <code class="parameter">base</code> はパラメータ
+    <code class="parameter">var</code> が文字列でない限り意味がありません。
    </p>
   </p></blockquote>
  </div>
@@ -165,7 +165,7 @@
       <tr>
        <td>5.1.0</td>
        <td>
-        オブジェクトを <em><code class="parameter">var</code></em>
+        オブジェクトを <code class="parameter">var</code>
         に渡すと、<strong><code>E_NOTICE</code></strong>
         が発生して 1 を返します。
        </td>
@@ -183,11 +183,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.boolval.html" class="function" rel="rdfs-seeAlso">boolval()</a> - 変数の boolean としての値を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.floatval.html" class="function" rel="rdfs-seeAlso">floatval()</a> - 変数の float 値を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.strval.html" class="function" rel="rdfs-seeAlso">strval()</a> - 変数の文字列としての値を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.settype.html" class="function" rel="rdfs-seeAlso">settype()</a> - 変数の型をセットする</span></li>
-    <li class="member"> <span class="function"><a href="function.is-numeric.html" class="function" rel="rdfs-seeAlso">is_numeric()</a> - 変数が数字または数値形式の文字列であるかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.boolval.html" class="function" rel="rdfs-seeAlso">boolval()</a> - 変数の boolean としての値を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.floatval.html" class="function" rel="rdfs-seeAlso">floatval()</a> - 変数の float 値を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.strval.html" class="function" rel="rdfs-seeAlso">strval()</a> - 変数の文字列としての値を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.settype.html" class="function" rel="rdfs-seeAlso">settype()</a> - 変数の型をセットする</span></li>
+    <li class="member"><span class="function"><a href="function.is-numeric.html" class="function" rel="rdfs-seeAlso">is_numeric()</a> - 変数が数字または数値形式の文字列であるかを調べる</span></li>
     <li class="member"><a href="language.types.type-juggling.html" class="link">型の相互変換</a></li>
     <li class="member"><a href="ref.bc.html" class="link">BCMath任意精度数学関数</a></li>
    </ul>

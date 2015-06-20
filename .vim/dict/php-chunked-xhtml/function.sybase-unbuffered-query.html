@@ -27,24 +27,24 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>sybase_unbuffered_query()</strong></span> は、指定したリンク ID に
+   <span class="function"><strong>sybase_unbuffered_query()</strong></span> は、指定したリンク ID に
    関連付けられたサーバー上の現在アクティブなデータベースにクエリを送信します。
    リンク ID が指定されていない場合は、直近にオープンされたリンクが
    指定されたものと仮定します。リンクがオープンされていない場合は、
-    <span class="function"><a href="function.sybase-connect.html" class="function">sybase_connect()</a></span> がコールされた場合と同様の手順で
+   <span class="function"><a href="function.sybase-connect.html" class="function">sybase_connect()</a></span> がコールされた場合と同様の手順で
    リンクのオープンを試み、それを使用します。
   </p>
   <p class="para">
-    <span class="function"><a href="function.sybase-query.html" class="function">sybase_query()</a></span> とは異なり、
-    <span class="function"><strong>sybase_unbuffered_query()</strong></span> は結果セットの最初の
+   <span class="function"><a href="function.sybase-query.html" class="function">sybase_query()</a></span> とは異なり、
+   <span class="function"><strong>sybase_unbuffered_query()</strong></span> は結果セットの最初の
    行のみを読み込みます。それ以降の行は、必要に応じて
-    <span class="function"><a href="function.sybase-fetch-array.html" class="function">sybase_fetch_array()</a></span> またはそれに類する関数で
-   読み込みます。 <span class="function"><a href="function.sybase-data-seek.html" class="function">sybase_data_seek()</a></span> は指定した
+   <span class="function"><a href="function.sybase-fetch-array.html" class="function">sybase_fetch_array()</a></span> またはそれに類する関数で
+   読み込みます。<span class="function"><a href="function.sybase-data-seek.html" class="function">sybase_data_seek()</a></span> は指定した
    行を読み込みます。この挙動により、大きな結果セットを扱う際に
    よりよいパフォーマンスを確保できます。
   </p>
   <p class="para">
-    <span class="function"><a href="function.sybase-num-rows.html" class="function">sybase_num_rows()</a></span> が正確な行数を返すのは、結果セット
+   <span class="function"><a href="function.sybase-num-rows.html" class="function">sybase_num_rows()</a></span> が正確な行数を返すのは、結果セット
    全体が読み込まれた場合のみです。Sybase は行数を知ることができず、
    クライアントの実装によって行数を計算しています。
   </p>
@@ -52,7 +52,7 @@
    <p class="para">
     結果セットをすべて読み込む前に次のクエリを実行しようとした場合、
     PHP は警告を発生し、未処理の結果をすべてキャンセルします。これを
-    避けるには、 <span class="function"><a href="function.sybase-free-result.html" class="function">sybase_free_result()</a></span> を使用します。
+    避けるには、<span class="function"><a href="function.sybase-free-result.html" class="function">sybase_free_result()</a></span> を使用します。
     この関数は、バッファリングされていないクエリで未処理の結果を
     すべてキャンセルします。
    </p>
@@ -65,43 +65,43 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">link_identifier</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">link_identifier</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">store_result</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">store_result</code></em></span>
      <dd>
 
       <p class="para">
        結果セットをメモリ中に読み込む必要がないことを指示するため、
-       オプションの <em><code class="parameter">store_result</code></em> に <strong><code>FALSE</code></strong> を
+       オプションの <code class="parameter">store_result</code> に <strong><code>FALSE</code></strong> を
        指定することが可能です。これによってメモリの使用量を抑えることができ、
        大きな結果セットを扱う場合に有用です。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -119,8 +119,8 @@
  <div class="refsect1 examples" id="refsect1-function.sybase-unbuffered-query-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2192">
-    <p><strong>例1  <span class="function"><strong>sybase_unbuffered_query()</strong></span> の例</strong></p>
+   <div class="example" id="example-2389">
+    <p><strong>例1 <span class="function"><strong>sybase_unbuffered_query()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$dbh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sybase_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'SYBASE'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$q&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sybase_unbuffered_query</span><span style="color: #007700">(</span><span style="color: #DD0000">'select&nbsp;firstname,&nbsp;lastname&nbsp;from&nbsp;huge_table'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">sybase_data_seek</span><span style="color: #007700">(</span><span style="color: #0000BB">$q</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10000</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /><br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sybase_fetch_row</span><span style="color: #007700">(</span><span style="color: #0000BB">$q</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">'&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">'&lt;br&nbsp;/&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">++&nbsp;&gt;&nbsp;</span><span style="color: #0000BB">40000</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">sybase_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$q</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">sybase_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -145,7 +145,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.sybase-query.html" class="function" rel="rdfs-seeAlso">sybase_query()</a> - Sybase クエリを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.sybase-query.html" class="function" rel="rdfs-seeAlso">sybase_query()</a> - Sybase クエリを送信する</span></li>
    </ul>
   </p>
  </div>

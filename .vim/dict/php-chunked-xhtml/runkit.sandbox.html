@@ -31,7 +31,7 @@
 
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">
 サンドボックスのサポート
-( <span class="function"><a href="function.runkit-lint.html" class="function">runkit_lint()</a></span>,  <span class="function"><a href="function.runkit-lint-file.html" class="function">runkit_lint_file()</a></span>,
+(<span class="function"><a href="function.runkit-lint.html" class="function">runkit_lint()</a></span>, <span class="function"><a href="function.runkit-lint-file.html" class="function">runkit_lint_file()</a></span>,
 および <strong class="classname">Runkit_Sandbox</strong> クラスで使用)は、
 PHP 5.1.0 以降または特別なパッチを適用した
 PHP 5.0 でのみ利用可能であり、スレッドセーフを有効にしておく必要があります。
@@ -49,16 +49,17 @@ PHP 5.0 でのみ利用可能であり、スレッドセーフを有効にして
 
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">options</code></em> は連想配列で、その中に
+   <code class="parameter">options</code> は連想配列で、その中に
    以下の ini オプションの組み合わせを格納します。
   </p>
 
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">safe_mode</code></dt>
 
-     <span class="term"><em><code class="parameter">safe_mode</code></em></span>
      <dd>
 
       <p class="para">
@@ -70,11 +71,11 @@ PHP 5.0 でのみ利用可能であり、スレッドセーフを有効にして
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">safe_mode_gid</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">safe_mode_gid</code></em></span>
      <dd>
 
       <p class="para">
@@ -86,11 +87,11 @@ PHP 5.0 でのみ利用可能であり、スレッドセーフを有効にして
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">safe_mode_include_dir</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">safe_mode_include_dir</code></em></span>
      <dd>
 
       <p class="para">
@@ -106,15 +107,15 @@ PHP 5.0 でのみ利用可能であり、スレッドセーフを有効にして
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">open_basedir</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">open_basedir</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">open_basedir</code></em> は、カレントの
+       <code class="parameter">open_basedir</code> は、カレントの
        <em>open_basedir</em> 以下の任意のパスを指定可能です。
        グローバルスコープで <em>open_basedir</em> 
        が指定されていない場合、それはルートディレクトリと判断され、
@@ -122,25 +123,25 @@ PHP 5.0 でのみ利用可能であり、スレッドセーフを有効にして
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">allow_url_fopen</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">allow_url_fopen</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">safe_mode</code></em> と同様、より厳しくする方向にのみ
+       <code class="parameter">safe_mode</code> と同様、より厳しくする方向にのみ
        指定可能です。この場合は <strong><code>TRUE</code></strong> と指定されている場合に <strong><code>FALSE</code></strong> を
        指定することが可能となります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">disable_functions</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">disable_functions</code></em></span>
      <dd>
 
       <p class="para">
@@ -150,11 +151,11 @@ PHP 5.0 でのみ利用可能であり、スレッドセーフを有効にして
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">disable_classes</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">disable_classes</code></em></span>
      <dd>
 
       <p class="para">
@@ -164,11 +165,11 @@ PHP 5.0 でのみ利用可能であり、スレッドセーフを有効にして
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">runkit.superglobal</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">runkit.superglobal</code></em></span>
      <dd>
 
       <p class="para">
@@ -179,11 +180,11 @@ PHP 5.0 でのみ利用可能であり、スレッドセーフを有効にして
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">runkit.internal_override</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">runkit.internal_override</code></em></span>
      <dd>
 
       <p class="para">
@@ -193,13 +194,12 @@ PHP 5.0 でのみ利用可能であり、スレッドセーフを有効にして
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
 
-  <div class="example" id="example-525">
+  <div class="example" id="example-550">
    <p><strong>例1 機能を制限したサンドボックスのインスタンス化</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -225,7 +225,7 @@ PHP 5.0 でのみ利用可能であり、スレッドセーフを有効にして
    できないということです。
   </p>
 
-  <div class="example" id="example-526">
+  <div class="example" id="example-551">
    <p><strong>例2 サンドボックス内部の変数の扱い</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -251,14 +251,14 @@ bool(false)
   <p class="para">
    サンドボックス内で定義されている関数は、すべてサンドボックス
    オブジェクトのメソッドとしてコールできます。これには、擬似関数として
-   扱われる以下のような言語構造も含みます。 <span class="function"><a href="function.eval.html" class="function">eval()</a></span>、
-    <span class="function"><a href="function.include.html" class="function">include</a></span>、 <span class="function"><a href="function.include-once.html" class="function">include_once</a></span>、
-    <span class="function"><a href="function.require.html" class="function">require</a></span>、 <span class="function"><a href="function.require-once.html" class="function">require_once</a></span>、
-    <span class="function"><a href="function.echo.html" class="function">echo</a></span>、 <span class="function"><a href="function.print.html" class="function">print</a></span>、
-    <span class="function"><a href="function.die.html" class="function">die()</a></span> および  <span class="function"><a href="function.exit.html" class="function">exit()</a></span>。
+   扱われる以下のような言語構造も含みます。<span class="function"><a href="function.eval.html" class="function">eval()</a></span>、
+   <span class="function"><a href="function.include.html" class="function">include</a></span>、<span class="function"><a href="function.include-once.html" class="function">include_once</a></span>、
+   <span class="function"><a href="function.require.html" class="function">require</a></span>、<span class="function"><a href="function.require-once.html" class="function">require_once</a></span>、
+   <span class="function"><a href="function.echo.html" class="function">echo</a></span>、<span class="function"><a href="function.print.html" class="function">print</a></span>、
+   <span class="function"><a href="function.die.html" class="function">die()</a></span> および <span class="function"><a href="function.exit.html" class="function">exit()</a></span>。
   </p>
 
-  <div class="example" id="example-527">
+  <div class="example" id="example-552">
    <p><strong>例3 サンドボックス内の関数のコール</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -282,7 +282,7 @@ fbc
    ようにしてください。
   </p>
 
-  <div class="example" id="example-528">
+  <div class="example" id="example-553">
    <p><strong>例4 サンドボックス内の関数に引数を渡す</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -307,8 +307,8 @@ baz
   <p class="para">
    runkit バージョン 0.5 以降では、配列へのアクセスと同じ構文で、
    実行時にサンドボックスの一部の設定を変更することが可能です。
-   <em><code class="parameter">active</code></em> は読み込み専用で、現在の状態に
-   ついての情報を提供します。<em><code class="parameter">output_handler</code></em>
+   <code class="parameter">active</code> は読み込み専用で、現在の状態に
+   ついての情報を提供します。<code class="parameter">output_handler</code>
    は通常の配列オフセットと同様に読み書きが可能です。
    将来的には書き込み専用の設定項目も現れるかもしれませんが、
    今のところはそのような項目はありません。

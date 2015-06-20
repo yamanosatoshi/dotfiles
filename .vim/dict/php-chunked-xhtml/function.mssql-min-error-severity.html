@@ -35,9 +35,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">severity</code></dt>
 
-     <span class="term"><em><code class="parameter">severity</code></em></span>
      <dd>
 
       <p class="para">
@@ -45,8 +46,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -64,8 +64,8 @@
  <div class="refsect1 examples" id="refsect1-function.mssql-min-error-severity-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1539">
-    <p><strong>例1  <span class="function"><strong>mssql_min_error_severity()</strong></span> の例</strong></p>
+   <div class="example" id="example-1718">
+    <p><strong>例1 <span class="function"><strong>mssql_min_error_severity()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;MSSQL&nbsp;に接続し、データベースを選択します<br /></span><span style="color: #0000BB">mssql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'KALLESPC\SQLEXPRESS'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sa'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'phpfi'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mssql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">'php'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;最小のエラー深刻度に&nbsp;SQL&nbsp;構文エラーを含めないようにするには<br />//&nbsp;1&nbsp;以上の値を設定します<br /></span><span style="color: #0000BB">mssql_min_error_severity</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;構文エラーを含むクエリを送信してみます。<br />//&nbsp;ここでは、フィールド名とテーブル名を角括弧ではなく<br />//&nbsp;MySQL&nbsp;のクォート記号で囲んでいます。<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;`syntax`,&nbsp;`error`&nbsp;FROM&nbsp;`MSSQL`'</span><span style="color: #007700">);<br /><br />if&nbsp;(!</span><span style="color: #0000BB">$query</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;自作のエラーハンドラ&nbsp;...<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>

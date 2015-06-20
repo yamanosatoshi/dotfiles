@@ -19,9 +19,20 @@
 
  <div class="refsect1 description" id="refsect1-intlcalendar.getminimaldaysinfirstweek-description">
   <h3 class="title">説明</h3>
+  <p class="para">
+   オブジェクト指向型
+  </p>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><strong>IntlCalendar::getMinimalDaysInFirstWeek</strong></span>
     ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   手続き型
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><strong>intlcal_get_minimal_days_in_first_week</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span> <code class="parameter">$cal</code></span>
    )</div>
 
   <p class="para rdfs-comment">
@@ -31,7 +42,7 @@
    January 1st, while if this value is 7, then the week with January 1st will
    be the first week of the year only if the day of the week for January 1st
    matches the day of the week returned by
-    <span class="function"><a href="intlcalendar.getfirstdayofweek.html" class="function">IntlCalendar::getFirstDayOfWeek()</a></span>; otherwise it will be
+   <span class="function"><a href="intlcalendar.getfirstdayofweek.html" class="function">IntlCalendar::getFirstDayOfWeek()</a></span>; otherwise it will be
    the previous yearʼs last week.
   </p>
  </div>
@@ -39,7 +50,22 @@
 
  <div class="refsect1 parameters" id="refsect1-intlcalendar.getminimaldaysinfirstweek-parameters">
   <h3 class="title">パラメータ</h3>
-  <p class="para">この関数にはパラメータはありません。</p>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">cal</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The IntlCalendar resource.
+     </p>
+    </dd>
+
+   
+  </dl>
+
  </div>
 
 
@@ -55,8 +81,8 @@
  <div class="refsect1 examples" id="refsect1-intlcalendar.getminimaldaysinfirstweek-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2599">
-   <p><strong>例1  <span class="function"><strong>IntlCalendar::getMinimalDaysInFirstWeek()</strong></span></strong></p>
+   <div class="example" id="example-2798">
+   <p><strong>例1 <span class="function"><strong>IntlCalendar::getMinimalDaysInFirstWeek()</strong></span></strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'date.timezone'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'UTC'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'intl.default_locale'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'en_US'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cal&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">IntlGregorianCalendar</span><span style="color: #007700">(</span><span style="color: #0000BB">2013</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #FF8000">/*&nbsp;January&nbsp;*/</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'cccc'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;Wednesday<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMinimalDaysInFirstWeek</span><span style="color: #007700">(),&nbsp;</span><span style="color: #FF8000">//&nbsp;1<br /></span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFirstDayofWeek</span><span style="color: #007700">());&nbsp;</span><span style="color: #FF8000">//&nbsp;1&nbsp;(Sunday)<br /><br />//&nbsp;Week&nbsp;1&nbsp;of&nbsp;2013<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"'Week&nbsp;'w'&nbsp;of&nbsp;'Y"</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setMinimalDaysInFirstWeek</span><span style="color: #007700">(</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;Still&nbsp;Week&nbsp;1&nbsp;of&nbsp;2013&nbsp;(1st&nbsp;week&nbsp;has&nbsp;5&nbsp;days&nbsp;in&nbsp;the&nbsp;new&nbsp;year)<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"'Week&nbsp;'w'&nbsp;of&nbsp;'Y"</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setMinimalDaysInFirstWeek</span><span style="color: #007700">(</span><span style="color: #0000BB">6</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;Week&nbsp;53&nbsp;of&nbsp;2012<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"'Week&nbsp;'w'&nbsp;of&nbsp;'Y"</span><span style="color: #007700">));</span>

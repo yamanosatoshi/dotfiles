@@ -29,7 +29,7 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">directory</code></em> 内のファイルおよびディレクトリを
+   <code class="parameter">directory</code> 内のファイルおよびディレクトリを
    配列で返します。
   </p>
 
@@ -41,9 +41,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">directory</code></dt>
 
-     <span class="term"><em><code class="parameter">directory</code></em></span>
      <dd>
 
       <p class="para">
@@ -51,16 +52,16 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">sorting_order</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">sorting_order</code></em></span>
      <dd>
 
       <p class="para">
        デフォルトでは、ソート順はアルファベット昇順です。
-       オプションの <em><code class="parameter">sorting_order</code></em>
+       オプションの <code class="parameter">sorting_order</code>
        に <strong><code>SCANDIR_SORT_DESCENDING</code></strong> を設定した場合、
        ソート順はアルファベット降順になります。
        <strong><code>SCANDIR_SORT_NONE</code></strong> を設定すると、
@@ -68,22 +69,21 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">context</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">context</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">context</code></em> パラメータの説明については、
+       <code class="parameter">context</code> パラメータの説明については、
        マニュアルの<a href="ref.stream.html" class="link">ストリーム</a>
        を参照ください。
       </p> 
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -94,7 +94,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    成功した場合にファイル名の配列、失敗した場合に <strong><code>FALSE</code></strong> を返します。
-   <em><code class="parameter">directory</code></em> がディレクトリではない場合は、
+   <code class="parameter">directory</code> がディレクトリではない場合は、
    <strong><code>FALSE</code></strong> を返し、<strong><code>E_WARNING</code></strong> レベルのエラーを
    発行します。
   </p> 
@@ -118,7 +118,7 @@
       <tr>
        <td>5.4.0</td>
        <td>
-        <em><code class="parameter">sorting_order</code></em> <a href="dir.constants.html" class="link">定数</a>
+        <code class="parameter">sorting_order</code> <a href="dir.constants.html" class="link">定数</a>
         が追加されました。これまでのバージョンでは、非ゼロの値を指定するとすべて降順となっていました。
         つまり、PHP のバージョンにかかわらず、次のようになります。
         <em>0</em> を指定すれば昇順、<em>1</em> を指定すれば降順。
@@ -137,8 +137,8 @@
  <div class="refsect1 examples" id="refsect1-function.scandir-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2332">
-    <p><strong>例1  <span class="function"><strong>scandir()</strong></span> の簡単な例</strong></p>
+   <div class="example" id="example-2531">
+    <p><strong>例1 <span class="function"><strong>scandir()</strong></span> の簡単な例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$dir&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/tmp'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$files1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">scandir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$files2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">scandir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$files1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$files2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -171,8 +171,8 @@ Array
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2333">
-    <p><strong>例2 PHP 4 での  <span class="function"><strong>scandir()</strong></span> の代用方法</strong></p>
+   <div class="example" id="example-2532">
+    <p><strong>例2 PHP 4 での <span class="function"><strong>scandir()</strong></span> の代用方法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$dir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/tmp"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$dh&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">opendir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">);<br />while&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">!==&nbsp;(</span><span style="color: #0000BB">$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">readdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dh</span><span style="color: #007700">)))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$files</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">sort</span><span style="color: #007700">(</span><span style="color: #0000BB">$files</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$files</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">rsort</span><span style="color: #007700">(</span><span style="color: #0000BB">$files</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$files</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -211,7 +211,7 @@ Array
   <h3 class="title">注意</h3>
   <div class="tip"><strong class="tip">ヒント</strong><p class="simpara"><a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">fopen wrappers</a> が有効の場合、この関数のファイル名として
 URL を使用することができます。ファイル名の指定方法に関する詳細は
- <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を参照ください。
+<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を参照ください。
 <a href="wrappers.html" class="xref">サポートするプロトコル/ラッパー</a> には、さまざまなラッパーの機能やその使用法、
 提供される定義済み変数などの情報がまとめられています。</p></div>
  </div>
@@ -221,11 +221,11 @@ URL を使用することができます。ファイル名の指定方法に関�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.opendir.html" class="function" rel="rdfs-seeAlso">opendir()</a> - ディレクトリハンドルをオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.readdir.html" class="function" rel="rdfs-seeAlso">readdir()</a> - ディレクトリハンドルからエントリを読み込む</span></li>
-    <li class="member"> <span class="function"><a href="function.glob.html" class="function" rel="rdfs-seeAlso">glob()</a> - パターンにマッチするパス名を探す</span></li>
-    <li class="member"> <span class="function"><a href="function.is-dir.html" class="function" rel="rdfs-seeAlso">is_dir()</a> - ファイルがディレクトリかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.sort.html" class="function" rel="rdfs-seeAlso">sort()</a> - 配列をソートする</span></li>
+    <li class="member"><span class="function"><a href="function.opendir.html" class="function" rel="rdfs-seeAlso">opendir()</a> - ディレクトリハンドルをオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.readdir.html" class="function" rel="rdfs-seeAlso">readdir()</a> - ディレクトリハンドルからエントリを読み込む</span></li>
+    <li class="member"><span class="function"><a href="function.glob.html" class="function" rel="rdfs-seeAlso">glob()</a> - パターンにマッチするパス名を探す</span></li>
+    <li class="member"><span class="function"><a href="function.is-dir.html" class="function" rel="rdfs-seeAlso">is_dir()</a> - ファイルがディレクトリかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.sort.html" class="function" rel="rdfs-seeAlso">sort()</a> - 配列をソートする</span></li>
    </ul>
   </p>
  </div>

@@ -27,15 +27,15 @@
 
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>db2_conn_errormsg()</strong></span> は、データベースへの直近の接続が
+   <span class="function"><strong>db2_conn_errormsg()</strong></span> は、データベースへの直近の接続が
    失敗した原因を表す SQLCODE およびエラーメッセージを返します。
-   接続が失敗した場合には、 <span class="function"><a href="function.db2-connect.html" class="function">db2_connect()</a></span> は <strong><code>FALSE</code></strong> を返します。
+   接続が失敗した場合には、<span class="function"><a href="function.db2-connect.html" class="function">db2_connect()</a></span> は <strong><code>FALSE</code></strong> を返します。
    この場合、エラーメッセージおよび SQLSTATE の値を取得するために
-    <span class="function"><strong>db2_conn_errormsg()</strong></span> に何もパラメータを渡す必要はありません。
+   <span class="function"><strong>db2_conn_errormsg()</strong></span> に何もパラメータを渡す必要はありません。
   </p>
   <p class="para">
    しかし、接続は成功したもののその後に無効になった場合は、
-   パラメータ <em><code class="parameter">connection</code></em> を指定することで
+   パラメータ <code class="parameter">connection</code> を指定することで
    特定の接続についてのエラーメッセージおよび SQLSTATE を取得することができます。
   </p>
  </div>
@@ -45,9 +45,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
       <dd>
 
        <p class="para">
@@ -56,8 +57,7 @@
        </p>
       </dd>
 
-     </dt>
-
+     
    </dl>
 
   </p>
@@ -68,7 +68,7 @@
   <p class="para">
    失敗した接続試行の結果を表すエラーメッセージおよび SQLSTATE を返します。
    直近の接続試行に関連するエラーがない場合には、
-    <span class="function"><strong>db2_conn_errormsg()</strong></span> はn空の文字列を返します。
+   <span class="function"><strong>db2_conn_errormsg()</strong></span> はn空の文字列を返します。
   </p>
  </div>
 
@@ -76,10 +76,10 @@
  <div class="refsect1 examples" id="refsect1-function.db2-conn-errormsg-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1143">
+   <div class="example" id="example-1201">
     <p><strong>例1 失敗した接続試行からのエラーメッセージの取得</strong></p>
     <div class="example-contents"><p>
-     以下の例では、 <span class="function"><a href="function.db2-connect.html" class="function">db2_connect()</a></span> に
+     以下の例では、<span class="function"><a href="function.db2-connect.html" class="function">db2_connect()</a></span> に
      わざと無効なパラメータを渡し、エラーメッセージおよび
      SQLSTATE を取得しています。
     </p></div>
@@ -107,10 +107,10 @@ or database name &quot;BADNAME&quot; could not be found.  SQLSTATE=42705
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.db2-conn-error.html" class="function" rel="rdfs-seeAlso">db2_conn_error()</a> - 直近の接続から返された SQLSTATE を含む文字列を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-connect.html" class="function" rel="rdfs-seeAlso">db2_connect()</a> - データベースへの接続を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-stmt-error.html" class="function" rel="rdfs-seeAlso">db2_stmt_error()</a> - SQL 文が返す SQLSTATE を含む文字列を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-stmt-errormsg.html" class="function" rel="rdfs-seeAlso">db2_stmt_errormsg()</a> - 直近の SQL 文のエラーメッセージを含む文字列を返す</span></li>
+    <li class="member"><span class="function"><a href="function.db2-conn-error.html" class="function" rel="rdfs-seeAlso">db2_conn_error()</a> - 直近の接続から返された SQLSTATE を含む文字列を返す</span></li>
+    <li class="member"><span class="function"><a href="function.db2-connect.html" class="function" rel="rdfs-seeAlso">db2_connect()</a> - データベースへの接続を返す</span></li>
+    <li class="member"><span class="function"><a href="function.db2-stmt-error.html" class="function" rel="rdfs-seeAlso">db2_stmt_error()</a> - SQL 文が返す SQLSTATE を含む文字列を返す</span></li>
+    <li class="member"><span class="function"><a href="function.db2-stmt-errormsg.html" class="function" rel="rdfs-seeAlso">db2_stmt_errormsg()</a> - 直近の SQL 文のエラーメッセージを含む文字列を返す</span></li>
    </ul>
   </p>
  </div>

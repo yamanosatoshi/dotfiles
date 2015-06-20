@@ -20,14 +20,14 @@
  <div class="refsect1 description" id="refsect1-function.mysqlnd-memcache-get-config-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span>
-    <span class="methodname"><strong>mysqlnd_memcache_get_config</strong></span>
+   <span class="type">array</span> 
+   <span class="methodname"><strong>mysqlnd_memcache_get_config</strong></span>
     ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$connection</code></span>
    )</div>
 
   <p class="para rdfs-comment">
    この関数は、MySQL 接続にアタッチされた mysqlnd_memcache 関連のすべての設定情報を配列で返します。
-   MySQL、 <span class="function"><a href="function.mysqlnd-memcache-set.html" class="function">mysqlnd_memcache_set()</a></span> で渡した Memache オブジェクト、
+   MySQL、<span class="function"><a href="function.mysqlnd-memcache-set.html" class="function">mysqlnd_memcache_set()</a></span> で渡した Memache オブジェクト、
    自動的に MySQL サーバーから取得したテーブルマッピング情報などが含まれます。
   </p>
  </div>
@@ -37,9 +37,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">connection</code></dt>
 
-    <span class="term"><em><code class="parameter">connection</code></em></span>
     <dd>
 
      <p class="para">
@@ -49,8 +50,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -66,7 +66,7 @@
   </p>
   <p class="para">
    <table class="doctable table">
-    <caption><strong> <span class="function"><strong>mysqlnd_memcache_get_config()</strong></span> が返す配列の構造</strong></caption>
+    <caption><strong><span class="function"><strong>mysqlnd_memcache_get_config()</strong></span> が返す配列の構造</strong></caption>
      
      <thead>
       <tr>
@@ -81,7 +81,7 @@
        <td>memcached</td>
        <td>
         この MySQL 接続に
-         <span class="methodname"><a href="function.mysqlnd-memcache-set.html" class="methodname">mysqlnd_memcache_set()</a></span> で関連づけた Memcached のインスタンス。
+        <span class="methodname"><a href="function.mysqlnd-memcache-set.html" class="methodname">mysqlnd_memcache_set()</a></span> で関連づけた Memcached のインスタンス。
         これを使って memcache 接続の設定を変更することもできるし、
         この接続上のサーバーに直接問い合わせて設定を変更することもできます。
        </td>
@@ -95,7 +95,7 @@
         そのクエリーを横取りして memcache インターフェイスに送るのか
         普通の MySQL プロトコルでサーバーに送るのかを判断します。
         デフォルトのパターン (<em>MYSQLND_MEMCACHE_DEFAULT_REGEXP</em>)
-        を使うか、あるいは  <span class="function"><a href="function.mysqlnd-memcache-set.html" class="function">mysqlnd_memcache_set()</a></span> でパターンを設定します。
+        を使うか、あるいは <span class="function"><a href="function.mysqlnd-memcache-set.html" class="function">mysqlnd_memcache_set()</a></span> でパターンを設定します。
        </td>
       </tr>
 
@@ -105,7 +105,7 @@
         プラグイン側から探す、すべての設定済みコンテナの一覧を含む連想配列。
         要素のキーが、MySQL の設定内のコンテナ名になります。
         その値については後で説明します。このフィールドの中身を作るには、
-         <span class="methodname"><a href="function.mysqlnd-memcache-set.html" class="methodname">mysqlnd_memcache_set()</a></span>
+        <span class="methodname"><a href="function.mysqlnd-memcache-set.html" class="methodname">mysqlnd_memcache_set()</a></span>
         で MySQL と memcache の接続を関連づけるときに
         MySQL Server に問い合わせます。
        </td>
@@ -114,7 +114,7 @@
       <tr>
        <td>mapping_query</td>
        <td>
-         <span class="methodname"><a href="function.mysqlnd-memcache-set.html" class="methodname">mysqlnd_memcache_set()</a></span>
+        <span class="methodname"><a href="function.mysqlnd-memcache-set.html" class="methodname">mysqlnd_memcache_set()</a></span>
         で、利用可能なコンテナとマッピングを識別するときに使う SQL クエリー。
         このクエリーの結果を mappings 要素に渡します。
        </td>
@@ -203,8 +203,8 @@
  <div class="refsect1 examples" id="refsect1-function.mysqlnd-memcache-get-config-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1931">
-    <p><strong>例1  <span class="function"><strong>mysqlnd_memcache_get_config()</strong></span> の例</strong></p>
+   <div class="example" id="example-2123">
+    <p><strong>例1 <span class="function"><strong>mysqlnd_memcache_get_config()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"host"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"passwd"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$memc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$memc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">(</span><span style="color: #DD0000">"host"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mysqlnd_memcache_set</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$memc</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">mysqlnd_memcache_get_config</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -268,7 +268,7 @@ array(4) {
   <p class="para">
    <ul class="simplelist">
     <li class="member">
-      <span class="methodname"><a href="function.mysqlnd-memcache-set.html" class="methodname" rel="rdfs-seeAlso">mysqlnd_memcache_set()</a> - MySQL の接続を Memcache の接続と関連づける</span>
+     <span class="methodname"><a href="function.mysqlnd-memcache-set.html" class="methodname" rel="rdfs-seeAlso">mysqlnd_memcache_set()</a> - MySQL の接続を Memcache の接続と関連づける</span>
     </li>
    </ul>
   </p>

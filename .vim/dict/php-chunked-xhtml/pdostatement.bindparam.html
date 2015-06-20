@@ -32,8 +32,8 @@
   <p class="para rdfs-comment">
    準備された SQL ステートメント中で、
    対応する名前もしくは疑問符プレースホルダにパラメータをバインドします。
-    <span class="function"><a href="pdostatement.bindvalue.html" class="function">PDOStatement::bindValue()</a></span> と異なり、
-   変数は参照としてバインドされ、 <span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span>
+   <span class="function"><a href="pdostatement.bindvalue.html" class="function">PDOStatement::bindValue()</a></span> と異なり、
+   変数は参照としてバインドされ、<span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span>
    がコールされたときのみ評価されます。
   </p>
   <p class="para">
@@ -53,9 +53,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">parameter</code></dt>
 
-     <span class="term"><em><code class="parameter">parameter</code></em></span>
       <dd>
 
        <p class="para">
@@ -66,11 +67,11 @@
        </p>
       </dd>
 
-     </dt>
+     
+    
+     <dt>
+<code class="parameter">variable</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">variable</code></em></span>
       <dd>
 
        <p class="para">
@@ -78,11 +79,11 @@
        </p>
       </dd>
 
-     </dt>
+     
+    
+     <dt>
+<code class="parameter">data_type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">data_type</code></em></span>
       <dd>
 
        <p class="para">
@@ -90,16 +91,16 @@
         <a href="pdo.constants.html" class="link"><em>PDO::PARAM_*</em> 定数</a>
         を使った明示的なデータ型を指定します。
         ストアドプロシージャからの INOUT パラメータの場合、
-        <em><code class="parameter">data_type</code></em> パラメータに PDO::PARAM_INPUT_OUTPUT
+        <code class="parameter">data_type</code> パラメータに PDO::PARAM_INPUT_OUTPUT
         ビットを設定するためにビット OR を使用してください。
        </p>
       </dd>
 
-     </dt>
+     
+    
+     <dt>
+<code class="parameter">length</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">length</code></em></span>
       <dd>
 
        <p class="para">
@@ -109,11 +110,11 @@
        </p>
       </dd>
 
-     </dt>
+     
+    
+     <dt>
+<code class="parameter">driver_options</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">driver_options</code></em></span>
      <dd>
 
       <p class="para">
@@ -121,8 +122,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -139,7 +139,7 @@
 
  <div class="refsect1 examples" id="refsect1-pdostatement.bindparam-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-931"><p><strong>例1 名前付けされたプレースホルダを用いてプリペアドステートメントを実行する</strong></p>
+  <div class="example" id="example-988"><p><strong>例1 名前付けされたプレースホルダを用いてプリペアドステートメントを実行する</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;バインドされた&nbsp;PHP&nbsp;変数によってプリペアドステートメントを実行する&nbsp;*/<br /></span><span style="color: #0000BB">$calories&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$colour&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;colour,&nbsp;calories<br />&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;fruit<br />&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;calories&nbsp;&lt;&nbsp;:calories&nbsp;AND&nbsp;colour&nbsp;=&nbsp;:colour'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #DD0000">':calories'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$calories</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_INT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #DD0000">':colour'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$colour</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -149,7 +149,7 @@
 
   </div>
 
-  <div class="example" id="example-932"><p><strong>例2 疑問符プレースホルダを用いてプリペアドステートメントを実行する</strong></p>
+  <div class="example" id="example-989"><p><strong>例2 疑問符プレースホルダを用いてプリペアドステートメントを実行する</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;バインドされた&nbsp;PHP&nbsp;変数によってプリペアドステートメントを実行する&nbsp;*/<br /></span><span style="color: #0000BB">$calories&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$colour&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;colour,&nbsp;calories<br />&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;fruit<br />&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;calories&nbsp;&lt;&nbsp;?&nbsp;AND&nbsp;colour&nbsp;=&nbsp;?'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$calories</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_INT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$colour</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -160,7 +160,7 @@
   </div>
 
 
-  <div class="example" id="example-933"><p><strong>例3 INOUT パラメータを持つストアドプロシージャをコールする</strong></p>
+  <div class="example" id="example-990"><p><strong>例3 INOUT パラメータを持つストアドプロシージャをコールする</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;INOUT&nbsp;パラメータを持つストアドプロシージャをコールする&nbsp;*/<br /></span><span style="color: #0000BB">$colour&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'CALL&nbsp;puree_fruit(?)'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$colour</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR</span><span style="color: #007700">|</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_INPUT_OUTPUT</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br />print(</span><span style="color: #DD0000">"After&nbsp;pureeing&nbsp;fruit,&nbsp;the&nbsp;colour&nbsp;is:&nbsp;</span><span style="color: #0000BB">$colour</span><span style="color: #DD0000">"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -177,9 +177,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="pdo.prepare.html" class="function" rel="rdfs-seeAlso">PDO::prepare()</a> - 文を実行する準備を行い、文オブジェクトを返す</span></li>
-    <li class="member"> <span class="function"><a href="pdostatement.execute.html" class="function" rel="rdfs-seeAlso">PDOStatement::execute()</a> - プリペアドステートメントを実行する</span></li>
-    <li class="member"> <span class="function"><a href="pdostatement.bindvalue.html" class="function" rel="rdfs-seeAlso">PDOStatement::bindValue()</a> - 値をパラメータにバインドする</span></li>
+    <li class="member"><span class="function"><a href="pdo.prepare.html" class="function" rel="rdfs-seeAlso">PDO::prepare()</a> - 文を実行する準備を行い、文オブジェクトを返す</span></li>
+    <li class="member"><span class="function"><a href="pdostatement.execute.html" class="function" rel="rdfs-seeAlso">PDOStatement::execute()</a> - プリペアドステートメントを実行する</span></li>
+    <li class="member"><span class="function"><a href="pdostatement.bindvalue.html" class="function" rel="rdfs-seeAlso">PDOStatement::bindValue()</a> - 値をパラメータにバインドする</span></li>
    </ul>
   </p>
 

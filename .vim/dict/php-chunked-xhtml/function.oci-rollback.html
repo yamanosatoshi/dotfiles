@@ -25,7 +25,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-   Oracle 接続 <em><code class="parameter">connection</code></em> について、
+   Oracle 接続 <code class="parameter">connection</code> について、
    コミットされていないすべての変更を取り消します。
    取得しているロックはすべて解放します。また、すべての Oracle <em>SAVEPOINTS</em>
    を削除します。
@@ -33,7 +33,7 @@
   <p class="para">
    トランザクションが始まるのは、データを変更する最初の SQL 文が
    <strong><code>OCI_NO_AUTO_COMMIT</code></strong> フラグつきの
-    <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> で実行されたときです。
+   <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> で実行されたときです。
    それ以降、他の文で実行されたデータの変更は、同じトランザクションの一部となります。
    トランザクション内でのデータの変更は、
    コミットあるいはロールバックされるまでは一時的なものとなります。
@@ -52,20 +52,20 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>、 <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
-       あるいは  <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span>.
+       <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>、<span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
+       あるいは <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span>.
        が返す Oracle 接続 ID。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -83,8 +83,8 @@
  <div class="refsect1 examples" id="refsect1-function.oci-rollback-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2010">
-    <p><strong>例1  <span class="function"><strong>oci_rollback()</strong></span> の例</strong></p>
+   <div class="example" id="example-2213">
+    <p><strong>例1 <span class="function"><strong>oci_rollback()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;複数のテーブルにデータを追加し、エラーが発生したらロールバックします<br /><br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;mysalary&nbsp;(id,&nbsp;name)&nbsp;VALUES&nbsp;(1,&nbsp;'Chris')"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;OCI_NO_AUTO_COMMIT&nbsp;フラグで、INSERT&nbsp;直後にコミットしないよう&nbsp;Oracle&nbsp;に指示します。<br />//&nbsp;PHP&nbsp;&lt;=&nbsp;5.3.1&nbsp;では&nbsp;OCI_DEFAULT&nbsp;を使います。これらふたつのフラグは同じ意味です<br /></span><span style="color: #0000BB">$r&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OCI_NO_AUTO_COMMIT</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$r</span><span style="color: #007700">)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'INSERT&nbsp;INTO&nbsp;myschedule&nbsp;(startday)&nbsp;VALUES&nbsp;(12)'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$r&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OCI_NO_AUTO_COMMIT</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$r</span><span style="color: #007700">)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">oci_rollback</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;両方のテーブルへの変更をロールバックします<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;両方のテーブルへの変更をコミットします<br /></span><span style="color: #0000BB">$r&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_commit</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">r</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -95,7 +95,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2011">
+   <div class="example" id="example-2214">
     <p><strong>例2 <em>SAVEPOINT</em> へのロールバックの例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -117,10 +117,10 @@
     もしくはスクリプトの終了時のいずれの場合でも
     すぐに自動的にロールバックされます。
     トランザクションをコミットするには
-     <span class="function"><a href="function.oci-commit.html" class="function">oci_commit()</a></span> をコールする必要があります。
+    <span class="function"><a href="function.oci-commit.html" class="function">oci_commit()</a></span> をコールする必要があります。
    </p>
    <p class="para">
-     <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> を、
+    <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> を、
     <strong><code>OCI_COMMIT_ON_SUCCESS</code></strong> モードや
     デフォルト状態でコールすると、
     その時点までの未確定のトランザクションをすべてコミットします。
@@ -138,8 +138,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.oci-commit.html" class="function" rel="rdfs-seeAlso">oci_commit()</a> - 未解決のトランザクションをコミットする</span></li>
-    <li class="member"> <span class="function"><a href="function.oci-execute.html" class="function" rel="rdfs-seeAlso">oci_execute()</a> - 文を実行する</span></li>
+    <li class="member"><span class="function"><a href="function.oci-commit.html" class="function" rel="rdfs-seeAlso">oci_commit()</a> - 未解決のトランザクションをコミットする</span></li>
+    <li class="member"><span class="function"><a href="function.oci-execute.html" class="function" rel="rdfs-seeAlso">oci_execute()</a> - 文を実行する</span></li>
    </ul>
   </p>
  </div>

@@ -20,8 +20,8 @@
  <div class="refsect1 description" id="refsect1-function.mysqlnd-uh-convert-to-mysqlnd-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">resource</span>
-    <span class="methodname"><strong>mysqlnd_uh_convert_to_mysqlnd</strong></span>
+   <span class="type">resource</span> 
+   <span class="methodname"><strong>mysqlnd_uh_convert_to_mysqlnd</strong></span>
     ( <span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter reference">&$mysql_connection</code></span>
    )</div>
 
@@ -49,9 +49,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">MySQL connection handle</code></dt>
 
-    <span class="term"><em><code class="parameter">MySQL connection handle</code></em></span>
     <dd>
 
      <p class="para">
@@ -59,8 +60,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -91,7 +91,7 @@
       <tr>
        <td>5.4.0</td>
        <td>
-        The <em><code class="parameter">mysql_connection</code></em> parameter can now be of type
+        The <code class="parameter">mysql_connection</code> parameter can now be of type
         <em>mysql</em>, <em>PDO_MySQL</em>, or <em>mysqli</em>.
         Before, only the <em>mysqli</em> type was allowed.
        </td>
@@ -108,8 +108,8 @@
  <div class="refsect1 examples" id="refsect1-function.mysqlnd-uh-convert-to-mysqlnd-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1926">
-    <p><strong>例1  <span class="function"><strong>mysqlnd_uh_convert_to_mysqlnd()</strong></span> example</strong></p>
+   <div class="example" id="example-2118">
+    <p><strong>例1 <span class="function"><strong>mysqlnd_uh_convert_to_mysqlnd()</strong></span> example</strong></p>
         <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;PDO&nbsp;user&nbsp;API&nbsp;gives&nbsp;no&nbsp;access&nbsp;to&nbsp;connection&nbsp;thread&nbsp;id&nbsp;*/<br /></span><span style="color: #0000BB">$mysql_connection&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">"mysql:host=localhost;dbname=test"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"root"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Convert&nbsp;PDO&nbsp;MySQL&nbsp;handle&nbsp;to&nbsp;mysqlnd&nbsp;handle&nbsp;*/<br /></span><span style="color: #0000BB">$mysqlnd&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqlnd_uh_convert_to_mysqlnd</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysql_connection</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Create&nbsp;Proxy&nbsp;to&nbsp;call&nbsp;mysqlnd&nbsp;connection&nbsp;class&nbsp;methods&nbsp;*/<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MySQLndUHConnection</span><span style="color: #007700">();<br /></span><span style="color: #FF8000">/*&nbsp;Call&nbsp;mysqlnd_conn::get_thread_id&nbsp;*/<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getThreadId</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqlnd</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;Use&nbsp;SQL&nbsp;to&nbsp;fetch&nbsp;connection&nbsp;thread&nbsp;id&nbsp;*/<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysql_connection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;CONNECTION_ID()"</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">fetchAll</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>

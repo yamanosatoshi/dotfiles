@@ -24,13 +24,13 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>token_get_all()</strong></span> は指定した文字列
-   <em><code class="parameter">source</code></em> をパースし、Zend engine の
+   <span class="function"><strong>token_get_all()</strong></span> は指定した文字列
+   <code class="parameter">source</code> をパースし、Zend engine の
    字句解析スキャナにより PHP 言語のトークンに分割します。
   </p>
   <p class="para">
    パーサトークンの一覧を得るには、<a href="tokens.html" class="xref">パーサトークンの一覧</a> を参照するか、
-   あるいは  <span class="function"><a href="function.token-name.html" class="function">token_name()</a></span> でトークン値を文字列表現に
+   あるいは <span class="function"><a href="function.token-name.html" class="function">token_name()</a></span> でトークン値を文字列表現に
    変換します。
   </p>
  </div>
@@ -40,9 +40,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">source</code></dt>
 
-     <span class="term"><em><code class="parameter">source</code></em></span>
      <dd>
 
       <p class="para">
@@ -50,8 +51,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -71,8 +71,8 @@
  <div class="refsect1 examples" id="refsect1-function.token-get-all-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4058">
-    <p><strong>例1  <span class="function"><strong>token_get_all()</strong></span> の例</strong></p>
+   <div class="example" id="example-4514">
+    <p><strong>例1 <span class="function"><strong>token_get_all()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$tokens&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">token_get_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'&lt;?php&nbsp;echo;&nbsp;?&gt;'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">/*&nbsp;=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(T_OPEN_TAG,&nbsp;'&lt;?php'),&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(T_ECHO,&nbsp;'echo'),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(T_CLOSE_TAG,&nbsp;'?&gt;')&nbsp;);&nbsp;*/<br /><br />/*&nbsp;以下の例では、文字列が&nbsp;T_COMMENT&nbsp;(PHP&nbsp;&lt;5&nbsp;では&nbsp;T_ML_COMMENT)<br />&nbsp;&nbsp;&nbsp;ではなく&nbsp;T_INLINE_HTML&nbsp;とパースされていることに注意しましょう。<br />&nbsp;&nbsp;&nbsp;これは、指定した&nbsp;"code"&nbsp;の中に開始タグ/終了タグが含まれていないからです。<br />&nbsp;&nbsp;&nbsp;通常のファイルで、コメントを&nbsp;&lt;?php&nbsp;?&gt;&nbsp;タグの外部に書いた場合にも同じようになります。&nbsp;*/<br /></span><span style="color: #0000BB">$tokens&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">token_get_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'/*&nbsp;comment&nbsp;*/'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;=&gt;&nbsp;array(array(T_INLINE_HTML,&nbsp;'/*&nbsp;comment&nbsp;*/'));<br /></span><span style="color: #0000BB">?&gt;</span>

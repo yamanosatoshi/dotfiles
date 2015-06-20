@@ -26,14 +26,14 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>mssql_fetch_array()</strong></span> は、
-    <span class="function"><a href="function.mssql-fetch-row.html" class="function">mssql_fetch_row()</a></span> の拡張版です。
+   <span class="function"><strong>mssql_fetch_array()</strong></span> は、
+   <span class="function"><a href="function.mssql-fetch-row.html" class="function">mssql_fetch_row()</a></span> の拡張版です。
    この関数は、結果の配列に数値インデックスにデータを保持するのに加えて、
    フィールド名をキーとしてデータを連想配列にも保存します。
   </p>
   <p class="para">
-   機能がかなり増えているにもかかわらず、 <span class="function"><strong>mssql_fetch_array()</strong></span> は
-    <span class="function"><a href="function.mssql-fetch-row.html" class="function">mssql_fetch_row()</a></span> よりもそれほど遅くはないということを強調しておきます。
+   機能がかなり増えているにもかかわらず、<span class="function"><strong>mssql_fetch_array()</strong></span> は
+   <span class="function"><a href="function.mssql-fetch-row.html" class="function">mssql_fetch_row()</a></span> よりもそれほど遅くはないということを強調しておきます。
   </p>
  </div>
 
@@ -43,22 +43,23 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result</code></dt>
 
-     <span class="term"><em><code class="parameter">result</code></em></span>
      <dd>
 
       <p class="para">
        処理対象となる結果リソース。これは
-        <span class="function"><a href="function.mssql-query.html" class="function">mssql_query()</a></span> のコールによって取得します。
+       <span class="function"><a href="function.mssql-query.html" class="function">mssql_query()</a></span> のコールによって取得します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">result_type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">result_type</code></em></span>
      <dd>
 
       <p class="para">
@@ -69,8 +70,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -88,8 +88,8 @@
  <div class="refsect1 examples" id="refsect1-function.mssql-fetch-array-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1524">
-    <p><strong>例1  <span class="function"><strong>mssql_fetch_array()</strong></span> の例</strong></p>
+   <div class="example" id="example-1703">
+    <p><strong>例1 <span class="function"><strong>mssql_fetch_array()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;select&nbsp;クエリを&nbsp;MSSQL&nbsp;に送信します<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;[username],&nbsp;[name]&nbsp;FROM&nbsp;[php].[dbo].[userlist]'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;レコードがあるかどうかを調べます<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">mssql_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'No&nbsp;records&nbsp;found'</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;次のコードは、これと同じ意味です<br />&nbsp;&nbsp;&nbsp;&nbsp;//<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;while&nbsp;($row&nbsp;=&nbsp;mssql_fetch_row($query))&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MSSQL_NUM</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;...<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;結果を開放します<br /></span><span style="color: #0000BB">mssql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -115,7 +115,7 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mssql-fetch-row.html" class="function" rel="rdfs-seeAlso">mssql_fetch_row()</a> - 配列として行を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mssql-fetch-row.html" class="function" rel="rdfs-seeAlso">mssql_fetch_row()</a> - 配列として行を取得する</span></li>
    </ul>
   </p>
  </div>

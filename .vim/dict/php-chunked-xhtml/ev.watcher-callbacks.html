@@ -18,19 +18,19 @@
   あるいは非アクティブ (一時停止) の状態になります。
   コールバックを実行できるのは、アクティブなウォッチャーだけです。
   すべてのコールバックは、少なくとも二つの引数を付けて呼ばれます。
-  <em><code class="parameter">watcher</code></em> (ウォッチャー)、そして
-  <em><code class="parameter">revents</code></em> (受け取ったイベントのビットマスク) です。
+  <code class="parameter">watcher</code> (ウォッチャー)、そして
+  <code class="parameter">revents</code> (受け取ったイベントのビットマスク) です。
  </p>
  <p class="para">
   ウォッチャーのコールバックは、ウォッチャーのコンストラクタ
   (<a href="class.evwatcher.html" class="classname">EvWatcher</a> の派生クラス。
-   <span class="methodname"><a href="evcheck.construct.html" class="methodname">EvCheck::__construct()</a></span> や
-   <span class="methodname"><a href="evchild.construct.html" class="methodname">EvChild::__construct()</a></span> など)
+  <span class="methodname"><a href="evcheck.construct.html" class="methodname">EvCheck::__construct()</a></span> や
+  <span class="methodname"><a href="evchild.construct.html" class="methodname">EvChild::__construct()</a></span> など)
   に渡します。コールバックは、次のプロトタイプにしたがわなければいけません。
  </p>
  <div class="methodsynopsis dc-description">
-  <span class="type"><span class="type void">void</span></span>
-   <span class="methodname"><strong>callback</strong></span>
+  <span class="type"><span class="type void">void</span></span> 
+  <span class="methodname"><strong>callback</strong></span>
    ([ <span class="methodparam">
    <span class="type">object</span>
     <code class="parameter">$watcher</code>
@@ -46,11 +46,12 @@
  <p class="para">
   <dl>
 
-   <dt>
+   
+    <dt>
 
-    <span class="term">
-     <em><code class="parameter">watcher</code></em>
-    </span>
+     <code class="parameter">watcher</code>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -58,13 +59,13 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
 
-   <dt>
+     <code class="parameter">revents</code>
+    </dt>
 
-    <span class="term">
-     <em><code class="parameter">revents</code></em>
-    </span>
     <dd>
 
      <p class="para">
@@ -72,21 +73,20 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </p>
  <p class="para">
   ウォッチャーの型によって、
-  <em><code class="parameter">revents</code></em> に関連するビットが割り当てられています。
+  <code class="parameter">revents</code> に関連するビットが割り当てられています。
   そのため、複数のウォッチャーに対して同じコールバックを使えます。
   イベントのマスクは、イベントの型にちなんだ名前になっています。たとえば
-  <a href="class.evchild.html" class="classname">EvChild</a> (あるいは  <span class="methodname"><a href="evloop.child.html" class="methodname">EvLoop::child()</a></span>)
+  <a href="class.evchild.html" class="classname">EvChild</a> (あるいは <span class="methodname"><a href="evloop.child.html" class="methodname">EvLoop::child()</a></span>)
   は <strong><code>EV::CHILD</code></strong>、
-  <a href="class.evprepare.html" class="classname">EvPrepare</a> (あるいは  <span class="methodname"><a href="evloop.prepare.html" class="methodname">EvLoop::prepare()</a></span>)
+  <a href="class.evprepare.html" class="classname">EvPrepare</a> (あるいは <span class="methodname"><a href="evloop.prepare.html" class="methodname">EvLoop::prepare()</a></span>)
   は <strong><code>Ev::PREPARE</code></strong>、
-  <a href="class.evperiodic.html" class="classname">EvPeriodic</a> (あるいは  <span class="methodname"><a href="evloop.periodic.html" class="methodname">EvLoop::periodic()</a></span>)
+  <a href="class.evperiodic.html" class="classname">EvPeriodic</a> (あるいは <span class="methodname"><a href="evloop.periodic.html" class="methodname">EvLoop::periodic()</a></span>)
   は <strong><code>Ev::PERIODIC</code></strong>
   などです。ただ I/O のイベントは例外で、これは
   <strong><code>Ev::READ</code></strong> と <strong><code>Ev::WRITE</code></strong>

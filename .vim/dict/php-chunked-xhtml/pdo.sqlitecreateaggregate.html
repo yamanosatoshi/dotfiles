@@ -7,7 +7,7 @@
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="ref.pdo-sqlite.connection.html">PDO_SQLITE DSN</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pdo.sqlitecreatefunction.html">PDO::sqliteCreateFunction</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="pdo.sqlitecreatecollation.html">PDO::sqliteCreateCollation</a></div>
  <div class="up"><a href="ref.pdo-sqlite.html">SQLite (PDO)</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="pdo.sqlitecreateaggregate" class="refentry">
@@ -51,9 +51,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">function_name</code></dt>
 
-     <span class="term"><em><code class="parameter">function_name</code></em></span>
      <dd>
 
       <p class="para">
@@ -61,11 +62,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">step_func</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">step_func</code></em></span>
      <dd>
 
       <p class="para">
@@ -75,7 +76,7 @@
       <p class="para">
        この関数は次のように定義しなければなりません。
        <div class="methodsynopsis dc-description">
-         <span class="methodname"><span class="replaceable">step</span></span>
+        <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><span class="replaceable">step</span></span>
          ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$context</code></span>
         , <span class="methodparam"><span class="type">int</span> <code class="parameter">$rownumber</code></span>
         , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value1</code></span>
@@ -92,13 +93,17 @@
       <p class="para">
        <var class="varname"><var class="varname">rownumber</var></var> は現在の行番号を保持します。
       </p>
+      <p class="para">
+       この関数の返り値を、次のステップあるいはファイナライズ関数の
+       <code class="parameter">context</code> 引数として使います。
+      </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">finalize_func</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">finalize_func</code></em></span>
      <dd>
 
       <p class="para">
@@ -111,7 +116,7 @@
       <p class="para">
        この関数は次のように定義しなければなりません。
        <div class="methodsynopsis dc-description">
-         <span class="methodname"><span class="replaceable">fini</span></span>
+        <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><span class="replaceable">fini</span></span>
          ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$context</code></span>
         , <span class="methodparam"><span class="type">int</span> <code class="parameter">$rownumber</code></span>
         )</div>
@@ -128,11 +133,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">num_args</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">num_args</code></em></span>
      <dd>
 
       <p class="para">
@@ -141,8 +146,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -160,7 +164,7 @@
  <div class="refsect1 examples" id="refsect1-pdo.sqlitecreateaggregate-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-987">
+   <div class="example" id="example-1044">
     <p><strong>例1 集約関数 max_length の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -175,16 +179,16 @@
    この例では、
    テーブルのカラムの中で一番長い文字列の長さを計算する集約関数を作成します。
    各行について <em>max_len_step</em> 関数がコールされ、
-   <em><code class="parameter">context</code></em> パラメータが渡されます。
+   <code class="parameter">context</code> パラメータが渡されます。
    このパラメータには、他の PHP 変数と同様に、配列やオブジェクトが設定されます。
    この例では、これまでに登場した値のうち長さが最大のものの長さを保持しています。
-   <em><code class="parameter">string</code></em> が現在の最大値より長い場合に、
+   <code class="parameter">string</code> が現在の最大値より長い場合に、
    その値で現在の最大値を更新します。
   </p>
   <p class="para">
    すべての行に対する処理が終わると、SQLite は
    <em>max_len_finalize</em> 関数をコールして集約結果を決定します。
-   ここでは、<em><code class="parameter">context</code></em> の内容に基づいた、
+   ここでは、<code class="parameter">context</code> の内容に基づいた、
    なんらかの計算を行うことができます。
    しかし、この例ではクエリを処理している過程で既に結果が決定しているので、
    ここでは単に context の値を返しているだけです。
@@ -220,8 +224,8 @@
   <p class="para">
    <ul class="simplelist">
     <li class="member"><a href="pdo.sqlitecreatefunction.html" class="xref">PDO::sqliteCreateFunction</a></li>
-    <li class="member"> <span class="function"><a href="function.sqlite-create-function.html" class="function" rel="rdfs-seeAlso">sqlite_create_function()</a> - SQLステートメントで使用するために&quot;通常の&quot;ユーザー定義関数を登録する</span></li>
-    <li class="member"> <span class="function"><a href="function.sqlite-create-aggregate.html" class="function" rel="rdfs-seeAlso">sqlite_create_aggregate()</a> - SQLステートメントで使用する集約UDFを登録する</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-create-function.html" class="function" rel="rdfs-seeAlso">sqlite_create_function()</a> - SQLステートメントで使用するために&quot;通常の&quot;ユーザー定義関数を登録する</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-create-aggregate.html" class="function" rel="rdfs-seeAlso">sqlite_create_aggregate()</a> - SQLステートメントで使用する集約UDFを登録する</span></li>
    </ul>
   </p>
  </div>
@@ -229,7 +233,7 @@
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="ref.pdo-sqlite.connection.html">PDO_SQLITE DSN</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pdo.sqlitecreatefunction.html">PDO::sqliteCreateFunction</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="pdo.sqlitecreatecollation.html">PDO::sqliteCreateCollation</a></div>
  <div class="up"><a href="ref.pdo-sqlite.html">SQLite (PDO)</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div></body></html>

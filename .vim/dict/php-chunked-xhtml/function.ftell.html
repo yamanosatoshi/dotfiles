@@ -13,7 +13,7 @@
 </div><hr /><div id="function.ftell" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">ftell</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">ftell</span> &mdash; <span class="dc-title">ファイルの読み書き用ポインタの現在位置を返す</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">ftell</span> &mdash; <span class="dc-title">ファイルの読み書き用ポインタの現在位置を返す</span></p>
 
  </div>
  
@@ -25,7 +25,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">handle</code></em> ファイルの読み書き用ポインタの現在位置を返します。
+   <code class="parameter">handle</code> ファイルの読み書き用ポインタの現在位置を返します。
   </p>
  </div>
 
@@ -35,22 +35,22 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">handle</code></dt>
 
-     <span class="term"><em><code class="parameter">handle</code></em></span>
      <dd>
 
       <p class="para">
        ファイルポインタは有効なものでなければならず、また
-        <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>、 <span class="function"><a href="function.popen.html" class="function">popen()</a></span>
+       <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>、<span class="function"><a href="function.popen.html" class="function">popen()</a></span>
        で正常にオープンされたファイルを指している必要があります。
-        <span class="function"><strong>ftell()</strong></span> は、(&quot;a&quot; フラグ付きでオープンされた)
+       <span class="function"><strong>ftell()</strong></span> は、(&quot;a&quot; フラグ付きでオープンされた)
        追加のみ可能なストリームに対する結果も未定義です。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -60,7 +60,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.ftell-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">handle</code></em> が示すファイルポインタの位置、
+   <code class="parameter">handle</code> が示すファイルポインタの位置、
    すなわちファイル・ストリーム上のオフセットを整数値で返します。
   </p>
   <p class="para">
@@ -78,8 +78,8 @@
  <div class="refsect1 examples" id="refsect1-function.ftell-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2386">
-    <p><strong>例1  <span class="function"><strong>ftell()</strong></span> の例</strong></p>
+   <div class="example" id="example-2585">
+    <p><strong>例1 <span class="function"><strong>ftell()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;ファイルをオープンし、データを読み込む<br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"/etc/passwd"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;どこにいるんだ&nbsp;?<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">ftell</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;11<br /><br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -96,10 +96,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - プロセスへのファイルポインタをオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.fseek.html" class="function" rel="rdfs-seeAlso">fseek()</a> - ファイルポインタを移動する</span></li>
-    <li class="member"> <span class="function"><a href="function.rewind.html" class="function" rel="rdfs-seeAlso">rewind()</a> - ファイルポインタの位置を先頭に戻す</span></li>
+    <li class="member"><span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - プロセスへのファイルポインタをオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.fseek.html" class="function" rel="rdfs-seeAlso">fseek()</a> - ファイルポインタを移動する</span></li>
+    <li class="member"><span class="function"><a href="function.rewind.html" class="function" rel="rdfs-seeAlso">rewind()</a> - ファイルポインタの位置を先頭に戻す</span></li>
    </ul>
   </p>
  </div>

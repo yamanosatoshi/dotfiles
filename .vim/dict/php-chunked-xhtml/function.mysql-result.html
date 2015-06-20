@@ -28,11 +28,11 @@
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
     <li class="member">
-      <span class="function"><a href="mysqli-result.data-seek.html" class="function">mysqli_data_seek()</a></span> を
-      <span class="function"><a href="mysqli-result.field-seek.html" class="function">mysqli_field_seek()</a></span> や
-      <span class="function"><a href="mysqli-result.fetch-field.html" class="function">mysqli_fetch_field()</a></span> と組み合わせる
+     <span class="function"><a href="mysqli-result.data-seek.html" class="function">mysqli_data_seek()</a></span> を
+     <span class="function"><a href="mysqli-result.field-seek.html" class="function">mysqli_field_seek()</a></span> や
+     <span class="function"><a href="mysqli-result.fetch-field.html" class="function">mysqli_fetch_field()</a></span> と組み合わせる
     </li>
-    <li class="member"> <span class="methodname"><a href="pdostatement.fetchcolumn.html" class="methodname">PDOStatement::fetchColumn()</a></span></li>
+    <li class="member"><span class="methodname"><a href="pdostatement.fetchcolumn.html" class="methodname">PDOStatement::fetchColumn()</a></span></li>
    </ul>
   </div>
  </div>
@@ -53,7 +53,7 @@
    大量の結果セットで作業を行う際は、行全体を取り込む関数のうちひとつを
    使用することを検討するべきです（以下で説明します）。
    これらの関数は一回の関数コールで複数のセルの内容を返すので、
-    <span class="function"><strong>mysql_result()</strong></span> よりもかなり高速です。
+   <span class="function"><strong>mysql_result()</strong></span> よりもかなり高速です。
    また、フィールド引数としてオフセット数値を指定する方が
    フィールド名やテーブル名.フィールド名のように指定するよりも
    かなり高速です。
@@ -67,16 +67,17 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
+<code class="parameter">
+result</code></dt>
+<dd>
 <p class="para">評価された結果 <span class="type"><span class="type リソース">リソース</span></span>。
-この結果は、 <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
+この結果は、<span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
 </dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">row</code></dt>
 
-     <span class="term"><em><code class="parameter">row</code></em></span>
      <dd>
 
       <p class="para">
@@ -85,11 +86,11 @@ result</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">field</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">field</code></em></span>
      <dd>
 
       <p class="para">
@@ -104,8 +105,7 @@ result</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -124,8 +124,8 @@ result</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.mysql-result-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1609">
-    <p><strong>例1  <span class="function"><strong>mysql_result()</strong></span> の例</strong></p>
+   <div class="example" id="example-1788">
+    <p><strong>例1 <span class="function"><strong>mysql_result()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;connect:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br />if&nbsp;(!</span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">'database_name'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;select&nbsp;database:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;name&nbsp;FROM&nbsp;work.employee'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;query:'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br />echo&nbsp;</span><span style="color: #0000BB">mysql_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;3&nbsp;番目の&nbsp;employee&nbsp;の&nbsp;name&nbsp;を出力する<br /><br /></span><span style="color: #0000BB">mysql_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -142,7 +142,7 @@ result</code></em></span><dd>
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>mysql_result()</strong></span> は、
+    <span class="function"><strong>mysql_result()</strong></span> は、
     結果セットを処理するほかの関数と混用することはできません。
    </p>
   </p></blockquote>
@@ -153,10 +153,10 @@ result</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-fetch-row.html" class="function" rel="rdfs-seeAlso">mysql_fetch_row()</a> - 結果を添字配列として取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-fetch-array.html" class="function" rel="rdfs-seeAlso">mysql_fetch_array()</a> - 連想配列、添字配列、またはその両方として結果の行を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-fetch-assoc.html" class="function" rel="rdfs-seeAlso">mysql_fetch_assoc()</a> - 連想配列として結果の行を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-fetch-object.html" class="function" rel="rdfs-seeAlso">mysql_fetch_object()</a> - 結果の行をオブジェクトとして取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-row.html" class="function" rel="rdfs-seeAlso">mysql_fetch_row()</a> - 結果を添字配列として取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-array.html" class="function" rel="rdfs-seeAlso">mysql_fetch_array()</a> - 連想配列、添字配列、またはその両方として結果の行を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-assoc.html" class="function" rel="rdfs-seeAlso">mysql_fetch_assoc()</a> - 連想配列として結果の行を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-object.html" class="function" rel="rdfs-seeAlso">mysql_fetch_object()</a> - 結果の行をオブジェクトとして取得する</span></li>
    </ul>
   </p>
  </div>

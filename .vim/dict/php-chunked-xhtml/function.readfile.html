@@ -13,7 +13,7 @@
 </div><hr /><div id="function.readfile" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">readfile</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">readfile</span> &mdash; <span class="dc-title">ファイルを出力する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">readfile</span> &mdash; <span class="dc-title">ファイルを出力する</span></p>
 
  </div>
  
@@ -37,9 +37,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -47,11 +48,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">use_include_path</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">use_include_path</code></em></span>
      <dd>
 
       <p class="para">
@@ -61,11 +62,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">context</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">context</code></em></span>
      <dd>
 
       <p class="para">
@@ -73,8 +74,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -85,7 +85,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    ファイルから読み込んだバイト数を返します。エラーが起こると
-   <strong><code>FALSE</code></strong>を返し、また@ <span class="function"><strong>readfile()</strong></span>という名前でコールされない限り、
+   <strong><code>FALSE</code></strong>を返し、また@<span class="function"><strong>readfile()</strong></span>という名前でコールされない限り、
    エラーメッセージが表示されます。
   </p>
  </div>
@@ -94,11 +94,11 @@
  <div class="refsect1 examples" id="refsect1-function.readfile-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2413">
-    <p><strong>例1  <span class="function"><strong>readfile()</strong></span> によるダウンロードの強制</strong></p>
+   <div class="example" id="example-2612">
+    <p><strong>例1 <span class="function"><strong>readfile()</strong></span> によるダウンロードの強制</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'monkey.gif'</span><span style="color: #007700">;<br /><br />if&nbsp;(</span><span style="color: #0000BB">file_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Description:&nbsp;File&nbsp;Transfer'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;application/octet-stream'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Disposition:&nbsp;attachment;&nbsp;filename='</span><span style="color: #007700">.</span><span style="color: #0000BB">basename</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Transfer-Encoding:&nbsp;binary'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Expires:&nbsp;0'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Cache-Control:&nbsp;must-revalidate'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Pragma:&nbsp;public'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Length:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">ob_clean</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">flush</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'monkey.gif'</span><span style="color: #007700">;<br /><br />if&nbsp;(</span><span style="color: #0000BB">file_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Description:&nbsp;File&nbsp;Transfer'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;application/octet-stream'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Disposition:&nbsp;attachment;&nbsp;filename='</span><span style="color: #007700">.</span><span style="color: #0000BB">basename</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Expires:&nbsp;0'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Cache-Control:&nbsp;must-revalidate'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Pragma:&nbsp;public'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Length:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -121,15 +121,15 @@
 
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>readfile()</strong></span> 自体にはメモリに関する問題はなく、
+    <span class="function"><strong>readfile()</strong></span> 自体にはメモリに関する問題はなく、
     巨大なファイルを送ってもかまいません。out of memoryエラーが出る場合は、
-     <span class="function"><a href="function.ob-get-level.html" class="function">ob_get_level()</a></span> で出力バッファリングを無効にしてください。
+    <span class="function"><a href="function.ob-get-level.html" class="function">ob_get_level()</a></span> で出力バッファリングを無効にしてください。
    </p>
   </p></blockquote>
 
   <div class="tip"><strong class="tip">ヒント</strong><p class="simpara"><a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">fopen wrappers</a> が有効の場合、この関数のファイル名として
 URL を使用することができます。ファイル名の指定方法に関する詳細は
- <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を参照ください。
+<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を参照ください。
 <a href="wrappers.html" class="xref">サポートするプロトコル/ラッパー</a> には、さまざまなラッパーの機能やその使用法、
 提供される定義済み変数などの情報がまとめられています。</p></div>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">コンテキストのサポートは、
@@ -142,13 +142,13 @@ PHP 5.0.0 で追加されました。<em>contexts</em> の説明に関しては�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.fpassthru.html" class="function" rel="rdfs-seeAlso">fpassthru()</a> - ファイルポインタ上に残っているすべてのデータを出力する</span></li>
-    <li class="member"> <span class="function"><a href="function.file.html" class="function" rel="rdfs-seeAlso">file()</a> - ファイル全体を読み込んで配列に格納する</span></li>
-    <li class="member"> <span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.include.html" class="function" rel="rdfs-seeAlso">include</a> - include</span></li>
-    <li class="member"> <span class="function"><a href="function.require.html" class="function" rel="rdfs-seeAlso">require</a> - require</span></li>
-    <li class="member"> <span class="function"><a href="function.virtual.html" class="function" rel="rdfs-seeAlso">virtual()</a> - Apache サブリクエストを実行する</span></li>
-    <li class="member"> <span class="function"><a href="function.file-get-contents.html" class="function" rel="rdfs-seeAlso">file_get_contents()</a> - ファイルの内容を全て文字列に読み込む</span></li>
+    <li class="member"><span class="function"><a href="function.fpassthru.html" class="function" rel="rdfs-seeAlso">fpassthru()</a> - ファイルポインタ上に残っているすべてのデータを出力する</span></li>
+    <li class="member"><span class="function"><a href="function.file.html" class="function" rel="rdfs-seeAlso">file()</a> - ファイル全体を読み込んで配列に格納する</span></li>
+    <li class="member"><span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.include.html" class="function" rel="rdfs-seeAlso">include</a> - include</span></li>
+    <li class="member"><span class="function"><a href="function.require.html" class="function" rel="rdfs-seeAlso">require</a> - require</span></li>
+    <li class="member"><span class="function"><a href="function.virtual.html" class="function" rel="rdfs-seeAlso">virtual()</a> - Apache サブリクエストを実行する</span></li>
+    <li class="member"><span class="function"><a href="function.file-get-contents.html" class="function" rel="rdfs-seeAlso">file_get_contents()</a> - ファイルの内容を全て文字列に読み込む</span></li>
     <li class="member"><a href="wrappers.html" class="xref">サポートするプロトコル/ラッパー</a></li>
    </ul>
   </p>

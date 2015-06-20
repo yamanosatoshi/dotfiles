@@ -13,7 +13,7 @@
 </div><hr /><div id="function.filectime" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">filectime</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">filectime</span> &mdash; <span class="dc-title">ファイルの inode 変更時刻を取得する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">filectime</span> &mdash; <span class="dc-title">ファイルの inode 変更時刻を取得する</span></p>
 
  </div>
  
@@ -35,9 +35,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -45,8 +46,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -65,8 +65,8 @@
  <div class="refsect1 examples" id="refsect1-function.filectime-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2364">
-    <p><strong>例1  <span class="function"><strong>filectime()</strong></span> の例</strong></p>
+   <div class="example" id="example-2563">
+    <p><strong>例1 <span class="function"><strong>filectime()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;出力例&nbsp;somefile.txt&nbsp;was&nbsp;last&nbsp;changed:&nbsp;December&nbsp;29&nbsp;2002&nbsp;22:16:23.<br /><br /></span><span style="color: #0000BB">$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'somefile.txt'</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">file_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">&nbsp;was&nbsp;last&nbsp;changed:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"F&nbsp;d&nbsp;Y&nbsp;H:i:s."</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">filectime</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -94,9 +94,9 @@
     注意: 多くの Unix ファイルシステムでは、i-ノードが変更された際、つまり、
     パーミッション、所有者、グループ、または他のメタデータが書き込まれた際に、
     ファイルが変更されたとみなされます。
-     <span class="function"><a href="function.filemtime.html" class="function">filemtime()</a></span> (この関数は、Web ページ上に
+    <span class="function"><a href="function.filemtime.html" class="function">filemtime()</a></span> (この関数は、Web ページ上に
     &quot;最終更新時刻&quot; を表示させたい場合に使用するものです)
-    および  <span class="function"><a href="function.fileatime.html" class="function">fileatime()</a></span> も参照ください。
+    および <span class="function"><a href="function.fileatime.html" class="function">fileatime()</a></span> も参照ください。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -109,12 +109,12 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: <p class="para">時刻の精度は、
 ファイルシステムによって異なることがあります。</p></p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">この関数の結果は
-キャッシュされます。詳細は、 <span class="function"><a href="function.clearstatcache.html" class="function">clearstatcache()</a></span>
+キャッシュされます。詳細は、<span class="function"><a href="function.clearstatcache.html" class="function">clearstatcache()</a></span>
 を参照してください。</span></p></blockquote>
   <div class="tip"><strong class="tip">ヒント</strong><p class="simpara">
 <em>PHP 5.0.0</em> 以降、この関数は、
 <em class="emphasis">何らかの</em> URL ラッパーと組合せて使用することができます。
-どのラッパーが  <span class="function"><a href="function.stat.html" class="function">stat()</a></span> ファミリーをサポートしているかを調べるには
+どのラッパーが <span class="function"><a href="function.stat.html" class="function">stat()</a></span> ファミリーをサポートしているかを調べるには
 <a href="wrappers.html" class="xref">サポートするプロトコル/ラッパー</a> を参照してください。</p></div>
  </div>
 
@@ -123,7 +123,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.filemtime.html" class="function" rel="rdfs-seeAlso">filemtime()</a> - ファイルの更新時刻を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.filemtime.html" class="function" rel="rdfs-seeAlso">filemtime()</a> - ファイルの更新時刻を取得する</span></li>
    </ul>
   </p>
  </div>

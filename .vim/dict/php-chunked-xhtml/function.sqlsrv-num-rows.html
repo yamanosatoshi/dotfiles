@@ -26,7 +26,7 @@
   <p class="para rdfs-comment">
    Retrieves the number of rows in a result set. This function requires that the 
    statment resource be created with a static or keyset cursor. For more information, 
-   see  <span class="function"><a href="function.sqlsrv-query.html" class="function">sqlsrv_query()</a></span>,  <span class="function"><a href="function.sqlsrv-prepare.html" class="function">sqlsrv_prepare()</a></span>, 
+   see <span class="function"><a href="function.sqlsrv-query.html" class="function">sqlsrv_query()</a></span>, <span class="function"><a href="function.sqlsrv-prepare.html" class="function">sqlsrv_prepare()</a></span>, 
    or <a href="http://msdn.microsoft.com/en-us/library/ee376927.aspx" class="link external">&raquo;&nbsp;Specifying a Cursor Type and Selecting Rows</a> 
    in the Microsoft SQLSRV documentation.
   </p>
@@ -38,22 +38,22 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">stmt</code></dt>
 
-     <span class="term"><em><code class="parameter">stmt</code></em></span>
      <dd>
 
       <p class="para">
        The statement for which the row count is returned. The statment resource 
        must be created with a static or keyset cursor. For more information, see 
-        <span class="function"><a href="function.sqlsrv-query.html" class="function">sqlsrv_query()</a></span>,  <span class="function"><a href="function.sqlsrv-prepare.html" class="function">sqlsrv_prepare()</a></span>, or 
+       <span class="function"><a href="function.sqlsrv-query.html" class="function">sqlsrv_query()</a></span>, <span class="function"><a href="function.sqlsrv-prepare.html" class="function">sqlsrv_prepare()</a></span>, or 
        <a href="http://msdn.microsoft.com/en-us/library/ee376927.aspx" class="link external">&raquo;&nbsp;Specifying a Cursor Type and Selecting Rows</a> 
        in the Microsoft SQLSRV documentation.
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -72,8 +72,8 @@
  <div class="refsect1 examples" id="refsect1-function.sqlsrv-num-rows-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2178">
-    <p><strong>例1  <span class="function"><strong>sqlsrv_num_rows()</strong></span> example</strong></p>
+   <div class="example" id="example-2375">
+    <p><strong>例1 <span class="function"><strong>sqlsrv_num_rows()</strong></span> example</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$server&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"serverName\sqlexpress"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$connectionInfo&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">"Database"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"dbName"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"UID"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"PWD"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"password"&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_connect</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$server</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$connectionInfo&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;Table_1"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$params&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /></span><span style="color: #0000BB">$options&nbsp;</span><span style="color: #007700">=&nbsp;&nbsp;array(&nbsp;</span><span style="color: #DD0000">"Scrollable"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SQLSRV_CURSOR_KEYSET&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_query</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$params</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$options&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$row_count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_num_rows</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;<br />if&nbsp;(</span><span style="color: #0000BB">$row_count&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Error&nbsp;in&nbsp;retrieveing&nbsp;row&nbsp;count."</span><span style="color: #007700">;<br />else<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row_count</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -90,8 +90,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.sqlsrv-has-rows.html" class="function" rel="rdfs-seeAlso">sqlsrv_has_rows()</a> - Indicates whether the specified statement has rows</span></li>
-    <li class="member"> <span class="function"><a href="function.sqlsrv-rows-affected.html" class="function" rel="rdfs-seeAlso">sqlsrv_rows_affected()</a> - Returns the number of rows modified by the last INSERT, UPDATE, or 
+    <li class="member"><span class="function"><a href="function.sqlsrv-has-rows.html" class="function" rel="rdfs-seeAlso">sqlsrv_has_rows()</a> - Indicates whether the specified statement has rows</span></li>
+    <li class="member"><span class="function"><a href="function.sqlsrv-rows-affected.html" class="function" rel="rdfs-seeAlso">sqlsrv_rows_affected()</a> - Returns the number of rows modified by the last INSERT, UPDATE, or 
   DELETE query executed</span></li>
    </ul>
   </p>

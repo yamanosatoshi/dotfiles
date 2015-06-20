@@ -22,33 +22,33 @@
      引数を解釈する内部API が、PHP 5.3.x に同梱されている全ての拡張機能に
      適用されるようになりました。つまり、互換性のないパラメーターが渡された場合、
      この引数を解釈するAPIは <strong><code>NULL</code></strong> を関数に返させます。これにはいくつか例外が
-     あります。たとえば  <span class="function"><a href="function.get-class.html" class="function">get_class()</a></span> 関数はエラーが起きた場合に
+     あります。たとえば <span class="function"><a href="function.get-class.html" class="function">get_class()</a></span> 関数はエラーが起きた場合に
      以前と同様 <strong><code>FALSE</code></strong> を返します。
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-      <span class="function"><a href="function.clearstatcache.html" class="function">clearstatcache()</a></span> 関数は、デフォルトで絶対パスキャッシュの値をクリアしなくなりました。
+     <span class="function"><a href="function.clearstatcache.html" class="function">clearstatcache()</a></span> 関数は、デフォルトで絶対パスキャッシュの値をクリアしなくなりました。
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-      <span class="function"><a href="function.realpath.html" class="function">realpath()</a></span> 関数はプラットフォーム依存でなくなり、全てのプラットフォーム上で
+     <span class="function"><a href="function.realpath.html" class="function">realpath()</a></span> 関数はプラットフォーム依存でなくなり、全てのプラットフォーム上で
      同じ動作をするようになりました。その結果、
      <em>__FILE__ . &quot;/../x&quot;</em> のような無効な相対パスは一切動作しなくなりました。
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-      <span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> 関数 とその仲間は、呼び出し先が親クラスであっても <em>$this</em>
+     <span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> 関数 とその仲間は、呼び出し先が親クラスであっても <em>$this</em>
      の値を伝播させるようになりました。
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     配列処理関数  <span class="function"><a href="function.natsort.html" class="function">natsort()</a></span>,  <span class="function"><a href="function.natcasesort.html" class="function">natcasesort()</a></span>,
-      <span class="function"><a href="function.usort.html" class="function">usort()</a></span>,  <span class="function"><a href="function.uasort.html" class="function">uasort()</a></span>,  <span class="function"><a href="function.uksort.html" class="function">uksort()</a></span>,
-      <span class="function"><a href="function.array-flip.html" class="function">array_flip()</a></span> そして  <span class="function"><a href="function.array-unique.html" class="function">array_unique()</a></span> は、
+     配列処理関数 <span class="function"><a href="function.natsort.html" class="function">natsort()</a></span>, <span class="function"><a href="function.natcasesort.html" class="function">natcasesort()</a></span>,
+     <span class="function"><a href="function.usort.html" class="function">usort()</a></span>, <span class="function"><a href="function.uasort.html" class="function">uasort()</a></span>, <span class="function"><a href="function.uksort.html" class="function">uksort()</a></span>,
+     <span class="function"><a href="function.array-flip.html" class="function">array_flip()</a></span> そして <span class="function"><a href="function.array-unique.html" class="function">array_unique()</a></span> は、
      引数としてオブジェクトを受け入れなくなりました。オブジェクトを使ってプロパティにアクセス
      する必要がある場合、オブジェクトを配列型にキャストする必要があります。
     </span>
@@ -65,7 +65,7 @@
    <li class="listitem">
     <span class="simpara">
      新しい mysqlnd ライブラリは、MySQL 4.1 用の41バイトの新しいパスワードフォーマットを使用します。
-     古い16バイトのパスワードを使うと、 <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span>
+     古い16バイトのパスワードを使うと、<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span>
      系の関数は次のようなエラーメッセージを生成します。<em>&quot;mysqlnd cannot connect to MySQL 4.1+
      using old authentication&quot;</em>
     </span>
@@ -75,7 +75,7 @@
      新しい mysqlnd ライブラリは、mysql の設定ファイル
      (my.cnf/my.ini) を読み込まなくなりました (以前の libmysqlclient は読み込んでいました)。
      もし設定ファイルの内容に依存するコードを書いているのなら、
-      <span class="function"><a href="mysqli.options.html" class="function">mysqli_options()</a></span> 関数で明示的に読み込む必要があります。
+     <span class="function"><a href="mysqli.options.html" class="function">mysqli_options()</a></span> 関数で明示的に読み込む必要があります。
      つまり、PDO 固有の定数 <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_FILE</code></strong>
      および <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_GROUP</code></strong> は、
      PDO の MySQL サポートが mysqlnd でコンパイルしない限り定義されないことになります。
@@ -112,9 +112,9 @@
    </li>
    <li class="listitem">
     <span class="simpara">
-      <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span>、 <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span> および
-      <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span> は、関数内で
-      <span class="function"><a href="function.include.html" class="function">include</a></span> や  <span class="function"><a href="function.require.html" class="function">require</a></span>
+     <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span>、<span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span> および
+     <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span> は、関数内で
+     <span class="function"><a href="function.include.html" class="function">include</a></span> や <span class="function"><a href="function.require.html" class="function">require</a></span>
      を使って読み込んだファイルのいちばん外側のスコープからは呼び出せないようになりました。
     </span>
    </li>

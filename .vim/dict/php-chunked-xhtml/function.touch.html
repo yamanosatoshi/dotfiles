@@ -13,7 +13,7 @@
 </div><hr /><div id="function.touch" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">touch</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">touch</span> &mdash; <span class="dc-title">ファイルの最終アクセス時刻および最終更新日をセットする</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">touch</span> &mdash; <span class="dc-title">ファイルの最終アクセス時刻および最終更新日をセットする</span></p>
 
  </div>
  
@@ -27,8 +27,8 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">filename</code></em> で指定されたファイルの最終更新日を、
-   <em><code class="parameter">time</code></em> で指定された値に
+   <code class="parameter">filename</code> で指定されたファイルの最終更新日を、
+   <code class="parameter">time</code> で指定された値に
    セットしようと試みます。
    パラメータの数にかかわらず、アクセス時刻は
    常に変更されることに注意しましょう。
@@ -44,9 +44,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -54,37 +55,36 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">time</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">time</code></em></span>
      <dd>
 
       <p class="para">
        設定する時刻。
-       <em><code class="parameter">time</code></em> を省略した場合は、
+       <code class="parameter">time</code> を省略した場合は、
        現在時刻を使用します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">atime</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">atime</code></em></span>
      <dd>
 
       <p class="para">
        指定されたファイルの最終アクセス時刻が存在する場合は、
-       その値が <em><code class="parameter">atime</code></em> にセットされます。
-       存在しない場合は <em><code class="parameter">time</code></em> に渡した値となります。
+       その値が <code class="parameter">atime</code> にセットされます。
+       存在しない場合は <code class="parameter">time</code> に渡した値となります。
        どちらも存在しない場合は、現在のシステム時刻を使います。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -131,8 +131,8 @@
  <div class="refsect1 examples" id="refsect1-function.touch-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2427">
-    <p><strong>例1  <span class="function"><strong>touch()</strong></span> の例</strong></p>
+   <div class="example" id="example-2626">
+    <p><strong>例1 <span class="function"><strong>touch()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">touch</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$filename&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'&nbsp;modification&nbsp;time&nbsp;has&nbsp;been&nbsp;changed&nbsp;to&nbsp;present&nbsp;time'</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Sorry,&nbsp;could&nbsp;not&nbsp;change&nbsp;modification&nbsp;time&nbsp;of&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -143,8 +143,8 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2428">
-    <p><strong>例2  <span class="function"><strong>touch()</strong></span> で <em><code class="parameter">time</code></em> パラメータを使用する例</strong></p>
+   <div class="example" id="example-2627">
+    <p><strong>例2 <span class="function"><strong>touch()</strong></span> で <code class="parameter">time</code> パラメータを使用する例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;作成時刻を、ここでは&nbsp;1&nbsp;時間前に設定します<br /></span><span style="color: #0000BB">$time&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()&nbsp;-&nbsp;</span><span style="color: #0000BB">3600</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;ファイルを作成します<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">touch</span><span style="color: #007700">(</span><span style="color: #DD0000">'some_file.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$time</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'おっと、何かがおかしいようです...'</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'ファイルの作成に成功しました'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -13,7 +13,7 @@
 </div><hr /><div id="function.empty" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">empty</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">empty</span> &mdash; <span class="dc-title">変数が空であるかどうかを検査する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">empty</span> &mdash; <span class="dc-title">変数が空であるかどうかを検査する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.empty-description">
@@ -27,7 +27,7 @@
    変数が空であるかどうかを検査します。
    変数が空であるとみなされるのは、変数が存在しない場合や
    変数の値が <strong><code>FALSE</code></strong> に等しい場合です。
-    <span class="function"><strong>empty()</strong></span> は、変数が存在しない場合でも警告を発しません。
+   <span class="function"><strong>empty()</strong></span> は、変数が存在しない場合でも警告を発しません。
   </p>
  </div>
 
@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">var</code></dt>
 
-     <span class="term"><em><code class="parameter">var</code></em></span>
      <dd>
 
       <p class="para">
@@ -46,7 +47,7 @@
       </p>
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
-        PHP 5.5 より前のバージョンでは、 <span class="function"><strong>empty()</strong></span> がサポートするのは変数だけです。
+        PHP 5.5 より前のバージョンでは、<span class="function"><strong>empty()</strong></span> がサポートするのは変数だけです。
         それ以外の値をチェックするとパースエラーになります。つまり、
         <strong class="command">empty(trim($name))</strong> は動作しません。かわりに
         <strong class="command">trim($name) == false</strong> を使います。
@@ -54,14 +55,13 @@
       </p></blockquote>
       <p class="para">
        変数が存在しなくても警告は発生しません。
-       つまり、 <span class="function"><strong>empty()</strong></span> は本質的に
+       つまり、<span class="function"><strong>empty()</strong></span> は本質的に
        <strong class="command">!isset($var) || $var == false</strong>
        と同じことを簡潔に記述しているだけです。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -70,7 +70,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.empty-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">var</code></em> が存在し、かつその値が空や0でなければ <strong><code>FALSE</code></strong> を返します。
+   <code class="parameter">var</code> が存在し、かつその値が空や0でなければ <strong><code>FALSE</code></strong> を返します。
    それ以外の場合は <strong><code>TRUE</code></strong> を返します。
   </p>
   <p class="para">
@@ -106,7 +106,7 @@
        <td>5.5.0</td>
        <td>
         <p class="para">
-          <span class="function"><strong>empty()</strong></span> が、変数だけではなく式にも対応するようになりました。
+         <span class="function"><strong>empty()</strong></span> が、変数だけではなく式にも対応するようになりました。
          variables.
         </p>
        </td>
@@ -121,15 +121,6 @@
        </td>
       </tr>
 
-      <tr>
-       <td>5.0.0</td>
-       <td>
-        <p class="para">
-         プロパティがないオブジェクトが空だとみなされないようになりました。
-        </p>
-       </td>
-      </tr>
-
      </tbody>
     
    </table>
@@ -140,9 +131,9 @@
  <div class="refsect1 examples" id="refsect1-function.empty-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5225">
+   <div class="example" id="example-5704">
     <p><strong>例1 
-     簡単な  <span class="function"><strong>empty()</strong></span> /  <span class="function"><a href="function.isset.html" class="function">isset()</a></span>
+     簡単な <span class="function"><strong>empty()</strong></span> / <span class="function"><a href="function.isset.html" class="function">isset()</a></span>
      の比較
     </strong></p>  
     <div class="example-contents">
@@ -154,11 +145,11 @@
 
    </div>
   </p>
-  <div class="example" id="example-5226">
-   <p><strong>例2 文字列のオフセットに対する  <span class="function"><strong>empty()</strong></span></strong></p>
+  <div class="example" id="example-5705">
+   <p><strong>例2 文字列のオフセットに対する <span class="function"><strong>empty()</strong></span></strong></p>
    <div class="example-contents"><p>
     PHP 5.4 以降では、文字列内でのオフセット指定を渡したときの
-     <span class="function"><strong>empty()</strong></span> の挙動が変わりました。
+    <span class="function"><strong>empty()</strong></span> の挙動が変わりました。
    </p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -199,7 +190,7 @@ bool(true)
 コールすることはできません。</span></p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    オブジェクトのアクセス不能なプロパティに対して  <span class="function"><strong>empty()</strong></span>
+    オブジェクトのアクセス不能なプロパティに対して <span class="function"><strong>empty()</strong></span>
     を使用した場合は、もしオーバーロードメソッド
     <a href="language.oop5.overloading.html#object.isset" class="link">__isset()</a>
     が宣言されていればそれをコールします。
@@ -211,13 +202,13 @@ bool(true)
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - 変数がセットされていること、そして NULL でないことを検査する</span></li>
+    <li class="member"><span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - 変数がセットされていること、そして NULL でないことを検査する</span></li>
     <li class="member"><a href="language.oop5.overloading.html#object.isset" class="link">__isset()</a></li>
-    <li class="member"> <span class="function"><a href="function.unset.html" class="function" rel="rdfs-seeAlso">unset()</a> - 指定した変数の割当を解除する</span></li>
-    <li class="member"> <span class="function"><a href="function.array-key-exists.html" class="function" rel="rdfs-seeAlso">array_key_exists()</a> - 指定したキーまたは添字が配列にあるかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.count.html" class="function" rel="rdfs-seeAlso">count()</a> - 変数に含まれるすべての要素、
+    <li class="member"><span class="function"><a href="function.unset.html" class="function" rel="rdfs-seeAlso">unset()</a> - 指定した変数の割当を解除する</span></li>
+    <li class="member"><span class="function"><a href="function.array-key-exists.html" class="function" rel="rdfs-seeAlso">array_key_exists()</a> - 指定したキーまたは添字が配列にあるかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.count.html" class="function" rel="rdfs-seeAlso">count()</a> - 変数に含まれるすべての要素、
   あるいはオブジェクトに含まれる何かの数を数える</span></li> 
-    <li class="member"> <span class="function"><a href="function.strlen.html" class="function" rel="rdfs-seeAlso">strlen()</a> - 文字列の長さを得る</span></li>
+    <li class="member"><span class="function"><a href="function.strlen.html" class="function" rel="rdfs-seeAlso">strlen()</a> - 文字列の長さを得る</span></li>
     <li class="member"><a href="types.comparisons.html" class="link">PHP 型の比較表</a></li>
    </ul>
   </p>

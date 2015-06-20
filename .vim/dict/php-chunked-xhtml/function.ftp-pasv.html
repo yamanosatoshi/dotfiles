@@ -25,13 +25,13 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>ftp_pasv()</strong></span> はパッシブモードをオンまたはオフにします。
+   <span class="function"><strong>ftp_pasv()</strong></span> はパッシブモードをオンまたはオフにします。
    パッシブモードでは、データ接続はサーバーではなくクライアントにより
    初期化されます。クライアントがファイアウォールの向こうにある場合に
    必要となるでしょう。
   </p>
   <p class="para">
-    <span class="function"><strong>ftp_pasv()</strong></span> をコールできるのは、
+   <span class="function"><strong>ftp_pasv()</strong></span> をコールできるのは、
    ログインに成功した後だけであることに注意しましょう。
    それ以外の場合は、この関数のコールは失敗します。
   </p>
@@ -42,9 +42,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">ftp_stream</code></dt>
 
-     <span class="term"><em><code class="parameter">ftp_stream</code></em></span>
      <dd>
 
       <p class="para">
@@ -52,11 +53,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">pasv</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">pasv</code></em></span>
      <dd>
 
       <p class="para">
@@ -64,8 +65,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -81,8 +81,8 @@
  <div class="refsect1 examples" id="refsect1-function.ftp-pasv-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4277">
-    <p><strong>例1  <span class="function"><strong>ftp_pasv()</strong></span> の例</strong></p>
+   <div class="example" id="example-4725">
+    <p><strong>例1 <span class="function"><strong>ftp_pasv()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'somefile.txt'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$remote_file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'readme.txt'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;接続を確立する<br /></span><span style="color: #0000BB">$conn_id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$ftp_server</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ユーザー名とパスワードでログインする<br /></span><span style="color: #0000BB">$login_result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_login</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_pass</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;パッシブモードをオンにする<br /></span><span style="color: #0000BB">ftp_pasv</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ファイルをアップロードする<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">ftp_put</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$remote_file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">FTP_ASCII</span><span style="color: #007700">))&nbsp;{<br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">"successfully&nbsp;uploaded&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">"There&nbsp;was&nbsp;a&nbsp;problem&nbsp;while&nbsp;uploading&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;接続を閉じる<br /></span><span style="color: #0000BB">ftp_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

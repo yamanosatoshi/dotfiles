@@ -6,7 +6,7 @@
 
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.connection-timeout.html">connection_timeout</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="function.connection-status.html">connection_status</a></div>
  <div class="next" style="text-align: right; float: right;"><a href="function.define.html">define</a></div>
  <div class="up"><a href="ref.misc.html">その他の関数</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
@@ -25,10 +25,10 @@
    )</div>
 
   <p class="simpara">
-   <em><code class="parameter">name</code></em> で指定した定数の値を返します。
+   <code class="parameter">name</code> で指定した定数の値を返します。
   </p>
   <p class="simpara">
-    <span class="function"><strong>constant()</strong></span> はある定数の値を取得する必要があるが、
+   <span class="function"><strong>constant()</strong></span> はある定数の値を取得する必要があるが、
    その名前が不明な場合に有用です。これは、定数名が変数に保存されているか、
    関数により返されるかの場合です。
   </p>
@@ -43,9 +43,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">name</code></dt>
 
-     <span class="term"><em><code class="parameter">name</code></em></span>
      <dd>
 
       <p class="para">
@@ -53,8 +54,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -81,8 +81,8 @@
  <div class="refsect1 examples" id="refsect1-function.constant-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3752">
-    <p><strong>例1  <span class="function"><strong>constant()</strong></span> の例</strong></p>
+   <div class="example" id="example-4206">
+    <p><strong>例1 <span class="function"><strong>constant()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />define</span><span style="color: #007700">(</span><span style="color: #DD0000">"MAXSIZE"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">MAXSIZE</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">constant</span><span style="color: #007700">(</span><span style="color: #DD0000">"MAXSIZE"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;ひとつ前の行と同じことです<br /><br /><br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">bar&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">test&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'foobar!'</span><span style="color: #007700">;<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">test&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'foobar!'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$const&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'test'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">constant</span><span style="color: #007700">(</span><span style="color: #DD0000">'bar::'</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$const</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;string(7)&nbsp;"foobar!"<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">constant</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo::'</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$const</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;string(7)&nbsp;"foobar!"<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -99,8 +99,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.define.html" class="function" rel="rdfs-seeAlso">define()</a> - 名前を指定して定数を定義する</span></li>
-    <li class="member"> <span class="function"><a href="function.defined.html" class="function" rel="rdfs-seeAlso">defined()</a> - 指定した名前の定数が存在するかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.define.html" class="function" rel="rdfs-seeAlso">define()</a> - 名前を指定して定数を定義する</span></li>
+    <li class="member"><span class="function"><a href="function.defined.html" class="function" rel="rdfs-seeAlso">defined()</a> - 指定した名前の定数が存在するかどうかを調べる</span></li>
     <li class="member"><a href="language.constants.html" class="link">定数</a>の節</li>
    </ul>
   </p>
@@ -108,7 +108,7 @@
 
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.connection-timeout.html">connection_timeout</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="function.connection-status.html">connection_status</a></div>
  <div class="next" style="text-align: right; float: right;"><a href="function.define.html">define</a></div>
  <div class="up"><a href="ref.misc.html">その他の関数</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>

@@ -25,10 +25,10 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_end_copy()</strong></span> は、 <span class="function"><a href="function.pg-put-line.html" class="function">pg_put_line()</a></span>
+   <span class="function"><strong>pg_end_copy()</strong></span> は、<span class="function"><a href="function.pg-put-line.html" class="function">pg_put_line()</a></span>
    によるコピー操作の後で PostgreSQL フロントエンド（通常は Web サーバー
    プロセス）と PostgreSQL サーバーを同期させます。
-    <span class="function"><strong>pg_end_copy()</strong></span> を実行しなければ、PostgreSQL サーバーが
+   <span class="function"><strong>pg_end_copy()</strong></span> を実行しなければ、PostgreSQL サーバーが
    フロントエンドとの同期を失ってしまい、エラーが発生します。
   </p>
  </div>
@@ -39,21 +39,21 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
-       PostgreSQL データベース接続リソース。<em><code class="parameter">connection</code></em>
+       PostgreSQL データベース接続リソース。<code class="parameter">connection</code>
        が指定されていない場合はデフォルトの接続が使用されます。
-       デフォルトの接続は、直近の  <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
-       あるいは  <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
+       デフォルトの接続は、直近の <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
+       あるいは <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -71,8 +71,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-end-copy-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2049">
-    <p><strong>例1  <span class="function"><strong>pg_end_copy()</strong></span> の例</strong></p>
+   <div class="example" id="example-2245">
+    <p><strong>例1 <span class="function"><strong>pg_end_copy()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php&nbsp;<br />&nbsp;&nbsp;$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_pconnect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=foo"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"create&nbsp;table&nbsp;bar&nbsp;(a&nbsp;int4,&nbsp;b&nbsp;char(16),&nbsp;d&nbsp;float8)"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"copy&nbsp;bar&nbsp;from&nbsp;stdin"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_put_line</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"3\thello&nbsp;world\t4.5\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_put_line</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"4\tgoodbye&nbsp;world\t7.11\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_put_line</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\\.\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_end_copy</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -89,7 +89,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-put-line.html" class="function" rel="rdfs-seeAlso">pg_put_line()</a> - NULL で終わる文字列を PostgreSQL バックエンドに送信する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-put-line.html" class="function" rel="rdfs-seeAlso">pg_put_line()</a> - NULL で終わる文字列を PostgreSQL バックエンドに送信する</span></li>
    </ul>
   </p>
  </div>

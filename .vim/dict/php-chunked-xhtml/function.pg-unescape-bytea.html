@@ -27,7 +27,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_unescape_bytea()</strong></span> は、bytea 型のデータ文字列を
+   <span class="function"><strong>pg_unescape_bytea()</strong></span> は、bytea 型のデータ文字列を
    アンエスケープし、エスケープしていない文字列、 場合によってはバイナリデータを返します。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -55,9 +55,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">data</code></dt>
 
-     <span class="term"><em><code class="parameter">data</code></em></span>
      <dd>
 
       <p class="para">
@@ -66,8 +67,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -85,8 +85,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-unescape-bytea-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2117">
-    <p><strong>例1  <span class="function"><strong>pg_unescape_bytea()</strong></span> の例</strong></p>
+   <div class="example" id="example-2314">
+    <p><strong>例1 <span class="function"><strong>pg_unescape_bytea()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;データベースに接続する<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'dbname=foo'</span><span style="color: #007700">);<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;bytea&nbsp;データを取得する<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;data&nbsp;FROM&nbsp;gallery&nbsp;WHERE&nbsp;name='Pine&nbsp;trees'"</span><span style="color: #007700">);&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$raw&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_fetch_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'data'</span><span style="color: #007700">);<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;バイナリに変換し、ブラウザに送信する<br />&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type:&nbsp;image/jpeg'</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">pg_unescape_bytea</span><span style="color: #007700">(</span><span style="color: #0000BB">$raw</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -132,8 +132,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-escape-bytea.html" class="function" rel="rdfs-seeAlso">pg_escape_bytea()</a> - bytea フィールドに挿入するために文字列をエスケープする</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-escape-string.html" class="function" rel="rdfs-seeAlso">pg_escape_string()</a> - クエリに使う文字列をエスケープする</span></li>
+    <li class="member"><span class="function"><a href="function.pg-escape-bytea.html" class="function" rel="rdfs-seeAlso">pg_escape_bytea()</a> - bytea フィールドに挿入するために文字列をエスケープする</span></li>
+    <li class="member"><span class="function"><a href="function.pg-escape-string.html" class="function" rel="rdfs-seeAlso">pg_escape_string()</a> - クエリに使う文字列をエスケープする</span></li>
    </ul>
   </p>
  </div>

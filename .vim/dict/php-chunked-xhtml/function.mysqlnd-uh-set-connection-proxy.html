@@ -52,9 +52,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">connection_proxy</code></dt>
 
-    <span class="term"><em><code class="parameter">connection_proxy</code></em></span>
     <dd>
 
      <p class="para">
@@ -62,11 +63,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">mysqli_connection</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">mysqli_connection</code></em></span>
     <dd>
 
      <p class="para">
@@ -75,8 +76,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -94,8 +94,8 @@
 <div class="refsect1 examples" id="refsect1-function.mysqlnd-uh-set-connection-proxy-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1927">
-    <p><strong>例1  <span class="function"><strong>mysqlnd_uh_set_connection_proxy()</strong></span> example</strong></p>
+   <div class="example" id="example-2119">
+    <p><strong>例1 <span class="function"><strong>mysqlnd_uh_set_connection_proxy()</strong></span> example</strong></p>
         <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"root"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;'No&nbsp;proxy&nbsp;installed,&nbsp;yet'"</span><span style="color: #007700">);<br /><br />class&nbsp;</span><span style="color: #0000BB">proxy&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">MysqlndUhConnection&nbsp;</span><span style="color: #007700">{<br />&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$query</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s(%s)\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s&nbsp;returns&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$ret</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$ret</span><span style="color: #007700">;<br />&nbsp;}<br />}<br /></span><span style="color: #0000BB">mysqlnd_uh_set_connection_proxy</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">proxy</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;'mysqlnd&nbsp;rocks!'"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$mysql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"root"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;'Ahoy&nbsp;Andrey!'"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysql</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$pdo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">"mysql:host=localhost;dbname=test"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"root"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;'Moin&nbsp;Johannes!'"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -133,7 +133,7 @@ proxy::query returns true
   <p class="para">
    <ul class="simplelist">
     <li class="member">
-      <span class="function"><a href="function.mysqlnd-uh-set-statement-proxy.html" class="function" rel="rdfs-seeAlso">mysqlnd_uh_set_statement_proxy()</a> - Installs a proxy for mysqlnd statements</span>
+     <span class="function"><a href="function.mysqlnd-uh-set-statement-proxy.html" class="function" rel="rdfs-seeAlso">mysqlnd_uh_set_statement_proxy()</a> - Installs a proxy for mysqlnd statements</span>
     </li>
     <li class="member">
      <em><a href="mysqlnd-uh.configuration.html#ini.mysqlnd-uh.enable" class="link">mysqlnd_uh.enable</a></em>

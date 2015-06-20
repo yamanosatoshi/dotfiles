@@ -27,14 +27,14 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    The  <span class="function"><strong>cubrid_move_cursor()</strong></span> function is used to move the
-    current cursor location of <em><code class="parameter">req_identifier</code></em> by the
-    value set in the <em><code class="parameter">offset</code></em> argument, to the direction
-    set in the <em><code class="parameter">origin</code></em> argument. To set the
-    <em><code class="parameter">origin</code></em> argument, you can use CUBRID_CURSOR_FIRST
+    The <span class="function"><strong>cubrid_move_cursor()</strong></span> function is used to move the
+    current cursor location of <code class="parameter">req_identifier</code> by the
+    value set in the <code class="parameter">offset</code> argument, to the direction
+    set in the <code class="parameter">origin</code> argument. To set the
+    <code class="parameter">origin</code> argument, you can use CUBRID_CURSOR_FIRST
     for the first part of the result, CUBRID_CURSOR_CURRENT for the current
     location of the result, or CUBRID_CURSOR_LAST for the last part of the
-    result.  If <em><code class="parameter">origin</code></em> argument is not explicitly
+    result.  If <code class="parameter">origin</code> argument is not explicitly
     designated, then the function uses CUBRID_CURSOR_CURRENT as its default
     value.
   </p>
@@ -52,30 +52,30 @@
   <p class="para">
   <dl>
 
-    <dt>
+    
+  <dt>
+<code class="parameter">req_identifier</code></dt>
 
-  <span class="term"><em><code class="parameter">req_identifier</code></em></span>
   <dd>
 <p class="para">Request identifier.</p></dd>
 
-   </dt>
+   
+   
+  <dt>
+<code class="parameter">offset</code></dt>
 
-   <dt>
-
-  <span class="term"><em><code class="parameter">offset</code></em></span>
   <dd>
 <p class="para">Number of units you want to move the cursor.</p></dd>
 
-   </dt>
-
+   
+  
   <dt>
+<code class="parameter">origin</code></dt>
 
-  <span class="term"><em><code class="parameter">origin</code></em></span>
   <dd>
 <p class="para">Location where you want to move the cursor from CUBRID_CURSOR_FIRST, CUBRID_CURSOR_CURRENT, CUBRID_CURSOR_LAST.</p></dd>
 
-   </dt>
-
+   
   </dl>
 
   </p>
@@ -95,8 +95,8 @@
 
  <div class="refsect1 examples" id="refsect1-function.cubrid-move-cursor-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1042">
-   <p><strong>例1  <span class="function"><strong>cubrid_move_cursor()</strong></span> example</strong></p>
+  <div class="example" id="example-1100">
+   <p><strong>例1 <span class="function"><strong>cubrid_move_cursor()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"127.0.0.1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dba"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;code"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_move_cursor</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_CURSOR_LAST</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_fetch_row</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_move_cursor</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_CURSOR_FIRST</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_fetch_row</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_move_cursor</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_CURSOR_CURRENT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_fetch_row</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_close_request</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -135,7 +135,7 @@ array(2) {
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="function.cubrid-execute.html" class="function" rel="rdfs-seeAlso">cubrid_execute()</a> - Execute a prepared SQL statement</span></li>   
+   <li class="member"><span class="function"><a href="function.cubrid-execute.html" class="function" rel="rdfs-seeAlso">cubrid_execute()</a> - Execute a prepared SQL statement</span></li>   
    </ul>
   </p>
   </div>

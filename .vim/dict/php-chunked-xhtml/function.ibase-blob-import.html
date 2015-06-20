@@ -42,9 +42,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">link_identifier</code></dt>
 
-     <span class="term"><em><code class="parameter">link_identifier</code></em></span>
      <dd>
 
       <p class="para">
@@ -53,20 +54,19 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">file_handle</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">file_handle</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> が返すファイルハンドル。
+       <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> が返すファイルハンドル。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -84,8 +84,8 @@
  <div class="refsect1 examples" id="refsect1-function.ibase-blob-import-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1102">
-    <p><strong>例1  <span class="function"><strong>ibase_blob_import()</strong></span> の例</strong></p>
+   <div class="example" id="example-1160">
+    <p><strong>例1 <span class="function"><strong>ibase_blob_import()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$dbh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$host</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/tmp/bar'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$fd&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$fd</span><span style="color: #007700">)&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$blob&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_blob_import</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$fd</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fd</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">is_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$blob</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;インポートに失敗しました<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;foo&nbsp;(name,&nbsp;data)&nbsp;VALUES&nbsp;('</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">',&nbsp;?)"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$prepared&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">ibase_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$prepared</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$blob</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;レコードの挿入に失敗しました<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;データファイルをオープンできませんでした<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -102,10 +102,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ibase-blob-add.html" class="function" rel="rdfs-seeAlso">ibase_blob_add()</a> - 生成された blob にデータを追加する</span></li>
-    <li class="member"> <span class="function"><a href="function.ibase-blob-cancel.html" class="function" rel="rdfs-seeAlso">ibase_blob_cancel()</a> - blob の生成を取り消す</span></li>
-    <li class="member"> <span class="function"><a href="function.ibase-blob-close.html" class="function" rel="rdfs-seeAlso">ibase_blob_close()</a> - blob を閉じる</span></li>
-    <li class="member"> <span class="function"><a href="function.ibase-blob-create.html" class="function" rel="rdfs-seeAlso">ibase_blob_create()</a> - データを追加するために blob を生成する</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-blob-add.html" class="function" rel="rdfs-seeAlso">ibase_blob_add()</a> - 生成された blob にデータを追加する</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-blob-cancel.html" class="function" rel="rdfs-seeAlso">ibase_blob_cancel()</a> - blob の生成を取り消す</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-blob-close.html" class="function" rel="rdfs-seeAlso">ibase_blob_close()</a> - blob を閉じる</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-blob-create.html" class="function" rel="rdfs-seeAlso">ibase_blob_create()</a> - データを追加するために blob を生成する</span></li>
    </ul>
   </p>
  </div>

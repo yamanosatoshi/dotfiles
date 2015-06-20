@@ -20,15 +20,16 @@
  <div id="function.mysql-escape-string-refsynopsisdiv">
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
-この拡張モジュールは PHP 5.5.0 で非推奨になりました。将来のバージョンで削除される予定です。
+この関数は PHP 4.3.0 で非推奨になりました。将来のバージョンで
+<a href="book.mysql.html" class="link">MySQL 拡張モジュール</a> 全体とあわせて削除される予定です。
 <a href="book.mysqli.html" class="link">MySQLi</a> あるいは
 <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a> を使うべきです。詳細な情報は
 <a href="mysqlinfo.api.choosing.html" class="link">MySQL: API の選択</a> や
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysqli-escape-string.html" class="function">mysqli_escape_string()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="pdo.quote.html" class="methodname">PDO::quote()</a></span></li>
+    <li class="member"><span class="function"><a href="function.mysqli-escape-string.html" class="function">mysqli_escape_string()</a></span></li>
+    <li class="member"><span class="methodname"><a href="pdo.quote.html" class="methodname">PDO::quote()</a></span></li>
    </ul>
   </div>
  </div>
@@ -41,20 +42,17 @@
    )</div>
 
   <p class="para rdfs-comment">
-   この関数は、 <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> で指定可能なように
-   <em><code class="parameter">unescaped_string</code></em> をエスケープします。
+   この関数は、<span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> で指定可能なように
+   <code class="parameter">unescaped_string</code> をエスケープします。
    この関数は非推奨です。
   </p>
   <p class="para">
-   この関数は  <span class="function"><a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span> とほぼ同じです。ただ
-    <span class="function"><a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span> はコネクションハンドラを用い、
+   この関数は <span class="function"><a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span> とほぼ同じです。ただ
+   <span class="function"><a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span> はコネクションハンドラを用い、
    カレントの文字セットを考慮したエスケープを行うという点が違います。
-    <span class="function"><strong>mysql_escape_string()</strong></span> はコネクションに関する引数を
+   <span class="function"><strong>mysql_escape_string()</strong></span> はコネクションに関する引数を
    持たず、カレントの文字セット設定を考慮しません。
   </p>
-  <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は PHP 5.3.0 で
-<em class="emphasis">非推奨</em>となりました。
-この機能を使用しないことを強く推奨します。</p></div>
  </div>
 
 
@@ -63,9 +61,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">unescaped_string</code></dt>
 
-     <span class="term"><em><code class="parameter">unescaped_string</code></em></span>
      <dd>
 
       <p class="para">
@@ -73,8 +72,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -114,7 +112,7 @@
        <td>4.3.0</td>
        <td>
         この関数は非推奨となりました。利用しないでください。代わりに
-         <span class="function"><a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span> を利用してください。
+        <span class="function"><a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span> を利用してください。
        </td>
       </tr>
 
@@ -129,8 +127,8 @@
  <div class="refsect1 examples" id="refsect1-function.mysql-escape-string-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1575">
-    <p><strong>例1  <span class="function"><strong>mysql_escape_string()</strong></span> の例</strong></p>
+   <div class="example" id="example-1754">
+    <p><strong>例1 <span class="function"><strong>mysql_escape_string()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$item&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Zak's&nbsp;Laptop"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$escaped_item&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$item</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Escaped&nbsp;string:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$escaped_item</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -153,7 +151,7 @@ Escaped string: Zak\&#039;s Laptop
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>mysql_escape_string()</strong></span> は、
+    <span class="function"><strong>mysql_escape_string()</strong></span> は、
     <em>%</em> および <em>_</em> をエスケープしません。
    </p>
   </p></blockquote>
@@ -164,8 +162,8 @@ Escaped string: Zak\&#039;s Laptop
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-real-escape-string.html" class="function" rel="rdfs-seeAlso">mysql_real_escape_string()</a> - SQL 文中で用いる文字列の特殊文字をエスケープする</span></li>
-    <li class="member"> <span class="function"><a href="function.addslashes.html" class="function" rel="rdfs-seeAlso">addslashes()</a> - 文字列をスラッシュでクォートする</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-real-escape-string.html" class="function" rel="rdfs-seeAlso">mysql_real_escape_string()</a> - SQL 文中で用いる文字列の特殊文字をエスケープする</span></li>
+    <li class="member"><span class="function"><a href="function.addslashes.html" class="function" rel="rdfs-seeAlso">addslashes()</a> - 文字列をスラッシュでクォートする</span></li>
     <li class="member"><a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a> ディレクティブ</li>
    </ul>
   </p>

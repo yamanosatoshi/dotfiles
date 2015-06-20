@@ -29,25 +29,25 @@
 
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>db2_execute()</strong></span> は、
-    <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> で準備された SQL 文を実行します。
+   <span class="function"><strong>db2_execute()</strong></span> は、
+   <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> で準備された SQL 文を実行します。
   </p>
   <p class="para">
    SQL 文が結果セットを返す場合、例えば SELECT 文であったり
    結果セットを返すストアドプロシージャの CALL であったりした場合には、
    <em>stmt</em> から結果の行を配列として取得することができます。
-   取得には  <span class="function"><a href="function.db2-fetch-assoc.html" class="function">db2_fetch_assoc()</a></span>、
-    <span class="function"><a href="function.db2-fetch-both.html" class="function">db2_fetch_both()</a></span> あるいは
-    <span class="function"><a href="function.db2-fetch-array.html" class="function">db2_fetch_array()</a></span> を使用します。
-   あるいは、 <span class="function"><a href="function.db2-fetch-row.html" class="function">db2_fetch_row()</a></span> を使用して
+   取得には <span class="function"><a href="function.db2-fetch-assoc.html" class="function">db2_fetch_assoc()</a></span>、
+   <span class="function"><a href="function.db2-fetch-both.html" class="function">db2_fetch_both()</a></span> あるいは
+   <span class="function"><a href="function.db2-fetch-array.html" class="function">db2_fetch_array()</a></span> を使用します。
+   あるいは、<span class="function"><a href="function.db2-fetch-row.html" class="function">db2_fetch_row()</a></span> を使用して
    結果セットポインタを次の行に移動させ、
-    <span class="function"><a href="function.db2-result.html" class="function">db2_result()</a></span> で行の内容をその都度取得することも可能です。
+   <span class="function"><a href="function.db2-result.html" class="function">db2_result()</a></span> で行の内容をその都度取得することも可能です。
   </p>
   <p class="para">
-    <span class="function"><a href="function.db2-exec.html" class="function">db2_exec()</a></span> の代わりに
-    <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> および
-    <span class="function"><strong>db2_execute()</strong></span> を使用することの利点については、
-    <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> での簡単な説明を参照ください。
+   <span class="function"><a href="function.db2-exec.html" class="function">db2_exec()</a></span> の代わりに
+   <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> および
+   <span class="function"><strong>db2_execute()</strong></span> を使用することの利点については、
+   <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> での簡単な説明を参照ください。
   </p>
 
  </div>
@@ -57,21 +57,22 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">stmt</code></dt>
 
-     <span class="term"><em><code class="parameter">stmt</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> が返すプリペアドステートメント。
+       <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> が返すプリペアドステートメント。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">parameters</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">parameters</code></em></span>
      <dd>
 
       <p class="para">
@@ -80,8 +81,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -98,12 +98,12 @@
  <div class="refsect1 examples" id="refsect1-function.db2-execute-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1155">
+   <div class="example" id="example-1213">
     <p><strong>例1 パラメータマーカを使用した SQL 文の準備と実行</strong></p>
     <div class="example-contents"><p>
      以下の例では、4 つのパラメータマーカを含む INSERT 文を準備し、
      入力値の配列を含む配列を順に処理しながら
-      <span class="function"><strong>db2_execute()</strong></span> に値を渡します。
+     <span class="function"><strong>db2_execute()</strong></span> に値を渡します。
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -119,13 +119,13 @@
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-1156">
+   <div class="example" id="example-1214">
     <p><strong>例2 OUT パラメータを使用したストアドプロシージャのコール</strong></p>
     <div class="example-contents"><p>
      以下の例では、まずひとつの OUT パラメータをパラメータマーカで受け取る
-     CALL 文を準備し、 <span class="function"><a href="function.db2-bind-param.html" class="function">db2_bind_param()</a></span> を使用して
+     CALL 文を準備し、<span class="function"><a href="function.db2-bind-param.html" class="function">db2_bind_param()</a></span> を使用して
      PHP 変数 <em>$my_pets</em> をそのパラメータにバインドし、
-      <span class="function"><strong>db2_execute()</strong></span> で CALL 文を実行します。
+     <span class="function"><strong>db2_execute()</strong></span> で CALL 文を実行します。
      ストアドプロシージャの CALL 終了後は、<em>$num_pets</em>
      にはストアドプロシージャの OUT パラメータに返された値が反映されています。
     </p></div>
@@ -143,7 +143,7 @@
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-1157">
+   <div class="example" id="example-1215">
     <p><strong>例3 XML データを SQL の結果セットとして返す</strong></p>
     <div class="example-contents"><p>
      次の例は、XML カラムに格納されたデータの扱い方を、SAMPLE
@@ -166,7 +166,7 @@
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-1158">
+   <div class="example" id="example-1216">
     <p><strong>例4 XML データの &quot;JOIN&quot;</strong></p>
     <div class="example-contents"><p>
      次の例は、SAMPLE データベースの 2 つの異なる
@@ -189,7 +189,7 @@
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-1159">
+   <div class="example" id="example-1217">
     <p><strong>例5 大きな XML ドキュメントの一部を SQL データとして返す</strong></p>
     <div class="example-contents"><p>
      次の例は、SAMPLE データベースのドキュメント PRODUCT.DESCRIPTION
@@ -232,14 +232,14 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.db2-exec.html" class="function" rel="rdfs-seeAlso">db2_exec()</a> - SQL 文を直接実行する</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-fetch-array.html" class="function" rel="rdfs-seeAlso">db2_fetch_array()</a> - 結果セット内の行を表す、カラム位置をインデックスとする配列を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-fetch-assoc.html" class="function" rel="rdfs-seeAlso">db2_fetch_assoc()</a> - 結果セット内の行を表す、カラム名をインデックスとする配列を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-fetch-both.html" class="function" rel="rdfs-seeAlso">db2_fetch_both()</a> - 結果セット内の行を表す、
+    <li class="member"><span class="function"><a href="function.db2-exec.html" class="function" rel="rdfs-seeAlso">db2_exec()</a> - SQL 文を直接実行する</span></li>
+    <li class="member"><span class="function"><a href="function.db2-fetch-array.html" class="function" rel="rdfs-seeAlso">db2_fetch_array()</a> - 結果セット内の行を表す、カラム位置をインデックスとする配列を返す</span></li>
+    <li class="member"><span class="function"><a href="function.db2-fetch-assoc.html" class="function" rel="rdfs-seeAlso">db2_fetch_assoc()</a> - 結果セット内の行を表す、カラム名をインデックスとする配列を返す</span></li>
+    <li class="member"><span class="function"><a href="function.db2-fetch-both.html" class="function" rel="rdfs-seeAlso">db2_fetch_both()</a> - 結果セット内の行を表す、
    カラム位置およびカラム名の両方をインデックスとする配列を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-fetch-row.html" class="function" rel="rdfs-seeAlso">db2_fetch_row()</a> - 結果セットポインタを次の行あるいは要求された行に設定する</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-prepare.html" class="function" rel="rdfs-seeAlso">db2_prepare()</a> - 実行する SQL 文を準備する</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-result.html" class="function" rel="rdfs-seeAlso">db2_result()</a> - 結果セットの行からひとつのカラムを返す</span></li>
+    <li class="member"><span class="function"><a href="function.db2-fetch-row.html" class="function" rel="rdfs-seeAlso">db2_fetch_row()</a> - 結果セットポインタを次の行あるいは要求された行に設定する</span></li>
+    <li class="member"><span class="function"><a href="function.db2-prepare.html" class="function" rel="rdfs-seeAlso">db2_prepare()</a> - 実行する SQL 文を準備する</span></li>
+    <li class="member"><span class="function"><a href="function.db2-result.html" class="function" rel="rdfs-seeAlso">db2_result()</a> - 結果セットの行からひとつのカラムを返す</span></li>
    </ul>
   </p>
  </div>

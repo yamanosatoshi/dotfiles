@@ -13,7 +13,7 @@
 </div><hr /><div id="function.file-get-contents" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">file_get_contents</h1> 
-  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">file_get_contents</span> &mdash; <span class="dc-title">ファイルの内容を全て文字列に読み込む</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">file_get_contents</span> &mdash; <span class="dc-title">ファイルの内容を全て文字列に読み込む</span></p>
 
  </div>
 
@@ -29,21 +29,21 @@
   ]]]] )</div>
 
   <p class="para rdfs-comment"> 
-   この関数は  <span class="function"><a href="function.file.html" class="function">file()</a></span> と似ていますが、
-   <em><code class="parameter">offset</code></em> で指定した場所から開始し
-   <em><code class="parameter">maxlen</code></em> バイト分だけ
+   この関数は <span class="function"><a href="function.file.html" class="function">file()</a></span> と似ていますが、
+   <code class="parameter">offset</code> で指定した場所から開始し
+   <code class="parameter">maxlen</code> バイト分だけ
    ファイルの内容を文字列に読み込むという点が異なります。
-   失敗した場合、 <span class="function"><strong>file_get_contents()</strong></span> は <strong><code>FALSE</code></strong> を返します。
+   失敗した場合、<span class="function"><strong>file_get_contents()</strong></span> は <strong><code>FALSE</code></strong> を返します。
   </p>
   <p class="para">
-    <span class="function"><strong>file_get_contents()</strong></span>はファイルの内容を文字列に読み込む
+   <span class="function"><strong>file_get_contents()</strong></span>はファイルの内容を文字列に読み込む
    方法として好ましいものです。もしOSがサポートしていれば
    パフォーマンス向上のためにメモリマッピング技術が使用されます。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     空白のような特殊な文字を有する URI をオープンする場合には、
-     <span class="function"><a href="function.urlencode.html" class="function">urlencode()</a></span> でその URI をエンコードする必要があります。
+    <span class="function"><a href="function.urlencode.html" class="function">urlencode()</a></span> でその URI をエンコードする必要があります。
    </p>
   </p></blockquote>
  </div>
@@ -54,9 +54,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -64,11 +65,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">use_include_path</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">use_include_path</code></em></span>
      <dd>
 
       <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -78,45 +79,44 @@
         から探すことができます。
        </p>
       </p></blockquote>
-      
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">context</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">context</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span> で作成したコンテキストリソース。
+       <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span> で作成したコンテキストリソース。
        独自のコンテキストを使用する必要がない場合は、このパラメータに
        <strong><code>NULL</code></strong> を指定します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">offset</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">offset</code></em></span>
      <dd>
 
       <p class="para">
        元のストリーム上で、読み込みを開始するオフセット位置。
       </p>
       <p class="para">
-       リモートファイルに対するシーク (<em><code class="parameter">offset</code></em> 指定) はサポートしていません。
+       リモートファイルに対するシーク (<code class="parameter">offset</code> 指定) はサポートしていません。
        オフセットが小さい場合はリモートファイルでのシークがうまくいくこともありますが、
        これはバッファリングされたストリーム上で動作しているだけのことです。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">maxlen</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">maxlen</code></em></span>
      <dd>
 
       <p class="para">
@@ -126,8 +126,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -151,8 +150,8 @@
  <div class="refsect1 errors" id="refsect1-function.file-get-contents-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
-   <em><code class="parameter">filename</code></em> が見つからない場合、<em><code class="parameter">maxlength</code></em>
-   がゼロより小さい場合、あるいはストリーム内での指定した <em><code class="parameter">offset</code></em> へのシークが失敗した場合に
+   <code class="parameter">filename</code> が見つからない場合、<code class="parameter">maxlength</code>
+   がゼロより小さい場合、あるいはストリーム内での指定した <code class="parameter">offset</code> へのシークが失敗した場合に
    <strong><code>E_WARNING</code></strong> レベルのエラーが発生します。
   </p>
  </div>
@@ -161,7 +160,7 @@
  <div class="refsect1 examples" id="refsect1-function.file-get-contents-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2356">
+   <div class="example" id="example-2555">
     <p><strong>例1 とあるウェブサイトのホームページのソースの取得と出力</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -171,7 +170,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-2357">
+   <div class="example" id="example-2556">
     <p><strong>例2 include_path の検索</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -181,7 +180,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-2358">
+   <div class="example" id="example-2557">
     <p><strong>例3 ファイルの一部の読み込み</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -198,7 +197,7 @@ string(14) &quot;lle Bjori Ro&quot;
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-2359">
+   <div class="example" id="example-2558">
     <p><strong>例4 ストリームコンテキストの使用</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -226,19 +225,11 @@ string(14) &quot;lle Bjori Ro&quot;
      </thead>
 
      <tbody class="tbody">
-      
       <tr>
        <td>5.1.0</td>
        <td>
-        <em><code class="parameter">offset</code></em> と
-        <em><code class="parameter">maxlen</code></em> パラメータが追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.0.0</td>
-       <td>
-        コンテキストサポートが追加されました。
+        <code class="parameter">offset</code> と
+        <code class="parameter">maxlen</code> パラメータが追加されました。
        </td>
       </tr>
 
@@ -256,16 +247,16 @@ string(14) &quot;lle Bjori Ro&quot;
 </span></p></blockquote>
   <div class="tip"><strong class="tip">ヒント</strong><p class="simpara"><a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">fopen wrappers</a> が有効の場合、この関数のファイル名として
 URL を使用することができます。ファイル名の指定方法に関する詳細は
- <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を参照ください。
+<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を参照ください。
 <a href="wrappers.html" class="xref">サポートするプロトコル/ラッパー</a> には、さまざまなラッパーの機能やその使用法、
 提供される定義済み変数などの情報がまとめられています。</p></div>
   <div class="warning"><strong class="warning">警告</strong><p class="para">IIS のような、いくつかの標準に
 対応してない Web サーバーは、PHP に警告を発生させるような手順でデータを送信します。
 このようなサーバーを使用する場合は、<a href="errorfunc.configuration.html#ini.error-reporting" class="link">
 error_reporting</a> を警告を発生しないレベルまで小さくする必要があります。
-PHP 4.3.7 以降では、<em>https://</em> ラッパーでストリームをオープンする際に
+PHP では、<em>https://</em> ラッパーでストリームをオープンする際に
 バグがある IIS サーバーソフトウエアを検出することができ、この警告を抑制することができます。
-あなたが <em>ssl://</em> ソケットを作成するために   <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> を使用している場合、
+あなたが <em>ssl://</em> ソケットを作成するために  <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> を使用している場合、
 自らこの警告を検出し、抑制する必要があります。</p></div>
  </div>
 
@@ -274,13 +265,13 @@ PHP 4.3.7 以降では、<em>https://</em> ラッパーでストリームをオ�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.file.html" class="function" rel="rdfs-seeAlso">file()</a> - ファイル全体を読み込んで配列に格納する</span></li>
-    <li class="member"> <span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - ファイルポインタから 1 行取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - バイナリセーフなファイルの読み込み</span></li>
-    <li class="member"> <span class="function"><a href="function.readfile.html" class="function" rel="rdfs-seeAlso">readfile()</a> - ファイルを出力する</span></li>
-    <li class="member"> <span class="function"><a href="function.file-put-contents.html" class="function" rel="rdfs-seeAlso">file_put_contents()</a> - 文字列をファイルに書き込む</span></li>
-    <li class="member"> <span class="function"><a href="function.stream-get-contents.html" class="function" rel="rdfs-seeAlso">stream_get_contents()</a> - 残りのストリームを文字列に読み込む</span></li>
-    <li class="member"> <span class="function"><a href="function.stream-context-create.html" class="function" rel="rdfs-seeAlso">stream_context_create()</a> - ストリームコンテキストを作成する</span></li>
+    <li class="member"><span class="function"><a href="function.file.html" class="function" rel="rdfs-seeAlso">file()</a> - ファイル全体を読み込んで配列に格納する</span></li>
+    <li class="member"><span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - ファイルポインタから 1 行取得する</span></li>
+    <li class="member"><span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - バイナリセーフなファイルの読み込み</span></li>
+    <li class="member"><span class="function"><a href="function.readfile.html" class="function" rel="rdfs-seeAlso">readfile()</a> - ファイルを出力する</span></li>
+    <li class="member"><span class="function"><a href="function.file-put-contents.html" class="function" rel="rdfs-seeAlso">file_put_contents()</a> - 文字列をファイルに書き込む</span></li>
+    <li class="member"><span class="function"><a href="function.stream-get-contents.html" class="function" rel="rdfs-seeAlso">stream_get_contents()</a> - 残りのストリームを文字列に読み込む</span></li>
+    <li class="member"><span class="function"><a href="function.stream-context-create.html" class="function" rel="rdfs-seeAlso">stream_context_create()</a> - ストリームコンテキストを作成する</span></li>
     <li class="member"><a href="reserved.variables.httpresponseheader.html" class="link">$http_response_header</a></li>
    </ul>
   </p>

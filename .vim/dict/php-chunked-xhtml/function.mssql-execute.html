@@ -36,21 +36,22 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">stmt</code></dt>
 
-     <span class="term"><em><code class="parameter">stmt</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.mssql-init.html" class="function">mssql_init()</a></span> で取得したステートメントハンドル.
+       <span class="function"><a href="function.mssql-init.html" class="function">mssql_init()</a></span> で取得したステートメントハンドル.
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">skip_results</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">skip_results</code></em></span>
      <dd>
 
       <p class="para">
@@ -58,8 +59,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -69,8 +69,8 @@
  <div class="refsect1 examples" id="refsect1-function.mssql-execute-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1523">
-    <p><strong>例1  <span class="function"><strong>mssql_execute()</strong></span> の例</strong></p>
+   <div class="example" id="example-1702">
+    <p><strong>例1 <span class="function"><strong>mssql_execute()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;新しいステートメントを作成します<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_init</span><span style="color: #007700">(</span><span style="color: #DD0000">'NewBlogEntry'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;データ文字列<br /></span><span style="color: #0000BB">$title&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Test&nbsp;of&nbsp;blogging&nbsp;system'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$content&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'If&nbsp;you&nbsp;can&nbsp;read&nbsp;this,&nbsp;then&nbsp;the&nbsp;new&nbsp;system&nbsp;is&nbsp;compatible&nbsp;with&nbsp;MSSQL'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;値をバインドします<br /></span><span style="color: #0000BB">mssql_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@author'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Felipe&nbsp;Pena'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">SQLVARCHAR</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">60</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mssql_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@date'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'08/10/2008'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">SQLVARCHAR</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mssql_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@title'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$title</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">SQLVARCHAR</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">60</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mssql_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@content'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$content</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">SQLTEXT</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ステートメントを実行します<br /></span><span style="color: #0000BB">mssql_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;そして、次のように開放します<br /></span><span style="color: #0000BB">mssql_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -88,9 +88,9 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     ストアドプロシージャが返すパラメータや返り値は、ストアドプロシージャが
-    複数の結果セットを返す場合を除いて  <span class="function"><strong>mssql_execute()</strong></span>
+    複数の結果セットを返す場合を除いて <span class="function"><strong>mssql_execute()</strong></span>
     のコール後に使用可能となります。複数の結果セットを返す場合は
-     <span class="function"><a href="function.mssql-next-result.html" class="function">mssql_next_result()</a></span> を使用して結果に移動します。
+    <span class="function"><a href="function.mssql-next-result.html" class="function">mssql_next_result()</a></span> を使用して結果に移動します。
     最後の結果セットが処理されてはじめてパラメータや返り値が使用可能と
     なります。
    </p>
@@ -102,9 +102,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mssql-bind.html" class="function" rel="rdfs-seeAlso">mssql_bind()</a> - ストアドプロシージャまたはリモートストアドプロシージャへパラメータを追加する</span></li>
-    <li class="member"> <span class="function"><a href="function.mssql-free-statement.html" class="function" rel="rdfs-seeAlso">mssql_free_statement()</a> - ステートメントのメモリを開放する</span></li>
-    <li class="member"> <span class="function"><a href="function.mssql-init.html" class="function" rel="rdfs-seeAlso">mssql_init()</a> - ストアドプロシージャまたはリモートのストアドプロシージャを初期化する</span></li>
+    <li class="member"><span class="function"><a href="function.mssql-bind.html" class="function" rel="rdfs-seeAlso">mssql_bind()</a> - ストアドプロシージャまたはリモートストアドプロシージャへパラメータを追加する</span></li>
+    <li class="member"><span class="function"><a href="function.mssql-free-statement.html" class="function" rel="rdfs-seeAlso">mssql_free_statement()</a> - ステートメントのメモリを開放する</span></li>
+    <li class="member"><span class="function"><a href="function.mssql-init.html" class="function" rel="rdfs-seeAlso">mssql_init()</a> - ストアドプロシージャまたはリモートのストアドプロシージャを初期化する</span></li>
    </ul>
   </p>
  </div>

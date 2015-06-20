@@ -27,13 +27,13 @@
    )</div>
 
   <p class="para rdfs-comment">
-   この関数は、与えられたプロパティ <em><code class="parameter">property</code></em> が
+   この関数は、与えられたプロパティ <code class="parameter">property</code> が
    指定されたクラスに存在するかどうかを確認します。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><a href="function.isset.html" class="function">isset()</a></span> とは対照的に、
-    プロパティの値が <strong><code>NULL</code></strong> の場合でも  <span class="function"><strong>property_exists()</strong></span> は
+    <span class="function"><a href="function.isset.html" class="function">isset()</a></span> とは対照的に、
+    プロパティの値が <strong><code>NULL</code></strong> の場合でも <span class="function"><strong>property_exists()</strong></span> は
     <strong><code>TRUE</code></strong> を返します。
    </p>
   </p></blockquote>
@@ -44,9 +44,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">class</code></dt>
 
-     <span class="term"><em><code class="parameter">class</code></em></span>
       <dd>
 
        <p class="para">
@@ -54,11 +55,11 @@
        </p>
       </dd>
 
-     </dt>
+     
+    
+     <dt>
+<code class="parameter">property</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">property</code></em></span>
       <dd>
 
        <p class="para">
@@ -66,8 +67,7 @@
        </p>
       </dd>
 
-     </dt>
-
+     
    </dl>
 
   </p>
@@ -89,7 +89,7 @@
 <a href="language.oop5.autoload.html" class="link">autoloader</a> を使用します。</p></p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>property_exists()</strong></span> 関数は、マジックメソッド <a href="language.oop5.overloading.html#language.oop5.overloading.members" class="link"><em>__get</em></a>
+    <span class="function"><strong>property_exists()</strong></span> 関数は、マジックメソッド <a href="language.oop5.overloading.html#language.oop5.overloading.members" class="link"><em>__get</em></a>
     を使ってアクセスするプロパティを検出することはできません。
    </p>
   </p></blockquote>
@@ -127,8 +127,8 @@
  <div class="refsect1 examples" id="refsect1-function.property-exists-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5043">
-    <p><strong>例1  <span class="function"><strong>property_exists()</strong></span> の例</strong></p>
+   <div class="example" id="example-5525">
+    <p><strong>例1 <span class="function"><strong>property_exists()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">myClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$mine</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$xpto</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;protected&nbsp;</span><span style="color: #0000BB">$test</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">property_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'myClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'xpto'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//true<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">property_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'myClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mine'</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//true<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">property_exists</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">myClass</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mine'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//true<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">property_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'myClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'xpto'</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//PHP&nbsp;5.3.0&nbsp;以降では&nbsp;true<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">property_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'myClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//false<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">property_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'myClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'test'</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//PHP&nbsp;5.3.0&nbsp;以降では&nbsp;true<br /></span><span style="color: #0000BB">myClass</span><span style="color: #007700">::</span><span style="color: #0000BB">test</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -144,7 +144,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.method-exists.html" class="function" rel="rdfs-seeAlso">method_exists()</a> - クラスメソッドが存在するかどうかを確認する</span></li>
+    <li class="member"><span class="function"><a href="function.method-exists.html" class="function" rel="rdfs-seeAlso">method_exists()</a> - クラスメソッドが存在するかどうかを確認する</span></li>
    </ul>
   </p>
  </div>

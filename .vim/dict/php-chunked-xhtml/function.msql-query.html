@@ -25,7 +25,7 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>msql_query()</strong></span> は、指定されたリンク ID に
+   <span class="function"><strong>msql_query()</strong></span> は、指定されたリンク ID に
    関連付けられたサーバー上の現在アクティブなデータベースに
    クエリを送信します。
   </p>
@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -46,17 +47,16 @@
       </p>
      </dd>
 
-    </dt>
-
+    
     <dt>
-<span class="term"><em><code class="parameter">
-link_identifier</code></em></span><dd>
+<code class="parameter">
+link_identifier</code></dt>
+<dd>
 <p class="para">mSQL 接続。
-指定されない場合、 <span class="function"><a href="function.msql-connect.html" class="function">msql_connect()</a></span> により直近にオープンされたリンクが
+指定されない場合、<span class="function"><a href="function.msql-connect.html" class="function">msql_connect()</a></span> により直近にオープンされたリンクが
 指定されたと仮定されます。そのようなリンクがない場合、この関数は、
- <span class="function"><a href="function.msql-connect.html" class="function">msql_connect()</a></span>をコールした時と同様にリンクを確立し、使用します。
+<span class="function"><a href="function.msql-connect.html" class="function">msql_connect()</a></span>をコールした時と同様にリンクを確立し、使用します。
 </p></dd>
-</dt>
 
    </dl>
 
@@ -73,8 +73,8 @@ link_identifier</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.msql-query-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1518">
-    <p><strong>例1  <span class="function"><strong>msql_query()</strong></span> の例</strong></p>
+   <div class="example" id="example-1697">
+    <p><strong>例1 <span class="function"><strong>msql_query()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php&nbsp;<br />$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">msql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbserver"</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"unable&nbsp;to&nbsp;connect&nbsp;to&nbsp;msql&nbsp;server:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">msql_error</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">msql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"db"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"unable&nbsp;to&nbsp;select&nbsp;database&nbsp;'db':&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">msql_error</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">msql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;table&nbsp;WHERE&nbsp;id=1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"query&nbsp;failed:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">msql_error</span><span style="color: #007700">());<br />}<br /><br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">msql_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"id"</span><span style="color: #007700">];<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -90,9 +90,9 @@ link_identifier</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.msql-db-query.html" class="function" rel="rdfs-seeAlso">msql_db_query()</a> - mSQL クエリを送信する</span></li>
-    <li class="member"> <span class="function"><a href="function.msql-select-db.html" class="function" rel="rdfs-seeAlso">msql_select_db()</a> - mSQL データベースを選択する</span></li>
-    <li class="member"> <span class="function"><a href="function.msql-connect.html" class="function" rel="rdfs-seeAlso">msql_connect()</a> - mSQL 接続を開く</span></li>
+    <li class="member"><span class="function"><a href="function.msql-db-query.html" class="function" rel="rdfs-seeAlso">msql_db_query()</a> - mSQL クエリを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.msql-select-db.html" class="function" rel="rdfs-seeAlso">msql_select_db()</a> - mSQL データベースを選択する</span></li>
+    <li class="member"><span class="function"><a href="function.msql-connect.html" class="function" rel="rdfs-seeAlso">msql_connect()</a> - mSQL 接続を開く</span></li>
    </ul>
   </p>
  </div>

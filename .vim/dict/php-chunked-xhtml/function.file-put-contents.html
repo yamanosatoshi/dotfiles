@@ -13,7 +13,7 @@
 </div><hr /><div id="function.file-put-contents" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">file_put_contents</h1> 
-  <p class="verinfo">(PHP 5)</p><p class="refpurpose"><span class="refname">file_put_contents</span> &mdash; <span class="dc-title">文字列をファイルに書き込む</span></p>
+  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">file_put_contents</span> &mdash; <span class="dc-title">文字列をファイルに書き込む</span></p>
 
  </div>
 
@@ -28,11 +28,11 @@
   ]] )</div>
 
   <p class="para rdfs-comment"> 
-   この関数は、 <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>、 <span class="function"><a href="function.fwrite.html" class="function">fwrite()</a></span>、
-    <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span> を続けてコールしてデータをファイルに書き込むのと等価です。
+   この関数は、<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>、<span class="function"><a href="function.fwrite.html" class="function">fwrite()</a></span>、
+   <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span> を続けてコールしてデータをファイルに書き込むのと等価です。
   </p>
   <p class="para">
-   <em><code class="parameter">filename</code></em> が存在しない場合はファイルを作成します。
+   <code class="parameter">filename</code> が存在しない場合はファイルを作成します。
    存在する場合はそのファイルを上書きします。ただし
    <strong><code>FILE_APPEND</code></strong> フラグが設定されている場合は別です。
   </p>
@@ -44,9 +44,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -54,11 +55,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">data</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">data</code></em></span>
      <dd>
 
       <p class="para">
@@ -66,26 +67,26 @@
        もしくは <span class="type"><span class="type ストリーム">ストリーム</span></span> リソースのいずれかを指定可能です。
       </p>
       <p class="para">
-       <em><code class="parameter">data</code></em> が <span class="type"><span class="type ストリーム">ストリーム</span></span> リソースの場合は、
+       <code class="parameter">data</code> が <span class="type"><span class="type ストリーム">ストリーム</span></span> リソースの場合は、
        ストリームのバッファに残っている内容が指定したファイルにコピーされます。
-       これは、 <span class="function"><a href="function.stream-copy-to-stream.html" class="function">stream_copy_to_stream()</a></span> の挙動と似ています。
+       これは、<span class="function"><a href="function.stream-copy-to-stream.html" class="function">stream_copy_to_stream()</a></span> の挙動と似ています。
       </p>
       <p class="para">
-       <em><code class="parameter">data</code></em> に一次元の配列を指定することもできます。この場合は
+       <code class="parameter">data</code> に一次元の配列を指定することもできます。この場合は
        <em>file_put_contents($filename, implode(&#039;&#039;, $array))</em>
        と同じ意味になります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">flags</code></em> の値は、以下のフラグを組み合わせたものとなります
+       <code class="parameter">flags</code> の値は、以下のフラグを組み合わせたものとなります
        組み合わせる際には、論理 OR
        (<em>|</em>) 演算子で連結します。
       </p>
@@ -107,7 +108,7 @@
             <strong><code>FILE_USE_INCLUDE_PATH</code></strong>
            </td>
            <td>
-            <em><code class="parameter">filename</code></em> をインクルードディレクトリから探します。
+            <code class="parameter">filename</code> をインクルードディレクトリから探します。
             詳細な情報は <a href="ini.core.html#ini.include-path" class="link">include_path</a> を参照ください。
            </td>
           </tr>
@@ -117,7 +118,7 @@
             <strong><code>FILE_APPEND</code></strong>
            </td>
            <td>
-            <em><code class="parameter">filename</code></em> がすでに存在する場合に、
+            <code class="parameter">filename</code> がすでに存在する場合に、
             データをファイルに上書きするするのではなく追記します。
            </td>
           </tr>
@@ -128,10 +129,14 @@
            </td>
            <td>
             書き込み処理中に、ファイルに対する排他ロックを確保します。
+            つまり、<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> の呼び出しから
+            <span class="function"><a href="function.fwrite.html" class="function">fwrite()</a></span> の呼び出しまでの間に
+            <span class="function"><a href="function.flock.html" class="function">flock()</a></span> の呼び出しが発生するということです。
+            これは、モード &quot;x&quot; で
+            <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を呼び出すことと同等ではありません。
            </td>
           </tr>
 
-          
          </tbody>
         
        </table>
@@ -139,21 +144,20 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">context</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">context</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span>
+       <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span>
        で作成したコンテキストリソース。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -178,7 +182,7 @@
  <div class="refsect1 examples" id="refsect1-function.file-put-contents-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2360">
+   <div class="example" id="example-2559">
     <p><strong>例1 シンプルな使用例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -188,7 +192,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-2361">
+   <div class="example" id="example-2560">
     <p><strong>例2 フラグの使用</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -217,22 +221,14 @@
 
      <tbody class="tbody">
       <tr>
-       <td>5.0.0</td>
-       <td>
-        コンテキストがサポートされるようになりました。
-       </td>
-      </tr>
-
-      <tr>
        <td>5.1.0</td>
        <td>
         <strong><code>LOCK_EX</code></strong> のサポートが追加され、
-        <em><code class="parameter">data</code></em>
+        <code class="parameter">data</code>
         パラメータにストリームリソースを指定することが可能になりました。
        </td>
       </tr>
 
-      
      </tbody>
     
    </table>
@@ -247,7 +243,7 @@
 </span></p></blockquote>
   <div class="tip"><strong class="tip">ヒント</strong><p class="simpara"><a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">fopen wrappers</a> が有効の場合、この関数のファイル名として
 URL を使用することができます。ファイル名の指定方法に関する詳細は
- <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を参照ください。
+<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を参照ください。
 <a href="wrappers.html" class="xref">サポートするプロトコル/ラッパー</a> には、さまざまなラッパーの機能やその使用法、
 提供される定義済み変数などの情報がまとめられています。</p></div>
  </div>
@@ -257,10 +253,10 @@ URL を使用することができます。ファイル名の指定方法に関�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.fwrite.html" class="function" rel="rdfs-seeAlso">fwrite()</a> - バイナリセーフなファイル書き込み処理</span></li>
-    <li class="member"> <span class="function"><a href="function.file-get-contents.html" class="function" rel="rdfs-seeAlso">file_get_contents()</a> - ファイルの内容を全て文字列に読み込む</span></li>
-    <li class="member"> <span class="function"><a href="function.stream-context-create.html" class="function" rel="rdfs-seeAlso">stream_context_create()</a> - ストリームコンテキストを作成する</span></li>
+    <li class="member"><span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.fwrite.html" class="function" rel="rdfs-seeAlso">fwrite()</a> - バイナリセーフなファイル書き込み処理</span></li>
+    <li class="member"><span class="function"><a href="function.file-get-contents.html" class="function" rel="rdfs-seeAlso">file_get_contents()</a> - ファイルの内容を全て文字列に読み込む</span></li>
+    <li class="member"><span class="function"><a href="function.stream-context-create.html" class="function" rel="rdfs-seeAlso">stream_context_create()</a> - ストリームコンテキストを作成する</span></li>
    </ul>
   </p>
  </div>

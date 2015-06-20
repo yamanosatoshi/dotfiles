@@ -28,15 +28,15 @@
    を使います。
   </p>
   <p class="para">
-   優先読み込みの設定は、あらゆるレベルでできます。
+   優先読み込みの設定は、ドライバのあらゆるレベルでできます。
    <ul class="simplelist">
-    <li class="member">問い合わせのパラメータ、あるいは  <span class="methodname"><strong>MongoClient::__construct()</strong></span> のオプションで指定する</li>
-    <li class="member"> <span class="methodname"><a href="mongoclient.setreadpreference.html" class="methodname">MongoClient::setReadPreference()</a></span> を呼ぶ</li>
-    <li class="member">データベースレベルなら  <span class="methodname"><a href="mongodb.setreadpreference.html" class="methodname">MongoDB::setReadPreference()</a></span> を呼ぶ</li>
-    <li class="member">コレクションレベルなら  <span class="methodname"><a href="mongocollection.setreadpreference.html" class="methodname">MongoCollection::setReadPreference()</a></span> を呼ぶ</li>
-
+    <li class="member">問い合わせのパラメータ、あるいは <span class="methodname"><strong>MongoClient::__construct()</strong></span> のオプションで指定する</li>
+    <li class="member"><span class="methodname"><a href="mongoclient.setreadpreference.html" class="methodname">MongoClient::setReadPreference()</a></span> を呼ぶ</li>
+    <li class="member">データベースレベルなら <span class="methodname"><a href="mongodb.setreadpreference.html" class="methodname">MongoDB::setReadPreference()</a></span> を呼ぶ</li>
+    <li class="member">コレクションレベルなら <span class="methodname"><a href="mongocollection.setreadpreference.html" class="methodname">MongoCollection::setReadPreference()</a></span> を呼ぶ</li>
+    <li class="member">カーソルレベルなら <span class="methodname"><a href="mongocursor.setreadpreference.html" class="methodname">MongoCursor::setReadPreference()</a></span> あるいは <span class="methodname"><a href="mongocommandcursor.setreadpreference.html" class="methodname">MongoCommandCursor::setReadPreference()</a></span> を呼ぶ</li>
    </ul>
-   上位のクラスで指定した優先読み込み設定を継承します。
+   「親」コンテキストで指定した優先読み込み設定を継承します。
   </p>
   <div class="example" id="mongo.queries.secondaries.inheritence-example">
    <p><strong>例1 データベースレベルからカーソルへの優先読み込みの継承</strong></p>
@@ -89,8 +89,8 @@ Reading from: europeanHost
 
    <p class="para">
     セットのメンバーの現在の状態がどうなっているかを知るには、
-     <span class="function"><strong>MongoClient::getHosts()</strong></span> あるいは
-     <span class="methodname"><a href="mongoclient.getconnections.html" class="methodname">MongoClient::getConnections()</a></span> を実行します。
+    <span class="function"><strong>MongoClient::getHosts()</strong></span> あるいは
+    <span class="methodname"><a href="mongoclient.getconnections.html" class="methodname">MongoClient::getConnections()</a></span> を実行します。
    </p>
 
    <p class="para">
@@ -101,8 +101,8 @@ Reading from: europeanHost
     あるサーバーが読み込み可能であると判定される条件は、その state が
     2 (SECONDARY) かつ health が 1 であることです。
     これらをチェックするには
-     <span class="methodname"><strong>MongoClient::getHosts()</strong></span> および
-     <span class="methodname"><a href="mongoclient.getconnections.html" class="methodname">MongoClient::getConnections()</a></span>
+    <span class="methodname"><strong>MongoClient::getHosts()</strong></span> および
+    <span class="methodname"><a href="mongoclient.getconnections.html" class="methodname">MongoClient::getConnections()</a></span>
     を使います。
    </p>
 
@@ -306,7 +306,7 @@ Reading from: europeanHost
       <td>1.1.0</td>
       <td>
        読み込みをレプリカセットのセカンダリに振り向ける仕組みとして
-        <span class="methodname"><a href="mongo.setslaveokay.html" class="methodname">Mongo::setSlaveOkay()</a></span> が導入されました。
+       <span class="methodname"><a href="mongo.setslaveokay.html" class="methodname">Mongo::setSlaveOkay()</a></span> が導入されました。
       </td>
      </tr>
 

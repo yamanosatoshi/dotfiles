@@ -27,23 +27,23 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>Memcached::getMulti()</strong></span> は
-    <span class="methodname"><a href="memcached.get.html" class="methodname">Memcached::get()</a></span> と似ていますが、ひとつのキーのアイテムを取得するのではなく
-   <em><code class="parameter">keys</code></em> 配列で指定したキー群から複数のアイテムを取得します。
-   <em><code class="parameter">cas_tokens</code></em> 変数を指定した場合は、取得したアイテムの
+   <span class="function"><strong>Memcached::getMulti()</strong></span> は
+   <span class="methodname"><a href="memcached.get.html" class="methodname">Memcached::get()</a></span> と似ていますが、ひとつのキーのアイテムを取得するのではなく
+   <code class="parameter">keys</code> 配列で指定したキー群から複数のアイテムを取得します。
+   <code class="parameter">cas_tokens</code> 変数を指定した場合は、取得したアイテムの
    CAS トークンの値をそこに格納します。
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <p class="para">
-      <span class="methodname"><a href="memcached.get.html" class="methodname">Memcached::get()</a></span> とは異なり、
-      <span class="function"><strong>Memcached::getMulti()</strong></span> では
+     <span class="methodname"><a href="memcached.get.html" class="methodname">Memcached::get()</a></span> とは異なり、
+     <span class="function"><strong>Memcached::getMulti()</strong></span> では
      read-through キャッシュコールバックを指定することができません。
      memcache プロトコルでは、複数キーのリクエストでどのキーが見つからなかったのかを知る手段がないからです。
     </p>
    </p></blockquote>
   </p>
   <p class="para">
-   <em><code class="parameter">flags</code></em> パラメータを使用して、
-    <span class="function"><strong>Memcached::getMulti()</strong></span>
+   <code class="parameter">flags</code> パラメータを使用して、
+   <span class="function"><strong>Memcached::getMulti()</strong></span>
    用の追加のオプションを設定します。現在使用可能なオプションは
    <strong><code>Memcached::GET_PRESERVE_ORDER</code></strong> だけで、
    これは要求したのと同じ順番でキーが返されることを保障します。
@@ -56,9 +56,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">keys</code></dt>
 
-     <span class="term"><em><code class="parameter">keys</code></em></span>
      <dd>
 
       <p class="para">
@@ -66,11 +67,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">cas_tokens</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">cas_tokens</code></em></span>
      <dd>
 
       <p class="para">
@@ -78,11 +79,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
@@ -90,8 +91,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -102,7 +102,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    見つかったアイテムの配列、失敗した場合に <strong><code>FALSE</code></strong> を返します。
-   必要に応じて  <span class="methodname"><a href="memcached.getresultcode.html" class="methodname">Memcached::getResultCode()</a></span> を使用しましょう。
+   必要に応じて <span class="methodname"><a href="memcached.getresultcode.html" class="methodname">Memcached::getResultCode()</a></span> を使用しましょう。
   </p>
  </div>
 
@@ -110,8 +110,8 @@
  <div class="refsect1 examples" id="refsect1-memcached.getmulti-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4420">
-    <p><strong>例1  <span class="function"><strong>Memcached::getMulti()</strong></span> の例</strong></p>
+   <div class="example" id="example-4866">
+    <p><strong>例1 <span class="function"><strong>Memcached::getMulti()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$items&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'key1'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'value1'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'key2'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'value2'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'key3'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'value3'<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setMulti</span><span style="color: #007700">(</span><span style="color: #0000BB">$items</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMulti</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'key1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'key3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'badkey'</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">$cas</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$cas</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -140,7 +140,7 @@ array(2) {
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4421">
+   <div class="example" id="example-4867">
     <p><strong>例2 <strong><code>Memcached::GET_PRESERVE_ORDER</code></strong> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -170,9 +170,9 @@ zoo
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="memcached.getmultibykey.html" class="methodname" rel="rdfs-seeAlso">Memcached::getMultiByKey()</a> - 指定したサーバーから複数のアイテムを取得する</span></li>
-    <li class="member"> <span class="methodname"><a href="memcached.get.html" class="methodname" rel="rdfs-seeAlso">Memcached::get()</a> - アイテムを取得する</span></li>
-    <li class="member"> <span class="methodname"><a href="memcached.getdelayed.html" class="methodname" rel="rdfs-seeAlso">Memcached::getDelayed()</a> - 複数のアイテムを要求する</span></li>
+    <li class="member"><span class="methodname"><a href="memcached.getmultibykey.html" class="methodname" rel="rdfs-seeAlso">Memcached::getMultiByKey()</a> - 指定したサーバーから複数のアイテムを取得する</span></li>
+    <li class="member"><span class="methodname"><a href="memcached.get.html" class="methodname" rel="rdfs-seeAlso">Memcached::get()</a> - アイテムを取得する</span></li>
+    <li class="member"><span class="methodname"><a href="memcached.getdelayed.html" class="methodname" rel="rdfs-seeAlso">Memcached::getDelayed()</a> - 複数のアイテムを要求する</span></li>
    </ul>
   </p>
  </div>

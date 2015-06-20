@@ -30,12 +30,12 @@
 
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>db2_prepare()</strong></span> は、プリペアドステートメントを作成します。
+   <span class="function"><strong>db2_prepare()</strong></span> は、プリペアドステートメントを作成します。
    このプリペアドステートメントには、入力パラメータ・出力パラメータ
    あるいは入出力パラメータを表すパラメータマーカ (<em>?</em>)
    を含めることができます。プリペアドステートメントにパラメータを渡すには
-    <span class="function"><a href="function.db2-bind-param.html" class="function">db2_bind_param()</a></span> を使用します。
-   入力パラメータの場合についてのみ、 <span class="function"><a href="function.db2-execute.html" class="function">db2_execute()</a></span>
+   <span class="function"><a href="function.db2-bind-param.html" class="function">db2_bind_param()</a></span> を使用します。
+   入力パラメータの場合についてのみ、<span class="function"><a href="function.db2-execute.html" class="function">db2_execute()</a></span>
    に渡す配列で指定することも可能です。
   </p>
   <p class="para">
@@ -46,7 +46,7 @@
      <p class="para">
       <em class="emphasis">パフォーマンス</em>: 事前に文を準備しておくと、
       その文によってデータを取得するための実行計画をデータベースサーバーが
-      最適化します。その後  <span class="function"><a href="function.db2-execute.html" class="function">db2_execute()</a></span>
+      最適化します。その後 <span class="function"><a href="function.db2-execute.html" class="function">db2_execute()</a></span>
       でプリペアドステートメントを実行する際にはこの実行計画が再利用され、
       実行時に実行計画を毎回作成することによるオーバーヘッドを避けられます。
      </p>
@@ -64,7 +64,7 @@
      <p class="para">
       <em class="emphasis">高機能</em>: パラメータマーカの機能は、
       単に入力値をプリペアドステートメントに渡すだけではありません。
-       <span class="function"><a href="function.db2-bind-param.html" class="function">db2_bind_param()</a></span> を使用すると、
+      <span class="function"><a href="function.db2-bind-param.html" class="function">db2_bind_param()</a></span> を使用すると、
       ストアドプロシージャの OUT パラメータおよび INOUT パラメータから
       値を取得することも可能です。
      </p>
@@ -79,22 +79,23 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.db2-connect.html" class="function">db2_connect()</a></span> あるいは  <span class="function"><a href="function.db2-pconnect.html" class="function">db2_pconnect()</a></span>
+       <span class="function"><a href="function.db2-connect.html" class="function">db2_connect()</a></span> あるいは <span class="function"><a href="function.db2-pconnect.html" class="function">db2_pconnect()</a></span>
        が返した有効なデータベース接続リソース。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">statement</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">statement</code></em></span>
      <dd>
 
       <p class="para">
@@ -102,11 +103,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">options</code></em></span>
      <dd>
 
       <p class="para">
@@ -117,12 +118,11 @@
       </p>
       <p class="para">
        オプションについての説明は
-        <span class="function"><a href="function.db2-set-option.html" class="function">db2_set_option()</a></span> を参照ください。
+       <span class="function"><a href="function.db2-set-option.html" class="function">db2_set_option()</a></span> を参照ください。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -134,7 +134,7 @@
    SQL 文のパースに成功し、データベースサーバー内で正しく準備された場合に
    ステートメントリソースを返します。データベースサーバーがエラーを返した場合に
    <strong><code>FALSE</code></strong> を返します。返されたエラーの詳細を調べるには、
-    <span class="function"><a href="function.db2-stmt-error.html" class="function">db2_stmt_error()</a></span> あるいは  <span class="function"><a href="function.db2-stmt-errormsg.html" class="function">db2_stmt_errormsg()</a></span>
+   <span class="function"><a href="function.db2-stmt-error.html" class="function">db2_stmt_error()</a></span> あるいは <span class="function"><a href="function.db2-stmt-errormsg.html" class="function">db2_stmt_errormsg()</a></span>
    をコールします。
   </p>
  </div>
@@ -143,12 +143,12 @@
  <div class="refsect1 examples" id="refsect1-function.db2-prepare-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1177">
+   <div class="example" id="example-1235">
     <p><strong>例1 パラメータマーカを使用した SQL 文の準備と実行</strong></p>
     <div class="example-contents"><p>
      以下の例では、4 つのパラメータマーカを含む INSERT 文を準備し、
      入力値の配列を含む配列を順に処理しながら
-      <span class="function"><a href="function.db2-execute.html" class="function">db2_execute()</a></span> に値を渡します。
+     <span class="function"><a href="function.db2-execute.html" class="function">db2_execute()</a></span> に値を渡します。
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -167,10 +167,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.db2-bind-param.html" class="function" rel="rdfs-seeAlso">db2_bind_param()</a> - PHP 変数を SQL 文のパラメータにバインドする</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-execute.html" class="function" rel="rdfs-seeAlso">db2_execute()</a> - プリペアドステートメントを実行する</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-stmt-error.html" class="function" rel="rdfs-seeAlso">db2_stmt_error()</a> - SQL 文が返す SQLSTATE を含む文字列を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-stmt-errormsg.html" class="function" rel="rdfs-seeAlso">db2_stmt_errormsg()</a> - 直近の SQL 文のエラーメッセージを含む文字列を返す</span></li>
+    <li class="member"><span class="function"><a href="function.db2-bind-param.html" class="function" rel="rdfs-seeAlso">db2_bind_param()</a> - PHP 変数を SQL 文のパラメータにバインドする</span></li>
+    <li class="member"><span class="function"><a href="function.db2-execute.html" class="function" rel="rdfs-seeAlso">db2_execute()</a> - プリペアドステートメントを実行する</span></li>
+    <li class="member"><span class="function"><a href="function.db2-stmt-error.html" class="function" rel="rdfs-seeAlso">db2_stmt_error()</a> - SQL 文が返す SQLSTATE を含む文字列を返す</span></li>
+    <li class="member"><span class="function"><a href="function.db2-stmt-errormsg.html" class="function" rel="rdfs-seeAlso">db2_stmt_errormsg()</a> - 直近の SQL 文のエラーメッセージを含む文字列を返す</span></li>
    </ul>
   </p>
  </div>

@@ -25,21 +25,21 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>fbsql_fetch_assoc()</strong></span> は、
-    <span class="function"><a href="function.fbsql-fetch-array.html" class="function">fbsql_fetch_array()</a></span> のオプションの第 2 引数に
+   <span class="function"><strong>fbsql_fetch_assoc()</strong></span> は、
+   <span class="function"><a href="function.fbsql-fetch-array.html" class="function">fbsql_fetch_array()</a></span> のオプションの第 2 引数に
    FBSQL_ASSOC を指定してコールするのと等価です。この関数は
    連想配列のみを返します。
   </p>
   <p class="para">
-    <span class="function"><a href="function.fbsql-fetch-array.html" class="function">fbsql_fetch_array()</a></span>
+   <span class="function"><a href="function.fbsql-fetch-array.html" class="function">fbsql_fetch_array()</a></span>
    も、当初はこのように動作していました。もし連想配列だけでなく
    数値添字の配列も必要な場合は
-    <span class="function"><a href="function.fbsql-fetch-array.html" class="function">fbsql_fetch_array()</a></span> を使用してください。
+   <span class="function"><a href="function.fbsql-fetch-array.html" class="function">fbsql_fetch_array()</a></span> を使用してください。
   </p>
   <p class="para">
    注意してほしいのは、
-    <span class="function"><strong>fbsql_fetch_assoc()</strong></span> は
-    <span class="function"><a href="function.fbsql-fetch-row.html" class="function">fbsql_fetch_row()</a></span> と比べてそれほど遅くはないのに
+   <span class="function"><strong>fbsql_fetch_assoc()</strong></span> は
+   <span class="function"><a href="function.fbsql-fetch-row.html" class="function">fbsql_fetch_row()</a></span> と比べてそれほど遅くはないのに
    その追加機能がとても優れているということです。
   </p>
  </div>
@@ -51,11 +51,11 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
-<p class="para">  <span class="function"><a href="function.fbsql-query.html" class="function">fbsql_query()</a></span> あるいは
- <span class="function"><a href="function.fbsql-db-query.html" class="function">fbsql_db_query()</a></span> が返す結果 ID。</p></dd>
-</dt>
+<code class="parameter">
+result</code></dt>
+<dd>
+<p class="para"> <span class="function"><a href="function.fbsql-query.html" class="function">fbsql_query()</a></span> あるいは
+<span class="function"><a href="function.fbsql-db-query.html" class="function">fbsql_db_query()</a></span> が返す結果 ID。</p></dd>
 
    </dl>
 
@@ -72,7 +72,7 @@ result</code></em></span><dd>
   <p class="para">
    2 つ以上のカラムが同じ名前を持っている場合、最後にあらわれたカラムが
    優先されます。他のカラムにアクセスするには、
-    <span class="function"><a href="function.fbsql-fetch-array.html" class="function">fbsql_fetch_array()</a></span> を使用して数値添字の配列を
+   <span class="function"><a href="function.fbsql-fetch-array.html" class="function">fbsql_fetch_array()</a></span> を使用して数値添字の配列を
    取得する必要があります。
   </p>
  </div>
@@ -81,8 +81,8 @@ result</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.fbsql-fetch-assoc-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1121">
-    <p><strong>例1  <span class="function"><strong>fbsql_fetch_assoc()</strong></span> の例</strong></p>
+   <div class="example" id="example-1179">
+    <p><strong>例1 <span class="function"><strong>fbsql_fetch_assoc()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />fbsql_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$host</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$user</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fbsql_db_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"database"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;table"</span><span style="color: #007700">);<br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fbsql_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"user_id"</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"fullname"</span><span style="color: #007700">];<br />}<br /></span><span style="color: #0000BB">fbsql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -99,9 +99,9 @@ result</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.fbsql-fetch-row.html" class="function" rel="rdfs-seeAlso">fbsql_fetch_row()</a> - 数値配列として結果レコードを得る</span></li>
-    <li class="member"> <span class="function"><a href="function.fbsql-fetch-array.html" class="function" rel="rdfs-seeAlso">fbsql_fetch_array()</a> - 連想配列、数値配列、またはその両方として結果レコードを取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.fbsql-fetch-object.html" class="function" rel="rdfs-seeAlso">fbsql_fetch_object()</a> - オブジェクトとして結果レコードを取得する</span></li>
+    <li class="member"><span class="function"><a href="function.fbsql-fetch-row.html" class="function" rel="rdfs-seeAlso">fbsql_fetch_row()</a> - 数値配列として結果レコードを得る</span></li>
+    <li class="member"><span class="function"><a href="function.fbsql-fetch-array.html" class="function" rel="rdfs-seeAlso">fbsql_fetch_array()</a> - 連想配列、数値配列、またはその両方として結果レコードを取得する</span></li>
+    <li class="member"><span class="function"><a href="function.fbsql-fetch-object.html" class="function" rel="rdfs-seeAlso">fbsql_fetch_object()</a> - オブジェクトとして結果レコードを取得する</span></li>
    </ul>
   </p>
  </div>

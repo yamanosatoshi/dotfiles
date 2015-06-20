@@ -21,8 +21,8 @@
   <div class="methodsynopsis dc-description">
    <span class="type">string</span> <span class="methodname"><strong>gzgets</strong></span>
     ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$zp</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>
-   )</div>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>
+  ] )</div>
 
   <p class="para rdfs-comment">
    与えられたファイルポインタから最大 length - 1 バイトの文字を読み込み、
@@ -37,24 +37,25 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">zp</code></dt>
 
-     <span class="term"><em><code class="parameter">zp</code></em></span>
      <dd>
 
       <p class="para">
        gz ファイルポインタを指定します。
        これは有効なファイルポインタであり、かつ、
-        <span class="function"><a href="function.gzopen.html" class="function">gzopen()</a></span>
+       <span class="function"><a href="function.gzopen.html" class="function">gzopen()</a></span>
        によりオープンできたファイルを指している必要があります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">length</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">length</code></em></span>
      <dd>
 
       <p class="para">
@@ -62,8 +63,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -79,8 +79,8 @@
  <div class="refsect1 examples" id="refsect1-function.gzgets-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-815">
-    <p><strong>例1  <span class="function"><strong>gzgets()</strong></span> の例</strong></p>
+   <div class="example" id="example-858">
+    <p><strong>例1 <span class="function"><strong>gzgets()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gzopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'somefile.gz'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br />while&nbsp;(!</span><span style="color: #0000BB">gzeof</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$buffer&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gzgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4096</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">gzclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -96,9 +96,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.gzopen.html" class="function" rel="rdfs-seeAlso">gzopen()</a> - gz ファイルを開く</span></li>
-    <li class="member"> <span class="function"><a href="function.gzgetc.html" class="function" rel="rdfs-seeAlso">gzgetc()</a> - gz ファイルへのポインタから文字を得る</span></li>
-    <li class="member"> <span class="function"><a href="function.gzwrite.html" class="function" rel="rdfs-seeAlso">gzwrite()</a> - バイナリセーフな gz ファイル書き込み</span></li>
+    <li class="member"><span class="function"><a href="function.gzopen.html" class="function" rel="rdfs-seeAlso">gzopen()</a> - gz ファイルを開く</span></li>
+    <li class="member"><span class="function"><a href="function.gzgetc.html" class="function" rel="rdfs-seeAlso">gzgetc()</a> - gz ファイルへのポインタから文字を得る</span></li>
+    <li class="member"><span class="function"><a href="function.gzwrite.html" class="function" rel="rdfs-seeAlso">gzwrite()</a> - バイナリセーフな gz ファイル書き込み</span></li>
    </ul>
   </p>
  </div>

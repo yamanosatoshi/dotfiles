@@ -28,7 +28,7 @@
   ]]]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>mssql_pconnect()</strong></span> は  <span class="function"><a href="function.mssql-connect.html" class="function">mssql_connect()</a></span>
+   <span class="function"><strong>mssql_pconnect()</strong></span> は <span class="function"><a href="function.mssql-connect.html" class="function">mssql_connect()</a></span>
    とほとんど同じく動作しますが、違う点が 2 つあります。
   </p>
   <p class="para">
@@ -39,8 +39,8 @@
   <p class="para">
    第 2 に、SQL サーバーはスクリプトの実行終了時に接続を閉じません。
    代わりに、リンクは後に使用されるためにオープンされたままとします
-   ( <span class="function"><a href="function.mssql-close.html" class="function">mssql_close()</a></span> は
-    <span class="function"><strong>mssql_pconnect()</strong></span> により確立されたリンクを閉じません)。
+   (<span class="function"><a href="function.mssql-close.html" class="function">mssql_close()</a></span> は
+   <span class="function"><strong>mssql_pconnect()</strong></span> により確立されたリンクを閉じません)。
   </p>
   <p class="para">
    この型のリンクはこのため &#039;持続的である&#039; と呼ばれます。
@@ -53,9 +53,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">servername</code></dt>
 
-     <span class="term"><em><code class="parameter">servername</code></em></span>
      <dd>
 
       <p class="para">
@@ -64,11 +65,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">username</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">username</code></em></span>
      <dd>
 
       <p class="para">
@@ -76,11 +77,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">password</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">password</code></em></span>
      <dd>
 
       <p class="para">
@@ -88,25 +89,24 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">new_link</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">new_link</code></em></span>
      <dd>
 
       <p class="para">
-       同じ引数で  <span class="function"><strong>mssql_pconnect()</strong></span> が再度コールされた場合、
+       同じ引数で <span class="function"><strong>mssql_pconnect()</strong></span> が再度コールされた場合、
        新規のリンクは作成されず、代わりに既にオープンされたリンク ID が返されます。
-       このパラメータは、この振る舞いを変更し、 <span class="function"><strong>mssql_pconnect()</strong></span>
+       このパラメータは、この振る舞いを変更し、<span class="function"><strong>mssql_pconnect()</strong></span>
        が常に新しいリンクを返すようにします。同じパラメータで事前に
-        <span class="function"><strong>mssql_pconnect()</strong></span> がコールされていたとしても、
+       <span class="function"><strong>mssql_pconnect()</strong></span> がコールされていたとしても、
        新しいリンクを返します。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -124,8 +124,8 @@
  <div class="refsect1 examples" id="refsect1-function.mssql-pconnect-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1544">
-    <p><strong>例1  <span class="function"><strong>mssql_pconnect()</strong></span> で <em><code class="parameter">new_link</code></em> を使う例</strong></p>
+   <div class="example" id="example-1723">
+    <p><strong>例1 <span class="function"><strong>mssql_pconnect()</strong></span> で <code class="parameter">new_link</code> を使う例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;MSSQL&nbsp;に接続し、データベースを選択します<br /></span><span style="color: #0000BB">$link1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_pconnect</span><span style="color: #007700">(</span><span style="color: #DD0000">'MANGO\SQLEXPRESS'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sa'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'phpfi'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mssql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">'php'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link1</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;新しいリンクを作成します<br /></span><span style="color: #0000BB">$link2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_pconnect</span><span style="color: #007700">(</span><span style="color: #DD0000">'MANGO\SQLEXPRESS'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sa'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'phpfi'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mssql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">'random'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

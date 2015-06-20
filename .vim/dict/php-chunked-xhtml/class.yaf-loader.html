@@ -28,15 +28,15 @@
     最初に <a href="class.yaf-application.html" class="classname">Yaf_Application</a> のインスタンスを取得するときに、
     <strong class="classname">Yaf_Loader</strong> はシングルトンのインスタンスを作って
     それを spl_autoload に登録します。このインスタンスを取得するには
-     <span class="methodname"><a href="yaf-loader.getinstance.html" class="methodname">Yaf_Loader::getInstance()</a></span> を使います。
+    <span class="methodname"><a href="yaf-loader.getinstance.html" class="methodname">Yaf_Loader::getInstance()</a></span> を使います。
    </p>
    <p class="para">
     <strong class="classname">Yaf_Loader</strong> は、クラスのロードを一度だけ試みます。
     失敗した場合の挙動は <a href="yaf.configuration.html#ini.yaf.use-spl-autoload" class="link">yaf.use_spl_auload</a>
     によって変わります。もしこの設定が On なら
-     <span class="methodname"><a href="yaf-loader.autoload.html" class="methodname">Yaf_Loader::autoload()</a></span> は <strong><code>FALSE</code></strong> を返し、
+    <span class="methodname"><a href="yaf-loader.autoload.html" class="methodname">Yaf_Loader::autoload()</a></span> は <strong><code>FALSE</code></strong> を返し、
     他のオートロード関数でやり直せるようになります。この設定が Off (デフォルト)
-    の場合は  <span class="methodname"><a href="yaf-loader.autoload.html" class="methodname">Yaf_Loader::autoload()</a></span> が <strong><code>TRUE</code></strong> を返します。
+    の場合は <span class="methodname"><a href="yaf-loader.autoload.html" class="methodname">Yaf_Loader::autoload()</a></span> が <strong><code>TRUE</code></strong> を返します。
     そして、より重要なのは、このときに警告メッセージが出ることです
     (このメッセージを見れば、なぜロードできなかったのかがわかります)。
     <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -60,14 +60,14 @@
     (application.ini で定義するもので、デフォルトは
     <a href="yaf.appconfig.html#configuration.yaf.directory" class="link">application.directory</a> . &quot;/library&quot;)
     も検索対象とさせたい場合は、クラスのプレフィックスを
-     <span class="methodname"><a href="yaf-loader.registerlocalnamespace.html" class="methodname">Yaf_Loader::registerLocalNameSpace()</a></span>
+    <span class="methodname"><a href="yaf-loader.registerlocalnamespace.html" class="methodname">Yaf_Loader::registerLocalNameSpace()</a></span>
     で登録する必要があります。
    </p>
 
    <p class="para">
     いくつか例を示します (APPLICATION_PATH は <a href="yaf.appconfig.html#configuration.yaf.directory" class="link">application.directory</a>
     であるものとします)。
-    <div class="example" id="example-4127">
+    <div class="example" id="example-4583">
      <p><strong>例1 設定の例</strong></p>
       <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">// php.ini で、これを設定しているものとします
@@ -81,7 +81,7 @@ application.library = APPLICATION_PATH &quot;/library&quot;</pre>
     </div>
 
     また、次のローカル名前空間を登録しているものとします。
-    <div class="example" id="example-4128">
+    <div class="example" id="example-4584">
      <p><strong>例2 localnamespace の登録</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -93,7 +93,7 @@ application.library = APPLICATION_PATH &quot;/library&quot;</pre>
     </div>
 
    オートロードの例です。
-    <div class="example" id="example-4129">
+    <div class="example" id="example-4585">
      <p><strong>例3 クラスのロード</strong></p>
       <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">class Foo_Bar_Test =&gt;
@@ -110,7 +110,7 @@ class BarNon_Test
     </div>
 
    PHP 5.3 からは、名前空間も使えます。
-   <div class="example" id="example-4130">
+   <div class="example" id="example-4586">
     <p><strong>例4 名前空間つきのクラスのロード</strong></p>
     <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">class \Foo\Bar\Dummy =&gt;
@@ -133,7 +133,7 @@ class \FooBar\Bar\Dummy =&gt;
   <p class="para">
    <strong class="classname">Yaf_Loader</strong> は MVC クラスを読み込むようにも作られています。
    次のような規約に従います。
-   <div class="example" id="example-4131">
+   <div class="example" id="example-4587">
     <p><strong>例5 MVC クラスのロード</strong></p>
     <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">Controller Classes =&gt;
@@ -152,7 +152,7 @@ Plugin Classes =&gt;
    クラスのサフィックス (デフォルト設定の場合。プレフィックスを使うには
    <a href="yaf.configuration.html#ini.yaf.name-suffix" class="link">yaf.name_suffix</a> の値を変更します)
    で、MVC クラスであるかそうでないかを判断します。
-   <div class="example" id="example-4132">
+   <div class="example" id="example-4588">
     <p><strong>例6 MVC クラスかどうかの区別</strong></p>
    <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">Controller Classes =&gt;
@@ -169,7 +169,7 @@ Plugin Classes =&gt;
   </div>
 
    例を示します。
-   <div class="example" id="example-4133">
+   <div class="example" id="example-4589">
     <p><strong>例7 MVC のロード</strong></p>
     <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">class IndexController
@@ -254,7 +254,7 @@ class A_B_TestModel =&gt;
     ( <span class="methodparam">void</span>
    )</div>
 <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="methodname"><a href="yaf-loader.construct.html" class="methodname">__construct</a></span>
+   <span class="modifier">private</span><span class="methodname"><a href="yaf-loader.construct.html" class="methodname">__construct</a></span>
     ( <span class="methodparam">void</span>
    )</div>
 <div class="methodsynopsis dc-description">
@@ -306,46 +306,46 @@ class A_B_TestModel =&gt;
    <h2 class="title">プロパティ</h2>
    <dl>
 
-    <dt id="yaf-loader.props.local-ns">
-     <span class="term"><var class="varname"><var class="varname">_local_ns</var></var></span>
+    
+     <dt id="yaf-loader.props.local-ns"><var class="varname"><var class="varname">_local_ns</var></var></dt>
+
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-loader.props.library"><var class="varname"><var class="varname">_library</var></var></dt>
 
-    <dt id="yaf-loader.props.library">
-     <span class="term"><var class="varname"><var class="varname">_library</var></var></span>
      <dd>
 
       <p class="para">
        デフォルトでは、この値は <a href="yaf.appconfig.html#configuration.yaf.directory" class="link">application.directory</a> . &quot;/library&quot;
        となります。この値を変更するには、application.ini (application.library)
-       で設定するか、あるいは  <span class="methodname"><a href="yaf-loader.setlibrarypath.html" class="methodname">Yaf_Loader::setLibraryPath()</a></span> をコールします。
+       で設定するか、あるいは <span class="methodname"><a href="yaf-loader.setlibrarypath.html" class="methodname">Yaf_Loader::setLibraryPath()</a></span> をコールします。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-loader.props.global-library"><var class="varname"><var class="varname">_global_library</var></var></dt>
 
-    <dt id="yaf-loader.props.global-library">
-     <span class="term"><var class="varname"><var class="varname">_global_library</var></var></span>
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="yaf-loader.props.instance"><var class="varname"><var class="varname">_instance</var></var></dt>
 
-    <dt id="yaf-loader.props.instance">
-     <span class="term"><var class="varname"><var class="varname">_instance</var></var></span>
      <dd>
 
       <p class="para"/>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </div>

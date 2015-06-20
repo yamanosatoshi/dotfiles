@@ -30,11 +30,11 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>eio_read()</strong></span> は、<em><code class="parameter">fd</code></em>
-   が指すファイルの <em><code class="parameter">offset</code></em> から最大
-   <em><code class="parameter">length</code></em> バイトまでを読み込みます。
-   読み込んだデータは <em><code class="parameter">callback</code></em> の
-   <em><code class="parameter">result</code></em> 引数に格納されます。
+   <span class="function"><strong>eio_read()</strong></span> は、<code class="parameter">fd</code>
+   が指すファイルの <code class="parameter">offset</code> から最大
+   <code class="parameter">length</code> バイトまでを読み込みます。
+   読み込んだデータは <code class="parameter">callback</code> の
+   <code class="parameter">result</code> 引数に格納されます。
   </p>
 
  </div>
@@ -44,9 +44,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">fd</code></dt>
 
-    <span class="term"><em><code class="parameter">fd</code></em></span>
     <dd>
 
      <p class="para">
@@ -54,11 +55,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">length</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">length</code></em></span>
     <dd>
 
      <p class="para">
@@ -66,11 +67,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">offset</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">offset</code></em></span>
     <dd>
 
      <p class="para">
@@ -78,29 +79,29 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">pri</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">pri</code></em></span>
     <dd>
 
     <p class="para">リクエストの優先順位。<strong><code>EIO_PRI_DEFAULT</code></strong>、<strong><code>EIO_PRI_MIN</code></strong>、<strong><code>EIO_PRI_MAX</code></strong> あるいは <strong><code>NULL</code></strong> を指定します。
-<strong><code>NULL</code></strong> を渡した場合、<em><code class="parameter">pri</code></em> は内部的に
+<strong><code>NULL</code></strong> を渡した場合、<code class="parameter">pri</code> は内部的に
 <strong><code>EIO_PRI_DEFAULT</code></strong> となります。
 </p>
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">callback</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">callback</code></em></span>
     <dd>
 
      <p class="para">
-<em><code class="parameter">callback</code></em> 関数が、リクエスト終了時にコールされます。
+<code class="parameter">callback</code> 関数が、リクエスト終了時にコールされます。
 この関数のプロトタイプは、<div class="example-contents"><div class="phpcode"><code><span style="color: #000000">
 void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;$req]);</span>
 </code></div></div>
@@ -108,30 +109,30 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 に一致しなければなりません。
 <dl>
 
-<dt>
 
-<span class="term"><em><code class="parameter">data</code></em></span>
+<dt>
+<code class="parameter">data</code></dt>
+
 <dd>
 <p class="para">は、リクエストに渡すカスタムデータです。</p></dd>
 
-</dt>
+
 
 <dt>
+<code class="parameter">result</code></dt>
 
-<span class="term"><em><code class="parameter">result</code></em></span>
 <dd>
 <p class="para">にはリクエスト固有の結果が格納されます。基本的には、対応するシステムコールが返すそのままの値となります。</p></dd>
 
-</dt>
+
 
 <dt>
+<code class="parameter">req</code></dt>
 
-<span class="term"><em><code class="parameter">req</code></em></span>
 <dd>
 <p class="para">はオプションで指定するリクエストリソースです。
- <span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span> のような関数で使えます。</p></dd>
+<span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span> のような関数で使えます。</p></dd>
 
-</dt>
 
 </dl>
 
@@ -139,20 +140,19 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">data</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">data</code></em></span>
     <dd>
 
      <p class="para">
-     <em><code class="parameter">callback</code></em> に渡す任意の引数。
+     <code class="parameter">callback</code> に渡す任意の引数。
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -161,8 +161,8 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
  <div class="refsect1 returnvalues" id="refsect1-function.eio-read-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <span class="function"><strong>eio_read()</strong></span> は、読み込んだデータを
-  <em><code class="parameter">callback</code></em> 関数の <em><code class="parameter">result</code></em>
+  <span class="function"><strong>eio_read()</strong></span> は、読み込んだデータを
+  <code class="parameter">callback</code> 関数の <code class="parameter">result</code>
   引数に格納します。
   </p>
  </div>
@@ -170,8 +170,8 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 
  <div class="refsect1 examples" id="refsect1-function.eio-read-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-3582">
-   <p><strong>例1  <span class="function"><strong>eio_read()</strong></span> の例</strong></p>
+  <div class="example" id="example-4006">
+   <p><strong>例1 <span class="function"><strong>eio_read()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;テンポラリファイルを作って何かを書き込みます<br /></span><span style="color: #0000BB">$temp_filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"eio-temp-file.tmp"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$temp_filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"1234567890"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;eio_read()&nbsp;が終わったら呼ばれます&nbsp;*/<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">my_read_cb</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;</span><span style="color: #0000BB">$temp_filename</span><span style="color: #007700">;<br /><br />&nbsp;</span><span style="color: #FF8000">//&nbsp;読み込んだデータを出力します<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br />&nbsp;</span><span style="color: #FF8000">//&nbsp;ファイルを閉じます<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">eio_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br /><br />&nbsp;</span><span style="color: #FF8000">//&nbsp;テンポラリファイルを削除します<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">@</span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$temp_filename</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;eio_open()&nbsp;が終わったら呼ばれます&nbsp;*/<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">my_file_opened_callback</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;</span><span style="color: #FF8000">//&nbsp;$result&nbsp;にはファイルディスクリプタが含まれるはずです<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;3&nbsp;バイト目から&nbsp;5&nbsp;バイト読みます<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">eio_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_read_cb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;eio_open()&nbsp;が失敗<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;ファイルを読み書き用に開きます<br /></span><span style="color: #0000BB">eio_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$temp_filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">EIO_O_RDWR</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_file_opened_callback"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$temp_filename</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>

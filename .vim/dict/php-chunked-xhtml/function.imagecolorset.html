@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagecolorset" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagecolorset</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">imagecolorset</span> &mdash; <span class="dc-title">指定したパレットインデックスの色を設定する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagecolorset</span> &mdash; <span class="dc-title">指定したパレットインデックスの色を設定する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagecolorset-description">
@@ -43,15 +43,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">index</code></dt>
 
-     <span class="term"><em><code class="parameter">index</code></em></span>
      <dd>
 
       <p class="para">
@@ -59,41 +60,41 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">red</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">red</code></em></span>
      <dd>
 
       <p class="para">赤コンポーネントの値。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">green</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">green</code></em></span>
      <dd>
 
       <p class="para">緑コンポーネントの値。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">blue</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">blue</code></em></span>
      <dd>
 
       <p class="para">青コンポーネントの値。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">alpha</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">alpha</code></em></span>
      <dd>
 
       <p class="para">
@@ -101,8 +102,7 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -132,7 +132,7 @@ image</code></em></span><dd>
      <tr>
       <td>5.4.0</td>
       <td>
-       <em><code class="parameter">alpha</code></em> パラメータが追加されました。
+       <code class="parameter">alpha</code> パラメータが追加されました。
       </td>
      </tr>
 
@@ -146,8 +146,8 @@ image</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imagecolorset-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3187">
-    <p><strong>例1  <span class="function"><strong>imagecolorset()</strong></span> の例</strong></p>
+   <div class="example" id="example-3386">
+    <p><strong>例1 <span class="function"><strong>imagecolorset()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;300x100&nbsp;の画像を作成します<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreate</span><span style="color: #007700">(</span><span style="color: #0000BB">300</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;背景色を赤に設定します<br /></span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;背景の色インデックスを取得します<br /></span><span style="color: #0000BB">$bg&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorat</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;背景色を青に設定します<br /></span><span style="color: #0000BB">imagecolorset</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bg</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;画像をブラウザに出力します<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;image/png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -163,7 +163,7 @@ image</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imagecolorat.html" class="function" rel="rdfs-seeAlso">imagecolorat()</a> - ピクセルの色のインデックスを取得する</span></li>
+    <li class="member"><span class="function"><a href="function.imagecolorat.html" class="function" rel="rdfs-seeAlso">imagecolorat()</a> - ピクセルの色のインデックスを取得する</span></li>
    </ul>
   </p>
  </div>

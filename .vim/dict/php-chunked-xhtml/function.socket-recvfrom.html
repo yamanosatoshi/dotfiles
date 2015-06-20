@@ -30,24 +30,24 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>socket_recvfrom()</strong></span> 関数は、
-   ポート <em><code class="parameter">port</code></em> (<strong><code>AF_UNIX</code></strong>
-   型のソケットである場合を除く) 上の <em><code class="parameter">name</code></em>
-   から受信した <em><code class="parameter">len</code></em> バイトのデータを
-   <em><code class="parameter">buf</code></em> に格納します。
-    <span class="function"><strong>socket_recvfrom()</strong></span> は、
+   <span class="function"><strong>socket_recvfrom()</strong></span> 関数は、
+   ポート <code class="parameter">port</code> (<strong><code>AF_UNIX</code></strong>
+   型のソケットである場合を除く) 上の <code class="parameter">name</code>
+   から受信した <code class="parameter">len</code> バイトのデータを
+   <code class="parameter">buf</code> に格納します。
+   <span class="function"><strong>socket_recvfrom()</strong></span> は、
    接続済みのソケットだけでなく接続していないソケットに対しても使用可能です。
    さらに、フラグを指定することでこの関数の挙動を設定できます。
   </p>
   <p class="para">
-   <em><code class="parameter">name</code></em> と <em><code class="parameter">port</code></em>
+   <code class="parameter">name</code> と <code class="parameter">port</code>
    は参照渡しとしなければなりません。接続していないソケットの場合は、
-   <em><code class="parameter">name</code></em> はリモートホストの IP アドレスか
+   <code class="parameter">name</code> はリモートホストの IP アドレスか
    UNIX ソケットへのパスとなります。接続済みのソケットの場合は、
-   <em><code class="parameter">name</code></em> は <strong><code>NULL</code></strong> とします。
+   <code class="parameter">name</code> は <strong><code>NULL</code></strong> とします。
    また、<strong><code>AF_INET</code></strong> あるいは
    <strong><code>AF_INET6</code></strong> 形式のまだ接続していないソケットの場合、
-   <em><code class="parameter">port</code></em> にはリモートホストのポート番号を指定します。
+   <code class="parameter">port</code> にはリモートホストのポート番号を指定します。
   </p>
  </div>
 
@@ -57,59 +57,60 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">socket</code></dt>
 
-     <span class="term"><em><code class="parameter">socket</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">socket</code></em> には、
+       <code class="parameter">socket</code> には、
        socket_create() で作成したソケットリソースを指定します。
       </p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+<code class="parameter">buf</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">buf</code></em></span>
      <dd>
 
       <p class="para">
        受信したデータが
-       <em><code class="parameter">buf</code></em> に格納されます。
+       <code class="parameter">buf</code> に格納されます。
       </p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+<code class="parameter">len</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">len</code></em></span>
      <dd>
 
       <p class="para">
-       最大 <em><code class="parameter">len</code></em> バイトまでのデータをリモートホストから取得します。
+       最大 <code class="parameter">len</code> バイトまでのデータをリモートホストから取得します。
       </p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">flags</code></em> の値は、以下のフラグの任意の組み合わせを
+       <code class="parameter">flags</code> の値は、以下のフラグの任意の組み合わせを
        論理 OR 演算子 (<em>|</em>) で連結したものとなります。
       </p>
       
       <table class="doctable table">
-       <caption><strong><em><code class="parameter">flags</code></em> に使用できる値</strong></caption>
+       <caption><strong><code class="parameter">flags</code> に使用できる値</strong></caption>
        
         <thead>
          <tr>
@@ -138,7 +139,7 @@
          <tr>
           <td><strong><code>MSG_WAITALL</code></strong></td>
           <td>
-           少なくとも <em><code class="parameter">len</code></em> バイト受信するまではブロックする。
+           少なくとも <code class="parameter">len</code> バイト受信するまではブロックする。
            しかし、もし何らかのシグナルを受信したりリモートホストとの接続が切断された場合は
            これより少ないバイト数を返す可能性がある。
           </td>
@@ -157,29 +158,29 @@
 
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+<code class="parameter">name</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">name</code></em></span>
      <dd>
 
       <p class="para">
        <strong><code>AF_UNIX</code></strong> 型のソケットの場合は、
-       <em><code class="parameter">name</code></em> はファイルへのパスとなります。
+       <code class="parameter">name</code> はファイルへのパスとなります。
        それ以外の場合は、未接続のソケットの場合には
-       <em><code class="parameter">name</code></em> はリモートホストの IP アドレスとなります。
+       <code class="parameter">name</code> はリモートホストの IP アドレスとなります。
        接続済みソケットの場合は <strong><code>NULL</code></strong> となります。
       </p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+<code class="parameter">port</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">port</code></em></span>
      <dd>
 
       <p class="para">
@@ -187,12 +188,11 @@
        <strong><code>AF_INET6</code></strong> 型のソケットに対してのみ適用され、
        データを受信するリモートホストのポートを指定します。
        接続済みソケットの場合は
-       <em><code class="parameter">port</code></em> は <strong><code>NULL</code></strong> となります。
+       <code class="parameter">port</code> は <strong><code>NULL</code></strong> となります。
       </p>
      </dd>
 
-    </dt>
-
+    
     
    </dl>
 
@@ -203,11 +203,11 @@
  <div class="refsect1 returnvalues" id="refsect1-function.socket-recvfrom-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    <span class="function"><strong>socket_recvfrom()</strong></span> は、受信したバイト数を返します。
+   <span class="function"><strong>socket_recvfrom()</strong></span> は、受信したバイト数を返します。
    あるいはエラー時には <strong><code>FALSE</code></strong> を返します。
-   エラーコードを取得するには  <span class="function"><a href="function.socket-last-error.html" class="function">socket_last_error()</a></span>
+   エラーコードを取得するには <span class="function"><a href="function.socket-last-error.html" class="function">socket_last_error()</a></span>
    をコールします。取得したエラーコードを
-    <span class="function"><a href="function.socket-strerror.html" class="function">socket_strerror()</a></span> に渡すと、
+   <span class="function"><a href="function.socket-strerror.html" class="function">socket_strerror()</a></span> に渡すと、
    そのエラーについての説明を得ることができます。
   </p>
  </div>
@@ -216,8 +216,8 @@
  <div class="refsect1 examples" id="refsect1-function.socket-recvfrom-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4575">
-    <p><strong>例1  <span class="function"><strong>socket_recvfrom()</strong></span> の例</strong></p>
+   <div class="example" id="example-5022">
+    <p><strong>例1 <span class="function"><strong>socket_recvfrom()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />error_reporting</span><span style="color: #007700">(</span><span style="color: #0000BB">E_ALL&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">E_STRICT</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$socket&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">socket_create</span><span style="color: #007700">(</span><span style="color: #0000BB">AF_INET</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SOCK_DGRAM</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SOL_UDP</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">socket_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'127.0.0.1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1223</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$from&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$port&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">socket_recvfrom</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$buf</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$from</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$port</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"リモートアドレス&nbsp;</span><span style="color: #0000BB">$from</span><span style="color: #DD0000">&nbsp;のポート&nbsp;</span><span style="color: #0000BB">$port</span><span style="color: #DD0000">&nbsp;から&nbsp;</span><span style="color: #0000BB">$buf</span><span style="color: #DD0000">&nbsp;を受信しました"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -251,7 +251,7 @@
       <tr>
        <td>4.3.0</td>
        <td>
-         <span class="function"><strong>socket_recvfrom()</strong></span> はバイナリセーフとなりました。
+        <span class="function"><strong>socket_recvfrom()</strong></span> はバイナリセーフとなりました。
        </td>
       </tr>
 
@@ -267,10 +267,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.socket-recv.html" class="function" rel="rdfs-seeAlso">socket_recv()</a> - 接続したソケットからデータを受信する</span></li>
-    <li class="member"> <span class="function"><a href="function.socket-send.html" class="function" rel="rdfs-seeAlso">socket_send()</a> - 接続したソケットにデータを送信する</span></li>
-    <li class="member"> <span class="function"><a href="function.socket-sendto.html" class="function" rel="rdfs-seeAlso">socket_sendto()</a> - 接続しているかどうかによらずソケットにメッセージを送信する</span></li>
-    <li class="member"> <span class="function"><a href="function.socket-create.html" class="function" rel="rdfs-seeAlso">socket_create()</a> - ソケット（通信時の終端）を作成する</span></li>
+    <li class="member"><span class="function"><a href="function.socket-recv.html" class="function" rel="rdfs-seeAlso">socket_recv()</a> - 接続したソケットからデータを受信する</span></li>
+    <li class="member"><span class="function"><a href="function.socket-send.html" class="function" rel="rdfs-seeAlso">socket_send()</a> - 接続したソケットにデータを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.socket-sendto.html" class="function" rel="rdfs-seeAlso">socket_sendto()</a> - 接続しているかどうかによらずソケットにメッセージを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.socket-create.html" class="function" rel="rdfs-seeAlso">socket_create()</a> - ソケット（通信時の終端）を作成する</span></li>
    </ul>
   </p>
  </div>

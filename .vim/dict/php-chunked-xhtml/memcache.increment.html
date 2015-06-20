@@ -27,23 +27,23 @@
 
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>Memcache::increment()</strong></span> は、項目の値を
-   <em><code class="parameter">value</code></em> だけ増やします。
-   もし <em><code class="parameter">key</code></em> に対応する値が数値ではなく、かつ
+   <span class="function"><strong>Memcache::increment()</strong></span> は、項目の値を
+   <code class="parameter">value</code> だけ増やします。
+   もし <code class="parameter">key</code> に対応する値が数値ではなく、かつ
    数値に変換できなかった場合は、その新しい値は
-   <em><code class="parameter">value</code></em> となります。
-    <span class="function"><strong>Memcache::increment()</strong></span> は、指定した項目が
+   <code class="parameter">value</code> となります。
+   <span class="function"><strong>Memcache::increment()</strong></span> は、指定した項目が
    存在しない場合に項目を作成することは
    <em class="emphasis">ありません</em>。
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <p class="para">
      圧縮して格納されている項目に対して
-      <span class="function"><strong>Memcache::increment()</strong></span> を使用しないでください。
-     なぜなら、それ以降の  <span class="function"><a href="memcache.get.html" class="function">Memcache::get()</a></span> のコールが
+     <span class="function"><strong>Memcache::increment()</strong></span> を使用しないでください。
+     なぜなら、それ以降の <span class="function"><a href="memcache.get.html" class="function">Memcache::get()</a></span> のコールが
      失敗してしまうからです。
     </p>
    </p></blockquote>
-    <span class="function"><strong>memcache_increment()</strong></span> 関数を使用することも可能です。
+   <span class="function"><strong>memcache_increment()</strong></span> 関数を使用することも可能です。
   </p>
 
  </div>
@@ -54,9 +54,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">key</code></dt>
 
-     <span class="term"><em><code class="parameter">key</code></em></span>
      <dd>
 
       <p class="para">
@@ -64,20 +65,19 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">value</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">value</code></em></span>
      <dd>
 
       <p class="para">
-       項目の値を <em><code class="parameter">value</code></em> だけ増やします。
+       項目の値を <code class="parameter">value</code> だけ増やします。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -95,8 +95,8 @@
  <div class="refsect1 examples" id="refsect1-memcache.increment-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4398">
-    <p><strong>例1  <span class="function"><strong>Memcache::increment()</strong></span> の例</strong></p>
+   <div class="example" id="example-4844">
+    <p><strong>例1 <span class="function"><strong>Memcache::increment()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;手続き型の&nbsp;API&nbsp;*/<br /></span><span style="color: #0000BB">$memcache_obj&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">memcache_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;カウンタを&nbsp;2&nbsp;増やします&nbsp;*/<br /></span><span style="color: #0000BB">$current_value&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">memcache_increment</span><span style="color: #007700">(</span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'counter'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;オブジェクト指向の&nbsp;API&nbsp;*/<br /></span><span style="color: #0000BB">$memcache_obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcache</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;カウンタを&nbsp;3&nbsp;増やします&nbsp;*/<br /></span><span style="color: #0000BB">$current_value&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">increment</span><span style="color: #007700">(</span><span style="color: #DD0000">'counter'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -113,8 +113,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="memcache.decrement.html" class="function" rel="rdfs-seeAlso">Memcache::decrement()</a> - 項目の値を減らす</span></li>
-    <li class="member"> <span class="function"><a href="memcache.replace.html" class="function" rel="rdfs-seeAlso">Memcache::replace()</a> - 既存項目の値を置換する</span></li>
+    <li class="member"><span class="function"><a href="memcache.decrement.html" class="function" rel="rdfs-seeAlso">Memcache::decrement()</a> - 項目の値を減らす</span></li>
+    <li class="member"><span class="function"><a href="memcache.replace.html" class="function" rel="rdfs-seeAlso">Memcache::replace()</a> - 既存項目の値を置換する</span></li>
    </ul>
   </p>
  </div>

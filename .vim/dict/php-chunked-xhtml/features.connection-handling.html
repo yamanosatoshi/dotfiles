@@ -16,11 +16,12 @@
 
   <p class="para">
   PHP 内部で、接続ステータスが保持されます。
-  これは、次の 3 つの状態をとりえます。
+  これは、次の 4 つの状態をとりえます。
    <ul class="itemizedlist">
     <li class="listitem"><span class="simpara">0 - NORMAL</span></li>
     <li class="listitem"><span class="simpara">1 - ABORTED</span></li>
     <li class="listitem"><span class="simpara">2 - TIMEOUT</span></li>
+    <li class="listitem"><span class="simpara">3 - ABORTED および TIMEOUT</span></li>
    </ul>
   </p>
 
@@ -28,7 +29,7 @@
   通常 PHP が実行されている場合、NORMAL 状態がアクティブになります。
   リモートクライアントが接続を切った場合、ABORTED 状態フラグが有効になります。
   通常、リモートクライアントの接続断は、STOP ボタンを押すことにより発生します。
-  PHP 側の時間制限 ( <span class="function"><a href="function.set-time-limit.html" class="function">set_time_limit()</a></span> 参照) にかかった場合、
+  PHP 側の時間制限 (<span class="function"><a href="function.set-time-limit.html" class="function">set_time_limit()</a></span> 参照) にかかった場合、
   TIMEOUT 状態フラグが有効になります。</p>
 
   <p class="simpara">
@@ -42,10 +43,10 @@
    設定できます。
    同様に同じ意味を有する Apache <var class="filename">httpd.conf</var> ディレクティブ
    <em>php_value ignore_user_abort</em> または
-    <span class="function"><a href="function.ignore-user-abort.html" class="function">ignore_user_abort()</a></span> 関数にて設定することも可能です。
+   <span class="function"><a href="function.ignore-user-abort.html" class="function">ignore_user_abort()</a></span> 関数にて設定することも可能です。
    PHP にユーザーによる破棄を無視するように設定していない場合、
    ユーザーが破棄した場合、スクリプトの実行は終了します。
-   一つの例外は、 <span class="function"><a href="function.register-shutdown-function.html" class="function">register_shutdown_function()</a></span> を用いて
+   一つの例外は、<span class="function"><a href="function.register-shutdown-function.html" class="function">register_shutdown_function()</a></span> を用いて
    シャットダウン関数を定義した場合です。
    シャットダウン関数を定義した場合、リモートユーザーが STOP ボタンを押した後、
    次にスクリプトが何か出力を行おうとした場合、PHP は接続が破棄されたことを検知し、
@@ -53,7 +54,7 @@
    このシャットダウン関数は、スクリプトが正常に終了した
    際にもコールされます。
    このため、クライアントが接続を切断した場合に別の動作をさせたい場合に
-   は、 <span class="function"><a href="function.connection-aborted.html" class="function">connection_aborted()</a></span> 関数を使用することが
+   は、<span class="function"><a href="function.connection-aborted.html" class="function">connection_aborted()</a></span> 関数を使用することが
    可能です。
    この関数は、接続が破棄された場合に、<strong><code>TRUE</code></strong> を返します。
   </p>
@@ -65,12 +66,12 @@
 
    または同義の
    Apache <var class="filename">httpd.conf</var> ディレクティブ <em>php_value max_execution_time</em>
-   を  <span class="function"><a href="function.set-time-limit.html" class="function">set_time_limit()</a></span> 関数と同様に用いることにより
+   を <span class="function"><a href="function.set-time-limit.html" class="function">set_time_limit()</a></span> 関数と同様に用いることにより
    変更することが可能です。タイマーが切れた時、スクリプトは中断されます。
    上記のクライアントが接続を切るケースのように
    シャットダウン関数が登録されている場合、この関数がコールされます。
    このシャットダウン関数の中では、
-    <span class="function"><a href="function.connection-status.html" class="function">connection_status()</a></span> 関数のコールにより
+   <span class="function"><a href="function.connection-status.html" class="function">connection_status()</a></span> 関数のコールにより
    タイムアウトがシャットダウン関数のコールを生じさせるかどうかを
    確認することができます。
    この関数は、タイムアウトによりシャットダウン関数がコールされた
@@ -87,7 +88,7 @@
    必要があります。
    時間制限にかかって中断される場合、もしあればシャットダウン関数が
    コールされます。
-   ここで、 <span class="function"><a href="function.connection-status.html" class="function">connection_status()</a></span> は 3 を返します。
+   ここで、<span class="function"><a href="function.connection-status.html" class="function">connection_status()</a></span> は 3 を返します。
   </p>
 
  </div>

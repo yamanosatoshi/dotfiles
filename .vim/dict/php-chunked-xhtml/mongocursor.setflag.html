@@ -40,29 +40,30 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">flag</code></em>
-     </span>
+      <code class="parameter">flag</code>
+     </dt>
+
      <dd>
 
       <p class="para">
        設定するフラグ。フラグ 6
        (EXHAUST) は設定できません。ドライバがその処理方法を知らないからです。
        このフラグを使うと警告が発生します。使えるフラグについては、wire プロトコルの
-       <a href="http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol#MongoWireProtocol-OPQUERY" class="link external">&raquo;&nbsp;ドキュメント</a>
+       <a href="http://docs.mongodb.org/meta-driver/latest/legacy/mongodb-wire-protocol/#MongoWireProtocol-OPQUERY" class="link external">&raquo;&nbsp;ドキュメント</a>
        を参照ください。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
+      <code class="parameter">set</code>
+     </dt>
 
-     <span class="term">
-      <em><code class="parameter">set</code></em>
-     </span>
      <dd>
 
       <p class="para">
@@ -70,8 +71,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -126,8 +126,8 @@
 
  <div class="refsect1 examples" id="refsect1-mongocursor.setflag-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1480">
-   <p><strong>例1  <span class="function"><strong>MongoCursor::setFlag()</strong></span> の例</strong></p>
+  <div class="example" id="example-1557">
+   <p><strong>例1 <span class="function"><strong>MongoCursor::setFlag()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'mongodb://localhost:13000'</span><span style="color: #007700">,&nbsp;array(&nbsp;</span><span style="color: #DD0000">'replSet'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'seta'&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">local</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">selectCollection</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'oplog.rs'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">find</span><span style="color: #007700">(&nbsp;array(&nbsp;</span><span style="color: #DD0000">'ns'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'demo.article'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'op'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'i'&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFlag</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;tailable&nbsp;フラグを設定します<br /></span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFlag</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;await&nbsp;data&nbsp;フラグを設定します<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -143,11 +143,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mongocursor.tailable.html" class="function" rel="rdfs-seeAlso">MongoCursor::tailable()</a> - このカーソルが、最後の結果を取得した後もオープンしたままにしておくかどうかを設定する</span></li>
-    <li class="member"> <span class="function"><a href="mongocursor.immortal.html" class="function" rel="rdfs-seeAlso">MongoCursor::immortal()</a> - このカーソルをタイムアウトさせるかどうかを設定する</span></li>
-    <li class="member"> <span class="function"><a href="mongocursor.awaitdata.html" class="function" rel="rdfs-seeAlso">MongoCursor::awaitData()</a> - 追尾可能なカーソルで、データがないときにしばらく待つかどうかを設定する</span></li>
-    <li class="member"> <span class="function"><a href="mongocursor.partial.html" class="function" rel="rdfs-seeAlso">MongoCursor::partial()</a> - シャードがダウンしているときにこのクエリが mongos から部分的な結果を返すようにするかどうか</span></li>
-    <li class="member">MongoDB コアドキュメントの <a href="http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol#MongoWireProtocol-OPQUERY" class="link external">&raquo;&nbsp;wire protocol query flags</a></li>
+    <li class="member"><span class="function"><a href="mongocursor.tailable.html" class="function" rel="rdfs-seeAlso">MongoCursor::tailable()</a> - このカーソルが、最後の結果を取得した後もオープンしたままにしておくかどうかを設定する</span></li>
+    <li class="member"><span class="function"><a href="mongocursor.immortal.html" class="function" rel="rdfs-seeAlso">MongoCursor::immortal()</a> - このカーソルをタイムアウトさせるかどうかを設定する</span></li>
+    <li class="member"><span class="function"><a href="mongocursor.awaitdata.html" class="function" rel="rdfs-seeAlso">MongoCursor::awaitData()</a> - 追尾可能なカーソルで、データがないときにしばらく待つかどうかを設定する</span></li>
+    <li class="member"><span class="function"><a href="mongocursor.partial.html" class="function" rel="rdfs-seeAlso">MongoCursor::partial()</a> - シャードがダウンしているときにこのクエリが mongos から部分的な結果を返すようにするかどうか</span></li>
+    <li class="member">MongoDB コアドキュメントの <a href="http://docs.mongodb.org/meta-driver/latest/legacy/mongodb-wire-protocol/#MongoWireProtocol-OPQUERY" class="link external">&raquo;&nbsp;wire protocol query flags</a></li>
    </ul>
   </p>
  </div>

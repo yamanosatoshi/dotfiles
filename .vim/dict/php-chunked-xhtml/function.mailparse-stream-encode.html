@@ -31,7 +31,7 @@
 
   <p class="para rdfs-comment">
    ソースファイルポインタからストリームデータを取得し、
-   <em><code class="parameter">encoding</code></em> を適用して
+   <code class="parameter">encoding</code> を適用して
    それを出力ファイルポインタに書き込みます。
   </p>
  </div>
@@ -42,9 +42,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">sourcefp</code></dt>
 
-     <span class="term"><em><code class="parameter">sourcefp</code></em></span>
      <dd>
 
       <p class="para">
@@ -52,11 +53,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">destfp</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">destfp</code></em></span>
      <dd>
 
       <p class="para">
@@ -64,11 +65,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">encoding</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">encoding</code></em></span>
      <dd>
 
       <p class="para">
@@ -77,8 +78,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -96,8 +96,8 @@
  <div class="refsect1 examples" id="refsect1-function.mailparse-stream-encode-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3368">
-    <p><strong>例1  <span class="function"><strong>mailparse_stream_encode()</strong></span> の例</strong></p>
+   <div class="example" id="example-3792">
+    <p><strong>例1 <span class="function"><strong>mailparse_stream_encode()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;email.eml&nbsp;の中身は:&nbsp;hello,&nbsp;this&nbsp;is&nbsp;some&nbsp;text=hello.<br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'email.eml'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$dest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">tmpfile</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">mailparse_stream_encode</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dest</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"quoted-printable"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">rewind</span><span style="color: #007700">(</span><span style="color: #0000BB">$dest</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ファイルの内容を表示します<br /></span><span style="color: #0000BB">fpassthru</span><span style="color: #007700">(</span><span style="color: #0000BB">$dest</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>

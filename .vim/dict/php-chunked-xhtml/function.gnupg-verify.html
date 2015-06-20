@@ -28,7 +28,7 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   指定した <em><code class="parameter">signed_text</code></em> を検証し、署名についての情報を返します。
+   指定した <code class="parameter">signed_text</code> を検証し、署名についての情報を返します。
   </p>
  </div>
 
@@ -38,20 +38,21 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">identifier</code></dt>
 
-     <span class="term"><em><code class="parameter">identifier</code></em></span>
      <dd>
 
-      <p class="para"> <span class="function"><a href="function.gnupg-init.html" class="function">gnupg_init()</a></span>
+      <p class="para"><span class="function"><a href="function.gnupg-init.html" class="function">gnupg_init()</a></span>
 あるいは <strong class="classname">gnupg</strong> のコールで得られた gnupg ID。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">signed_text</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">signed_text</code></em></span>
      <dd>
 
       <p class="para">
@@ -59,11 +60,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">signature</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">signature</code></em></span>
      <dd>
 
       <p class="para">
@@ -72,11 +73,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">plaintext</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">plaintext</code></em></span>
      <dd>
 
       <p class="para">
@@ -86,8 +87,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -106,8 +106,8 @@
  <div class="refsect1 examples" id="refsect1-function.gnupg-verify-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3514">
-    <p><strong>例1 手続き型の  <span class="function"><strong>gnupg_verify()</strong></span> の例</strong></p>
+   <div class="example" id="example-3943">
+    <p><strong>例1 手続き型の <span class="function"><strong>gnupg_verify()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$plaintext&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gnupg_init</span><span style="color: #007700">();<br /></span><span style="color: #FF8000">//&nbsp;clearsigned<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gnupg_verify</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,</span><span style="color: #0000BB">$signed_text</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">,</span><span style="color: #0000BB">$plaintext</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$info</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;detached&nbsp;signature<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gnupg_verify</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,</span><span style="color: #0000BB">$signed_text</span><span style="color: #007700">,</span><span style="color: #0000BB">$signature</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$info</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -116,8 +116,8 @@
     </div>
 
    </div>
-   <div class="example" id="example-3515">
-    <p><strong>例2 オブジェクト指向の  <span class="function"><strong>gnupg_verify()</strong></span> の例</strong></p>
+   <div class="example" id="example-3944">
+    <p><strong>例2 オブジェクト指向の <span class="function"><strong>gnupg_verify()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$plaintext&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$gpg&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">gnupg</span><span style="color: #007700">();<br /></span><span style="color: #FF8000">//&nbsp;clearsigned<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$gpg&nbsp;</span><span style="color: #007700">-&gt;&nbsp;</span><span style="color: #0000BB">verify</span><span style="color: #007700">(</span><span style="color: #0000BB">$signed_text</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">,</span><span style="color: #0000BB">$plaintext</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$info</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;detached&nbsp;signature<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$gpg&nbsp;</span><span style="color: #007700">-&gt;&nbsp;</span><span style="color: #0000BB">verify</span><span style="color: #007700">(</span><span style="color: #0000BB">$signed_text</span><span style="color: #007700">,</span><span style="color: #0000BB">$signature</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$info</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

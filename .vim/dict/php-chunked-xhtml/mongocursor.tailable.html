@@ -37,7 +37,7 @@
   <p class="para">
    他の &quot;潜在カーソル (latent cursor)&quot; 同様、カーソルはどこかで無効な状態になります。
    参照しているオブジェクトがすべて削除された場合などです。
-   したがって、カーソルが  <span class="function"><a href="mongocursor.dead.html" class="function">MongoCursor::dead()</a></span>
+   したがって、カーソルが <span class="function"><a href="mongocursor.dead.html" class="function">MongoCursor::dead()</a></span>
    になったら再びクエリを実行できるようにしておかなければなりません。
   </p>
  </div>
@@ -48,11 +48,12 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">tail</code></em>
-     </span>
+      <code class="parameter">tail</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -60,8 +61,7 @@
       </p>
      </dd>
 
-    </dt>
-   
+       
    </dl>
 
   </p>
@@ -87,8 +87,8 @@
 
  <div class="refsect1 examples" id="refsect1-mongocursor.tailable-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1484">
-   <p><strong>例1  <span class="function"><strong>MongoCursor::tailable()</strong></span> の例</strong></p>
+  <div class="example" id="example-1561">
+   <p><strong>例1 <span class="function"><strong>MongoCursor::tailable()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$cursor&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">find</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">tailable</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$results&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /><br />while&nbsp;(</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasNext</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;すべての結果を読み終えたら終了します<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dead</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;これまでのすべての結果を読み、さらに待ちます<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sleep</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$results</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getNext</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -103,11 +103,11 @@
  <div class="refsect1 seealso" id="refsect1-mongocursor.tailable-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
-   MongoDB コアドキュメントの <a href="http://www.mongodb.org/display/DOCS/Tailable+Cursors" class="link external">&raquo;&nbsp;tailable cursors</a>。
+   MongoDB コアドキュメントの <a href="http://docs.mongodb.org/manual/tutorial/create-tailable-cursor/" class="link external">&raquo;&nbsp;tailable cursors</a>。
   </p>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mongocursor.awaitdata.html" class="function" rel="rdfs-seeAlso">MongoCursor::awaitData()</a> - 追尾可能なカーソルで、データがないときにしばらく待つかどうかを設定する</span></li>
+    <li class="member"><span class="function"><a href="mongocursor.awaitdata.html" class="function" rel="rdfs-seeAlso">MongoCursor::awaitData()</a> - 追尾可能なカーソルで、データがないときにしばらく待つかどうかを設定する</span></li>
    </ul>
   </p>
  </div>

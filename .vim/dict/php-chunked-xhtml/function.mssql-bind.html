@@ -43,21 +43,22 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">stmt</code></dt>
 
-     <span class="term"><em><code class="parameter">stmt</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.mssql-init.html" class="function">mssql_init()</a></span> で取得したステートメントリソース。
+       <span class="function"><a href="function.mssql-init.html" class="function">mssql_init()</a></span> で取得したステートメントリソース。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">param_name</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">param_name</code></em></span>
      <dd>
 
       <p class="para">
@@ -66,16 +67,16 @@
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
         T-SQL 構文のように <em>@</em> 文字を含めなければなりません。
-         <span class="function"><a href="function.mssql-execute.html" class="function">mssql_execute()</a></span> にある例を参照ください。
+        <span class="function"><a href="function.mssql-execute.html" class="function">mssql_execute()</a></span> にある例を参照ください。
        </p>
       </p></blockquote>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">var</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">var</code></em></span>
      <dd>
 
       <p class="para">
@@ -85,11 +86,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">type</code></em></span>
      <dd>
 
       <p class="para">
@@ -102,11 +103,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">is_output</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">is_output</code></em></span>
      <dd>
 
       <p class="para">
@@ -116,24 +117,24 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">is_null</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">is_null</code></em></span>
      <dd>
 
       <p class="para">
        パラメータが <strong><code>NULL</code></strong> かどうか。<strong><code>NULL</code></strong> 値を
-       <em><code class="parameter">var</code></em> に渡しても正しく動作しません。
+       <code class="parameter">var</code> に渡しても正しく動作しません。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">maxlen</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">maxlen</code></em></span>
      <dd>
 
       <p class="para">
@@ -144,8 +145,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -163,8 +163,8 @@
  <div class="refsect1 examples" id="refsect1-function.mssql-bind-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1519">
-    <p><strong>例1  <span class="function"><strong>mssql_bind()</strong></span> の例</strong></p>
+   <div class="example" id="example-1698">
+    <p><strong>例1 <span class="function"><strong>mssql_bind()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;MSSQL&nbsp;に接続し、データベースを選択します<br /></span><span style="color: #0000BB">mssql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'KALLESPC\SQLEXPRESS'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sa'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'phpfi'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mssql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">'php'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;新しいストアドプロシージャを作成します<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_init</span><span style="color: #007700">(</span><span style="color: #DD0000">'NewUserRecord'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;フィールド名をバインドします<br /></span><span style="color: #0000BB">mssql_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@username'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #DD0000">'Kalle'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">SQLVARCHAR</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">60</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mssql_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@name'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Kalle'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">SQLVARCHAR</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">60</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mssql_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@age'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">19</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">SQLINT1</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;実行します<br /></span><span style="color: #0000BB">mssql_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ステートメントを開放します<br /></span><span style="color: #0000BB">mssql_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -181,9 +181,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mssql-execute.html" class="function" rel="rdfs-seeAlso">mssql_execute()</a> - MS SQL サーバーデータベースでストアドプロシージャを実行する</span></li>
-    <li class="member"> <span class="function"><a href="function.mssql-free-statement.html" class="function" rel="rdfs-seeAlso">mssql_free_statement()</a> - ステートメントのメモリを開放する</span></li>
-    <li class="member"> <span class="function"><a href="function.mssql-init.html" class="function" rel="rdfs-seeAlso">mssql_init()</a> - ストアドプロシージャまたはリモートのストアドプロシージャを初期化する</span></li>
+    <li class="member"><span class="function"><a href="function.mssql-execute.html" class="function" rel="rdfs-seeAlso">mssql_execute()</a> - MS SQL サーバーデータベースでストアドプロシージャを実行する</span></li>
+    <li class="member"><span class="function"><a href="function.mssql-free-statement.html" class="function" rel="rdfs-seeAlso">mssql_free_statement()</a> - ステートメントのメモリを開放する</span></li>
+    <li class="member"><span class="function"><a href="function.mssql-init.html" class="function" rel="rdfs-seeAlso">mssql_init()</a> - ストアドプロシージャまたはリモートのストアドプロシージャを初期化する</span></li>
    </ul>
   </p>
  </div>

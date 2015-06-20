@@ -39,7 +39,7 @@
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <span class="simpara">
-    PHP の他の多くの仕組みと異なり、 <span class="function"><strong>apc_add()</strong></span> 
+    PHP の他の多くの仕組みと異なり、<span class="function"><strong>apc_add()</strong></span> 
     を用いて格納された変数はリクエストを超えて
     （その値がキャッシュから取り除かれるまで）持続します。
    </span>
@@ -51,26 +51,27 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">key</code></dt>
 
-     <span class="term"><em><code class="parameter">key</code></em></span>
      <dd>
 
       <p class="para">
-       この名前を用いて変数を格納します。<em><code class="parameter">key</code></em> は
-       キャッシュ内で一意です。そのため、 <span class="function"><strong>apc_add()</strong></span>
-       を使用して同一の <em><code class="parameter">key</code></em> 
+       この名前を用いて変数を格納します。<code class="parameter">key</code> は
+       キャッシュ内で一意です。そのため、<span class="function"><strong>apc_add()</strong></span>
+       を使用して同一の <code class="parameter">key</code> 
        で新しい値を格納しようとしても、それは保存されません。
-       かわりに <strong><code>FALSE</code></strong> が返されます (これが、 <span class="function"><strong>apc_add()</strong></span>
-       と  <span class="function"><a href="function.apc-store.html" class="function">apc_store()</a></span> の唯一の相違点です)。
+       かわりに <strong><code>FALSE</code></strong> が返されます (これが、<span class="function"><strong>apc_add()</strong></span>
+       と <span class="function"><a href="function.apc-store.html" class="function">apc_store()</a></span> の唯一の相違点です)。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">var</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">var</code></em></span>
      <dd>
 
       <p class="para">
@@ -78,30 +79,30 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">ttl</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">ttl</code></em></span>
      <dd>
 
       <p class="para">
-       有効期間。<em><code class="parameter">var</code></em> は、キャッシュに
-       <em><code class="parameter">ttl</code></em> 秒間だけ格納されます。
-       <em><code class="parameter">ttl</code></em> が経過すると、格納されている変数は
+       有効期間。<code class="parameter">var</code> は、キャッシュに
+       <code class="parameter">ttl</code> 秒間だけ格納されます。
+       <code class="parameter">ttl</code> が経過すると、格納されている変数は
        （次のリクエスト時に）キャッシュから削除されます。
-       <em><code class="parameter">ttl</code></em> が指定されていない（あるいは
-       <em><code class="parameter">ttl</code></em> が <em>0</em> の場合）は、
+       <code class="parameter">ttl</code> が指定されていない（あるいは
+       <code class="parameter">ttl</code> が <em>0</em> の場合）は、
        キャッシュから手動で削除される・あるいはキャッシュに存在できなくなる
        （clear, restart など）まで値が持続します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">values</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">values</code></em></span>
      <dd>
 
       <p class="para">
@@ -109,8 +110,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -128,8 +128,8 @@
  <div class="refsect1 examples" id="refsect1-function.apc-add-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-401">
-    <p><strong>例1  <span class="function"><strong>apc_add()</strong></span> の例</strong></p>
+   <div class="example" id="example-426">
+    <p><strong>例1 <span class="function"><strong>apc_add()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'BAR'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">apc_add</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">apc_fetch</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'NEVER&nbsp;GETS&nbsp;SET'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">apc_add</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">apc_fetch</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -153,9 +153,9 @@ string(3) &quot;BAR&quot;
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.apc-store.html" class="function" rel="rdfs-seeAlso">apc_store()</a> - 変数をデータ領域にキャッシュする</span></li>
-    <li class="member"> <span class="function"><a href="function.apc-fetch.html" class="function" rel="rdfs-seeAlso">apc_fetch()</a> - 格納されている変数をキャッシュから取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.apc-delete.html" class="function" rel="rdfs-seeAlso">apc_delete()</a> - 格納されている変数をキャッシュから取り除く</span></li>
+    <li class="member"><span class="function"><a href="function.apc-store.html" class="function" rel="rdfs-seeAlso">apc_store()</a> - 変数をデータ領域にキャッシュする</span></li>
+    <li class="member"><span class="function"><a href="function.apc-fetch.html" class="function" rel="rdfs-seeAlso">apc_fetch()</a> - 格納されている変数をキャッシュから取得する</span></li>
+    <li class="member"><span class="function"><a href="function.apc-delete.html" class="function" rel="rdfs-seeAlso">apc_delete()</a> - 格納されている変数をキャッシュから取り除く</span></li>
    </ul>
   </p>
  </div>

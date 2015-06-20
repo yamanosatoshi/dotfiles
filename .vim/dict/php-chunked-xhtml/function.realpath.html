@@ -13,7 +13,7 @@
 </div><hr /><div id="function.realpath" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">realpath</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">realpath</span> &mdash; <span class="dc-title">絶対パス名を返す</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">realpath</span> &mdash; <span class="dc-title">絶対パス名を返す</span></p>
 
  </div>
  
@@ -25,8 +25,8 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>realpath()</strong></span> は、
-   入力 <em><code class="parameter">path</code></em> のシンボリックリンクをすべて展開し、
+   <span class="function"><strong>realpath()</strong></span> は、
+   入力 <code class="parameter">path</code> のシンボリックリンクをすべて展開し、
    「/./」「/../」「/」などの参照をすべて解決することにより、正規化した絶対パスを返します。
   </p>
  </div>
@@ -37,9 +37,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">path</code></dt>
 
-     <span class="term"><em><code class="parameter">path</code></em></span>
      <dd>
 
       <p class="para">
@@ -53,8 +54,7 @@
        </p></blockquote>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -68,14 +68,14 @@
    返されるパスはシンボリックリンクや「/./」「/../」要素を含みません。
   </p>
   <p class="para">
-    <span class="function"><strong>realpath()</strong></span> は、
+   <span class="function"><strong>realpath()</strong></span> は、
    たとえばファイルが存在しないなどの失敗時に <strong><code>FALSE</code></strong> を返します。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     指定した階層にあるすべてのディレクトリに対して、
     実行中のスクリプトからの実行権限が必要です。もし権限がなければ
-     <span class="function"><strong>realpath()</strong></span> は <strong><code>FALSE</code></strong> を返します。
+    <span class="function"><strong>realpath()</strong></span> は <strong><code>FALSE</code></strong> を返します。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">
@@ -104,18 +104,18 @@
       <tr>
        <td>5.3.0</td>
        <td>
-        これより前のバージョンでは、*BSD システムでは  <span class="function"><strong>realpath()</strong></span>
-        は最後の <em><code class="parameter">path</code></em>
+        これより前のバージョンでは、*BSD システムでは <span class="function"><strong>realpath()</strong></span>
+        は最後の <code class="parameter">path</code>
         コンポーネントのみが存在しない場合には失敗となりませんでした。
         このバージョン以降では失敗となります。
        </td>
       </tr>
 
       <tr>
-       <td>5.0.0</td>
+       <td>5.2.1</td>
        <td>
-        これより前のバージョンでは、<em><code class="parameter">path</code></em> に空白や <strong><code>NULL</code></strong>
-        を指定すると  <span class="function"><strong>realpath()</strong></span> はスクリプトディレクトリ名を返していました。
+        これより前のバージョンでは、<code class="parameter">path</code> が空文字列あるいは <strong><code>NULL</code></strong> の場合に
+        <span class="function"><strong>realpath()</strong></span> は <strong><code>FALSE</code></strong> を返していました。
        </td>
       </tr>
 
@@ -131,8 +131,8 @@
  <div class="refsect1 examples" id="refsect1-function.realpath-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2417">
-    <p><strong>例1  <span class="function"><strong>realpath()</strong></span> の例</strong></p>
+   <div class="example" id="example-2616">
+    <p><strong>例1 <span class="function"><strong>realpath()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />chdir</span><span style="color: #007700">(</span><span style="color: #DD0000">'/var/www/'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'./../../etc/passwd'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -147,10 +147,10 @@
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-2418">
-    <p><strong>例2 Windows 上での  <span class="function"><strong>realpath()</strong></span></strong></p>
+   <div class="example" id="example-2617">
+    <p><strong>例2 Windows 上での <span class="function"><strong>realpath()</strong></span></strong></p>
     <div class="example-contents"><p>
-     Windows 上で  <span class="function"><strong>realpath()</strong></span>
+     Windows 上で <span class="function"><strong>realpath()</strong></span>
      を実行すると、Unix 形式のパスを Windows 形式に変更します。
     </p></div>
     <div class="example-contents">
@@ -175,9 +175,9 @@ C:\WINDOWS\System32
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.basename.html" class="function" rel="rdfs-seeAlso">basename()</a> - パスの最後にある名前の部分を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.dirname.html" class="function" rel="rdfs-seeAlso">dirname()</a> - 親ディレクトリのパスを返す</span></li>
-    <li class="member"> <span class="function"><a href="function.pathinfo.html" class="function" rel="rdfs-seeAlso">pathinfo()</a> - ファイルパスに関する情報を返す</span></li>
+    <li class="member"><span class="function"><a href="function.basename.html" class="function" rel="rdfs-seeAlso">basename()</a> - パスの最後にある名前の部分を返す</span></li>
+    <li class="member"><span class="function"><a href="function.dirname.html" class="function" rel="rdfs-seeAlso">dirname()</a> - 親ディレクトリのパスを返す</span></li>
+    <li class="member"><span class="function"><a href="function.pathinfo.html" class="function" rel="rdfs-seeAlso">pathinfo()</a> - ファイルパスに関する情報を返す</span></li>
    </ul>
   </p>
  </div>

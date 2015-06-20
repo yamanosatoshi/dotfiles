@@ -28,7 +28,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_escape_bytea()</strong></span> は、bytea 型のために文字列を
+   <span class="function"><strong>pg_escape_bytea()</strong></span> は、bytea 型のために文字列を
    エスケープし、エスケープした文字列を返します。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -56,25 +56,26 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
        PostgreSQL データベース接続リソース。
-       <em><code class="parameter">connection</code></em> が存在しない場合は、
+       <code class="parameter">connection</code> が存在しない場合は、
        デフォルトの接続を使用します。デフォルトの接続は、
-        <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span> あるいは  <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span>
+       <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span> あるいは <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span>
        で直近に作成されたものとなります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">data</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">data</code></em></span>
      <dd>
 
       <p class="para">
@@ -83,8 +84,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -115,7 +115,7 @@
      <tbody class="tbody">
       <tr>
        <td>5.2.0</td>
-       <td><em><code class="parameter">connection</code></em> が追加されました。</td>
+       <td><code class="parameter">connection</code> が追加されました。</td>
       </tr>
 
      </tbody>
@@ -129,8 +129,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-escape-bytea-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2050">
-    <p><strong>例1  <span class="function"><strong>pg_escape_bytea()</strong></span> の例</strong></p>
+   <div class="example" id="example-2246">
+    <p><strong>例1 <span class="function"><strong>pg_escape_bytea()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;データベースに接続する<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'dbname=foo'</span><span style="color: #007700">);<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;バイナリファイルを読み込む<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'image1.jpg'</span><span style="color: #007700">);<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;バイナリデータをエスケープする<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$escaped&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_escape_bytea</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;それをデータベースに挿入する<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;gallery&nbsp;(name,&nbsp;data)&nbsp;VALUES&nbsp;('Pine&nbsp;trees',&nbsp;'</span><span style="color: #007700">{</span><span style="color: #0000BB">$escaped</span><span style="color: #007700">}</span><span style="color: #DD0000">')"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -147,8 +147,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-unescape-bytea.html" class="function" rel="rdfs-seeAlso">pg_unescape_bytea()</a> - bytea 型のバイナリをアンエスケープする</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-escape-string.html" class="function" rel="rdfs-seeAlso">pg_escape_string()</a> - クエリに使う文字列をエスケープする</span></li>
+    <li class="member"><span class="function"><a href="function.pg-unescape-bytea.html" class="function" rel="rdfs-seeAlso">pg_unescape_bytea()</a> - bytea 型のバイナリをアンエスケープする</span></li>
+    <li class="member"><span class="function"><a href="function.pg-escape-string.html" class="function" rel="rdfs-seeAlso">pg_escape_string()</a> - クエリに使う文字列をエスケープする</span></li>
    </ul>
   </p>
  </div>

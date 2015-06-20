@@ -28,8 +28,8 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-   指定したメールボックス <em><code class="parameter">mbox</code></em>
-   に文字列メッセージ <em><code class="parameter">message</code></em> を追加します。
+   指定したメールボックス <code class="parameter">mbox</code>
+   に文字列メッセージ <code class="parameter">message</code> を追加します。
   </p>
  </div>
 
@@ -39,28 +39,29 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-imap_stream</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
+<code class="parameter">
+imap_stream</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
 が返す IMAP ストリーム。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">mailbox</code></dt>
 
-     <span class="term"><em><code class="parameter">mailbox</code></em></span>
      <dd>
 
       <p class="para">
-       メールボックスの名前。詳細は  <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
+       メールボックスの名前。詳細は <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
        を参照ください。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">message</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">message</code></em></span>
      <dd>
 
       <p class="para">
@@ -72,24 +73,24 @@ imap_stream</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">options</code></em></span>
      <dd>
 
       <p class="para">
        指定した場合は、
-       <em><code class="parameter">options</code></em> もそのメールボックスに書きこまれます。
+       <code class="parameter">options</code> もそのメールボックスに書きこまれます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">internal_date</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">internal_date</code></em></span>
      <dd>
 
       <p class="para">
@@ -98,8 +99,7 @@ imap_stream</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -145,8 +145,8 @@ imap_stream</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imap-append-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3334">
-    <p><strong>例1  <span class="function"><strong>imap_append()</strong></span> の例</strong></p>
+   <div class="example" id="example-3758">
+    <p><strong>例1 <span class="function"><strong>imap_append()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$stream&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_open</span><span style="color: #007700">(</span><span style="color: #DD0000">"{imap.example.org}INBOX.Drafts"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$check&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_check</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Msg&nbsp;Count&nbsp;before&nbsp;append:&nbsp;"</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$check</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Nmsgs&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">imap_append</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"{imap.example.org}INBOX.Drafts"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"From:&nbsp;me@example.com\r\n"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"To:&nbsp;you@example.com\r\n"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"Subject:&nbsp;test\r\n"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"this&nbsp;is&nbsp;a&nbsp;test&nbsp;message,&nbsp;please&nbsp;ignore\r\n"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$check&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_check</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Msg&nbsp;Count&nbsp;after&nbsp;append&nbsp;:&nbsp;"</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$check</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Nmsgs&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">imap_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

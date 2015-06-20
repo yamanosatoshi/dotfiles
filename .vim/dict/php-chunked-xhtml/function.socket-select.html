@@ -29,7 +29,7 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>socket_select()</strong></span> はソケットの配列を受け取り、
+   <span class="function"><strong>socket_select()</strong></span> はソケットの配列を受け取り、
    それらの状態が変化するまで待ちます。BSD のソケットについての知識がある方なら、
    これらのソケットの配列が、いわゆるファイル記述子セットであることがご理解いただけるでしょう。
    3 つの独立した配列でソケットリソースを監視します。
@@ -42,79 +42,79 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">read</code></dt>
 
-     <span class="term"><em><code class="parameter">read</code></em></span>
      <dd>
 
       <p class="para">
-       配列 <em><code class="parameter">read</code></em> に挙げられたソケットでは、
+       配列 <code class="parameter">read</code> に挙げられたソケットでは、
        文字が読み込み可能になっているかどうか（厳密に言うと、読み込みが
        ブロックされていないかどうか - 実際には、ソケット記述子はファイルの
-       終端でも有効です。そのような場合、 <span class="function"><a href="function.socket-read.html" class="function">socket_read()</a></span>
+       終端でも有効です。そのような場合、<span class="function"><a href="function.socket-read.html" class="function">socket_read()</a></span>
        は長さゼロの文字列を返します）を監視します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">write</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">write</code></em></span>
      <dd>
 
       <p class="para">
-       配列 <em><code class="parameter">write</code></em> に挙げられたソケットでは、
+       配列 <code class="parameter">write</code> に挙げられたソケットでは、
        書き込みがブロックされていないかどうかを監視します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">except</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">except</code></em></span>
      <dd>
 
       <p class="para">
-       配列 <em><code class="parameter">except</code></em> に挙げられたソケットでは、
+       配列 <code class="parameter">except</code> に挙げられたソケットでは、
        例外を監視します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">tv_sec</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">tv_sec</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">tv_sec</code></em> および <em><code class="parameter">tv_usec</code></em>
+       <code class="parameter">tv_sec</code> および <code class="parameter">tv_usec</code>
        は、ともに<em>タイムアウト</em>を指定するパラメータです。
-       <em>タイムアウト</em>は、 <span class="function"><strong>socket_select()</strong></span>
+       <em>タイムアウト</em>は、<span class="function"><strong>socket_select()</strong></span>
        が結果を返すまでの経過時間の最大値です。
-       <em><code class="parameter">tv_sec</code></em> はゼロにすることも可能で、そうすると
-        <span class="function"><strong>socket_select()</strong></span> は結果をすぐに返します。
-       これはポーリングをする際に有用です。<em><code class="parameter">tv_sec</code></em>
+       <code class="parameter">tv_sec</code> はゼロにすることも可能で、そうすると
+       <span class="function"><strong>socket_select()</strong></span> は結果をすぐに返します。
+       これはポーリングをする際に有用です。<code class="parameter">tv_sec</code>
        に <strong><code>NULL</code></strong>（タイムアウトしない）を指定すると、
-        <span class="function"><strong>socket_select()</strong></span> は無期限にブロックします。
+       <span class="function"><strong>socket_select()</strong></span> は無期限にブロックします。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">tv_usec</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">tv_usec</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -125,10 +125,10 @@
    </p>
   </div>
   <p class="para">
-    <span class="function"><strong>socket_select()</strong></span> のすべての配列を設定する必要はありません。
+   <span class="function"><strong>socket_select()</strong></span> のすべての配列を設定する必要はありません。
    使用しないものについては空の配列や <strong><code>NULL</code></strong> をかわりに指定しておくことが可能です。
    また、これらの配列は<em class="emphasis">参照渡し</em> であり、
-    <span class="function"><strong>socket_select()</strong></span>
+   <span class="function"><strong>socket_select()</strong></span>
    をコールした後でその中身が書き換えられていることに注意しましょう。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -136,8 +136,8 @@
     現状の Zend Engine の制限により、関数の参照渡しパラメータに
     <strong><code>NULL</code></strong> のような定数値を直接渡すことができません。一時的な変数を使用するか、
     あるいは一番左に一時変数を使用する式を使用してください。
-    <div class="example" id="example-4576">
-     <p><strong>例1  <span class="function"><strong>socket_select()</strong></span> での <strong><code>NULL</code></strong> の使用</strong></p>
+    <div class="example" id="example-5023">
+     <p><strong>例1 <span class="function"><strong>socket_select()</strong></span> での <strong><code>NULL</code></strong> の使用</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">socket_select</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -154,20 +154,20 @@
  <div class="refsect1 returnvalues" id="refsect1-function.socket-select-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合は、 <span class="function"><strong>socket_select()</strong></span> は配列内で
+   成功した場合は、<span class="function"><strong>socket_select()</strong></span> は配列内で
    変化のあったソケットリソースの数を返します。もし何かがおこる前に
    タイムアウト時間が経過した場合は、ゼロを返すことになります。
    エラー時には <strong><code>FALSE</code></strong> が返されます。エラーコードは
-    <span class="function"><a href="function.socket-last-error.html" class="function">socket_last_error()</a></span> で取得可能です。
+   <span class="function"><a href="function.socket-last-error.html" class="function">socket_last_error()</a></span> で取得可能です。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     エラーかどうかを調べる際には、必ず <em>===</em> 演算子を
-    使用するようにしましょう。 <span class="function"><strong>socket_select()</strong></span> は
+    使用するようにしましょう。<span class="function"><strong>socket_select()</strong></span> は
     0 を返す場合もあり、このような場合に <em>==</em>
     を用いて比較すると、エラーと判定されてしまいます。
-    <div class="example" id="example-4577">
-     <p><strong>例2  <span class="function"><strong>socket_select()</strong></span> の返す結果を知る</strong></p>
+    <div class="example" id="example-5024">
+     <p><strong>例2 <span class="function"><strong>socket_select()</strong></span> の返す結果を知る</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">socket_select</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"socket_select()&nbsp;は失敗しました。原因:&nbsp;"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">socket_strerror</span><span style="color: #007700">(</span><span style="color: #0000BB">socket_last_error</span><span style="color: #007700">())&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -184,8 +184,8 @@
  <div class="refsect1 examples" id="refsect1-function.socket-select-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4578">
-    <p><strong>例3  <span class="function"><strong>socket_select()</strong></span> の例</strong></p>
+   <div class="example" id="example-5025">
+    <p><strong>例3 <span class="function"><strong>socket_select()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;読み込み用の配列を準備する&nbsp;*/<br /></span><span style="color: #0000BB">$read&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">$socket1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$socket2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$write&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$except&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$num_changed_sockets&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">socket_select</span><span style="color: #007700">(</span><span style="color: #0000BB">$read</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$write</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$except</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$num_changed_sockets&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;エラー処理&nbsp;*/<br /></span><span style="color: #007700">}&nbsp;else&nbsp;if&nbsp;(</span><span style="color: #0000BB">$num_changed_sockets&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;すくなくともひとつのソケットで、何らかの出来事が起こっています&nbsp;*/<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -207,7 +207,7 @@
     <ul class="itemizedlist">
      <li class="listitem">
       <span class="simpara">
-       基本的に  <span class="function"><strong>socket_select()</strong></span> のタイムアウトは
+       基本的に <span class="function"><strong>socket_select()</strong></span> のタイムアウトは
        指定しないように心がけましょう。もしデータがなかった場合に、
        プログラム側でそれを判定できなくなってしまいます。タイムアウトに
        依存しているコードは移植性が悪く、デバッグが困難です。
@@ -215,9 +215,9 @@
      </li>
      <li class="listitem">
       <span class="simpara">
-        <span class="function"><strong>socket_select()</strong></span> のコール後に値をチェックして
+       <span class="function"><strong>socket_select()</strong></span> のコール後に値をチェックして
        適切に処理するつもりがないソケットリソースは、決して配列に追加してはいけません。
-        <span class="function"><strong>socket_select()</strong></span> から値が返ってきたあとは、
+       <span class="function"><strong>socket_select()</strong></span> から値が返ってきたあとは、
        配列内のすべてのソケットリソースをチェックする必要があります。
        すべての書き込み用ソケットは書き込める必要がありますし、
        またすべての読み込み用ソケットは読み込める必要があります。
@@ -233,7 +233,7 @@
      </li>
      <li class="listitem">
       <span class="simpara">
-       ほとんどのソケット実装で、<em><code class="parameter">except</code></em> でキャッチできる
+       ほとんどのソケット実装で、<code class="parameter">except</code> でキャッチできる
        例外はただひとつ、すなわちソケットが受け取ったデータが帯域外で
        あったということだけです。
       </span>
@@ -248,10 +248,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.socket-read.html" class="function" rel="rdfs-seeAlso">socket_read()</a> - ソケットから最大バイト長まで読みこむ</span></li>
-    <li class="member"> <span class="function"><a href="function.socket-write.html" class="function" rel="rdfs-seeAlso">socket_write()</a> - ソケットに書き込む</span></li>
-    <li class="member"> <span class="function"><a href="function.socket-last-error.html" class="function" rel="rdfs-seeAlso">socket_last_error()</a> - ソケットの直近のエラーを返す</span></li>
-    <li class="member"> <span class="function"><a href="function.socket-strerror.html" class="function" rel="rdfs-seeAlso">socket_strerror()</a> - ソケットエラーの内容を文字列として返す</span></li>
+    <li class="member"><span class="function"><a href="function.socket-read.html" class="function" rel="rdfs-seeAlso">socket_read()</a> - ソケットから最大バイト長まで読みこむ</span></li>
+    <li class="member"><span class="function"><a href="function.socket-write.html" class="function" rel="rdfs-seeAlso">socket_write()</a> - ソケットに書き込む</span></li>
+    <li class="member"><span class="function"><a href="function.socket-last-error.html" class="function" rel="rdfs-seeAlso">socket_last_error()</a> - ソケットの直近のエラーを返す</span></li>
+    <li class="member"><span class="function"><a href="function.socket-strerror.html" class="function" rel="rdfs-seeAlso">socket_strerror()</a> - ソケットエラーの内容を文字列として返す</span></li>
    </ul>
   </p>
  </div>

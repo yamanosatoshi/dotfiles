@@ -28,10 +28,10 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-    The  <span class="function"><strong>cubrid_schema()</strong></span> function is used to get the
+    The <span class="function"><strong>cubrid_schema()</strong></span> function is used to get the
     requested schema information from database. You have to designate
-    <em><code class="parameter">class_name</code></em>, if you want to get information on
-    certain class, <em><code class="parameter">attr_name</code></em>, if you want to get
+    <code class="parameter">class_name</code>, if you want to get information on
+    certain class, <code class="parameter">attr_name</code>, if you want to get
     information on certain attribute (can be used only with CUBRID_
     SCH_ATTR_PRIVILEGE).
   </p>
@@ -482,38 +482,38 @@
   <p class="para">
   <dl>
 
-    <dt>
+    
+  <dt>
+<code class="parameter">conn_identifier</code></dt>
 
-  <span class="term"><em><code class="parameter">conn_identifier</code></em></span>
   <dd>
 <p class="para">Connection identifier.</p></dd>
 
-   </dt>
+   
+   
+  <dt>
+<code class="parameter">schema_type</code></dt>
 
-   <dt>
-
-  <span class="term"><em><code class="parameter">schema_type</code></em></span>
   <dd>
 <p class="para">Schema data that you want to know.</p></dd>
 
-   </dt>
+   
+   
+  <dt>
+<code class="parameter">class_name</code></dt>
 
-   <dt>
-
-  <span class="term"><em><code class="parameter">class_name</code></em></span>
   <dd>
 <p class="para">Class you want to know the schema of.</p></dd>
 
-   </dt>
+   
+   
+  <dt>
+<code class="parameter">attr_name</code></dt>
 
-   <dt>
-
-  <span class="term"><em><code class="parameter">attr_name</code></em></span>
   <dd>
 <p class="para">Attribute you want to know the schema of.</p></dd>
 
-   </dt>
-
+   
   </dl>
 
   </p>
@@ -562,8 +562,8 @@
 
  <div class="refsect1 examples" id="refsect1-function.cubrid-schema-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1052">
-   <p><strong>例1  <span class="function"><strong>cubrid_schema()</strong></span> example</strong></p>
+  <div class="example" id="example-1110">
+   <p><strong>例1 <span class="function"><strong>cubrid_schema()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dba"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"\n---&nbsp;Primary&nbsp;Key&nbsp;---\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$pk&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_schema</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_SCH_PRIMARY_KEY</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"game"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$pk</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"\n---&nbsp;Foreign&nbsp;Keys&nbsp;---\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$fk&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_schema</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_SCH_IMPORTED_KEYS</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"game"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$fk</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"\n---&nbsp;Column&nbsp;Attribute&nbsp;---\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$attr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_schema</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_SCH_ATTRIBUTE</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"stadium"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"area"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$attr</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

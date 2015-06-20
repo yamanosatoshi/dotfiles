@@ -40,16 +40,27 @@
  <div class="refsect1 returnvalues" id="refsect1-solrclient.ping-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   Returns a SolrPingResponse object on success and throws a SolrClientException on failure.
+   Returns a <span class="type"><a href="class.solrpingresponse.html" class="type SolrPingResponse">SolrPingResponse</a></span> object on success and throws an exception on failure.
   </p>
  </div>
 
+ 
+ <div class="refsect1 errors" id="refsect1-solrclient.ping-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+   Throws <a href="class.solrclientexception.html" class="classname">SolrClientException</a> if the client had failed, or there was a connection issue.
+  </p>
+  <p class="para">
+    Throws <a href="class.solrserverexception.html" class="classname">SolrServerException</a> if the Solr Server had failed to satisfy the request.
+  </p>
+ </div>
 
+ 
  <div class="refsect1 examples" id="refsect1-solrclient.ping-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4704">
-    <p><strong>例1  <span class="methodname"><strong>SolrClient::ping()</strong></span> example</strong></p>
+   <div class="example" id="example-5153">
+    <p><strong>例1 <span class="methodname"><strong>SolrClient::ping()</strong></span> example</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$options&nbsp;</span><span style="color: #007700">=&nbsp;array<br />(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'hostname'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_HOSTNAME</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'login'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_USERNAME</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'password'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_PASSWORD</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'port'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_PORT</span><span style="color: #007700">,<br />);<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SolrClient</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$pingresponse&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$client</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ping</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>

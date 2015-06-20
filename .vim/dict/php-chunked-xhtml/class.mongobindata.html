@@ -35,7 +35,7 @@
    <div class="example" id="mongobindata.intro-example">
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br />$profile&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"username"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"foobity"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"pic"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoBinData</span><span style="color: #007700">(</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">"gravatar.jpg"</span><span style="color: #007700">))<br />);<br /><br /></span><span style="color: #0000BB">$users</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">save</span><span style="color: #007700">(</span><span style="color: #0000BB">$profile</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />$profile&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"username"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"foobity"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"pic"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoBinData</span><span style="color: #007700">(</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">"gravatar.jpg"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">MongoBinData</span><span style="color: #007700">::</span><span style="color: #0000BB">GENERIC</span><span style="color: #007700">),<br />);<br /><br /></span><span style="color: #0000BB">$users</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">save</span><span style="color: #007700">(</span><span style="color: #0000BB">$profile</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -44,10 +44,12 @@
    <p class="para">
     このクラスには <var class="varname"><var class="varname">type</var></var> フィールドがありますが、
     現時点ではこのフィールドはドライバやデータベースに対して何の効果も及ぼしません。
-    5 種類の型が定義済み (以下のクラス定数を参照ください) です。
-    (BSON 仕様からはずれることを覚悟の上で)
-    ユーザーが自分で定義することもできます。
-    デフォルトでは、PHP ドライバは常に type 2: バイト配列を使います。
+    7 種類の型が定義済み (以下のクラス定数を参照ください) です。
+    過去のバージョンとの互換性のため、デフォルトは
+    <strong><code>MongoBinData::BYTE_ARRAY</code></strong>
+    となっていますが、将来のバージョンでは
+    <strong><code>MongoBinData::GENERIC</code></strong> に変わるかもしれません。
+    <span class="function"><a href="mongobindata.construct.html" class="function">MongoBinData::__construct()</a></span> できちんと型を定義するようにしましょう。
    </p>
   </div>
 
@@ -71,6 +73,13 @@
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
      <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongobindata.html#mongobindata.constants.generic"><var class="varname">GENERIC</var></a></var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
       <var class="fieldsynopsis_varname"><a href="class.mongobindata.html#mongobindata.constants.func"><var class="varname">FUNC</var></a></var>
      <span class="initializer"> = 1</span>
     ;</div>
@@ -78,7 +87,7 @@
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
      <span class="type">int</span>
-      <var class="fieldsynopsis_varname"><a href="class.mongobindata.html#mongobindata.constants.bytearray"><var class="varname">BYTE_ARRAY</var></a></var>
+      <var class="fieldsynopsis_varname"><a href="class.mongobindata.html#mongobindata.constants.byte_array"><var class="varname">BYTE_ARRAY</var></a></var>
      <span class="initializer"> = 2</span>
     ;</div>
 
@@ -87,6 +96,13 @@
      <span class="type">int</span>
       <var class="fieldsynopsis_varname"><a href="class.mongobindata.html#mongobindata.constants.uuid"><var class="varname">UUID</var></a></var>
      <span class="initializer"> = 3</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongobindata.html#mongobindata.constants.uuid_rfc4122"><var class="varname">UUID_RFC4122</var></a></var>
+     <span class="initializer"> = 4</span>
     ;</div>
 
     <div class="fieldsynopsis">
@@ -121,9 +137,9 @@
 
     <div class="classsynopsisinfo classsynopsisinfo_comment">/* メソッド */</div>
     <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>  <span class="methodname"><a href="mongobindata.construct.html" class="methodname">__construct</a></span>
+   <span class="modifier">public</span> <span class="methodname"><a href="mongobindata.construct.html" class="methodname">__construct</a></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code><span class="initializer"> = 2</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code><span class="initializer"> = 0</span></span>
   ] )</div>
 <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="mongobindata.tostring.html" class="methodname">__toString</a></span>
@@ -142,9 +158,26 @@
     <h2 class="title">バイナリデータ型</h2>
     <dl>
 
-     <dt id="mongobindata.constants.func">
-      <span class="term"><strong><code>MongoBinData::FUNC</code></strong></span>
-      <br /><span class="term"><strong><code>0x01</code></strong></span>
+     
+      <dt id="mongobindata.constants.generic"><strong><code>MongoBinData::GENERIC</code></strong></dt>
+
+      <dt>
+<strong><code>0x00</code></strong></dt>
+
+      <dd>
+
+       <span class="simpara">
+        汎用的なバイナリデータ。
+       </span>
+      </dd>
+
+     
+     
+      <dt id="mongobindata.constants.func"><strong><code>MongoBinData::FUNC</code></strong></dt>
+
+      <dt>
+<strong><code>0x01</code></strong></dt>
+
       <dd>
 
        <span class="simpara">
@@ -152,35 +185,58 @@
        </span>
       </dd>
 
-     </dt>
+     
+     
+      <dt id="mongobindata.constants.byte_array"><strong><code>MongoBinData::BYTE_ARRAY</code></strong></dt>
 
-     <dt id="mongobindata.constants.bytearray">
-      <span class="term"><strong><code>MongoBinData::BYTE_ARRAY</code></strong></span>
-      <br /><span class="term"><strong><code>0x02</code></strong></span>
+      <dt>
+<strong><code>0x02</code></strong></dt>
+
       <dd>
 
        <span class="simpara">
-        バイト配列。
+        汎用的なバイナリデータ (非推奨。かわりに
+        <strong><code>MongoBinData::GENERIC</code></strong> を使いましょう)。
        </span>
       </dd>
 
-     </dt>
+     
+     
+      <dt id="mongobindata.constants.uuid"><strong><code>MongoBinData::UUID</code></strong></dt>
 
-     <dt id="mongobindata.constants.uuid">
-      <span class="term"><strong><code>MongoBinData::UUID</code></strong></span>
-      <br /><span class="term"><strong><code>0x03</code></strong></span>
+      <dt>
+<strong><code>0x03</code></strong></dt>
+
       <dd>
 
        <span class="simpara">
-        全体で一意な識別子。
+        全体で一意な識別子 (非推奨。かわりに
+        <strong><code>MongoBinData::UUID_RFC4122</code></strong> を使いましょう)。
        </span>
       </dd>
 
-     </dt>
+     
+     
+      <dt id="mongobindata.constants.uuid_rfc4122"><strong><code>MongoBinData::UUID_RFC4122</code></strong></dt>
 
-     <dt id="mongobindata.constants.md5">
-      <span class="term"><strong><code>MongoBinData::MD5</code></strong></span>
-      <br /><span class="term"><strong><code>0x05</code></strong></span>
+      <dt>
+<strong><code>0x04</code></strong></dt>
+
+      <dd>
+
+       <span class="simpara">
+        全体で一意な識別子
+        (<a href="http://www.faqs.org/rfcs/rfc4122" class="link external">&raquo;&nbsp;RFC 4122</a> 準拠)。
+       </span>
+      </dd>
+
+     
+     
+      <dt id="mongobindata.constants.md5"><strong><code>MongoBinData::MD5</code></strong></dt>
+
+      <dt>
+<strong><code>0x05</code></strong></dt>
+
       <dd>
 
        <span class="simpara">
@@ -188,11 +244,13 @@
        </span>
       </dd>
 
-     </dt>
+     
+     
+      <dt id="mongobindata.constants.custom"><strong><code>MongoBinData::CUSTOM</code></strong></dt>
 
-     <dt id="mongobindata.constants.custom">
-      <span class="term"><strong><code>MongoBinData::CUSTOM</code></strong></span>
-      <br /><span class="term"><strong><code>0x80</code></strong></span>
+      <dt>
+<strong><code>0x80</code></strong></dt>
+
       <dd>
 
        <span class="simpara">
@@ -200,13 +258,39 @@
        </span>
       </dd>
 
-     </dt>
-
+     
     </dl>
 
    </div>
   </div>
 
+
+  <div class="simplesect">
+   <h3 class="title">変更履歴</h3>
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>1.5.0</td>
+       <td>
+        定数 <strong><code>MongoBinData::GENERIC</code></strong> および
+        <strong><code>MongoBinData::UUID_RFC4122</code></strong> が追加されました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </div>
 
  </div>
 

@@ -43,6 +43,20 @@ declare (命令)
   </span>
  </p></blockquote>
  <p class="para">
+  ディレクティブの処理は、ファイルをコンパイルする際に行われるので、
+  ディテクティブの値として渡せるのは、リテラルだけとなります。
+  変数や定数は、使えません。以下に例を示します。
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;これは有効です<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;これは無効です<br /></span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">TICK_VALUE&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">TICK_VALUE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
   <em>declare</em>ブロックの<em>文</em>
   の実行のされ方や実行時にどのような作用が起こるかについては
   <em>命令</em>に何が指定されたかに依存します。
@@ -77,12 +91,12 @@ declare (命令)
   たとえば条件式や引数式などは tick できません。
  </p>
  <p class="para">
-  tickごとに発生させるイベントは <span class="function"><a href="function.register-tick-function.html" class="function">register_tick_function()</a></span>
+  tickごとに発生させるイベントは<span class="function"><a href="function.register-tick-function.html" class="function">register_tick_function()</a></span>
   を使用して指定します。詳細は以下の例を参照してください。1回のtickで
   複数のイベントが起こり得ることに注意してください。
  </p>
  <p class="para">
-  <div class="example" id="example-135">
+  <div class="example" id="example-151">
    <p><strong>例1 Tick の使用例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -94,7 +108,7 @@ declare (命令)
   </div>
  </p>
  <p class="para">
-  <div class="example" id="example-136">
+  <div class="example" id="example-152">
    <p><strong>例2 Ticks の使用例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -106,8 +120,8 @@ declare (命令)
   </div>
  </p>
  <p class="simpara">
-   <span class="function"><a href="function.register-tick-function.html" class="function">register_tick_function()</a></span> および
-   <span class="function"><a href="function.unregister-tick-function.html" class="function">unregister_tick_function()</a></span> も参照ください。
+  <span class="function"><a href="function.register-tick-function.html" class="function">register_tick_function()</a></span> および
+  <span class="function"><a href="function.unregister-tick-function.html" class="function">unregister_tick_function()</a></span> も参照ください。
  </p>
  </div>
  <div class="sect2" id="control-structures.declare.encoding">
@@ -115,7 +129,7 @@ declare (命令)
   <p class="para">
     スクリプトのエンコーディングをスクリプトごとに指定するには
     encoding ディレクティブを使用します。
-  <div class="example" id="example-137">
+  <div class="example" id="example-153">
    <p><strong>例3 スクリプトのエンコーディングの宣言</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -142,12 +156,11 @@ declare (命令)
   <p class="para">
    PHP が <em>--enable-zend-multibyte</em>
    つきでコンパイルされているかどうかを知る方法は
-    <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> 以外に存在しないことに注意しましょう。
+   <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> 以外に存在しないことに注意しましょう。
   </p>
   <p class="para">
    <a href="ini.core.html#ini.zend.script-encoding" class="link">zend.script_encoding</a> も参照ください。
   </p>
-   
  </div>
 </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="control-structures.switch.html">switch</a></div>

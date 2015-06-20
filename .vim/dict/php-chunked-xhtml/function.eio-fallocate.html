@@ -33,11 +33,11 @@
 
 
   <p class="para rdfs-comment">
-   <span class="function"><strong>eio_fallocate()</strong></span>
+  <span class="function"><strong>eio_fallocate()</strong></span>
   呼び出し元が、ファイルに割り当てられたディスク空間を直接操作できるようにします。
-  ファイルの指定はファイルディスクリプタ <em><code class="parameter">fd</code></em> で行い、
-  バイト幅の指定は開始位置 <em><code class="parameter">offset</code></em> とそこからの長さ
-  <em><code class="parameter">length</code></em> で行います。
+  ファイルの指定はファイルディスクリプタ <code class="parameter">fd</code> で行い、
+  バイト幅の指定は開始位置 <code class="parameter">offset</code> とそこからの長さ
+  <code class="parameter">length</code> で行います。
   </p>
 
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -55,21 +55,22 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">fd</code></dt>
 
-    <span class="term"><em><code class="parameter">fd</code></em></span>
     <dd>
 
      <p class="para">
-     ストリーム、ソケットリソース、あるいは数値で表したファイルディスクリプタ (たとえば  <span class="function"><a href="function.eio-open.html" class="function">eio_open()</a></span> が返すもの)。
+     ストリーム、ソケットリソース、あるいは数値で表したファイルディスクリプタ (たとえば <span class="function"><a href="function.eio-open.html" class="function">eio_open()</a></span> が返すもの)。
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">mode</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">mode</code></em></span>
     <dd>
 
      <p class="para">現在サポートするフラグは
@@ -78,11 +79,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">offset</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">offset</code></em></span>
     <dd>
 
      <p class="para">
@@ -90,11 +91,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">length</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">length</code></em></span>
     <dd>
 
      <p class="para">
@@ -102,29 +103,29 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">pri</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">pri</code></em></span>
     <dd>
 
     <p class="para">リクエストの優先順位。<strong><code>EIO_PRI_DEFAULT</code></strong>、<strong><code>EIO_PRI_MIN</code></strong>、<strong><code>EIO_PRI_MAX</code></strong> あるいは <strong><code>NULL</code></strong> を指定します。
-<strong><code>NULL</code></strong> を渡した場合、<em><code class="parameter">pri</code></em> は内部的に
+<strong><code>NULL</code></strong> を渡した場合、<code class="parameter">pri</code> は内部的に
 <strong><code>EIO_PRI_DEFAULT</code></strong> となります。
 </p>
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">callback</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">callback</code></em></span>
     <dd>
 
      <p class="para">
-<em><code class="parameter">callback</code></em> 関数が、リクエスト終了時にコールされます。
+<code class="parameter">callback</code> 関数が、リクエスト終了時にコールされます。
 この関数のプロトタイプは、<div class="example-contents"><div class="phpcode"><code><span style="color: #000000">
 void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;$req]);</span>
 </code></div></div>
@@ -132,30 +133,30 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 に一致しなければなりません。
 <dl>
 
-<dt>
 
-<span class="term"><em><code class="parameter">data</code></em></span>
+<dt>
+<code class="parameter">data</code></dt>
+
 <dd>
 <p class="para">は、リクエストに渡すカスタムデータです。</p></dd>
 
-</dt>
+
 
 <dt>
+<code class="parameter">result</code></dt>
 
-<span class="term"><em><code class="parameter">result</code></em></span>
 <dd>
 <p class="para">にはリクエスト固有の結果が格納されます。基本的には、対応するシステムコールが返すそのままの値となります。</p></dd>
 
-</dt>
+
 
 <dt>
+<code class="parameter">req</code></dt>
 
-<span class="term"><em><code class="parameter">req</code></em></span>
 <dd>
 <p class="para">はオプションで指定するリクエストリソースです。
- <span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span> のような関数で使えます。</p></dd>
+<span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span> のような関数で使えます。</p></dd>
 
-</dt>
 
 </dl>
 
@@ -163,20 +164,19 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">data</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">data</code></em></span>
     <dd>
 
      <p class="para">
-     <em><code class="parameter">callback</code></em> に渡す任意の引数。
+     <code class="parameter">callback</code> に渡す任意の引数。
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -185,7 +185,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
  <div class="refsect1 returnvalues" id="refsect1-function.eio-fallocate-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    <span class="function"><strong>eio_fallocate()</strong></span>
+   <span class="function"><strong>eio_fallocate()</strong></span>
    は、成功した場合にリクエストリソースを返します。エラー時に <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>

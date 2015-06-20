@@ -25,13 +25,13 @@
    )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">library</code></em> で指定された PHP 拡張モジュールを読み込みます。
+   <code class="parameter">library</code> で指定された PHP 拡張モジュールを読み込みます。
   </p>
   <p class="para">
    その拡張モジュールが既に使用可能かどうかを調べまるには、
-    <span class="function"><a href="function.extension-loaded.html" class="function">extension_loaded()</a></span> を使用します。
+   <span class="function"><a href="function.extension-loaded.html" class="function">extension_loaded()</a></span> を使用します。
    これは、組み込みのモジュールと
-   (<var class="filename">php.ini</var> か、あるいは  <span class="function"><strong>dl()</strong></span> を使用して)
+   (<var class="filename">php.ini</var> か、あるいは <span class="function"><strong>dl()</strong></span> を使用して)
    動的に読み込むモジュールの両方に対応しています。
   </p>
   <div class="warning"><strong class="warning">警告</strong>
@@ -47,9 +47,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">library</code></dt>
 
-     <span class="term"><em><code class="parameter">library</code></em></span>
      <dd>
 
       <p class="para">
@@ -101,8 +102,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -117,7 +117,7 @@
    無効化されている(<a href="info.configuration.html#ini.enable-dl" class="link">enable_dl</a> でオフにされているか
    または <var class="filename">php.ini</var> で <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">セーフモード</a> が有効になっている)場合は、
    <strong><code>E_ERROR</code></strong> を発行して実行は停止されます。
-   指定されたライブラリをロードできず  <span class="function"><strong>dl()</strong></span> が
+   指定されたライブラリをロードできず <span class="function"><strong>dl()</strong></span> が
    失敗した場合、<strong><code>FALSE</code></strong> に加えて <strong><code>E_WARNING</code></strong> メッセージが
    発行されます。
   </p>
@@ -127,8 +127,8 @@
  <div class="refsect1 examples" id="refsect1-function.dl-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-479">
-    <p><strong>例1  <span class="function"><strong>dl()</strong></span> の例</strong></p>
+   <div class="example" id="example-504">
+    <p><strong>例1 <span class="function"><strong>dl()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;OS&nbsp;によってロードするファイルを切り替える<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">extension_loaded</span><span style="color: #007700">(</span><span style="color: #DD0000">'sqlite'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_OS</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">))&nbsp;===&nbsp;</span><span style="color: #DD0000">'WIN'</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">dl</span><span style="color: #007700">(</span><span style="color: #DD0000">'php_sqlite.dll'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">dl</span><span style="color: #007700">(</span><span style="color: #DD0000">'sqlite.so'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;4.3.0&nbsp;では&nbsp;PHP_SHLIB_SUFFIX&nbsp;定数を利用することも可能<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">extension_loaded</span><span style="color: #007700">(</span><span style="color: #DD0000">'sqlite'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$prefix&nbsp;</span><span style="color: #007700">=&nbsp;(</span><span style="color: #0000BB">PHP_SHLIB_SUFFIX&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #DD0000">'dll'</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'php_'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">dl</span><span style="color: #007700">(</span><span style="color: #0000BB">$prefix&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'sqlite.'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_SHLIB_SUFFIX</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -158,9 +158,9 @@
       <tr>
        <td>5.3.0</td>
        <td>
-         <span class="function"><strong>dl()</strong></span> がいくつかの SAPI で無効になりました。
+        <span class="function"><strong>dl()</strong></span> がいくつかの SAPI で無効になりました。
         安定性に問題があったためです。
-        現在  <span class="function"><strong>dl()</strong></span> が使える SAPI は CLI と Embed(組み込み) だけです。
+        現在 <span class="function"><strong>dl()</strong></span> が使える SAPI は CLI と Embed(組み込み) だけです。
         かわりに <a href="ini.core.html#ini.extension" class="link">拡張モジュール読み込みディレクティブ
         </a> を使ってください。
        </td>
@@ -178,7 +178,7 @@
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>dl()</strong></span> は、ZTS サポートつきでビルドされた PHP
+    <span class="function"><strong>dl()</strong></span> は、ZTS サポートつきでビルドされた PHP
     ではサポートされていません。かわりに
     <a href="ini.core.html#ini.extension" class="link">拡張モジュール読み込みディレクティブ</a>
     を使ってください。
@@ -186,7 +186,7 @@
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>dl()</strong></span> は Unix プラットフォーム上では
+    <span class="function"><strong>dl()</strong></span> は Unix プラットフォーム上では
     大文字小文字を区別します。
    </p>
   </p></blockquote>
@@ -199,7 +199,7 @@
   <p class="para">
    <ul class="simplelist">
     <li class="member"><a href="ini.core.html#ini.extension" class="link">拡張モジュール読み込み用のディレクティブ</a></li>
-    <li class="member"> <span class="function"><a href="function.extension-loaded.html" class="function" rel="rdfs-seeAlso">extension_loaded()</a> - ある拡張機能がロードされているかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.extension-loaded.html" class="function" rel="rdfs-seeAlso">extension_loaded()</a> - ある拡張機能がロードされているかどうかを調べる</span></li>
    </ul>
   </p>
  </div>

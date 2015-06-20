@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">options</code></dt>
 
-     <span class="term"><em><code class="parameter">options</code></em></span>
      <dd>
 
       <span class="simpara">
@@ -55,11 +56,11 @@
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">longopts</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">longopts</code></em></span>
      <dd>
 
       <span class="simpara">
@@ -74,20 +75,19 @@
       </span>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
   <p class="para">
-   <em><code class="parameter">options</code></em> パラメータに含まれる要素には次のようなものがあります。
+   <code class="parameter">options</code> パラメータに含まれる要素には次のようなものがあります。
    <ul class="simplelist">
     <li class="member">単一の文字 (値を受け付けない)</li>
     <li class="member">文字の後にコロンをひとつ続けたもの (値が必須であるパラメータ)</li>
     <li class="member">文字の後にコロンをふたつ続けたもの (値がオプションであるパラメータ)</li>
    </ul>
    オプションの値は、文字列の後の最初の引数となります。
-   値の前に空白があるかどうかは関係ありません。
+   値が必須の場合、その前に空白があるかどうかは関係ありません。
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <span class="simpara">
      オプションの値で、<em>&quot; &quot;</em> (空白) を区切り文字として使用することはできません。
@@ -96,10 +96,10 @@
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    <em><code class="parameter">options</code></em> と
-    <em><code class="parameter">longopts</code></em> の書式はほぼ同じです。唯一の違いは、
-    <em><code class="parameter">longopts</code></em> はオプションの配列
-    (その各要素がオプションとなる) を受け取るけれども <em><code class="parameter">options</code></em>
+    <code class="parameter">options</code> と
+    <code class="parameter">longopts</code> の書式はほぼ同じです。唯一の違いは、
+    <code class="parameter">longopts</code> はオプションの配列
+    (その各要素がオプションとなる) を受け取るけれども <code class="parameter">options</code>
     は文字列 (その各文字がオプションとなる) を受け取るということです。
    </p>
   </p></blockquote>
@@ -152,7 +152,7 @@
       <tr>
        <td>5.3.0</td>
        <td>
-        パラメータ <em><code class="parameter">longopts</code></em>
+        パラメータ <code class="parameter">longopts</code>
         がすべてのプラットフォームで使えるようになりました。
        </td>
       </tr>
@@ -177,18 +177,20 @@
   <h3 class="title">例</h3>
   <p class="para">
    <div class="example" id="getopt.examples-1">
-    <p><strong>例1  <span class="function"><strong>getopt()</strong></span> の例</strong></p>
+    <p><strong>例1 <span class="function"><strong>getopt()</strong></span> の例：基本編</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$options&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getopt</span><span style="color: #007700">(</span><span style="color: #DD0000">"f:hp:"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;スクリプト&nbsp;example.php<br /></span><span style="color: #0000BB">$options&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getopt</span><span style="color: #007700">(</span><span style="color: #DD0000">"f:hp:"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
 
-    <div class="example-contents"><p>
-     上のスクリプトを <em>php script.php -fvalue -h</em>
-     として実行すると、次のようになります。
-    </p></div>
+    <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">shell&gt; php example.php -fvalue -h</pre>
+</div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
     <div class="example-contents screen">
 <div class="cdata"><pre>
 array(2) {
@@ -203,19 +205,20 @@ array(2) {
   </p>
   <p class="para">
    <div class="example" id="getopt.examples-2">
-    <p><strong>例2  <span class="function"><strong>getopt()</strong></span> の例 その2</strong></p>
+    <p><strong>例2 <span class="function"><strong>getopt()</strong></span> の例：長いオプション</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$shortopts&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$shortopts&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">"f:"</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;値が必須<br /></span><span style="color: #0000BB">$shortopts&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">"v::"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;値がオプション<br /></span><span style="color: #0000BB">$shortopts&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">"abc"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;これらのオプションは値を受け取りません<br /><br /></span><span style="color: #0000BB">$longopts&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"required:"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;値が必須<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"optional::"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;値がオプション<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"option"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;値なし<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"opt"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;値なし<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$options&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$shortopts</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$longopts</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;スクリプト&nbsp;example.php<br /></span><span style="color: #0000BB">$shortopts&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$shortopts&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">"f:"</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;値が必須<br /></span><span style="color: #0000BB">$shortopts&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">"v::"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;値がオプション<br /></span><span style="color: #0000BB">$shortopts&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">"abc"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;これらのオプションは値を受け取りません<br /><br /></span><span style="color: #0000BB">$longopts&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"required:"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;値が必須<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"optional::"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;値がオプション<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"option"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;値なし<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"opt"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;値なし<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$options&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$shortopts</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$longopts</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
 
-    <div class="example-contents"><p>
-     上のスクリプトを <em>php script.php -f &quot;value for f&quot; -v
-     -a --required value --optional=&quot;optional value&quot; --option</em>
-     として実行すると、次のようになります。
-    </p></div>
+    <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">shell&gt; php example.php -f &quot;value for f&quot; -v -a --required value --optional=&quot;optional value&quot; --option</pre>
+</div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
     <div class="example-contents screen">
 <div class="cdata"><pre>
 array(6) {
@@ -238,19 +241,20 @@ array(6) {
   </p>
   <p class="para">
    <div class="example" id="getopt.examples-3">
-    <p><strong>例3  <span class="function"><strong>getopt()</strong></span> の例 その3</strong></p>
-    <div class="example-contents"><p>複数のオプションを一度に渡す例</p></div>
+    <p><strong>例3 <span class="function"><strong>getopt()</strong></span> の例：複数のオプションを一度に渡す</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$options&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getopt</span><span style="color: #007700">(</span><span style="color: #DD0000">"abc"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;スクリプト&nbsp;example.php<br /></span><span style="color: #0000BB">$options&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getopt</span><span style="color: #007700">(</span><span style="color: #DD0000">"abc"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
 
-    <div class="example-contents"><p>
-     上のスクリプトを <em>php script.php -aaac</em>
-     として実行すると、次のようになります。
-    </p></div>
+    <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">shell&gt; php example.php -aaac</pre>
+</div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
     <div class="example-contents screen">
 <div class="cdata"><pre>
 array(2) {

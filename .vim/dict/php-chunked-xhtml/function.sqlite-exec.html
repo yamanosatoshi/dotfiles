@@ -43,9 +43,9 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   与えられたデータベースハンドル (<em><code class="parameter">dbhandle</code></em>
+   与えられたデータベースハンドル (<code class="parameter">dbhandle</code>
    パラメータで指定される) に対して
-   <em><code class="parameter">query</code></em> によって指定される SQL
+   <code class="parameter">query</code> によって指定される SQL
    ステートメントを実行します。
   </p>
   <div class="warning"><strong class="warning">警告</strong>
@@ -63,24 +63,25 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">dbhandle</code></dt>
 
-     <span class="term"><em><code class="parameter">dbhandle</code></em></span>
      <dd>
 
       <p class="para">
        SQLite データベースリソース。手続きに従って、
-        <span class="function"><a href="function.sqlite-open.html" class="function">sqlite_open()</a></span> から返されます。
+       <span class="function"><a href="function.sqlite-open.html" class="function">sqlite_open()</a></span> から返されます。
        このパラメータは、
        オブジェクト指向言語型メソッドを使用する場合は不要です。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -92,29 +93,28 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">error_msg</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">error_msg</code></em></span>
      <dd>
 
       <p class="para">
        エラーが発生した場合、指定された変数に詰め込まれます。
-       SQL 文法エラーは  <span class="function"><a href="function.sqlite-last-error.html" class="function">sqlite_last_error()</a></span>
+       SQL 文法エラーは <span class="function"><a href="function.sqlite-last-error.html" class="function">sqlite_last_error()</a></span>
        関数では取得できないので、これは特に重要です。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">
 (MySQL のような)他のデータベースエクステンションとの互換性のため、
 2 種類の構文がサポートされています。
-推奨されるのは最初の構文で、<em><code class="parameter">dbhandle</code></em> パラメータを
+推奨されるのは最初の構文で、<code class="parameter">dbhandle</code> パラメータを
 関数の最初のパラメータとするものです。</span></p></blockquote>
  </div>
 
@@ -125,7 +125,7 @@
    この関数はブール型の結果を返します。
    成功時は <strong><code>TRUE</code></strong>、失敗時は <strong><code>FALSE</code></strong> を返します。
    もしレコードを返すクエリを実行する必要がある場合は
-    <span class="function"><a href="function.sqlite-query.html" class="function">sqlite_query()</a></span> を参照ください。
+   <span class="function"><a href="function.sqlite-query.html" class="function">sqlite_query()</a></span> を参照ください。
   </p>
   <p class="para">
 <strong><code>SQLITE_ASSOC</code></strong> および <strong><code>SQLITE_BOTH</code></strong> で
@@ -152,7 +152,7 @@
       <tr>
        <td>5.1.0</td>
        <td>
-        <em><code class="parameter">error_msg</code></em> パラメータが追加されました。
+        <code class="parameter">error_msg</code> パラメータが追加されました。
        </td>
       </tr>
 
@@ -168,7 +168,7 @@
  <div class="refsect1 examples" id="refsect1-function.sqlite-exec-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2131">
+   <div class="example" id="example-2328">
     <p><strong>例1 手続き型言語スタイルでの例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -180,7 +180,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2132">
+   <div class="example" id="example-2329">
     <p><strong>例2 オブジェクト指向言語型スタイルでの例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -198,10 +198,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.sqlite-query.html" class="function" rel="rdfs-seeAlso">sqlite_query()</a> - 指定したデータベースに対してクエリを実行し、結果ハンドル
+    <li class="member"><span class="function"><a href="function.sqlite-query.html" class="function" rel="rdfs-seeAlso">sqlite_query()</a> - 指定したデータベースに対してクエリを実行し、結果ハンドル
   を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.sqlite-unbuffered-query.html" class="function" rel="rdfs-seeAlso">sqlite_unbuffered_query()</a> - 事前取得していないクエリを実行し、全てのデータをバッファリングする</span></li>
-    <li class="member"> <span class="function"><a href="function.sqlite-array-query.html" class="function" rel="rdfs-seeAlso">sqlite_array_query()</a> - 指定したデータベースに対してクエリを実行し、配列を返す</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-unbuffered-query.html" class="function" rel="rdfs-seeAlso">sqlite_unbuffered_query()</a> - 事前取得していないクエリを実行し、全てのデータをバッファリングする</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-array-query.html" class="function" rel="rdfs-seeAlso">sqlite_array_query()</a> - 指定したデータベースに対してクエリを実行し、配列を返す</span></li>
    </ul>
   </p>
  </div>

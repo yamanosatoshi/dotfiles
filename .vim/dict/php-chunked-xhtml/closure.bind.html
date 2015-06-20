@@ -26,12 +26,12 @@
     ( <span class="methodparam"><span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span> <code class="parameter">$closure</code></span>
    , <span class="methodparam"><span class="type">object</span> <code class="parameter">$newthis</code></span>
    [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$newscope</code>
-   <span class="initializer"> = &#039;static&#039;</span></span>
+   <span class="initializer"> = &quot;static&quot;</span></span>
   ] )</div>
 
   <p class="para rdfs-comment">
-   このメソッドは、静的メソッド版の  <span class="methodname"><a href="closure.bindto.html" class="methodname">Closure::bindTo()</a></span> です。
-   詳細な説明は  <span class="methodname"><a href="closure.bindto.html" class="methodname">Closure::bindTo()</a></span> のドキュメントを参照ください。
+   このメソッドは、静的メソッド版の <span class="methodname"><a href="closure.bindto.html" class="methodname">Closure::bindTo()</a></span> です。
+   詳細な説明は <span class="methodname"><a href="closure.bindto.html" class="methodname">Closure::bindTo()</a></span> のドキュメントを参照ください。
   </p>
 
  </div>
@@ -41,9 +41,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">closure</code></dt>
 
-    <span class="term"><em><code class="parameter">closure</code></em></span>
     <dd>
 
      <p class="para">
@@ -51,11 +52,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">newthis</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">newthis</code></em></span>
     <dd>
 
      <p class="para">
@@ -64,11 +65,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">newscope</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">newscope</code></em></span>
     <dd>
 
      <p class="para">
@@ -79,8 +80,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -97,8 +97,8 @@
 
  <div class="refsect1 examples" id="refsect1-closure.bind-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-305">
-   <p><strong>例1  <span class="function"><strong>Closure::bind()</strong></span> の例</strong></p>
+  <div class="example" id="example-328">
+   <p><strong>例1 <span class="function"><strong>Closure::bind()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;</span><span style="color: #0000BB">$sfoo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$ifoo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$cl1&nbsp;</span><span style="color: #007700">=&nbsp;static&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">$sfoo</span><span style="color: #007700">;<br />};<br /></span><span style="color: #0000BB">$cl2&nbsp;</span><span style="color: #007700">=&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ifoo</span><span style="color: #007700">;<br />};<br /><br /></span><span style="color: #0000BB">$bcl1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Closure</span><span style="color: #007700">::</span><span style="color: #0000BB">bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$cl1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$bcl2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Closure</span><span style="color: #007700">::</span><span style="color: #0000BB">bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$cl2</span><span style="color: #007700">,&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$bcl1</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$bcl2</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -123,7 +123,7 @@
   <h3 class="title">参考</h3>
   <ul class="simplelist">
    <li class="member"><a href="functions.anonymous.html" class="link">無名関数</a></li>
-   <li class="member"> <span class="methodname"><a href="closure.bindto.html" class="methodname" rel="rdfs-seeAlso">Closure::bindTo()</a> - 新しくバインドしたオブジェクトとクラスのスコープで、クロージャを複製する</span></li>
+   <li class="member"><span class="methodname"><a href="closure.bindto.html" class="methodname" rel="rdfs-seeAlso">Closure::bindTo()</a> - 新しくバインドしたオブジェクトとクラスのスコープで、クロージャを複製する</span></li>
   </ul>
  </div>
 

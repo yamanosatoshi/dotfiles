@@ -16,7 +16,7 @@
     伝統的に、PHP で以前使われていたような参照カウント法記憶機構では、
     循環参照メモリ・リークに対処できません。
     しかしながら、5.3.0 現在、PHP ではその問題に焦点を当てた
-    <a href="http://www.research.ibm.com/people/d/dfb/papers/Bacon01Concurrent.pdf" class="link external">&raquo;&nbsp;Concurrent Cycle Collection in Reference Counted Systems</a>
+    <a href="http://researcher.watson.ibm.com/researcher/files/us-bacon/Bacon01Concurrent.pdf" class="link external">&raquo;&nbsp;Concurrent Cycle Collection in Reference Counted Systems</a>
     レポートに由来する同期アルゴリズムを実装しています。
    </p>
    <p class="para">
@@ -93,12 +93,12 @@
    </p>
    <p class="para">
     <a href="info.configuration.html#ini.zend.enable-gc" class="link">zend.enable_gc</a> 構成設定値を変える他に、
-     <span class="function"><a href="function.gc-enable.html" class="function">gc_enable()</a></span> や  <span class="function"><a href="function.gc-disable.html" class="function">gc_disable()</a></span> をそれぞれ呼ぶことでも、
+    <span class="function"><a href="function.gc-enable.html" class="function">gc_enable()</a></span> や <span class="function"><a href="function.gc-disable.html" class="function">gc_disable()</a></span> をそれぞれ呼ぶことでも、
     ガベージコレクション機構をオン／オフできます。
     それらの機能を呼ぶことと、構成設定値で機構をオン／オフすることには同じ影響があります。
     たとえ可能性があるルートのバッファがまだ満杯でなくても、
     循環の収集を強制することもできます。
-    このために、 <span class="function"><a href="function.gc-collect-cycles.html" class="function">gc_collect_cycles()</a></span> 関数を使用できます。
+    このために、<span class="function"><a href="function.gc-collect-cycles.html" class="function">gc_collect_cycles()</a></span> 関数を使用できます。
     この関数は、アルゴリズムによって収集された循環の数を返します。
    </p>
    <p class="para">
@@ -109,7 +109,7 @@
     メモリリークを引き起こす危険があります。
     なぜなら可能性があるルートの一部は有限のルート・バッファに収まらないかもしれないからです。
     従って、ルート･バッファにすでに記録された、可能性があるルートを通じて失われる可能性のあるメモリを解放するために、
-     <span class="function"><a href="function.gc-disable.html" class="function">gc_disable()</a></span> を呼ぶ直前に  <span class="function"><a href="function.gc-collect-cycles.html" class="function">gc_collect_cycles()</a></span>
+    <span class="function"><a href="function.gc-disable.html" class="function">gc_disable()</a></span> を呼ぶ直前に <span class="function"><a href="function.gc-collect-cycles.html" class="function">gc_collect_cycles()</a></span>
     を呼ぶことは多分賢いでしょう。
     そうすると、循環収集機構がオフの間、
     可能性があるルートを保管するためのより多くの空間のための空のバッファが残ります。

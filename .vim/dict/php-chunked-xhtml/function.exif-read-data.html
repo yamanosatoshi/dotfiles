@@ -31,7 +31,7 @@
   ]]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>exif_read_data()</strong></span> は、<acronym title="Joint Photographic Experts Group">JPEG</acronym> あるいは
+   <span class="function"><strong>exif_read_data()</strong></span> は、<acronym title="Joint Photographic Experts Group">JPEG</acronym> あるいは
    <acronym title="Tagged Image File Format">TIFF</acronym> の画像ファイルから <acronym title="Exchangeable Image File ">EXIF</acronym>
    ヘッダを読み込みます。この方法で、デジタルカメラが生成したメタデータを
    読み込むことが可能です。
@@ -44,7 +44,7 @@
   </p>
   <p class="para">
    <em>Height</em> および <em>Width</em>
-   は、 <span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span> と同じ方法で計算されます。
+   は、<span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span> と同じ方法で計算されます。
    よって、これらの値は決してヘッダの一部として返してはいけません。
    また、<em>html</em> は高さ/幅を表すテキスト文字列で、
    通常の <acronym title="Hyper Text Markup Language">HTML</acronym> の中で用いられます。
@@ -70,7 +70,7 @@
    場合でも有効なので、<em>IFD0</em> セクションではこちらを優先すべきです。
   </p>
   <p class="para">
-    <span class="function"><strong>exif_read_data()</strong></span> は、EXIF 仕様（<a href="http://exif.org/Exif2-2.PDF" class="link external">&raquo;&nbsp;http://exif.org/Exif2-2.PDF</a>, 20 ページ）に基づいて
+   <span class="function"><strong>exif_read_data()</strong></span> は、EXIF 仕様（<a href="http://exif.org/Exif2-2.PDF" class="link external">&raquo;&nbsp;http://exif.org/Exif2-2.PDF</a>, 20 ページ）に基づいて
    EXIF データタグの検証も行います。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -85,9 +85,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -96,11 +97,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">sections</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">sections</code></em></span>
      <dd>
 
       <p class="para">
@@ -119,7 +120,7 @@
            <td>COMPUTED</td>
            <td>
             html, Width, Height, IsColor, および他の取得可能なもの。Height および
-            Width は  <span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span> と同じ方法で取得した
+            Width は <span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span> と同じ方法で取得した
             もので、その値はヘッダの一部ではありません。また、<em>html</em> は
             通常の <acronym title="Hyper Text Markup Language">HTML</acronym> 内で使用される height/width の
             文字列です。
@@ -169,11 +170,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">arrays</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">arrays</code></em></span>
       <dd>
 
       <p class="para">
@@ -185,11 +186,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">thumbnail</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">thumbnail</code></em></span>
      <dd>
 
       <p class="para">
@@ -198,8 +199,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -210,7 +210,7 @@
   <p class="para">
    ヘッダ名がキー・ヘッダの内容が値となる連想配列を返します。
    返されるデータがない場合は
-    <span class="function"><strong>exif_read_data()</strong></span> は <strong><code>FALSE</code></strong> を返します。
+   <span class="function"><strong>exif_read_data()</strong></span> は <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
 
@@ -274,8 +274,8 @@
  <div class="refsect1 examples" id="refsect1-function.exif-read-data-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3154">
-    <p><strong>例1  <span class="function"><strong>exif_read_data()</strong></span> の例</strong></p>
+   <div class="example" id="example-3353">
+    <p><strong>例1 <span class="function"><strong>exif_read_data()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"test1.jpg:&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$exif&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">exif_read_data</span><span style="color: #007700">(</span><span style="color: #DD0000">'tests/test1.jpg'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'IFD0'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$exif</span><span style="color: #007700">===</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #DD0000">"No&nbsp;header&nbsp;data&nbsp;found.&lt;br&nbsp;/&gt;\n"&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"Image&nbsp;contains&nbsp;headers&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$exif&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">exif_read_data</span><span style="color: #007700">(</span><span style="color: #DD0000">'tests/test2.jpg'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"test2.jpg:&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />foreach&nbsp;(</span><span style="color: #0000BB">$exif&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$section</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$section&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">.</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">:&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #DD0000">&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -328,8 +328,8 @@ THUMBNAIL.Thumbnail.Height: 1
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.exif-thumbnail.html" class="function" rel="rdfs-seeAlso">exif_thumbnail()</a> - TIFF あるいは JPEG 形式の画像に埋め込まれたサムネイルを取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.getimagesize.html" class="function" rel="rdfs-seeAlso">getimagesize()</a> - 画像の大きさを取得する</span></li>
+    <li class="member"><span class="function"><a href="function.exif-thumbnail.html" class="function" rel="rdfs-seeAlso">exif_thumbnail()</a> - TIFF あるいは JPEG 形式の画像に埋め込まれたサムネイルを取得する</span></li>
+    <li class="member"><span class="function"><a href="function.getimagesize.html" class="function" rel="rdfs-seeAlso">getimagesize()</a> - 画像の大きさを取得する</span></li>
    </ul>
   </p>
  </div>

@@ -41,9 +41,9 @@
   </p>
 
   <p class="para">
-   持続的接続に対して  <span class="function"><a href="function.db2-close.html" class="function">db2_close()</a></span> をコールすると、
+   持続的接続に対して <span class="function"><a href="function.db2-close.html" class="function">db2_close()</a></span> をコールすると、
    常に <strong><code>TRUE</code></strong> を返します。しかし DB2 クライアント接続はオープンされたままであり、
-   条件に一致する次の  <span class="function"><strong>db2_pconnect()</strong></span>
+   条件に一致する次の <span class="function"><strong>db2_pconnect()</strong></span>
    リクエストを待ち続けます。
   </p>
 
@@ -62,9 +62,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">database</code></dt>
 
-     <span class="term"><em><code class="parameter">database</code></em></span>
      <dd>
 
       <p class="para">
@@ -72,11 +73,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">username</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">username</code></em></span>
      <dd>
 
       <p class="para">
@@ -84,11 +85,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">password</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">password</code></em></span>
      <dd>
 
       <p class="para">
@@ -96,11 +97,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">options</code></em></span>
      <dd>
 
       <p class="para">
@@ -108,9 +109,10 @@
        使用可能なキーは以下のとおりです。
        <dl>
 
-        <dt>
+        
+         <dt>
+<code class="parameter">autocommit</code></dt>
 
-         <span class="term"><em><code class="parameter">autocommit</code></em></span>
          <dd>
 
           <p class="para">
@@ -123,11 +125,11 @@
           </p>
          </dd>
 
-        </dt>
+        
+        
+         <dt>
+<code class="parameter">DB2_ATTR_CASE</code></dt>
 
-        <dt>
-
-         <span class="term"><em><code class="parameter">DB2_ATTR_CASE</code></em></span>
          <dd>
 
           <p class="para">
@@ -144,11 +146,11 @@
           </p>
          </dd>
 
-        </dt>
+        
+        
+         <dt>
+<code class="parameter">CURSOR</code></dt>
 
-        <dt>
-
-         <span class="term"><em><code class="parameter">CURSOR</code></em></span>
          <dd>
 
           <p class="para">
@@ -165,8 +167,7 @@
           </p>
          </dd>
 
-        </dt>
-
+        
        </dl>
 
       </p>
@@ -174,14 +175,15 @@
        以下の新しいオプションは、ibm_db2 のバージョン 1.7.0 以降で使用可能です。
        <dl>
 
-        <dt>
+        
+         <dt>
+<code class="parameter">trustedcontext</code></dt>
 
-         <span class="term"><em><code class="parameter">trustedcontext</code></em></span>
          <dd>
 
           <p class="para">
            DB2_TRUSTED_CONTEXT_ENABLE を渡すと、この接続ハンドルでの信頼済みコンテキストを有効にします。
-           このパラメータを  <span class="function"><a href="function.db2-set-option.html" class="function">db2_set_option()</a></span> で設定することはできません。
+           このパラメータを <span class="function"><a href="function.db2-set-option.html" class="function">db2_set_option()</a></span> で設定することはできません。
           </p>
           <p class="para">
            このキーは、カタログ接続の場合 (たとえローカルデータベースであっても)
@@ -199,8 +201,7 @@ db2set DB2COMM=TCPIP</pre>
           
          </dd>
 
-        </dt>
-             
+                     
       </dl>
 
       </p>
@@ -216,9 +217,10 @@ db2set DB2COMM=TCPIP</pre>
        </div>
        <dl>
 
-        <dt>
+        
+         <dt>
+<code class="parameter">i5_lib</code></dt>
 
-         <span class="term"><em><code class="parameter">i5_lib</code></em></span>
          <dd>
 
           <p class="para">
@@ -227,11 +229,11 @@ db2set DB2COMM=TCPIP</pre>
           </p>
          </dd>
 
-        </dt>
+        
+        
+         <dt>
+<code class="parameter">i5_naming</code></dt>
 
-        <dt>
-
-         <span class="term"><em><code class="parameter">i5_naming</code></em></span>
          <dd>
 
           <p class="para">
@@ -249,24 +251,24 @@ db2set DB2COMM=TCPIP</pre>
           </p>
          </dd>
 
-        </dt>
+        
+        
+         <dt>
+<code class="parameter">i5_commit</code></dt>
 
-        <dt>
-
-         <span class="term"><em><code class="parameter">i5_commit</code></em></span>
          <dd>
 
           <p class="para">
-           <em><code class="parameter">i5_commit</code></em> 属性は、
-            <span class="function"><strong>db2_pconnect()</strong></span> の前に設定しなければなりません。
+           <code class="parameter">i5_commit</code> 属性は、
+           <span class="function"><strong>db2_pconnect()</strong></span> の前に設定しなければなりません。
            接続が確立された後にこの値が変更され、その接続がリモートデータソースに対するものだった場合は、
-           その接続ハンドルに対してもう一度  <span class="function"><strong>db2_pconnect()</strong></span>
+           その接続ハンドルに対してもう一度 <span class="function"><strong>db2_pconnect()</strong></span>
            がコールされるまで変更は反映されません。
            <blockquote class="note"><p><strong class="note">注意</strong>: 
             <p class="para">
-             php.ini の設定は <em><code class="parameter">ibm_db2.i5_allow_commit</code></em>==0
+             php.ini の設定は <code class="parameter">ibm_db2.i5_allow_commit</code>==0
              あるいは <em>DB2_I5_TXN_NO_COMMIT</em> がデフォルトです。
-             しかし、その設定よりも <em><code class="parameter">i5_commit</code></em>
+             しかし、その設定よりも <code class="parameter">i5_commit</code>
              オプションの内容のほうが優先されます。
             </p>
            </p></blockquote>           
@@ -294,11 +296,11 @@ db2set DB2COMM=TCPIP</pre>
           </p>
          </dd>
 
-        </dt>
+        
+        
+         <dt>
+<code class="parameter">i5_query_optimize</code></dt>
 
-        <dt>
-
-         <span class="term"><em><code class="parameter">i5_query_optimize</code></em></span>
          <dd>
 
           <p class="para">
@@ -318,11 +320,11 @@ db2set DB2COMM=TCPIP</pre>
           </p>
          </dd>
 
-        </dt>
+        
+        
+         <dt>
+<code class="parameter">i5_dbcs_alloc</code></dt>
 
-        <dt>
-
-         <span class="term"><em><code class="parameter">i5_dbcs_alloc</code></em></span>
          <dd>
 
           <p class="para">
@@ -334,19 +336,19 @@ db2set DB2COMM=TCPIP</pre>
            DBCS トランザクションカラムサイズ用の DB2 6X アロケーションを無効にします。
            <blockquote class="note"><p><strong class="note">注意</strong>: 
             <p class="para">
-             php.ini では <em><code class="parameter">ibm_db2.i5_dbcs_alloc</code></em>==0 あるいは
+             php.ini では <code class="parameter">ibm_db2.i5_dbcs_alloc</code>==0 あるいは
              <em>DB2_I5_DBCS_ALLOC_OFF</em> がデフォルト設定となっています。
-             しかし、<em><code class="parameter">i5_dbcs_alloc</code></em> の値のほうが優先されます。
+             しかし、<code class="parameter">i5_dbcs_alloc</code> の値のほうが優先されます。
             </p>
            </p></blockquote>
            </p>
          </dd>
 
-        </dt>
+        
+        
+         <dt>
+<code class="parameter">i5_date_fmt</code></dt>
 
-        <dt>
-
-         <span class="term"><em><code class="parameter">i5_date_fmt</code></em></span>
          <dd>
 
           <p class="para">
@@ -379,11 +381,11 @@ db2set DB2COMM=TCPIP</pre>
           </p>
          </dd>
 
-        </dt>
+        
+        
+         <dt>
+<code class="parameter">i5_date_sep</code></dt>
 
-        <dt>
-
-         <span class="term"><em><code class="parameter">i5_date_sep</code></em></span>
          <dd>
 
           <p class="para">
@@ -408,11 +410,11 @@ db2set DB2COMM=TCPIP</pre>
           </p>
          </dd>
 
-        </dt>
-     
-        <dt>
+             
+        
+         <dt>
+<code class="parameter">i5_time_fmt</code></dt>
 
-         <span class="term"><em><code class="parameter">i5_time_fmt</code></em></span>
          <dd>
 
           <p class="para">
@@ -436,11 +438,11 @@ db2set DB2COMM=TCPIP</pre>
           </p>
          </dd>
 
-        </dt>
+        
+        
+         <dt>
+<code class="parameter">i5_time_sep</code></dt>
 
-        <dt>
-
-         <span class="term"><em><code class="parameter">i5_time_sep</code></em></span>
          <dd>
 
           <p class="para">
@@ -461,11 +463,11 @@ db2set DB2COMM=TCPIP</pre>
           </p>
          </dd>
 
-        </dt>
+        
+        
+         <dt>
+<code class="parameter">i5_decimal_sep</code></dt>
 
-        <dt>
-
-         <span class="term"><em><code class="parameter">i5_decimal_sep</code></em></span>
          <dd>
 
           <p class="para">
@@ -480,8 +482,7 @@ db2set DB2COMM=TCPIP</pre>
           </p>
          </dd>
 
-        </dt>
-        
+                
        </dl>
 
       </p> 
@@ -489,9 +490,10 @@ db2set DB2COMM=TCPIP</pre>
        以下の新しい i5/OS オプションは、ibm_db2 のバージョン 1.8.0 以降で使用可能です。
        <dl>
 
-        <dt>
+        
+         <dt>
+<code class="parameter">i5_libl</code></dt>
 
-         <span class="term"><em><code class="parameter">i5_libl</code></em></span>
          <dd>
 
           <p class="para">
@@ -507,15 +509,13 @@ db2set DB2COMM=TCPIP</pre>
           </p>
          </dd>
 
-        </dt>
-         
+                 
        </dl>
 
       </p>      
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -525,11 +525,11 @@ db2set DB2COMM=TCPIP</pre>
   <h3 class="title">返り値</h3>
   <p class="para">
    接続に成功した場合は接続ハンドルリソースを返します。
-   パラメータ <em><code class="parameter">database</code></em>、<em><code class="parameter">username</code></em>
-   および <em><code class="parameter">password</code></em> に完全に一致する接続が
-   既に存在した場合、 <span class="function"><strong>db2_pconnect()</strong></span>
+   パラメータ <code class="parameter">database</code>、<code class="parameter">username</code>
+   および <code class="parameter">password</code> に完全に一致する接続が
+   既に存在した場合、<span class="function"><strong>db2_pconnect()</strong></span>
    はそれを再利用します。接続に失敗した場合は
-    <span class="function"><strong>db2_pconnect()</strong></span> は <strong><code>FALSE</code></strong> を返します。
+   <span class="function"><strong>db2_pconnect()</strong></span> は <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
 
@@ -558,14 +558,14 @@ db2set DB2COMM=TCPIP</pre>
       <tr>
        <td>ibm_db2 1.8.0</td>
        <td>
-        i5/OS ユーザーは <em><code class="parameter">i5_libl</code></em> オプションが使えるようになりました。
+        i5/OS ユーザーは <code class="parameter">i5_libl</code> オプションが使えるようになりました。
        </td>
       </tr>
 
       <tr>
        <td>ibm_db2 1.7.0</td>
        <td>
-        <em><code class="parameter">trustedcontext</code></em> オプションが使えるようになりました。
+        <code class="parameter">trustedcontext</code> オプションが使えるようになりました。
        </td>
       </tr>
 
@@ -573,14 +573,14 @@ db2set DB2COMM=TCPIP</pre>
        <td>ibm_db2 1.5.1</td>
        <td>
         i5/OS ユーザーは
-        <em><code class="parameter">i5_lib</code></em>, <em><code class="parameter">i5_naming</code></em>,
-        <em><code class="parameter">i5_commit</code></em>,
-        <em><code class="parameter">i5_query_optimize</code></em>,
-        <em><code class="parameter">i5_dbcs_alloc</code></em>,
-        <em><code class="parameter">i5_date_fmt</code></em>,
-        <em><code class="parameter">i5_date_sep</code></em>,
-        <em><code class="parameter">i5_time_fmt</code></em>, <em><code class="parameter">i5_time_sep</code></em>
-        および <em><code class="parameter">i5_decimal_sep</code></em>
+        <code class="parameter">i5_lib</code>, <code class="parameter">i5_naming</code>,
+        <code class="parameter">i5_commit</code>,
+        <code class="parameter">i5_query_optimize</code>,
+        <code class="parameter">i5_dbcs_alloc</code>,
+        <code class="parameter">i5_date_fmt</code>,
+        <code class="parameter">i5_date_sep</code>,
+        <code class="parameter">i5_time_fmt</code>, <code class="parameter">i5_time_sep</code>
+        および <code class="parameter">i5_decimal_sep</code>
         が使えるようになりました。
        </td>
       </tr>
@@ -596,12 +596,12 @@ db2set DB2COMM=TCPIP</pre>
  <div class="refsect1 examples" id="refsect1-function.db2-pconnect-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1175">
-    <p><strong>例1  <span class="function"><strong>db2_pconnect()</strong></span> の例</strong></p>
+   <div class="example" id="example-1233">
+    <p><strong>例1 <span class="function"><strong>db2_pconnect()</strong></span> の例</strong></p>
     <div class="example-contents"><p>
-     以下の例で、最初に  <span class="function"><strong>db2_pconnect()</strong></span>
+     以下の例で、最初に <span class="function"><strong>db2_pconnect()</strong></span>
      をコールした際には新しい持続的接続リソースを返します。
-     二度目に  <span class="function"><strong>db2_pconnect()</strong></span> をコールすると、
+     二度目に <span class="function"><strong>db2_pconnect()</strong></span> をコールすると、
      最初の持続的接続のリソースが再利用されます。
     </p></div>
     <div class="example-contents">
@@ -619,7 +619,7 @@ db2set DB2COMM=TCPIP</pre>
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-1176">
+   <div class="example" id="example-1234">
     <p><strong>例2 信頼済みコンテキストの使用</strong></p>
     <div class="example-contents"><p>
      次の例は、信頼済みのコンテキストを有効にしてユーザーを変更し、現在のユーザー ID
@@ -648,7 +648,7 @@ User has been switched.
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.db2-connect.html" class="function" rel="rdfs-seeAlso">db2_connect()</a> - データベースへの接続を返す</span></li>
+    <li class="member"><span class="function"><a href="function.db2-connect.html" class="function" rel="rdfs-seeAlso">db2_connect()</a> - データベースへの接続を返す</span></li>
    </ul>
   </p>
  </div>

@@ -21,7 +21,7 @@
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
    <span class="type">int</span> <span class="methodname"><strong>easter_date</strong></span>
-    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$year</code></span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$year</code><span class="initializer"> = date(&quot;Y&quot;)</span></span>
   ] )</div>
 
   <p class="para rdfs-comment">
@@ -54,18 +54,18 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">year</code></dt>
 
-     <span class="term"><em><code class="parameter">year</code></em></span>
      <dd>
 
       <p class="para">
-       1970 から 2037 までの年。
+       1970 から 2037 までの年。省略した場合は、ローカルタイムにおける現在の年を使います。
       </p>
      </dd>
 
-    </dt>
-  
+      
    </dl>
 
   </p>
@@ -80,41 +80,11 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.easter-date-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        <em><code class="parameter">year</code></em>パラメータはオプションとなり
-        省略された場合には、ローカル時間に基づく現在の年がデフォルトとなります。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.easter-date-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2237">
-    <p><strong>例1  <span class="function"><strong>easter_date()</strong></span> の例</strong></p>
+   <div class="example" id="example-2434">
+    <p><strong>例1 <span class="function"><strong>easter_date()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">easter_date</span><span style="color: #007700">(</span><span style="color: #0000BB">1999</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Apr-04-1999<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">easter_date</span><span style="color: #007700">(</span><span style="color: #0000BB">2000</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Apr-23-2000<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">easter_date</span><span style="color: #007700">(</span><span style="color: #0000BB">2001</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Apr-15-2001<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -131,15 +101,15 @@
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>easter_date()</strong></span> は、システムの C ライブラリの関数を利用します。
+    <span class="function"><strong>easter_date()</strong></span> は、システムの C ライブラリの関数を利用します。
     PHP 組み込みの日付・時刻関数を使うわけではなりません。
-    つまり、 <span class="function"><strong>easter_date()</strong></span> が利用するタイムゾーンは環境変数
+    つまり、<span class="function"><strong>easter_date()</strong></span> が利用するタイムゾーンは環境変数
     <em>TZ</em> の値であり、PHP の
     <a href="datetime.configuration.html#ini.date.timezone" class="link">デフォルトのタイムゾーン</a>は考慮しません。
     その結果、PHP の他の日付関数と組み合わせて使ったときに予期せぬ結果になる可能性があります。
    </p>
    <p class="para">
-    回避策として、 <span class="function"><a href="function.easter-days.html" class="function">easter_days()</a></span> を
+    回避策として、<span class="function"><a href="function.easter-days.html" class="function">easter_days()</a></span> を
     <a href="class.datetime.html" class="classname">DateTime</a> や <a href="class.dateinterval.html" class="classname">DateInterval</a>
     と組み合わせて使えば、PHP で設定したタイムゾーンにおける復活祭の開始時刻を算出できます。
    </p>
@@ -171,7 +141,7 @@ Easter in 2015 is on April 5
    <ul class="simplelist">
     <li class="member">
      1970年以前または2037年以降の復活祭の計算に関しては、
-      <span class="function"><a href="function.easter-days.html" class="function" rel="rdfs-seeAlso">easter_days()</a> - 指定した年において、3 月 21 日から復活祭までの日数を得る</span> を参照ください。
+     <span class="function"><a href="function.easter-days.html" class="function" rel="rdfs-seeAlso">easter_days()</a> - 指定した年において、3 月 21 日から復活祭までの日数を得る</span> を参照ください。
     </li>
    </ul>
   </p>

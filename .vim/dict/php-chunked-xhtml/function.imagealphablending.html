@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagealphablending" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagealphablending</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5)</p><p class="refpurpose"><span class="refname">imagealphablending</span> &mdash; <span class="dc-title">イメージのブレンドモードを設定する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagealphablending</span> &mdash; <span class="dc-title">イメージのブレンドモードを設定する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagealphablending-description">
@@ -25,10 +25,10 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>imagealphablending()</strong></span> によりTrueColorイメージに
+   <span class="function"><strong>imagealphablending()</strong></span> によりTrueColorイメージに
    二つの異なる描画モードを使用可能となります。ブレンドモードでは、
    全ての描画関数に指定される色のalphaチャネル要素として使用され、
-   例えば <span class="function"><a href="function.imagesetpixel.html" class="function">imagesetpixel()</a></span>では背景色の透過割合を定
+   例えば<span class="function"><a href="function.imagesetpixel.html" class="function">imagesetpixel()</a></span>では背景色の透過割合を定
    義します。結果として、gd は描画色に関してその点に存在する色を自動
    的にブレンドし、イメージに結果を保存します。結果のピクセルは、透
    明になります。ブレンドモードでない場合、描画色は形式的にそのアル
@@ -43,15 +43,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">blendmode</code></dt>
 
-     <span class="term"><em><code class="parameter">blendmode</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,8 +61,7 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -76,8 +76,8 @@ image</code></em></span><dd>
 
  <div class="refsect1 examples" id="refsect1-function.imagealphablending-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-3169">
-   <p><strong>例1  <span class="function"><strong>imagealphablending()</strong></span> の使用例</strong></p>
+  <div class="example" id="example-3368">
+   <p><strong>例1 <span class="function"><strong>imagealphablending()</strong></span> の使用例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;画像を作成します<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;アルファブレンディングをオンにします<br /></span><span style="color: #0000BB">imagealphablending</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;正方形を描画します<br /></span><span style="color: #0000BB">imagefilledrectangle</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">30</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">30</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">70</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">70</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;出力します<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type:&nbsp;image/png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

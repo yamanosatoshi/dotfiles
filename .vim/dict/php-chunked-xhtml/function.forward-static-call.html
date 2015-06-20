@@ -27,7 +27,7 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">function</code></em> パラメータで指定したユーザー定義の関数あるいはメソッドを、
+   <code class="parameter">function</code> パラメータで指定したユーザー定義の関数あるいはメソッドを、
    それに続く引数を指定してコールします。この関数はメソッドのコンテキストでコールしなければなりません。
    クラスの外部で使用することはできません。
    この関数は <a href="language.oop5.late-static-bindings.html" class="link">遅延静的束縛</a> を使います。
@@ -40,9 +40,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">function</code></dt>
 
-     <span class="term"><em><code class="parameter">function</code></em></span>
      <dd>
 
       <p class="para">
@@ -51,11 +52,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">parameter</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">parameter</code></em></span>
      <dd>
 
       <p class="para">
@@ -63,8 +64,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -82,8 +82,8 @@
  <div class="refsect1 examples" id="refsect1-function.forward-static-call-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5086">
-    <p><strong>例1  <span class="function"><strong>forward_static_call()</strong></span> の例</strong></p>
+   <div class="example" id="example-5568">
+    <p><strong>例1 <span class="function"><strong>forward_static_call()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">NAME&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;static::</span><span style="color: #0000BB">NAME</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">join</span><span style="color: #007700">(</span><span style="color: #DD0000">','</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args</span><span style="color: #007700">).</span><span style="color: #DD0000">"&nbsp;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">NAME&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'B'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">NAME</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">forward_static_call</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'A'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'test'</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'more'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'args'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">forward_static_call</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'test'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'other'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'args'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);<br /><br />function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$args&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"C&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">join</span><span style="color: #007700">(</span><span style="color: #DD0000">','</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args</span><span style="color: #007700">).</span><span style="color: #DD0000">"&nbsp;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -108,10 +108,10 @@ C other,args
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.forward-static-call-array.html" class="function" rel="rdfs-seeAlso">forward_static_call_array()</a> - 静的メソッドをコールし、引数を配列で渡す</span></li>
-    <li class="member"> <span class="function"><a href="function.call-user-func-array.html" class="function" rel="rdfs-seeAlso">call_user_func_array()</a> - パラメータの配列を指定してコールバック関数をコールする</span></li>
-    <li class="member"> <span class="function"><a href="function.call-user-func.html" class="function" rel="rdfs-seeAlso">call_user_func()</a> - 最初の引数で指定したコールバック関数をコールする</span></li>
-    <li class="member"> <span class="function"><a href="function.is-callable.html" class="function" rel="rdfs-seeAlso">is_callable()</a> - 引数が、関数としてコール可能な構造であるかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.forward-static-call-array.html" class="function" rel="rdfs-seeAlso">forward_static_call_array()</a> - 静的メソッドをコールし、引数を配列で渡す</span></li>
+    <li class="member"><span class="function"><a href="function.call-user-func-array.html" class="function" rel="rdfs-seeAlso">call_user_func_array()</a> - パラメータの配列を指定してコールバック関数をコールする</span></li>
+    <li class="member"><span class="function"><a href="function.call-user-func.html" class="function" rel="rdfs-seeAlso">call_user_func()</a> - 最初の引数で指定したコールバック関数をコールする</span></li>
+    <li class="member"><span class="function"><a href="function.is-callable.html" class="function" rel="rdfs-seeAlso">is_callable()</a> - 引数が、関数としてコール可能な構造であるかどうかを調べる</span></li>
     <li class="member"><a href="language.pseudo-types.html#language.types.callback" class="link">callback</a> 型に関する情報</li>
    </ul>
   </p>

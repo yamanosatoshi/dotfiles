@@ -31,23 +31,23 @@
     ストレージに送信します。この一連の操作にはセッション保存ハンドラを使います。
    </p>
    <p class="para">
-    デフォルトでは、PHP が使う保存ハンドラは <em><code class="parameter">files</code></em> です。これは
+    デフォルトでは、PHP が使う保存ハンドラは <code class="parameter">files</code> です。これは
     <a href="session.configuration.html#ini.session.save-handler" class="link">session.save_handler</a> で設定します。
     このハンドラは、サーバー上の
     <a href="session.configuration.html#ini.session.save-path" class="link">session.save_path</a> で指定した場所にセッションデータを保存します。
    </p>
    <p class="para">
-    セッションを手動で開始するには  <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> 関数を使います。
+    セッションを手動で開始するには <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> 関数を使います。
     <a href="session.configuration.html#ini.session.auto-start" class="link">session.auto_start</a> に
-    <em><code class="parameter">1</code></em> を設定している場合は、
+    <code class="parameter">1</code> を設定している場合は、
     リクエストの開始時に自動的にセッションを開始します。
    </p>
    <p class="para">
     通常は、PHP がスクリプトの処理を終了するときに、セッションは自動的に終了します。
-    手動でセッションを終了させるには  <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> 関数を使います。
+    手動でセッションを終了させるには <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> 関数を使います。
    </p>
   <p class="para">
-   <div class="example" id="example-4740">
+   <div class="example" id="example-5218">
     <p><strong>例1 
      <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>で変数を登録
     </strong></p>
@@ -59,7 +59,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-4741">
+   <div class="example" id="example-5219">
     <p><strong>例2 
      変数を <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> から削除する
     </strong></p>
@@ -98,16 +98,16 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     ファイルベースのセッション (PHP のデフォルト) は、
-     <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> でオープンしたり
+    <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> でオープンしたり
     <a href="session.configuration.html#ini.session.auto-start" class="link">session.auto_start</a> で暗黙のうちに開始したりしたセッションのセッションファイルをロックします。
     いったんロックがかかったら、そのスクリプトが終了するなり
-     <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> を呼んでセッションを閉じるなりしない限り、
+    <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> を呼んでセッションを閉じるなりしない限り、
     他のスクリプトからはそのセッションファイルにアクセスできません。
    </p>
    <p class="para">
     これは、たとえば AJAX を使いまくっていて同時に複数のリクエストが発生したりするウェブサイトで問題になります。
     この問題への対処方法として一番お手軽なのは、セッションに対して必要な変更が終わったらすぐに
-     <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> を呼ぶことです。スクリプトの最初のほうで呼ぶほうが好ましいでしょう。
+    <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> を呼ぶことです。スクリプトの最初のほうで呼ぶほうが好ましいでしょう。
     あるいは、ファイルではなく別のバックエンド (同時アクセスに対応しているもの) を使うという手もあります。
    </p>
   </p></blockquote>

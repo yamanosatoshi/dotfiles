@@ -47,9 +47,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">event_handler</code></dt>
 
-     <span class="term"><em><code class="parameter">event_handler</code></em></span>
      <dd>
 
       <p class="para">
@@ -64,11 +65,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">event_name1</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">event_name1</code></em></span>
      <dd>
 
       <p class="para">
@@ -76,11 +77,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">event_name2</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">event_name2</code></em></span>
      <dd>
 
       <p class="para">
@@ -88,8 +89,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -100,7 +100,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    返される値はイベントのリソースです。このリソースは、
-    <span class="function"><a href="function.ibase-free-event-handler.html" class="function">ibase_free_event_handler()</a></span>
+   <span class="function"><a href="function.ibase-free-event-handler.html" class="function">ibase_free_event_handler()</a></span>
    でイベントハンドラを開放する際に使用可能です。
   </p>
  </div>
@@ -109,8 +109,8 @@
  <div class="refsect1 examples" id="refsect1-function.ibase-set-event-handler-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1110">
-    <p><strong>例1  <span class="function"><strong>ibase_set_event_handler()</strong></span> の例</strong></p>
+   <div class="example" id="example-1168">
+    <p><strong>例1 <span class="function"><strong>ibase_set_event_handler()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">event_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$event_name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$event_name&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #DD0000">"NEW&nbsp;ORDER"</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;新しい注文を処理します<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">ibase_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"UPDATE&nbsp;orders&nbsp;SET&nbsp;status='handled'"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(</span><span style="color: #0000BB">$event_name&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #DD0000">"DB_SHUTDOWN"</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;イベントハンドラを解放します<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">ibase_set_event_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"event_handler"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"NEW_ORDER"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"DB_SHUTDOWN"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -127,8 +127,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ibase-free-event-handler.html" class="function" rel="rdfs-seeAlso">ibase_free_event_handler()</a> - 登録済みのイベントハンドラをキャンセルする</span></li>
-    <li class="member"> <span class="function"><a href="function.ibase-wait-event.html" class="function" rel="rdfs-seeAlso">ibase_wait_event()</a> - データベースでイベントが発生するのを待つ</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-free-event-handler.html" class="function" rel="rdfs-seeAlso">ibase_free_event_handler()</a> - 登録済みのイベントハンドラをキャンセルする</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-wait-event.html" class="function" rel="rdfs-seeAlso">ibase_wait_event()</a> - データベースでイベントが発生するのを待つ</span></li>
    </ul>
   </p>
  </div>

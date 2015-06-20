@@ -25,10 +25,10 @@
   ] )</div>
 
   <p class="simpara">
-   （ <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>、 <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span> のような）
+   （<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>、<span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span> のような）
    ファイル操作関数がコンテキストパラメータなしでコールされた場合に使用される
    デフォルトのストリームコンテキストを返します。デフォルトコンテキストに
-   関するオプションは、 <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span> と同じ
+   関するオプションは、<span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span> と同じ
    構文で任意に指定することが可能です。
   </p>
  </div>
@@ -39,26 +39,26 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">options</code></dt>
 
-     <span class="term"><em><code class="parameter">options</code></em></span>
      <dd>
 
       <span class="simpara">
-       <em><code class="parameter">options</code></em> は、
+       <code class="parameter">options</code> は、
        <em>$arr[&#039;wrapper&#039;][&#039;option&#039;] = $value</em>
        のような形式の、連想配列の連想配列である必要があります。
       </span>
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
-        PHP 5.3.0 以降では、 <span class="function"><a href="function.stream-context-set-default.html" class="function">stream_context_set_default()</a></span>
+        PHP 5.3.0 以降では、<span class="function"><a href="function.stream-context-set-default.html" class="function">stream_context_set_default()</a></span>
         関数でデフォルトのコンテキストを設定することが可能です。
        </p>
       </p></blockquote>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -77,7 +77,7 @@
   <h3 class="title">例</h3>
   <p class="para">
    <div class="example" id="stream-context-get-default.example.basic">
-    <p><strong>例1  <span class="function"><strong>stream_context_get_default()</strong></span> の使用</strong></p>
+    <p><strong>例1 <span class="function"><strong>stream_context_get_default()</strong></span> の使用</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$default_opts&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'http'</span><span style="color: #007700">=&gt;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'method'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"GET"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'header'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"Accept-language:&nbsp;en\r\n"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"Cookie:&nbsp;foo=bar"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'proxy'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"tcp://10.54.1.39:8000"<br />&nbsp;&nbsp;</span><span style="color: #007700">)<br />);<br /><br /><br /></span><span style="color: #0000BB">$alternate_opts&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">'http'</span><span style="color: #007700">=&gt;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'method'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"POST"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'header'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"Content-type:&nbsp;application/x-www-form-urlencoded\r\n"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"Content-length:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #DD0000">"baz=bomb"</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'content'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"baz=bomb"<br />&nbsp;&nbsp;</span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$default&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_context_get_default</span><span style="color: #007700">(</span><span style="color: #0000BB">$default_opts</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$alternate&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$alternate_opts</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;www.example.com&nbsp;に対する通常の&nbsp;GET&nbsp;リクエストを、プロキシサーバー&nbsp;10.54.1.39<br />&nbsp;*&nbsp;に対して送信します。コンテキストオプション&nbsp;$default_opts&nbsp;を使用します。<br />&nbsp;*/<br /></span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;POST&nbsp;リクエストを、直接&nbsp;www.example.com&nbsp;に送信します。<br />&nbsp;*&nbsp;コンテキストオプション&nbsp;$alternate_opts&nbsp;を使用します。<br />&nbsp;*/<br /></span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$alternate</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -94,7 +94,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.stream-context-create.html" class="function" rel="rdfs-seeAlso">stream_context_create()</a> - ストリームコンテキストを作成する</span></li>
+    <li class="member"><span class="function"><a href="function.stream-context-create.html" class="function" rel="rdfs-seeAlso">stream_context_create()</a> - ストリームコンテキストを作成する</span></li>
     <li class="member">サポートするラッパーとコンテキストオプションの一覧 (<a href="wrappers.html" class="xref">サポートするプロトコル/ラッパー</a>).</li>
    </ul>
   </p>

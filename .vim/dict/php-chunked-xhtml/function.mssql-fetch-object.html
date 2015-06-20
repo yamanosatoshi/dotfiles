@@ -25,16 +25,16 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>mssql_fetch_object()</strong></span> は
-    <span class="function"><a href="function.mssql-fetch-array.html" class="function">mssql_fetch_array()</a></span> に似ていますが、配列の代わりに
+   <span class="function"><strong>mssql_fetch_object()</strong></span> は
+   <span class="function"><a href="function.mssql-fetch-array.html" class="function">mssql_fetch_array()</a></span> に似ていますが、配列の代わりに
    オブジェクトが返されるという違いがあります。
    間接的にこのことは、データをフィールド名でのみアクセスすることが
    可能であり、そのオフセットではアクセスできないことを意味します
    (番号はプロパティ名としては使用できません)。
   </p>
   <p class="para">
-   速度面でこの関数は  <span class="function"><a href="function.mssql-fetch-array.html" class="function">mssql_fetch_array()</a></span> と同等であり、
-    <span class="function"><a href="function.mssql-fetch-row.html" class="function">mssql_fetch_row()</a></span> とほとんど同じです
+   速度面でこの関数は <span class="function"><a href="function.mssql-fetch-array.html" class="function">mssql_fetch_array()</a></span> と同等であり、
+   <span class="function"><a href="function.mssql-fetch-row.html" class="function">mssql_fetch_row()</a></span> とほとんど同じです
    (違いは僅かです)。
   </p>
  </div>
@@ -45,19 +45,19 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result</code></dt>
 
-     <span class="term"><em><code class="parameter">result</code></em></span>
      <dd>
 
       <p class="para">
        処理対象となる結果リソース。これは
-        <span class="function"><a href="function.mssql-query.html" class="function">mssql_query()</a></span> のコールによって取得します。
+       <span class="function"><a href="function.mssql-query.html" class="function">mssql_query()</a></span> のコールによって取得します。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -76,8 +76,8 @@
  <div class="refsect1 examples" id="refsect1-function.mssql-fetch-object-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1528">
-    <p><strong>例1  <span class="function"><strong>mssql_fetch_object()</strong></span> の例</strong></p>
+   <div class="example" id="example-1707">
+    <p><strong>例1 <span class="function"><strong>mssql_fetch_object()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;select&nbsp;クエリを&nbsp;MSSQL&nbsp;に送信します<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;[username],&nbsp;[name]&nbsp;FROM&nbsp;[php].[dbo].[userlist]'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;レコードが存在するかどうかを調べます<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">mssql_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'No&nbsp;records&nbsp;found'</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;ユーザー一覧を<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;*&nbsp;name&nbsp;(username)&nbsp;形式で表示します<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'&lt;ul&gt;'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;li&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'&nbsp;('&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">username&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">')&lt;/li&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;/ul&gt;'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;結果を開放します<br /></span><span style="color: #0000BB">mssql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -103,8 +103,8 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mssql-fetch-array.html" class="function" rel="rdfs-seeAlso">mssql_fetch_array()</a> - 連想配列・数値添字配列・あるいはその両方で結果の行を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mssql-fetch-row.html" class="function" rel="rdfs-seeAlso">mssql_fetch_row()</a> - 配列として行を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mssql-fetch-array.html" class="function" rel="rdfs-seeAlso">mssql_fetch_array()</a> - 連想配列・数値添字配列・あるいはその両方で結果の行を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mssql-fetch-row.html" class="function" rel="rdfs-seeAlso">mssql_fetch_row()</a> - 配列として行を取得する</span></li>
    </ul>
   </p>
  </div>

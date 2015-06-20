@@ -20,8 +20,8 @@
  <div class="refsect1 description" id="refsect1-function.mysqlnd-ms-get-stats-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span>
-    <span class="methodname"><strong>mysqlnd_ms_get_stats</strong></span>
+   <span class="type">array</span> 
+   <span class="methodname"><strong>mysqlnd_ms_get_stats</strong></span>
     ( <span class="methodparam">void</span>
    )</div>
 
@@ -169,7 +169,7 @@
        It is not guaranteed whether the statement will be executed on a slave
        or not. This is how often the internal <em>is_select</em>
        function has guessed that a slave shall be used. Please, see also the
-       user space function  <span class="function"><a href="function.mysqlnd-ms-query-is-select.html" class="function">mysqlnd_ms_query_is_select()</a></span>.
+       user space function <span class="function"><a href="function.mysqlnd-ms-query-is-select.html" class="function">mysqlnd_ms_query_is_select()</a></span>.
       </td>
       <td>Since 1.1.0.</td>
      </tr>
@@ -185,7 +185,7 @@
        It is not guaranteed whether the statement will be executed on a slave
        or not. This is how often the internal <em>is_select</em>
        function has guessed that a master shall be used. Please, see also the
-       user space function  <span class="function"><a href="function.mysqlnd-ms-query-is-select.html" class="function">mysqlnd_ms_query_is_select()</a></span>.
+       user space function <span class="function"><a href="function.mysqlnd-ms-query-is-select.html" class="function">mysqlnd_ms_query_is_select()</a></span>.
       </td>
       <td>Since 1.1.0.</td>
      </tr>
@@ -457,7 +457,7 @@
        off, a query is executed and autocommit is enabled again. In that case,
        the statement will be committed by the server and SQL to maintain is
        injected before the autocommit is re-enabled. Another sequence
-       causing an an implicit commit is <em>begin()</em>,
+       causing an implicit commit is <em>begin()</em>,
        <em>query()</em>, <em>begin()</em>. The second call
        to <em>begin()</em> will implicitly commit the transaction
        started by the first call to <em>begin()</em>.
@@ -496,6 +496,233 @@
       <td>Since 1.6.0.</td>
      </tr>
 
+     <tr>
+      <td>
+       <em>fabric_sharding_lookup_servers_success</em>
+      </td>
+      <td>
+       Number of successful <em>sharding.lookup_servers</em>
+       remote procedure calls to MySQL Fabric.
+       A call is considered successful if the plugin could reach MySQL
+       Fabric and got any reply. The reply itself may or may not be
+       understood by the plugin. Success refers to the network transport
+       only. If the reply was not understood or indicates a valid error condition,
+       <em>fabric_sharding_lookup_servers_xml_failure</em>
+       gets incremented.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>fabric_sharding_lookup_servers_failure</em>
+      </td>
+      <td>
+       Number of failed <em>sharding.lookup_servers</em>
+       remote procedure calls to MySQL Fabric.
+       A remote procedure call is considered failed if there was a
+       network error in connecting to, writing to or reading from
+       MySQL Fabric.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>fabric_sharding_lookup_servers_time_total</em>
+      </td>
+      <td>
+       Time spent connecting to,writing to and reading from MySQL
+       Fabrich during the <em>sharding.lookup_servers</em>
+       remote procedure call. The value is aggregated for all calls. Time is
+       measured in microseconds.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>fabric_sharding_lookup_servers_bytes_total</em>
+      </td>
+      <td>
+       Total number of bytes received from MySQL Fabric in reply to
+       <em>sharding.lookup_servers</em> calls.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>fabric_sharding_lookup_servers_xml_failure</em>
+      </td>
+      <td>
+       How often a reply from MySQL Fabric to
+       <em>sharding.lookup_servers</em> calls was not understood.
+       Please note, the current experimental implementation does not
+       distinguish between valid errors returned and malformed replies.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>xa_begin</em>
+      </td>
+      <td>
+       How many XA/distributed transactions have been started
+       using <span class="function"><a href="function.mysqlnd-ms-xa-begin.html" class="function">mysqlnd_ms_xa_begin()</a></span>.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>xa_commit_success</em>
+      </td>
+      <td>
+       How many XA/distributed transactions have been successfully committed
+       using <span class="function"><a href="function.mysqlnd-ms-xa-commit.html" class="function">mysqlnd_ms_xa_commit()</a></span>.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>xa_commit_failure</em>
+      </td>
+      <td>
+       How many XA/distributed transactions failed to commit
+       during <span class="function"><a href="function.mysqlnd-ms-xa-commit.html" class="function">mysqlnd_ms_xa_commit()</a></span>.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>xa_rollback_success</em>
+      </td>
+      <td>
+       How many XA/distributed transactions have been successfully rolled back
+       using <span class="function"><a href="function.mysqlnd-ms-xa-rollback.html" class="function">mysqlnd_ms_xa_rollback()</a></span>. The figure does
+       not include implict rollbacks performed as a result of
+       <span class="function"><a href="function.mysqlnd-ms-xa-commit.html" class="function">mysqlnd_ms_xa_commit()</a></span> failure.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>xa_rollback_failure</em>
+      </td>
+      <td>
+       How many XA/distributed transactions could not be rolled back.
+       This includes failures of <span class="function"><a href="function.mysqlnd-ms-xa-rollback.html" class="function">mysqlnd_ms_xa_rollback()</a></span>
+       but also failured during rollback when closing a connection, if
+       <em>rollback_on_close</em> is set. Please, see also
+       <em>xa_rollback_on_close</em> below.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>xa_participants</em>
+      </td>
+      <td>
+       Total number of participants in any XA transaction started with
+       <span class="function"><a href="function.mysqlnd-ms-xa-begin.html" class="function">mysqlnd_ms_xa_begin()</a></span>.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>xa_rollback_on_close</em>
+      </td>
+      <td>
+       How many XA transactions have been rolled back implicitly when
+       a connection was close and <em>rollback_on_close</em> is set.
+       Depending on your coding policies, this may hint a flaw in your code as
+       you may prefer to explicitly clean up resources.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>pool_masters_total</em>
+      </td>
+      <td>
+       Number of master servers (connections) in the internal connection pool.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>pool_slaves_total</em>
+      </td>
+      <td>
+       Number of slave servers (connections) in the internal connection pool.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>pool_masters_active</em>
+      </td>
+      <td>
+       Number of master servers (connections) from the internal connection pool
+       which are currently used for picking a connection.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>pool_slaves_active</em>
+      </td>
+      <td>
+       Number of slave servers (connections) from the internal connection pool
+       which are currently used for picking a connection.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+       <tr>
+      <td>
+       <em>pool_updates</em>
+      </td>
+      <td>
+       How often the active connection list has been replaced and a
+       new set of master and slave servers had been installed.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>pool_master_reactivated</em>
+      </td>
+      <td>
+       How often a master connection has been reused after being
+       flushed from the active list.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
+     <tr>
+      <td>
+       <em>pool_slave_reactivated</em>
+      </td>
+      <td>
+       How often a slave connection has been reused after being
+       flushed from the active list.
+      </td>
+      <td>Since 1.6.0.</td>
+     </tr>
+
     </tbody>
    
   </table>
@@ -506,8 +733,8 @@
  <div class="refsect1 examples" id="refsect1-function.mysqlnd-ms-get-stats-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1837">
-    <p><strong>例1  <span class="function"><strong>mysqlnd_ms_get_stats()</strong></span> example</strong></p>
+   <div class="example" id="example-2029">
+    <p><strong>例1 <span class="function"><strong>mysqlnd_ms_get_stats()</strong></span> example</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"mysqlnd_ms.enable&nbsp;=&nbsp;%d\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">"mysqlnd_ms.enable"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"mysqlnd_ms.collect_statistics&nbsp;=&nbsp;%d\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">"mysqlnd_ms.collect_statistics"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">mysqlnd_ms_get_stats</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -597,7 +824,7 @@ array(26) {
      <a href="mysqlnd-ms.configuration.html#ini.mysqlnd-ms.enable" class="link">mysqlnd_ms.enable</a>
     </li>
     <li class="member">
-     <a href="mysqlnd-ms.monitoring.html" class="link">Monitoring</a>
+     <a href="mysqlnd-ms.plugin-ini-json.html#mysqlnd-ms.monitoring" class="link">Monitoring</a>
     </li>
    </ul>
   </p>

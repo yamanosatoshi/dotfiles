@@ -6,7 +6,7 @@
 
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="class.yaf-route-rewrite.html">Yaf_Route_Rewrite</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="yaf-route-rewrite.assemble.html">Yaf_Route_Rewrite::assemble</a></div>
  <div class="next" style="text-align: right; float: right;"><a href="yaf-route-rewrite.route.html">Yaf_Route_Rewrite::route</a></div>
  <div class="up"><a href="class.yaf-route-rewrite.html">Yaf_Route_Rewrite</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
@@ -20,7 +20,7 @@
  <div class="refsect1 description" id="refsect1-yaf-route-rewrite.construct-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="methodname"><strong>Yaf_Route_Rewrite::__construct</strong></span>
+   <span class="modifier">public</span><span class="methodname"><strong>Yaf_Route_Rewrite::__construct</strong></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$match</code></span>
    , <span class="methodparam"><span class="type">array</span> <code class="parameter">$route</code></span>
    [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$verify</code></span>
@@ -36,9 +36,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">match</code></dt>
 
-    <span class="term"><em><code class="parameter">match</code></em></span>
     <dd>
 
      <p class="para">
@@ -46,18 +47,22 @@
        もしマッチしなければ <a href="class.yaf-route-rewrite.html" class="classname">Yaf_Route_Rewrite</a> は
        <strong><code>FALSE</code></strong> を返します。
      </p>
+     <p class="para">
+      :name 形式を使って、マッチしたセグメントに名前を付けることができます。
+      また、* で残りの URL セグメントにマッチさせられます。
+     </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">route</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">route</code></em></span>
     <dd>
 
      <p class="para">
       リクエスト URI がパターンにマッチしたときに、
-      <a href="class.yaf-route-rewrite.html" class="classname">Yaf_Route_Rewrite</a> はこれを使ってルーティング先を判断します。
+      <a href="class.yaf-route-rewrite.html" class="classname">Yaf_Route_Rewrite</a> はこれを使ってルーティング先のモジュール、コントローラ、アクションを判断します。
      </p>
      <p class="para">
       この配列で指定するモジュール、コントローラ、アクションはすべて任意指定で、
@@ -65,11 +70,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">verify</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">verify</code></em></span>
     <dd>
 
      <p class="para">
@@ -77,8 +82,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -94,8 +98,8 @@
 
  <div class="refsect1 examples" id="refsect1-yaf-route-rewrite.construct-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-4147">
-   <p><strong>例1  <span class="function"><strong>Yaf_Route_Rewrite()</strong></span> の例</strong></p>
+  <div class="example" id="example-4607">
+   <p><strong>例1 <span class="function"><strong>Yaf_Route_Rewrite()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**<br />&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Add&nbsp;a&nbsp;rewrite&nbsp;route&nbsp;to&nbsp;Yaf_Router&nbsp;route&nbsp;stack<br />&nbsp;&nbsp;&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yaf_Dispatcher</span><span style="color: #007700">::</span><span style="color: #0000BB">getInstance</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getRouter</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">addRoute</span><span style="color: #007700">(</span><span style="color: #DD0000">"name"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;</span><span style="color: #0000BB">Yaf_Route_rewrite</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"/product/:name/:id/*"</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//match&nbsp;request&nbsp;uri&nbsp;leading&nbsp;"/product"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'controller'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"product"</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #FF8000">//route&nbsp;to&nbsp;product&nbsp;controller,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br />&nbsp;&nbsp;&nbsp;&nbsp;);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -127,8 +131,8 @@ array(
 </pre></div>
    </div>
   </div>
-  <div class="example" id="example-4148">
-   <p><strong>例2  <span class="function"><strong>Yaf_Route_Rewrite()</strong></span> の例</strong></p>
+  <div class="example" id="example-4608">
+   <p><strong>例2 <span class="function"><strong>Yaf_Route_Rewrite()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**<br />&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Add&nbsp;a&nbsp;rewrite&nbsp;route&nbsp;to&nbsp;Yaf_Router&nbsp;route&nbsp;stack&nbsp;by&nbsp;calling&nbsp;addconfig<br />&nbsp;&nbsp;&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$config&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"name"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"type"&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"rewrite"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Yaf_Route_Rewrite&nbsp;route<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"match"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"/user-list/:id"</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//match&nbsp;only&nbsp;/user/list/?/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"route"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'controller'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #FF8000">//route&nbsp;to&nbsp;user&nbsp;controller,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'action'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"list"</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #FF8000">//route&nbsp;to&nbsp;list&nbsp;action<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yaf_Dispatcher</span><span style="color: #007700">::</span><span style="color: #0000BB">getInstance</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getRouter</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">addConfig</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;</span><span style="color: #0000BB">Yaf_Config_Simple</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -158,14 +162,45 @@ array(
 </pre></div>
    </div>
   </div>
+  <div class="example" id="example-4609">
+   <p><strong>例3 <span class="function"><strong>Yaf_Route_Rewrite()</strong></span> (2.3.0 以降) の例</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**<br />&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Add&nbsp;a&nbsp;rewrite&nbsp;route&nbsp;use&nbsp;match&nbsp;result&nbsp;as&nbsp;m/c/a&nbsp;name<br />&nbsp;&nbsp;&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$config&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"name"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"type"&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"rewrite"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"match"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"/user-list/:a/:id"</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//match&nbsp;only&nbsp;/user-list/*<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"route"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'controller'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//route&nbsp;to&nbsp;user&nbsp;controller,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'action'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">":a"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//route&nbsp;to&nbsp;:a&nbsp;action<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yaf_Dispatcher</span><span style="color: #007700">::</span><span style="color: #0000BB">getInstance</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getRouter</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">addConfig</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;</span><span style="color: #0000BB">Yaf_Config_Simple</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+/* http://yourdomain.com/user-list/list/22
+ * の場合はこのような結果になります
+ */
+array(
+  &quot;controller&quot; =&gt; &quot;user&quot;,
+  &quot;action&quot;     =&gt; &quot;list&quot;,
+  &quot;module&quot;     =&gt; &quot;index&quot;, //(default)
+)
+
+/**
+ * リクエストパラメータは、このようになります
+ */
+array(
+  &quot;id&quot;   =&gt; 22,
+)
+</pre></div>
+   </div>
+  </div>
  </div>
 
 
  <div class="refsect1 seealso" id="refsect1-yaf-route-rewrite.construct-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="methodname"><a href="yaf-router.addroute.html" class="methodname" rel="rdfs-seeAlso">Yaf_Router::addRoute()</a> - 新しいルートをルーターに追加する</span></li>
-   <li class="member"> <span class="methodname"><a href="yaf-router.addconfig.html" class="methodname" rel="rdfs-seeAlso">Yaf_Router::addConfig()</a> - 設定で定義したルートをルーターに追加する</span></li>
+   <li class="member"><span class="methodname"><a href="yaf-router.addroute.html" class="methodname" rel="rdfs-seeAlso">Yaf_Router::addRoute()</a> - 新しいルートをルーターに追加する</span></li>
+   <li class="member"><span class="methodname"><a href="yaf-router.addconfig.html" class="methodname" rel="rdfs-seeAlso">Yaf_Router::addConfig()</a> - 設定で定義したルートをルーターに追加する</span></li>
    <li class="member"><a href="class.yaf-route-static.html" class="classname">Yaf_Route_Static</a></li>
    <li class="member"><a href="class.yaf-route-supervar.html" class="classname">Yaf_Route_Supervar</a></li>
    <li class="member"><a href="class.yaf-route-simple.html" class="classname">Yaf_Route_Simple</a></li>
@@ -176,7 +211,7 @@ array(
   
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="class.yaf-route-rewrite.html">Yaf_Route_Rewrite</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="yaf-route-rewrite.assemble.html">Yaf_Route_Rewrite::assemble</a></div>
  <div class="next" style="text-align: right; float: right;"><a href="yaf-route-rewrite.route.html">Yaf_Route_Rewrite::route</a></div>
  <div class="up"><a href="class.yaf-route-rewrite.html">Yaf_Route_Rewrite</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>

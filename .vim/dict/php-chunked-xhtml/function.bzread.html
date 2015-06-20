@@ -25,11 +25,11 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>bzread()</strong></span> は、与えられた bzip2
+   <span class="function"><strong>bzread()</strong></span> は、与えられた bzip2
    ファイルポインタから読み込みます。
   </p>
   <p class="para">
-   読み込みは、(圧縮前の状態で) <em><code class="parameter">length</code></em>
+   読み込みは、(圧縮前の状態で) <code class="parameter">length</code>
    バイトが読み込まれたか、EOF に達したかのどちらか最初に来た方で終了します。
   </p>
  </div>
@@ -39,34 +39,34 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">bz</code></dt>
 
-     <span class="term"><em><code class="parameter">bz</code></em></span>
      <dd>
 
       <p class="para">
        ファイルポインタ。これは有効である必要があり、
-        <span class="function"><a href="function.bzopen.html" class="function">bzopen()</a></span> によりオープンされたファイルを指してい
+       <span class="function"><a href="function.bzopen.html" class="function">bzopen()</a></span> によりオープンされたファイルを指してい
        る必要があります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">length</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">length</code></em></span>
      <dd>
 
       <p class="para">
-       指定されない場合、 <span class="function"><strong>bzread()</strong></span>
+       指定されない場合、<span class="function"><strong>bzread()</strong></span>
        は一度に (圧縮前の状態で) 1024バイト読み込みます。
        最大で 8192 バイト (圧縮前) までを一度に読み込みます。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -82,8 +82,8 @@
  <div class="refsect1 examples" id="refsect1-function.bzread-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-646">
-    <p><strong>例1  <span class="function"><strong>bzread()</strong></span> の例</strong></p>
+   <div class="example" id="example-687">
+    <p><strong>例1 <span class="function"><strong>bzread()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/tmp/foo.bz2"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bz&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">bzopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Couldn't&nbsp;open&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$decompressed_file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br />while&nbsp;(!</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$bz</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$decompressed_file&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #0000BB">bzread</span><span style="color: #007700">(</span><span style="color: #0000BB">$bz</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4096</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">bzclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$bz</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"The&nbsp;contents&nbsp;of&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">&nbsp;are:&nbsp;&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$decompressed_file</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -99,9 +99,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.bzwrite.html" class="function" rel="rdfs-seeAlso">bzwrite()</a> - バイナリ対応の bzip2 ファイルへの書き込み</span></li>
-    <li class="member"> <span class="function"><a href="function.feof.html" class="function" rel="rdfs-seeAlso">feof()</a> - ファイルポインタがファイル終端に達しているかどうか調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.bzopen.html" class="function" rel="rdfs-seeAlso">bzopen()</a> - bzip2 圧縮されたファイルをオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.bzwrite.html" class="function" rel="rdfs-seeAlso">bzwrite()</a> - バイナリ対応の bzip2 ファイルへの書き込み</span></li>
+    <li class="member"><span class="function"><a href="function.feof.html" class="function" rel="rdfs-seeAlso">feof()</a> - ファイルポインタがファイル終端に達しているかどうか調べる</span></li>
+    <li class="member"><span class="function"><a href="function.bzopen.html" class="function" rel="rdfs-seeAlso">bzopen()</a> - bzip2 圧縮されたファイルをオープンする</span></li>
    </ul>
   </p>
  </div>

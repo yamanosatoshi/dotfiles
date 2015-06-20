@@ -19,7 +19,7 @@
  <div class="refsect1 description" id="refsect1-tidy.construct-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-    <span class="methodname"><strong>tidy::__construct</strong></span>
+   <span class="methodname"><strong>tidy::__construct</strong></span>
     ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
    [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$config</code></span>
    [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code></span>
@@ -37,27 +37,28 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
-       もし <em><code class="parameter">filename</code></em> パラメータが与えられた場合、
-       この関数はファイルを読み込み、 <span class="function"><a href="tidy.parsefile.html" class="function">tidy_parse_file()</a></span>
+       もし <code class="parameter">filename</code> パラメータが与えられた場合、
+       この関数はファイルを読み込み、<span class="function"><a href="tidy.parsefile.html" class="function">tidy_parse_file()</a></span>
        のように実行してファイルに基づいたオブジェクトを初期化します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">config</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">config</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">config</code></em> には配列あるいは文字列を渡します。
+       <code class="parameter">config</code> には配列あるいは文字列を渡します。
        文字列を渡した場合は設定ファイルの名前、
        それ以外の場合は設定そのものとして解釈されます。
       </p>
@@ -67,15 +68,15 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">encoding</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">encoding</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">encoding</code></em> は入出力ドキュメントのエンコーディングを設定します。
+       <code class="parameter">encoding</code> は入出力ドキュメントのエンコーディングを設定します。
        指定できるエンコーディング名は
        <em>ascii</em>、<em>latin0</em>、<em>latin1</em>、
        <em>raw</em>、<em>utf8</em>、<em>iso2022</em>、
@@ -85,11 +86,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">use_include_path</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">use_include_path</code></em></span>
      <dd>
 
       <p class="para">
@@ -97,8 +98,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -116,8 +116,8 @@
  <div class="refsect1 examples" id="refsect1-tidy.construct-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4027">
-    <p><strong>例1  <span class="function"><strong>tidy::__construct()</strong></span> の例</strong></p>
+   <div class="example" id="example-4483">
+    <p><strong>例1 <span class="function"><strong>tidy::__construct()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$html&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;&nbsp;HTML<br /></span><span style="color: #DD0000"><br />&lt;!DOCTYPE&nbsp;html&nbsp;PUBLIC&nbsp;"-//W3C//DTD&nbsp;XHTML&nbsp;1.0&nbsp;Strict//EN"<br />"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;<br /><br />&lt;html&nbsp;xmlns="http://www.w3.org/1999/xhtml"&nbsp;xml:lang="en"&nbsp;lang="en"&gt;<br />&lt;head&gt;&lt;title&gt;title&lt;/title&gt;&lt;/head&gt;<br />&lt;body&gt;<br />&lt;p&gt;paragraph&nbsp;&lt;bt&nbsp;/&gt;<br />text&lt;/p&gt;<br />&lt;/body&gt;&lt;/html&gt;<br /><br /></span><span style="color: #007700">HTML;<br /><br /></span><span style="color: #0000BB">$tidy&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">tidy</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ParseString</span><span style="color: #007700">(</span><span style="color: #0000BB">$html</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cleanRepair</span><span style="color: #007700">();<br /><br />if&nbsp;(</span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errorBuffer</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"The&nbsp;following&nbsp;errors&nbsp;were&nbsp;detected:\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errorBuffer</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -141,8 +141,8 @@ line 8 column 14 - Warning: discarding unexpected &lt;bt&gt;
  <div class="refsect1 seealso" id="refsect1-tidy.construct-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="tidy.parsefile.html" class="function" rel="rdfs-seeAlso">tidy::parseFile()</a> - ファイルまたは URI にあるマークアップをパースする</span></li>
-   <li class="member"> <span class="function"><a href="tidy.parsestring.html" class="function" rel="rdfs-seeAlso">tidy::parseString()</a> - 文字列にストアされたドキュメントをパースする</span></li>
+   <li class="member"><span class="function"><a href="tidy.parsefile.html" class="function" rel="rdfs-seeAlso">tidy::parseFile()</a> - ファイルまたは URI にあるマークアップをパースする</span></li>
+   <li class="member"><span class="function"><a href="tidy.parsestring.html" class="function" rel="rdfs-seeAlso">tidy::parseString()</a> - 文字列にストアされたドキュメントをパースする</span></li>
   </ul>
  </div>
 

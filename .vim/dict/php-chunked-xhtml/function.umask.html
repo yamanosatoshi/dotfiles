@@ -13,7 +13,7 @@
 </div><hr /><div id="function.umask" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">umask</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">umask</span> &mdash; <span class="dc-title">現在の umask を変更する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">umask</span> &mdash; <span class="dc-title">現在の umask を変更する</span></p>
 
  </div>
  
@@ -25,8 +25,8 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>umask()</strong></span> は PHP の umask を
-   <em><code class="parameter">mask</code></em> &amp; 0777 にセットし、
+   <span class="function"><strong>umask()</strong></span> は PHP の umask を
+   <code class="parameter">mask</code> &amp; 0777 にセットし、
    元の umask 値を返します。
    PHP がサーバー・モジュールとして動作中の場合、
    各リクエストが終了するたびに umask は元の値に戻されます。
@@ -39,9 +39,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">mask</code></dt>
 
-     <span class="term"><em><code class="parameter">mask</code></em></span>
      <dd>
 
       <p class="para">
@@ -49,8 +50,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -60,7 +60,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.umask-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    <span class="function"><strong>umask()</strong></span>を引数無しで実行すると、単に現在の
+   <span class="function"><strong>umask()</strong></span>を引数無しで実行すると、単に現在の
    umask値を返します。
   </p>
  </div>
@@ -69,8 +69,8 @@
  <div class="refsect1 examples" id="refsect1-function.umask-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2429">
-    <p><strong>例1  <span class="function"><strong>umask()</strong></span> の例</strong></p>
+   <div class="example" id="example-2628">
+    <p><strong>例1 <span class="function"><strong>umask()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$old&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">umask</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">chmod</span><span style="color: #007700">(</span><span style="color: #DD0000">"/path/some_dir/some_file.txt"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0755</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">umask</span><span style="color: #007700">(</span><span style="color: #0000BB">$old</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;チェック<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$old&nbsp;</span><span style="color: #007700">!=&nbsp;</span><span style="color: #0000BB">umask</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'An&nbsp;error&nbsp;occurred&nbsp;while&nbsp;changing&nbsp;back&nbsp;the&nbsp;umask'</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -88,9 +88,9 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     マルチスレッドな Web サーバーでこの関数を使用することは避けてください。
-    ファイルを生成後、 <span class="function"><a href="function.chmod.html" class="function">chmod()</a></span> を使用してファイル権限を
+    ファイルを生成後、<span class="function"><a href="function.chmod.html" class="function">chmod()</a></span> を使用してファイル権限を
     変更するのがより良い方法です。全て同じ umask が使用されるので、
-     <span class="function"><strong>umask()</strong></span> の使用は、スクリプトを同時に実行する場合や
+    <span class="function"><strong>umask()</strong></span> の使用は、スクリプトを同時に実行する場合や
     Web サーバー自身の予期しない動作を引き起こす原因になる可能性があります。
    </p>
   </p></blockquote>

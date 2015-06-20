@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>コールバック</title>
+  <title>コールバック / Callable</title>
 
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
@@ -11,7 +11,7 @@
  <div class="up"><a href="language.types.html">型</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="language.types.callable" class="sect1">
- <h2 class="title">コールバック</h2>
+ <h2 class="title">コールバック / Callable</h2>
  
  <p class="para">
   コールバックは、PHP 5.4 以降では <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> タイプヒントで表されます。
@@ -19,7 +19,7 @@
  </p>
 
  <p class="para">
-   <span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> や  <span class="function"><a href="function.usort.html" class="function">usort()</a></span>
+  <span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> や <span class="function"><a href="function.usort.html" class="function">usort()</a></span>
   等の関数は、ユーザーが定義するコールバック関数を引数として受け入れます。
   コールバック関数は、単純な関数だけでなく、オブジェクトのメソッド
   あるいはクラスの静的メソッドであってもかまいません。
@@ -32,11 +32,11 @@
    PHP 関数はその名前を単に文字列として渡します。
    どのようなビルトインまたはユーザー定義の関数も渡すことができます。
    ただし、
-    <span class="function"><a href="function.array.html" class="function">array()</a></span>,  <span class="function"><a href="function.echo.html" class="function">echo</a></span>,
-    <span class="function"><a href="function.empty.html" class="function">empty()</a></span>,  <span class="function"><a href="function.eval.html" class="function">eval()</a></span>, 
-    <span class="function"><a href="function.exit.html" class="function">exit()</a></span>,  <span class="function"><a href="function.isset.html" class="function">isset()</a></span>, 
-    <span class="function"><a href="function.list.html" class="function">list()</a></span>,  <span class="function"><a href="function.print.html" class="function">print</a></span> あるいは
-    <span class="function"><a href="function.unset.html" class="function">unset()</a></span>
+   <span class="function"><a href="function.array.html" class="function">array()</a></span>, <span class="function"><a href="function.echo.html" class="function">echo</a></span>,
+   <span class="function"><a href="function.empty.html" class="function">empty()</a></span>, <span class="function"><a href="function.eval.html" class="function">eval()</a></span>, 
+   <span class="function"><a href="function.exit.html" class="function">exit()</a></span>, <span class="function"><a href="function.isset.html" class="function">isset()</a></span>, 
+   <span class="function"><a href="function.list.html" class="function">list()</a></span>, <span class="function"><a href="function.print.html" class="function">print</a></span> あるいは
+   <span class="function"><a href="function.unset.html" class="function">unset()</a></span>
    といった言語構造はコールバックとしては使えないことに注意しましょう。
   </p>
 
@@ -59,13 +59,13 @@
   </p>
 
   <p class="para">
-   <div class="example" id="example-96">
+   <div class="example" id="example-110">
     <p><strong>例1 
      コールバック関数の例
     </strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;コールバック関数の例<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">my_callback_function</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'hello&nbsp;world!'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;コールバックメソッドの例<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">myCallbackMethod</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;タイプ&nbsp;1:&nbsp;単純なコールバック<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #DD0000">'my_callback_function'</span><span style="color: #007700">);&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;タイプ&nbsp;2:&nbsp;静的クラスメソッドのコール<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'MyClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'myCallbackMethod'</span><span style="color: #007700">));&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;タイプ&nbsp;3:&nbsp;オブジェクトメソッドのコール<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'myCallbackMethod'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;タイプ&nbsp;4:&nbsp;静的クラスメソッドのコール&nbsp;(PHP&nbsp;5.2.3&nbsp;以降)<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #DD0000">'MyClass::myCallbackMethod'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;タイプ&nbsp;5:&nbsp;相対指定による静的クラスメソッドのコール&nbsp;(PHP&nbsp;5.3.0&nbsp;以降)<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"A\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"B\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'B'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'parent::who'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;A<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;コールバック関数の例<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">my_callback_function</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'hello&nbsp;world!'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;コールバックメソッドの例<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">myCallbackMethod</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;タイプ&nbsp;1:&nbsp;単純なコールバック<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #DD0000">'my_callback_function'</span><span style="color: #007700">);&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;タイプ&nbsp;2:&nbsp;静的クラスメソッドのコール<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'MyClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'myCallbackMethod'</span><span style="color: #007700">));&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;タイプ&nbsp;3:&nbsp;オブジェクトメソッドのコール<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'myCallbackMethod'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;タイプ&nbsp;4:&nbsp;静的クラスメソッドのコール&nbsp;(PHP&nbsp;5.2.3&nbsp;以降)<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #DD0000">'MyClass::myCallbackMethod'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;タイプ&nbsp;5:&nbsp;相対指定による静的クラスメソッドのコール&nbsp;(PHP&nbsp;5.3.0&nbsp;以降)<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"A\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">who</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"B\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'B'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'parent::who'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;A<br /><br />//&nbsp;タイプ&nbsp;6:&nbsp;__invoke&nbsp;を実装したオブジェクトを&nbsp;callable&nbsp;として用いる&nbsp;(PHP&nbsp;5.3&nbsp;以降)<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__invoke</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">C</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'PHP!'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -73,7 +73,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-97">
+   <div class="example" id="example-111">
     <p><strong>例2 
      クロージャを使ったコールバックの例
     </strong></p>
@@ -103,7 +103,7 @@
   </p></blockquote>
 
   <blockquote class="note"><p><strong class="note">注意</strong>: <p class="para">
- <span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> や  <span class="function"><a href="function.call-user-func-array.html" class="function">call_user_func_array()</a></span> で登録されたコールバックは、
+<span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> や <span class="function"><a href="function.call-user-func-array.html" class="function">call_user_func_array()</a></span> で登録されたコールバックは、
 前のコールバックからスローされた例外がキャッチされていない場合はコールされません。</p></p></blockquote>
  </div>
 

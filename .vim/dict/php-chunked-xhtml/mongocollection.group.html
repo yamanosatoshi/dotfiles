@@ -6,7 +6,7 @@
 
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mongocollection.getslaveokay.html">MongoCollection::getSlaveOkay</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="mongocollection.getwriteconcern.html">MongoCollection::getWriteConcern</a></div>
  <div class="next" style="text-align: right; float: right;"><a href="mongocollection.insert.html">MongoCollection::insert</a></div>
  <div class="up"><a href="class.mongocollection.html">MongoCollection</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
@@ -35,11 +35,12 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">keys</code></em>
-     </span>
+      <code class="parameter">keys</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -47,20 +48,20 @@
        配列あるいは非コードオブジェクトが渡された場合は、
        結果をグループ化するキーとして扱います。
       </p>
-      <p class="para">1.0.4+: <em><code class="parameter">keys</code></em> が
+      <p class="para">1.0.4+: <code class="parameter">keys</code> が
        <a href="class.mongocode.html" class="classname">MongoCode</a> のインスタンスである場合は、
-       <em><code class="parameter">keys</code></em> はグループ化のキーを返す関数であると見なします
-       (下の例 &quot;<em><code class="parameter">keys</code></em> へ関数を渡す&quot; を参照ください)。
+       <code class="parameter">keys</code> はグループ化のキーを返す関数であると見なします
+       (下の例 &quot;<code class="parameter">keys</code> へ関数を渡す&quot; を参照ください)。
       </p>
      </dd>
 
-    </dt>
-   
-    <dt>
+       
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">initial</code></em>
-     </span>
+      <code class="parameter">initial</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -68,13 +69,13 @@
       </p>
      </dd>
 
-    </dt>
-   
-    <dt>
+       
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">reduce</code></em>
-     </span>
+      <code class="parameter">reduce</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -83,13 +84,13 @@
       </p>
      </dd>
 
-    </dt>
-   
-    <dt>
+       
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">options</code></em>
-     </span>
+      <code class="parameter">options</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -113,11 +114,11 @@
          reduce 関数の最後の出力を受け取ります。
         </p>
        </li>
+       <li class="listitem"><p class="para"><em>&quot;maxTimeMS&quot;</em></p><p class="para">操作を行う累積時間の制限 (アイドル時間を含まない) を、ミリ秒単位で指定します。この時間内に操作が完了しなければ、<a href="class.mongoexecutiontimeoutexception.html" class="classname">MongoExecutionTimeoutException</a> をスローします。</p></li>
       </ul>
      </dd>
 
-    </dt>
-   
+       
    </dl>
 
   </p>
@@ -147,9 +148,14 @@
 
      <tbody class="tbody">
       <tr>
+       <td>1.5.0</td>
+       <td><em>&quot;maxTimeMS&quot;</em> オプションが追加されました。</td>
+      </tr>
+
+      <tr>
        <td>1.2.11</td>
        <td>
-        <em><code class="parameter">options</code></em> が <span class="type"><span class="type scalar">scalar</span></span> のときに <strong><code>E_DEPRECATED</code></strong> を発行するようになりました。
+        <code class="parameter">options</code> が <span class="type"><span class="type scalar">scalar</span></span> のときに <strong><code>E_DEPRECATED</code></strong> を発行するようになりました。
        </td>
       </tr>
 
@@ -163,8 +169,8 @@
 
  <div class="refsect1 examples" id="refsect1-mongocollection.group-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1456">
-   <p><strong>例1  <span class="function"><strong>MongoCollection::group()</strong></span> の例</strong></p>
+  <div class="example" id="example-1529">
+   <p><strong>例1 <span class="function"><strong>MongoCollection::group()</strong></span> の例</strong></p>
    <div class="example-contents"><p>
     これは、ドキュメントをカテゴリー別にまとめて
     カテゴリーごとの名前の一覧を作ります。
@@ -185,8 +191,8 @@
    </div>
   </div>
 
-  <div class="example" id="example-1457">
-   <p><strong>例2  <span class="function"><strong>MongoCollection::group()</strong></span> の例</strong></p>
+  <div class="example" id="example-1530">
+   <p><strong>例2 <span class="function"><strong>MongoCollection::group()</strong></span> の例</strong></p>
    <div class="example-contents"><p>
     この例ではキーを使わないので、すべてのドキュメントがそれ自身のグループに属します。
     また、この例では条件を使います。
@@ -223,11 +229,11 @@ array(4) {
    </div>
   </div>
 
-  <div class="example" id="example-1458">
-   <p><strong>例3 <em><code class="parameter">keys</code></em> へ関数を渡す</strong></p>
+  <div class="example" id="example-1531">
+   <p><strong>例3 <code class="parameter">keys</code> へ関数を渡す</strong></p>
    <div class="example-contents"><p>
     フィールド名以外の何かでグループ化したい場合は、
-     <span class="function"><strong>MongoCollection::group()</strong></span> の最初のパラメータに関数を渡すと
+    <span class="function"><strong>MongoCollection::group()</strong></span> の最初のパラメータに関数を渡すと
     各ドキュメントに対してそれを実行します。
     関数の返り値を使ってグループ化することができます。
    </p></div>
@@ -248,7 +254,7 @@ array(4) {
 
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mongocollection.getslaveokay.html">MongoCollection::getSlaveOkay</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="mongocollection.getwriteconcern.html">MongoCollection::getWriteConcern</a></div>
  <div class="next" style="text-align: right; float: right;"><a href="mongocollection.insert.html">MongoCollection::insert</a></div>
  <div class="up"><a href="class.mongocollection.html">MongoCollection</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>

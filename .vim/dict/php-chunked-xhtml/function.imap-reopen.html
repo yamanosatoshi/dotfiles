@@ -27,7 +27,7 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-   <acronym title="Internet Message Access Protocol">IMAP</acronym> または <acronym title="Network News Transfer Protocol">NNTP</acronym> サーバー上の新しい <em><code class="parameter">mailbox</code></em>
+   <acronym title="Internet Message Access Protocol">IMAP</acronym> または <acronym title="Network News Transfer Protocol">NNTP</acronym> サーバー上の新しい <code class="parameter">mailbox</code>
    に対して指定されたストリームを再オープンします。
   </p>
  </div>
@@ -38,32 +38,33 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-imap_stream</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
+<code class="parameter">
+imap_stream</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
 が返す IMAP ストリーム。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">mailbox</code></dt>
 
-     <span class="term"><em><code class="parameter">mailbox</code></em></span>
      <dd>
 
       <p class="para">
-       メールボックス名。詳細は  <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
+       メールボックス名。詳細は <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
        を参照ください。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">options</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">options</code></em> はビットマスクであり、以下の組み合わせとなります。
+       <code class="parameter">options</code> はビットマスクであり、以下の組み合わせとなります。
        <ul class="itemizedlist">
         <li class="listitem">
          <span class="simpara">
@@ -90,19 +91,19 @@ imap_stream</code></em></span><dd>
         <li class="listitem">
          <span class="simpara">
           <strong><code>CL_EXPUNGE</code></strong> - メールボックスを閉じた際に、自動的に
-          メールボックスを削除する（ <span class="function"><a href="function.imap-delete.html" class="function">imap_delete()</a></span> および
-           <span class="function"><a href="function.imap-expunge.html" class="function">imap_expunge()</a></span> も参照ください）。
+          メールボックスを削除する（<span class="function"><a href="function.imap-delete.html" class="function">imap_delete()</a></span> および
+          <span class="function"><a href="function.imap-expunge.html" class="function">imap_expunge()</a></span> も参照ください）。
          </span>
         </li>
        </ul>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">n_retries</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">n_retries</code></em></span>
      <dd>
 
       <p class="para">
@@ -110,8 +111,7 @@ imap_stream</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -142,7 +142,7 @@ imap_stream</code></em></span><dd>
      <tbody class="tbody">
       <tr>
        <td>5.2.0</td>
-       <td><em><code class="parameter">n_retries</code></em> が追加されました。</td>
+       <td><code class="parameter">n_retries</code> が追加されました。</td>
       </tr>
 
      </tbody>
@@ -156,8 +156,8 @@ imap_stream</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imap-reopen-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3352">
-    <p><strong>例1  <span class="function"><strong>imap_reopen()</strong></span> の例</strong></p>
+   <div class="example" id="example-3776">
+    <p><strong>例1 <span class="function"><strong>imap_reopen()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$mbox&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_open</span><span style="color: #007700">(</span><span style="color: #DD0000">"{imap.example.org:143}INBOX"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">",&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">imap_errors</span><span style="color: #007700">()));<br /></span><span style="color: #FF8000">//&nbsp;...<br /></span><span style="color: #0000BB">imap_reopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"{imap.example.org:143}INBOX.Sent"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">",&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">imap_errors</span><span style="color: #007700">()));<br /></span><span style="color: #FF8000">//&nbsp;..<br /></span><span style="color: #0000BB">?&gt;</span>

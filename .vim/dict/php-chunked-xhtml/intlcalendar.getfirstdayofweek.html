@@ -19,22 +19,48 @@
 
  <div class="refsect1 description" id="refsect1-intlcalendar.getfirstdayofweek-description">
   <h3 class="title">説明</h3>
+  <p class="para">
+   オブジェクト指向型
+  </p>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><strong>IntlCalendar::getFirstDayOfWeek</strong></span>
     ( <span class="methodparam">void</span>
    )</div>
 
   <p class="para rdfs-comment">
+   手続き型
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><strong>intlcal_get_first_day_of_week</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span> <code class="parameter">$cal</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
    The week day deemed to start a week, either the default value for this
    locale or the value set with
-    <span class="function"><a href="intlcalendar.setfirstdayofweek.html" class="function">IntlCalendar::setFirstDayOfWeek()</a></span>.
+   <span class="function"><a href="intlcalendar.setfirstdayofweek.html" class="function">IntlCalendar::setFirstDayOfWeek()</a></span>.
   </p>
  </div>
 
 
  <div class="refsect1 parameters" id="refsect1-intlcalendar.getfirstdayofweek-parameters">
   <h3 class="title">パラメータ</h3>
-  <p class="para">この関数にはパラメータはありません。</p>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">cal</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The IntlCalendar resource.
+     </p>
+    </dd>
+
+   
+  </dl>
+
  </div>
 
 
@@ -52,8 +78,8 @@
  <div class="refsect1 examples" id="refsect1-intlcalendar.getfirstdayofweek-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2595">
-   <p><strong>例1  <span class="function"><strong>IntlCalendar::getFirstDayOfWeek()</strong></span></strong></p>
+   <div class="example" id="example-2794">
+   <p><strong>例1 <span class="function"><strong>IntlCalendar::getFirstDayOfWeek()</strong></span></strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'date.timezone'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'UTC'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cal1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">createInstance</span><span style="color: #007700">(</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'es_ES'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFirstDayOfWeek</span><span style="color: #007700">());&nbsp;</span><span style="color: #FF8000">//&nbsp;Monday<br /></span><span style="color: #0000BB">$cal1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #0000BB">2013</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #FF8000">/*&nbsp;February&nbsp;*/</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;a&nbsp;Sunday<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">FIELD_WEEK_OF_YEAR</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;5<br /><br /></span><span style="color: #0000BB">$cal2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">createInstance</span><span style="color: #007700">(</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'en_US'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFirstDayOfWeek</span><span style="color: #007700">());&nbsp;</span><span style="color: #FF8000">//&nbsp;Sunday<br /></span><span style="color: #0000BB">$cal2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #0000BB">2013</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #FF8000">/*&nbsp;February&nbsp;*/</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;a&nbsp;Sunday<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">FIELD_WEEK_OF_YEAR</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;6</span>
@@ -79,7 +105,7 @@ int(6)
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="intlcalendar.setfirstdayofweek.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::setFirstDayOfWeek()</a> - Set the day on which the week is deemed to start</span></li>
+    <li class="member"><span class="methodname"><a href="intlcalendar.setfirstdayofweek.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::setFirstDayOfWeek()</a> - Set the day on which the week is deemed to start</span></li>
    </ul>
   </p>
  </div>

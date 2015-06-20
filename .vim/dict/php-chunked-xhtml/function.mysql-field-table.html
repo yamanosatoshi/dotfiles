@@ -27,8 +27,8 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli-result.fetch-field-direct.html" class="function">mysqli_fetch_field_direct()</a></span> [table] あるいは [orgtable]</li>
-    <li class="member"> <span class="methodname"><a href="pdostatement.getcolumnmeta.html" class="methodname">PDOStatement::getColumnMeta()</a></span> [table]</li>
+    <li class="member"><span class="function"><a href="mysqli-result.fetch-field-direct.html" class="function">mysqli_fetch_field_direct()</a></span> [table] あるいは [orgtable]</li>
+    <li class="member"><span class="methodname"><a href="pdostatement.getcolumnmeta.html" class="methodname">PDOStatement::getColumnMeta()</a></span> [table]</li>
    </ul>
   </div>
  </div>
@@ -53,21 +53,21 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
+<code class="parameter">
+result</code></dt>
+<dd>
 <p class="para">評価された結果 <span class="type"><span class="type リソース">リソース</span></span>。
-この結果は、 <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
+この結果は、<span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
 </dd>
-</dt>
 
     <dt>
-<span class="term"><em><code class="parameter">
-field_offset</code></em></span><dd>
+<code class="parameter">
+field_offset</code></dt>
+<dd>
 <p class="para">数値フィールドオフセット。
-<em><code class="parameter">field_offset</code></em> は <em>0</em> から始まります。
-<em><code class="parameter">field_offset</code></em> が存在しない場合、
+<code class="parameter">field_offset</code> は <em>0</em> から始まります。
+<code class="parameter">field_offset</code> が存在しない場合、
 <strong><code>E_WARNING</code></strong> レベルのエラーが発行されます。</p></dd>
-</dt>
 
    </dl>
 
@@ -86,8 +86,8 @@ field_offset</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.mysql-field-table-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1589">
-    <p><strong>例1  <span class="function"><strong>mysql_field_table()</strong></span> の例</strong></p>
+   <div class="example" id="example-1768">
+    <p><strong>例1 <span class="function"><strong>mysql_field_table()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;account.*,&nbsp;country.*&nbsp;FROM&nbsp;account,&nbsp;country&nbsp;WHERE&nbsp;country.name&nbsp;=&nbsp;'Portugal'&nbsp;AND&nbsp;account.country_id&nbsp;=&nbsp;country.id"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;結果を&nbsp;DB&nbsp;から取得します<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;テーブル名とフィールド名を一覧表示します<br /></span><span style="color: #007700">for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">mysql_num_fields</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);&nbsp;++</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$table&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_field_table</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$field&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_field_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$table</span><span style="color: #DD0000">:&nbsp;</span><span style="color: #0000BB">$field</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -105,7 +105,7 @@ field_offset</code></em></span><dd>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     下位互換のために、次の非推奨別名を使用してもいいでしょう。
-     <span class="function"><strong>mysql_fieldtable()</strong></span>
+    <span class="function"><strong>mysql_fieldtable()</strong></span>
    </p>
   </p></blockquote>
  </div>
@@ -115,7 +115,7 @@ field_offset</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-list-tables.html" class="function" rel="rdfs-seeAlso">mysql_list_tables()</a> - MySQL データベース上のテーブルのリストを得る</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-list-tables.html" class="function" rel="rdfs-seeAlso">mysql_list_tables()</a> - MySQL データベース上のテーブルのリストを得る</span></li>
    </ul>
   </p>
  </div>

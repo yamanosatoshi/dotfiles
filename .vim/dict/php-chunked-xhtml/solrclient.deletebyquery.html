@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -46,8 +47,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -57,7 +57,18 @@
  <div class="refsect1 returnvalues" id="refsect1-solrclient.deletebyquery-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   Returns a SolrUpdateResponse on success and throws a SolrClientException on failure.
+   Returns a <span class="type"><a href="class.solrupdateresponse.html" class="type SolrUpdateResponse">SolrUpdateResponse</a></span> on success and throws an exception on failure.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-solrclient.deletebyquery-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+   Throws <a href="class.solrclientexception.html" class="classname">SolrClientException</a> if the client had failed, or there was a connection issue.
+  </p>
+  <p class="para">
+   Throws <a href="class.solrserverexception.html" class="classname">SolrServerException</a> if the Solr Server had failed to process the request.
   </p>
  </div>
 
@@ -65,8 +76,8 @@
  <div class="refsect1 examples" id="refsect1-solrclient.deletebyquery-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4703">
-    <p><strong>例1  <span class="methodname"><strong>SolrQuery::deleteByQuery()</strong></span> example</strong></p>
+   <div class="example" id="example-5152">
+    <p><strong>例1 <span class="methodname"><strong>SolrQuery::deleteByQuery()</strong></span> example</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$options&nbsp;</span><span style="color: #007700">=&nbsp;array<br />(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'hostname'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_HOSTNAME</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'login'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_USERNAME</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'password'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_PASSWORD</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'port'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_PORT</span><span style="color: #007700">,<br />);<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SolrClient</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//This&nbsp;will&nbsp;erase&nbsp;the&nbsp;entire&nbsp;index<br /></span><span style="color: #0000BB">$client</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">deleteByQuery</span><span style="color: #007700">(</span><span style="color: #DD0000">"*:*"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$client</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">commit</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -83,9 +94,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="solrclient.deletebyid.html" class="methodname" rel="rdfs-seeAlso">SolrClient::deleteById()</a> - Delete by Id</span></li>
-    <li class="member"> <span class="methodname"><a href="solrclient.deletebyids.html" class="methodname" rel="rdfs-seeAlso">SolrClient::deleteByIds()</a> - Deletes by Ids</span></li>
-    <li class="member"> <span class="methodname"><a href="solrclient.deletebyqueries.html" class="methodname" rel="rdfs-seeAlso">SolrClient::deleteByQueries()</a> - Removes all documents matching any of the queries</span></li>
+    <li class="member"><span class="methodname"><a href="solrclient.deletebyid.html" class="methodname" rel="rdfs-seeAlso">SolrClient::deleteById()</a> - Delete by Id</span></li>
+    <li class="member"><span class="methodname"><a href="solrclient.deletebyids.html" class="methodname" rel="rdfs-seeAlso">SolrClient::deleteByIds()</a> - Deletes by Ids</span></li>
+    <li class="member"><span class="methodname"><a href="solrclient.deletebyqueries.html" class="methodname" rel="rdfs-seeAlso">SolrClient::deleteByQueries()</a> - Removes all documents matching any of the queries</span></li>
    </ul>
   </p>
  </div>

@@ -20,7 +20,8 @@
  <div id="function.mysql-list-tables-refsynopsisdiv">
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
-この拡張モジュールは PHP 5.5.0 で非推奨になりました。将来のバージョンで削除される予定です。
+この関数は PHP 4.3.0 で非推奨になりました。将来のバージョンで
+<a href="book.mysql.html" class="link">MySQL 拡張モジュール</a> 全体とあわせて削除される予定です。
 <a href="book.mysqli.html" class="link">MySQLi</a> あるいは
 <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a> を使うべきです。詳細な情報は
 <a href="mysqlinfo.api.choosing.html" class="link">MySQL: API の選択</a> や
@@ -45,7 +46,7 @@
   </p>
   <p class="para">
    この関数は非推奨となりました。かわりに
-    <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> を利用して <em>SHOW TABLES 
+   <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> を利用して <em>SHOW TABLES 
    [FROM db_name] [LIKE &#039;pattern&#039;]</em> 文を発行することを推奨します。
   </p>
  </div>
@@ -56,9 +57,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">database</code></dt>
 
-     <span class="term"><em><code class="parameter">database</code></em></span>
      <dd>
 
       <p class="para">
@@ -66,19 +68,18 @@
       </p>
      </dd>
 
-    </dt>
-
+    
     <dt>
-<span class="term"><em><code class="parameter">
-link_identifier</code></em></span><dd>
+<code class="parameter">
+link_identifier</code></dt>
+<dd>
 <p class="para">MySQL 接続。
-指定されない場合、 <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
+指定されない場合、<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
 指定されたと仮定されます。そのようなリンクがない場合、引数を指定せずに
- <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
+<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
 リンクが見付からない、または、確立できない場合、
 <strong><code>E_WARNING</code></strong> レベルのエラーが生成されます。</p></dd>
 
-</dt>
 
    </dl>
 
@@ -94,8 +95,8 @@ link_identifier</code></em></span><dd>
   </p>
   <p class="para">
    結果ポインタの中身を調べるためには
-    <span class="function"><a href="function.mysql-tablename.html" class="function">mysql_tablename()</a></span> 関数を利用し、
-   取得したテーブルを利用するには  <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span>
+   <span class="function"><a href="function.mysql-tablename.html" class="function">mysql_tablename()</a></span> 関数を利用し、
+   取得したテーブルを利用するには <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span>
    などの関数を利用してください。
   </p>
  </div>
@@ -133,8 +134,8 @@ link_identifier</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.mysql-list-tables-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1601">
-    <p><strong>例1  <span class="function"><strong>mysql_list_tables()</strong></span> の別の例</strong></p>
+   <div class="example" id="example-1780">
+    <p><strong>例1 <span class="function"><strong>mysql_list_tables()</strong></span> の別の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$dbname&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'mysql_dbname'</span><span style="color: #007700">;<br /><br />if&nbsp;(!</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysql_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;connect&nbsp;to&nbsp;mysql'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SHOW&nbsp;TABLES&nbsp;FROM&nbsp;</span><span style="color: #0000BB">$dbname</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br /><br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"DB&nbsp;Error,&nbsp;could&nbsp;not&nbsp;list&nbsp;tables\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'MySQL&nbsp;Error:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_row</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Table:&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -152,7 +153,7 @@ link_identifier</code></em></span><dd>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     下位互換のために、次の非推奨別名を使用してもいいでしょう。
-     <span class="function"><strong>mysql_listtables()</strong></span>
+    <span class="function"><strong>mysql_listtables()</strong></span>
    </p>
   </p></blockquote>
  </div>
@@ -162,8 +163,8 @@ link_identifier</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-list-dbs.html" class="function" rel="rdfs-seeAlso">mysql_list_dbs()</a> - MySQL サーバー上で利用可能なデータベースのリストを得る</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-tablename.html" class="function" rel="rdfs-seeAlso">mysql_tablename()</a> - フィールドのテーブル名を得る</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-list-dbs.html" class="function" rel="rdfs-seeAlso">mysql_list_dbs()</a> - MySQL サーバー上で利用可能なデータベースのリストを得る</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-tablename.html" class="function" rel="rdfs-seeAlso">mysql_tablename()</a> - フィールドのテーブル名を得る</span></li>
    </ul>
   </p>
  </div>

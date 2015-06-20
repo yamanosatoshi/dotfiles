@@ -26,14 +26,14 @@
    )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">connection</code></em>
-   を使って <em><code class="parameter">sql_text</code></em> をパースし、ステートメント ID
-   を返します。この ID は、 <span class="function"><a href="function.oci-bind-by-name.html" class="function">oci_bind_by_name()</a></span>,
-    <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> や他の関数で使用されます。
+   <code class="parameter">connection</code>
+   を使って <code class="parameter">sql_text</code> をパースし、ステートメント ID
+   を返します。この ID は、<span class="function"><a href="function.oci-bind-by-name.html" class="function">oci_bind_by_name()</a></span>,
+   <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> や他の関数で使用されます。
   </p>
   <p class="para">
    ステートメント ID を解放するには、
-    <span class="function"><a href="function.oci-free-statement.html" class="function">oci_free_statement()</a></span> を使うか、あるいは
+   <span class="function"><a href="function.oci-free-statement.html" class="function">oci_free_statement()</a></span> を使うか、あるいは
    変数に <strong><code>NULL</code></strong> を代入します。
   </p>
  </div>
@@ -44,23 +44,24 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>、 <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
-       あるいは  <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span>
+       <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>、<span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
+       あるいは <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span>
        が返す Oracle 接続 ID。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">sql_text</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">sql_text</code></em></span>
      <dd>
 
       <p class="para">
@@ -73,8 +74,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -92,8 +92,8 @@
  <div class="refsect1 examples" id="refsect1-function.oci-parse-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2008">
-    <p><strong>例1  <span class="function"><strong>oci_parse()</strong></span> での SQL 文の例</strong></p>
+   <div class="example" id="example-2207">
+    <p><strong>例1 <span class="function"><strong>oci_parse()</strong></span> での SQL 文の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;パースします。SQL&nbsp;文の最後にはセミコロンがないことに注意しましょう<br /></span><span style="color: #0000BB">$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;*&nbsp;FROM&nbsp;employees'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"&lt;table&nbsp;border='1'&gt;\n"</span><span style="color: #007700">;<br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OCI_ASSOC</span><span style="color: #007700">+</span><span style="color: #0000BB">OCI_RETURN_NULLS</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;tr&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$item</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;"&nbsp;</span><span style="color: #007700">.&nbsp;(</span><span style="color: #0000BB">$item&nbsp;</span><span style="color: #007700">!==&nbsp;</span><span style="color: #0000BB">null&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$item</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">)&nbsp;:&nbsp;</span><span style="color: #DD0000">"&amp;nbsp;"</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;/td&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;/tr&gt;\n"</span><span style="color: #007700">;<br />}<br />echo&nbsp;</span><span style="color: #DD0000">"&lt;/table&gt;\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -104,8 +104,8 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2009">
-    <p><strong>例2  <span class="function"><strong>oci_parse()</strong></span> での PL/SQL の例</strong></p>
+   <div class="example" id="example-2208">
+    <p><strong>例2 <span class="function"><strong>oci_parse()</strong></span> での PL/SQL の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*<br />&nbsp;&nbsp;この&nbsp;PHP&nbsp;プログラムを実行する前に、SQL*Plus&nbsp;や&nbsp;SQL&nbsp;Developer&nbsp;で<br />&nbsp;&nbsp;ストアドプロシージャを作っておきます<br /><br />&nbsp;&nbsp;CREATE&nbsp;OR&nbsp;REPLACE&nbsp;PROCEDURE&nbsp;myproc(p1&nbsp;IN&nbsp;NUMBER,&nbsp;p2&nbsp;OUT&nbsp;NUMBER)&nbsp;AS<br />&nbsp;&nbsp;BEGIN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p2&nbsp;:=&nbsp;p1&nbsp;*&nbsp;2;<br />&nbsp;&nbsp;END;<br /><br />*/<br /><br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$p1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;PL/SQL&nbsp;プログラムをパースするには、文字列の最後にセミコロンが必要です<br /></span><span style="color: #0000BB">$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'begin&nbsp;myproc(:p1,&nbsp;:p2);&nbsp;end;'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_bind_by_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">':p1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$p1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_bind_by_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">':p2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$p2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">40</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br />print&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$p2</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;16&nbsp;と表示します<br /><br /></span><span style="color: #0000BB">oci_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -122,9 +122,9 @@
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    この関数は <em><code class="parameter">sql_text</code></em> を検証
+    この関数は <code class="parameter">sql_text</code> を検証
     <em class="emphasis">しません</em>。
-    <em><code class="parameter">sql_text</code></em> が有効な SQL あるいは PL/SQL
+    <code class="parameter">sql_text</code> が有効な SQL あるいは PL/SQL
     文かどうかを検証する唯一の方法 - それは実行することです。
    </p>
   </p></blockquote>
@@ -135,8 +135,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.oci-execute.html" class="function" rel="rdfs-seeAlso">oci_execute()</a> - 文を実行する</span></li>
-    <li class="member"> <span class="function"><a href="function.oci-free-statement.html" class="function" rel="rdfs-seeAlso">oci_free_statement()</a> - 文やカーソルに関連付けられた全てのリソースを解放する</span></li>
+    <li class="member"><span class="function"><a href="function.oci-execute.html" class="function" rel="rdfs-seeAlso">oci_execute()</a> - 文を実行する</span></li>
+    <li class="member"><span class="function"><a href="function.oci-free-statement.html" class="function" rel="rdfs-seeAlso">oci_free_statement()</a> - 文やカーソルに関連付けられた全てのリソースを解放する</span></li>
    </ul>
   </p>
  </div>

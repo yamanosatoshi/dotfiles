@@ -26,9 +26,9 @@
    )</div>
 
   <p class="para rdfs-comment">
-   指定した <em><code class="parameter">key</code></em> が配列に設定されている場合、
-    <span class="function"><strong>array_key_exists()</strong></span> は <strong><code>TRUE</code></strong> を返します。
-   <em><code class="parameter">key</code></em> は配列添字として使用できる全ての値を使用可能です。
+   指定した <code class="parameter">key</code> が配列に設定されている場合、
+   <span class="function"><strong>array_key_exists()</strong></span> は <strong><code>TRUE</code></strong> を返します。
+   <code class="parameter">key</code> は配列添字として使用できる全ての値を使用可能です。
   </p>
  </div>
 
@@ -38,9 +38,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">key</code></dt>
 
-     <span class="term"><em><code class="parameter">key</code></em></span>
      <dd>
 
       <p class="para">
@@ -48,11 +49,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">array</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">array</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,8 +61,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -79,8 +79,8 @@
  <div class="refsect1 examples" id="refsect1-function.array-key-exists-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4933">
-    <p><strong>例1  <span class="function"><strong>array_key_exists()</strong></span> の例</strong></p>
+   <div class="example" id="example-5415">
+    <p><strong>例1 <span class="function"><strong>array_key_exists()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$search_array&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'first'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'second'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">array_key_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'first'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$search_array</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"この配列には&nbsp;'first'&nbsp;という要素が存在します"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -90,11 +90,11 @@
 
    </div>
   </p>
-  <div class="example" id="example-4934">
-   <p><strong>例2  <span class="function"><strong>array_key_exists()</strong></span> 対  <span class="function"><a href="function.isset.html" class="function">isset()</a></span></strong></p>
+  <div class="example" id="example-5416">
+   <p><strong>例2 <span class="function"><strong>array_key_exists()</strong></span> 対 <span class="function"><a href="function.isset.html" class="function">isset()</a></span></strong></p>
    <div class="example-contents"><p>
-     <span class="function"><a href="function.isset.html" class="function">isset()</a></span> は <strong><code>NULL</code></strong> 値を持つ配列キーに対して
-    <strong><code>TRUE</code></strong> を返しません。一方、 <span class="function"><strong>array_key_exists()</strong></span> は
+    <span class="function"><a href="function.isset.html" class="function">isset()</a></span> は <strong><code>NULL</code></strong> 値を持つ配列キーに対して
+    <strong><code>TRUE</code></strong> を返しません。一方、<span class="function"><strong>array_key_exists()</strong></span> は
     <strong><code>TRUE</code></strong> を返します。
    </p></div>
    <div class="example-contents">
@@ -113,20 +113,20 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     下位互換のために、次の非推奨別名を使用してもいいでしょう。
-     <span class="function"><a href="function.key-exists.html" class="function">key_exists()</a></span>
+    <span class="function"><a href="function.key-exists.html" class="function">key_exists()</a></span>
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
     <p class="para">
-     過去との互換性を保つため、<em><code class="parameter">key</code></em>
-     が仮に <em><code class="parameter">array</code></em> で指定したオブジェクトのプロパティであっても
-      <span class="function"><strong>array_key_exists()</strong></span> は <strong><code>TRUE</code></strong> を返します。
+     過去との互換性を保つため、<code class="parameter">key</code>
+     が仮に <code class="parameter">array</code> で指定したオブジェクトのプロパティであっても
+     <span class="function"><strong>array_key_exists()</strong></span> は <strong><code>TRUE</code></strong> を返します。
      しかし、この挙動に頼ってはいけません。
-     <em><code class="parameter">array</code></em> にはオブジェクトではなく配列を渡すようにしましょう。
+     <code class="parameter">array</code> にはオブジェクトではなく配列を渡すようにしましょう。
     </p>
     <p class="para">
      オブジェクトのプロパティが存在するかどうかを調べるには、
-      <span class="function"><a href="function.property-exists.html" class="function">property_exists()</a></span> を使いましょう。
+     <span class="function"><a href="function.property-exists.html" class="function">property_exists()</a></span> を使いましょう。
     </p>
   </p></blockquote>
  </div>
@@ -136,10 +136,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - 変数がセットされていること、そして NULL でないことを検査する</span></li>
-    <li class="member"> <span class="function"><a href="function.array-keys.html" class="function" rel="rdfs-seeAlso">array_keys()</a> - 配列のキーすべて、あるいはその一部を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.in-array.html" class="function" rel="rdfs-seeAlso">in_array()</a> - 配列に値があるかチェックする</span></li>
-    <li class="member"> <span class="function"><a href="function.property-exists.html" class="function" rel="rdfs-seeAlso">property_exists()</a> - オブジェクトもしくはクラスにプロパティが存在するかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - 変数がセットされていること、そして NULL でないことを検査する</span></li>
+    <li class="member"><span class="function"><a href="function.array-keys.html" class="function" rel="rdfs-seeAlso">array_keys()</a> - 配列のキーすべて、あるいはその一部を返す</span></li>
+    <li class="member"><span class="function"><a href="function.in-array.html" class="function" rel="rdfs-seeAlso">in_array()</a> - 配列に値があるかチェックする</span></li>
+    <li class="member"><span class="function"><a href="function.property-exists.html" class="function" rel="rdfs-seeAlso">property_exists()</a> - オブジェクトもしくはクラスにプロパティが存在するかどうかを調べる</span></li>
    </ul>
   </p>
  </div>

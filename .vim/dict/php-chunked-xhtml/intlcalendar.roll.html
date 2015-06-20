@@ -19,6 +19,9 @@
 
  <div class="refsect1 description" id="refsect1-intlcalendar.roll-description">
   <h3 class="title">説明</h3>
+  <p class="para">
+   オブジェクト指向型
+  </p>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><strong>IntlCalendar::roll</strong></span>
     ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$field</code></span>
@@ -26,8 +29,18 @@
    )</div>
 
   <p class="para rdfs-comment">
+   手続き型
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><strong>intlcal_roll</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span> <code class="parameter">$cal</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$field</code></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$amountOrUpOrDown</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
    Adds a (signed) amount to a field. The difference with respect to
-    <span class="function"><a href="intlcalendar.add.html" class="function">IntlCalendar::add()</a></span> is that when the field value
+   <span class="function"><a href="intlcalendar.add.html" class="function">IntlCalendar::add()</a></span> is that when the field value
    overflows, it does not carry into more significant fields.
   </p>
  </div>
@@ -37,9 +50,22 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">cal</code></dt>
 
-    <span class="term"><em><code class="parameter">field</code></em></span>
+    <dd>
+
+     <p class="para">
+      The IntlCalendar resource.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">field</code></dt>
+
     <dd>
 
      
@@ -53,11 +79,11 @@
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">amountOrUpOrDown</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">amountOrUpOrDown</code></em></span>
     <dd>
 
      <p class="para">
@@ -67,8 +93,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -85,8 +110,8 @@
  <div class="refsect1 examples" id="refsect1-intlcalendar.roll-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2610">
-   <p><strong>例1  <span class="function"><strong>IntlCalendar::roll()</strong></span></strong></p>
+   <div class="example" id="example-2809">
+   <p><strong>例1 <span class="function"><strong>IntlCalendar::roll()</strong></span></strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'date.timezone'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Europe/Lisbon'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'intl.default_locale'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pt_PT'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cal&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">IntlGregorianCalendar</span><span style="color: #007700">(</span><span style="color: #0000BB">2013</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #FF8000">/*&nbsp;June&nbsp;*/</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">30</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">FIELD_DAY_OF_MONTH</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;"01/07/2013,&nbsp;00:00:00"<br /><br /></span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #0000BB">2013</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #FF8000">/*&nbsp;June&nbsp;*/</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">30</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">roll</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">FIELD_DAY_OF_MONTH</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;roll&nbsp;up,&nbsp;same&nbsp;as&nbsp;rolling&nbsp;+1<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;"01/06/2013,&nbsp;00:00:00"</span>
@@ -110,8 +135,8 @@ string(20) &quot;01/06/2013, 00:00:00&quot;
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="intlcalendar.add.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::add()</a> - Add a (signed) amount of time to a field</span></li>
-    <li class="member"> <span class="methodname"><a href="intlcalendar.set.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::set()</a> - Set a time field or several common fields at once</span></li>
+    <li class="member"><span class="methodname"><a href="intlcalendar.add.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::add()</a> - Add a (signed) amount of time to a field</span></li>
+    <li class="member"><span class="methodname"><a href="intlcalendar.set.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::set()</a> - Set a time field or several common fields at once</span></li>
    </ul>
   </p>
  </div>

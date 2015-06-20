@@ -7,7 +7,7 @@
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="mongocollection.count.html">MongoCollection::count</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mongocollection.deleteindex.html">MongoCollection::deleteIndex</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mongocollection.createindex.html">MongoCollection::createIndex</a></div>
  <div class="up"><a href="class.mongocollection.html">MongoCollection</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="mongocollection.createdbref" class="refentry">
@@ -32,11 +32,12 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">document_or_id</code></em>
-     </span>
+      <code class="parameter">document_or_id</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -47,8 +48,7 @@
       </p>
      </dd>
 
-    </dt>
-   
+       
    </dl>
 
   </p>
@@ -69,8 +69,8 @@
 
  <div class="refsect1 examples" id="refsect1-mongocollection.createdbref-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1434">
-   <p><strong>例1  <span class="methodname"><strong>MongoCollection::createDBRef()</strong></span> の例</strong></p>
+  <div class="example" id="example-1503">
+   <p><strong>例1 <span class="methodname"><strong>MongoCollection::createDBRef()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$songs&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">songs</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$playlists&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">playlists</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;曲への参照を作成します<br /></span><span style="color: #0000BB">$manamana&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$songs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">findOne</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Ma&nbsp;na&nbsp;ma&nbsp;na'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$refToSong&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$songs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createDBRef</span><span style="color: #007700">(</span><span style="color: #0000BB">$manamana</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;プレイリストへの参照を追加します<br /></span><span style="color: #0000BB">$playlists</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">update</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'username'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'me'</span><span style="color: #007700">),&nbsp;array(</span><span style="color: #DD0000">'$push'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'songlist'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$refToSong</span><span style="color: #007700">)));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -86,7 +86,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="mongocollection.getdbref.html" class="methodname" rel="rdfs-seeAlso">MongoCollection::getDBRef()</a> - データベース参照が指すドキュメントを取得する</span></li>
+    <li class="member"><span class="methodname"><a href="mongocollection.getdbref.html" class="methodname" rel="rdfs-seeAlso">MongoCollection::getDBRef()</a> - データベース参照が指すドキュメントを取得する</span></li>
    </ul>
   </p>
  </div>
@@ -94,7 +94,7 @@
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="mongocollection.count.html">MongoCollection::count</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mongocollection.deleteindex.html">MongoCollection::deleteIndex</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mongocollection.createindex.html">MongoCollection::createIndex</a></div>
  <div class="up"><a href="class.mongocollection.html">MongoCollection</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div></body></html>

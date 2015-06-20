@@ -31,17 +31,12 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_update()</strong></span> は、<em>data</em> に関して
+   <span class="function"><strong>pg_update()</strong></span> は、<em>data</em> に関して
    <em>condition</em> にマッチするレコードを更新します。
    <em>options</em> が指定された場合、指定したオプションとともに
-    <span class="function"><a href="function.pg-convert.html" class="function">pg_convert()</a></span> が <em>data</em> 
+   <span class="function"><a href="function.pg-convert.html" class="function">pg_convert()</a></span> が <em>data</em> 
    に適用されます。
   </p>
-  <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は、
-<em class="emphasis">実験的</em> なものです。この関数の動作・
-名前・その他ドキュメントに書かれている事項は、予告なく、将来的な PHP
-のリリースにおいて変更される可能性があります。
-この関数は自己責任で使用してください。</p></div>
  </div>
 
 
@@ -50,9 +45,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,11 +56,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">table_name</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">table_name</code></em></span>
      <dd>
 
       <p class="para">
@@ -72,52 +68,55 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">data</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">data</code></em></span>
      <dd>
 
       <p class="para">
-       テーブル <em><code class="parameter">table_name</code></em> のフィールド名をキーに、
+       テーブル <code class="parameter">table_name</code> のフィールド名をキーに、
        そしてマッチした対象を更新するデータを値にもつ配列。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">condition</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">condition</code></em></span>
      <dd>
 
       <p class="para">
-       テーブル <em><code class="parameter">table_name</code></em> のフィールド名をキーに、
+       テーブル <code class="parameter">table_name</code> のフィールド名をキーに、
        そして取得対象となる行にマッチするデータを値にもつ配列。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">options</code></em></span>
      <dd>
 
       <p class="para">
-       <strong><code>PGSQL_CONV_OPTS</code></strong>、
+       <strong><code>PGSQL_CONV_FORCE_NULL</code></strong>、
        <strong><code>PGSQL_DML_NO_CONV</code></strong>、
-       <strong><code>PGSQL_DML_EXEC</code></strong> あるいは
+       <strong><code>PGSQL_DML_ESCAPE</code></strong>、
+       <strong><code>PGSQL_DML_EXEC</code></strong>、
+       <strong><code>PGSQL_DML_ASYNC</code></strong> あるいは
        <strong><code>PGSQL_DML_STRING</code></strong> の組み合わせ。
-       <em><code class="parameter">options</code></em> の一部に
+       <code class="parameter">options</code> の一部に
        <strong><code>PGSQL_DML_STRING</code></strong> が含まれていた場合、
        クエリ文字列が返されます。
+       <strong><code>PGSQL_DML_NO_CONV</code></strong> あるいは <strong><code>PGSQL_DML_ESCAPE</code></strong>
+       が設定されている場合は、内部的に <span class="function"><a href="function.pg-convert.html" class="function">pg_convert()</a></span> を呼びません。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -127,7 +126,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.pg-update-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。 <em><code class="parameter">options</code></em> に
+   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。 <code class="parameter">options</code> に
    <strong><code>PGSQL_DML_STRING</code></strong> が渡された場合は文字列を返します。
   </p>
  </div>
@@ -136,8 +135,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-update-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2119">
-    <p><strong>例1  <span class="function"><strong>pg_update()</strong></span> の例</strong></p>
+   <div class="example" id="example-2316">
+    <p><strong>例1 <span class="function"><strong>pg_update()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php&nbsp;<br />&nbsp;&nbsp;$db&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'dbname=foo'</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'field1'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'AA'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'field2'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'BB'</span><span style="color: #007700">);<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;これは安全です。なぜなら&nbsp;$_POST&nbsp;は自動的に変換されるからです。<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_update</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'post_log'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$res</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"データが更新されました:&nbsp;</span><span style="color: #0000BB">$res</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"ユーザーが誤った入力を送信しました。\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -165,8 +164,18 @@
 
      <tbody class="tbody">
       <tr>
+       <td>5.6.0</td>
+       <td>
+        実験的な関数ではなくなりました。定数 <strong><code>PGSQL_DML_ESCAPE</code></strong> が追加されました。
+        <strong><code>TRUE</code></strong>/<strong><code>FALSE</code></strong> や <strong><code>NULL</code></strong> をサポートするようになりました。
+       </td>
+      </tr>
+
+      <tr>
        <td>5.5.3/5.4.19</td>
-       <td><em><code class="parameter">table_name</code></em> に対する SQL インジェクション、そして識別子に対する間接的な SQL インジェクションの問題を修正しました。</td>
+       <td>
+        <code class="parameter">table_name</code> に対する SQL インジェクション、そして識別子に対する間接的な SQL インジェクションの問題を修正しました。
+       </td>
       </tr>
 
      </tbody>
@@ -181,7 +190,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-convert.html" class="function" rel="rdfs-seeAlso">pg_convert()</a> - 連想配列の値を、SQL 文として実行可能な形式に変換する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-convert.html" class="function" rel="rdfs-seeAlso">pg_convert()</a> - 連想配列の値を、SQL 文として実行可能な形式に変換する</span></li>
    </ul>
   </p>
  </div>

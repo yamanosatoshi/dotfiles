@@ -13,7 +13,7 @@
 </div><hr /><div id="function.header-register-callback" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">header_register_callback</h1>
-  <p class="verinfo">(バージョン情報なし。おそらく SVN 版にしか存在しないでしょう)</p><p class="refpurpose"><span class="refname">header_register_callback</span> &mdash; <span class="dc-title">ヘッダ用の関数を登録する</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.4.0)</p><p class="refpurpose"><span class="refname">header_register_callback</span> &mdash; <span class="dc-title">ヘッダ用の関数を登録する</span></p>
 
  </div>
 
@@ -28,7 +28,7 @@
    PHP が出力を送信しはじめるときにコールする関数を登録します。
   </p>
   <p class="para">
-   <em><code class="parameter">callback</code></em> が実行されるのは、
+   <code class="parameter">callback</code> が実行されるのは、
    PHP がすべてのヘッダを送出し終えてからその他の出力を始めるまでの間です。
    ここで、送信する前のヘッダを操作できます。
   </p>
@@ -39,9 +39,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">callback</code></dt>
 
-    <span class="term"><em><code class="parameter">callback</code></em></span>
     <dd>
 
      <p class="para">
@@ -49,8 +50,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -67,7 +67,7 @@
  <div class="refsect1 examples" id="refsect1-function.header-register-callback-examples">
   <h3 class="title">例</h3>
   <div class="example" id="header-register-callback.example.basic">
-   <p><strong>例1  <span class="function"><strong>header_register_callback()</strong></span> の例</strong></p>
+   <p><strong>例1 <span class="function"><strong>header_register_callback()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;text/plain'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'X-Test:&nbsp;foo'</span><span style="color: #007700">);<br /><br />function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">headers_list</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$header</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$header</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'X-Powered-By:'</span><span style="color: #007700">)&nbsp;!==&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header_remove</span><span style="color: #007700">(</span><span style="color: #DD0000">'X-Powered-By'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header_remove</span><span style="color: #007700">(</span><span style="color: #DD0000">'X-Test'</span><span style="color: #007700">);<br />&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">header_register_callback</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"a"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -91,7 +91,7 @@ a
  <div class="refsect1 notes" id="refsect1-function.header-register-callback-notes">
   <h3 class="title">注意</h3>
   <p class="para">
-    <span class="function"><strong>header_register_callback()</strong></span>
+   <span class="function"><strong>header_register_callback()</strong></span>
    はヘッダを送出しようとするときに実行されるので、
    この関数の中で何らかの出力をしてしまうと出力が壊れてしまいます。
   </p>
@@ -108,9 +108,9 @@ a
  <div class="refsect1 seealso" id="refsect1-function.header-register-callback-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="function.headers-list.html" class="function" rel="rdfs-seeAlso">headers_list()</a> - 送信した (もしくは送信される予定の) レスポンスヘッダの一覧を返す</span></li>
-   <li class="member"> <span class="function"><a href="function.header-remove.html" class="function" rel="rdfs-seeAlso">header_remove()</a> - 以前に設定したHTTPヘッダを削除する</span></li>
-   <li class="member"> <span class="function"><a href="function.header.html" class="function" rel="rdfs-seeAlso">header()</a> - 生の HTTP ヘッダを送信する</span></li>
+   <li class="member"><span class="function"><a href="function.headers-list.html" class="function" rel="rdfs-seeAlso">headers_list()</a> - 送信した (もしくは送信される予定の) レスポンスヘッダの一覧を返す</span></li>
+   <li class="member"><span class="function"><a href="function.header-remove.html" class="function" rel="rdfs-seeAlso">header_remove()</a> - 以前に設定したHTTPヘッダを削除する</span></li>
+   <li class="member"><span class="function"><a href="function.header.html" class="function" rel="rdfs-seeAlso">header()</a> - 生の HTTP ヘッダを送信する</span></li>
   </ul>
  </div>
 

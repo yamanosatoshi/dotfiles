@@ -24,11 +24,11 @@
     )</div>
 
    <p class="para rdfs-comment">
-     <span class="function"><strong>exif_imagetype()</strong></span> を画像の先頭バイトを読み
+    <span class="function"><strong>exif_imagetype()</strong></span> を画像の先頭バイトを読み
     そのサインを調べます。
    </p>
    <p class="para">
-     <span class="function"><strong>exif_imagetype()</strong></span> は、他の
+    <span class="function"><strong>exif_imagetype()</strong></span> は、他の
     <a href="ref.exif.html" class="link">exif</a> 関数がサポートしていないファイル形式で
     コールされるの防いだり、<var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['HTTP_ACCEPT']</a></var></var> 
     と組み合わせて閲覧者が画像を見る権限を持っているかどうかを調べたりするために
@@ -41,9 +41,10 @@
    <p class="para">
     <dl>
 
-     <dt>
+     
+      <dt>
+<code class="parameter">filename</code></dt>
 
-      <span class="term"><em><code class="parameter">filename</code></em></span>
       <dd>
 
        <span class="simpara">
@@ -51,8 +52,7 @@
        </span>
       </dd>
 
-     </dt>
-
+     
     </dl>
 
    </p>
@@ -62,15 +62,15 @@
    <h3 class="title">返り値</h3>
    <p class="para">
     正しいサインが見つかった場合は適切な定数、それ以外の場合は <strong><code>FALSE</code></strong>
-    を返します。返り値は  <span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span> がインデックス
-    2 に対して返す値と同じですが、 <span class="function"><strong>exif_imagetype()</strong></span>
+    を返します。返り値は <span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span> がインデックス
+    2 に対して返す値と同じですが、<span class="function"><strong>exif_imagetype()</strong></span>
     のほうがずっと早く動作します。
    </p>
 
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <p class="para">
      画像の形式を判別するために必要なだけのバイト数を読み込めない場合、
-      <span class="function"><strong>exif_imagetype()</strong></span> は <strong><code>E_NOTICE</code></strong>
+     <span class="function"><strong>exif_imagetype()</strong></span> は <strong><code>E_NOTICE</code></strong>
      を発行して <strong><code>FALSE</code></strong> を返します。
      
     </p>
@@ -91,26 +91,11 @@
       </thead>
 
       <tbody class="tbody">
-      <tr>
-       <td>5.3.0</td>
-       <td>
-        アイコンをサポートしました。
-       </td>
-      </tr>
-
        <tr>
-        <td>4.3.2</td>
+        <td>5.3.0</td>
         <td>
-         <acronym title="Japan Picture">JPC</acronym>、<acronym title="JPEG-2000">JP2</acronym>、
-         <acronym>JPX</acronym>、<acronym title="Joint Bilevel Image Experts Group">JB2</acronym>、
-         <acronym title="X Bitmap">XBM</acronym> および <acronym title="Wireless Bitmap">WBMP</acronym>
-         がサポートされます。
+        アイコンをサポートしました。
         </td>
-       </tr>
-
-       <tr>
-        <td>4.3.0</td>
-        <td><acronym>SWC</acronym> がサポートされます。</td>
        </tr>
 
       </tbody>
@@ -123,7 +108,7 @@
   <div class="refsect1 constants" id="refsect1-function.exif-imagetype-constants">
    <h3 class="title">定義済み定数</h3>
    <p class="para">
-    以下の定数が定義されており、 <span class="function"><strong>exif_imagetype()</strong></span>
+    以下の定数が定義されており、<span class="function"><strong>exif_imagetype()</strong></span>
     の返り値を表しています。
     <table class="doctable table">
     <caption><strong>Imagetype 定数</strong></caption>
@@ -234,8 +219,8 @@
   <div class="refsect1 examples" id="refsect1-function.exif-imagetype-examples">
    <h3 class="title">例</h3>
    <p class="para">
-    <div class="example" id="example-3153">
-     <p><strong>例1  <span class="function"><strong>exif_imagetype()</strong></span> の例</strong></p>
+    <div class="example" id="example-3352">
+     <p><strong>例1 <span class="function"><strong>exif_imagetype()</strong></span> の例</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">exif_imagetype</span><span style="color: #007700">(</span><span style="color: #DD0000">'image.gif'</span><span style="color: #007700">)&nbsp;!=&nbsp;</span><span style="color: #0000BB">IMAGETYPE_GIF</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'The&nbsp;picture&nbsp;is&nbsp;not&nbsp;a&nbsp;gif'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -251,9 +236,9 @@
    <h3 class="title">参考</h3>
    <p class="para">
     <ul class="simplelist">
-     <li class="member"> <span class="function"><a href="function.image-type-to-mime-type.html" class="function" rel="rdfs-seeAlso">image_type_to_mime_type()</a> - getimagesize, exif_read_data, exif_thumbnail, exif_imagetypeから返される
+     <li class="member"><span class="function"><a href="function.image-type-to-mime-type.html" class="function" rel="rdfs-seeAlso">image_type_to_mime_type()</a> - getimagesize, exif_read_data, exif_thumbnail, exif_imagetypeから返される
    画像形式のMIMEタイプを取得する</span></li>
-     <li class="member"> <span class="function"><a href="function.getimagesize.html" class="function" rel="rdfs-seeAlso">getimagesize()</a> - 画像の大きさを取得する</span></li>
+     <li class="member"><span class="function"><a href="function.getimagesize.html" class="function" rel="rdfs-seeAlso">getimagesize()</a> - 画像の大きさを取得する</span></li>
     </ul>
    </p>
   </div>

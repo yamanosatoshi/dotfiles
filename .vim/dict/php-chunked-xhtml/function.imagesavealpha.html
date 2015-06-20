@@ -14,7 +14,7 @@
 </div><hr /><div id="function.imagesavealpha" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagesavealpha</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.3.2, PHP 5)</p><p class="refpurpose"><span class="refname">imagesavealpha</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 4 &gt;= 4.3.2, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagesavealpha</span> &mdash; <span class="dc-title">
    PNG 画像を保存する際に（単一色の透過設定ではない）完全な
    アルファチャネル情報を保存するフラグを設定する
   </span></p>
@@ -29,7 +29,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>imagesavealpha()</strong></span> は
+   <span class="function"><strong>imagesavealpha()</strong></span> は
    PNG 画像を保存する際に（単一色の透過設定ではない）完全な
    アルファチャネル情報を保存するフラグを設定します。
   </p>
@@ -50,15 +50,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">saveflag</code></dt>
 
-     <span class="term"><em><code class="parameter">saveflag</code></em></span>
      <dd>
 
       <p class="para">
@@ -66,8 +67,7 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -83,8 +83,8 @@ image</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imagesavealpha-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3264">
-    <p><strong>例1  <span class="function"><strong>imagesavealpha()</strong></span> の例</strong></p>
+   <div class="example" id="example-3463">
+    <p><strong>例1 <span class="function"><strong>imagesavealpha()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;アルファチャネルつきの&nbsp;png&nbsp;画像を読み込みます<br /></span><span style="color: #0000BB">$png&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefrompng</span><span style="color: #007700">(</span><span style="color: #DD0000">'./alphachannel_example.png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;何らかの操作を行います<br /><br />//&nbsp;アルファブレンディングを無効にし、アルファフラグを設定します<br /></span><span style="color: #0000BB">imagealphablending</span><span style="color: #007700">(</span><span style="color: #0000BB">$png</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagesavealpha</span><span style="color: #007700">(</span><span style="color: #0000BB">$png</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;画像をブラウザに出力します<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;image/png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$png</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$png</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -105,7 +105,7 @@ image</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imagealphablending.html" class="function" rel="rdfs-seeAlso">imagealphablending()</a> - イメージのブレンドモードを設定する</span></li>
+    <li class="member"><span class="function"><a href="function.imagealphablending.html" class="function" rel="rdfs-seeAlso">imagealphablending()</a> - イメージのブレンドモードを設定する</span></li>
    </ul>
   </p>
  </div>

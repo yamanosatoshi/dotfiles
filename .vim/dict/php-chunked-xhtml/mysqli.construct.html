@@ -22,7 +22,7 @@
   <h3 class="title">説明</h3>
   <p class="para">オブジェクト指向型</p>
   <div class="constructorsynopsis dc-description">
-    <span class="methodname"><strong>mysqli::__construct()</strong></span>
+   <span class="methodname"><strong>mysqli::__construct</strong></span>
     ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code><span class="initializer"> = ini_get(&quot;mysqli.default_host&quot;)</span></span>
    [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$username</code><span class="initializer"> = ini_get(&quot;mysqli.default_user&quot;)</span></span>
    [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$passwd</code><span class="initializer"> = ini_get(&quot;mysqli.default_pw&quot;)</span></span>
@@ -53,9 +53,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">host</code></dt>
 
-     <span class="term"><em><code class="parameter">host</code></em></span>
      <dd>
 
       <p class="para">
@@ -66,15 +67,15 @@
       <p class="para">
        ホストの前に <em>p:</em> をつけると、持続的な接続を開きます。
        接続プールから開いた接続上で
-        <span class="function"><a href="mysqli.change-user.html" class="function">mysqli_change_user()</a></span> が自動的にコールされます。
+       <span class="function"><a href="mysqli.change-user.html" class="function">mysqli_change_user()</a></span> が自動的にコールされます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">username</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">username</code></em></span>
      <dd>
 
       <p class="para">
@@ -82,11 +83,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">passwd</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">passwd</code></em></span>
      <dd>
 
       <p class="para">
@@ -97,11 +98,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">dbname</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">dbname</code></em></span>
      <dd>
 
       <p class="para">
@@ -110,11 +111,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">port</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">port</code></em></span>
      <dd>
 
       <p class="para">
@@ -122,11 +123,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">socket</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">socket</code></em></span>
      <dd>
 
       <p class="para">
@@ -134,15 +135,14 @@
       </p>
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
-        <em><code class="parameter">socket</code></em> 引数を指定しても、MySQL サーバーへの
+        <code class="parameter">socket</code> 引数を指定しても、MySQL サーバーへの
         接続時の型を明示的に定義することにはなりません。MySQL サーバーへの
-        接続方法については <em><code class="parameter">host</code></em> 引数で定義されます。
+        接続方法については <code class="parameter">host</code> 引数で定義されます。
        </p>
       </p></blockquote>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -188,8 +188,8 @@
 
  <div class="refsect1 examples" id="refsect1-mysqli.construct-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1653">
-   <p><strong>例1  <span class="methodname"><strong>mysqli::__construct()</strong></span> の例</strong></p>
+  <div class="example" id="example-1832">
+   <p><strong>例1 <span class="methodname"><strong>mysqli::__construct()</strong></span> の例</strong></p>
    <div class="example-contents"><p>オブジェクト指向型</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -230,28 +230,28 @@ Success... MySQL host info: localhost via TCP/IP
 <p class="para">MySQLnd は常に、サーバーのデフォルト文字セットを想定しています。この文字セットは接続時の
 ハンドシェイク/認証 のときに送信され、これを mysqlnd が使います。</p>
 <p class="para">Libmysqlclient が使うデフォルトの文字セットは <var class="filename">my.cnf</var>
-で設定したものです。あるいは明示的に  <span class="function"><a href="mysqli.options.html" class="function">mysqli_options()</a></span> をコールして設定することもできます。
-これは、 <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> のあとで  <span class="function"><a href="mysqli.real-connect.html" class="function">mysqli_real_connect()</a></span>
+で設定したものです。あるいは明示的に <span class="function"><a href="mysqli.options.html" class="function">mysqli_options()</a></span> をコールして設定することもできます。
+これは、<span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> のあとで <span class="function"><a href="mysqli.real-connect.html" class="function">mysqli_real_connect()</a></span>
 を実行する前にコールします。</p></p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     オブジェクト指向の構文に関する注意:
     接続に失敗した場合にもオブジェクトが返されます。
     接続が失敗したかどうかを確かめるには、先ほどの例のように
-     <span class="function"><a href="mysqli.connect-error.html" class="function">mysqli_connect_error()</a></span> 関数あるいは <a href="mysqli.connect-error.html" class="link">mysqli-&gt;connect_error</a>
+    <span class="function"><a href="mysqli.connect-error.html" class="function">mysqli_connect_error()</a></span> 関数あるいは <a href="mysqli.connect-error.html" class="link">mysqli-&gt;connect_error</a>
     プロパティを使用しましょう。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     接続タイムアウトなどのオプションを設定する必要がある場合は、かわりに
-     <span class="function"><a href="mysqli.real-connect.html" class="function">mysqli_real_connect()</a></span> を使わなければなりません。
+    <span class="function"><a href="mysqli.real-connect.html" class="function">mysqli_real_connect()</a></span> を使わなければなりません。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     コンストラクタをパラメータなしでコールするのは、
-     <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> をコールするのと同じ意味になります。
+    <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> をコールするのと同じ意味になります。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -269,11 +269,11 @@ Success... MySQL host info: localhost via TCP/IP
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli.real-connect.html" class="function" rel="rdfs-seeAlso">mysqli_real_connect()</a> - mysql サーバーとの接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="mysqli.options.html" class="function" rel="rdfs-seeAlso">mysqli_options()</a> - オプションを設定する</span></li>
-    <li class="member"> <span class="function"><a href="mysqli.connect-errno.html" class="function" rel="rdfs-seeAlso">mysqli_connect_errno()</a> - 直近の接続コールに関するエラーコードを返す</span></li>
-    <li class="member"> <span class="function"><a href="mysqli.connect-error.html" class="function" rel="rdfs-seeAlso">mysqli_connect_error()</a> - 直近の接続エラーの内容を文字列で返す</span></li>
-    <li class="member"> <span class="function"><a href="mysqli.close.html" class="function" rel="rdfs-seeAlso">mysqli_close()</a> - 事前にオープンしているデータベース接続を閉じる</span></li>
+    <li class="member"><span class="function"><a href="mysqli.real-connect.html" class="function" rel="rdfs-seeAlso">mysqli_real_connect()</a> - mysql サーバーとの接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="mysqli.options.html" class="function" rel="rdfs-seeAlso">mysqli_options()</a> - オプションを設定する</span></li>
+    <li class="member"><span class="function"><a href="mysqli.connect-errno.html" class="function" rel="rdfs-seeAlso">mysqli_connect_errno()</a> - 直近の接続コールに関するエラーコードを返す</span></li>
+    <li class="member"><span class="function"><a href="mysqli.connect-error.html" class="function" rel="rdfs-seeAlso">mysqli_connect_error()</a> - 直近の接続エラーの内容を文字列で返す</span></li>
+    <li class="member"><span class="function"><a href="mysqli.close.html" class="function" rel="rdfs-seeAlso">mysqli_close()</a> - 事前にオープンしているデータベース接続を閉じる</span></li>
    </ul>
   </p>
  </div>

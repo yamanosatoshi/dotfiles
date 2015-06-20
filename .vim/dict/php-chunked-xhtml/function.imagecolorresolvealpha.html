@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagecolorresolvealpha" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagecolorresolvealpha</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5)</p><p class="refpurpose"><span class="refname">imagecolorresolvealpha</span> &mdash; <span class="dc-title">指定した色+アルファ値または最も近い色のインデックスを取得する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagecolorresolvealpha</span> &mdash; <span class="dc-title">指定した色+アルファ値または最も近い色のインデックスを取得する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagecolorresolvealpha-description">
@@ -39,45 +39,46 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">red</code></dt>
 
-     <span class="term"><em><code class="parameter">red</code></em></span>
      <dd>
 
       <p class="para">赤コンポーネントの値。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">green</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">green</code></em></span>
      <dd>
 
       <p class="para">緑コンポーネントの値。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">blue</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">blue</code></em></span>
      <dd>
 
       <p class="para">青コンポーネントの値。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">alpha</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">alpha</code></em></span>
      <dd>
 
       <p class="para">
@@ -87,8 +88,7 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
    色のパラメータは、0 から 255 までの整数値か
@@ -105,8 +105,8 @@ image</code></em></span><dd>
 
  <div class="refsect1 examples" id="refsect1-function.imagecolorresolvealpha-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-3186">
-   <p><strong>例1  <span class="function"><strong>imagecoloresolvealpha()</strong></span> による画像からの色の取得</strong></p>
+  <div class="example" id="example-3385">
+   <p><strong>例1 <span class="function"><strong>imagecoloresolvealpha()</strong></span> による画像からの色の取得</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;画像を読み込みます<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefromgif</span><span style="color: #007700">(</span><span style="color: #DD0000">'phplogo.gif'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;最も近い色を画像から取得します<br /></span><span style="color: #0000BB">$colors&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /></span><span style="color: #0000BB">$colors</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">imagecolorresolvealpha</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$colors</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">imagecolorresolvealpha</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">200</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">127</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;出力します<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$colors</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -137,7 +137,7 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imagecolorclosestalpha.html" class="function" rel="rdfs-seeAlso">imagecolorclosestalpha()</a> - 指定した色+アルファ値に最も近い色のインデックスを取得する</span></li>
+    <li class="member"><span class="function"><a href="function.imagecolorclosestalpha.html" class="function" rel="rdfs-seeAlso">imagecolorclosestalpha()</a> - 指定した色+アルファ値に最も近い色のインデックスを取得する</span></li>
    </ul>
   </p>
  </div>

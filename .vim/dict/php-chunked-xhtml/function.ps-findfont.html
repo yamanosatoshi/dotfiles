@@ -29,32 +29,32 @@
 
   <p class="para rdfs-comment">
     あとで使用するために、フォントを読み込みます。読み込んだフォントを実際に利用するためには、
-     <span class="function"><a href="function.ps-setfont.html" class="function">ps_setfont()</a></span> で設定しなければなりません。
+    <span class="function"><a href="function.ps-setfont.html" class="function">ps_setfont()</a></span> で設定しなければなりません。
     文字の間隔を計算するため、この関数は adobe フォントメトリックファイルを必要とします。
     ページの内部で読み込まれたフォントは、
     そのページ内でのみ有効となります。ドキュメント全体で使われるフォントは、
-    最初の  <span class="function"><a href="function.ps-begin-page.html" class="function">ps_begin_page()</a></span> の実行より前に読み込まれなければなりません。
-    ページとページの間で  <span class="function"><strong>ps_findfont()</strong></span>
+    最初の <span class="function"><a href="function.ps-begin-page.html" class="function">ps_begin_page()</a></span> の実行より前に読み込まれなければなりません。
+    ページとページの間で <span class="function"><strong>ps_findfont()</strong></span>
     が呼ばれた場合は、それ以降のページでフォントが有効になります。
   </p>
   <p class="para">
    afm ファイルの名前は、
-   <em><code class="parameter">fontname</code></em><em>.afm</em> でなければなりません。
+   <code class="parameter">fontname</code><em>.afm</em> でなければなりません。
    フォントを埋め込む場合は、フォントのアウトラインを含む
-   <em><code class="parameter">fontname</code></em><em>.pfb</em>
+   <code class="parameter">fontname</code><em>.pfb</em>
    が存在しなければなりません。
   </p>
   <p class="para">
-   最初のページを処理する前に  <span class="function"><strong>ps_findfont()</strong></span> をコール際、
+   最初のページを処理する前に <span class="function"><strong>ps_findfont()</strong></span> をコール際、
    postscript ヘッダが出力されます。ここには、ドキュメント全体に適用される
    BoundingBox が含まれます。
-   通常は、BoundingBox を設定するのは最初に  <span class="function"><a href="function.ps-begin-page.html" class="function">ps_begin_page()</a></span>
-   がコールされたときで、これは  <span class="function"><strong>ps_findfont()</strong></span>
+   通常は、BoundingBox を設定するのは最初に <span class="function"><a href="function.ps-begin-page.html" class="function">ps_begin_page()</a></span>
+   がコールされたときで、これは <span class="function"><strong>ps_findfont()</strong></span>
    をコールした後になります。
-   したがって、 <span class="function"><strong>ps_findfont()</strong></span> のコール時にはまだ
+   したがって、<span class="function"><strong>ps_findfont()</strong></span> のコール時にはまだ
    BoundingBox が設定されておらず、警告が発生してしまいます。
-   こうなることを避けるため、 <span class="function"><strong>ps_findfont()</strong></span> をコールする前に
-    <span class="function"><a href="function.ps-set-parameter.html" class="function">ps_set_parameter()</a></span> をコールし、BoundingBox
+   こうなることを避けるため、<span class="function"><strong>ps_findfont()</strong></span> をコールする前に
+   <span class="function"><a href="function.ps-set-parameter.html" class="function">ps_set_parameter()</a></span> をコールし、BoundingBox
    を設定しておくべきです。
   </p>
  </div>
@@ -65,22 +65,23 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">psdoc</code></dt>
 
-     <span class="term"><em><code class="parameter">psdoc</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.ps-new.html" class="function">ps_new()</a></span> が返す、postscript
+       <span class="function"><a href="function.ps-new.html" class="function">ps_new()</a></span> が返す、postscript
        ファイルのリソース ID。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">fontname</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">fontname</code></em></span>
      <dd>
 
       <p class="para">
@@ -88,15 +89,15 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">encoding</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">encoding</code></em></span>
      <dd>
 
       <p class="para">
-         <span class="function"><strong>ps_findfont()</strong></span> は、<em><code class="parameter">encoding</code></em>
+        <span class="function"><strong>ps_findfont()</strong></span> は、<code class="parameter">encoding</code>
         で渡されたファイルを読み込もうと試みます。 エンコーディングファイルは、
         <strong class="command">dvips(1)</strong> で使われるものと同形式です。
         そこにはフォントエンコーディングベクタ（現在は利用されていませんが、
@@ -104,7 +105,7 @@
         生成されたリゲチャのリストを拡張するための拡張リゲチャが含まれています。
       </p>
       <p class="para">
-        <em><code class="parameter">encoding</code></em> は <strong><code>NULL</code></strong> または空文字列とすることも可能で、
+        <code class="parameter">encoding</code> は <strong><code>NULL</code></strong> または空文字列とすることも可能で、
         その場合はデフォルトエンコーディング（TeXBase1）が用いられます。
       </p>
       <p class="para">
@@ -114,11 +115,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">embed</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">embed</code></em></span>
      <dd>
 
       <p class="para">
@@ -127,8 +128,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -148,8 +148,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ps-begin-page.html" class="function" rel="rdfs-seeAlso">ps_begin_page()</a> - 新しいページを開始する</span></li>
-    <li class="member"> <span class="function"><a href="function.ps-setfont.html" class="function" rel="rdfs-seeAlso">ps_setfont()</a> - 以降の出力で用いるフォントを設定する</span></li>
+    <li class="member"><span class="function"><a href="function.ps-begin-page.html" class="function" rel="rdfs-seeAlso">ps_begin_page()</a> - 新しいページを開始する</span></li>
+    <li class="member"><span class="function"><a href="function.ps-setfont.html" class="function" rel="rdfs-seeAlso">ps_setfont()</a> - 以降の出力で用いるフォントを設定する</span></li>
    </ul>
   </p>
  </div>

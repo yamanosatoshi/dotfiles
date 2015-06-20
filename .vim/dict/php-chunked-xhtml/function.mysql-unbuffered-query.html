@@ -7,7 +7,7 @@
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-thread-id.html">mysql_thread_id</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="book.mysqli.html">Mysqli</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.mysqli.html">MySQLi</a></div>
  <div class="up"><a href="ref.mysql.html">MySQL 関数</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="function.mysql-unbuffered-query" class="refentry">
@@ -41,14 +41,14 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>mysql_unbuffered_query()</strong></span> は SQL クエリ
-   <em><code class="parameter">query</code></em> を MySQL に送信します。その際、
-    <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> が行っているような自動バッファリングを
+   <span class="function"><strong>mysql_unbuffered_query()</strong></span> は SQL クエリ
+   <code class="parameter">query</code> を MySQL に送信します。その際、
+   <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> が行っているような自動バッファリングを
    行いません。一方、この挙動により SQL クエリが消費するメモリの量を
    おさえられます。また、最初の 1 行目が取得されたらすぐに処理を
    はじめることができます。SQL の処理が完全に終わるまで待つ必要がありません。
    複数の DB 接続を利用する場合には、オプションのパラメータ
-   <em><code class="parameter">link_identifier</code></em> を指定する必要があります。
+   <code class="parameter">link_identifier</code> を指定する必要があります。
   </p>
  </div>
 
@@ -58,9 +58,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -72,19 +73,18 @@
       </p>
      </dd>
 
-    </dt>
-
+    
     <dt>
-<span class="term"><em><code class="parameter">
-link_identifier</code></em></span><dd>
+<code class="parameter">
+link_identifier</code></dt>
+<dd>
 <p class="para">MySQL 接続。
-指定されない場合、 <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
+指定されない場合、<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
 指定されたと仮定されます。そのようなリンクがない場合、引数を指定せずに
- <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
+<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
 リンクが見付からない、または、確立できない場合、
 <strong><code>E_WARNING</code></strong> レベルのエラーが生成されます。</p></dd>
 
-</dt>
 
    </dl>
 
@@ -96,12 +96,12 @@ link_identifier</code></em></span><dd>
   <h3 class="title">返り値</h3>
   <p class="para">
    SELECT, SHOW, DESCRIBE あるいは EXPLAIN では、
-    <span class="function"><strong>mysql_unbuffered_query()</strong></span> は
+   <span class="function"><strong>mysql_unbuffered_query()</strong></span> は
    成功した場合に <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> 、エラー時に <strong><code>FALSE</code></strong> を返します。
   </p>
   <p class="para">
    UPDATE, DELETE, DROP, などその他の SQL 文では、
-    <span class="function"><strong>mysql_unbuffered_query()</strong></span> は
+   <span class="function"><strong>mysql_unbuffered_query()</strong></span> は
    成功した場合に <strong><code>TRUE</code></strong> 、エラー時に <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
@@ -111,13 +111,13 @@ link_identifier</code></em></span><dd>
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>mysql_unbuffered_query()</strong></span> の利点には、以下のような
+    <span class="function"><strong>mysql_unbuffered_query()</strong></span> の利点には、以下のような
     代償があります:
-     <span class="function"><strong>mysql_unbuffered_query()</strong></span> から返される結果セットには、
+    <span class="function"><strong>mysql_unbuffered_query()</strong></span> から返される結果セットには、
     すべての行をフェッチするまでは
-     <span class="function"><a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a></span> や  <span class="function"><a href="function.mysql-data-seek.html" class="function">mysql_data_seek()</a></span>
+    <span class="function"><a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a></span> や <span class="function"><a href="function.mysql-data-seek.html" class="function">mysql_data_seek()</a></span>
     を使用できません。また、結果の行をすべてフェッチするまで、
-    同じ <em><code class="parameter">link_identifier</code></em>
+    同じ <code class="parameter">link_identifier</code>
     を使って MySQL に新しいクエリを送信することができません。
    </p>
   </p></blockquote>
@@ -128,14 +128,14 @@ link_identifier</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - MySQL クエリを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - MySQL クエリを送信する</span></li>
    </ul>
   </p>
  </div>
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-thread-id.html">mysql_thread_id</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="book.mysqli.html">Mysqli</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="book.mysqli.html">MySQLi</a></div>
  <div class="up"><a href="ref.mysql.html">MySQL 関数</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div></body></html>

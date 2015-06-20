@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagecolorallocatealpha" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagecolorallocatealpha</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.3.2, PHP 5)</p><p class="refpurpose"><span class="refname">imagecolorallocatealpha</span> &mdash; <span class="dc-title">画像で使用する色を透過度を指定して作成する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.2, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagecolorallocatealpha</span> &mdash; <span class="dc-title">画像で使用する色を透過度を指定して作成する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagecolorallocatealpha-description">
@@ -28,9 +28,9 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>imagecolorallocatealpha()</strong></span> は、
-   透明度を指定するパラメータ <em><code class="parameter">alpha</code></em>
-   が追加されている以外は  <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span>
+   <span class="function"><strong>imagecolorallocatealpha()</strong></span> は、
+   透明度を指定するパラメータ <code class="parameter">alpha</code>
+   が追加されている以外は <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span>
    と等価です。
   </p>
  </div>
@@ -41,45 +41,46 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">red</code></dt>
 
-     <span class="term"><em><code class="parameter">red</code></em></span>
      <dd>
 
       <p class="para">赤コンポーネントの値。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">green</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">green</code></em></span>
      <dd>
 
       <p class="para">緑コンポーネントの値。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">blue</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">blue</code></em></span>
      <dd>
 
       <p class="para">青コンポーネントの値。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">alpha</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">alpha</code></em></span>
      <dd>
 
       <p class="para">
@@ -89,11 +90,12 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
-   色のパラメータは、0 から 255 までの整数値か
+   パラメータ <code class="parameter">red</code>、<code class="parameter">green</code>
+   および <code class="parameter">blue</code> には、
+   0 から 255 までの整数値か
    0x00 から 0xFF までの十六進値を指定します。
   </p>
  </div>
@@ -143,8 +145,8 @@ image</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imagecolorallocatealpha-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3175">
-    <p><strong>例1  <span class="function"><strong>imagecolorallocatealpha()</strong></span> の使用例</strong></p>
+   <div class="example" id="example-3374">
+    <p><strong>例1 <span class="function"><strong>imagecolorallocatealpha()</strong></span> の使用例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$size&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">300</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$image</span><span style="color: #007700">=</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">$size</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$size</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;白い背景で黒いふちどりにします<br /></span><span style="color: #0000BB">$back&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$border&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagefilledrectangle</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$size&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$size&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$back</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagerectangle</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$size&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$size&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$border</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$yellow_x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$yellow_y&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">75</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$red_x&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">120</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$red_y&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">165</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$blue_x&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">187</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$blue_y&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">125</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$radius&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;alpha&nbsp;値を指定して色を作成します<br /></span><span style="color: #0000BB">$yellow&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocatealpha</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">75</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$red&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocatealpha</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">75</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$blue&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocatealpha</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">75</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;3つの重なる円を描きます<br /></span><span style="color: #0000BB">imagefilledellipse</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$yellow_x</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$yellow_y</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$radius</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$radius</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$yellow</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagefilledellipse</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$red_x</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$red_y</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$radius</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$radius</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$red</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagefilledellipse</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$blue_x</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$blue_y</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$radius</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$radius</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$blue</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;正しいヘッダを出力するのを忘れないように!<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;image/png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;最後に、結果を出力します<br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -173,8 +175,8 @@ image</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imagecolorallocate.html" class="function" rel="rdfs-seeAlso">imagecolorallocate()</a> - 画像で使用する色を作成する</span></li>
-    <li class="member"> <span class="function"><a href="function.imagecolordeallocate.html" class="function" rel="rdfs-seeAlso">imagecolordeallocate()</a> - イメージの色リソースを開放する</span></li>
+    <li class="member"><span class="function"><a href="function.imagecolorallocate.html" class="function" rel="rdfs-seeAlso">imagecolorallocate()</a> - 画像で使用する色を作成する</span></li>
+    <li class="member"><span class="function"><a href="function.imagecolordeallocate.html" class="function" rel="rdfs-seeAlso">imagecolordeallocate()</a> - イメージの色リソースを開放する</span></li>
    </ul>
   </p>
  </div>

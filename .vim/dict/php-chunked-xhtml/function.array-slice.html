@@ -27,9 +27,9 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>array_slice()</strong></span>は、<em><code class="parameter">array</code></em>
-   から引数 <em><code class="parameter">offset</code></em> および
-   <em><code class="parameter">length</code></em> で指定された連続する要素を返します。
+   <span class="function"><strong>array_slice()</strong></span>は、<code class="parameter">array</code>
+   から引数 <code class="parameter">offset</code> および
+   <code class="parameter">length</code> で指定された連続する要素を返します。
   </p>
  </div>
 
@@ -38,9 +38,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">array</code></dt>
 
-     <span class="term"><em><code class="parameter">array</code></em></span>
      <dd>
 
       <p class="para">
@@ -48,56 +49,55 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">offset</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">offset</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">offset</code></em> が負の値ではない場合、要素位置の計算は、
-       配列 <em><code class="parameter">array</code></em> の offset から始められます。
-       <em><code class="parameter">offset</code></em> が負の場合、要素位置の計算は
-       <em><code class="parameter">array</code></em> の最後から行われます。
+       <code class="parameter">offset</code> が負の値ではない場合、要素位置の計算は、
+       配列 <code class="parameter">array</code> の offset から始められます。
+       <code class="parameter">offset</code> が負の場合、要素位置の計算は
+       <code class="parameter">array</code> の最後から行われます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">length</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">length</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">length</code></em>が指定され、正の場合、
+       <code class="parameter">length</code>が指定され、正の場合、
        配列の要素の中から最大でその数までの要素を返します。
-       配列の要素数が <em><code class="parameter">length</code></em> より少ない場合は、
-       配列から取得できる要素だけを返します。<em><code class="parameter">length</code></em>
+       配列の要素数が <code class="parameter">length</code> より少ない場合は、
+       配列から取得できる要素だけを返します。<code class="parameter">length</code>
        が指定され、負の場合、配列の末尾から連続する複数の要素が返されます。
-       省略された場合、<em><code class="parameter">offset</code></em>
+       省略された場合、<code class="parameter">offset</code>
        から配列の最後までの全ての要素が返されます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">preserve_keys</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">preserve_keys</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><strong>array_slice()</strong></span> はデフォルトで配列の数値キーを並べなおし、
+       <span class="function"><strong>array_slice()</strong></span> はデフォルトで配列の数値キーを並べなおし、
        リセットすることに注意してください。
-       <em><code class="parameter">preserve_keys</code></em> を <strong><code>TRUE</code></strong>
+       <code class="parameter">preserve_keys</code> を <strong><code>TRUE</code></strong>
        にする事でこの動作を変更することができます。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -125,9 +125,18 @@
 
      <tbody class="tbody">
       <tr>
+       <td>5.2.4</td>
+       <td>
+        <code class="parameter">length</code> のデフォルト値が <em>NULL</em> に変わりました。
+        <em>NULL</em> を指定すると、<code class="parameter">array</code> の長さを使うようになります。
+        これより前のバージョンでは、<em>NULL</em> を指定した場合は長さゼロと見なされていました (つまり、何も返しませんでした)。
+       </td>
+      </tr>
+
+      <tr>
        <td>5.0.2</td>
        <td>
-        オプションのパラメータ <em><code class="parameter">preserve_keys</code></em> が追加されました。
+        オプションのパラメータ <code class="parameter">preserve_keys</code> が追加されました。
        </td>
       </tr>
 
@@ -141,8 +150,8 @@
  <div class="refsect1 examples" id="refsect1-function.array-slice-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4961">
-    <p><strong>例1  <span class="function"><strong>array_slice()</strong></span> の例</strong></p>
+   <div class="example" id="example-5443">
+    <p><strong>例1 <span class="function"><strong>array_slice()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$input&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"c"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"d"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"e"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;"c",&nbsp;"d",&nbsp;"e"&nbsp;を返す<br /></span><span style="color: #0000BB">$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;"d"&nbsp;を返す<br /></span><span style="color: #0000BB">$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;"a",&nbsp;"b",&nbsp;"c"&nbsp;を返す<br /><br />//&nbsp;配列キーの違いに注意<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -173,9 +182,9 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.array-splice.html" class="function" rel="rdfs-seeAlso">array_splice()</a> - 配列の一部を削除し、他の要素で置換する</span></li>
-    <li class="member"> <span class="function"><a href="function.unset.html" class="function" rel="rdfs-seeAlso">unset()</a> - 指定した変数の割当を解除する</span></li>
-    <li class="member"> <span class="function"><a href="function.array-chunk.html" class="function" rel="rdfs-seeAlso">array_chunk()</a> - 配列を分割する</span></li>
+    <li class="member"><span class="function"><a href="function.array-splice.html" class="function" rel="rdfs-seeAlso">array_splice()</a> - 配列の一部を削除し、他の要素で置換する</span></li>
+    <li class="member"><span class="function"><a href="function.unset.html" class="function" rel="rdfs-seeAlso">unset()</a> - 指定した変数の割当を解除する</span></li>
+    <li class="member"><span class="function"><a href="function.array-chunk.html" class="function" rel="rdfs-seeAlso">array_chunk()</a> - 配列を分割する</span></li>
    </ul>
   </p>
  </div>

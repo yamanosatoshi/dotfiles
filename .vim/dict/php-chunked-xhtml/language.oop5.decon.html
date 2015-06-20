@@ -16,10 +16,10 @@
  <div class="sect2" id="language.oop5.decon.constructor">
   <h3 class="title">コンストラクタ</h3>
    <div class="methodsynopsis dc-description" id="object.construct">
-   <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>__construct</strong></span>
-    ([ <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$args</code></span>
-   [, <span class="methodparam"> <code class="parameter">$...</code></span>
-  ]] )</div>
+    <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>__construct</strong></span>
+     ([ <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$args</code><span class="initializer"> = &quot;&quot;</span></span>
+    [, <span class="methodparam"> <code class="parameter">$...</code></span>
+   ]] )</div>
 
   <p class="para">
    PHP 5 では、開発者がクラスのコンストラクタメソッドを宣言することが
@@ -32,14 +32,14 @@
     子クラスがコンストラクタを有している場合、親クラスのコンストラクタが
     暗黙の内にコールされることはありません。
     親クラスのコンストラクタを実行するには、子クラスのコンストラクタの
-    中で  <span class="function"><strong>parent::__construct()</strong></span> をコールすることが
+    中で <span class="function"><strong>parent::__construct()</strong></span> をコールすることが
     必要です。
     子クラスでコンストラクタを定義していない場合は、親クラスのコンストラクタを継承します
     (ただし、private 宣言されている場合は除く)。
     これは、通常のクラスメソッドと同様です。
    </span>
   </p></blockquote>
-  <div class="example" id="example-182">
+  <div class="example" id="example-204">
    <p><strong>例1 新しい統一されたコンストラクタを使用する</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -69,7 +69,7 @@
     コンストラクタとみなされなくなりました。
     名前空間を使っていないクラスは今までと変わりません。
    </p>
-   <div class="example" id="example-183">
+   <div class="example" id="example-205">
     <p><strong>例2 名前空間つきのクラスのコンストラクタ</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -94,7 +94,7 @@
    特定のオブジェクトを参照するリファレンスがひとつもなくなったときにコールされます。
    あるいは、スクリプトの終了時にも順不同でコールされます。
   </p>
-  <div class="example" id="example-184">
+  <div class="example" id="example-206">
    <p><strong>例3 デストラクタの例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -107,15 +107,15 @@
   <p class="para">
    コンストラクタと同様、親クラスのデストラクタがエンジンにより暗黙のうちに
    コールされるということはありません。親クラスのデストラクタを実行するには、
-   デストラクタの中で明示的に  <span class="function"><strong>parent::__destruct()</strong></span>
+   デストラクタの中で明示的に <span class="function"><strong>parent::__destruct()</strong></span>
    をコールする必要があります。
    また、コンストラクタと同様、子クラスでデストラクタを定義していない場合は
    親クラスのデストラクタを継承します。
   </p>
    <p class="para">
-     <span class="function"><a href="function.exit.html" class="function">exit()</a></span>
+    <span class="function"><a href="function.exit.html" class="function">exit()</a></span>
     でスクリプトの実行を止めた場合にもデストラクタはコールされます。
-    デストラクタの内部で  <span class="function"><a href="function.exit.html" class="function">exit()</a></span> をコールすると、
+    デストラクタの内部で <span class="function"><a href="function.exit.html" class="function">exit()</a></span> をコールすると、
     それ以降のシャットダウンルーチンを実行しません。
    </p>
    <blockquote class="note"><p><strong class="note">注意</strong>: 

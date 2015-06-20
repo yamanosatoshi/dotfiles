@@ -29,9 +29,9 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>substr_compare()</strong></span> は、<em><code class="parameter">main_str</code></em>
-   の <em><code class="parameter">offset</code></em> 文字目以降の最大
-   <em><code class="parameter">length</code></em> 文字を、<em><code class="parameter">str</code></em>
+   <span class="function"><strong>substr_compare()</strong></span> は、<code class="parameter">main_str</code>
+   の <code class="parameter">offset</code> 文字目以降の最大
+   <code class="parameter">length</code> 文字を、<code class="parameter">str</code>
    と比較します。
   </p>
  </div>
@@ -42,9 +42,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">main_str</code></dt>
 
-     <span class="term"><em><code class="parameter">main_str</code></em></span>
      <dd>
 
       <p class="para">
@@ -52,11 +53,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">str</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">str</code></em></span>
      <dd>
 
       <p class="para">
@@ -64,11 +65,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">offset</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">offset</code></em></span>
      <dd>
 
       <p class="para">
@@ -77,35 +78,34 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">length</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">length</code></em></span>
      <dd>
 
       <p class="para">
        比較する長さ。デフォルト値は、
-       <em><code class="parameter">main_str</code></em> の長さから <em><code class="parameter">offset</code></em> を引いたものと
-       <em><code class="parameter">str</code></em> の長さのうち、長いほうです。
+       <code class="parameter">main_str</code> の長さから <code class="parameter">offset</code> を引いたものと
+       <code class="parameter">str</code> の長さのうち、長いほうです。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">case_insensitivity</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">case_insensitivity</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">case_insensitivity</code></em> が <strong><code>TRUE</code></strong> の場合、
+       <code class="parameter">case_insensitivity</code> が <strong><code>TRUE</code></strong> の場合、
        大文字小文字を区別せずに比較します。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -115,12 +115,12 @@
  <div class="refsect1 returnvalues" id="refsect1-function.substr-compare-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">main_str</code></em> の <em><code class="parameter">offset</code></em>
-   以降が <em><code class="parameter">str</code></em> より小さい場合に負の数、
-   <em><code class="parameter">str</code></em> より大きい場合に正の数、
-   等しい場合に 0 を返します。<em><code class="parameter">offset</code></em> が
-   <em><code class="parameter">main_str</code></em> の長さ以上であるか、あるいは <em><code class="parameter">length</code></em>
-   が設定されていて 1 未満である場合、 <span class="function"><strong>substr_compare()</strong></span>
+   <code class="parameter">main_str</code> の <code class="parameter">offset</code>
+   以降が <code class="parameter">str</code> より小さい場合に負の数、
+   <code class="parameter">str</code> より大きい場合に正の数、
+   等しい場合に 0 を返します。<code class="parameter">offset</code> が
+   <code class="parameter">main_str</code> の長さ以上であるか、あるいは <code class="parameter">length</code>
+   が設定されていて 1 未満である場合 (PHP 5.6 より前のバージョン)、<span class="function"><strong>substr_compare()</strong></span>
    は警告を表示して <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
@@ -141,9 +141,16 @@
 
      <tbody class="tbody">
       <tr>
+       <td>5.6.0</td>
+       <td>
+        <code class="parameter">length</code> を <em>0</em> にもできるようになりました。
+       </td>
+      </tr>
+
+      <tr>
        <td>5.1.0</td>
        <td>
-        負の <em><code class="parameter">offset</code></em> を使用できるようになりました。
+        負の <code class="parameter">offset</code> を使用できるようになりました。
        </td>
       </tr>
 
@@ -158,8 +165,8 @@
  <div class="refsect1 examples" id="refsect1-function.substr-compare-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4892">
-    <p><strong>例1  <span class="function"><strong>substr_compare()</strong></span> の例</strong></p>
+   <div class="example" id="example-5372">
+    <p><strong>例1 <span class="function"><strong>substr_compare()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr_compare</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcde"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"bc"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;0<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr_compare</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcde"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"de"</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;0<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr_compare</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcde"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"bcg"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;0<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr_compare</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcde"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"BC"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;0<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr_compare</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcde"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"bc"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;1<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr_compare</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcde"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cd"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;-1<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr_compare</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcde"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"abc"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;警告<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -176,7 +183,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.strncmp.html" class="function" rel="rdfs-seeAlso">strncmp()</a> - 最初の n 文字についてバイナリセーフな文字列比較を行う</span></li>
+    <li class="member"><span class="function"><a href="function.strncmp.html" class="function" rel="rdfs-seeAlso">strncmp()</a> - 最初の n 文字についてバイナリセーフな文字列比較を行う</span></li>
    </ul>
   </p>
  </div>

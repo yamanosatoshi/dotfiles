@@ -27,13 +27,13 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_tty()</strong></span> は、指定した PostgreSQL
-   <em><code class="parameter">connection</code></em> リソースで、サーバー側のデバッグ出力が
+   <span class="function"><strong>pg_tty()</strong></span> は、指定した PostgreSQL
+   <code class="parameter">connection</code> リソースで、サーバー側のデバッグ出力が
    送られる tty 名を返します。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>pg_tty()</strong></span> は現在は使用されません。今はサーバーが
+    <span class="function"><strong>pg_tty()</strong></span> は現在は使用されません。今はサーバーが
     TTY 設定を気にする必要がないからです。しかし、過去との互換性を
     保持するためにこの関数は残されています。
    </p>
@@ -46,21 +46,21 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
-       PostgreSQL データベース接続リソース。<em><code class="parameter">connection</code></em>
+       PostgreSQL データベース接続リソース。<code class="parameter">connection</code>
        が指定されていない場合はデフォルトの接続が使用されます。
-       デフォルトの接続は、直近の  <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
-       あるいは  <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
+       デフォルトの接続は、直近の <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
+       あるいは <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -70,7 +70,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.pg-tty-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">connection</code></em> のデバッグ TTY を文字列で返します。
+   <code class="parameter">connection</code> のデバッグ TTY を文字列で返します。
    エラー時には <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
@@ -79,8 +79,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-tty-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2116">
-    <p><strong>例1  <span class="function"><strong>pg_tty()</strong></span> の例</strong></p>
+   <div class="example" id="example-2313">
+    <p><strong>例1 <span class="function"><strong>pg_tty()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$pgsql_conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=mark&nbsp;host=localhost"</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$pgsql_conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Server&nbsp;debug&nbsp;TTY&nbsp;is:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">pg_tty</span><span style="color: #007700">(</span><span style="color: #0000BB">$pgsql_conn</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br/&gt;\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">pg_last_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$pgsql_conn</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>

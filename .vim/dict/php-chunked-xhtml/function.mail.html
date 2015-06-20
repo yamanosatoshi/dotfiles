@@ -39,9 +39,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">to</code></dt>
 
-     <span class="term"><em><code class="parameter">to</code></em></span>
      <dd>
 
       <p class="para">
@@ -59,11 +60,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">subject</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">subject</code></em></span>
      <dd>
 
       <p class="para">
@@ -77,11 +78,11 @@
       </div>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">message</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">message</code></em></span>
      <dd>
 
       <p class="para">
@@ -107,11 +108,11 @@
       </div>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">additional_headers</code>（オプション）</dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">additional_headers</code></em>（オプション）</span>
      <dd>
 
       <p class="para">
@@ -120,12 +121,14 @@
       <p class="para">
        通常、これは追加のヘッダ（From、Cc、Bcc）のために用いられます。
        複数のヘッダを追加する場合は CRLF（\r\n）で区切ります。
+       If outside data are used to compose this header, the data should be sanitized
+       so that no unwanted headers could be injected. 
       </p>
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
         メールを送信する際には、<em class="emphasis">必ず</em> 
         <em>From</em> ヘッダが含まれていなければなりません。
-        <em><code class="parameter">additional_headers</code></em> パラメータで指定するか、
+        <code class="parameter">additional_headers</code> パラメータで指定するか、
         あるいは <var class="filename">php.ini</var> にデフォルト値を指定します。
        </p>
        <p class="para">
@@ -148,20 +151,34 @@
       </p></blockquote>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">additional_parameters</code>（オプション）</dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">additional_parameters</code></em>（オプション）</span>
      <dd>
 
       <p class="para">
-       パラメータ <em><code class="parameter">additional_parameters</code></em> は、
+       パラメータ <code class="parameter">additional_parameters</code> は、
        追加のフラグをコマンドラインオプションとしてメール送信プログラムに渡す際に使用可能です。
        メール送信プログラムは、設定オプション
        <em>sendmail_path</em> により設定されます。例えば、
        sendmail を使用する際に <em>-f</em> オプションを使って
        エンベロープの sender アドレスを設定する際に使用できます。
+      </p>
+      <p class="para">
+       This parameter is escaped by <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span> internally
+       to prevent command execution. <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span> prevents
+       command execution, but allows to add addtional parameters. For security reasons,
+       it is recommended for the user to sanitize this parameter to avoid adding unwanted
+       parameters to the shell command.
+      </p>
+      <p class="para">
+       Since <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span> is applied automatically, some characters
+       that are allowed as email addresses by internet RFCs cannot be used. 
+       <span class="function"><strong>mail()</strong></span> can not allow such characters, so in programs where the use of
+       such characters is required, alternative means of sending emails (such as using a framework
+       or a library) is recommended. 
       </p>
       <p class="para">
        この方法でエンベロープの sender ヘッダ（-f）を設定する際は、
@@ -172,8 +189,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -208,30 +224,12 @@
 
      <tbody class="tbody">
       <tr>
-       <td>4.3.0（Windows のみ）</td>
-       <td>
-        すべてのカスタムヘッダ（From、Cc、Bcc や Date など）がサポート
-        されるようになり、大文字・小文字を区別しないようになりました
-        （カスタムヘッダは MTA でパースされるのではなく PHP でパースされます。
-        PHP &lt; 4.3 では Cc ヘッダのみがサポートされており、大文字・小文字が
-        区別されていました）。
-       </td>
-      </tr>
-
-      <tr>
        <td>4.2.3</td>
        <td>
         <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">safe_mode</a> 時には
-        <em><code class="parameter">additional_parameters</code></em> パラメータを無効に
-        しました。もし用いられた場合には  <span class="function"><strong>mail()</strong></span> 関数は
+        <code class="parameter">additional_parameters</code> パラメータを無効に
+        しました。もし用いられた場合には <span class="function"><strong>mail()</strong></span> 関数は
         警告メッセージを出して <strong><code>FALSE</code></strong> を返します。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.0.5</td>
-       <td>
-        <em><code class="parameter">additional_parameters</code></em> パラメータが追加されました。
        </td>
       </tr>
 
@@ -246,10 +244,10 @@
  <div class="refsect1 examples" id="refsect1-function.mail-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3362">
+   <div class="example" id="example-3786">
     <p><strong>例1 メールを送信する</strong></p>
     <div class="example-contents"><p>
-      <span class="function"><strong>mail()</strong></span> を用いて単純なメールを送信する。
+     <span class="function"><strong>mail()</strong></span> を用いて単純なメールを送信する。
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -259,7 +257,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-3363">
+   <div class="example" id="example-3787">
     <p><strong>例2 追加ヘッダを付加してメールを送信する</strong></p>
     <div class="example-contents"><p>
      基本ヘッダに加え、MUA に From および Reply-To アドレスを通知する。
@@ -272,11 +270,11 @@
     </div>
 
    </div>
-   <div class="example" id="example-3364">
+   <div class="example" id="example-3788">
     <p><strong>例3 追加ヘッダ及び追加コマンドラインパラメータを指定してメールを送信する</strong></p>
     <div class="example-contents"><p>
      <em>sendmail_path</em> を用いてメールを送信する際に利用する
-     追加パラメータとして、<em><code class="parameter">additional_parameters</code></em>
+     追加パラメータとして、<code class="parameter">additional_parameters</code>
      が用いられます。
     </p></div>
     <div class="example-contents">
@@ -287,10 +285,10 @@
     </div>
 
    </div>
-   <div class="example" id="example-3365">
+   <div class="example" id="example-3789">
     <p><strong>例4 HTML メールを送信する</strong></p>
     <div class="example-contents"><p>
-      <span class="function"><strong>mail()</strong></span> を用いて HTML メールを送信することも可能です。
+     <span class="function"><strong>mail()</strong></span> を用いて HTML メールを送信することも可能です。
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -317,7 +315,7 @@
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>mail()</strong></span> の Windows 版実装は、Unix 版実装とは
+    <span class="function"><strong>mail()</strong></span> の Windows 版実装は、Unix 版実装とは
     多くの点で違います。
     第一に、メッセージの生成にローカルのバイナリは使用せず、
     ソケットを通じて直接操作するだけです。
@@ -335,7 +333,7 @@
     PHP によってパースされます。
    </p>
    <p class="para">
-    そのため、<em><code class="parameter">to</code></em> 引数には
+    そのため、<code class="parameter">to</code> 引数には
     &quot;Something &lt;someone@example.com&gt;&quot; 形式の
     メールアドレスを与えることはできません。
     MTA と通信する際に mail コマンドはこれを適切にパースできません。
@@ -344,7 +342,7 @@
   
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>mail()</strong></span> 関数は、大量のメールをループ内で送信するには
+    <span class="function"><strong>mail()</strong></span> 関数は、大量のメールをループ内で送信するには
     向いていないことに注意しましょう。この関数は 1 通のメールを送信するたびに
     SMTP ソケットをいったん閉じて開きなおします。これは非効率的です。
    </p>
@@ -375,7 +373,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imap-mail.html" class="function" rel="rdfs-seeAlso">imap_mail()</a> - e-mail メッセージを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.imap-mail.html" class="function" rel="rdfs-seeAlso">imap_mail()</a> - e-mail メッセージを送信する</span></li>
     <li class="member"><a href="http://pear.php.net/package/Mail" class="link external">&raquo;&nbsp;PEAR::Mail</a></li>
     <li class="member"><a href="http://pear.php.net/package/Mail_Mime" class="link external">&raquo;&nbsp;PEAR::Mail_Mime</a></li>
    </ul>

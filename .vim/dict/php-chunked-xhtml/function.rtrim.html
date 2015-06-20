@@ -22,16 +22,16 @@
   <div class="methodsynopsis dc-description">
    <span class="type">string</span> <span class="methodname"><strong>rtrim</strong></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$charlist</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$character_mask</code></span>
   ] )</div>
 
   <p class="para rdfs-comment">
-   この関数は文字列 <em><code class="parameter">str</code></em> の最後から空白文字を取り除き、
+   この関数は文字列 <code class="parameter">str</code> の最後から空白文字を取り除き、
    取り除かれた文字列を返します。
   </p>
   <p class="para">
    2 番目のパラメータを指定しない場合、
-    <span class="function"><strong>rtrim()</strong></span> は以下の文字を削除します。
+   <span class="function"><strong>rtrim()</strong></span> は以下の文字を削除します。
    
    <ul class="itemizedlist">
     <li class="listitem">
@@ -80,9 +80,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">str</code></dt>
 
-     <span class="term"><em><code class="parameter">str</code></em></span>
      <dd>
 
       <p class="para">
@@ -90,23 +91,22 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">character_mask</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">charlist</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">charlist</code></em> パラメータにより、
+       <code class="parameter">character_mask</code> パラメータにより、
        削除する文字を指定することも可能です。
        削除したい全ての文字をリストにしてください。<em>..</em>
        を文字の範囲を指定する際に使用可能です。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -121,40 +121,11 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.rtrim-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.1.0</td>
-       <td>
-        <em><code class="parameter">charlist</code></em> パラメータが追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.rtrim-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4836">
-    <p><strong>例1  <span class="function"><strong>rtrim()</strong></span> の使用例</strong></p>
+   <div class="example" id="example-5314">
+    <p><strong>例1 <span class="function"><strong>rtrim()</strong></span> の使用例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$text&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"\t\tThese&nbsp;are&nbsp;a&nbsp;few&nbsp;words&nbsp;:)&nbsp;...&nbsp;&nbsp;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$binary&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"\x09Example&nbsp;string\x0A"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$hello&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;World"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$binary</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$hello</span><span style="color: #007700">);<br /><br />print&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$trimmed&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">rtrim</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$trimmed</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$trimmed&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">rtrim</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;\t."</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$trimmed</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$trimmed&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">rtrim</span><span style="color: #007700">(</span><span style="color: #0000BB">$hello</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Hdle"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$trimmed</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ASCII&nbsp;制御文字&nbsp;(0&nbsp;から&nbsp;31&nbsp;まで)&nbsp;を<br />//&nbsp;$binary&nbsp;の末尾から取り除きます<br /></span><span style="color: #0000BB">$clean&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">rtrim</span><span style="color: #007700">(</span><span style="color: #0000BB">$binary</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\x00..\x1F"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$clean</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -185,8 +156,8 @@ string(15) &quot;    Example string&quot;
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.trim.html" class="function" rel="rdfs-seeAlso">trim()</a> - 文字列の先頭および末尾にあるホワイトスペースを取り除く</span></li>
-    <li class="member"> <span class="function"><a href="function.ltrim.html" class="function" rel="rdfs-seeAlso">ltrim()</a> - 文字列の最初から空白 (もしくはその他の文字) を取り除く</span></li>
+    <li class="member"><span class="function"><a href="function.trim.html" class="function" rel="rdfs-seeAlso">trim()</a> - 文字列の先頭および末尾にあるホワイトスペースを取り除く</span></li>
+    <li class="member"><span class="function"><a href="function.ltrim.html" class="function" rel="rdfs-seeAlso">ltrim()</a> - 文字列の最初から空白 (もしくはその他の文字) を取り除く</span></li>
    </ul>
   </p>
  </div>

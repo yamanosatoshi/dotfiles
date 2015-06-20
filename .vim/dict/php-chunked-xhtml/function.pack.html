@@ -27,7 +27,7 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-   指定された引数を <em><code class="parameter">format</code></em> に基づいて
+   指定された引数を <code class="parameter">format</code> に基づいて
    バイナリ文字列にパックします。
   </p>
   <p class="para">
@@ -36,8 +36,8 @@
    たとえば Perl の &quot;u&quot; は存在しません。
   </p>
   <p class="para">
-   符号付及び符号無しの区別は関数  <span class="function"><a href="function.unpack.html" class="function">unpack()</a></span> にのみ
-   影響を与えます。関数  <span class="function"><strong>pack()</strong></span> は符号付及び符号無しの
+   符号付及び符号無しの区別は関数 <span class="function"><a href="function.unpack.html" class="function">unpack()</a></span> にのみ
+   影響を与えます。関数 <span class="function"><strong>pack()</strong></span> は符号付及び符号無しの
    フォーマットコードのどちらでも同じ結果となることに注意しましょう。
   </p>
  </div>
@@ -48,9 +48,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">format</code></dt>
 
-     <span class="term"><em><code class="parameter">format</code></em></span>
      <dd>
 
       <p class="para">
@@ -66,7 +67,7 @@
       <p class="para">
        現在、実装されているものを以下に示します。
        <table class="doctable table">
-        <caption><strong> <span class="function"><strong>pack()</strong></span> の書式文字</strong></caption>
+        <caption><strong><span class="function"><strong>pack()</strong></span> の書式文字</strong></caption>
         
          <thead>
           <tr>
@@ -151,6 +152,26 @@
           </tr>
 
           <tr>
+           <td>q</td>
+           <td>signed long long (常に 64 ビット、マシンのバイトオーダー)</td>
+          </tr>
+
+          <tr>
+           <td>Q</td>
+           <td>unsigned long long (常に 64 ビット、マシンのバイトオーダー)</td>
+          </tr>
+
+          <tr>
+           <td>J</td>
+           <td>unsigned long long (常に 64 ビット、ビッグエンディアンバイトオーダー)</td>
+          </tr>
+
+          <tr>
+           <td>P</td>
+           <td>unsigned long long (常に 64 ビット、リトルエンディアンバイトオーダー)</td>
+          </tr>
+
+          <tr>
            <td>f</td>
            <td>float (サイズおよび表現はマシン依存)</td>
           </tr>
@@ -187,19 +208,18 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">args</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">args</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -229,6 +249,13 @@
 
      <tbody class="tbody">
       <tr>
+       <td>5.6.3</td>
+       <td>
+        &quot;q&quot;、&quot;Q&quot;、&quot;J&quot;、&quot;P&quot; が追加され、64ビットの数値が使えるようになりました。
+       </td>
+      </tr>
+
+      <tr>
        <td>5.5.0</td>
        <td>
         &quot;Z&quot; が追加されました。Perl の &quot;a&quot; と互換性のある機能です。
@@ -246,8 +273,8 @@
  <div class="refsect1 examples" id="refsect1-function.pack-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3763">
-    <p><strong>例1  <span class="function"><strong>pack()</strong></span> の例</strong></p>
+   <div class="example" id="example-4217">
+    <p><strong>例1 <span class="function"><strong>pack()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$binarydata&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pack</span><span style="color: #007700">(</span><span style="color: #DD0000">"nvc*"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x1234</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x5678</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">65</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">66</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -299,7 +326,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.unpack.html" class="function" rel="rdfs-seeAlso">unpack()</a> - バイナリ文字列からデータを切り出す</span></li>
+    <li class="member"><span class="function"><a href="function.unpack.html" class="function" rel="rdfs-seeAlso">unpack()</a> - バイナリ文字列からデータを切り出す</span></li>
    </ul>
   </p>
  </div>

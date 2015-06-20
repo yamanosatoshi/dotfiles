@@ -17,7 +17,7 @@
     <p class="para">
         PHP で Apache Solr エクステンションを使用する方法の例
     </p>
-    <div class="example" id="example-4686">
+    <div class="example" id="example-5133">
         <p><strong>例1 ブートストラップ・ファイルの内容</strong></p>
         <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -29,7 +29,7 @@
 
     </div>
 
- <div class="example" id="example-4687">
+ <div class="example" id="example-5134">
   <p><strong>例2 インデックスに文書を追加</strong></p>
   <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -55,7 +55,7 @@ SolrObject Object
   </div>
  </div>
  
- <div class="example" id="example-4688">
+ <div class="example" id="example-5135">
   <p><strong>例3 ある文書を他の文書にマージ</strong></p>
   <div class="example-contents">
    <div class="phpcode"><code><span style="color: #000000">
@@ -118,7 +118,7 @@ Array
  </div>
  
  
- <div class="example" id="example-4689">
+ <div class="example" id="example-5136">
   <p><strong>例4 文書を検索 - SolrObject レスポンス</strong></p>
   <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -210,7 +210,7 @@ SolrObject Object
   </div>
  </div>
  
- <div class="example" id="example-4690">
+ <div class="example" id="example-5137">
   <p><strong>例5 文書を検索 - SolrDocument レスポンス</strong></p>
   <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -272,7 +272,7 @@ SolrObject Object
   </div>
  </div>
     
- <div class="example" id="example-4691">
+ <div class="example" id="example-5138">
         <p><strong>例6 簡単な TermsComponent 例 - 基本</strong></p>
         <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -317,7 +317,7 @@ SolrObject Object
         </div>
  </div>
     
-<div class="example" id="example-4692">
+<div class="example" id="example-5139">
     <p><strong>例7 簡単な TermsComponent 例 - 接頭辞を使用</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -355,7 +355,7 @@ SolrObject Object
     </div>
 </div>
     
-<div class="example" id="example-4693">
+<div class="example" id="example-5140">
     <p><strong>例8 簡単な TermsComponent 例 - 最小の頻度を指定</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -391,7 +391,7 @@ SolrObject Object
     </div>
 </div>
     
-<div class="example" id="example-4694">
+<div class="example" id="example-5141">
 <p><strong>例9 簡単なファセット例</strong></p>
 <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -458,7 +458,7 @@ SolrObject Object
 </div>
 </div>
     
-<div class="example" id="example-4695">
+<div class="example" id="example-5142">
     <p><strong>例10 簡単なファセット例 - mincount を越える任意の項目と共に</strong></p>
     <div class="example-contents">
         <div class="phpcode"><code><span style="color: #000000">
@@ -499,8 +499,42 @@ SolrObject Object
     </div>
 </div>
 
-<div class="example" id="example-4696">
-        <p><strong>例11 SSL 対応サーバーに接続</strong></p>
+<div class="example" id="example-5143">
+<p><strong>例11 Facet Date の例</strong></p>
+<div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">"bootstrap.php"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$options&nbsp;</span><span style="color: #007700">=&nbsp;array<br />(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'hostname'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_HOSTNAME</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'login'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_USERNAME</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'password'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_PASSWORD</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'port'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_PORT</span><span style="color: #007700">,<br />);<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SolrClient</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SolrQuery</span><span style="color: #007700">(</span><span style="color: #DD0000">'*:*'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFacet</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFacetDateField</span><span style="color: #007700">(</span><span style="color: #DD0000">'manufacturedate_dt'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFacetDateStart</span><span style="color: #007700">(</span><span style="color: #DD0000">'2006-02-13T00:00:00Z'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFacetDateEnd</span><span style="color: #007700">(</span><span style="color: #DD0000">'2012-02-13T00:00:00Z'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFacetDateGap</span><span style="color: #007700">(</span><span style="color: #DD0000">'+1YEAR'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFacetDateHardEnd</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFacetDateOther</span><span style="color: #007700">(</span><span style="color: #DD0000">'before'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$updateResponse&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$client</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$response_array&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$updateResponse</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getResponse</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$facet_data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$response_array</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">facet_counts</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">facet_dates</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$facet_data</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+</div>
+
+<div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
+<div class="example-contents screen">
+<div class="cdata"><pre>
+SolrObject Object
+(
+    [manufacturedate_dt] =&gt; SolrObject Object
+        (
+            [2006-02-13T00:00:00Z] =&gt; 9
+            [2007-02-13T00:00:00Z] =&gt; 0
+            [2008-02-13T00:00:00Z] =&gt; 0
+            [2009-02-13T00:00:00Z] =&gt; 0
+            [2010-02-13T00:00:00Z] =&gt; 0
+            [2011-02-13T00:00:00Z] =&gt; 0
+            [gap] =&gt; +1YEAR
+            [start] =&gt; 2006-02-13T00:00:00Z
+            [end] =&gt; 2012-02-13T00:00:00Z
+            [before] =&gt; 2
+        )
+
+)
+</pre></div>
+</div>
+</div>
+
+<div class="example" id="example-5144">
+        <p><strong>例12 SSL 対応サーバーに接続</strong></p>
         <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">"bootstrap.php"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$options&nbsp;</span><span style="color: #007700">=&nbsp;array<br />(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'hostname'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_HOSTNAME</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'login'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_USERNAME</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'password'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_PASSWORD</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'port'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_PORT</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'timeout'&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_TIMEOUT</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'secure'&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SECURE</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'ssl_cert'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SSL_CERT_ONLY</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'ssl_key'&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SSL_KEY</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'ssl_keypassword'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SSL_KEYPASSWORD</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'ssl_cainfo'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SSL_CAINFO</span><span style="color: #007700">,<br />);<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SolrClient</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SolrQuery</span><span style="color: #007700">(</span><span style="color: #DD0000">'*:*'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFacet</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFacetField</span><span style="color: #007700">(</span><span style="color: #DD0000">'cat'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">addFacetField</span><span style="color: #007700">(</span><span style="color: #DD0000">'name'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">setFacetMinCount</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">setFacetMinCount</span><span style="color: #007700">(</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'name'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$updateResponse&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$client</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$response_array&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$updateResponse</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getResponse</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$facet_data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$response_array</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">facet_counts</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">facet_fields</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$facet_data</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>

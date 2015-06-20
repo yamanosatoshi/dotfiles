@@ -24,14 +24,14 @@
    ] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">seed</code></em> により乱数生成器にシードを指定します。
-   <em><code class="parameter">seed</code></em> を指定しなかった場合は、
+   <code class="parameter">seed</code> により乱数生成器にシードを指定します。
+   <code class="parameter">seed</code> を指定しなかった場合は、
    ランダムな値を設定します。
   </p>
 
-  <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">PHP 4.2.0 以降、
- <span class="function"><a href="function.srand.html" class="function">srand()</a></span> または
- <span class="function"><strong>mt_srand()</strong></span>
+  <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">
+<span class="function"><a href="function.srand.html" class="function">srand()</a></span> または
+<span class="function"><strong>mt_srand()</strong></span>
 によりランダム数生成器にシードを与える必要はありません。
 これは、この処理が自動的に行われるためです。</span></p></blockquote>
 
@@ -42,9 +42,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">seed</code></dt>
 
-     <span class="term"><em><code class="parameter">seed</code></em></span>
      <dd>
 
       <p class="para">
@@ -52,8 +53,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -83,14 +83,6 @@
 
      <tbody class="tbody">
       <tr>
-       <td>4.2.0</td>
-       <td>
-        <em><code class="parameter">seed</code></em> がオプションとなり、
-        省略した場合はデフォルトでランダムな値が設定されるようになりました。
-       </td>
-      </tr>
-
-      <tr>
        <td>5.2.1</td>
        <td>
         PHP の Mersenne Twister 実装は、Richard Wagner
@@ -111,8 +103,8 @@
  <div class="refsect1 examples" id="refsect1-function.mt-srand-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3449">
-    <p><strong>例1  <span class="function"><strong>mt_srand()</strong></span> の例</strong></p>
+   <div class="example" id="example-3878">
+    <p><strong>例1 <span class="function"><strong>mt_srand()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;マイクロ秒でシードを指定します<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">make_seed</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;list(</span><span style="color: #0000BB">$usec</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sec</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">'&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">());<br />&nbsp;&nbsp;return&nbsp;(float)&nbsp;</span><span style="color: #0000BB">$sec&nbsp;</span><span style="color: #007700">+&nbsp;((float)&nbsp;</span><span style="color: #0000BB">$usec&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">100000</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">mt_srand</span><span style="color: #007700">(</span><span style="color: #0000BB">make_seed</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">$randval&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mt_rand</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -128,9 +120,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mt-rand.html" class="function" rel="rdfs-seeAlso">mt_rand()</a> - よりよい乱数値を生成する</span></li>
-    <li class="member"> <span class="function"><a href="function.mt-getrandmax.html" class="function" rel="rdfs-seeAlso">mt_getrandmax()</a> - 乱数値の最大値を表示する</span></li>
-    <li class="member"> <span class="function"><a href="function.srand.html" class="function" rel="rdfs-seeAlso">srand()</a> - 乱数ジェネレータを初期化する</span></li>
+    <li class="member"><span class="function"><a href="function.mt-rand.html" class="function" rel="rdfs-seeAlso">mt_rand()</a> - よりよい乱数値を生成する</span></li>
+    <li class="member"><span class="function"><a href="function.mt-getrandmax.html" class="function" rel="rdfs-seeAlso">mt_getrandmax()</a> - 乱数値の最大値を表示する</span></li>
+    <li class="member"><span class="function"><a href="function.srand.html" class="function" rel="rdfs-seeAlso">srand()</a> - 乱数ジェネレータを初期化する</span></li>
    </ul>
   </p>
  </div>

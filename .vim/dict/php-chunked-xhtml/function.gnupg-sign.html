@@ -27,7 +27,7 @@
 
   <p class="para rdfs-comment">
    事前に <a href="function.gnupg-addsignkey.html" class="link">gnupg_addsignkey</a>
-   で設定したキーを使用して <em><code class="parameter">plaintext</code></em> に署名し、
+   で設定したキーを使用して <code class="parameter">plaintext</code> に署名し、
    <a href="function.gnupg-setsignmode.html" class="link">gnupg_setsignmode</a>
    の設定に応じて署名済みテキストあるいは署名を返します。
   </p>
@@ -39,20 +39,21 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">identifier</code></dt>
 
-     <span class="term"><em><code class="parameter">identifier</code></em></span>
      <dd>
 
-      <p class="para"> <span class="function"><a href="function.gnupg-init.html" class="function">gnupg_init()</a></span>
+      <p class="para"><span class="function"><a href="function.gnupg-init.html" class="function">gnupg_init()</a></span>
 あるいは <strong class="classname">gnupg</strong> のコールで得られた gnupg ID。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">plaintext</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">plaintext</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,8 +61,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -80,8 +80,8 @@
  <div class="refsect1 examples" id="refsect1-function.gnupg-sign-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3512">
-    <p><strong>例1 手続き型の  <span class="function"><strong>gnupg_sign()</strong></span> の例</strong></p>
+   <div class="example" id="example-3941">
+    <p><strong>例1 手続き型の <span class="function"><strong>gnupg_sign()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gnupg_init</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">gnupg_addsignkey</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,</span><span style="color: #DD0000">"8660281B6051D071D94B5B230549F9DC851566DC"</span><span style="color: #007700">,</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$signed&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gnupg_sign</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"just&nbsp;a&nbsp;test"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$signed</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -90,11 +90,11 @@
     </div>
 
    </div>
-   <div class="example" id="example-3513">
-    <p><strong>例2 オブジェクト指向の  <span class="function"><strong>gnupg_sign()</strong></span> の例</strong></p>
+   <div class="example" id="example-3942">
+    <p><strong>例2 オブジェクト指向の <span class="function"><strong>gnupg_sign()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$gpg&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">gnupg</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$gpg&nbsp;</span><span style="color: #007700">-&gt;&nbsp;</span><span style="color: #0000BB">setsignkey</span><span style="color: #007700">(</span><span style="color: #DD0000">"8660281B6051D071D94B5B230549F9DC851566DC"</span><span style="color: #007700">,</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$signed&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$gpg&nbsp;</span><span style="color: #007700">-&gt;&nbsp;</span><span style="color: #0000BB">sign</span><span style="color: #007700">(</span><span style="color: #DD0000">"just&nbsp;a&nbsp;test"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$signed</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$gpg&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">gnupg</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$gpg</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addsignkey</span><span style="color: #007700">(</span><span style="color: #DD0000">"8660281B6051D071D94B5B230549F9DC851566DC"</span><span style="color: #007700">,</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$signed&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$gpg</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sign</span><span style="color: #007700">(</span><span style="color: #DD0000">"just&nbsp;a&nbsp;test"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$signed</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>

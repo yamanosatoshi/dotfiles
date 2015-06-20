@@ -13,7 +13,7 @@
 </div><hr /><div id="function.fputcsv" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">fputcsv</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.1.0)</p><p class="refpurpose"><span class="refname">fputcsv</span> &mdash; <span class="dc-title">行を CSV 形式にフォーマットし、ファイルポインタに書き込む</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7)</p><p class="refpurpose"><span class="refname">fputcsv</span> &mdash; <span class="dc-title">行を CSV 形式にフォーマットし、ファイルポインタに書き込む</span></p>
 
  </div>
  
@@ -23,14 +23,15 @@
    <span class="type">int</span> <span class="methodname"><strong>fputcsv</strong></span>
     ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$handle</code></span>
    , <span class="methodparam"><span class="type">array</span> <code class="parameter">$fields</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$delimiter</code><span class="initializer"> = &#039;,&#039;</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$delimiter</code><span class="initializer"> = &quot;,&quot;</span></span>
    [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$enclosure</code><span class="initializer"> = &#039;&quot;&#039;</span></span>
-  ]] )</div>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$escape_char</code><span class="initializer"> = &quot;\&quot;</span></span>
+  ]]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>fputcsv()</strong></span> は、行（<em><code class="parameter">fields</code></em>
+   <span class="function"><strong>fputcsv()</strong></span> は、行（<code class="parameter">fields</code>
    配列として渡されたもの）を CSV としてフォーマットし、それを
-   <em><code class="parameter">handle</code></em> で指定したファイルに書き込みます
+   <code class="parameter">handle</code> で指定したファイルに書き込みます
    (いちばん最後に改行を追加します)。
   </p>
  </div>
@@ -41,22 +42,23 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">handle</code></dt>
 
-     <span class="term"><em><code class="parameter">handle</code></em></span>
      <dd>
 
       <p class="para">ファイルポインタは、有効なファイルポインタである必要があり、
- <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> または  <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> で正常にオープンされた
-（そしてまだ  <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span> でクローズされていない）
+<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> または <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> で正常にオープンされた
+（そしてまだ <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span> でクローズされていない）
 ファイルを指している必要があります。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">fields</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">fields</code></em></span>
      <dd>
 
       <p class="para">
@@ -64,34 +66,46 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">delimiter</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">delimiter</code></em></span>
      <dd>
 
       <p class="para">
-       オプションの <em><code class="parameter">delimiter</code></em> はフィールド区切り文字
+       オプションの <code class="parameter">delimiter</code> はフィールド区切り文字
        (一文字だけ) を指定します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">enclosure</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">enclosure</code></em></span>
      <dd>
 
       <p class="para">
-       オプションの <em><code class="parameter">enclosure</code></em> はフィールドを囲む文字
+       オプションの <code class="parameter">enclosure</code> はフィールドを囲む文字
        (一文字だけ) を指定します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">escape_char</code></dt>
 
+     <dd>
+
+      <p class="para">
+       オプションの <code class="parameter">escape_char</code> は、エスケープ文字
+       (一文字だけ) を指定します。
+      </p>
+     </dd>
+
+    
    </dl>
 
   </p>
@@ -106,11 +120,40 @@
  </div>
 
 
+ <div class="refsect1 changelog" id="refsect1-function.fputcsv-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.5.4</td>
+       <td>
+        <code class="parameter">escape_char</code> パラメータが追加されました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
  <div class="refsect1 examples" id="refsect1-function.fputcsv-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2378">
-    <p><strong>例1  <span class="function"><strong>fputcsv()</strong></span> の例</strong></p>
+   <div class="example" id="example-2577">
+    <p><strong>例1 <span class="function"><strong>fputcsv()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$list&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(<br />&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'aaa'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bbb'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ccc'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'dddd'</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'123'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'456'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'789'</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'"aaa"'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'"bbb"'</span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'file.csv'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$list&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$fields</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fputcsv</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$fields</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -146,7 +189,7 @@ aaa,bbb,ccc,dddd
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.fgetcsv.html" class="function" rel="rdfs-seeAlso">fgetcsv()</a> - ファイルポインタから行を取得し、CSVフィールドを処理する</span></li>
+    <li class="member"><span class="function"><a href="function.fgetcsv.html" class="function" rel="rdfs-seeAlso">fgetcsv()</a> - ファイルポインタから行を取得し、CSVフィールドを処理する</span></li>
    </ul>
   </p>
  </div>

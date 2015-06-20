@@ -39,76 +39,74 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">cipher</code></dt>
 
-     <span class="term"><em><code class="parameter">cipher</code></em></span>
      <dd>
 
       <p class="para"><strong><code>MCRYPT_暗号名</code></strong> 定数のいずれか、
 あるいはアルゴリズム名をあらわす文字列。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">key</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">key</code></em></span>
      <dd>
 
       <p class="para">
-       データを暗号化する際のキー。必要なキー長よりも小さい場合には、
-       &#039;<em>\0</em>&#039; で埋められます。キーにはASCII
-       文字列を使わない方が良いです。
-      </p>
-      <p class="para">
-       文字列からキーを生成するにはmhash関数を使用することを推奨します。
+       データを暗号化する際のキー。
+       指定した暗号化方式に対応していないサイズのキーを渡された場合は、
+       警告を発して <strong><code>FALSE</code></strong> を返します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">data</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">data</code></em></span>
      <dd>
 
       <p class="para">
-       指定した <em><code class="parameter">cipher</code></em> および <em><code class="parameter">mode</code></em> で暗号化するデータ。
+       指定した <code class="parameter">cipher</code> および <code class="parameter">mode</code> で暗号化するデータ。
        データの大きさが n * blocksize でない場合、データは、
        &#039;<em>\0</em>&#039;で埋められます。
       </p>
       <p class="para">
-       返される暗号化されたテキストは、<em><code class="parameter">data</code></em>
+       返される暗号化されたテキストは、<code class="parameter">data</code>
        で指定したデータの大きさよりも大きくなる可能性があります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">mode</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">mode</code></em></span>
      <dd>
 
       <p class="para">定数 <strong><code>MCRYPT_MODE_モード名</code></strong>、あるいは文字列
 &quot;ecb&quot;, &quot;cbc&quot;, &quot;cfb&quot;, &quot;ofb&quot;, &quot;nofb&quot; ,&quot;stream&quot; のいずれか。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">iv</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">iv</code></em></span>
      <dd>
 
       <p class="para">CBC, CFB, OFB モードおよび
 STREAM モードのいくつかのアルゴリズムの初期化の際に使用されます。
-アルゴリズムで必要とする IV を指定しない場合、この関数は警告を発生し、
-すべてのバイトを &quot;<em>\0</em>&quot; に設定した IV を使用します。</p>
+指定した IV のサイズがそのモードでサポートされていない場合、
+あるいは IV を必要とするモードで IV が指定されなかった場合は、
+この関数は警告を発して <strong><code>FALSE</code></strong> を返します。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -118,7 +116,40 @@ STREAM モードのいくつかのアルゴリズムの初期化の際に使用�
  <div class="refsect1 returnvalues" id="refsect1-function.mcrypt-encrypt-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   暗号化されたデータを文字列で返します。
+   暗号化されたデータを文字列で返します。失敗した場合に <strong><code>FALSE</code></strong> を返します。
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.mcrypt-encrypt-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.6.0</td>
+       <td>
+        無効なサイズの <code class="parameter">key</code> や <code class="parameter">iv</code>
+        は、受け付けないようになりました。無効な値を受け取った場合、
+        <span class="function"><strong>mcrypt_encrypt()</strong></span> は警告を発して <strong><code>FALSE</code></strong> を返します。
+        以前のバージョンでは、キーや IV のサイズが足りない場合は
+        &#039;<em>\0</em>&#039; で埋めて、必要なサイズに合わせていました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
   </p>
  </div>
 
@@ -126,8 +157,8 @@ STREAM モードのいくつかのアルゴリズムの初期化の際に使用�
  <div class="refsect1 examples" id="refsect1-function.mcrypt-encrypt-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-840">
-    <p><strong>例1  <span class="function"><strong>mcrypt_encrypt()</strong></span> の例</strong></p>
+   <div class="example" id="example-884">
+    <p><strong>例1 <span class="function"><strong>mcrypt_encrypt()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;---&nbsp;ENCRYPTION&nbsp;---<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;the&nbsp;key&nbsp;should&nbsp;be&nbsp;random&nbsp;binary,&nbsp;use&nbsp;scrypt,&nbsp;bcrypt&nbsp;or&nbsp;PBKDF2&nbsp;to<br />&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;convert&nbsp;a&nbsp;string&nbsp;into&nbsp;a&nbsp;key<br />&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;key&nbsp;is&nbsp;specified&nbsp;using&nbsp;hexadecimal<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pack</span><span style="color: #007700">(</span><span style="color: #DD0000">'H*'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"bcb04b7e103a0cd8b54763051cef08bc55abe029fdebae5e1d417e2ffb2a00a3"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;show&nbsp;key&nbsp;size&nbsp;use&nbsp;either&nbsp;16,&nbsp;24&nbsp;or&nbsp;32&nbsp;byte&nbsp;keys&nbsp;for&nbsp;AES-128,&nbsp;192<br />&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;and&nbsp;256&nbsp;respectively<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$key_size&nbsp;</span><span style="color: #007700">=&nbsp;&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Key&nbsp;size:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$key_size&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$plaintext&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"This&nbsp;string&nbsp;was&nbsp;AES-256&nbsp;/&nbsp;CBC&nbsp;/&nbsp;ZeroBytePadding&nbsp;encrypted."</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;create&nbsp;a&nbsp;random&nbsp;IV&nbsp;to&nbsp;use&nbsp;with&nbsp;CBC&nbsp;encoding<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$iv_size&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mcrypt_get_iv_size</span><span style="color: #007700">(</span><span style="color: #0000BB">MCRYPT_RIJNDAEL_128</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MCRYPT_MODE_CBC</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$iv&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mcrypt_create_iv</span><span style="color: #007700">(</span><span style="color: #0000BB">$iv_size</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MCRYPT_RAND</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;creates&nbsp;a&nbsp;cipher&nbsp;text&nbsp;compatible&nbsp;with&nbsp;AES&nbsp;(Rijndael&nbsp;block&nbsp;size&nbsp;=&nbsp;128)<br />&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;to&nbsp;keep&nbsp;the&nbsp;text&nbsp;confidential&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;only&nbsp;suitable&nbsp;for&nbsp;encoded&nbsp;input&nbsp;that&nbsp;never&nbsp;ends&nbsp;with&nbsp;value&nbsp;00h<br />&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;(because&nbsp;of&nbsp;default&nbsp;zero&nbsp;padding)<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ciphertext&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mcrypt_encrypt</span><span style="color: #007700">(</span><span style="color: #0000BB">MCRYPT_RIJNDAEL_128</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$key</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$plaintext</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MCRYPT_MODE_CBC</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$iv</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;prepend&nbsp;the&nbsp;IV&nbsp;for&nbsp;it&nbsp;to&nbsp;be&nbsp;available&nbsp;for&nbsp;decryption<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ciphertext&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$iv&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$ciphertext</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;encode&nbsp;the&nbsp;resulting&nbsp;cipher&nbsp;text&nbsp;so&nbsp;it&nbsp;can&nbsp;be&nbsp;represented&nbsp;by&nbsp;a&nbsp;string<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ciphertext_base64&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">base64_encode</span><span style="color: #007700">(</span><span style="color: #0000BB">$ciphertext</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&nbsp;</span><span style="color: #0000BB">$ciphertext_base64&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;===&nbsp;WARNING&nbsp;===<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Resulting&nbsp;cipher&nbsp;text&nbsp;has&nbsp;no&nbsp;integrity&nbsp;or&nbsp;authenticity&nbsp;added<br />&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;and&nbsp;is&nbsp;not&nbsp;protected&nbsp;against&nbsp;padding&nbsp;oracle&nbsp;attacks.<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;---&nbsp;DECRYPTION&nbsp;---<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ciphertext_dec&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">base64_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">$ciphertext_base64</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;retrieves&nbsp;the&nbsp;IV,&nbsp;iv_size&nbsp;should&nbsp;be&nbsp;created&nbsp;using&nbsp;mcrypt_get_iv_size()<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$iv_dec&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$ciphertext_dec</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$iv_size</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;retrieves&nbsp;the&nbsp;cipher&nbsp;text&nbsp;(everything&nbsp;except&nbsp;the&nbsp;$iv_size&nbsp;in&nbsp;the&nbsp;front)<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ciphertext_dec&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$ciphertext_dec</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$iv_size</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;may&nbsp;remove&nbsp;00h&nbsp;valued&nbsp;characters&nbsp;from&nbsp;end&nbsp;of&nbsp;plain&nbsp;text<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$plaintext_dec&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mcrypt_decrypt</span><span style="color: #007700">(</span><span style="color: #0000BB">MCRYPT_RIJNDAEL_128</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$key</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ciphertext_dec</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MCRYPT_MODE_CBC</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$iv_dec</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&nbsp;</span><span style="color: #0000BB">$plaintext_dec&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -145,9 +176,16 @@ This string was AES-256 / CBC / ZeroBytePadding encrypted.
     </div>
    </div>
   </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mcrypt-encrypt-seealso">
+  <h3 class="title">参考</h3>
   <p class="para">
-   より高度な API やサンプルについては
-    <span class="function"><a href="function.mcrypt-module-open.html" class="function">mcrypt_module_open()</a></span> も参照ください。
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mcrypt-decrypt.html" class="function" rel="rdfs-seeAlso">mcrypt_decrypt()</a> - 指定したパラメータで暗号化されたテキストを復号する</span></li>
+    <li class="member"><span class="function"><a href="function.mcrypt-module-open.html" class="function" rel="rdfs-seeAlso">mcrypt_module_open()</a> - 使用するアルゴリズムおよびモードのモジュールをオープンする</span></li>
+   </ul>
   </p>
  </div>
 

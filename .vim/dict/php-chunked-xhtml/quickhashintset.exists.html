@@ -35,9 +35,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">key</code></dt>
 
-     <span class="term"><em><code class="parameter">key</code></em></span>
      <dd>
 
       <p class="para">
@@ -45,8 +46,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -64,8 +64,8 @@
  <div class="refsect1 examples" id="refsect1-quickhashintset.exists-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5111">
-    <p><strong>例1  <span class="function"><strong>QuickHashIntSet::exists()</strong></span> の例</strong></p>
+   <div class="example" id="example-5588">
+    <p><strong>例1 <span class="function"><strong>QuickHashIntSet::exists()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;200000&nbsp;要素を生成します<br /></span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">range</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">199999&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$existingEntries&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_rand</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">array_flip</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">180000&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$testForEntries&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_rand</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">array_flip</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">1000&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$foundCount&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Creating&nbsp;set:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$set&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">QuickHashIntSet</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">100000&nbsp;</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Adding&nbsp;elements:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />foreach(&nbsp;</span><span style="color: #0000BB">$existingEntries&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$set</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">);<br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Doing&nbsp;1000&nbsp;tests:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />foreach(&nbsp;</span><span style="color: #0000BB">$testForEntries&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$foundCount&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">$set</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exists</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">);<br />}<br />echo&nbsp;</span><span style="color: #DD0000">"Done,&nbsp;</span><span style="color: #0000BB">$foundCount</span><span style="color: #DD0000">&nbsp;found:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -27,8 +27,13 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>session_regenerate_id()</strong></span> は現在のセッションIDを
+   <span class="function"><strong>session_regenerate_id()</strong></span> は現在のセッションIDを
    新しいものと置き換えます。その際、現在のセッション情報は維持されます。
+  </p>
+  <p class="para">
+   <a href="session.configuration.html#ini.session.use-trans-sid" class="link">session.use_trans_sid</a> が有効な場合は、
+   <span class="function"><strong>session_regenerate_id()</strong></span> を呼んでから出力を始めないといけません。
+   それ以前の出力には、古いセッション ID が使われます。
   </p>
  </div>
 
@@ -38,9 +43,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">delete_old_session</code></dt>
 
-     <span class="term"><em><code class="parameter">delete_old_session</code></em></span>
       <dd>
 
        <p class="para">
@@ -48,8 +54,7 @@
        </p>
       </dd>
 
-     </dt>
-
+     
    </dl>
 
   </p>
@@ -82,7 +87,7 @@
        <td>4.3.3</td>
        <td>
         これ以降、セッション保持にクッキーを使用している場合、
-         <span class="function"><strong>session_regenerate_id()</strong></span> を使用することにより
+        <span class="function"><strong>session_regenerate_id()</strong></span> を使用することにより
         新しいセッション ID を持つセッションクッキーも発行します。
        </td>
       </tr>
@@ -90,7 +95,7 @@
       <tr>
        <td>5.1.0</td>
        <td>
-        <em><code class="parameter">delete_old_session</code></em> パラメータが追加されました。
+        <code class="parameter">delete_old_session</code> パラメータが追加されました。
        </td>
       </tr>
 
@@ -105,8 +110,8 @@
  <div class="refsect1 examples" id="refsect1-function.session-regenerate-id-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4748">
-    <p><strong>例1 A  <span class="function"><strong>session_regenerate_id()</strong></span> の使用例</strong></p>
+   <div class="example" id="example-5226">
+    <p><strong>例1 A <span class="function"><strong>session_regenerate_id()</strong></span> の使用例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />session_start</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$old_sessionid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">session_id</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">session_regenerate_id</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$new_sessionid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">session_id</span><span style="color: #007700">();<br /><br />echo&nbsp;</span><span style="color: #DD0000">"古いセッション:&nbsp;</span><span style="color: #0000BB">$old_sessionid</span><span style="color: #DD0000">&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"新しいセッション:&nbsp;</span><span style="color: #0000BB">$new_sessionid</span><span style="color: #DD0000">&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -123,9 +128,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.session-id.html" class="function" rel="rdfs-seeAlso">session_id()</a> - 現在のセッション ID を取得または設定する</span></li>
-    <li class="member"> <span class="function"><a href="function.session-start.html" class="function" rel="rdfs-seeAlso">session_start()</a> - 新しいセッションを開始、あるいは既存のセッションを再開する</span></li>
-    <li class="member"> <span class="function"><a href="function.session-name.html" class="function" rel="rdfs-seeAlso">session_name()</a> - 現在のセッション名を取得または設定する</span></li>
+    <li class="member"><span class="function"><a href="function.session-id.html" class="function" rel="rdfs-seeAlso">session_id()</a> - 現在のセッション ID を取得または設定する</span></li>
+    <li class="member"><span class="function"><a href="function.session-start.html" class="function" rel="rdfs-seeAlso">session_start()</a> - 新しいセッションを開始、あるいは既存のセッションを再開する</span></li>
+    <li class="member"><span class="function"><a href="function.session-name.html" class="function" rel="rdfs-seeAlso">session_name()</a> - 現在のセッション名を取得または設定する</span></li>
    </ul>
   </p>
  </div>

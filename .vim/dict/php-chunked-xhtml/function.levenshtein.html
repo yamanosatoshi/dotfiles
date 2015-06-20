@@ -35,19 +35,19 @@
    )</div>
 
   <p class="para rdfs-comment">
-   レーベンシュタイン距離は、<em><code class="parameter">str1</code></em> を
-   <em><code class="parameter">str2</code></em> に変換するために置換、挿入、削除
+   レーベンシュタイン距離は、<code class="parameter">str1</code> を
+   <code class="parameter">str2</code> に変換するために置換、挿入、削除
    しなければならない最小の文字数として定義されます。アルゴリズムの複雑さは、
    <em>O(m*n)</em> です。
    ここで、<em>n</em> および <em>m</em> はそれぞれ
-   <em><code class="parameter">str1</code></em> および <em><code class="parameter">str2</code></em> の長さです
-   (O(max(n,m)**3) となる  <span class="function"><a href="function.similar-text.html" class="function">similar_text()</a></span> よりは良いですが、
+   <code class="parameter">str1</code> および <code class="parameter">str2</code> の長さです
+   (O(max(n,m)**3) となる <span class="function"><a href="function.similar-text.html" class="function">similar_text()</a></span> よりは良いですが、
    まだかなりの計算量です)。
   </p>
   <p class="para">
    上記の最も簡単な形式では、この関数はパラメータとして引数を二つだけとり、
-   <em><code class="parameter">str1</code></em> から
-   <em><code class="parameter">str2</code></em> に変換する際に必要な
+   <code class="parameter">str1</code> から
+   <code class="parameter">str2</code> に変換する際に必要な
    挿入、置換、削除演算の数のみを計算します。
   </p>
   <p class="para">
@@ -63,9 +63,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">str1</code></dt>
 
-     <span class="term"><em><code class="parameter">str1</code></em></span>
      <dd>
 
       <p class="para">
@@ -73,11 +74,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">str2</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">str2</code></em></span>
      <dd>
 
       <p class="para">
@@ -85,11 +86,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">cost_ins</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">cost_ins</code></em></span>
      <dd>
 
       <p class="para">
@@ -97,11 +98,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">cost_rep</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">cost_rep</code></em></span>
      <dd>
 
       <p class="para">
@@ -109,11 +110,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">cost_del</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">cost_del</code></em></span>
      <dd>
 
       <p class="para">
@@ -121,8 +122,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -141,8 +141,8 @@
  <div class="refsect1 examples" id="refsect1-function.levenshtein-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4821">
-    <p><strong>例1  <span class="function"><strong>levenshtein()</strong></span> の例</strong></p>
+   <div class="example" id="example-5299">
+    <p><strong>例1 <span class="function"><strong>levenshtein()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;スペルミスした単語を入力します<br /></span><span style="color: #0000BB">$input&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'carrrot'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;チェックするための単語の配列<br /></span><span style="color: #0000BB">$words&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">,</span><span style="color: #DD0000">'pineapple'</span><span style="color: #007700">,</span><span style="color: #DD0000">'banana'</span><span style="color: #007700">,</span><span style="color: #DD0000">'orange'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'radish'</span><span style="color: #007700">,</span><span style="color: #DD0000">'carrot'</span><span style="color: #007700">,</span><span style="color: #DD0000">'pea'</span><span style="color: #007700">,</span><span style="color: #DD0000">'bean'</span><span style="color: #007700">,</span><span style="color: #DD0000">'potato'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;まだ最短距離は見つかっていません<br /></span><span style="color: #0000BB">$shortest&nbsp;</span><span style="color: #007700">=&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;最短距離を見つけるため単語をループします<br /></span><span style="color: #007700">foreach&nbsp;(</span><span style="color: #0000BB">$words&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$word</span><span style="color: #007700">)&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;入力した単語と現在の単語の距離を<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;計算します<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$lev&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">levenshtein</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$word</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;マッチするかどうかチェックします<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$lev&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;最短な単語はこれだ&nbsp;(マッチした)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$closest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$word</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$shortest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;ループを抜ける;&nbsp;マッチしたものを見つけました<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;もし距離が次に見つけた最短距離よりも短い場合、<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;もしくは次の最短の単語がまだ見つかっていない場合<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$lev&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">$shortest&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">$shortest&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;最短のマッチと最短距離をセットします<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$closest&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$word</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$shortest&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$lev</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">"入力した単語:&nbsp;</span><span style="color: #0000BB">$input</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">$shortest&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"一致するものが見つかりました:&nbsp;</span><span style="color: #0000BB">$closest</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"もしかして:&nbsp;</span><span style="color: #0000BB">$closest</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -166,9 +166,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.soundex.html" class="function" rel="rdfs-seeAlso">soundex()</a> - 文字列の soundex キーを計算する</span></li>
-    <li class="member"> <span class="function"><a href="function.similar-text.html" class="function" rel="rdfs-seeAlso">similar_text()</a> - 二つの文字列の間の類似性を計算する</span></li>
-    <li class="member"> <span class="function"><a href="function.metaphone.html" class="function" rel="rdfs-seeAlso">metaphone()</a> - 文字列の metaphone キーを計算する</span></li>
+    <li class="member"><span class="function"><a href="function.soundex.html" class="function" rel="rdfs-seeAlso">soundex()</a> - 文字列の soundex キーを計算する</span></li>
+    <li class="member"><span class="function"><a href="function.similar-text.html" class="function" rel="rdfs-seeAlso">similar_text()</a> - 二つの文字列の間の類似性を計算する</span></li>
+    <li class="member"><span class="function"><a href="function.metaphone.html" class="function" rel="rdfs-seeAlso">metaphone()</a> - 文字列の metaphone キーを計算する</span></li>
    </ul>
   </p>
  </div>

@@ -53,38 +53,38 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>maxdb_stmt_bind_param()</strong></span> は、
-    <span class="function"><a href="function.maxdb-prepare.html" class="function">maxdb_prepare()</a></span> に渡された SQL 文のパラメータマーカに、
+   <span class="function"><strong>maxdb_stmt_bind_param()</strong></span> は、
+   <span class="function"><a href="function.maxdb-prepare.html" class="function">maxdb_prepare()</a></span> に渡された SQL 文のパラメータマーカに、
    変数をバインドするために使用されます。
-   文字列 <em><code class="parameter">types</code></em> にはひとつあるいは複数の文字が含まれ、
+   文字列 <code class="parameter">types</code> にはひとつあるいは複数の文字が含まれ、
    これによって対応するバインド変数の型を指定します。
   </p>
   <p class="para">
-    <span class="function"><strong>maxdb_stmt_bind_param()</strong></span> の拡張構文では、
+   <span class="function"><strong>maxdb_stmt_bind_param()</strong></span> の拡張構文では、
    パラメータを、PHP の変数リストではなくひとつの配列として渡せるようになります。
-    <span class="function"><strong>maxdb_stmt_bind_param()</strong></span>
+   <span class="function"><strong>maxdb_stmt_bind_param()</strong></span>
    のコール前に配列変数が使用されていない場合は、空の配列として初期化されます。
-    <span class="function"><strong>maxdb_stmt_bind_param()</strong></span> の拡張構文の使用法については、
+   <span class="function"><strong>maxdb_stmt_bind_param()</strong></span> の拡張構文の使用法については、
    例を参照ください。
   </p>
   <p class="para">
-   SELECT INTO SQL 文の変数は、 <span class="function"><strong>maxdb_stmt_bind_param()</strong></span>
+   SELECT INTO SQL 文の変数は、<span class="function"><strong>maxdb_stmt_bind_param()</strong></span>
    でバインドすることも可能です。データベースプロシージャのパラメータについては
-    <span class="function"><strong>maxdb_stmt_bind_param()</strong></span> を使用してバインドできます。
-   このような場合の  <span class="function"><strong>maxdb_stmt_bind_param()</strong></span>
+   <span class="function"><strong>maxdb_stmt_bind_param()</strong></span> を使用してバインドできます。
+   このような場合の <span class="function"><strong>maxdb_stmt_bind_param()</strong></span>
    の使用法については、例を参照ください。
   </p>
   <p class="para">
    SQL 文の INTO 変数にバインドする変数が事前に使用されていた場合は、
    その変数の内容は SELECT INTO 文のデータで上書きされます。
-    <span class="function"><strong>maxdb_stmt_bind_param()</strong></span> をコールした後は、
+   <span class="function"><strong>maxdb_stmt_bind_param()</strong></span> をコールした後は、
    この変数への参照は無効になります。
   </p>
   <p class="para">
    データベースプロシージャの INOUT パラメータの場合、
    バインドされた INOUT 変数の内容は、データベースプロシージャの出力で
    上書きされます。
-    <span class="function"><strong>maxdb_stmt_bind_param()</strong></span> をコールした後は、
+   <span class="function"><strong>maxdb_stmt_bind_param()</strong></span> をコールした後は、
    この変数への参照は無効になります。
   </p>
   <p class="para">
@@ -138,7 +138,7 @@
 
  <div class="refsect1 examples" id="refsect1-function.maxdb-stmt-bind-param-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1315">
+  <div class="example" id="example-1373">
    <p><strong>例1 オブジェクト指向型</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -148,7 +148,7 @@
    </div>
 
   </div>
-  <div class="example" id="example-1316">
+  <div class="example" id="example-1374">
    <p><strong>例2 手続き型</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -166,7 +166,7 @@
 1 行削除されました。
 </pre></div>
   </div>
-  <div class="example" id="example-1317">
+  <div class="example" id="example-1375">
    <p><strong>例3 手続き型 (SELECT INTO)</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -183,7 +183,7 @@
 21.600000
 </pre></div>
   </div>
-  <div class="example" id="example-1318">
+  <div class="example" id="example-1376">
    <p><strong>例4 手続き型 (DB プロシージャ)</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -200,7 +200,7 @@
 a
 </pre></div>
   </div>
-  <div class="example" id="example-1319">
+  <div class="example" id="example-1377">
    <p><strong>例5 オブジェクト指向型 (拡張構文)</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -228,13 +228,13 @@ a
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.maxdb-stmt-bind-result.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_bind_result()</a> - 結果を保存するために、変数をプリペアドステートメントにバインドする</span></li>
-    <li class="member"> <span class="function"><a href="function.maxdb-stmt-execute.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_execute()</a> - プリペアドクエリを実行する</span></li>
-    <li class="member"> <span class="function"><a href="function.maxdb-stmt-fetch.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_fetch()</a> - プリペアドステートメントの結果を取得し、バインド変数に格納する</span></li>
-    <li class="member"> <span class="function"><a href="function.maxdb-prepare.html" class="function" rel="rdfs-seeAlso">maxdb_prepare()</a> - 後で実行するための SQL 文を準備する</span></li>
-    <li class="member"> <span class="function"><a href="function.maxdb-stmt-send-long-data.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_send_long_data()</a> - データを複数ブロックで送信する</span></li>
-    <li class="member"> <span class="function"><a href="function.maxdb-stmt-errno.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_errno()</a> - 直近のステートメントコール時のエラーコードを返す</span></li>
-    <li class="member"> <span class="function"><a href="function.maxdb-stmt-error.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_error()</a> - 直近のステートメントコール時のエラー文字列を返す</span></li>
+    <li class="member"><span class="function"><a href="function.maxdb-stmt-bind-result.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_bind_result()</a> - 結果を保存するために、変数をプリペアドステートメントにバインドする</span></li>
+    <li class="member"><span class="function"><a href="function.maxdb-stmt-execute.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_execute()</a> - プリペアドクエリを実行する</span></li>
+    <li class="member"><span class="function"><a href="function.maxdb-stmt-fetch.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_fetch()</a> - プリペアドステートメントの結果を取得し、バインド変数に格納する</span></li>
+    <li class="member"><span class="function"><a href="function.maxdb-prepare.html" class="function" rel="rdfs-seeAlso">maxdb_prepare()</a> - 後で実行するための SQL 文を準備する</span></li>
+    <li class="member"><span class="function"><a href="function.maxdb-stmt-send-long-data.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_send_long_data()</a> - データを複数ブロックで送信する</span></li>
+    <li class="member"><span class="function"><a href="function.maxdb-stmt-errno.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_errno()</a> - 直近のステートメントコール時のエラーコードを返す</span></li>
+    <li class="member"><span class="function"><a href="function.maxdb-stmt-error.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_error()</a> - 直近のステートメントコール時のエラー文字列を返す</span></li>
    </ul>
   </p>
  </div>

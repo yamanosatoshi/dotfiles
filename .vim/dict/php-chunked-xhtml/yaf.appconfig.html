@@ -16,15 +16,15 @@
  <p class="para">
   設定内容を記した配列か、あるいは ini ファイルへのパス
   (<a href="class.yaf-config-ini.html" class="classname">Yaf_Config_Ini</a> を参照ください) を
-   <span class="methodname"><a href="yaf-application.construct.html" class="methodname">Yaf_Application::__construct()</a></span> に渡さなければいけません。
+  <span class="methodname"><a href="yaf-application.construct.html" class="methodname">Yaf_Application::__construct()</a></span> に渡さなければいけません。
  </p>
  <p class="para">
-  Yaf の設定はユーザー設定と混在させることができます。その違いは、
-  Yaf の設定にはプレフィックス &quot;yaf.&quot; あるいは &quot;application.&quot; がついているということです。
-  &quot;yaf.&quot; と &quot;application.&quot; の両方が存在する場合は、&quot;application.&quot;
+  Yaf は、アプリケーションの設定とユーザーの設定を自動的にマージします。
+  アプリケーションの設定には、プレフィックスとして &quot;yaf.&quot; あるいは
+  &quot;application.&quot; がつきます。&quot;yaf.&quot; と &quot;application.&quot; の両方が存在する場合は、&quot;application.&quot;
   を使います。
-  <div class="example" id="example-4091">
-   <p><strong>例1 配列による yaf の設定</strong></p>
+  <div class="example" id="example-4547">
+   <p><strong>例1 PHP の配列の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;$configs&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"application"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"directory"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"dispatcher"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"catchException"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"view"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"ext"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"phtml"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$app&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Yaf_Application</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -33,8 +33,8 @@
    </div>
 
   </div>
-  <div class="example" id="example-4092">
-   <p><strong>例2 ini ファイルによる yaf の設定</strong></p>
+  <div class="example" id="example-4548">
+   <p><strong>例2 ini ファイルの例</strong></p>
    <div class="example-contents">
 <div class="inicode"><pre class="inicode">[yaf]
 yaf.directory = APPLICATION_PATH &quot;/appliation&quot;
@@ -169,11 +169,12 @@ yaf.dispatcher.catchException = 0
  <p class="para">
   <dl>
 
-   <dt id="configuration.yaf.directory">
-     <span class="term">
-      <em><code class="parameter">application.directory</code></em>
+   
+     <dt id="configuration.yaf.directory">
+      <code class="parameter">application.directory</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -184,19 +185,19 @@ yaf.dispatcher.catchException = 0
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
          この項目は、デフォルト値を持たない唯一の項目です。
-         つまり、必ず指定しなければいけません。
+         つまり、必ず手動で指定しなければいけません。
         </p>
        </p></blockquote>
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.ext">
-     <span class="term">
-      <em><code class="parameter">application.ext</code></em>
+    
+    
+     <dt id="configuration.yaf.ext">
+      <code class="parameter">application.ext</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -205,13 +206,13 @@ yaf.dispatcher.catchException = 0
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.view.ext">
-     <span class="term">
-      <em><code class="parameter">application.view.ext</code></em>
+    
+    
+     <dt id="configuration.yaf.view.ext">
+      <code class="parameter">application.view.ext</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -219,13 +220,13 @@ yaf.dispatcher.catchException = 0
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.modules">
-     <span class="term">
-      <em><code class="parameter">application.modules</code></em>
+    
+    
+     <dt id="configuration.yaf.modules">
+      <code class="parameter">application.modules</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -237,13 +238,13 @@ yaf.dispatcher.catchException = 0
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.library">
-     <span class="term">
-      <em><code class="parameter">application.library</code></em>
+    
+    
+     <dt id="configuration.yaf.library">
+      <code class="parameter">application.library</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -259,13 +260,13 @@ yaf.dispatcher.catchException = 0
        </p></blockquote>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.library.directory">
-     <span class="term">
-      <em><code class="parameter">application.library.directory</code></em>
+    
+    
+     <dt id="configuration.yaf.library.directory">
+      <code class="parameter">application.library.directory</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -274,13 +275,13 @@ yaf.dispatcher.catchException = 0
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.library.namespace">
-     <span class="term">
-      <em><code class="parameter">application.library.namespace</code></em>
+    
+    
+     <dt id="configuration.yaf.library.namespace">
+      <code class="parameter">application.library.namespace</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -291,13 +292,13 @@ yaf.dispatcher.catchException = 0
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.bootstrap">
-     <span class="term">
-      <em><code class="parameter">application.bootstrap</code></em>
+    
+    
+     <dt id="configuration.yaf.bootstrap">
+      <code class="parameter">application.bootstrap</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -305,13 +306,13 @@ yaf.dispatcher.catchException = 0
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.baseuri">
-     <span class="term">
-      <em><code class="parameter">application.baseUri</code></em>
+    
+    
+     <dt id="configuration.yaf.baseuri">
+      <code class="parameter">application.baseUri</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -325,109 +326,109 @@ yaf.dispatcher.catchException = 0
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.dispatcher.throwexception">
-     <span class="term">
-      <em><code class="parameter">application.dispatcher.throwException</code></em>
+    
+    
+     <dt id="configuration.yaf.dispatcher.throwexception">
+      <code class="parameter">application.dispatcher.throwException</code>
       <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
        これを On にすると、エラーが発生したときに Yaf が例外をスローするようになります。
-        <span class="methodname"><a href="yaf-dispatcher.throwexception.html" class="methodname">Yaf_Dispatcher::throwException()</a></span> も参照ください。
+       <span class="methodname"><a href="yaf-dispatcher.throwexception.html" class="methodname">Yaf_Dispatcher::throwException()</a></span> も参照ください。
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.dispatcher.catchexception">
-     <span class="term">
-      <em><code class="parameter">application.dispatcher.catchException</code></em>
+    
+    
+     <dt id="configuration.yaf.dispatcher.catchexception">
+      <code class="parameter">application.dispatcher.catchException</code>
       <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
        これを On にすると、Yaf が例外をキャッチできなかったときに
        Error コントローラの Error アクションに転送するようになります。
-        <span class="methodname"><a href="yaf-dispatcher.catchexception.html" class="methodname">Yaf_Dispatcher::catchException()</a></span> も参照ください。
+       <span class="methodname"><a href="yaf-dispatcher.catchexception.html" class="methodname">Yaf_Dispatcher::catchException()</a></span> も参照ください。
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.dispatcher.defaulRoute">
-     <span class="term">
-      <em><code class="parameter">application.dispatcher.defaultRoute</code></em>
+    
+    
+     <dt id="configuration.yaf.dispatcher.defaulRoute">
+      <code class="parameter">application.dispatcher.defaultRoute</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
-       デフォルトのルート。指定しなかった場合は、デフォルトのルートとして Static
+       デフォルトのルート。指定しなかった場合は、デフォルトとして Static
        ルートを使います。
-        <span class="methodname"><a href="yaf-router.addroute.html" class="methodname">Yaf_Router::addRoute()</a></span> も参照ください。
+       <span class="methodname"><a href="yaf-router.addroute.html" class="methodname">Yaf_Router::addRoute()</a></span> も参照ください。
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.dispatcher.defaultmodule">
-     <span class="term">
-      <em><code class="parameter">application.dispatcher.defaultModule</code></em>
+    
+    
+     <dt id="configuration.yaf.dispatcher.defaultmodule">
+      <code class="parameter">application.dispatcher.defaultModule</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
        デフォルトのモジュール名。
-        <span class="methodname"><a href="yaf-dispatcher.setdefaultmodule.html" class="methodname">Yaf_Dispatcher::setDefaultModule()</a></span>
+       <span class="methodname"><a href="yaf-dispatcher.setdefaultmodule.html" class="methodname">Yaf_Dispatcher::setDefaultModule()</a></span>
        も参照ください。
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.dispatcher.defaultcontroller">
-     <span class="term">
-      <em><code class="parameter">application.dispatcher.defaultController</code></em>
+    
+    
+     <dt id="configuration.yaf.dispatcher.defaultcontroller">
+      <code class="parameter">application.dispatcher.defaultController</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
        デフォルトのコントローラ名。
-        <span class="methodname"><a href="yaf-dispatcher.setdefaultcontroller.html" class="methodname">Yaf_Dispatcher::setDefaultController()</a></span>
+       <span class="methodname"><a href="yaf-dispatcher.setdefaultcontroller.html" class="methodname">Yaf_Dispatcher::setDefaultController()</a></span>
        も参照ください。
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="configuration.yaf.dispatcher.defaultaction">
-     <span class="term">
-      <em><code class="parameter">application.dispatcher.defaultAction</code></em>
+    
+    
+     <dt id="configuration.yaf.dispatcher.defaultaction">
+      <code class="parameter">application.dispatcher.defaultAction</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
        デフォルトのアクション名。
-        <span class="methodname"><a href="yaf-dispatcher.setdefaultaction.html" class="methodname">Yaf_Dispatcher::setDefaultAction()</a></span>
+       <span class="methodname"><a href="yaf-dispatcher.setdefaultaction.html" class="methodname">Yaf_Dispatcher::setDefaultAction()</a></span>
        も参照ください。
       </p>
      </dd>
 
-    </dt>
+    
 
-
-    <dt id="configuration.yaf.system">
-     <span class="term">
-      <em><code class="parameter">application.system</code></em>
+    
+     <dt id="configuration.yaf.system">
+      <code class="parameter">application.system</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -442,8 +443,7 @@ yaf.dispatcher.catchException = 0
       </p>
      </dd>
 
-    </dt>
-
+    
 
   </dl>
 

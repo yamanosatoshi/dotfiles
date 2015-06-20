@@ -13,7 +13,7 @@
 </div><hr /><div id="function.serialize" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">serialize</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">serialize</span> &mdash; <span class="dc-title">値の保存可能な表現を生成する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">serialize</span> &mdash; <span class="dc-title">値の保存可能な表現を生成する</span></p>
 
  </div>
  
@@ -32,7 +32,7 @@
   </p>
   <p class="para">
    シリアル化された文字列を PHP の値に戻すには、
-    <span class="function"><a href="function.unserialize.html" class="function">unserialize()</a></span> を使用してください。
+   <span class="function"><a href="function.unserialize.html" class="function">unserialize()</a></span> を使用してください。
   </p>
  </div>
 
@@ -42,23 +42,24 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">value</code></dt>
 
-     <span class="term"><em><code class="parameter">value</code></em></span>
      <dd>
 
       <p class="para">
        シリアル化する値。
-        <span class="function"><strong>serialize()</strong></span> は、<span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>
+       <span class="function"><strong>serialize()</strong></span> は、<span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>
        以外の全ての型を処理します。自分自身への参照を含む配列を
-        <span class="function"><strong>serialize()</strong></span> することも可能です。
+       <span class="function"><strong>serialize()</strong></span> することも可能です。
        シリアル化した配列/オブジェクト内の
        循環参照も保存されます。その他の参照は失われます。
       </p>
       <p class="para">
        PHP は、シリアル化の前にまずメンバ関数 <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a>
        のコールを試みます。ここで、シリアル化の前のオブジェクトの後始末処理
-       などを行います。同様に、 <span class="function"><a href="function.unserialize.html" class="function">unserialize()</a></span> で
+       などを行います。同様に、<span class="function"><a href="function.unserialize.html" class="function">unserialize()</a></span> で
        オブジェクトを復元した際にはメンバ関数
        <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a> がコールされます。
       </p>
@@ -71,8 +72,7 @@
       </p></blockquote>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -82,13 +82,13 @@
  <div class="refsect1 returnvalues" id="refsect1-function.serialize-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">value</code></em>
+   <code class="parameter">value</code>
    の保存可能なバイトストリーム表現を含む文字列を返します。
   </p>
   <p class="para">
    これはバイナリ文字列であり、null バイトを含む可能性もあることに注意しましょう。
    保存したり利用したりするときも、null バイトが含まれることを想定しておかないといけません。
-   たとえば、 <span class="function"><strong>serialize()</strong></span> の出力をデータベースに格納するときには、
+   たとえば、<span class="function"><strong>serialize()</strong></span> の出力をデータベースに格納するときには、
    通常は CHAR 型や TEXT 型ではなく BLOB 型を使わないといけません。
   </p>
  </div>
@@ -97,8 +97,8 @@
  <div class="refsect1 examples" id="refsect1-function.serialize-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5248">
-    <p><strong>例1  <span class="function"><strong>serialize()</strong></span> の例</strong></p>
+   <div class="example" id="example-5728">
+    <p><strong>例1 <span class="function"><strong>serialize()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;$session_data&nbsp;はカレントユーザーのセッション情報を含む多次元配列を<br />//&nbsp;保持しています。リクエストの最後にこれをデータベースに保存するために<br />//&nbsp;serialize()&nbsp;を使用します。<br /><br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"webdb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"php"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"chicken"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"UPDATE&nbsp;sessions&nbsp;SET&nbsp;data&nbsp;=&nbsp;?&nbsp;WHERE&nbsp;id&nbsp;=&nbsp;?"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sqldata&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(</span><span style="color: #0000BB">serialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$session_data</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'PHP_AUTH_USER'</span><span style="color: #007700">]);<br />if&nbsp;(!</span><span style="color: #0000BB">odbc_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sqldata</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;sessions&nbsp;(id,&nbsp;data)&nbsp;VALUES(?,&nbsp;?)"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">odbc_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sqldata</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;何か問題があったようです..&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -107,35 +107,6 @@
     </div>
 
    </div>
-  </p>
- </div>
-
-
- <div class="refsect1 changelog" id="refsect1-function.serialize-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.0.7</td>
-       <td>
-        オブジェクトのシリアル化処理の問題が修正されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
   </p>
  </div>
 
@@ -158,6 +129,12 @@
     <a href="class.arrayobject.html" class="classname">ArrayObject</a> があります。
    </p>
   </p></blockquote>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    <span class="function"><strong>serialize()</strong></span> でオブジェクトをシリアル化するときに、
+    名前空間を指定したクラスの名前の先頭にあるバックスラッシュは含めません。これは互換性を高めるためです。
+   </p>
+  </div>
  </div>
 
 
@@ -165,9 +142,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.unserialize.html" class="function" rel="rdfs-seeAlso">unserialize()</a> - 保存用表現から PHP の値を生成する</span></li>
-    <li class="member"> <span class="function"><a href="function.var-export.html" class="function" rel="rdfs-seeAlso">var_export()</a> - 変数の文字列表現を出力または返す</span></li>
-    <li class="member"> <span class="function"><a href="function.json-encode.html" class="function" rel="rdfs-seeAlso">json_encode()</a> - 値を JSON 形式にして返す</span></li>
+    <li class="member"><span class="function"><a href="function.unserialize.html" class="function" rel="rdfs-seeAlso">unserialize()</a> - 保存用表現から PHP の値を生成する</span></li>
+    <li class="member"><span class="function"><a href="function.var-export.html" class="function" rel="rdfs-seeAlso">var_export()</a> - 変数の文字列表現を出力または返す</span></li>
+    <li class="member"><span class="function"><a href="function.json-encode.html" class="function" rel="rdfs-seeAlso">json_encode()</a> - 値を JSON 形式にして返す</span></li>
     <li class="member"><a href="language.oop5.serialization.html" class="link">オブジェクトのシリアル化</a></li>
     <li class="member"><a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a></li>
     <li class="member"><a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a></li>

@@ -27,8 +27,8 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">filtername</code></em> で指定されたフィルタを、
-   <em><code class="parameter">stream</code></em> に付加されているフィルタのリストに加えます。
+   <code class="parameter">filtername</code> で指定されたフィルタを、
+   <code class="parameter">stream</code> に付加されているフィルタのリストに加えます。
   </p>
  </div>
 
@@ -38,9 +38,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">stream</code></dt>
 
-     <span class="term"><em><code class="parameter">stream</code></em></span>
      <dd>
 
       <p class="para">
@@ -48,11 +49,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">filtername</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">filtername</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,15 +61,15 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">read_write</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">read_write</code></em></span>
      <dd>
 
       <p class="para">
-       デフォルトでは、  <span class="function"><strong>stream_filter_prepend()</strong></span> は
+       デフォルトでは、 <span class="function"><strong>stream_filter_prepend()</strong></span> は
        ストリームが読み込み用に開かれている場合は (つまり、オープンモードが
        <em>r</em> あるいは <em>+</em> を伴う場合は)、
        フィルタを <em>リードフィルタチェイン</em> に追加し、
@@ -77,29 +78,28 @@
        <em>ライトフィルターチェィン</em>にも追加します。
        <strong><code>STREAM_FILTER_READ</code></strong>・
        <strong><code>STREAM_FILTER_WRITE</code></strong>・
-       <strong><code>STREAM_FILTER_ALL</code></strong> を <em><code class="parameter">read_write</code></em>パラメータに渡すことで、この挙動を変えることができます。
+       <strong><code>STREAM_FILTER_ALL</code></strong> を <code class="parameter">read_write</code>パラメータに渡すことで、この挙動を変えることができます。
        このパラメータを使った例については、
-        <span class="function"><a href="function.stream-filter-append.html" class="function">stream_filter_append()</a></span> を参照ください。
+       <span class="function"><a href="function.stream-filter-append.html" class="function">stream_filter_append()</a></span> を参照ください。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">params</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">params</code></em></span>
      <dd>
 
       <p class="para">
-       このフィルタは、指定された <em><code class="parameter">params</code></em> と共に、
+       このフィルタは、指定された <code class="parameter">params</code> と共に、
        リストの<em class="emphasis">先頭</em>に追加され、ストリームに対する操作の中で最初に呼び出されます。
-       フィルタをリストの末尾に加えたいときは、 <span class="function"><a href="function.stream-filter-append.html" class="function">stream_filter_append()</a></span>
+       フィルタをリストの末尾に加えたいときは、<span class="function"><a href="function.stream-filter-append.html" class="function">stream_filter_append()</a></span>
        を使ってください。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -110,7 +110,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    リソースを返します。このリソースは
-    <span class="function"><a href="function.stream-filter-remove.html" class="function">stream_filter_remove()</a></span> のコール時にこの
+   <span class="function"><a href="function.stream-filter-remove.html" class="function">stream_filter_remove()</a></span> のコール時にこの
    フィルタのインスタンスを指定するために使用可能です。
   </p>
  </div>
@@ -152,8 +152,8 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <strong>カスタム(ユーザー)フィルタを使うには</strong><br />
    <span class="simpara">
-    カスタムフィルタを <em><code class="parameter">filtername</code></em> に指定するためには、
-    まず  <span class="function"><a href="function.stream-filter-register.html" class="function">stream_filter_register()</a></span> 関数でそれを登録しておく
+    カスタムフィルタを <code class="parameter">filtername</code> に指定するためには、
+    まず <span class="function"><a href="function.stream-filter-register.html" class="function">stream_filter_register()</a></span> 関数でそれを登録しておく
     必要があります。
    </span>
   </p></blockquote>
@@ -163,7 +163,7 @@
     読み込まれ、内部バッファに保持されます。新しいフィルタがストリームに
     追加されても、内部バッファにあるデータのうち既に他のフィルタの処理が
     終わっているものは新しいフィルタでは<em class="emphasis">処理されません</em>。
-    これは  <span class="function"><strong>stream_filter_apppend()</strong></span> の挙動とは違います。
+    これは <span class="function"><strong>stream_filter_apppend()</strong></span> の挙動とは違います。
    </span>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -172,7 +172,7 @@
     2 つ作成されます。両方のフィルタリソースを取得するには、
     <strong><code>STREAM_FILTER_READ</code></strong> と
     <strong><code>STREAM_FILTER_WRITE</code></strong> で
-     <span class="function"><strong>stream_filter_prepend()</strong></span> を 2 回コールしなければなりません。
+    <span class="function"><strong>stream_filter_prepend()</strong></span> を 2 回コールしなければなりません。
    </span>
   </p></blockquote>
  </div>
@@ -181,8 +181,8 @@
  <div class="refsect1 seealso" id="refsect1-function.stream-filter-prepend-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="function.stream-filter-register.html" class="function" rel="rdfs-seeAlso">stream_filter_register()</a> - ユーザー定義のストリームフィルタを登録する</span></li>
-   <li class="member"> <span class="function"><a href="function.stream-filter-append.html" class="function" rel="rdfs-seeAlso">stream_filter_append()</a> - ストリームにフィルタを付加する</span></li>
+   <li class="member"><span class="function"><a href="function.stream-filter-register.html" class="function" rel="rdfs-seeAlso">stream_filter_register()</a> - ユーザー定義のストリームフィルタを登録する</span></li>
+   <li class="member"><span class="function"><a href="function.stream-filter-append.html" class="function" rel="rdfs-seeAlso">stream_filter_append()</a> - ストリームにフィルタを付加する</span></li>
   </ul>
  </div>
 

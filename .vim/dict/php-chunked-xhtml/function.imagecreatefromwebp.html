@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagecreatefromwebp" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagecreatefromwebp</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.5.0)</p><p class="refpurpose"><span class="refname">imagecreatefromwebp</span> &mdash; <span class="dc-title">新しい画像をファイルあるいは URL から作成する</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7)</p><p class="refpurpose"><span class="refname">imagecreatefromwebp</span> &mdash; <span class="dc-title">新しい画像をファイルあるいは URL から作成する</span></p>
 
  </div>
 
@@ -25,12 +25,12 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>imagecreatefromwebp()</strong></span>
+   <span class="function"><strong>imagecreatefromwebp()</strong></span>
    は、指定したファイル名から得られる画像を表す ID を返します。
   </p>
   <div class="tip"><strong class="tip">ヒント</strong><p class="simpara"><a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">fopen wrappers</a> が有効の場合、この関数のファイル名として
 URL を使用することができます。ファイル名の指定方法に関する詳細は
- <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を参照ください。
+<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を参照ください。
 <a href="wrappers.html" class="xref">サポートするプロトコル/ラッパー</a> には、さまざまなラッパーの機能やその使用法、
 提供される定義済み変数などの情報がまとめられています。</p></div>
  </div>
@@ -41,9 +41,10 @@ URL を使用することができます。ファイル名の指定方法に関�
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -51,8 +52,7 @@ URL を使用することができます。ファイル名の指定方法に関�
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -68,8 +68,8 @@ URL を使用することができます。ファイル名の指定方法に関�
  <div class="refsect1 examples" id="refsect1-function.imagecreatefromwebp-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3208">
-    <p><strong>例1  <span class="function"><strong>imagecreatefromwebp()</strong></span> を使った、WebP から jpeg への変換</strong></p>
+   <div class="example" id="example-3407">
+    <p><strong>例1 <span class="function"><strong>imagecreatefromwebp()</strong></span> を使った、WebP から jpeg への変換</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;WebP&nbsp;ファイルを読み込みます<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefromwebp</span><span style="color: #007700">(</span><span style="color: #DD0000">'./example.webp'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;100%&nbsp;のクオリティで&nbsp;jpeg&nbsp;ファイルに変換します<br /></span><span style="color: #0000BB">imagejpeg</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'./example.jpeg'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

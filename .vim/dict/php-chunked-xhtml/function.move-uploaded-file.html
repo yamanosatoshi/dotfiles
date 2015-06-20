@@ -13,7 +13,7 @@
 </div><hr /><div id="function.move-uploaded-file" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">move_uploaded_file</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5)</p><p class="refpurpose"><span class="refname">move_uploaded_file</span> &mdash; <span class="dc-title">アップロードされたファイルを新しい位置に移動する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">move_uploaded_file</span> &mdash; <span class="dc-title">アップロードされたファイルを新しい位置に移動する</span></p>
 
  </div>
  
@@ -26,11 +26,11 @@
    )</div>
 
   <p class="para rdfs-comment">
-   この関数は、<em><code class="parameter">filename</code></em>
+   この関数は、<code class="parameter">filename</code>
    で指定されたファイルが
    (PHP の HTTP POST アップロード機構によりアップロードされたという意味で)
    有効なアップロードファイルであるかどうかを確認します。
-   そのファイルが有効な場合、<em><code class="parameter">destination</code></em>
+   そのファイルが有効な場合、<code class="parameter">destination</code>
    で指定したファイル名に移動されます。
   </p>
   <p class="para">
@@ -46,9 +46,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -56,11 +57,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">destination</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">destination</code></em></span>
      <dd>
 
       <p class="para">
@@ -68,8 +69,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -82,14 +82,14 @@
    成功した場合に <strong><code>TRUE</code></strong> を返します。
   </p>
   <p class="para">
-   <em><code class="parameter">filename</code></em> が有効なアップロードファイルでない場合、
-   処理は行われず、 <span class="function"><strong>move_uploaded_file()</strong></span> は
+   <code class="parameter">filename</code> が有効なアップロードファイルでない場合、
+   処理は行われず、<span class="function"><strong>move_uploaded_file()</strong></span> は
    <strong><code>FALSE</code></strong> を返します。
   </p>
   <p class="para">
-   <em><code class="parameter">filename</code></em> が有効なアップロードファイルであるが、
+   <code class="parameter">filename</code> が有効なアップロードファイルであるが、
    何らかの理由により、移動できない場合、処理は行われず、
-    <span class="function"><strong>move_uploaded_file()</strong></span> は
+   <span class="function"><strong>move_uploaded_file()</strong></span> は
    <strong><code>FALSE</code></strong> を返します。加えて、警告が出力されます。
   </p>
  </div>
@@ -98,7 +98,7 @@
  <div class="refsect1 examples" id="refsect1-function.move-uploaded-file-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2404">
+   <div class="example" id="example-2603">
     <p><strong>例1 複数のファイルのアップロード</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -116,14 +116,14 @@
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>move_uploaded_file()</strong></span> は <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">セーフモード</a> と
+    <span class="function"><strong>move_uploaded_file()</strong></span> は <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">セーフモード</a> と
     <a href="ini.core.html#ini.open-basedir" class="link">open_basedir</a>
     の両者を考慮しています。
     しかしながら、アップロードされたファイルを移動する
-    <em><code class="parameter">destination</code></em> パスのみ制限が設けられます。
-    そこでは <em><code class="parameter">filename</code></em>
+    <code class="parameter">destination</code> パスのみ制限が設けられます。
+    そこでは <code class="parameter">filename</code>
     がそれらの制限に抵触する可能性があるためです。
-     <span class="function"><strong>move_uploaded_file()</strong></span> は PHP
+    <span class="function"><strong>move_uploaded_file()</strong></span> は PHP
     を通じてアップロードされたファイルのみを移動できるようにすることで
     この操作の安全性を保証しています。
    </p>
@@ -140,8 +140,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.is-uploaded-file.html" class="function" rel="rdfs-seeAlso">is_uploaded_file()</a> - HTTP POST でアップロードされたファイルかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.rename.html" class="function" rel="rdfs-seeAlso">rename()</a> - ファイルをリネームする</span></li>
+    <li class="member"><span class="function"><a href="function.is-uploaded-file.html" class="function" rel="rdfs-seeAlso">is_uploaded_file()</a> - HTTP POST でアップロードされたファイルかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.rename.html" class="function" rel="rdfs-seeAlso">rename()</a> - ファイルをリネームする</span></li>
     <li class="member">簡単な使用例については <a href="features.file-upload.html" class="link">ファイルアップロードの処理</a></li>
    </ul>
   </p>

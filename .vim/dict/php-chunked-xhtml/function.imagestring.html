@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagestring" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagestring</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">imagestring</span> &mdash; <span class="dc-title">文字列を水平に描画する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagestring</span> &mdash; <span class="dc-title">文字列を水平に描画する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagestring-description">
@@ -29,7 +29,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-   指定した座標に文字列 <em><code class="parameter">string</code></em> を描画します。
+   指定した座標に文字列 <code class="parameter">string</code> を描画します。
   </p>
  </div>
 
@@ -39,25 +39,26 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
     <dt>
-<span class="term"><em><code class="parameter">
-font</code></em></span><dd>
+<code class="parameter">
+font</code></dt>
+<dd>
 <p class="para">latin2 エンコーディングの組み込みのフォントの場合は
 1, 2, 3, 4, 5 のいずれか (数字が大きなほうが、より大きいフォントに対応します)、
-あるいは  <span class="function"><a href="function.imageloadfont.html" class="function">imageloadfont()</a></span>
+あるいは <span class="function"><a href="function.imageloadfont.html" class="function">imageloadfont()</a></span>
 で登録したフォントの識別子のいずれか。
 </p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">x</code></dt>
 
-     <span class="term"><em><code class="parameter">x</code></em></span>
      <dd>
 
       <p class="para">
@@ -65,11 +66,11 @@ font</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">y</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">y</code></em></span>
      <dd>
 
       <p class="para">
@@ -77,11 +78,11 @@ font</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">string</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">string</code></em></span>
      <dd>
 
       <p class="para">
@@ -89,21 +90,20 @@ font</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">color</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">color</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span>
+       <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span>
        で作成した色 ID。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -119,8 +119,8 @@ font</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imagestring-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3271">
-    <p><strong>例1  <span class="function"><strong>imagestring()</strong></span> の例</strong></p>
+   <div class="example" id="example-3470">
+    <p><strong>例1 <span class="function"><strong>imagestring()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;100*30&nbsp;の画像を生成します<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreate</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">30</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;白色の背景と青色のテキスト<br /></span><span style="color: #0000BB">$bg&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$textcolor&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;左上に文字列を描画します<br /></span><span style="color: #0000BB">imagestring</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;world!"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$textcolor</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;画像を出力します<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-type:&nbsp;image/png"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -144,8 +144,8 @@ font</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imageloadfont.html" class="function" rel="rdfs-seeAlso">imageloadfont()</a> - 新しいフォントを読み込む</span></li>
-    <li class="member"> <span class="function"><a href="function.imagettftext.html" class="function" rel="rdfs-seeAlso">imagettftext()</a> - TrueType フォントを使用してテキストを画像に書き込む</span></li>
+    <li class="member"><span class="function"><a href="function.imageloadfont.html" class="function" rel="rdfs-seeAlso">imageloadfont()</a> - 新しいフォントを読み込む</span></li>
+    <li class="member"><span class="function"><a href="function.imagettftext.html" class="function" rel="rdfs-seeAlso">imagettftext()</a> - TrueType フォントを使用してテキストを画像に書き込む</span></li>
    </ul>
   </p>
  </div>

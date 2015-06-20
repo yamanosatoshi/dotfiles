@@ -40,9 +40,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">connection</code></dt>
 
-    <span class="term"><em><code class="parameter">connection</code></em></span>
     <dd>
 
      <p class="para">
@@ -50,11 +51,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">user</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">user</code></em></span>
     <dd>
 
      <p class="para">
@@ -62,11 +63,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">password</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">password</code></em></span>
     <dd>
 
      <p class="para">
@@ -74,11 +75,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">database</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">database</code></em></span>
     <dd>
 
      <p class="para">
@@ -86,11 +87,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">silent</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">silent</code></em></span>
     <dd>
 
      <p class="para">
@@ -98,11 +99,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">passwd_len</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">passwd_len</code></em></span>
     <dd>
 
      <p class="para">
@@ -110,8 +111,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -129,8 +129,8 @@
  <div class="refsect1 examples" id="refsect1-mysqlnduhconnection.changeuser-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1875">
-    <p><strong>例1  <span class="function"><strong>MysqlndUhConnection::changeUser()</strong></span> example</strong></p>
+   <div class="example" id="example-2067">
+    <p><strong>例1 <span class="function"><strong>MysqlndUhConnection::changeUser()</strong></span> example</strong></p>
         <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">proxy&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">MysqlndUhConnection&nbsp;</span><span style="color: #007700">{<br />&nbsp;</span><span style="color: #FF8000">/*&nbsp;Hook&nbsp;mysqlnd's&nbsp;connection::change_user&nbsp;call&nbsp;*/<br />&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">changeUser</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$user</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$passwd</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$silent</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$passwd_len</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s(%s)\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">changeUser</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$user</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$passwd</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$silent</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$passwd_len</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s&nbsp;returns&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$ret</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$ret</span><span style="color: #007700">;<br />&nbsp;}<br />}<br /></span><span style="color: #FF8000">/*&nbsp;Install&nbsp;proxy/hooks&nbsp;to&nbsp;be&nbsp;used&nbsp;with&nbsp;all&nbsp;future&nbsp;mysqlnd&nbsp;connection&nbsp;*/<br /></span><span style="color: #0000BB">mysqlnd_uh_set_connection_proxy</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">proxy</span><span style="color: #007700">());<br /><br /></span><span style="color: #FF8000">/*&nbsp;Create&nbsp;mysqli&nbsp;connection&nbsp;which&nbsp;is&nbsp;using&nbsp;the&nbsp;mysqlnd&nbsp;library&nbsp;*/<br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"root"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Example&nbsp;of&nbsp;a&nbsp;user&nbsp;API&nbsp;call&nbsp;which&nbsp;triggers&nbsp;the&nbsp;hooked&nbsp;mysqlnd&nbsp;call&nbsp;*/<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">change_user</span><span style="color: #007700">(</span><span style="color: #DD0000">"root"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"bar"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -164,10 +164,10 @@ bool(false)
   <p class="para">
    <ul class="simplelist">
     <li class="member">
-      <span class="function"><a href="function.mysqlnd-uh-set-connection-proxy.html" class="function" rel="rdfs-seeAlso">mysqlnd_uh_set_connection_proxy()</a> - Installs a proxy for mysqlnd connections</span>
+     <span class="function"><a href="function.mysqlnd-uh-set-connection-proxy.html" class="function" rel="rdfs-seeAlso">mysqlnd_uh_set_connection_proxy()</a> - Installs a proxy for mysqlnd connections</span>
     </li>
     <li class="member">
-      <span class="function"><a href="mysqli.change-user.html" class="function" rel="rdfs-seeAlso">mysqli_change_user()</a> - 指定されたデータベース接続のユーザー名を変更する</span>
+     <span class="function"><a href="mysqli.change-user.html" class="function" rel="rdfs-seeAlso">mysqli_change_user()</a> - 指定されたデータベース接続のユーザー名を変更する</span>
     </li>
    </ul>
   </p>

@@ -26,7 +26,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>syslog()</strong></span> はシステムログが出力するログメッセージを生成します。
+   <span class="function"><strong>syslog()</strong></span> はシステムログが出力するログメッセージを生成します。
   </p>
   <p class="para">
    ユーザー定義のログハンドラの設定に関する情報については、Unix マニュアルの
@@ -44,16 +44,17 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">priority</code></dt>
 
-     <span class="term"><em><code class="parameter">priority</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">priority</code></em> は、容易さ (facility)
+       <code class="parameter">priority</code> は、容易さ (facility)
        とレベル (level) の組み合わせです。以下の値が使用できます。
        <table class="doctable table">
-        <caption><strong> <span class="function"><strong>syslog()</strong></span> の優先順位 (降順)</strong></caption>
+        <caption><strong><span class="function"><strong>syslog()</strong></span> の優先順位 (降順)</strong></caption>
         
          <thead>
           <tr>
@@ -111,11 +112,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">message</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">message</code></em></span>
      <dd>
 
       <p class="para">
@@ -125,8 +126,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -144,8 +144,8 @@
  <div class="refsect1 examples" id="refsect1-function.syslog-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4475">
-    <p><strong>例1  <span class="function"><strong>syslog()</strong></span> の使用例</strong></p>
+   <div class="example" id="example-4921">
+    <p><strong>例1 <span class="function"><strong>syslog()</strong></span> の使用例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;syslogをオープンし、プロセスIDをインクルードし、標準エラー出力にも<br />//&nbsp;ログを出力します。そして、ユーザー定義のログ記録機構を使用します。<br /></span><span style="color: #0000BB">openlog</span><span style="color: #007700">(</span><span style="color: #DD0000">"myScriptLog"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">LOG_PID&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">LOG_PERROR</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">LOG_LOCAL0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;何らかのコード<br /><br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">authorized_client</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;何かをする<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;クライアントは未認証!<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;ログを記録する<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$access&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y/m/d&nbsp;H:i:s"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">syslog</span><span style="color: #007700">(</span><span style="color: #0000BB">LOG_WARNING</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Unauthorized&nbsp;client:&nbsp;</span><span style="color: #0000BB">$access</span><span style="color: #DD0000">&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'REMOTE_ADDR'</span><span style="color: #007700">]}</span><span style="color: #DD0000">&nbsp;(</span><span style="color: #007700">{</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'HTTP_USER_AGENT'</span><span style="color: #007700">]}</span><span style="color: #DD0000">)"</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">closelog</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -165,8 +165,8 @@
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    Windows 環境では、 <span class="function"><a href="function.openlog.html" class="function">openlog()</a></span> の
-    <em><code class="parameter">facility</code></em> パラメータに
+    Windows 環境では、<span class="function"><a href="function.openlog.html" class="function">openlog()</a></span> の
+    <code class="parameter">facility</code> パラメータに
     <em>LOG_LOCAL0</em> から <em>LOG_LOCAL7</em>
     までを使用することはできません。
    </p>
@@ -178,8 +178,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.openlog.html" class="function" rel="rdfs-seeAlso">openlog()</a> - システムのロガーへの接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.closelog.html" class="function" rel="rdfs-seeAlso">closelog()</a> - システムログへの接続を閉じる</span></li>
+    <li class="member"><span class="function"><a href="function.openlog.html" class="function" rel="rdfs-seeAlso">openlog()</a> - システムのロガーへの接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.closelog.html" class="function" rel="rdfs-seeAlso">closelog()</a> - システムログへの接続を閉じる</span></li>
    </ul>
   </p>
  </div>

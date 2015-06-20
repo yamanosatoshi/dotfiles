@@ -6,8 +6,8 @@
 
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.event-new.html">event_new</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="book.pcntl.html">PCNTL</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="function.event-priority-set.html">event_priority_set</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.event-timer-add.html">event_timer_add</a></div>
  <div class="up"><a href="ref.libevent.html">Libevent 関数</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="function.event-set" class="refentry">
@@ -29,30 +29,31 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><a href="event.add.html" class="function">event_add()</a></span> で使うイベントを準備します。
-   <em><code class="parameter">events</code></em> で指定したイベントが発生したときに
-   <em><code class="parameter">callback</code></em> で指定した関数をコールするように設定します。
-   <em><code class="parameter">events</code></em> は、次のフラグ
+   <span class="function"><a href="event.add.html" class="function">event_add()</a></span> で使うイベントを準備します。
+   <code class="parameter">events</code> で指定したイベントが発生したときに
+   <code class="parameter">callback</code> で指定した関数をコールするように設定します。
+   <code class="parameter">events</code> は、次のフラグ
    <strong><code>EV_TIMEOUT</code></strong>、<strong><code>EV_SIGNAL</code></strong>、
    <strong><code>EV_READ</code></strong>、<strong><code>EV_WRITE</code></strong>
    および <strong><code>EV_PERSIST</code></strong> の組み合わせとなります。
   </p>
   <p class="para">
-   <strong><code>EV_SIGNAL</code></strong> ビットを <em><code class="parameter">events</code></em>
-   で設定すると、<em><code class="parameter">fd</code></em> をシグナル番号として解釈します。
+   <strong><code>EV_SIGNAL</code></strong> ビットを <code class="parameter">events</code>
+   で設定すると、<code class="parameter">fd</code> をシグナル番号として解釈します。
   </p>
   <p class="para">
-   イベントを初期化したら、 <span class="function"><a href="function.event-base-set.html" class="function">event_base_set()</a></span>
+   イベントを初期化したら、<span class="function"><a href="function.event-base-set.html" class="function">event_base_set()</a></span>
    を使ってイベントをイベントベースに関連づけます。
   </p>
   <p class="para">
    マッチするイベントが発生したら、これらの三つの引数が
-   <em><code class="parameter">callback</code></em> 関数に渡されます。
+   <code class="parameter">callback</code> 関数に渡されます。
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">fd</code></dt>
 
-     <span class="term"><em><code class="parameter">fd</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,11 +61,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">events</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">events</code></em></span>
      <dd>
 
       <p class="para">
@@ -75,21 +76,20 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">arg</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">arg</code></em></span>
      <dd>
 
       <p class="para">
-       オプションのパラメータ。 <span class="function"><a href="event.set.html" class="function">event_set()</a></span>
-       に <em><code class="parameter">arg</code></em> で渡されたもの。
+       オプションのパラメータ。<span class="function"><a href="event.set.html" class="function">event_set()</a></span>
+       に <code class="parameter">arg</code> で渡されたもの。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -101,9 +101,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">event</code></dt>
 
-     <span class="term"><em><code class="parameter">event</code></em></span>
      <dd>
 
       <p class="para">
@@ -111,11 +112,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">fd</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">fd</code></em></span>
      <dd>
 
       <p class="para">
@@ -124,27 +125,27 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">events</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">events</code></em></span>
      <dd>
 
       <p class="para">
        指定したイベントを表すフラグの組み合わせ。
        <strong><code>EV_READ</code></strong> と <strong><code>EV_WRITE</code></strong>
        が使えます。追加のフラグ <strong><code>EV_PERSIST</code></strong>
-       を指定すると、 <span class="function"><a href="event.del.html" class="function">event_del()</a></span> がコールされるまでイベントが持続します。
+       を指定すると、<span class="function"><a href="event.del.html" class="function">event_del()</a></span> がコールされるまでイベントが持続します。
        指定しなければ、コールバックは一度だけしか実行されません。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">callback</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">callback</code></em></span>
      <dd>
 
       <p class="para">
@@ -152,11 +153,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">arg</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">arg</code></em></span>
      <dd>
 
       <p class="para">
@@ -164,8 +165,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -175,7 +175,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.event-set-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    <span class="function"><a href="event.set.html" class="function">event_set()</a></span> は成功した場合に <strong><code>TRUE</code></strong>、エラー時に <strong><code>FALSE</code></strong> を返します。
+   <span class="function"><a href="event.set.html" class="function">event_set()</a></span> は成功した場合に <strong><code>TRUE</code></strong>、エラー時に <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
 
@@ -208,8 +208,8 @@
 
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.event-new.html">event_new</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="book.pcntl.html">PCNTL</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="function.event-priority-set.html">event_priority_set</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.event-timer-add.html">event_timer_add</a></div>
  <div class="up"><a href="ref.libevent.html">Libevent 関数</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div></body></html>

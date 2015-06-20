@@ -25,15 +25,15 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>msql_fetch_array()</strong></span> は、
-    <span class="function"><a href="function.msql-fetch-row.html" class="function">msql_fetch_row()</a></span> の拡張版です。
+   <span class="function"><strong>msql_fetch_array()</strong></span> は、
+   <span class="function"><a href="function.msql-fetch-row.html" class="function">msql_fetch_row()</a></span> の拡張版です。
    結果配列のデータを数値インデックスに格納することに加え、
    フィールド名をキーとして連想配列にも格納します。
   </p>
   <p class="para"> 
-    <span class="function"><strong>msql_fetch_array()</strong></span> の使用に際して注意すべきことは、
+   <span class="function"><strong>msql_fetch_array()</strong></span> の使用に際して注意すべきことは、
    かなりの付加機能を提供するにもかかわらず、
-    <span class="function"><a href="function.msql-fetch-row.html" class="function">msql_fetch_row()</a></span> を使用する場合より
+   <span class="function"><a href="function.msql-fetch-row.html" class="function">msql_fetch_row()</a></span> を使用する場合より
    そんなに遅くないということです。
   </p>  
  </div>
@@ -44,16 +44,17 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
+<code class="parameter">
+result</code></dt>
+<dd>
 <p class="para">評価された結果 <span class="type"><span class="type リソース">リソース</span></span>。
-この結果は、 <span class="function"><a href="function.msql-query.html" class="function">msql_query()</a></span> のコールにより得られたものです。</p>
+この結果は、<span class="function"><a href="function.msql-query.html" class="function">msql_query()</a></span> のコールにより得られたものです。</p>
 </dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result_type</code></dt>
 
-     <span class="term"><em><code class="parameter">result_type</code></em></span>
      <dd>
 
       <p class="para">
@@ -64,8 +65,7 @@ result</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -82,8 +82,8 @@ result</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.msql-fetch-array-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1515">
-    <p><strong>例1  <span class="function"><strong>msql_fetch_array()</strong></span> の例</strong></p>
+   <div class="example" id="example-1694">
+    <p><strong>例1 <span class="function"><strong>msql_fetch_array()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$con&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">msql_connect</span><span style="color: #007700">();<br />if&nbsp;(!</span><span style="color: #0000BB">$con</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Server&nbsp;connection&nbsp;problem:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">msql_error</span><span style="color: #007700">());<br />}<br /><br />if&nbsp;(!</span><span style="color: #0000BB">msql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">'test'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$con</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Database&nbsp;connection&nbsp;problem:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">msql_error</span><span style="color: #007700">());<br />}<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">msql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;id,&nbsp;name&nbsp;FROM&nbsp;people'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Query&nbsp;execution&nbsp;problem:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">msql_error</span><span style="color: #007700">());<br />}<br /><br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">msql_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MSQL_ASSOC</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'id'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">':&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">msql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -110,7 +110,7 @@ result</code></em></span><dd>
 
      <tbody class="tbody">
       <tr>
-       <td>4.3.11 および 5.0.4 </td>
+       <td>5.0.4</td>
        <td>
         <strong><code>NULL</code></strong> 値を含むカラムからデータを取得する際のバグが修正されました。
         そのようなカラムは結果の配列に含まれていませんでした。
@@ -128,10 +128,10 @@ result</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.msql-fetch-row.html" class="function" rel="rdfs-seeAlso">msql_fetch_row()</a> - 結果の行を数値配列として取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.msql-fetch-object.html" class="function" rel="rdfs-seeAlso">msql_fetch_object()</a> - 結果の行をオブジェクトとして取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.msql-data-seek.html" class="function" rel="rdfs-seeAlso">msql_data_seek()</a> - 行に関する内部ポインタを移動する</span></li>
-    <li class="member"> <span class="function"><a href="function.msql-result.html" class="function" rel="rdfs-seeAlso">msql_result()</a> - 結果のデータを得る</span></li>
+    <li class="member"><span class="function"><a href="function.msql-fetch-row.html" class="function" rel="rdfs-seeAlso">msql_fetch_row()</a> - 結果の行を数値配列として取得する</span></li>
+    <li class="member"><span class="function"><a href="function.msql-fetch-object.html" class="function" rel="rdfs-seeAlso">msql_fetch_object()</a> - 結果の行をオブジェクトとして取得する</span></li>
+    <li class="member"><span class="function"><a href="function.msql-data-seek.html" class="function" rel="rdfs-seeAlso">msql_data_seek()</a> - 行に関する内部ポインタを移動する</span></li>
+    <li class="member"><span class="function"><a href="function.msql-result.html" class="function" rel="rdfs-seeAlso">msql_result()</a> - 結果のデータを得る</span></li>
    </ul>
   </p>
  </div>

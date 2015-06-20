@@ -27,8 +27,8 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli-result.fetch-assoc.html" class="function">mysqli_fetch_assoc()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="pdostatement.fetch.html" class="methodname">PDOStatement::fetch(PDO::FETCH_ASSOC)</a></span></li>
+    <li class="member"><span class="function"><a href="mysqli-result.fetch-assoc.html" class="function">mysqli_fetch_assoc()</a></span></li>
+    <li class="member"><span class="methodname"><a href="pdostatement.fetch.html" class="methodname">PDOStatement::fetch(PDO::FETCH_ASSOC)</a></span></li>
    </ul>
   </div>
  </div>
@@ -42,8 +42,8 @@
 
   <p class="para rdfs-comment">
    取得した行に対応する連想配列を返し、内部のデータポインタを前に進めます。
-    <span class="function"><strong>mysql_fetch_assoc()</strong></span> は、
-    <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> の 2 番目のパラメータを
+   <span class="function"><strong>mysql_fetch_assoc()</strong></span> は、
+   <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> の 2 番目のパラメータを
    MYSQL_ASSOC に指定してコールするのと同じ働きをします。つまり、
    連想配列のみを返します。
   </p>
@@ -56,12 +56,12 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
+<code class="parameter">
+result</code></dt>
+<dd>
 <p class="para">評価された結果 <span class="type"><span class="type リソース">リソース</span></span>。
-この結果は、 <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
+この結果は、<span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
 </dd>
-</dt>
 
    </dl>
 
@@ -78,9 +78,9 @@ result</code></em></span><dd>
   <p class="para">
    結果の複数のカラムが同じフィールド名を有している場合、最後のカラ
    ムが優先されます。同じ名前を有する他のカラムにアクセスするには、
-    <span class="function"><a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a></span>を使用して数値添字を返すか、
+   <span class="function"><a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a></span>を使用して数値添字を返すか、
    エイリアス名を追加する必要があります。エイリアスの説明については、
-    <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span>の例を参照ください。
+   <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span>の例を参照ください。
   </p>
  </div>
 
@@ -88,8 +88,8 @@ result</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.mysql-fetch-assoc-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1580">
-    <p><strong>例1  <span class="function"><strong>mysql_fetch_assoc()</strong></span> のいろいろな例</strong></p>
+   <div class="example" id="example-1759">
+    <p><strong>例1 <span class="function"><strong>mysql_fetch_assoc()</strong></span> のいろいろな例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">);<br /><br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Unable&nbsp;to&nbsp;connect&nbsp;to&nbsp;DB:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br />if&nbsp;(!</span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"mydbname"</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Unable&nbsp;to&nbsp;select&nbsp;mydbname:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;id&nbsp;as&nbsp;userid,&nbsp;fullname,&nbsp;userstatus<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;&nbsp;&nbsp;sometable<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;&nbsp;userstatus&nbsp;=&nbsp;1"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br /><br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;successfully&nbsp;run&nbsp;query&nbsp;(</span><span style="color: #0000BB">$sql</span><span style="color: #DD0000">)&nbsp;from&nbsp;DB:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br />if&nbsp;(</span><span style="color: #0000BB">mysql_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"No&nbsp;rows&nbsp;found,&nbsp;nothing&nbsp;to&nbsp;print&nbsp;so&nbsp;am&nbsp;exiting"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;データ行が存在する間、それを&nbsp;$row&nbsp;に連想配列形式でセットする<br />//&nbsp;注:&nbsp;結果が&nbsp;1&nbsp;行であることがわかっているのなら、ループを利用しなくてもよい<br />//&nbsp;注:&nbsp;ループ内で&nbsp;extract($row);&nbsp;を実行すれば、<br />//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$userid,&nbsp;$fullname,&nbsp;そして&nbsp;$userstatus&nbsp;を利用できる<br /></span><span style="color: #007700">while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"userid"</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"fullname"</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"userstatus"</span><span style="color: #007700">];<br />}<br /><br /></span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -107,9 +107,9 @@ result</code></em></span><dd>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <strong>パフォーマンス</strong><br />
    <p class="para">
-    特筆すべき点として、 <span class="function"><strong>mysql_fetch_assoc()</strong></span> が
+    特筆すべき点として、<span class="function"><strong>mysql_fetch_assoc()</strong></span> が
     著しい付加価値があるにもかかわらず、
-     <span class="function"><a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a></span>より
+    <span class="function"><a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a></span>より
     <em class="emphasis">それほど</em>遅くはないということが言えます。
    </p>
   </p></blockquote>
@@ -124,11 +124,11 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-fetch-row.html" class="function" rel="rdfs-seeAlso">mysql_fetch_row()</a> - 結果を添字配列として取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-fetch-array.html" class="function" rel="rdfs-seeAlso">mysql_fetch_array()</a> - 連想配列、添字配列、またはその両方として結果の行を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-data-seek.html" class="function" rel="rdfs-seeAlso">mysql_data_seek()</a> - 内部的な結果ポインタを移動する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - MySQL クエリを送信する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-error.html" class="function" rel="rdfs-seeAlso">mysql_error()</a> - 直近に実行された MySQL 操作のエラーメッセージを返す</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-row.html" class="function" rel="rdfs-seeAlso">mysql_fetch_row()</a> - 結果を添字配列として取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-array.html" class="function" rel="rdfs-seeAlso">mysql_fetch_array()</a> - 連想配列、添字配列、またはその両方として結果の行を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-data-seek.html" class="function" rel="rdfs-seeAlso">mysql_data_seek()</a> - 内部的な結果ポインタを移動する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - MySQL クエリを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-error.html" class="function" rel="rdfs-seeAlso">mysql_error()</a> - 直近に実行された MySQL 操作のエラーメッセージを返す</span></li>
    </ul>
   </p>
  </div>

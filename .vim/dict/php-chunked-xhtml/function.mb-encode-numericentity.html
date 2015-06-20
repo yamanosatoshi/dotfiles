@@ -28,8 +28,8 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">str</code></em>の中で指定した文字コードを
-   HTML 数値エンティティから文字コードに変換します。
+   <code class="parameter">str</code>の中で指定した文字コードを
+   文字コードから HTML 数値エンティティに変換します。
   </p>
  </div>
 
@@ -39,9 +39,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">str</code></dt>
 
-     <span class="term"><em><code class="parameter">str</code></em></span>
      <dd>
 
       <p class="para">
@@ -49,43 +50,42 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">convmap</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">convmap</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">convmap</code></em> は、変換するコード領域を指定する配列です。
+       <code class="parameter">convmap</code> は、変換するコード領域を指定する配列です。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">encoding</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">encoding</code></em></span>
      <dd>
 
-      <p class="para"><em><code class="parameter">encoding</code></em> 
+      <p class="para"><code class="parameter">encoding</code> 
 パラメータには文字エンコーディングを指定します。省略した場合は、
 内部文字エンコーディングを使用します。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">is_hex</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">is_hex</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -117,7 +117,7 @@
       <tr>
        <td>5.4.0</td>
        <td>
-        <em><code class="parameter">is_hex</code></em> パラメータが追加されました。
+        <code class="parameter">is_hex</code> パラメータが追加されました。
        </td>
       </tr>
 
@@ -132,8 +132,8 @@
  <div class="refsect1 examples" id="refsect1-function.mb-encode-numericentity-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2700">
-    <p><strong>例1 <em><code class="parameter">convmap</code></em> の例</strong></p>
+   <div class="example" id="example-2899">
+    <p><strong>例1 <code class="parameter">convmap</code> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$convmap&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(<br />&nbsp;</span><span style="color: #0000BB">int&nbsp;start_code1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;end_code1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;offset1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;mask1</span><span style="color: #007700">,<br />&nbsp;</span><span style="color: #0000BB">int&nbsp;start_code2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;end_code2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;offset2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;mask2</span><span style="color: #007700">,<br />&nbsp;........<br />&nbsp;</span><span style="color: #0000BB">int&nbsp;start_codeN</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;end_codeN</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;offsetN</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;maskN&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;start_codeN&nbsp;および&nbsp;end_codeN&nbsp;に&nbsp;Unicode&nbsp;値を指定<br />//&nbsp;値に&nbsp;offsetN&nbsp;を追加、マスク&nbsp;maskN&nbsp;を指定してビット毎の'AND'をとり、<br />//&nbsp;数値エンティティに値を変換します。<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -149,8 +149,8 @@
  <div class="refsect1 examples" id="refsect1-function.mb-encode-numericentity-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2701">
-    <p><strong>例2  <span class="function"><strong>mb_encode_numericentity()</strong></span> の例</strong></p>
+   <div class="example" id="example-2900">
+    <p><strong>例2 <span class="function"><strong>mb_encode_numericentity()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;ISO-8859-1&nbsp;の左面をHTML数値エンティティに変換&nbsp;*/<br /></span><span style="color: #0000BB">$convmap&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">0x80</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xff</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xff</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mb_encode_numericentity</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$convmap</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"ISO-8859-1"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;ブロック&nbsp;95-104&nbsp;にある&nbsp;SJIS-win&nbsp;コードのユーザー定義領域を<br />&nbsp;&nbsp;&nbsp;数値エンティティに変換&nbsp;*/<br /></span><span style="color: #0000BB">$convmap&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0xe000</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xe03e</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x1040</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xffff</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0xe03f</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xe0bb</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x1041</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xffff</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0xe0bc</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xe0fa</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x1084</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xffff</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0xe0fb</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xe177</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x1085</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xffff</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0xe178</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xe1b6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x10c8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xffff</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0xe1b7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xe233</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x10c9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xffff</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0xe234</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xe272</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x110c</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xffff</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0xe273</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xe2ef</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x110d</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xffff</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0xe2f0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xe32e</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x1150</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xffff</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0xe32f</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xe3ab</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x1151</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xffff&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mb_encode_numericentity</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$convmap</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"sjis-win"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -167,7 +167,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mb-decode-numericentity.html" class="function" rel="rdfs-seeAlso">mb_decode_numericentity()</a> - HTML 数値エンティティを文字にデコードする</span></li>
+    <li class="member"><span class="function"><a href="function.mb-decode-numericentity.html" class="function" rel="rdfs-seeAlso">mb_decode_numericentity()</a> - HTML 数値エンティティを文字にデコードする</span></li>
    </ul>
   </p>
  </div>

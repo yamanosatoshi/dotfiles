@@ -31,8 +31,8 @@
   <p class="para rdfs-comment">
    ディレクトリ全体を (<em>opendir</em> や <em>readdir</em>、
    <em>closedir</em> といったシステムコールを使って) 読み込み、
-   ファイル名あるいは配列 (<em><code class="parameter">flags</code></em> で指定する) を
-   <em><code class="parameter">callback</code></em> 関数の <em><code class="parameter">result</code></em> 引数で返します。
+   ファイル名あるいは配列 (<code class="parameter">flags</code> で指定する) を
+   <code class="parameter">callback</code> 関数の <code class="parameter">result</code> 引数で返します。
   </p>
 
  </div>
@@ -42,9 +42,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">path</code></dt>
 
-    <span class="term"><em><code class="parameter">path</code></em></span>
     <dd>
 
      <p class="para">
@@ -52,11 +53,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">flags</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">flags</code></em></span>
     <dd>
 
      <p class="para">
@@ -64,29 +65,29 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">pri</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">pri</code></em></span>
     <dd>
 
      <p class="para">リクエストの優先順位。<strong><code>EIO_PRI_DEFAULT</code></strong>、<strong><code>EIO_PRI_MIN</code></strong>、<strong><code>EIO_PRI_MAX</code></strong> あるいは <strong><code>NULL</code></strong> を指定します。
-<strong><code>NULL</code></strong> を渡した場合、<em><code class="parameter">pri</code></em> は内部的に
+<strong><code>NULL</code></strong> を渡した場合、<code class="parameter">pri</code> は内部的に
 <strong><code>EIO_PRI_DEFAULT</code></strong> となります。
 </p>
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">callback</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">callback</code></em></span>
     <dd>
 
       <p class="para">
-<em><code class="parameter">callback</code></em> 関数が、リクエスト終了時にコールされます。
+<code class="parameter">callback</code> 関数が、リクエスト終了時にコールされます。
 この関数のプロトタイプは、<div class="example-contents"><div class="phpcode"><code><span style="color: #000000">
 void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;$req]);</span>
 </code></div></div>
@@ -94,30 +95,30 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 に一致しなければなりません。
 <dl>
 
-<dt>
 
-<span class="term"><em><code class="parameter">data</code></em></span>
+<dt>
+<code class="parameter">data</code></dt>
+
 <dd>
 <p class="para">は、リクエストに渡すカスタムデータです。</p></dd>
 
-</dt>
+
 
 <dt>
+<code class="parameter">result</code></dt>
 
-<span class="term"><em><code class="parameter">result</code></em></span>
 <dd>
 <p class="para">にはリクエスト固有の結果が格納されます。基本的には、対応するシステムコールが返すそのままの値となります。</p></dd>
 
-</dt>
+
 
 <dt>
+<code class="parameter">req</code></dt>
 
-<span class="term"><em><code class="parameter">req</code></em></span>
 <dd>
 <p class="para">はオプションで指定するリクエストリソースです。
- <span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span> のような関数で使えます。</p></dd>
+<span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span> のような関数で使えます。</p></dd>
 
-</dt>
 
 </dl>
 
@@ -125,20 +126,19 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">data</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">data</code></em></span>
     <dd>
 
      <p class="para">
-      <em><code class="parameter">callback</code></em> に渡す任意の引数。
+      <code class="parameter">callback</code> に渡す任意の引数。
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -147,10 +147,10 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
  <div class="refsect1 returnvalues" id="refsect1-function.eio-readdir-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    <span class="function"><strong>eio_readdir()</strong></span>
+   <span class="function"><strong>eio_readdir()</strong></span>
    は、成功した場合にリクエストリソースを返します。エラー時に <strong><code>FALSE</code></strong> を返します。
-   <em><code class="parameter">callback</code></em> 関数の <em><code class="parameter">result</code></em>
-   に設定される内容は <em><code class="parameter">flags</code></em> によって変わります。
+   <code class="parameter">callback</code> 関数の <code class="parameter">result</code>
+   に設定される内容は <code class="parameter">flags</code> によって変わります。
   </p>
 
   <p class="para">
@@ -158,16 +158,17 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 
 
     
-    <dt>
+    
+     <dt>
 
-     <span class="term">
       <strong><code>EIO_READDIR_DENTS</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
-        <span class="function"><strong>eio_readdir()</strong></span> のフラグ。指定すると、コールバックの result 引数が次のキーを持つ配列になります。
+       <span class="function"><strong>eio_readdir()</strong></span> のフラグ。指定すると、コールバックの result 引数が次のキーを持つ配列になります。
        <em>&#039;names&#039;</em> - ディレクトリ名の配列／
        <em>&#039;dents&#039;</em> - <em>struct eio_dirent</em> 風の配列で、
        それぞれがさらに以下のキーを持ちます (
@@ -178,14 +179,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_READDIR_DIRS_FIRST</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -194,32 +195,32 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_READDIR_STAT_ORDER</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
       このフラグを指定すると、名前を返すときの順序が
       各ファイルを <em>stat</em> するのに適した順となります。
       指定したディレクトリにあるすべてのファイルを
-       <span class="function"><a href="function.stat.html" class="function">stat()</a></span> するつもりなら、この順にしておけば最速になります。
+      <span class="function"><a href="function.stat.html" class="function">stat()</a></span> するつもりなら、この順にしておけば最速になります。
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_READDIR_FOUND_UNKNOWN</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -227,8 +228,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
-
+    
 
 
    </dl>
@@ -240,27 +240,28 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 
 
 
-    <dt>
+    
+     <dt>
 
-     <span class="term">
       <strong><code>EIO_DT_UNKNOWN</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
-      不明なノード型 (ありがち)。さらに  <span class="function"><a href="function.stat.html" class="function">stat()</a></span> が必要です。
+      不明なノード型 (ありがち)。さらに <span class="function"><a href="function.stat.html" class="function">stat()</a></span> が必要です。
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_FIFO</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -268,14 +269,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_CHR</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -283,14 +284,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_MPC</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -298,14 +299,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_DIR</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -313,14 +314,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_NAM</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -328,14 +329,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_BLK</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -343,14 +344,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_MPB</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -358,14 +359,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_REG</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -373,28 +374,28 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_NWK</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_CMP</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -402,14 +403,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_LNK</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -417,14 +418,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_SOCK</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -432,14 +433,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_DOOR</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -447,14 +448,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_WHT</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -462,14 +463,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>EIO_DT_MAX</code></strong>
       (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -477,8 +478,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
       </span>
      </dd>
 
-    </dt>
-
+    
  
  
  
@@ -490,8 +490,8 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 
  <div class="refsect1 examples" id="refsect1-function.eio-readdir-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-3583">
-   <p><strong>例1  <span class="function"><strong>eio_readdir()</strong></span> の例</strong></p>
+  <div class="example" id="example-4007">
+   <p><strong>例1 <span class="function"><strong>eio_readdir()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;eio_readdir()&nbsp;が終わったら呼ばれます&nbsp;*/<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">my_readdir_callback</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__FUNCTION__</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;called\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"data:&nbsp;"</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"result:&nbsp;"</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">eio_readdir</span><span style="color: #007700">(</span><span style="color: #DD0000">"/var/spool/news"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">EIO_READDIR_STAT_ORDER&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">EIO_READDIR_DIRS_FIRST</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_readdir_callback"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -22,17 +22,17 @@
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span>
-   <span class="type"><span class="type void">void</span></span>
-    <span class="methodname"><strong>EventBuffer::pullup</strong></span>
+   <span class="type">string</span> 
+   <span class="methodname"><strong>EventBuffer::pullup</strong></span>
     ( <span class="methodparam">
-    <span class="type">string</span>
+    <span class="type">int</span>
      <code class="parameter">$size</code>
    </span>
    )</div>
 
   <p class="para rdfs-comment">
    &quot;Linearizes&quot; the first
-   <em><code class="parameter">size</code></em>
+   <code class="parameter">size</code>
    bytes of the buffer, copying or moving them as needed to ensure that they
    are all contiguous and occupying the same chunk of memory. If size is
    negative, the function linearizes the entire buffer.
@@ -40,7 +40,7 @@
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
     Calling
-     <span class="methodname"><strong>EventBuffer::pullup()</strong></span>
+    <span class="methodname"><strong>EventBuffer::pullup()</strong></span>
     with a large size can be quite slow, since it potentially needs to copy
     the entire buffer&#039;s contents.
    </p>
@@ -51,11 +51,12 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
 
-    <span class="term">
-     <em><code class="parameter">size</code></em>
-    </span>
+     <code class="parameter">size</code>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -63,8 +64,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -73,10 +73,10 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    If
-   <em><code class="parameter">size</code></em>
+   <code class="parameter">size</code>
    is greater than the number of bytes in the buffer, the function returns
    <strong><code>NULL</code></strong>. Otherwise,
-    <span class="methodname"><strong>EventBuffer::pullup()</strong></span>
+   <span class="methodname"><strong>EventBuffer::pullup()</strong></span>
    returns string.
   </p>
  </div>
@@ -85,20 +85,20 @@
   <h3 class="title">参考</h3>
   <ul class="simplelist">
    <li class="member">
-     <span class="methodname"><a href="eventbuffer.copyout.html" class="methodname" rel="rdfs-seeAlso">EventBuffer::copyout()</a> - Copies out specified number of bytes from the front of the buffer</span>
+    <span class="methodname"><a href="eventbuffer.copyout.html" class="methodname" rel="rdfs-seeAlso">EventBuffer::copyout()</a> - Copies out specified number of bytes from the front of the buffer</span>
    </li>
    <li class="member">
-     <span class="methodname"><a href="eventbuffer.drain.html" class="methodname" rel="rdfs-seeAlso">EventBuffer::drain()</a> - Removes specified number of bytes from the front of the buffer
+    <span class="methodname"><a href="eventbuffer.drain.html" class="methodname" rel="rdfs-seeAlso">EventBuffer::drain()</a> - Removes specified number of bytes from the front of the buffer
   without copying it anywhere</span>
    </li>
    <li class="member">
-     <span class="methodname"><a href="eventbuffer.read.html" class="methodname" rel="rdfs-seeAlso">EventBuffer::read()</a> - Read data from an evbuffer and drain the bytes read</span>
+    <span class="methodname"><a href="eventbuffer.read.html" class="methodname" rel="rdfs-seeAlso">EventBuffer::read()</a> - Read data from an evbuffer and drain the bytes read</span>
    </li>
    <li class="member">
-     <span class="methodname"><a href="eventbuffer.readline.html" class="methodname" rel="rdfs-seeAlso">EventBuffer::readLine()</a> - Extracts a line from the front of the buffer</span>
+    <span class="methodname"><a href="eventbuffer.readline.html" class="methodname" rel="rdfs-seeAlso">EventBuffer::readLine()</a> - Extracts a line from the front of the buffer</span>
    </li>
    <li class="member">
-     <span class="methodname"><a href="eventbuffer.appendfrom.html" class="methodname" rel="rdfs-seeAlso">EventBuffer::appendFrom()</a> - Moves the specified number of bytes from a source buffer to the
+    <span class="methodname"><a href="eventbuffer.appendfrom.html" class="methodname" rel="rdfs-seeAlso">EventBuffer::appendFrom()</a> - Moves the specified number of bytes from a source buffer to the
   end of the current buffer</span>
    </li>
   </ul>

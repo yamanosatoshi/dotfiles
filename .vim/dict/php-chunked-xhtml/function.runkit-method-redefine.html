@@ -42,9 +42,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">classname</code></dt>
 
-     <span class="term"><em><code class="parameter">classname</code></em></span>
      <dd>
 
       <p class="para">
@@ -52,11 +53,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">methodname</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">methodname</code></em></span>
      <dd>
 
       <p class="para">
@@ -64,11 +65,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">args</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">args</code></em></span>
      <dd>
 
       <p class="para">
@@ -76,24 +77,24 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">code</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">code</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">methodname</code></em> がコールされた際に
+       <code class="parameter">methodname</code> がコールされた際に
        評価される、新しいコード。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
@@ -110,8 +111,7 @@
       </p></blockquote>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -128,8 +128,8 @@
  <div class="refsect1 examples" id="refsect1-function.runkit-method-redefine-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-538">
-    <p><strong>例1  <span class="function"><strong>runkit_method_redefine()</strong></span> の例</strong></p>
+   <div class="example" id="example-563">
+    <p><strong>例1 <span class="function"><strong>runkit_method_redefine()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Example&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"foo!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Example&nbsp;オブジェクトの作成<br /></span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Example::foo()&nbsp;の出力（再定義前）<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Before:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;'foo'&nbsp;メソッドの再定義<br /></span><span style="color: #0000BB">runkit_method_redefine</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Example'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'return&nbsp;"bar!\n";'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">RUNKIT_ACC_PUBLIC<br /></span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Example::foo()&nbsp;の出力（再定義後）<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"After:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -152,11 +152,11 @@ After: bar!
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.runkit-method-add.html" class="function" rel="rdfs-seeAlso">runkit_method_add()</a> - 指定したクラスに、新しいメソッドを動的に追加する</span></li>
-    <li class="member"> <span class="function"><a href="function.runkit-method-copy.html" class="function" rel="rdfs-seeAlso">runkit_method_copy()</a> - あるクラスのメソッドを別のクラスにコピーする</span></li>
-    <li class="member"> <span class="function"><a href="function.runkit-method-remove.html" class="function" rel="rdfs-seeAlso">runkit_method_remove()</a> - 指定したメソッドを動的に削除する</span></li>
-    <li class="member"> <span class="function"><a href="function.runkit-method-rename.html" class="function" rel="rdfs-seeAlso">runkit_method_rename()</a> - 指定したメソッドの名前を動的に変更する</span></li>
-    <li class="member"> <span class="function"><a href="function.runkit-function-redefine.html" class="function" rel="rdfs-seeAlso">runkit_function_redefine()</a> - 関数の定義を新しい実装で置き換える</span></li>
+    <li class="member"><span class="function"><a href="function.runkit-method-add.html" class="function" rel="rdfs-seeAlso">runkit_method_add()</a> - 指定したクラスに、新しいメソッドを動的に追加する</span></li>
+    <li class="member"><span class="function"><a href="function.runkit-method-copy.html" class="function" rel="rdfs-seeAlso">runkit_method_copy()</a> - あるクラスのメソッドを別のクラスにコピーする</span></li>
+    <li class="member"><span class="function"><a href="function.runkit-method-remove.html" class="function" rel="rdfs-seeAlso">runkit_method_remove()</a> - 指定したメソッドを動的に削除する</span></li>
+    <li class="member"><span class="function"><a href="function.runkit-method-rename.html" class="function" rel="rdfs-seeAlso">runkit_method_rename()</a> - 指定したメソッドの名前を動的に変更する</span></li>
+    <li class="member"><span class="function"><a href="function.runkit-function-redefine.html" class="function" rel="rdfs-seeAlso">runkit_function_redefine()</a> - 関数の定義を新しい実装で置き換える</span></li>
    </ul>
   </p>
  </div>

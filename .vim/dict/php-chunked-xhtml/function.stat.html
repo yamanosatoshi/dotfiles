@@ -13,7 +13,7 @@
 </div><hr /><div id="function.stat" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">stat</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">stat</span> &mdash; <span class="dc-title">ファイルに関する情報を取得する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">stat</span> &mdash; <span class="dc-title">ファイルに関する情報を取得する</span></p>
 
  </div>
  
@@ -25,15 +25,15 @@
    )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">filename</code></em>で指定されたファイルに
+   <code class="parameter">filename</code>で指定されたファイルに
    ついての統計情報を取得します。
-   <em><code class="parameter">filename</code></em> がシンボリックリンクの場合、
+   <code class="parameter">filename</code> がシンボリックリンクの場合、
    シンボリックリンクではなくファイルの実体の統計情報が返されます。
   </p>
   <p class="para">
-    <span class="function"><a href="function.lstat.html" class="function">lstat()</a></span>
+   <span class="function"><a href="function.lstat.html" class="function">lstat()</a></span>
    はシンボリックリンクの統計情報を返すという違いを除いて
-    <span class="function"><strong>stat()</strong></span> と等価です。
+   <span class="function"><strong>stat()</strong></span> と等価です。
   </p>
  </div>
 
@@ -43,9 +43,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -53,8 +54,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -65,13 +65,13 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    <table class="doctable table">
-    <caption><strong> <span class="function"><strong>stat()</strong></span> と  <span class="function"><a href="function.fstat.html" class="function">fstat()</a></span>
+    <caption><strong><span class="function"><strong>stat()</strong></span> と <span class="function"><a href="function.fstat.html" class="function">fstat()</a></span>
     の結果のフォーマット</strong></caption>
     
      <thead>
       <tr>
        <th>数値</th>
-       <th>連想 (PHP 4.0.6 以上)</th>
+       <th>連想配列</th>
        <th>説明</th>
       </tr>
 
@@ -167,7 +167,7 @@
    その他のシステム(例えば Windows)では -1 を返します。
   </p>
   <p class="para">
-    <span class="function"><strong>stat()</strong></span> はエラーの場合 <strong><code>FALSE</code></strong> を返します。
+   <span class="function"><strong>stat()</strong></span> はエラーの場合 <strong><code>FALSE</code></strong> を返します。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">
     PHP の数値型は符号付整数であり、
@@ -186,41 +186,11 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.stat-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.0.6</td>
-       <td>
-        数値添字の配列に加えて、
-        各パラメータ毎の連想配列としてもアクセスできるようになりました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.stat-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2422">
-    <p><strong>例1  <span class="function"><strong>stat()</strong></span> の例</strong></p>
+   <div class="example" id="example-2621">
+    <p><strong>例1 <span class="function"><strong>stat()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;ファイルの状態を取得します&nbsp;*/<br /></span><span style="color: #0000BB">$stat&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stat</span><span style="color: #007700">(</span><span style="color: #DD0000">'C:\php\php.exe'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*<br />&nbsp;*&nbsp;ファイルのアクセス日時を表示します。<br />&nbsp;*&nbsp;これは&nbsp;fileatime()&nbsp;をコールするのと同じです<br />&nbsp;*/<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'アクセス日時:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$stat</span><span style="color: #007700">[</span><span style="color: #DD0000">'atime'</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">/*<br />&nbsp;*&nbsp;ファイルの更新日時を表示します。<br />&nbsp;*&nbsp;これは&nbsp;filemtime()&nbsp;をコールするのと同じです<br />&nbsp;*/<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'更新日時:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$stat</span><span style="color: #007700">[</span><span style="color: #DD0000">'mtime'</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">/*&nbsp;デバイス番号を表示します&nbsp;*/<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'デバイス番号:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$stat</span><span style="color: #007700">[</span><span style="color: #DD0000">'dev'</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -231,8 +201,8 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2423">
-    <p><strong>例2  <span class="function"><strong>stat()</strong></span> の情報を  <span class="function"><a href="function.touch.html" class="function">touch()</a></span> と組み合わせる例</strong></p>
+   <div class="example" id="example-2622">
+    <p><strong>例2 <span class="function"><strong>stat()</strong></span> の情報を <span class="function"><a href="function.touch.html" class="function">touch()</a></span> と組み合わせる例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;ファイルの状態を取得します&nbsp;*/<br /></span><span style="color: #0000BB">$stat&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stat</span><span style="color: #007700">(</span><span style="color: #DD0000">'C:\php\php.exe'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;情報の取得に失敗した?&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">$stat</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'stat()&nbsp;のコールに失敗しました...'</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;アクセス日時を、現在のアクセス日時の<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;一週間後に設定します<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$atime&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$stat</span><span style="color: #007700">[</span><span style="color: #DD0000">'atime'</span><span style="color: #007700">]&nbsp;+&nbsp;</span><span style="color: #0000BB">604800</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;ファイルを作成します&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">touch</span><span style="color: #007700">(</span><span style="color: #DD0000">'some_file.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">$atime</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'ファイルの作成に失敗しました...'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'touch()&nbsp;が成功しました...'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -250,12 +220,12 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: <p class="para">時刻の精度は、
 ファイルシステムによって異なることがあります。</p></p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">この関数の結果は
-キャッシュされます。詳細は、 <span class="function"><a href="function.clearstatcache.html" class="function">clearstatcache()</a></span>
+キャッシュされます。詳細は、<span class="function"><a href="function.clearstatcache.html" class="function">clearstatcache()</a></span>
 を参照してください。</span></p></blockquote>
   <div class="tip"><strong class="tip">ヒント</strong><p class="simpara">
 <em>PHP 5.0.0</em> 以降、この関数は、
 <em class="emphasis">何らかの</em> URL ラッパーと組合せて使用することができます。
-どのラッパーが  <span class="function"><strong>stat()</strong></span> ファミリーをサポートしているかを調べるには
+どのラッパーが <span class="function"><strong>stat()</strong></span> ファミリーをサポートしているかを調べるには
 <a href="wrappers.html" class="xref">サポートするプロトコル/ラッパー</a> を参照してください。</p></div>
  </div>
 
@@ -264,10 +234,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.lstat.html" class="function" rel="rdfs-seeAlso">lstat()</a> - ファイルあるいはシンボリックリンクの情報を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.fstat.html" class="function" rel="rdfs-seeAlso">fstat()</a> - オープンしたファイルポインタからファイルに関する情報を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.filemtime.html" class="function" rel="rdfs-seeAlso">filemtime()</a> - ファイルの更新時刻を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.filegroup.html" class="function" rel="rdfs-seeAlso">filegroup()</a> - ファイルのグループを取得する</span></li>
+    <li class="member"><span class="function"><a href="function.lstat.html" class="function" rel="rdfs-seeAlso">lstat()</a> - ファイルあるいはシンボリックリンクの情報を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.fstat.html" class="function" rel="rdfs-seeAlso">fstat()</a> - オープンしたファイルポインタからファイルに関する情報を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.filemtime.html" class="function" rel="rdfs-seeAlso">filemtime()</a> - ファイルの更新時刻を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.filegroup.html" class="function" rel="rdfs-seeAlso">filegroup()</a> - ファイルのグループを取得する</span></li>
    </ul>
   </p>
  </div>

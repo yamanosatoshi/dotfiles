@@ -26,7 +26,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-   指定したメールボックス <em><code class="parameter">mailbox</code></em>
+   指定したメールボックス <code class="parameter">mailbox</code>
    についてのステータス情報を取得します。
   </p>
  </div>
@@ -37,28 +37,29 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-imap_stream</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
+<code class="parameter">
+imap_stream</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
 が返す IMAP ストリーム。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">mailbox</code></dt>
 
-     <span class="term"><em><code class="parameter">mailbox</code></em></span>
      <dd>
 
       <p class="para">
-       メールボックス名。詳細は  <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
+       メールボックス名。詳細は <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
        を参照ください。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">options</code></em></span>
      <dd>
 
       <p class="para">
@@ -103,8 +104,7 @@ imap_stream</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -128,8 +128,8 @@ imap_stream</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imap-status-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3358">
-    <p><strong>例1  <span class="function"><strong>imap_status()</strong></span> の例</strong></p>
+   <div class="example" id="example-3782">
+    <p><strong>例1 <span class="function"><strong>imap_status()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$mbox&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_open</span><span style="color: #007700">(</span><span style="color: #DD0000">"{imap.example.com}"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OP_HALFOPEN</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"接続できません:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">imap_last_error</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">$status&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_status</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"{imap.example.org}INBOX"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SA_ALL</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$status</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Messages:&nbsp;&nbsp;&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$status</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">messages&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Recent:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$status</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">recent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Unseen:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$status</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">unseen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"UIDnext:&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$status</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">uidnext&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"UIDvalidity:"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$status</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">uidvalidity&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"imap_status&nbsp;failed:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">imap_last_error</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">imap_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

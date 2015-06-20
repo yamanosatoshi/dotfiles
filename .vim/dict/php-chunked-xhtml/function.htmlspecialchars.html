@@ -23,7 +23,7 @@
    <span class="type">string</span> <span class="methodname"><strong>htmlspecialchars</strong></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>
    [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = ENT_COMPAT | ENT_HTML401</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code><span class="initializer"> = &#039;UTF-8&#039;</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code><span class="initializer"> = ini_get(&quot;default_charset&quot;)</span></span>
    [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$double_encode</code><span class="initializer"> = true</span></span>
   ]]] )</div>
 
@@ -34,7 +34,7 @@
    この関数は、これらの変換を行った結果の文字列を返します。
    入力文字列の中で名前付きエンティティに関連づけられたものを
    すべて変換する必要がある場合には、代わりに
-    <span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span>
+   <span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span>
    を使用してください。
   </p>
   <p class="para">
@@ -42,10 +42,10 @@
    この関数を使えば HTML ドキュメントに組み込むための準備として十分です。
    しかし、この関数への入力の中に、最終的なドキュメントの文字セットでは符号化できない文字がある場合もあります。
    そんな文字も (数値エンティティや名前つきエンティティなどで) 残したい場合は、
-   この関数と  <span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span>
+   この関数と <span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span>
    (これは、名前付きエンティティに対応する文字しか置換しません)
    を使うだけでは不十分です。そんな場合は
-    <span class="function"><a href="function.mb-encode-numericentity.html" class="function">mb_encode_numericentity()</a></span> を使う必要があります。
+   <span class="function"><a href="function.mb-encode-numericentity.html" class="function">mb_encode_numericentity()</a></span> を使う必要があります。
   </p>
   <p class="para">
    変換対象となる文字は以下の通りです。
@@ -87,9 +87,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">string</code></dt>
 
-     <span class="term"><em><code class="parameter">string</code></em></span>
      <dd>
 
       <p class="para">
@@ -97,11 +98,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
@@ -109,7 +110,7 @@
        クォートや無効な符号単位シーケンス、そして文書型の扱いを指定します。
        デフォルトは <em>ENT_COMPAT | ENT_HTML401</em> です。
        <table class="doctable table">
-        <caption><strong>利用可能な <em><code class="parameter">flags</code></em> 定数</strong></caption>
+        <caption><strong>利用可能な <code class="parameter">flags</code> 定数</strong></caption>
         
          <thead>
           <tr>
@@ -199,27 +200,43 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">encoding</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">encoding</code></em></span>
      <dd>
 
-      <p class="para">
-       変換に使用されるエンコーディングを指定します。
-       省略した場合のデフォルト値は、PHP 5.4.0 より前のバージョンでは
-       ISO-8859-1、そして PHP 5.4.0 以降では UTF-8 となります。
-      </p>
+      
+ <p class="para">
+  オプションの引数。文字を変換するときに使うエンコーディングを定義します。
+ </p>
+
+ <p class="para">
+  省略した場の <code class="parameter">encoding</code> のデフォルト値は、varies
+  PHP のバージョンによって異なります。
+  PHP 5.6.0 以降では、デフォルト値として <a href="ini.core.html#ini.default-charset" class="link">default_charset</a>
+  の値を使います。PHP 5.4 と PHP 5.5 のデフォルト値は、
+  <em>UTF-8</em> で、それより前のバージョンの PHP のデフォルト値は
+  <em>ISO-8859-1</em> でした。
+ </p>
+
+ <p class="para">
+  技術的にはこの引数を省略可能ですが、PHP 5.5 以前のバージョンを使っている場合や、
+  <a href="ini.core.html#ini.default-charset" class="link">default_charset</a>
+  の指定が入力とは違う文字セットになっている場合は、
+  適切な値を指定しておくことを強く推奨します。
+ </p>
+
       <p class="para">
        この関数を使ううえでは
        <em>ISO-8859-1</em> と <em>ISO-8859-15</em>、
        <em>UTF-8</em>、<em>cp866</em>、
        <em>cp1251</em>、<em>cp1252</em> そして
        <em>KOI8-R</em> は事実上同等です。
-       <em><code class="parameter">string</code></em> 自体がそのエンコーディングにおける有効な文字列である限り、
+       <code class="parameter">string</code> 自体がそのエンコーディングにおける有効な文字列である限り、
        これらのエンコーディングでは
-        <span class="function"><strong>htmlspecialchars()</strong></span> の影響が及ぶ文字がみな同じ位置にあるからです。
+       <span class="function"><strong>htmlspecialchars()</strong></span> の影響が及ぶ文字がみな同じ位置にあるからです。
       </p>
       
 
@@ -359,8 +376,8 @@
       空文字列を指定すると、
       スクリプトのエンコーディング (Zend multibyte)、
       <a href="ini.core.html#ini.default-charset" class="link">default_charset</a>、
-      そして現在のロケール ( <span class="function"><a href="function.nl-langinfo.html" class="function">nl_langinfo()</a></span> および
-       <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> を参照ください)
+      そして現在のロケール (<span class="function"><a href="function.nl-langinfo.html" class="function">nl_langinfo()</a></span> および
+      <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> を参照ください)
       の順でエンコーディングを検出します。
       この方法はおすすめしません。
      </td>
@@ -381,22 +398,21 @@
 
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">double_encode</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">double_encode</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">double_encode</code></em> をオフにすると、PHP
+       <code class="parameter">double_encode</code> をオフにすると、PHP
        は既存の html エンティティをエンコードしません。
        デフォルトでは、既存のエンティティも含めてすべてを変換します。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -409,10 +425,10 @@
    変換後の文字列を返します。
   </p>
   <p class="para">
-   入力の <em><code class="parameter">string</code></em> の中に
-   エンコーディング <em><code class="parameter">encoding</code></em> における無効なコードユニットシーケンスが含まれており、
+   入力の <code class="parameter">string</code> の中に
+   エンコーディング <code class="parameter">encoding</code> における無効なコードユニットシーケンスが含まれており、
    かつ <strong><code>ENT_IGNORE</code></strong> フラグが設定されていなければ、
-    <span class="function"><strong>htmlspecialchars()</strong></span> は空文字列を返します。
+   <span class="function"><strong>htmlspecialchars()</strong></span> は空文字列を返します。
   </p>
  </div>
 
@@ -431,10 +447,20 @@
      </thead>
 
      <tbody class="tbody">
+      
+ <tr>
+  <td>5.6.0</td>
+  <td>
+   <code class="parameter">encoding</code> パラメータのデフォルト値が、
+   <a href="ini.core.html#ini.default-charset" class="link">default_charset</a> の設定値に変わりました。
+  </td>
+ </tr>
+
+
       <tr>
        <td>5.4.0</td>
        <td>
-        <em><code class="parameter">encoding</code></em> パラメータのデフォルトが
+        <code class="parameter">encoding</code> パラメータのデフォルトが
         UTF-8 に変わりました。
        </td>
       </tr>
@@ -458,14 +484,7 @@
       <tr>
        <td>5.2.3</td>
        <td>
-        <em><code class="parameter">double_encode</code></em> パラメータが追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.1.0</td>
-       <td>
-        <em><code class="parameter">encoding</code></em> パラメータが追加されました。
+        <code class="parameter">double_encode</code> パラメータが追加されました。
        </td>
       </tr>
 
@@ -480,8 +499,8 @@
  <div class="refsect1 examples" id="refsect1-function.htmlspecialchars-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4818">
-    <p><strong>例1  <span class="function"><strong>htmlspecialchars()</strong></span> の例</strong></p>
+   <div class="example" id="example-5296">
+    <p><strong>例1 <span class="function"><strong>htmlspecialchars()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$new&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">htmlspecialchars</span><span style="color: #007700">(</span><span style="color: #DD0000">"&lt;a&nbsp;href='test'&gt;Test&lt;/a&gt;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$new</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;&amp;lt;a&nbsp;href=&amp;#039;test&amp;#039;&amp;gt;Test&amp;lt;/a&amp;gt;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -500,7 +519,7 @@
    <p class="para">
     この関数は上記のあげたもの以外に関しては一切の変換を行わないことに注意してください。
     すべての変換を行うには
-     <span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span> を参照してください。
+    <span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span> を参照してください。
    </p>
   </p></blockquote>
  </div>
@@ -510,11 +529,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.get-html-translation-table.html" class="function" rel="rdfs-seeAlso">get_html_translation_table()</a> - htmlspecialchars および htmlentities で使用される変換テーブルを返す</span></li>
-    <li class="member"> <span class="function"><a href="function.htmlspecialchars-decode.html" class="function" rel="rdfs-seeAlso">htmlspecialchars_decode()</a> - 特殊な HTML エンティティを文字に戻す</span></li>
-    <li class="member"> <span class="function"><a href="function.strip-tags.html" class="function" rel="rdfs-seeAlso">strip_tags()</a> - 文字列から HTML および PHP タグを取り除く</span></li>
-    <li class="member"> <span class="function"><a href="function.htmlentities.html" class="function" rel="rdfs-seeAlso">htmlentities()</a> - 適用可能な文字を全て HTML エンティティに変換する</span></li>
-    <li class="member"> <span class="function"><a href="function.nl2br.html" class="function" rel="rdfs-seeAlso">nl2br()</a> - 改行文字の前に HTML の改行タグを挿入する</span></li>
+    <li class="member"><span class="function"><a href="function.get-html-translation-table.html" class="function" rel="rdfs-seeAlso">get_html_translation_table()</a> - htmlspecialchars および htmlentities で使用される変換テーブルを返す</span></li>
+    <li class="member"><span class="function"><a href="function.htmlspecialchars-decode.html" class="function" rel="rdfs-seeAlso">htmlspecialchars_decode()</a> - 特殊な HTML エンティティを文字に戻す</span></li>
+    <li class="member"><span class="function"><a href="function.strip-tags.html" class="function" rel="rdfs-seeAlso">strip_tags()</a> - 文字列から HTML および PHP タグを取り除く</span></li>
+    <li class="member"><span class="function"><a href="function.htmlentities.html" class="function" rel="rdfs-seeAlso">htmlentities()</a> - 適用可能な文字を全て HTML エンティティに変換する</span></li>
+    <li class="member"><span class="function"><a href="function.nl2br.html" class="function" rel="rdfs-seeAlso">nl2br()</a> - 改行文字の前に HTML の改行タグを挿入する</span></li>
    </ul>
   </p>
  </div>

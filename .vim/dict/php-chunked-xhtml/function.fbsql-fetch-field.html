@@ -37,27 +37,27 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
-<p class="para">  <span class="function"><a href="function.fbsql-query.html" class="function">fbsql_query()</a></span> あるいは
- <span class="function"><a href="function.fbsql-db-query.html" class="function">fbsql_db_query()</a></span> が返す結果 ID。</p></dd>
-</dt>
+<code class="parameter">
+result</code></dt>
+<dd>
+<p class="para"> <span class="function"><a href="function.fbsql-query.html" class="function">fbsql_query()</a></span> あるいは
+<span class="function"><a href="function.fbsql-db-query.html" class="function">fbsql_db_query()</a></span> が返す結果 ID。</p></dd>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">field_offset</code></dt>
 
-     <span class="term"><em><code class="parameter">field_offset</code></em></span>
      <dd>
 
       <p class="para">
        フィールドの数値オフセット。フィールドのインデックスは 0 からはじまります。
        省略した場合は、まだ
-        <span class="function"><strong>fbsql_fetch_field()</strong></span> で取得されていない
+       <span class="function"><strong>fbsql_fetch_field()</strong></span> で取得されていない
        フィールドのうちで最小のものが取得されます。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -105,8 +105,8 @@ result</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.fbsql-fetch-field-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1122">
-    <p><strong>例1  <span class="function"><strong>fbsql_fetch_field()</strong></span> の例</strong></p>
+   <div class="example" id="example-1180">
+    <p><strong>例1 <span class="function"><strong>fbsql_fetch_field()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />fbsql_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$host</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$user</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"接続できません"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fbsql_db_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"database"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;table"</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"クエリに失敗"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">#&nbsp;get&nbsp;column&nbsp;metadata<br /></span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />while&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">fbsql_num_fields</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"カラム&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #DD0000">&nbsp;の情報:&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$meta&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fbsql_fetch_field</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$meta</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"使用可能な情報がありません&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;pre&gt;<br />max_length:&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$meta</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">max_length</span><span style="color: #DD0000"><br />name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$meta</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #DD0000"><br />not_null:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$meta</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">not_null</span><span style="color: #DD0000"><br />table:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$meta</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #DD0000"><br />type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$meta</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">type</span><span style="color: #DD0000"><br />&lt;/pre&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++;<br />}<br /></span><span style="color: #0000BB">fbsql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -123,7 +123,7 @@ result</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.fbsql-field-seek.html" class="function" rel="rdfs-seeAlso">fbsql_field_seek()</a> - 指定したフィールドオフセットに結果ポインタを設定する</span></li>
+    <li class="member"><span class="function"><a href="function.fbsql-field-seek.html" class="function" rel="rdfs-seeAlso">fbsql_field_seek()</a> - 指定したフィールドオフセットに結果ポインタを設定する</span></li>
    </ul>
   </p>
  </div>

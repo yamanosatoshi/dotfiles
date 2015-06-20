@@ -27,7 +27,8 @@
    , <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$write</code></span>
    , <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$destroy</code></span>
    , <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$gc</code></span>
-   )</div>
+   [, <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$create_sid</code></span>
+  ] )</div>
 
   <p class="para rdfs-comment">
    PHP 5.4 以降は次のプロトタイプでも登録できます。
@@ -39,7 +40,7 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>session_set_save_handler()</strong></span> は、セッションに
+   <span class="function"><strong>session_set_save_handler()</strong></span> は、セッションに
    関連するデータを保存および取得するために使用されるユーザー定義の
    セッション保存関数を設定します。この関数は、セッションデータを
    ローカルデータベースに保存する場合のように PHP セッションにより
@@ -54,9 +55,10 @@
    この関数には二種類のプロトタイプがあります。
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">sessionhandler</code></dt>
 
-     <span class="term"><em><code class="parameter">sessionhandler</code></em></span>
      <dd>
 
       <p class="para">
@@ -66,21 +68,20 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">register_shutdown</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">register_shutdown</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> を
-        <span class="function"><a href="function.register-shutdown-function.html" class="function">register_shutdown_function()</a></span> 関数として登録するかどうか。
+       <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> を
+       <span class="function"><a href="function.register-shutdown-function.html" class="function">register_shutdown_function()</a></span> 関数として登録するかどうか。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -88,68 +89,69 @@
 
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">open(string $savePath, string $sessionName)</code></dt>
 
-     <span class="term"><em><code class="parameter">open(string $savePath, string $sessionName)</code></em></span>
      <dd>
 
       <p class="para">
        open コールバックはクラスのコンストラクタのようなもので、セッションを開くときに実行されます。
-       セッションが自動で開始したり、あるいは手動で  <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span>
+       セッションが自動で開始したり、あるいは手動で <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span>
        で開始させたりするときに、最初に実行されるコールバック関数がこれです。
        成功した場合は <strong><code>TRUE</code></strong>、失敗した場合は <strong><code>FALSE</code></strong> を返します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">close()</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">close()</code></em></span>
      <dd>
 
       <p class="para">
        close コールバックはクラスのデストラクタのようなもので、write コールバックがコールされた後で実行されます。
-       また、 <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> がコールされたときにも実行されます。
+       また、<span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> がコールされたときにも実行されます。
        成功した場合は <strong><code>TRUE</code></strong>、失敗した場合は <strong><code>FALSE</code></strong> を返します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">read(string $sessionId)</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">read(string $sessionId)</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">read</code></em> コールバックは、常にセッションエンコード (シリアライズ)
+       <code class="parameter">read</code> コールバックは、常にセッションエンコード (シリアライズ)
        された文字列を返さなければなりません。何もデータを読み込まなかった場合は空文字列を返します。
       </p>
       <p class="para">
        このコールバックは、セッションが開始したときや
-        <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> がコールされたときに PHP が内部的に実行します。
+       <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> がコールされたときに PHP が内部的に実行します。
        このコールバックを実行する前に、PHP は
-       <em><code class="parameter">open</code></em> コールバックを実行します。
+       <code class="parameter">open</code> コールバックを実行します。
       </p>
       <p class="para">
        このコールバックが返す値は、
-       <em><code class="parameter">write</code></em> コールバックがストレージに渡した形式とまったく同じシリアライズ形式でなければなりません。
+       <code class="parameter">write</code> コールバックがストレージに渡した形式とまったく同じシリアライズ形式でなければなりません。
        返された値を PHP が自動的にアンシリアライズして、スーパーグローバル <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>
-       に格納します。データの形式は  <span class="function"><a href="function.serialize.html" class="function">serialize()</a></span> したものと似ていますが、実際は違う形式であることに注意しましょう。
+       に格納します。データの形式は <span class="function"><a href="function.serialize.html" class="function">serialize()</a></span> したものと似ていますが、実際は違う形式であることに注意しましょう。
        シリアライズの方法は ini 設定 <a href="session.configuration.html#ini.session.serialize-handler" class="link">session.serialize_handler</a> で指定します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">write(string $sessionId, string $data)</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">write(string $sessionId, string $data)</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">write</code></em> コールバックは、セッションの保存や終了が必要となったときにコールされます。
+       <code class="parameter">write</code> コールバックは、セッションの保存や終了が必要となったときにコールされます。
        このコールバックが受け取るのは、現在のセッション ID とシリアライズ後のスーパーグローバル <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> です。
        PHP が内部で利用するシリアライズ方法は、ini 設定
        <a href="session.configuration.html#ini.session.serialize-handler" class="link">session.serialize_handler</a> で指定します。
@@ -157,12 +159,12 @@
       <p class="para">
        このコールバックに渡されたシリアライズ後のセッションデータを、
        渡されたセッション ID に対応させて格納しなければなりません。
-       このデータを取得した <em><code class="parameter">read</code></em> コールバックは、
-       <em><code class="parameter">write</code></em> コールバックに最初に渡されたのとまったく同じ値を返さなければなりません。
+       このデータを取得した <code class="parameter">read</code> コールバックは、
+       <code class="parameter">write</code> コールバックに最初に渡されたのとまったく同じ値を返さなければなりません。
       </p>
       <p class="para">
-       このコールバックが実行されるのは、PHP のスクリプトが終了するときか、あるいは明示的に  <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span>
-       がコールされたときです。この関数の実行後には、PHP が内部的に <em><code class="parameter">close</code></em>
+       このコールバックが実行されるのは、PHP のスクリプトが終了するときか、あるいは明示的に <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span>
+       がコールされたときです。この関数の実行後には、PHP が内部的に <code class="parameter">close</code>
        コールバックを実行することに注意しましょう。
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
@@ -175,27 +177,27 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">destroy($sessionId)</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">destroy($sessionId)</code></em></span>
      <dd>
 
       <p class="para">
        このコールバックが実行されるのは、
-        <span class="function"><a href="function.session-destroy.html" class="function">session_destroy()</a></span> あるいは
-        <span class="function"><a href="function.session-regenerate-id.html" class="function">session_regenerate_id()</a></span> (destroy パラメータを <strong><code>TRUE</code></strong> にした場合)
+       <span class="function"><a href="function.session-destroy.html" class="function">session_destroy()</a></span> あるいは
+       <span class="function"><a href="function.session-regenerate-id.html" class="function">session_regenerate_id()</a></span> (destroy パラメータを <strong><code>TRUE</code></strong> にした場合)
        を実行し、セッションを破棄した場合です。
        成功した場合は <strong><code>TRUE</code></strong>、失敗した場合は <strong><code>FALSE</code></strong> を返します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">gc($lifetime)</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">gc($lifetime)</code></em></span>
      <dd>
 
       <p class="para">
@@ -208,8 +210,20 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">create_sid()</code></dt>
 
+     <dd>
+
+      <p class="para">
+       このコールバックは、新しいセッション ID が必要になったときに実行されます。
+       パラメータは不要です。返り値は、使っているハンドラで有効なセッション ID を表す文字列となります。
+      </p>
+     </dd>
+
+    
    </dl>
 
   </p>
@@ -227,7 +241,7 @@
  <div class="refsect1 examples" id="refsect1-function.session-set-save-handler-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4749">
+   <div class="example" id="example-5227">
     <p><strong>例1 
      自作のセッションハンドラ: 完全なコードは <a href="class.sessionhandlerinterface.html" class="classname">SessionHandlerInterface</a> を参照
     </strong></p>
@@ -237,7 +251,7 @@
      <a href="class.sessionhandlerinterface.html" class="classname">SessionHandlerInterface</a> のページを参照ください。
     </p></div>
     <div class="example-contents"><p>
-      <span class="function"><strong>session_set_save_handler()</strong></span> でオブジェクト指向型のプロトタイプを使っていることと、
+     <span class="function"><strong>session_set_save_handler()</strong></span> でオブジェクト指向型のプロトタイプを使っていることと、
      シャットダウン関数をその parameter フラグで登録していることに注目しましょう。
      オブジェクトをセッション保存ハンドラとして使うときには、この方法をおすすめします。
     </p></div>
@@ -249,20 +263,20 @@
     </div>
 
    </div>
-   <div class="example" id="example-4750">
+   <div class="example" id="example-5228">
     <p><strong>例2 セッション保存ハンドラでオブジェクトを使う例</strong></p>
     <div class="example-contents"><p>
      このコードは、PHP 5.4.0 より前のバージョンで動作します。
     </p></div>
     <div class="example-contents"><p>
      この例では、ファイルベースのセッションストレージをつくります。これは
-     PHP のデフォルトのセッション保存ハンドラである <em><code class="parameter">files</code></em>
+     PHP のデフォルトのセッション保存ハンドラである <code class="parameter">files</code>
      と似たものです。この例をさらに拡張すれば、
      PHP がサポートするお好みのデータベースを使ってセッションを保存させるようにするのも簡単です。
     </p></div>
     <div class="example-contents"><p>
-     シャットダウン関数  <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> を、
-      <span class="function"><a href="function.register-shutdown-function.html" class="function">register_shutdown_function()</a></span> を使って追加登録していることに注目しましょう。
+     シャットダウン関数 <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> を、
+     <span class="function"><a href="function.register-shutdown-function.html" class="function">register_shutdown_function()</a></span> を使って追加登録していることに注目しましょう。
      PHP 5.4.0 より前のバージョンでオブジェクトをセッション保存ハンドラとして使うときには、この方法をおすすめします。
     </p></div>
     <div class="example-contents">
@@ -284,14 +298,14 @@
     オブジェクトをセッション保存ハンドラとして使うときには、
     シャットダウン関数を PHP に登録しておくことが重要です。
     これで、PHP スクリプトの終了時に内部的にオブジェクトを破棄する処理による副作用や、
-    <em><code class="parameter">write</code></em> および <em><code class="parameter">close</code></em>
+    <code class="parameter">write</code> および <code class="parameter">close</code>
     がコールされてしまうことを防げます。
-    一般的には、<em><code class="parameter">&#039;session_write_close&#039;</code></em> を
-     <span class="function"><a href="function.register-shutdown-function.html" class="function">register_shutdown_function()</a></span> 関数で登録しなければなりません。
+    一般的には、<code class="parameter">&#039;session_write_close&#039;</code> を
+    <span class="function"><a href="function.register-shutdown-function.html" class="function">register_shutdown_function()</a></span> 関数で登録しなければなりません。
    </p>
    <p class="para">
-    PHP 5.4.0 以降では  <span class="function"><a href="function.session-register-shutdown.html" class="function">session_register_shutdown()</a></span>
-    を使えます。あるいは  <span class="function"><strong>session_set_save_handler()</strong></span>
+    PHP 5.4.0 以降では <span class="function"><a href="function.session-register-shutdown.html" class="function">session_register_shutdown()</a></span>
+    を使えます。あるいは <span class="function"><strong>session_set_save_handler()</strong></span>
     をオブジェクト指向のメソッドとして実行するときに &#039;register shutdown&#039;
     フラグを使い、<a href="class.sessionhandlerinterface.html" class="classname">SessionHandlerInterface</a>
     を実装したインスタンスを渡すという方法もあります。
@@ -299,8 +313,8 @@
   </div>
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
-    PHP 5.0.5 以降、<em><code class="parameter">write</code></em> ハンドラおよび
-    <em><code class="parameter">close</code></em> ハンドラはオブジェクトが破棄されたあとにコールされます。
+    PHP 5.0.5 以降、<code class="parameter">write</code> ハンドラおよび
+    <code class="parameter">close</code> ハンドラはオブジェクトが破棄されたあとにコールされます。
     そのため、これらのハンドラでオブジェクトを使ったり例外をスローしたりすることはできません。
     例外をキャッチできないのでその情報をトレースすることもできず、
     例外は単純に無視されてしまいます。
@@ -308,7 +322,7 @@
    </p>
    <p class="para">
     この「ニワトリが先かタマゴが先か」の問題を解決するために、
-    デストラクタから  <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span>
+    デストラクタから <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span>
     をコールできますが、より確実なのは先述のとおりシャットダウン関数を登録することです。
    </p>
   </div>
@@ -316,7 +330,7 @@
    <p class="para">
     SAPI の種類によっては、スクリプトの終了時にセッションを閉じると
     現在の作業ディレクトリが変わってしまうことがあります。これを防ぐには、
-    事前に  <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> でセッションを閉じます。
+    事前に <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> でセッションを閉じます。
    </p>
   </div>
  </div>
@@ -335,6 +349,13 @@
     </thead>
 
     <tbody class="tbody">
+     <tr>
+      <td>5.5.1</td>
+      <td>
+       オプションのパラメータ <code class="parameter">create_sid</code> が追加されました。
+      </td>
+     </tr>
+
      <tr>
       <td>5.4.0</td>
       <td>
@@ -360,8 +381,8 @@
     <li class="member">
      設定ディレクティブ <a href="session.configuration.html#ini.session.serialize-handler" class="link">session.serialize_handler</a>
     </li>
-    <li class="member"> <span class="function"><a href="function.register-shutdown-function.html" class="function" rel="rdfs-seeAlso">register_shutdown_function()</a> - シャットダウン時に実行する関数を登録する</span></li>
-    <li class="member"> <span class="function"><a href="function.session-register-shutdown.html" class="function" rel="rdfs-seeAlso">session_register_shutdown()</a> - セッションのシャットダウン関数</span> (PHP 5.4.0 以降)</li>
+    <li class="member"><span class="function"><a href="function.register-shutdown-function.html" class="function" rel="rdfs-seeAlso">register_shutdown_function()</a> - シャットダウン時に実行する関数を登録する</span></li>
+    <li class="member"><span class="function"><a href="function.session-register-shutdown.html" class="function" rel="rdfs-seeAlso">session_register_shutdown()</a> - セッションのシャットダウン関数</span> (PHP 5.4.0 以降)</li>
    </ul>
   </p>
  </div>

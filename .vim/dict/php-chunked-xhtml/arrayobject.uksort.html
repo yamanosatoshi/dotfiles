@@ -35,24 +35,24 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">cmp_function</code></dt>
 
-     <span class="term"><em><code class="parameter">cmp_function</code></em></span>
      <dd>
 
       <p class="para">
        比較コールバック関数。
       </p>
       <p class="para">
-       関数 <em><code class="parameter">cmp_function</code></em>
+       関数 <code class="parameter">cmp_function</code>
        は二つのパラメータを受け取ります。ここにはエントリのペアが渡されます。
        比較関数の返り値は、最初の引数が二番目の引数より小さい場合に負の数、
        等しい場合にゼロ、大きい場合に正の数となります。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -70,8 +70,8 @@
  <div class="refsect1 examples" id="refsect1-arrayobject.uksort-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3978">
-    <p><strong>例1  <span class="function"><strong>ArrayObject::uksort()</strong></span> の例</strong></p>
+   <div class="example" id="example-4434">
+    <p><strong>例1 <span class="function"><strong>ArrayObject::uksort()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">cmp</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'@^(a|an|the)&nbsp;@'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'@^(a|an|the)&nbsp;@'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">strcasecmp</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"John"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"the&nbsp;Earth"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"an&nbsp;apple"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"a&nbsp;banana"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$arrayObject&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$arrayObject</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">uksort</span><span style="color: #007700">(</span><span style="color: #DD0000">'cmp'</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$arrayObject&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -97,11 +97,11 @@ John: 1
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="arrayobject.asort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::asort()</a> - 値でエントリをソートする</span></li>
-    <li class="member"> <span class="methodname"><a href="arrayobject.ksort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::ksort()</a> - キーでエントリをソートする</span></li>
-    <li class="member"> <span class="methodname"><a href="arrayobject.natsort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::natsort()</a> - &quot;自然順&quot; アルゴリズムでエントリをソートする</span></li>
-    <li class="member"> <span class="methodname"><a href="arrayobject.natcasesort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::natcasesort()</a> - 大文字小文字を区別しない &quot;自然順&quot; アルゴリズムでエントリをソートする</span></li>
-    <li class="member"> <span class="methodname"><a href="arrayobject.uasort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::uasort()</a> - ユーザー定義の比較関数でエントリをソートし、キーとの対応は保持する</span></li>
+    <li class="member"><span class="methodname"><a href="arrayobject.asort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::asort()</a> - 値でエントリをソートする</span></li>
+    <li class="member"><span class="methodname"><a href="arrayobject.ksort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::ksort()</a> - キーでエントリをソートする</span></li>
+    <li class="member"><span class="methodname"><a href="arrayobject.natsort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::natsort()</a> - &quot;自然順&quot; アルゴリズムでエントリをソートする</span></li>
+    <li class="member"><span class="methodname"><a href="arrayobject.natcasesort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::natcasesort()</a> - 大文字小文字を区別しない &quot;自然順&quot; アルゴリズムでエントリをソートする</span></li>
+    <li class="member"><span class="methodname"><a href="arrayobject.uasort.html" class="methodname" rel="rdfs-seeAlso">ArrayObject::uasort()</a> - ユーザー定義の比較関数でエントリをソートし、キーとの対応は保持する</span></li>
    </ul>
   </p>
  </div>

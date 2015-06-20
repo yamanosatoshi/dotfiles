@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagerectangle" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagerectangle</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">imagerectangle</span> &mdash; <span class="dc-title">矩形を描画する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagerectangle</span> &mdash; <span class="dc-title">矩形を描画する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagerectangle-description">
@@ -29,7 +29,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>imagerectangle()</strong></span> は、指定した座標から始まる矩形を作成します。
+   <span class="function"><strong>imagerectangle()</strong></span> は、指定した座標から始まる矩形を作成します。
   </p>
  </div>
 
@@ -39,15 +39,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">x1</code></dt>
 
-     <span class="term"><em><code class="parameter">x1</code></em></span>
      <dd>
 
       <p class="para">
@@ -55,11 +56,11 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">y1</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">y1</code></em></span>
      <dd>
 
       <p class="para">
@@ -68,11 +69,11 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">x2</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">x2</code></em></span>
      <dd>
 
       <p class="para">
@@ -80,11 +81,11 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">y2</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">y2</code></em></span>
      <dd>
 
       <p class="para">
@@ -92,21 +93,20 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">color</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">color</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span>
+       <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span>
        で作成した色 ID。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -122,8 +122,8 @@ image</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imagerectangle-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3262">
-    <p><strong>例1 シンプルな  <span class="function"><strong>imagerectangle()</strong></span> の例</strong></p>
+   <div class="example" id="example-3461">
+    <p><strong>例1 シンプルな <span class="function"><strong>imagerectangle()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;200&nbsp;x&nbsp;200&nbsp;の画像を作成します<br /></span><span style="color: #0000BB">$canvas&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">200</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">200</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;色を割り当てます<br /></span><span style="color: #0000BB">$pink&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$canvas</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">105</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">180</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$white&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$canvas</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$green&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$canvas</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">132</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">135</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">28</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;3&nbsp;つの矩形をそれぞれの色で描画します<br /></span><span style="color: #0000BB">imagerectangle</span><span style="color: #007700">(</span><span style="color: #0000BB">$canvas</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$pink</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagerectangle</span><span style="color: #007700">(</span><span style="color: #0000BB">$canvas</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">45</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">60</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">120</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$white</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagerectangle</span><span style="color: #007700">(</span><span style="color: #0000BB">$canvas</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">120</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">75</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">160</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$green</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;出力してメモリから解放します<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;image/jpeg'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">imagejpeg</span><span style="color: #007700">(</span><span style="color: #0000BB">$canvas</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$canvas</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

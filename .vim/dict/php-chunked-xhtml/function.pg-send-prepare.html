@@ -35,12 +35,12 @@
     送信し、その結果を待ちません。
   </p>
   <p class="para">
-    これは  <span class="function"><a href="function.pg-prepare.html" class="function">pg_prepare()</a></span> の非同期バージョンです。
+    これは <span class="function"><a href="function.pg-prepare.html" class="function">pg_prepare()</a></span> の非同期バージョンです。
     リクエストが受け付けられた場合に <strong><code>TRUE</code></strong> 、そうでない場合に <strong><code>FALSE</code></strong>
     を返します。コールが成功した後、実際にプリペアドステートメントが
-    作成されたかどうかを調べるには  <span class="function"><a href="function.pg-get-result.html" class="function">pg_get_result()</a></span>
-    を使用します。関数のパラメータは  <span class="function"><a href="function.pg-prepare.html" class="function">pg_prepare()</a></span>
-    と同じように処理されます。 <span class="function"><a href="function.pg-prepare.html" class="function">pg_prepare()</a></span> と同様、
+    作成されたかどうかを調べるには <span class="function"><a href="function.pg-get-result.html" class="function">pg_get_result()</a></span>
+    を使用します。関数のパラメータは <span class="function"><a href="function.pg-prepare.html" class="function">pg_prepare()</a></span>
+    と同じように処理されます。<span class="function"><a href="function.pg-prepare.html" class="function">pg_prepare()</a></span> と同様、
     7.4 より前の PostgreSQL のバージョンでは正しく動作しません。
   </p>
  </div>
@@ -51,24 +51,25 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
-       PostgreSQL データベース接続リソース。<em><code class="parameter">connection</code></em>
+       PostgreSQL データベース接続リソース。<code class="parameter">connection</code>
        が指定されていない場合はデフォルトの接続が使用されます。
-       デフォルトの接続は、直近の  <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
-       あるいは  <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
+       デフォルトの接続は、直近の <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
+       あるいは <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">stmtname</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">stmtname</code></em></span>
      <dd>
 
       <p class="para">
@@ -78,11 +79,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -92,8 +93,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -103,7 +103,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.pg-send-prepare-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">成功した場合に <strong><code>TRUE</code></strong> 、失敗した場合に <strong><code>FALSE</code></strong> を返します。
-  クエリの結果を確かめるには  <span class="function"><a href="function.pg-get-result.html" class="function">pg_get_result()</a></span>
+  クエリの結果を確かめるには <span class="function"><a href="function.pg-get-result.html" class="function">pg_get_result()</a></span>
   を使用します。</p>
  </div>
 
@@ -111,8 +111,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-send-prepare-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2109">
-    <p><strong>例1  <span class="function"><strong>pg_send_prepare()</strong></span> の使用法</strong></p>
+   <div class="example" id="example-2306">
+    <p><strong>例1 <span class="function"><strong>pg_send_prepare()</strong></span> の使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;connect"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;実行するクエリを準備する<br />&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">pg_connection_busy</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_send_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_query"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;*&nbsp;FROM&nbsp;shops&nbsp;WHERE&nbsp;name&nbsp;=&nbsp;$1'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$res1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_get_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;プリペアドクエリを実行する。文字列&nbsp;"Joe's&nbsp;Widgets"&nbsp;は<br />&nbsp;&nbsp;//&nbsp;エスケープの必要がないことに注意<br />&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">pg_connection_busy</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_send_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_query"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"Joe's&nbsp;Widgets"</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$res2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_get_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;同一プリペアドクエリを別のパラメータで実行する<br />&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">pg_connection_busy</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_send_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_query"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"Clothes&nbsp;Clothes&nbsp;Clothes"</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$res3&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_get_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br />&nbsp;&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -129,13 +129,13 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-connect.html" class="function" rel="rdfs-seeAlso">pg_connect()</a> - PostgreSQL 接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-pconnect.html" class="function" rel="rdfs-seeAlso">pg_pconnect()</a> - 持続的な PostgreSQL 接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-execute.html" class="function" rel="rdfs-seeAlso">pg_execute()</a> - 指定したパラメータを用いてプリペアドステートメントを実行するリクエストを
+    <li class="member"><span class="function"><a href="function.pg-connect.html" class="function" rel="rdfs-seeAlso">pg_connect()</a> - PostgreSQL 接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.pg-pconnect.html" class="function" rel="rdfs-seeAlso">pg_pconnect()</a> - 持続的な PostgreSQL 接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.pg-execute.html" class="function" rel="rdfs-seeAlso">pg_execute()</a> - 指定したパラメータを用いてプリペアドステートメントを実行するリクエストを
    送信し、その結果を待つ</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-send-execute.html" class="function" rel="rdfs-seeAlso">pg_send_execute()</a> - 指定したパラメータでプリペアドステートメントを実行するリクエストを
+    <li class="member"><span class="function"><a href="function.pg-send-execute.html" class="function" rel="rdfs-seeAlso">pg_send_execute()</a> - 指定したパラメータでプリペアドステートメントを実行するリクエストを
    送信し、その結果を待たない</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-send-query-params.html" class="function" rel="rdfs-seeAlso">pg_send_query_params()</a> - コマンドとパラメータを分割してサーバーに送信し、その結果を待たない</span></li>
+    <li class="member"><span class="function"><a href="function.pg-send-query-params.html" class="function" rel="rdfs-seeAlso">pg_send_query_params()</a> - コマンドとパラメータを分割してサーバーに送信し、その結果を待たない</span></li>
    </ul>
   </p>
  </div>

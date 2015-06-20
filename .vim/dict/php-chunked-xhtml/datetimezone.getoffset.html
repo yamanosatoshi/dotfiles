@@ -33,7 +33,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-   この関数は、<em><code class="parameter">datetime</code></em> パラメータで指定した 日付/時刻
+   この関数は、<code class="parameter">datetime</code> パラメータで指定した 日付/時刻
    についての GMT へのオフセットを返します。GMT オフセットの計算の際には、
    使用する DateTimeZone オブジェクトに含まれるタイムゾーン情報を使用します。
   </p>
@@ -46,15 +46,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-object</code></em></span><dd>
-<p class="para">手続き型のみ:  <span class="function"><a href="function.timezone-open.html" class="function">timezone_open()</a></span>
+<code class="parameter">
+object</code></dt>
+<dd>
+<p class="para">手続き型のみ: <span class="function"><a href="function.timezone-open.html" class="function">timezone_open()</a></span>
 が返す <a href="class.datetimezone.html" class="classname">DateTimeZone</a> オブジェクト</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">datetime</code></dt>
 
-     <span class="term"><em><code class="parameter">datetime</code></em></span>
      <dd>
 
       <p class="para">
@@ -62,8 +63,7 @@ object</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -81,8 +81,8 @@ object</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-datetimezone.getoffset-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2272">
-    <p><strong>例1  <span class="function"><strong>DateTimeZone::getOffset()</strong></span> の例</strong></p>
+   <div class="example" id="example-2470">
+    <p><strong>例1 <span class="function"><strong>DateTimeZone::getOffset()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;ふたつのタイムゾーンオブジェクトを作成します。ひとつは台北&nbsp;(台湾)、<br />//&nbsp;そしてもうひとつは東京&nbsp;(日本)&nbsp;のものです。<br /></span><span style="color: #0000BB">$dateTimeZoneTaipei&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTimeZone</span><span style="color: #007700">(</span><span style="color: #DD0000">"Asia/Taipei"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$dateTimeZoneJapan&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTimeZone</span><span style="color: #007700">(</span><span style="color: #DD0000">"Asia/Tokyo"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;同一の&nbsp;Unix&nbsp;タイムスタンプを持つふたつの&nbsp;DateTime&nbsp;オブジェクトを作成します。<br />//&nbsp;しかしアタッチするタイムゾーンはそれぞれ異なります。<br /></span><span style="color: #0000BB">$dateTimeTaipei&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">"now"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dateTimeZoneTaipei</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$dateTimeJapan&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">"now"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dateTimeZoneJapan</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;$dateTimeTaipei&nbsp;オブジェクトに含まれる&nbsp;日付/時刻&nbsp;の&nbsp;GMT&nbsp;オフセットを計算します。<br />//&nbsp;しかし、タイムゾーンの規則は東京のもの&nbsp;($dateTimeZoneJapan)<br />//&nbsp;を使用します。<br /></span><span style="color: #0000BB">$timeOffset&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dateTimeZoneJapan</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getOffset</span><span style="color: #007700">(</span><span style="color: #0000BB">$dateTimeTaipei</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;これは&nbsp;int(32400)&nbsp;となります&nbsp;(Sat&nbsp;Sep&nbsp;8&nbsp;01:00:00&nbsp;1951&nbsp;JST&nbsp;以降の日付の場合)。<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$timeOffset</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

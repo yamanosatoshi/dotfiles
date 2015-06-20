@@ -27,8 +27,8 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli-result.fetch-field-direct.html" class="function">mysqli_fetch_field_direct()</a></span> [flags]</li>
-    <li class="member"> <span class="methodname"><a href="pdostatement.getcolumnmeta.html" class="methodname">PDOStatement::getColumnMeta()</a></span> [flags]</li>
+    <li class="member"><span class="function"><a href="mysqli-result.fetch-field-direct.html" class="function">mysqli_fetch_field_direct()</a></span> [flags]</li>
+    <li class="member"><span class="methodname"><a href="pdostatement.getcolumnmeta.html" class="methodname">PDOStatement::getColumnMeta()</a></span> [flags]</li>
    </ul>
   </div>
  </div>
@@ -42,10 +42,10 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>mysql_field_flags()</strong></span>は、指定したフィールドの
+   <span class="function"><strong>mysql_field_flags()</strong></span>は、指定したフィールドの
    フィールドフラグを返します。個々のフラグは、空白一つで区切られた
    形式で返されます。このため、返された値を
-    <span class="function"><a href="function.explode.html" class="function">explode()</a></span> で分割することができます。
+   <span class="function"><a href="function.explode.html" class="function">explode()</a></span> で分割することができます。
   </p>
  </div>
 
@@ -56,21 +56,21 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
+<code class="parameter">
+result</code></dt>
+<dd>
 <p class="para">評価された結果 <span class="type"><span class="type リソース">リソース</span></span>。
-この結果は、 <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
+この結果は、<span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
 </dd>
-</dt>
 
     <dt>
-<span class="term"><em><code class="parameter">
-field_offset</code></em></span><dd>
+<code class="parameter">
+field_offset</code></dt>
+<dd>
 <p class="para">数値フィールドオフセット。
-<em><code class="parameter">field_offset</code></em> は <em>0</em> から始まります。
-<em><code class="parameter">field_offset</code></em> が存在しない場合、
+<code class="parameter">field_offset</code> は <em>0</em> から始まります。
+<code class="parameter">field_offset</code> が存在しない場合、
 <strong><code>E_WARNING</code></strong> レベルのエラーが発行されます。</p></dd>
-</dt>
 
    </dl>
 
@@ -98,8 +98,8 @@ field_offset</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.mysql-field-flags-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1586">
-    <p><strong>例1  <span class="function"><strong>mysql_field_flags()</strong></span> の例</strong></p>
+   <div class="example" id="example-1765">
+    <p><strong>例1 <span class="function"><strong>mysql_field_flags()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,email&nbsp;FROM&nbsp;people&nbsp;WHERE&nbsp;id&nbsp;=&nbsp;'42'"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;run&nbsp;query:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #0000BB">$flags&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_field_flags</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$flags</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">'&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$flags</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -130,7 +130,7 @@ Array
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     下位互換のために、次の非推奨別名を使用してもいいでしょう。
-     <span class="function"><strong>mysql_fieldflags()</strong></span>
+    <span class="function"><strong>mysql_fieldflags()</strong></span>
    </p>
   </p></blockquote>
  </div>
@@ -140,8 +140,8 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-field-type.html" class="function" rel="rdfs-seeAlso">mysql_field_type()</a> - 結果において指定したフィールドの型を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-field-len.html" class="function" rel="rdfs-seeAlso">mysql_field_len()</a> - 指定したフィールドの長さを返す</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-field-type.html" class="function" rel="rdfs-seeAlso">mysql_field_type()</a> - 結果において指定したフィールドの型を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-field-len.html" class="function" rel="rdfs-seeAlso">mysql_field_len()</a> - 指定したフィールドの長さを返す</span></li>
    </ul>
   </p>
  </div>

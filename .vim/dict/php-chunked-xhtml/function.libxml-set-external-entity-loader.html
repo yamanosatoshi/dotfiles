@@ -34,9 +34,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">resolver_function</code></dt>
 
-    <span class="term"><em><code class="parameter">resolver_function</code></em></span>
     <dd>
 
      <p class="para">
@@ -47,8 +48,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -65,8 +65,8 @@
  <div class="refsect1 examples" id="refsect1-function.libxml-set-external-entity-loader-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5403">
-    <p><strong>例1  <span class="function"><strong>libxml_set_external_entity_loader()</strong></span> の例</strong></p>
+   <div class="example" id="example-5871">
+    <p><strong>例1 <span class="function"><strong>libxml_set_external_entity_loader()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$xml&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;XML<br /></span><span style="color: #DD0000">&lt;!DOCTYPE&nbsp;foo&nbsp;PUBLIC&nbsp;"-//FOO/BAR"&nbsp;"http://example.com/foobar"&gt;<br />&lt;foo&gt;bar&lt;/foo&gt;<br /></span><span style="color: #007700">XML;<br /><br /></span><span style="color: #0000BB">$dtd&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;DTD<br /></span><span style="color: #DD0000">&lt;!ELEMENT&nbsp;foo&nbsp;(#PCDATA)&gt;<br /></span><span style="color: #007700">DTD;<br /><br /></span><span style="color: #0000BB">libxml_set_external_entity_loader</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;(</span><span style="color: #0000BB">$public</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$system</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$context</span><span style="color: #007700">)&nbsp;use(</span><span style="color: #0000BB">$dtd</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$public</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$system</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$context</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$f&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"php://temp"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r+"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$f</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dtd</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">rewind</span><span style="color: #007700">(</span><span style="color: #0000BB">$f</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$f</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />);<br /><br /></span><span style="color: #0000BB">$dd&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$r&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadXML</span><span style="color: #007700">(</span><span style="color: #0000BB">$xml</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$dd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">validate</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -97,7 +97,7 @@ bool(true)
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.libxml-disable-entity-loader.html" class="function" rel="rdfs-seeAlso">libxml_disable_entity_loader()</a> - 外部エンティティの読み込み機能を無効にする</span></li>
+    <li class="member"><span class="function"><a href="function.libxml-disable-entity-loader.html" class="function" rel="rdfs-seeAlso">libxml_disable_entity_loader()</a> - 外部エンティティの読み込み機能を無効にする</span></li>
    </ul>
   </p>
  </div>

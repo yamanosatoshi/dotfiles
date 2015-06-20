@@ -13,7 +13,7 @@
 </div><hr /><div id="function.copy" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">copy</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">copy</span> &mdash; <span class="dc-title">ファイルをコピーする</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">copy</span> &mdash; <span class="dc-title">ファイルをコピーする</span></p>
 
  </div>
  
@@ -27,10 +27,10 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   ファイル <em><code class="parameter">source</code></em> を <em><code class="parameter">dest</code></em> にコピーします。
+   ファイル <code class="parameter">source</code> を <code class="parameter">dest</code> にコピーします。
   </p>
   <p class="para">
-   ファイルを移動したいならば、 <span class="function"><a href="function.rename.html" class="function">rename()</a></span>
+   ファイルを移動したいならば、<span class="function"><a href="function.rename.html" class="function">rename()</a></span>
    関数を使用してください。
   </p>
  </div>
@@ -41,9 +41,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">source</code></dt>
 
-     <span class="term"><em><code class="parameter">source</code></em></span>
      <dd>
 
       <p class="para">
@@ -51,15 +52,15 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">dest</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">dest</code></em></span>
      <dd>
 
       <p class="para">
-       コピー先のパス。<em><code class="parameter">dest</code></em> が URL の場合、
+       コピー先のパス。<code class="parameter">dest</code> が URL の場合、
        既存ファイルへの上書きをラッパーがサポートしていない場合にはコピーが失敗します。
       </p>
       <div class="warning"><strong class="warning">警告</strong>
@@ -69,21 +70,20 @@
       </div>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">context</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">context</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span>
+       <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span>
        で作成した有効なコンテキストリソース。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -113,6 +113,14 @@
 
      <tbody class="tbody">
       <tr>
+       <td>5.3.4</td>
+       <td>
+        <code class="parameter">context</code> パラメータが実際に効力を持つようになりました。
+        以前のバージョンでは、<code class="parameter">context</code> に何を指定しても無視されていました。
+       </td>
+      </tr>
+
+      <tr>
        <td>5.3.0</td>
        <td>
         コンテキストのサポートが追加されました。
@@ -123,9 +131,9 @@
        <td>4.3.0</td>
        <td>
         &quot;fopen wrappers&quot; が有効の場合は
-        <em><code class="parameter">source</code></em> と <em><code class="parameter">dest</code></em>
+        <code class="parameter">source</code> と <code class="parameter">dest</code>
         のどちらにも URL を指定することができます。
-        詳細は  <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を参照ください。
+        詳細は <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を参照ください。
        </td>
       </tr>
 
@@ -140,8 +148,8 @@
  <div class="refsect1 examples" id="refsect1-function.copy-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2343">
-    <p><strong>例1  <span class="function"><strong>copy()</strong></span> の例</strong></p>
+   <div class="example" id="example-2542">
+    <p><strong>例1 <span class="function"><strong>copy()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'example.txt'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$newfile&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'example.txt.bak'</span><span style="color: #007700">;<br /><br />if&nbsp;(!</span><span style="color: #0000BB">copy</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$newfile</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"failed&nbsp;to&nbsp;copy&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">...\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -158,8 +166,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.move-uploaded-file.html" class="function" rel="rdfs-seeAlso">move_uploaded_file()</a> - アップロードされたファイルを新しい位置に移動する</span></li>
-    <li class="member"> <span class="function"><a href="function.rename.html" class="function" rel="rdfs-seeAlso">rename()</a> - ファイルをリネームする</span></li>
+    <li class="member"><span class="function"><a href="function.move-uploaded-file.html" class="function" rel="rdfs-seeAlso">move_uploaded_file()</a> - アップロードされたファイルを新しい位置に移動する</span></li>
+    <li class="member"><span class="function"><a href="function.rename.html" class="function" rel="rdfs-seeAlso">rename()</a> - ファイルをリネームする</span></li>
     <li class="member">マニュアルの <a href="features.file-upload.html" class="link">ファイルアップロード処理</a></li>
    </ul>
   </p>

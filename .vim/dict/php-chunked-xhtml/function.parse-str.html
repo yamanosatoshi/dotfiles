@@ -26,7 +26,7 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   URL 経由で渡されるクエリ文字列と同様に <em><code class="parameter">str</code></em>
+   URL 経由で渡されるクエリ文字列と同様に <code class="parameter">str</code>
    を処理し、現在のスコープに変数をセットします。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -42,7 +42,7 @@
    <p class="para">
     <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>
     の設定が、この関数の出力に影響を与えます。というのも
-     <span class="function"><strong>parse_str()</strong></span> が使用している仕組みは
+    <span class="function"><strong>parse_str()</strong></span> が使用している仕組みは
     PHP が <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var> や
     <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var> などの設定に使用しているものと同じだからです。
    </p>
@@ -55,9 +55,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">str</code></dt>
 
-     <span class="term"><em><code class="parameter">str</code></em></span>
      <dd>
 
       <p class="para">
@@ -65,22 +66,21 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">arr</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">arr</code></em></span>
      <dd>
 
       <p class="para">
        2 番目の引数
-       <em><code class="parameter">arr</code></em> が指定された場合、
+       <code class="parameter">arr</code> が指定された場合、
        変数は、代わりに配列の要素としてこの変数に保存されます。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -95,40 +95,11 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.parse-str-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.0.3</td>
-       <td>
-        <em><code class="parameter">arr</code></em> パラメータが追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.parse-str-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4834">
-    <p><strong>例1  <span class="function"><strong>parse_str()</strong></span> の使用法</strong></p>
+   <div class="example" id="example-5312">
+    <p><strong>例1 <span class="function"><strong>parse_str()</strong></span> の使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"first=value&amp;arr[]=foo+bar&amp;arr[]=baz"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">parse_str</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$first</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;value<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;bar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;baz<br /><br /></span><span style="color: #0000BB">parse_str</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'first'</span><span style="color: #007700">];&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;value<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'arr'</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;bar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'arr'</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;baz<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -145,11 +116,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.parse-url.html" class="function" rel="rdfs-seeAlso">parse_url()</a> - URL を解釈し、その構成要素を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.pathinfo.html" class="function" rel="rdfs-seeAlso">pathinfo()</a> - ファイルパスに関する情報を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.http-build-query.html" class="function" rel="rdfs-seeAlso">http_build_query()</a> - URL エンコードされたクエリ文字列を生成する</span></li>
-    <li class="member"> <span class="function"><a href="function.get-magic-quotes-gpc.html" class="function" rel="rdfs-seeAlso">get_magic_quotes_gpc()</a> - magic_quotes_gpc の現在の設定を得る</span></li>
-    <li class="member"> <span class="function"><a href="function.urldecode.html" class="function" rel="rdfs-seeAlso">urldecode()</a> - URL エンコードされた文字列をデコードする</span></li>
+    <li class="member"><span class="function"><a href="function.parse-url.html" class="function" rel="rdfs-seeAlso">parse_url()</a> - URL を解釈し、その構成要素を返す</span></li>
+    <li class="member"><span class="function"><a href="function.pathinfo.html" class="function" rel="rdfs-seeAlso">pathinfo()</a> - ファイルパスに関する情報を返す</span></li>
+    <li class="member"><span class="function"><a href="function.http-build-query.html" class="function" rel="rdfs-seeAlso">http_build_query()</a> - URL エンコードされたクエリ文字列を生成する</span></li>
+    <li class="member"><span class="function"><a href="function.get-magic-quotes-gpc.html" class="function" rel="rdfs-seeAlso">get_magic_quotes_gpc()</a> - magic_quotes_gpc の現在の設定を得る</span></li>
+    <li class="member"><span class="function"><a href="function.urldecode.html" class="function" rel="rdfs-seeAlso">urldecode()</a> - URL エンコードされた文字列をデコードする</span></li>
    </ul>
   </p>
  </div>

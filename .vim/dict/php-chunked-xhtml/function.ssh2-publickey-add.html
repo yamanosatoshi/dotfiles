@@ -35,7 +35,7 @@
 この公開鍵サブシステムは、クライアントが認証 <em class="emphasis">済</em> の
 公開鍵をサーバー上で管理するために使用されます。
 公開鍵認証によりリモートシステムで認証を行うには、かわりに
- <span class="function"><a href="function.ssh2-auth-pubkey-file.html" class="function">ssh2_auth_pubkey_file()</a></span> 関数を使用してください。</span></p></blockquote>
+<span class="function"><a href="function.ssh2-auth-pubkey-file.html" class="function">ssh2_auth_pubkey_file()</a></span> 関数を使用してください。</span></p></blockquote>
 
  </div>
 
@@ -45,22 +45,23 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">pkey</code></dt>
 
-     <span class="term"><em><code class="parameter">pkey</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.ssh2-publickey-init.html" class="function">ssh2_publickey_init()</a></span> が作成した、
+       <span class="function"><a href="function.ssh2-publickey-init.html" class="function">ssh2_publickey_init()</a></span> が作成した、
        公開鍵サブシステムのリソース。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">algoname</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">algoname</code></em></span>
      <dd>
 
       <p class="para">
@@ -68,11 +69,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">blob</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">blob</code></em></span>
      <dd>
 
       <p class="para">
@@ -80,11 +81,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">overwrite</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">overwrite</code></em></span>
      <dd>
 
       <p class="para">
@@ -92,11 +93,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">attributes</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">attributes</code></em></span>
      <dd>
 
       <p class="para">
@@ -107,8 +108,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -126,8 +126,8 @@
  <div class="refsect1 examples" id="refsect1-function.ssh2-publickey-add-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4594">
-    <p><strong>例1  <span class="function"><strong>ssh2_publickey_add()</strong></span> で公開鍵を追加する</strong></p>
+   <div class="example" id="example-5041">
+    <p><strong>例1 <span class="function"><strong>ssh2_publickey_add()</strong></span> で公開鍵を追加する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$ssh2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ssh2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'shell.example.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">22</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ssh2_auth_password</span><span style="color: #007700">(</span><span style="color: #0000BB">$ssh2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'jdoe'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'password'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$pkey&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ssh2_publickey_init</span><span style="color: #007700">(</span><span style="color: #0000BB">$ssh2</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$keyblob&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">base64_decode</span><span style="color: #007700">(</span><span style="color: #DD0000">'<br />AAAAB3NzaC1yc2EAAAABIwAAAIEA5HVt6VqSGd5PTrLRdjNONxXH1tVFGn0<br />Bd26BF0aCP9qyJRlvdJ3j4WBeX4ZmrveGrjMgkseSYc4xZ26sDHwfL351xj<br />zaLpipu\BGRrw17mWVBhuCExo476ri5tQFzbTc54VEHYckxQ16CjSTibI5X<br />69GmnYC9PNqEYq/1TP+HF10='</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">ssh2_publickey_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ssh-rsa'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$keyblob</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'comment'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"John's&nbsp;Key"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -144,9 +144,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ssh2-publickey-init.html" class="function" rel="rdfs-seeAlso">ssh2_publickey_init()</a> - 公開鍵サブシステムを初期化する</span></li>
-    <li class="member"> <span class="function"><a href="function.ssh2-publickey-remove.html" class="function" rel="rdfs-seeAlso">ssh2_publickey_remove()</a> - 認証済み公開鍵を取り除く</span></li>
-    <li class="member"> <span class="function"><a href="function.ssh2-publickey-list.html" class="function" rel="rdfs-seeAlso">ssh2_publickey_list()</a> - 現在認証済みの公開鍵の一覧を表示する</span></li>
+    <li class="member"><span class="function"><a href="function.ssh2-publickey-init.html" class="function" rel="rdfs-seeAlso">ssh2_publickey_init()</a> - 公開鍵サブシステムを初期化する</span></li>
+    <li class="member"><span class="function"><a href="function.ssh2-publickey-remove.html" class="function" rel="rdfs-seeAlso">ssh2_publickey_remove()</a> - 認証済み公開鍵を取り除く</span></li>
+    <li class="member"><span class="function"><a href="function.ssh2-publickey-list.html" class="function" rel="rdfs-seeAlso">ssh2_publickey_list()</a> - 現在認証済みの公開鍵の一覧を表示する</span></li>
    </ul>
   </p>
  </div>

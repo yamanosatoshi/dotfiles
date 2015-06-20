@@ -17,7 +17,7 @@
      次は PHP 拡張モジュールを使うための設定です。
      <var class="filename">php.ini</var> を使って
      PHP が起動時にロードする拡張モジュールを設定することができます。
-     もしくは、スクリプトの中で  <span class="function"><a href="function.dl.html" class="function">dl()</a></span> 関数を使用することにより、
+     もしくは、スクリプトの中で <span class="function"><a href="function.dl.html" class="function">dl()</a></span> 関数を使用することにより、
      拡張モジュールを動的にロードすることも可能です。
     </p>
     <p class="para">
@@ -33,41 +33,28 @@
      Windows 版
      <a href="install.windows.extensions.html#install.windows.extensions.overview" class="link">PHP 拡張モジュール</a>
      の表にまとめてあります。以下にあげられている拡張モジュールは、すでに
-     PHP に組み込まれています。
-    </p>
-    <p class="para">
-     PHP 4 (PHP 4.3.11 時点):
-     <a href="book.bc.html" class="link">BCMath</a>、
-     <a href="book.calendar.html" class="link">Caledar</a>、
-     <a href="book.com.html" class="link">COM</a>、
-     <a href="book.ctype.html" class="link">Ctype</a>、
-     <a href="book.ftp.html" class="link">FTP</a>、
-     <a href="book.mysql.html" class="link">MySQL</a>、
-     <a href="book.uodbc.html" class="link">ODBC</a>、
-     Overload、
-     <a href="book.pcre.html" class="link">PCRE</a>、
-     <a href="book.session.html" class="link">Session</a>、
-     <a href="book.tokenizer.html" class="link">Tokenizer</a>、
-     <a href="book.wddx.html" class="link">WDDX</a>、
+     PHP に組み込まれています (PHP 5.0.4 時点):
+     <a href="book.bc.html" class="link">BCMath</a>,
+     <a href="book.calendar.html" class="link">Caledar</a>,
+     <a href="book.com.html" class="link">COM</a>,
+     <a href="book.ctype.html" class="link">Ctype</a>,
+     <a href="book.dom.html" class="link">DOM</a>,
+     <a href="book.ftp.html" class="link">FTP</a>,
+     <a href="book.libxml.html" class="link">LibXML</a>,
+     <a href="book.iconv.html" class="link">Iconv</a>,
+     <a href="book.uodbc.html" class="link">ODBC</a>,
+     <a href="book.pcre.html" class="link">PCRE</a>,
+     <a href="book.session.html" class="link">Session</a>,
+     <a href="book.simplexml.html" class="link">SimpleXML</a>,
+     <a href="book.spl.html" class="link">SPL</a>,
+     <a href="book.sqlite.html" class="link">SQLite</a>,
+     <a href="book.wddx.html" class="link">WDDX</a>,
      <a href="book.xml.html" class="link">XML</a> そして
-     <a href="book.zlib.html" class="link">Zlib</a>
-    </p>
-    <p class="para">
-     PHP 5 (PHP 5.0.4 時点) では、さらに以下が組み込まれています。
-     <a href="book.dom.html" class="link">DOM</a>、
-     <a href="book.libxml.html" class="link">LibXML</a>、
-     <a href="book.iconv.html" class="link">Iconv</a>、
-     <a href="book.simplexml.html" class="link">SimpleXML</a>、
-     <a href="book.spl.html" class="link">SPL</a> そして
-     <a href="book.sqlite.html" class="link">SQLite</a>。
-     また、以下は組み込まれなくなりました。
-     <a href="book.mysql.html" class="link">MySQL</a> および
-     Overload。
+     <a href="book.zlib.html" class="link">Zlib</a>.
     </p>
     <p class="para">
      <em>PHP</em> が拡張モジュールを探すデフォルトの場所は
-     PHP 4 の場合 <var class="filename">C:\php4\extensions</var>、
-     PHP 5 の場合 <var class="filename">C:\php5</var> です。
+     <var class="filename">C:\php5</var> です。
      変更するには <var class="filename">php.ini</var> ファイルを編集してください。
      <ul class="itemizedlist">
       <li class="listitem">
@@ -91,7 +78,7 @@
        それらの拡張モジュールを有効にするには、<var class="filename">php.ini</var> 上の 
        <em>extension=php_*.dll</em>
        の行をアンコメント（行頭の ; を削除する）してください。
-       <div class="example" id="example-58">
+       <div class="example" id="example-71">
         <p><strong>例1 Windows 版の PHP で <a href="book.bzip2.html" class="link">Bzip2</a> 拡張モジュールを有効にする</strong></p>
          <div class="example-contents">
 <div class="inicode"><pre class="inicode">// この行を以下から
@@ -109,13 +96,9 @@ extension=php_bz2.dll</pre>
        <p class="para">
         拡張モジュールによっては、その動作に外部 DLL が必要な場合があります。
         配布パッケージには、一部の外部 DLL がバンドルされています。
-        PHP 4 の場合は <var class="filename">C:\php\dlls\</var>を、
-        PHP 5 の場合は親フォルダを参照ください。ただし、必要な外部 DLL
+        親フォルダを参照ください。ただし、必要な外部 DLL
         がバンドルされていないモジュールもあり、たとえば、Oracle モジュール
         (<var class="filename">php_oci8.dll</var>) は、非バンドルの DLL を必要とします。
-        PHP 4 をインストールする場合、バンドルされた DLL を
-        <var class="filename">C:\php\dlls</var> からメインのフォルダ
-        <var class="filename">C:\php</var> へコピーしてください。
         また、忘れずに <var class="filename">C:\php</var> をシステムパスに
         追加してください（その方法は、別途 <a href="faq.installation.html#faq.installation.addtopath" class="link">FAQ</a> に記載されています。）
        </p>
@@ -166,7 +149,7 @@ extension=php_bz2.dll</pre>
   <tr>
    <td>php_calendar.dll</td>
    <td><a href="book.calendar.html" class="link">カレンダー</a> 関数</td>
-   <td>PHP 4.0.3 以降ビルトイン</td>
+   <td class="empty">&nbsp;</td>
   </tr>
 
   <tr>
@@ -178,7 +161,7 @@ extension=php_bz2.dll</pre>
   <tr>
    <td>php_ctype.dll</td>
    <td><a href="book.ctype.html" class="link">文字型(ctype)</a> 関数</td>
-   <td>PHP 4.3.0 以降ビルトイン</td>
+   <td class="empty">&nbsp;</td>
   </tr>
 
   <tr>
@@ -207,21 +190,6 @@ extension=php_bz2.dll</pre>
   </tr>
 
   <tr>
-   <td>php_domxml.dll</td>
-   <td>DOM XML 関数</td>
-   <td>
-    PHP &lt;= 4.2.0 では <var class="filename">libxml2.dll</var> が必要 （バンドル）,
-    PHP &gt;= 4.3.0 では <var class="filename">iconv.dll</var> が必要 （バンドル）
-   </td>
-  </tr>
-
-  <tr>
-   <td>php_dotnet.dll</td>
-   <td><a href="book.dotnet.html" class="link">.NET</a> 関数</td>
-   <td>PHP &lt;= 4.1.1</td>
-  </tr>
-
-  <tr>
    <td>php_exif.dll</td>
    <td><a href="book.exif.html" class="link">EXIF</a> 関数</td>
    <td>
@@ -234,7 +202,7 @@ extension=php_bz2.dll</pre>
   <tr>
    <td>php_fbsql.dll</td>
    <td><a href="book.fbsql.html" class="link">FrontBase</a> 関数</td>
-   <td>PHP &lt;= 4.2.0</td>
+   <td class="empty">&nbsp;</td>
   </tr>
 
   <tr>
@@ -252,16 +220,7 @@ extension=php_bz2.dll</pre>
   <tr>
    <td>php_ftp.dll</td>
    <td><a href="book.ftp.html" class="link">FTP</a> 関数</td>
-   <td>PHP 4.0.3 以降ビルトイン</td>
-  </tr>
-
-  <tr>
-   <td>php_gd.dll</td>
-   <td><a href="book.image.html" class="link">イメージ</a> 関数 (GD ライブラリ)</td>
-   <td>
-    PHP 4.3.2以降で削除。トゥルーカラー関数は GD1 では使用できない。
-    代わりに <var class="filename">php_gd2.dll</var> を使用のこと。
-   </td> 
+   <td class="empty">&nbsp;</td>
   </tr>
 
   <tr>
@@ -282,7 +241,7 @@ extension=php_bz2.dll</pre>
 
   <tr>
    <td>php_hyperwave.dll</td>
-   <td><a href="book.hw.html" class="link">HyperWave</a> 関数</td>
+   <td>HyperWave 関数</td>
    <td class="empty">&nbsp;</td>
   </tr>
 
@@ -290,7 +249,7 @@ extension=php_bz2.dll</pre>
    <td>php_iconv.dll</td>
    <td><a href="book.iconv.html" class="link">ICONV</a> 関数</td>
    <td><var class="filename">iconv-1.3.dll</var> が必要（バンドル）、
-   PHP &gt;=4.2.1 <var class="filename">iconv.dll</var></td>
+   <var class="filename">iconv.dll</var></td>
   </tr>
 
   <tr>
@@ -324,17 +283,10 @@ extension=php_bz2.dll</pre>
   </tr>
 
   <tr>
-   <td>php_java.dll</td>
-   <td><a href="book.java.html" class="link">Java</a> 関数</td>
-   <td>PHP &lt;= 4.0.6 で <var class="filename">jvm.dll</var> が必要（バンドル）</td>
-  </tr>
-
-  <tr>
    <td>php_ldap.dll</td>
    <td><a href="book.ldap.html" class="link">LDAP</a> 関数</td>
    <td>
-    PHP &lt;= 4.2.0 では <var class="filename">libsasl.dll</var> が必要（バンドル）, 
-    PHP &gt;= 4.3.0 では <var class="filename">libeay32.dll</var> と 
+    <var class="filename">libeay32.dll</var> と
     <var class="filename">ssleay32.dll</var> が必要（バンドル）
    </td>
   </tr>
@@ -354,7 +306,7 @@ extension=php_bz2.dll</pre>
   <tr>
    <td>php_mhash.dll</td>
    <td><a href="book.mhash.html" class="link">Mhash</a> 関数</td>
-   <td>PHP &gt;= 4.3.0 で <var class="filename">libmhash.dll</var> が必要（バンドル）</td>
+   <td><var class="filename">libmhash.dll</var> が必要（バンドル）</td>
   </tr>
 
   <tr>
@@ -384,14 +336,14 @@ extension=php_bz2.dll</pre>
   <tr>
    <td>php_mysql.dll</td>
    <td><a href="book.mysql.html" class="link">MySQL</a> 関数</td>
-   <td>PHP &gt;= 5.0.0。<var class="filename">libmysql.dll</var>
+   <td><var class="filename">libmysql.dll</var>
     が必要（バンドル）</td>
   </tr>
 
   <tr>
    <td>php_mysqli.dll</td>
    <td><a href="book.mysqli.html" class="link">MySQLi</a> 関数</td>
-   <td>PHP &gt;= 5.0.0。<var class="filename">libmysql.dll</var>
+   <td><var class="filename">libmysql.dll</var>
     (PHP &lt;= 5.0.2 では <var class="filename">libmysqli.dll</var>) が必要（バンドル）</td>
   </tr>
 
@@ -408,12 +360,6 @@ extension=php_bz2.dll</pre>
   </tr>
 
   <tr>
-   <td>php_overload.dll</td>
-   <td>オブジェクトオーバーロード  関数</td>
-   <td>PHP 4.3.0 &gt; 5.0.0  以降ビルトイン</td>
-  </tr>
-
-  <tr>
    <td>php_pdf.dll</td>
    <td><a href="book.pdf.html" class="link">PDF</a> 関数</td>
    <td class="empty">&nbsp;</td>
@@ -422,12 +368,6 @@ extension=php_bz2.dll</pre>
   <tr>
    <td>php_pgsql.dll</td>
    <td><a href="book.pgsql.html" class="link">PostgreSQL</a> 関数</td>
-   <td class="empty">&nbsp;</td>
-  </tr>
-
-  <tr>
-   <td>php_printer.dll</td>
-   <td><a href="book.printer.html" class="link">プリンタ</a> 関数</td>
    <td class="empty">&nbsp;</td>
   </tr>
 
@@ -446,7 +386,7 @@ extension=php_bz2.dll</pre>
   <tr>
    <td>php_soap.dll</td>
    <td><a href="book.soap.html" class="link">SOAP</a> 関数</td>
-   <td>PHP &gt;= 5.0.0</td>
+   <td class="empty">&nbsp;</td>
   </tr>
 
   <tr>
@@ -464,33 +404,31 @@ extension=php_bz2.dll</pre>
   <tr>
    <td>php_tidy.dll</td>
    <td><a href="book.tidy.html" class="link">Tidy</a> 関数</td>
-   <td>PHP &gt;= 5.0.0</td>
+   <td class="empty">&nbsp;</td>
   </tr>
 
   <tr>
    <td>php_tokenizer.dll</td>
    <td><a href="book.tokenizer.html" class="link">Tokenizer</a> 関数</td>
-   <td>PHP 4.3.0 以降ビルトイン</td>
+   <td class="empty">&nbsp;</td>
   </tr>
 
   <tr>
    <td>php_w32api.dll</td>
-   <td><a href="book.w32api.html" class="link">W32api</a> 関数</td>
+   <td>W32api 関数</td>
    <td class="empty">&nbsp;</td>
   </tr>
 
   <tr>
    <td>php_xmlrpc.dll</td>
    <td><a href="book.xmlrpc.html" class="link">XML-RPC</a> 関数</td>
-   <td>PHP &gt;= 4.2.1 で <var class="filename">iconv.dll</var> が必要（バンドル）</td>
+   <td><var class="filename">iconv.dll</var> が必要（バンドル）</td>
   </tr>
 
   <tr>
    <td>php_xslt.dll</td>
-   <td><a href="book.xslt.html" class="link">XSLT</a> 関数</td>
+   <td>XSLT 関数</td>
    <td>
-    PHP &lt;= 4.2.0 では <var class="filename">sablot.dll</var> と
-    <var class="filename">expat.dll</var> が必要（バンドル）。 PHP &gt;= 4.2.1 では
     <var class="filename">sablot.dll</var>, <var class="filename">expat.dll</var> および
     <var class="filename">iconv.dll</var> が必要（バンドル）
    </td>
@@ -511,7 +449,7 @@ extension=php_bz2.dll</pre>
   <tr>
    <td>php_zlib.dll</td>
    <td><a href="book.zlib.html" class="link">ZLib</a> 圧縮関数</td>
-   <td>PHP 4.3.0 以降ビルトイン</td>
+   <td class="empty">&nbsp;</td>
   </tr>
 
        </tbody>

@@ -29,8 +29,8 @@
   ]]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="methodname"><strong>SNMP::walk()</strong></span> を使い、
-   指定した <em><code class="parameter">object_id</code></em> を起点とする
+   <span class="methodname"><strong>SNMP::walk()</strong></span> を使い、
+   指定した <code class="parameter">object_id</code> を起点とする
    <acronym title="Simple Network Management Protocol">SNMP</acronym> サブツリーを読み込みます。
   </p>
  </div>
@@ -40,9 +40,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">object_id</code></dt>
 
-    <span class="term"><em><code class="parameter">object_id</code></em></span>
     <dd>
 
      <p class="para">
@@ -50,11 +51,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">suffix_as_key</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">suffix_as_key</code></em></span>
     <dd>
 
      <p class="para">
@@ -64,11 +65,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">non_repeaters</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">non_repeaters</code></em></span>
     <dd>
 
      <p class="para">
@@ -77,11 +78,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">max_repetitions</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">max_repetitions</code></em></span>
     <dd>
 
      <p class="para">
@@ -90,8 +91,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -101,8 +101,8 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    成功した場合は <acronym title="Simple Network Management Protocol">SNMP</acronym> オブジェクトの ID とその値の連想配列を返します。エラー時には <strong><code>FALSE</code></strong> を返します。
-   <acronym title="Simple Network Management Protocol">SNMP</acronym> エラーが発生した場合は、 <span class="methodname"><a href="snmp.geterrno.html" class="methodname">SNMP::getErrno()</a></span> および
-    <span class="methodname"><a href="snmp.geterror.html" class="methodname">SNMP::getError()</a></span> を使えばエラー番号(SNMP 拡張モジュールで設定したもの。クラス定数を参照)
+   <acronym title="Simple Network Management Protocol">SNMP</acronym> エラーが発生した場合は、<span class="methodname"><a href="snmp.geterrno.html" class="methodname">SNMP::getErrno()</a></span> および
+   <span class="methodname"><a href="snmp.geterror.html" class="methodname">SNMP::getError()</a></span> を使えばエラー番号(SNMP 拡張モジュールで設定したもの。クラス定数を参照)
    とエラーメッセージをそれぞれ取得できます。
   </p>
  </div>
@@ -113,9 +113,9 @@
 <p class="para">
  このメソッドは、デフォルトでは一切例外をスローしません。ライブラリでエラーが発生したときに
  SNMPException をスローさせるには SNMP クラスパラメータ
- <em><code class="parameter">exceptions_enabled</code></em> に値を設定しなければなりません。
+ <code class="parameter">exceptions_enabled</code> に値を設定しなければなりません。
  詳細は <a href="class.snmp.html#snmp.props.exceptions-enabled" class="link">
- <em><code class="parameter">SNMP::$exceptions_enabled</code></em> の説明</a>を参照ください。
+ <code class="parameter">SNMP::$exceptions_enabled</code> の説明</a>を参照ください。
 </p>
 </div>
 
@@ -124,7 +124,7 @@
  <div class="refsect1 examples" id="refsect1-snmp.walk-examples">
   <h3 class="title">例</h3>
   <div class="example" id="snmp.walk.example.basic">
-   <p><strong>例1  <span class="methodname"><strong>SNMP::walk()</strong></span> の例</strong></p>
+   <p><strong>例1 <span class="methodname"><strong>SNMP::walk()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$session&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SNMP</span><span style="color: #007700">(</span><span style="color: #0000BB">SNMP</span><span style="color: #007700">::</span><span style="color: #0000BB">VERSION_1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"127.0.0.1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"public"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$fulltree&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$session</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">walk</span><span style="color: #007700">(</span><span style="color: #DD0000">"."</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$fulltree</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$session</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -149,9 +149,9 @@ Array
    </div>
   </div>
   <div class="example" id="snmp.walk.example.suffix-as-key">
-   <p><strong>例2 <em><code class="parameter">suffix_as_key</code></em> の例</strong></p>
+   <p><strong>例2 <code class="parameter">suffix_as_key</code> の例</strong></p>
    <div class="example-contents"><p>
-     <em><code class="parameter">suffix_as_key</code></em> は、複数の <acronym title="Simple Network Management Protocol">SNMP</acronym>
+     <code class="parameter">suffix_as_key</code> は、複数の <acronym title="Simple Network Management Protocol">SNMP</acronym>
      サブツリーをひとつにまとめるときに使えます。この例では、インターフェイス名とその型を関連付けます。
    </p></div>
    <div class="example-contents">
@@ -198,8 +198,8 @@ Array
  <div class="refsect1 seealso" id="refsect1-snmp.walk-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="methodname"><a href="snmp.geterrno.html" class="methodname" rel="rdfs-seeAlso">SNMP::getErrno()</a> - 直近のエラーコードを取得する</span></li>
-   <li class="member"> <span class="methodname"><a href="snmp.geterror.html" class="methodname" rel="rdfs-seeAlso">SNMP::getError()</a> - 直近のエラーメッセージを取得する</span></li>
+   <li class="member"><span class="methodname"><a href="snmp.geterrno.html" class="methodname" rel="rdfs-seeAlso">SNMP::getErrno()</a> - 直近のエラーコードを取得する</span></li>
+   <li class="member"><span class="methodname"><a href="snmp.geterror.html" class="methodname" rel="rdfs-seeAlso">SNMP::getError()</a> - 直近のエラーメッセージを取得する</span></li>
   </ul>
  </div>
 

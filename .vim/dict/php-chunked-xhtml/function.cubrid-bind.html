@@ -28,10 +28,10 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   The  <span class="function"><strong>cubrid_bind()</strong></span> function is used to bind values to a
+   The <span class="function"><strong>cubrid_bind()</strong></span> function is used to bind values to a
    corresponding named or question mark placeholder in the SQL statement that
-   was passed to  <span class="function"><a href="function.cubrid-prepare.html" class="function">cubrid_prepare()</a></span>. If
-   <em><code class="parameter">bind_value_type</code></em> is not given, string will be the
+   was passed to <span class="function"><a href="function.cubrid-prepare.html" class="function">cubrid_prepare()</a></span>. If
+   <code class="parameter">bind_value_type</code> is not given, string will be the
    default.
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -182,42 +182,42 @@
  <p class="para">
   <dl>
 
-    <dt>
+    
+  <dt>
+<code class="parameter">req_identifier</code></dt>
 
-  <span class="term"><em><code class="parameter">req_identifier</code></em></span>
   <dd>
 <p class="para">Request identifier as a result of
-     <span class="function"><a href="function.cubrid-prepare.html" class="function">cubrid_prepare()</a></span>.</p></dd>
+    <span class="function"><a href="function.cubrid-prepare.html" class="function">cubrid_prepare()</a></span>.</p></dd>
 
-   </dt>
+   
+   
+  <dt>
+<code class="parameter">bind_index</code></dt>
 
-   <dt>
-
-  <span class="term"><em><code class="parameter">bind_index</code></em></span>
   <dd>
 <p class="para">Location of binding parameters. It starts with 1.</p></dd>
 
-   </dt>
+   
+   
+  <dt>
+<code class="parameter">bind_value</code></dt>
 
-   <dt>
-
-  <span class="term"><em><code class="parameter">bind_value</code></em></span>
   <dd>
 <p class="para">Actual value for binding.</p></dd>
 
-   </dt>
+   
+   
+  <dt>
+<code class="parameter">bind_value_type</code></dt>
 
-   <dt>
-
-  <span class="term"><em><code class="parameter">bind_value_type</code></em></span>
   <dd>
 <p class="para">A type of the value to bind. (It is omitted by default.
     Thus, the system internally uses string by default. However, you need to
     specify the exact type of the value as an argument when they are NCHAR,
     BIT, or BLOB/CLOB).</p></dd>
 
-   </dt>
-
+   
   </dl>
 
   </p>
@@ -266,8 +266,8 @@
 
  <div class="refsect1 examples" id="refsect1-function.cubrid-bind-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-995">
-   <p><strong>例1  <span class="function"><strong>cubrid_bind()</strong></span> example</strong></p>
+  <div class="example" id="example-1053">
+   <p><strong>例1 <span class="function"><strong>cubrid_bind()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dba"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;code&nbsp;FROM&nbsp;event&nbsp;WHERE&nbsp;sports='Basketball'&nbsp;and&nbsp;gender='M'"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_ASSOC</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$event_code&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"code"</span><span style="color: #007700">];<br /><br /></span><span style="color: #0000BB">cubrid_close_request</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$game_req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;athlete_code&nbsp;FROM&nbsp;game&nbsp;WHERE&nbsp;host_year=1992&nbsp;and&nbsp;event_code=?&nbsp;and&nbsp;nation_code='USA'"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$game_req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$event_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"number"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$game_req</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"---&nbsp;Dream&nbsp;Team&nbsp;(1992&nbsp;United&nbsp;States&nbsp;men's&nbsp;Olympic&nbsp;basketball&nbsp;team)&nbsp;---\n"</span><span style="color: #007700">);<br />while&nbsp;(</span><span style="color: #0000BB">$athlete_code&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$game_req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_NUM</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$athlete_req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;name&nbsp;FROM&nbsp;athlete&nbsp;WHERE&nbsp;code=?&nbsp;AND&nbsp;nation_code='USA'&nbsp;AND&nbsp;event='Basketball'&nbsp;AND&nbsp;gender='M'"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$athlete_req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$athlete_code</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"number"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$athlete_req</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$athlete_req</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"name"</span><span style="color: #007700">]);<br />}<br /><br /></span><span style="color: #0000BB">cubrid_close_request</span><span style="color: #007700">(</span><span style="color: #0000BB">$game_req</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_close_request</span><span style="color: #007700">(</span><span style="color: #0000BB">$athlete_req</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -295,8 +295,8 @@ Barkley Charles
    </div>
   </div>
 
-  <div class="example" id="example-996">
-   <p><strong>例2  <span class="function"><strong>cubrid_bind()</strong></span> BLOB/CLOB example</strong></p>
+  <div class="example" id="example-1054">
+   <p><strong>例2 <span class="function"><strong>cubrid_bind()</strong></span> BLOB/CLOB example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$con&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dba"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$con</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,</span><span style="color: #DD0000">"DROP&nbsp;TABLE&nbsp;if&nbsp;exists&nbsp;php_cubrid_lob_test"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;php_cubrid_lob_test&nbsp;(doc_content&nbsp;CLOB)"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;php_cubrid_lob_test(doc_content)&nbsp;VALUES(?)"</span><span style="color: #007700">;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);&nbsp;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"book.txt"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"rb"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"clob"</span><span style="color: #007700">);&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);&nbsp;&nbsp;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -306,8 +306,8 @@ Barkley Charles
 
   </div>
 
-  <div class="example" id="example-997">
-   <p><strong>例3  <span class="function"><strong>cubrid_bind()</strong></span> BLOB/CLOB example</strong></p>
+  <div class="example" id="example-1055">
+   <p><strong>例3 <span class="function"><strong>cubrid_bind()</strong></span> BLOB/CLOB example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$con&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dba"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$con</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,</span><span style="color: #DD0000">"DROP&nbsp;TABLE&nbsp;if&nbsp;exists&nbsp;php_cubrid_lob_test"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;php_cubrid_lob_test&nbsp;(image&nbsp;BLOB)"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;php_cubrid_lob_test(image)&nbsp;VALUES(?)"</span><span style="color: #007700">;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);&nbsp;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cubrid_logo.png"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"blob"</span><span style="color: #007700">);&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);&nbsp;&nbsp;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -323,8 +323,8 @@ Barkley Charles
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.cubrid-execute.html" class="function" rel="rdfs-seeAlso">cubrid_execute()</a> - Execute a prepared SQL statement</span></li>
-    <li class="member"> <span class="function"><a href="function.cubrid-prepare.html" class="function" rel="rdfs-seeAlso">cubrid_prepare()</a> - Prepare a SQL statement for execution</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-execute.html" class="function" rel="rdfs-seeAlso">cubrid_execute()</a> - Execute a prepared SQL statement</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-prepare.html" class="function" rel="rdfs-seeAlso">cubrid_prepare()</a> - Prepare a SQL statement for execution</span></li>
    </ul>
   </p>
  </div>

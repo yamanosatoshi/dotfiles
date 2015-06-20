@@ -19,9 +19,21 @@
 
  <div class="refsect1 description" id="refsect1-intlcalendar.getactualmaximum-description">
   <h3 class="title">説明</h3>
+  <p class="para">
+   オブジェクト指向型
+  </p>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><strong>IntlCalendar::getActualMaximum</strong></span>
     ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$field</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   手続き型
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><strong>intlcal_get_actual_maximum</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span> <code class="parameter">$cal</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$field</code></span>
    )</div>
 
   <p class="para rdfs-comment">
@@ -46,9 +58,22 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">cal</code></dt>
 
-    <span class="term"><em><code class="parameter">field</code></em></span>
+    <dd>
+
+     <p class="para">
+      The IntlCalendar resource.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">field</code></dt>
+
     <dd>
 
      
@@ -62,8 +87,7 @@
 
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -73,7 +97,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    An <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> representing the maximum value in the units associated
-   with the given <em><code class="parameter">field</code></em>失敗した場合に <strong><code>FALSE</code></strong> を返します.
+   with the given <code class="parameter">field</code>失敗した場合に <strong><code>FALSE</code></strong> を返します.
   </p>
  </div>
 
@@ -82,8 +106,8 @@
  <div class="refsect1 examples" id="refsect1-intlcalendar.getactualmaximum-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2590">
-   <p><strong>例1  <span class="function"><strong>IntlCalendar::getActualMaximum()</strong></span></strong></p>
+   <div class="example" id="example-2789">
+   <p><strong>例1 <span class="function"><strong>IntlCalendar::getActualMaximum()</strong></span></strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'date.timezone'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Europe/Lisbon'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cal&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">fromDateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">'2013-02-15'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getActualMaximum</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">FIELD_DAY_OF_MONTH</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//28<br /><br /></span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">FIELD_EXTENDED_YEAR</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getActualMaximum</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">FIELD_DAY_OF_MONTH</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//29</span>
@@ -107,9 +131,9 @@ int(29)
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="intlcalendar.getmaximum.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::getMaximum()</a> - Get the global maximum value for a field</span></li>
-    <li class="member"> <span class="methodname"><a href="intlcalendar.getleastmaximum.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::getLeastMaximum()</a> - Get the smallest local maximum for a field</span></li>
-    <li class="member"> <span class="methodname"><a href="intlcalendar.getactualminimum.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::getActualMinimum()</a> - The minimum value for a field, considering the objectʼs current time</span></li>
+    <li class="member"><span class="methodname"><a href="intlcalendar.getmaximum.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::getMaximum()</a> - Get the global maximum value for a field</span></li>
+    <li class="member"><span class="methodname"><a href="intlcalendar.getleastmaximum.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::getLeastMaximum()</a> - Get the smallest local maximum for a field</span></li>
+    <li class="member"><span class="methodname"><a href="intlcalendar.getactualminimum.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::getActualMinimum()</a> - The minimum value for a field, considering the objectʼs current time</span></li>
    </ul>
   </p>
  </div>

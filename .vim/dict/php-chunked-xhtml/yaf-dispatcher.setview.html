@@ -36,9 +36,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">view</code></dt>
 
-    <span class="term"><em><code class="parameter">view</code></em></span>
     <dd>
 
      <p class="para">
@@ -46,8 +47,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -63,7 +63,7 @@
 
  <div class="refsect1 examples" id="refsect1-yaf-dispatcher.setview-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-4110">
+  <div class="example" id="example-4566">
    <p><strong>例1 カスタムビューエンジンの例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -73,8 +73,8 @@
    </div>
 
   </div>
-  <div class="example" id="example-4111">
-   <p><strong>例2  <span class="function"><strong>Yaf_Dispatcher::setView()</strong></span> の例</strong></p>
+  <div class="example" id="example-4567">
+   <p><strong>例2 <span class="function"><strong>Yaf_Dispatcher::setView()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Bootstrap&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">Yaf_Bootstrap_Abstract&nbsp;</span><span style="color: #007700">{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;smarty&nbsp;用の設定をしておきます<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;smarty.left_delimiter&nbsp;&nbsp;&nbsp;=&nbsp;"{{"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;smarty.right_delimiter&nbsp;&nbsp;=&nbsp;"}}"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;smarty.template_dir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;APPLICATION_PATH&nbsp;"/views/scripts/"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;smarty.compile_dir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;APPLICATION_PATH&nbsp;"/views/templates_c/"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;smarty.cache_dir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;APPLICATION_PATH&nbsp;"/views/templates_d/"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">_initConfig</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$config&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Yaf_Application</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getConfig</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yaf_Registry</span><span style="color: #007700">::</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #DD0000">"config"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$config</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">_initLocalName</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**&nbsp;Smarty_Adapter&nbsp;クラスをローカルライブラリディレクトリに配置します&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yaf_Loader</span><span style="color: #007700">::</span><span style="color: #0000BB">getInstance</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">registerLocalNamespace</span><span style="color: #007700">(</span><span style="color: #DD0000">'Smarty'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">_initSmarty</span><span style="color: #007700">(</span><span style="color: #0000BB">Yaf_Dispatcher&nbsp;$dispatcher</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$smarty&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Smarty_Adapter</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">Yaf_Registry</span><span style="color: #007700">::</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #DD0000">"config"</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #DD0000">"smarty"</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$dispatcher</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setView</span><span style="color: #007700">(</span><span style="color: #0000BB">$smarty</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;これで、Smarty&nbsp;ビューエンジンが&nbsp;Yaf&nbsp;のデフォルトビューエンジンになりました&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>

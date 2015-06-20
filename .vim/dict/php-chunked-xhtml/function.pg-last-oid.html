@@ -25,14 +25,14 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_last_oid()</strong></span> は、挿入された行に割り当てられた
+   <span class="function"><strong>pg_last_oid()</strong></span> は、挿入された行に割り当てられた
    <var class="varname"><var class="varname">OID</var></var> を取得します。
   </p>
   <p class="para">
    OID フィールドは PostgreSQL 7.2 からはオプションとなり、
    PostgreSQL 8.1 ではデフォルトで存在しません。OID フィールドが
    テーブルに存在しない場合、プログラマは
-    <span class="function"><a href="function.pg-result-status.html" class="function">pg_result_status()</a></span> を使用して挿入が成功したことを
+   <span class="function"><a href="function.pg-result-status.html" class="function">pg_result_status()</a></span> を使用して挿入が成功したことを
    確かめる必要があります。
   </p>
   <p class="para">
@@ -49,7 +49,7 @@
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    この関数は、以前は  <span class="function"><strong>pg_getlastoid()</strong></span> と呼ばれていました。
+    この関数は、以前は <span class="function"><strong>pg_getlastoid()</strong></span> と呼ばれていました。
    </p>
   </p></blockquote>
  </div>
@@ -60,20 +60,20 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result</code></dt>
 
-     <span class="term"><em><code class="parameter">result</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>,  <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span>
-       あるいは  <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> から返される PostgreSQL の
+       <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>, <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span>
+       あるいは <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> から返される PostgreSQL の
        クエリ結果リソース。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -83,7 +83,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.pg-last-oid-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   指定された <em><code class="parameter">connection</code></em> で、直近に挿入された行に
+   指定された <code class="parameter">connection</code> で、直近に挿入された行に
    割り当てられた OID を文字列で返します。エラー時や有効な OID のない場合に
    <strong><code>FALSE</code></strong> を返します。
   </p>
@@ -93,11 +93,11 @@
  <div class="refsect1 examples" id="refsect1-function.pg-last-oid-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2078">
-    <p><strong>例1  <span class="function"><strong>pg_last_oid()</strong></span> の例</strong></p>
+   <div class="example" id="example-2274">
+    <p><strong>例1 <span class="function"><strong>pg_last_oid()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$pgsql_conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=mark&nbsp;host=localhost"</span><span style="color: #007700">);<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;test&nbsp;(a&nbsp;INTEGER)&nbsp;WITH&nbsp;OIDS"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;test&nbsp;VALUES&nbsp;(1)"</span><span style="color: #007700">);<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$oid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_last_oid</span><span style="color: #007700">(</span><span style="color: #0000BB">$res2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;データベースに接続します<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=mark&nbsp;host=localhost"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;サンプルのテーブルを作ります<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;test&nbsp;(a&nbsp;INTEGER)&nbsp;WITH&nbsp;OIDS"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;データを追加します<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;test&nbsp;VALUES&nbsp;(1)"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;</span><span style="color: #0000BB">$oid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_last_oid</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -111,8 +111,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-query.html" class="function" rel="rdfs-seeAlso">pg_query()</a> - クエリを実行する</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-result-status.html" class="function" rel="rdfs-seeAlso">pg_result_status()</a> - クエリ結果のステータスを取得する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-query.html" class="function" rel="rdfs-seeAlso">pg_query()</a> - クエリを実行する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-result-status.html" class="function" rel="rdfs-seeAlso">pg_result_status()</a> - クエリ結果のステータスを取得する</span></li>
    </ul>
   </p>
  </div>

@@ -28,15 +28,15 @@
 
   <p class="simpara">
    この関数は英語の書式での日付を含む文字列が指定されることを期待しており、
-   <em><code class="parameter">now</code></em> で与えられたその形式から
+   <code class="parameter">now</code> で与えられたその形式から
    Unix タイムスタンプ (1970 年 1 月 1 日 00:00:00 UTC からの経過秒数) への変換を試みます。
-   <em><code class="parameter">now</code></em> が指定されていない場合は現在日時に変換します。
+   <code class="parameter">now</code> が指定されていない場合は現在日時に変換します。
   </p>
   <p class="para">
    この関数の各パラメータでは、パラメータ内でタイムゾーンを指定しない限りはデフォルトのタイムゾーンを使います。
    意図的にそうする場合は別として、パラメータごとにタイムゾーンを変えてしまったりしないように気をつけましょう。
    デフォルトのタイムゾーンを定義する方法については
-    <span class="function"><a href="function.date-default-timezone-get.html" class="function">date_default_timezone_get()</a></span> を参照ください。
+   <span class="function"><a href="function.date-default-timezone-get.html" class="function">date_default_timezone_get()</a></span> を参照ください。
   </p>
  </div>
 
@@ -46,19 +46,20 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">time</code></dt>
 
-     <span class="term"><em><code class="parameter">time</code></em></span>
      <dd>
 
       <p class="para">日付/時刻 文字列。有効な書式については <a href="datetime.formats.html" class="link">日付と時刻の書式</a> で説明しています。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">now</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">now</code></em></span>
      <dd>
 
       <p class="para">
@@ -66,8 +67,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -92,7 +92,7 @@
 を発生させます。また、システム設定のタイムゾーンあるいは環境変数
 <var class="varname"><var class="varname">TZ</var></var> を使用した場合には <strong><code>E_STRICT</code></strong>
 あるいは <strong><code>E_WARNING</code></strong> を発生させます。
- <span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span> も参照ください。</p>
+<span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span> も参照ください。</p>
  
  </div>
 
@@ -115,7 +115,7 @@
        <td>5.3.0</td>
        <td>
         PHP 5.3.0 より前のバージョンでは、
-         <span class="function"><strong>strtotime()</strong></span> の引数 <em><code class="parameter">time</code></em> に
+        <span class="function"><strong>strtotime()</strong></span> の引数 <code class="parameter">time</code> に
         <em>this week</em> や <em>previous week</em>、
         <em>last week</em>、<em>next week</em>
         を指定すると、現在日時から数えて 7 日単位という解釈になっていました。
@@ -129,7 +129,7 @@
        <td>
         PHP 5.3.0 より前のバージョンでは、<em>24:00</em>
         は無効なフォーマットとされており
-         <span class="function"><strong>strtotime()</strong></span> は <strong><code>FALSE</code></strong> を返していました。
+        <span class="function"><strong>strtotime()</strong></span> は <strong><code>FALSE</code></strong> を返していました。
        </td>
       </tr>
 
@@ -173,15 +173,6 @@
        </td>
       </tr>
 
-      <tr>
-       <td>4.4.0</td>
-       <td>
-        バージョン 4.4.0 より前の PHP では、<em>&quot;next&quot;</em>
-        が誤って +2 として計算されます。これを解決するには、代わりに
-        <em>&quot;+1&quot;</em> を使用します。
-       </td>
-      </tr>
-
      </tbody>
     
    </table>
@@ -193,8 +184,8 @@
  <div class="refsect1 examples" id="refsect1-function.strtotime-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2314">
-    <p><strong>例1 A  <span class="function"><strong>strtotime()</strong></span> の例</strong></p>
+   <div class="example" id="example-2512">
+    <p><strong>例1 A <span class="function"><strong>strtotime()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"now"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"10&nbsp;September&nbsp;2000"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"+1&nbsp;day"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"+1&nbsp;week"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"+1&nbsp;week&nbsp;2&nbsp;days&nbsp;4&nbsp;hours&nbsp;2&nbsp;seconds"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"next&nbsp;Thursday"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"last&nbsp;Monday"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -205,7 +196,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2315">
+   <div class="example" id="example-2513">
     <p><strong>例2 失敗のチェック</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -234,13 +225,14 @@
     タイムスタンプの有効な範囲は、通常、Fri, 13 Dec 1901 20:45:54
     UTC から Tue, 19 Jan 2038 03:14:07 UTC までです (これらは、32
     ビット符号付整数の最大及び最小に一致します)。
-    さらに全てのプラットフォームが負のタイムスタンプをサポートしている
-    わけではありませんので、日付の範囲は Unix
+   </p>
+   <p class="para">
+    全てのプラットフォームが負のタイムスタンプをサポートしている
+    わけではありませんので、PHP 5.1.0 より前のバージョンでは、日付の範囲が Unix
     エポック以前にはならないかも知れません。
     これは、例えば Windows やいくつかの Linux ディストリビューション、
     いくつかの他のオペレーティングシステムでは
     1970 年 1 月 1 日以前の日付では動作しない事を意味しています。
-    PHP 5.1.0 以降のバージョンでは、この制限はなくなっています。
    </p>
    <p class="para">
     64 ビット版の PHP では、タイムスタンプの有効範囲は事実上無制限です。
@@ -260,15 +252,15 @@
    <p class="para">
     このような曖昧さを避けるためにも、ISO 8601 形式
     (<em>YYYY-MM-DD</em>) を使うか、可能であれば
-     <span class="methodname"><a href="datetime.createfromformat.html" class="methodname">DateTime::createFromFormat()</a></span> を使うことを推奨します。
+    <span class="methodname"><a href="datetime.createfromformat.html" class="methodname">DateTime::createFromFormat()</a></span> を使うことを推奨します。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     この関数を使って日付の足し算や引き算を行うことはおすすめできません。
-    PHP 5.3 以降なら  <span class="methodname"><a href="datetime.add.html" class="methodname">DateTime::add()</a></span> や
-     <span class="methodname"><a href="datetime.sub.html" class="methodname">DateTime::sub()</a></span> を、そして PHP 5.2 なら
-     <span class="methodname"><a href="datetime.modify.html" class="methodname">DateTime::modify()</a></span> を使いましょう。
+    PHP 5.3 以降なら <span class="methodname"><a href="datetime.add.html" class="methodname">DateTime::add()</a></span> や
+    <span class="methodname"><a href="datetime.sub.html" class="methodname">DateTime::sub()</a></span> を、そして PHP 5.2 なら
+    <span class="methodname"><a href="datetime.modify.html" class="methodname">DateTime::modify()</a></span> を使いましょう。
    </p>
   </p></blockquote>
  </div>
@@ -279,9 +271,9 @@
   <p class="para">
    <ul class="simplelist">
     <li class="member"><a href="datetime.formats.html" class="link">日付と時刻の書式</a></li>
-    <li class="member"> <span class="methodname"><a href="datetime.createfromformat.html" class="methodname" rel="rdfs-seeAlso">DateTime::createFromFormat()</a> - 指定した書式でフォーマットした新しい DateTime オブジェクトを返す</span></li>
-    <li class="member"> <span class="function"><a href="function.checkdate.html" class="function" rel="rdfs-seeAlso">checkdate()</a> - グレゴリオ暦の日付/時刻の妥当性を確認します</span></li>
-    <li class="member"> <span class="function"><a href="function.strptime.html" class="function" rel="rdfs-seeAlso">strptime()</a> - strftime が生成した日付/時刻をパースする</span></li>
+    <li class="member"><span class="methodname"><a href="datetime.createfromformat.html" class="methodname" rel="rdfs-seeAlso">DateTime::createFromFormat()</a> - 指定した書式でフォーマットした新しい DateTime オブジェクトを返す</span></li>
+    <li class="member"><span class="function"><a href="function.checkdate.html" class="function" rel="rdfs-seeAlso">checkdate()</a> - グレゴリオ暦の日付/時刻の妥当性を確認します</span></li>
+    <li class="member"><span class="function"><a href="function.strptime.html" class="function" rel="rdfs-seeAlso">strptime()</a> - strftime が生成した日付/時刻をパースする</span></li>
    </ul>
   </p>
  </div>

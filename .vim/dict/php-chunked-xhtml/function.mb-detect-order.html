@@ -26,7 +26,7 @@
 
   <p class="para rdfs-comment">
    自動文字エンコーディング検出の順番を
-   <em><code class="parameter">encoding_list</code></em> に設定します。
+   <code class="parameter">encoding_list</code> に設定します。
   </p>
  </div>
 
@@ -36,22 +36,23 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">encoding_list</code></dt>
 
-     <span class="term"><em><code class="parameter">encoding_list</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">encoding_list</code></em> は、
+       <code class="parameter">encoding_list</code> は、
        配列またはカンマ区切りの文字エンコーディングのリストです。<a href="mbstring.supported-encodings.html" class="link">サポートされる文字エンコーディング</a>を参照ください。
       </p>
       <p class="para">
-       <em><code class="parameter">encoding_list</code></em> が省略された場合は、
+       <code class="parameter">encoding_list</code> が省略された場合は、
        現在の文字エンコーディング検出順を配列で返します。
       </p>
       <p class="para">
-       この設定は、 <span class="function"><a href="function.mb-detect-encoding.html" class="function">mb_detect_encoding()</a></span> および
-        <span class="function"><a href="function.mb-send-mail.html" class="function">mb_send_mail()</a></span> に影響します。
+       この設定は、<span class="function"><a href="function.mb-detect-encoding.html" class="function">mb_detect_encoding()</a></span> および
+       <span class="function"><a href="function.mb-send-mail.html" class="function">mb_send_mail()</a></span> に影響します。
       </p>
       <p class="para">
        <em>mbstring</em> が現在実装しているのは、
@@ -75,25 +76,9 @@
        <em>UCS2</em>, <em>UCS4</em> の場合、
        エンコーディング検出は常に失敗します。
       </p>
-      <p class="para">
-       <div class="example" id="example-2697">
-        <p><strong>例1 無意味な順番の例</strong></p>
-        <div class="example-contents">
-<div class="cdata"><pre>
-; 常に ISO-8859-1 として検出されます
-detect_order = ISO-8859-1, UTF-8
-
-; ASCII/UTF-7 の値は UTF-8 として有効なため、常に UTF-8 として検出されます
-detect_order = UTF-8, ASCII, UTF-7
-</pre></div>
-        </div>
-
-       </div>
-      </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -111,13 +96,28 @@ detect_order = UTF-8, ASCII, UTF-7
  <div class="refsect1 examples" id="refsect1-function.mb-detect-order-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2698">
-    <p><strong>例2  <span class="function"><strong>mb_detect_order()</strong></span> の例</strong></p>
+   <div class="example" id="example-2896">
+    <p><strong>例1 <span class="function"><strong>mb_detect_order()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;リストで検出順を設定&nbsp;*/<br /></span><span style="color: #0000BB">mb_detect_order</span><span style="color: #007700">(</span><span style="color: #DD0000">"eucjp-win,sjis-win,UTF-8"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;配列で検出順を設定&nbsp;*/<br /></span><span style="color: #0000BB">$ary</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">"ASCII"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$ary</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">"JIS"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$ary</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">"EUC-JP"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mb_detect_order</span><span style="color: #007700">(</span><span style="color: #0000BB">$ary</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;現在の検出順を表示&nbsp;*/<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">",&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mb_detect_order</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2897">
+    <p><strong>例2 無意味な順番の例</strong></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+; 常に ISO-8859-1 として検出されます
+detect_order = ISO-8859-1, UTF-8
+
+; ASCII/UTF-7 の値は UTF-8 として有効なため、常に UTF-8 として検出されます
+detect_order = UTF-8, ASCII, UTF-7
+</pre></div>
     </div>
 
    </div>
@@ -129,10 +129,10 @@ detect_order = UTF-8, ASCII, UTF-7
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mb-internal-encoding.html" class="function" rel="rdfs-seeAlso">mb_internal_encoding()</a> - 内部文字エンコーディングを設定あるいは取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mb-http-input.html" class="function" rel="rdfs-seeAlso">mb_http_input()</a> - HTTP 入力文字エンコーディングを検出する</span></li>
-    <li class="member"> <span class="function"><a href="function.mb-http-output.html" class="function" rel="rdfs-seeAlso">mb_http_output()</a> - HTTP 出力文字エンコーディングを設定あるいは取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mb-send-mail.html" class="function" rel="rdfs-seeAlso">mb_send_mail()</a> - エンコード変換を行ってメールを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.mb-internal-encoding.html" class="function" rel="rdfs-seeAlso">mb_internal_encoding()</a> - 内部文字エンコーディングを設定あるいは取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mb-http-input.html" class="function" rel="rdfs-seeAlso">mb_http_input()</a> - HTTP 入力文字エンコーディングを検出する</span></li>
+    <li class="member"><span class="function"><a href="function.mb-http-output.html" class="function" rel="rdfs-seeAlso">mb_http_output()</a> - HTTP 出力文字エンコーディングを設定あるいは取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mb-send-mail.html" class="function" rel="rdfs-seeAlso">mb_send_mail()</a> - エンコード変換を行ってメールを送信する</span></li>
    </ul>
   </p>
  </div>

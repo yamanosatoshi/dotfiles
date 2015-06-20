@@ -29,8 +29,8 @@
   ]]] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">pattern</code></em> で指定した正規表現により
-   <em><code class="parameter">subject</code></em> を検索します。
+   <code class="parameter">pattern</code> で指定した正規表現により
+   <code class="parameter">subject</code> を検索します。
   </p>
  </div>
 
@@ -40,9 +40,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">pattern</code></dt>
 
-     <span class="term"><em><code class="parameter">pattern</code></em></span>
      <dd>
 
       <p class="para">
@@ -50,11 +51,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">subject</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">subject</code></em></span>
      <dd>
 
       <p class="para">
@@ -62,72 +63,72 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">matches</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">matches</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">matches</code></em> を指定した場合、検索結果が代入されます。
+       <code class="parameter">matches</code> を指定した場合、検索結果が代入されます。
        <var class="varname"><var class="varname">$matches[0]</var></var> にはパターン全体にマッチしたテキストが代入され、
        <var class="varname"><var class="varname">$matches[1]</var></var> には 1 番目のキャプチャ用サブパターンにマッチした
        文字列が代入され、といったようになります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">flags</code></em> には以下のフラグを指定できます。
+       <code class="parameter">flags</code> には以下のフラグを指定できます。
        <dl>
 
-        <dt>
+        
+         <dt>
+<strong><code>PREG_OFFSET_CAPTURE</code></strong></dt>
 
-         <span class="term"><strong><code>PREG_OFFSET_CAPTURE</code></strong></span>
          <dd>
 
           <span class="simpara">
            このフラグを設定した場合、各マッチに対応する文字列のオフセットも返されます。
-           これにより <em><code class="parameter">matches</code></em> の値は配列となり、
+           これにより <code class="parameter">matches</code> の値は配列となり、
            配列の要素 <em>0</em> はマッチした文字列、
            要素 <em>1</em>は対象文字列中におけるマッチした文字列のオフセット値
            となることに注意してください。 
           </span>
          </dd>
 
-        </dt>
-
+        
        </dl>
 
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">offset</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">offset</code></em></span>
      <dd>
 
       <p class="para">
        通常、検索は対象文字列の先頭から開始されます。
-       オプションのパラメータ <em><code class="parameter">offset</code></em> を使用して
+       オプションのパラメータ <code class="parameter">offset</code> を使用して
        検索の開始位置を (バイト単位で) 指定することも可能です。
       </p>
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
-        <em><code class="parameter">offset</code></em> を用いるのと、
+        <code class="parameter">offset</code> を用いるのと、
         <em>substr($subject, $offset)</em> を
-         <span class="function"><strong>preg_match()</strong></span>の対象文字列として指定するのとは
+        <span class="function"><strong>preg_match()</strong></span>の対象文字列として指定するのとは
         等価ではありません。
-        これは、<em><code class="parameter">pattern</code></em> には、
+        これは、<code class="parameter">pattern</code> には、
         <em class="emphasis">^</em>, <em class="emphasis">$</em> や
         <em class="emphasis">(?&lt;=x)</em> のような言明を含めることができるためです。
         以下を比べてみてください。
@@ -178,8 +179,7 @@ Array
       </p></blockquote>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -189,8 +189,8 @@ Array
  <div class="refsect1 returnvalues" id="refsect1-function.preg-match-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    <span class="function"><strong>preg_match()</strong></span> は、<em><code class="parameter">pattern</code></em>
-   が指定した <em><code class="parameter">subject</code></em> にマッチした場合に 1 を返します。
+   <span class="function"><strong>preg_match()</strong></span> は、<code class="parameter">pattern</code>
+   が指定した <code class="parameter">subject</code> にマッチした場合に 1 を返します。
    マッチしなかった場合は 0、エラーが発生した場合は <strong><code>FALSE</code></strong> を返します。
   </p>
   <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は論理値
@@ -219,8 +219,8 @@ Array
       <tr>
        <td>5.3.6</td>
        <td>
-        <em><code class="parameter">offset</code></em> が
-        <em><code class="parameter">subject</code></em> よりも長いときに <strong><code>FALSE</code></strong> を返すようになりました。
+        <code class="parameter">offset</code> が
+        <code class="parameter">subject</code> よりも長いときに <strong><code>FALSE</code></strong> を返すようになりました。
        </td>
       </tr>
 
@@ -236,27 +236,6 @@ Array
        </td>
       </tr>
 
-      <tr>
-       <td>4.3.3</td>
-       <td>
-        パラメータ <em><code class="parameter">offset</code></em> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        フラグ <strong><code>PREG_OFFSET_CAPTURE</code></strong> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        パラメータ <em><code class="parameter">flags</code></em> が追加されました。
-       </td>
-      </tr>
-
      </tbody>
     
    </table>
@@ -268,7 +247,7 @@ Array
  <div class="refsect1 examples" id="refsect1-function.preg-match-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4767">
+   <div class="example" id="example-5245">
     <p><strong>例1 文字列 &quot;php&quot; を探す</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -280,7 +259,7 @@ Array
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4768">
+   <div class="example" id="example-5246">
     <p><strong>例2 単語 &quot;web&quot; を探す</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -292,7 +271,7 @@ Array
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4769">
+   <div class="example" id="example-5247">
     <p><strong>例3 URL からドメイン名を得る</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -310,7 +289,7 @@ domain name is: php.net
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4770">
+   <div class="example" id="example-5248">
     <p><strong>例4 名前つきサブパターンの使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -342,8 +321,8 @@ Array
   <div class="tip"><strong class="tip">ヒント</strong>
    <p class="para">
     ある文字列が他の文字列内に含まれているかどうかを調べるためだけに
-     <span class="function"><strong>preg_match()</strong></span> を使うのは避けた方が良いでしょう。
-     <span class="function"><a href="function.strpos.html" class="function">strpos()</a></span> か  <span class="function"><a href="function.strstr.html" class="function">strstr()</a></span> 関数を
+    <span class="function"><strong>preg_match()</strong></span> を使うのは避けた方が良いでしょう。
+    <span class="function"><a href="function.strpos.html" class="function">strpos()</a></span> か <span class="function"><a href="function.strstr.html" class="function">strstr()</a></span> 関数を
     使う方が速くなります。
    </p>
   </div>
@@ -355,10 +334,11 @@ Array
   <p class="para">
    <ul class="simplelist">
     <li class="member"><a href="pcre.pattern.html" class="link">PCRE のパターン</a></li>
-    <li class="member"> <span class="function"><a href="function.preg-match-all.html" class="function" rel="rdfs-seeAlso">preg_match_all()</a> - 繰り返し正規表現検索を行う</span></li>
-    <li class="member"> <span class="function"><a href="function.preg-replace.html" class="function" rel="rdfs-seeAlso">preg_replace()</a> - 正規表現検索および置換を行う</span></li>
-    <li class="member"> <span class="function"><a href="function.preg-split.html" class="function" rel="rdfs-seeAlso">preg_split()</a> - 正規表現で文字列を分割する</span></li>
-    <li class="member"> <span class="function"><a href="function.preg-last-error.html" class="function" rel="rdfs-seeAlso">preg_last_error()</a> - 直近の PCRE 正規表現処理のエラーコードを返す</span></li>
+    <li class="member"><span class="function"><a href="function.preg-quote.html" class="function" rel="rdfs-seeAlso">preg_quote()</a> - 正規表現文字をクオートする</span></li>
+    <li class="member"><span class="function"><a href="function.preg-match-all.html" class="function" rel="rdfs-seeAlso">preg_match_all()</a> - 繰り返し正規表現検索を行う</span></li>
+    <li class="member"><span class="function"><a href="function.preg-replace.html" class="function" rel="rdfs-seeAlso">preg_replace()</a> - 正規表現検索および置換を行う</span></li>
+    <li class="member"><span class="function"><a href="function.preg-split.html" class="function" rel="rdfs-seeAlso">preg_split()</a> - 正規表現で文字列を分割する</span></li>
+    <li class="member"><span class="function"><a href="function.preg-last-error.html" class="function" rel="rdfs-seeAlso">preg_last_error()</a> - 直近の PCRE 正規表現処理のエラーコードを返す</span></li>
    </ul>
   </p>
  </div>

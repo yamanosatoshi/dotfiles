@@ -81,14 +81,14 @@
         <td>スクロール可能なカーソル</td>
         <td>
          PDO_CUBRID はスクロール可能なカーソルをサポートしており、デフォルトの型は前進のみのカーソルです。
-          <span class="function"><a href="pdo.prepare.html" class="function">PDO::prepare()</a></span> を使えばカーソルの型を変えることができます。
+         <span class="function"><a href="pdo.prepare.html" class="function">PDO::prepare()</a></span> を使えばカーソルの型を変えることができます。
         </td>
        </tr>
 
        <tr>
         <td>タイムアウト</td>
         <td> PDO_CUBRID は sql ステートメントの実行時のタイムアウトの設定をサポートしています。
-          <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span> を使えばタイムアウトの値を設定できます。</td>
+         <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span> を使えばタイムアウトの値を設定できます。</td>
        </tr>
 
        <tr>
@@ -96,12 +96,12 @@
         <td>
          PDO_CUBRID は自動コミットとトランザクションをサポートしており、
          自動コミットモードがデフォルトで有効になっています。
-          <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span> を使えば状態を変更することができます。
+         <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span> を使えば状態を変更することができます。
          
          <p class="para">
-           <span class="function"><a href="pdo.begintransaction.html" class="function">PDO::beginTransaction()</a></span> でトランザクションを開始すると
-          autocommit_mode は自動的に無効となり、 <span class="function"><a href="pdo.commit.html" class="function">PDO::commit()</a></span> あるいは
-           <span class="function"><a href="pdo.rollback.html" class="function">PDO::rollBack()</a></span> の後で元の状態に戻します。autocommit_mode
+          <span class="function"><a href="pdo.begintransaction.html" class="function">PDO::beginTransaction()</a></span> でトランザクションを開始すると
+          autocommit_mode は自動的に無効となり、<span class="function"><a href="pdo.commit.html" class="function">PDO::commit()</a></span> あるいは
+          <span class="function"><a href="pdo.rollback.html" class="function">PDO::rollBack()</a></span> の後で元の状態に戻します。autocommit_mode
           を無効にする前に、それまでの作業は自動的にコミットされることに注意しましょう。
          </p>
         </td>
@@ -117,7 +117,7 @@
         <td>スキーマ情報</td>
         <td>
          PDO_CUBRID では
-          <span class="function"><a href="pdo.cubrid-schema.html" class="function">PDO::cubrid_schema()</a></span> 関数を用意しており、これでスキーマ情報を取得します。
+         <span class="function"><a href="pdo.cubrid-schema.html" class="function">PDO::cubrid_schema()</a></span> 関数を用意しており、これでスキーマ情報を取得します。
         </td>
        </tr>
 
@@ -128,7 +128,7 @@
          LOB を取得するには CUBRID PDO が返すストリームを読み込みます。
 
          <p class="para">
-          <div class="example" id="example-960"><p><strong>例1 CUBRID PDO での LOB の追加</strong></p>
+          <div class="example" id="example-1017"><p><strong>例1 CUBRID PDO での LOB の追加</strong></p>
            <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'lob_test.png'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'rb'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$sql_stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;lob_test(name,&nbsp;content)&nbsp;VALUES('lob_test.png',&nbsp;?)"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql_stmt</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_LOB</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -139,7 +139,7 @@
           </div>
          </p>
          <p class="para">
-          <div class="example" id="example-961"><p><strong>例2 CUBRID PDO での LOB の取得</strong></p>
+          <div class="example" id="example-1018"><p><strong>例2 CUBRID PDO での LOB の取得</strong></p>
            <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$sql_stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;content&nbsp;FROM&nbsp;lob_test&nbsp;WHERE&nbsp;name='lob_test.png'"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql_stmt</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">FETCH_NUM</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-Type:&nbsp;image/png"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fpassthru</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -155,7 +155,7 @@
        <tr>
         <td>カラムのメタ情報</td>
         <td>
-         CUBRID PDO における  <span class="function"><a href="pdostatement.getcolumnmeta.html" class="function">PDOStatement::getColumnMeta()</a></span>
+         CUBRID PDO における <span class="function"><a href="pdostatement.getcolumnmeta.html" class="function">PDOStatement::getColumnMeta()</a></span>
          は、次の値を含む連想配列を返します。
          <ul class="simplelist">
           <li class="member">type</li>
@@ -181,7 +181,7 @@
         <td>PDO_CUBRID は SET/MULTISET/SEQUENCE といったコレクションに対応しています。
         データ型を省略した場合のデフォルトは char で、次の例のようになります。
          <p class="para">
-          <div class="example" id="example-962"><p><strong>例3 CUBRID PDO で、デフォルトのデータ型のセットを追加する例</strong></p>
+          <div class="example" id="example-1019"><p><strong>例3 CUBRID PDO で、デフォルトのデータ型のセットを追加する例</strong></p>
            <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$conn_str&nbsp;</span><span style="color: #007700">=</span><span style="color: #DD0000">"cubrid:dbname=demodb;host=localhost;port=33000"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$cubrid_pdo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_str</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'dba'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cubrid_pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"DROP&nbsp;TABLE&nbsp;if&nbsp;exists&nbsp;test_tbl"</span><span style="color: #007700">);&nbsp;<br /></span><span style="color: #0000BB">$cubrid_pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;test_tbl&nbsp;(col_1&nbsp;SET(VARCHAR))"</span><span style="color: #007700">);<br />&nbsp;<br /></span><span style="color: #0000BB">$sql_stmt_insert&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;test_tbl&nbsp;VALUES&nbsp;(?);"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$cubrid_pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql_stmt_insert</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"abc"</span><span style="color: #007700">,</span><span style="color: #DD0000">"def"</span><span style="color: #007700">,</span><span style="color: #DD0000">"ghi"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_NULL</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">var_Dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$ret</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -192,7 +192,7 @@
           </div>
          </p>
          <p class="para">
-          <div class="example" id="example-963"><p><strong>例4 CUBRID PDO でのセットの追加でデータ型を指定する例</strong></p>
+          <div class="example" id="example-1020"><p><strong>例4 CUBRID PDO でのセットの追加でデータ型を指定する例</strong></p>
            <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$conn_str&nbsp;</span><span style="color: #007700">=</span><span style="color: #DD0000">"cubrid:dbname=demodb;host=localhost;port=33000"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$cubrid_pdo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_str</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'dba'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cubrid_pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"DROP&nbsp;TABLE&nbsp;if&nbsp;exists&nbsp;test_tbl"</span><span style="color: #007700">);&nbsp;<br /></span><span style="color: #0000BB">$cubrid_pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;test_tbl&nbsp;(col_1&nbsp;SET(int))"</span><span style="color: #007700">);<br />&nbsp;<br /></span><span style="color: #0000BB">$sql_stmt_insert&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;test_tbl&nbsp;VALUES&nbsp;(?);"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$cubrid_pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql_stmt_insert</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #0000BB">3</span><span style="color: #007700">,</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #DD0000">"int"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">var_Dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$ret</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -244,12 +244,12 @@
 そのドライバを使用している場合にのみ使用されます。
 あるドライバ固有の属性を別のドライバで使うと、予期せぬ結果を引き起こします。
 もし複数のドライバを使用しているコードを実行している場合、
- <span class="function"><a href="pdo.getattribute.html" class="function">PDO::getAttribute()</a></span> で <strong><code>PDO_ATTR_DRIVER_NAME</code></strong>
+<span class="function"><a href="pdo.getattribute.html" class="function">PDO::getAttribute()</a></span> で <strong><code>PDO_ATTR_DRIVER_NAME</code></strong>
 属性を使用することで、使用中のドライバ名を調べることが可能です。</p>
   <p class="para">
    これらの定数を使ってデータベースの属性を設定します。これらの定数は
-    <span class="function"><a href="pdo.getattribute.html" class="function">PDO::getAttribute()</a></span> あるいは
-    <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span> に渡します。
+   <span class="function"><a href="pdo.getattribute.html" class="function">PDO::getAttribute()</a></span> あるいは
+   <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span> に渡します。
   <table class="doctable table">
    <caption><strong>PDO::CUBRID 属性フラグ</strong></caption>
     
@@ -288,8 +288,8 @@
 
   <p class="para">
    これらの定数を使ってトランザクション分離レベルを設定します。これらの定数は
-    <span class="function"><a href="pdo.getattribute.html" class="function">PDO::getAttribute()</a></span> に渡したり
-    <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span> から返されたりします。
+   <span class="function"><a href="pdo.getattribute.html" class="function">PDO::getAttribute()</a></span> に渡したり
+   <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span> から返されたりします。
   <table class="doctable table">
    <caption><strong>PDO::CUBRID 分離レベルフラグ</strong></caption>
     
@@ -361,7 +361,7 @@
 
   <p class="para">
    これらの定数を使ってスキーマ情報を取得します。これらの定数は
-    <span class="function"><a href="pdo.cubrid-schema.html" class="function">PDO::cubrid_schema()</a></span> に渡します。
+   <span class="function"><a href="pdo.cubrid-schema.html" class="function">PDO::cubrid_schema()</a></span> に渡します。
   <table class="doctable table">
    <caption><strong>PDO::CUBRID スキーマフラグ</strong></caption>
     

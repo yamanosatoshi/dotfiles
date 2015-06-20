@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagedashedline" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagedashedline</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">imagedashedline</span> &mdash; <span class="dc-title">破線を描画する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagedashedline</span> &mdash; <span class="dc-title">破線を描画する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagedashedline-description">
@@ -29,8 +29,8 @@
    )</div>
 
   <p class="para rdfs-comment">
-   これは古い関数です。代わりに  <span class="function"><a href="function.imagesetstyle.html" class="function">imagesetstyle()</a></span> と
-    <span class="function"><a href="function.imageline.html" class="function">imageline()</a></span> の組み合せを使用してください。
+   これは古い関数です。代わりに <span class="function"><a href="function.imagesetstyle.html" class="function">imagesetstyle()</a></span> と
+   <span class="function"><a href="function.imageline.html" class="function">imageline()</a></span> の組み合せを使用してください。
   </p>
  </div>
 
@@ -40,15 +40,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">x1</code></dt>
 
-     <span class="term"><em><code class="parameter">x1</code></em></span>
      <dd>
 
       <p class="para">
@@ -56,11 +57,11 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">y1</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">y1</code></em></span>
      <dd>
 
       <p class="para">
@@ -68,11 +69,11 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">x2</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">x2</code></em></span>
      <dd>
 
       <p class="para">
@@ -80,11 +81,11 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">y2</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">y2</code></em></span>
      <dd>
 
       <p class="para">
@@ -92,21 +93,20 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">color</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">color</code></em></span>
      <dd>
 
       <p class="para">
        塗りつぶし色。
-        <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span> で作成した色 ID。
+       <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span> で作成した色 ID。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -122,8 +122,8 @@ image</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imagedashedline-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3212">
-    <p><strong>例1  <span class="function"><strong>imagedashedline()</strong></span> の例</strong></p>
+   <div class="example" id="example-3411">
+    <p><strong>例1 <span class="function"><strong>imagedashedline()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;100x100&nbsp;の画像を作成します<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$white&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xFF</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xFF</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xFF</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;縦の破線を描画します<br /></span><span style="color: #0000BB">imagedashedline</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">25</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">75</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$white</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;画像を保存します<br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'./dashedline.png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -140,8 +140,8 @@ image</code></em></span><dd>
      </div>
     </div>
    </div>
-   <div class="example" id="example-3213">
-    <p><strong>例2  <span class="function"><strong>imagedashedline()</strong></span> のもうひとつの使用法</strong></p>
+   <div class="example" id="example-3412">
+    <p><strong>例2 <span class="function"><strong>imagedashedline()</strong></span> のもうひとつの使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;100x100&nbsp;の画像を作成します<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$white&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xFF</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xFF</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xFF</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;独自のスタイルの作成:&nbsp;最初の&nbsp;4&nbsp;ピクセルを白色、<br />//&nbsp;次の&nbsp;4&nbsp;ピクセルを透明とし、破線風の効果を作成します<br /></span><span style="color: #0000BB">$style&nbsp;</span><span style="color: #007700">=&nbsp;Array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$white</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$white</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$white</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$white</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IMG_COLOR_TRANSPARENT</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IMG_COLOR_TRANSPARENT</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IMG_COLOR_TRANSPARENT</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IMG_COLOR_TRANSPARENT<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">imagesetstyle</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$style</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;破線を描画します<br /></span><span style="color: #0000BB">imageline</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">25</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">75</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_COLOR_STYLED</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;画像を保存します<br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'./imageline.png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -157,8 +157,8 @@ image</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imagesetstyle.html" class="function" rel="rdfs-seeAlso">imagesetstyle()</a> - 線描画用のスタイルを設定する</span></li>
-    <li class="member"> <span class="function"><a href="function.imageline.html" class="function" rel="rdfs-seeAlso">imageline()</a> - 直線を描画する</span></li>
+    <li class="member"><span class="function"><a href="function.imagesetstyle.html" class="function" rel="rdfs-seeAlso">imagesetstyle()</a> - 線描画用のスタイルを設定する</span></li>
+    <li class="member"><span class="function"><a href="function.imageline.html" class="function" rel="rdfs-seeAlso">imageline()</a> - 直線を描画する</span></li>
    </ul>
   </p>
  </div>

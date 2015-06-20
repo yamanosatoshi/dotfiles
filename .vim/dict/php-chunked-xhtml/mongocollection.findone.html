@@ -23,10 +23,11 @@
    <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><strong>MongoCollection::findOne</strong></span>
     ([ <span class="methodparam"><span class="type">array</span> <code class="parameter">$query</code><span class="initializer"> = array()</span></span>
    [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$fields</code><span class="initializer"> = array()</span></span>
-  ]] )</div>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = array()</span></span>
+  ]]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><a href="mongocollection.find.html" class="function">MongoCollection::find()</a></span> とは対照的に、このメソッドは結果セットの
+   <span class="function"><a href="mongocollection.find.html" class="function">MongoCollection::find()</a></span> とは対照的に、このメソッドは結果セットの
    <em class="emphasis">最初の</em>結果だけを返します。
    <a href="class.mongocursor.html" class="classname">MongoCursor</a> を返すのではないので、その後の反復処理はできません。
   </p>
@@ -38,11 +39,12 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">query</code></em>
-     </span>
+      <code class="parameter">query</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -50,7 +52,7 @@
        MongoDB のクエリ言語は極めて幅広いものです。
        PHP ドライバはほとんどの場合クエリをそのままサーバーに流すので、
        MongoDB コアドキュメントの
-       <a href="http://dochub.mongodb.org/core/find" class="link external">&raquo;&nbsp;find</a> を読むといいでしょう。
+       <a href="http://docs.mongodb.org/manual/reference/method/db.collection.find/" class="link external">&raquo;&nbsp;find</a> を読むといいでしょう。
       </p>
       <div class="warning"><strong class="warning">警告</strong>
        <p class="para">
@@ -62,13 +64,13 @@
       </div>
      </dd>
 
-    </dt>
-   
-    <dt>
+       
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">fields</code></em>
-     </span>
+      <code class="parameter">fields</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -78,12 +80,30 @@
       </p>
      </dd>
 
-    </dt>
-   
+       
+    
+     <dt>
+
+      <code class="parameter">options</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       <em>array(&quot;name&quot; =&gt; &lt;value&gt;, ...)</em> 形式の連想配列。
+       現在サポートしているオプションは、以下のとおりです。
+      </p>
+      <ul class="itemizedlist">
+       <li class="listitem"><p class="para"><em>&quot;maxTimeMS&quot;</em></p><p class="para">操作を行う累積時間の制限 (アイドル時間を含まない) を、ミリ秒単位で指定します。この時間内に操作が完了しなければ、<a href="class.mongoexecutiontimeoutexception.html" class="classname">MongoExecutionTimeoutException</a> をスローします。</p></li>
+      </ul>
+     </dd>
+
+    
    </dl>
 
   </p>
  </div>
+
 
  <div class="refsect1 returnvalues" id="refsect1-mongocollection.findone-returnvalues">
   <h3 class="title">返り値</h3>
@@ -91,6 +111,7 @@
    検索にマッチしたレコード、あるいは <strong><code>NULL</code></strong> を返します。
   </p>
  </div>
+
 
  <div class="refsect1 errors" id="refsect1-mongocollection.findone-errors">
   <h3 class="title">エラー / 例外</h3>
@@ -100,11 +121,38 @@
   </p>
  </div>
 
- 
+
+ <div class="refsect1 changelog" id="refsect1-mongocollection.findone-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>1.5.0</td>
+      <td>
+       オプションの引数 <code class="parameter">options</code> が追加されました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
  <div class="refsect1 examples" id="refsect1-mongocollection.findone-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1450">
-   <p><strong>例1  <span class="methodname"><strong>MongoCollection::findOne()</strong></span> での id による検索</strong></p>
+  <div class="example" id="example-1522">
+   <p><strong>例1 <span class="methodname"><strong>MongoCollection::findOne()</strong></span> での id による検索</strong></p>
    <div class="example-contents"><p>この例は、コレクション内のドキュメントを id から検索する方法を示します。</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -114,8 +162,8 @@
    </div>
 
   </div>
-  <div class="example" id="example-1451">
-   <p><strong>例2  <span class="methodname"><strong>MongoCollection::findOne()</strong></span> での複数条件の使用</strong></p>
+  <div class="example" id="example-1523">
+   <p><strong>例2 <span class="methodname"><strong>MongoCollection::findOne()</strong></span> での複数条件の使用</strong></p>
    <div class="example-contents"><p>この例は、コレクション内のドキュメントを複数の条件で検索し、返されるフィールドを絞り込む方法を示します。</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -149,9 +197,9 @@ Array
  <div class="refsect1 seealso" id="refsect1-mongocollection.findone-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="mongocollection.find.html" class="function" rel="rdfs-seeAlso">MongoCollection::find()</a> - コレクションに問い合わせ、結果セットの MongoCursor を返す</span></li>
-   <li class="member"> <span class="function"><a href="mongocollection.insert.html" class="function" rel="rdfs-seeAlso">MongoCollection::insert()</a> - ドキュメントをコレクションに追加する</span></li>
-   <li class="member">MongoDB コアドキュメントの <a href="http://dochub.mongodb.org/core/find" class="link external">&raquo;&nbsp;find</a></li>
+   <li class="member"><span class="function"><a href="mongocollection.find.html" class="function" rel="rdfs-seeAlso">MongoCollection::find()</a> - コレクションに問い合わせ、結果セットの MongoCursor を返す</span></li>
+   <li class="member"><span class="function"><a href="mongocollection.insert.html" class="function" rel="rdfs-seeAlso">MongoCollection::insert()</a> - ドキュメントをコレクションに追加する</span></li>
+   <li class="member">MongoDB コアドキュメントの <a href="http://docs.mongodb.org/manual/reference/method/db.collection.find/" class="link external">&raquo;&nbsp;find</a></li>
   </ul>
  </div>
 

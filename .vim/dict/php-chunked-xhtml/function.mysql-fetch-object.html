@@ -27,8 +27,8 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli-result.fetch-object.html" class="function">mysqli_fetch_object()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="pdostatement.fetch.html" class="methodname">PDOStatement::fetch(PDO::FETCH_OBJ)</a></span></li>
+    <li class="member"><span class="function"><a href="mysqli-result.fetch-object.html" class="function">mysqli_fetch_object()</a></span></li>
+    <li class="member"><span class="methodname"><a href="pdostatement.fetch.html" class="methodname">PDOStatement::fetch(PDO::FETCH_OBJ)</a></span></li>
    </ul>
   </div>
  </div>
@@ -55,16 +55,17 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
+<code class="parameter">
+result</code></dt>
+<dd>
 <p class="para">評価された結果 <span class="type"><span class="type リソース">リソース</span></span>。
-この結果は、 <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
+この結果は、<span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
 </dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">class_name</code></dt>
 
-     <span class="term"><em><code class="parameter">class_name</code></em></span>
       <dd>
 
        <p class="para">
@@ -74,21 +75,20 @@ result</code></em></span><dd>
        </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">params</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">params</code></em></span>
       <dd>
 
        <p class="para">
-        <em><code class="parameter">class_name</code></em> オブジェクトのコンストラクタに渡す
+        <code class="parameter">class_name</code> オブジェクトのコンストラクタに渡す
         オプションのパラメータの配列。
        </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -104,40 +104,11 @@ result</code></em></span><dd>
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.mysql-fetch-object-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>5.0.0</td>
-       <td>
-        さまざまな型のオブジェクトで結果を返せるようになりました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.mysql-fetch-object-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1583">
-    <p><strong>例1  <span class="function"><strong>mysql_fetch_object()</strong></span> の例</strong></p>
+   <div class="example" id="example-1762">
+    <p><strong>例1 <span class="function"><strong>mysql_fetch_object()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"hostname"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"mydb"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;mytable"</span><span style="color: #007700">);<br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">user_id</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fullname</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -148,8 +119,8 @@ result</code></em></span><dd>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-1584">
-    <p><strong>例2  <span class="function"><strong>mysql_fetch_object()</strong></span> の例</strong></p>
+   <div class="example" id="example-1763">
+    <p><strong>例2 <span class="function"><strong>mysql_fetch_object()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"hostname"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"mydb"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"select&nbsp;name&nbsp;from&nbsp;mytable&nbsp;limit&nbsp;1"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">);</span>
@@ -167,15 +138,15 @@ result</code></em></span><dd>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <strong>パフォーマンス</strong><br />
    <p class="para">
-    速度面では、この関数は  <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> と同等で、
-     <span class="function"><a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a></span> とほぼ同等です(違いはわずかです)。
+    速度面では、この関数は <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> と同等で、
+    <span class="function"><a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a></span> とほぼ同等です(違いはわずかです)。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>mysql_fetch_object()</strong></span>は、配列の代わりに
+    <span class="function"><strong>mysql_fetch_object()</strong></span>は、配列の代わりに
     オブジェクトが返されるという一つの違いを除いて
-     <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span>と類似しています。
+    <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span>と類似しています。
     つまり、オフセットによってではなく、フィールド名によってのみ
     データにアクセスすることができます
     (数字は、プロパティ名として使用できません)。
@@ -192,11 +163,11 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-fetch-array.html" class="function" rel="rdfs-seeAlso">mysql_fetch_array()</a> - 連想配列、添字配列、またはその両方として結果の行を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-fetch-assoc.html" class="function" rel="rdfs-seeAlso">mysql_fetch_assoc()</a> - 連想配列として結果の行を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-fetch-row.html" class="function" rel="rdfs-seeAlso">mysql_fetch_row()</a> - 結果を添字配列として取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-data-seek.html" class="function" rel="rdfs-seeAlso">mysql_data_seek()</a> - 内部的な結果ポインタを移動する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - MySQL クエリを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-array.html" class="function" rel="rdfs-seeAlso">mysql_fetch_array()</a> - 連想配列、添字配列、またはその両方として結果の行を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-assoc.html" class="function" rel="rdfs-seeAlso">mysql_fetch_assoc()</a> - 連想配列として結果の行を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-row.html" class="function" rel="rdfs-seeAlso">mysql_fetch_row()</a> - 結果を添字配列として取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-data-seek.html" class="function" rel="rdfs-seeAlso">mysql_data_seek()</a> - 内部的な結果ポインタを移動する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - MySQL クエリを送信する</span></li>
    </ul>
   </p>
  </div>

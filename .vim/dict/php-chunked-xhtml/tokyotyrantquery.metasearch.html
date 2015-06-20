@@ -37,9 +37,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">queries</code></dt>
 
-     <span class="term"><em><code class="parameter">queries</code></em></span>
      <dd>
 
       <p class="para">
@@ -47,11 +48,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">type</code></em></span>
      <dd>
 
       <p class="para">
@@ -59,8 +60,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -78,8 +78,8 @@
  <div class="refsect1 examples" id="refsect1-tokyotyrantquery.metasearch-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2227">
-    <p><strong>例1  <span class="methodname"><strong>TokyoTyrantQuery::metaSearch()</strong></span> の例</strong></p>
+   <div class="example" id="example-2424">
+    <p><strong>例1 <span class="methodname"><strong>TokyoTyrantQuery::metaSearch()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;テーブルデータベースに接続します&nbsp;*/<br /></span><span style="color: #0000BB">$tt&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">TokyoTyrantTable</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1979</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;テストデータを追加します&nbsp;*/<br /></span><span style="color: #0000BB">$tt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">put</span><span style="color: #007700">(</span><span style="color: #DD0000">'cherry'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$tt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">put</span><span style="color: #007700">(</span><span style="color: #DD0000">'strawberry'</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$tt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">put</span><span style="color: #007700">(</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'green'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$tt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">put</span><span style="color: #007700">(</span><span style="color: #DD0000">'lemon'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'yellow'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;最初のクエリ&nbsp;*/<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$tt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getQuery</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$query</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addCond</span><span style="color: #007700">(</span><span style="color: #DD0000">'color'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">TokyoTyrant</span><span style="color: #007700">::</span><span style="color: #0000BB">RDBQC_STREQ</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">setOrder</span><span style="color: #007700">(</span><span style="color: #DD0000">'color'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">TokyoTyrant</span><span style="color: #007700">::</span><span style="color: #0000BB">RDBQO_STRASC</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;次のクエリ&nbsp;*/<br /></span><span style="color: #0000BB">$query1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$tt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getQuery</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$query1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addCond</span><span style="color: #007700">(</span><span style="color: #DD0000">'color'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">TokyoTyrant</span><span style="color: #007700">::</span><span style="color: #0000BB">RDBQC_STREQ</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'yellow'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;ふたつのクエリの和集合を取得します&nbsp;*/<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">metaSearch</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$query1</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">TokyoTyrant</span><span style="color: #007700">::</span><span style="color: #0000BB">RDBMS_UNION</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -118,7 +118,7 @@ array(3) {
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="tokyotyrantquery.search.html" class="methodname" rel="rdfs-seeAlso">TokyoTyrantQuery::search()</a> - レコードを検索する</span></li>
+    <li class="member"><span class="methodname"><a href="tokyotyrantquery.search.html" class="methodname" rel="rdfs-seeAlso">TokyoTyrantQuery::search()</a> - レコードを検索する</span></li>
    </ul>
   </p>
  </div>

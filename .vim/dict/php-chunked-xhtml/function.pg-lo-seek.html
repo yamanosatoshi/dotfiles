@@ -29,7 +29,7 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_lo_seek()</strong></span> はラージオブジェクトリソースの位置を
+   <span class="function"><strong>pg_lo_seek()</strong></span> はラージオブジェクトリソースの位置を
    シークします。
   </p>
   <p class="para">
@@ -44,22 +44,23 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">large_object</code></dt>
 
-     <span class="term"><em><code class="parameter">large_object</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.pg-lo-open.html" class="function">pg_lo_open()</a></span> が返す PostgreSQL の
+       <span class="function"><a href="function.pg-lo-open.html" class="function">pg_lo_open()</a></span> が返す PostgreSQL の
        ラージオブジェクト(LOB)リソース。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">offset</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">offset</code></em></span>
      <dd>
 
       <p class="para">
@@ -67,11 +68,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">whence</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">whence</code></em></span>
      <dd>
 
       <p class="para">
@@ -82,8 +83,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -101,8 +101,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-lo-seek-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2086">
-    <p><strong>例1  <span class="function"><strong>pg_lo_seek()</strong></span> の例</strong></p>
+   <div class="example" id="example-2282">
+    <p><strong>例1 <span class="function"><strong>pg_lo_seek()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;$doc_oid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">189762345</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$database&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=jacarta"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"begin"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_lo_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$doc_oid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;最初の&nbsp;50000&nbsp;バイトをスキップする<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_lo_seek</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50000</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PGSQL_SEEK_SET</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;次の&nbsp;10000&nbsp;バイトを読み込む<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_lo_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10000</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"commit"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -114,12 +114,43 @@
   </p>
  </div>
 
+
+ <div class="refsect1 changelog" id="refsect1-function.pg-lo-seek-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.6.0</td>
+       <td>
+        PostgreSQL 9.3 以降での 64 ビットラージオブジェクトに対応しました。
+        これを使うには、クライアントとサーバーがいずれも PostgreSQL 9.3 以降であることと、
+        PHP が 64 ビット版であることが必要です。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
  
  <div class="refsect1 seealso" id="refsect1-function.pg-lo-seek-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-lo-tell.html" class="function" rel="rdfs-seeAlso">pg_lo_tell()</a> - ラージオブジェクトのカレントのシーク位置を返す</span></li>
+    <li class="member"><span class="function"><a href="function.pg-lo-tell.html" class="function" rel="rdfs-seeAlso">pg_lo_tell()</a> - ラージオブジェクトのカレントのシーク位置を返す</span></li>
    </ul>
   </p>
  </div>

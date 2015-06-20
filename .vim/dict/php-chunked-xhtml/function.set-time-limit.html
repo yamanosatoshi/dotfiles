@@ -20,7 +20,7 @@
  <div class="refsect1 description" id="refsect1-function.set-time-limit-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>set_time_limit</strong></span>
+   <span class="type">bool</span> <span class="methodname"><strong>set_time_limit</strong></span>
     ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$seconds</code></span>
    )</div>
 
@@ -47,9 +47,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">seconds</code></dt>
 
-     <span class="term"><em><code class="parameter">seconds</code></em></span>
      <dd>
 
       <p class="para">
@@ -57,8 +58,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -68,7 +68,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.set-time-limit-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   値を返しません。
+   成功した場合に <strong><code>TRUE</code></strong>、失敗した場合に <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
 
@@ -84,9 +84,9 @@
   </div>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    関数  <span class="function"><strong>set_time_limit()</strong></span> と設定ディレクティブ <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a> は、
+    関数 <span class="function"><strong>set_time_limit()</strong></span> と設定ディレクティブ <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a> は、
     このスクリプト自体の実行時間にのみ影響を与えます。
-     <span class="function"><a href="function.system.html" class="function">system()</a></span> を用いたシステムコール、ストリーム操作、
+    <span class="function"><a href="function.system.html" class="function">system()</a></span> を用いたシステムコール、ストリーム操作、
     データベースクエリ等のスクリプト実行以外で発生する処理にかかった時間は
     スクリプトが実行される最大時間を定義する際には含まれません。
     ただし、Windows ではこれは当てはまりません。

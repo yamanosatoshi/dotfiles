@@ -6,14 +6,14 @@
 
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mongoclient.getreadpreference.html">MongoClient::getReadPreference</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="mongoclient.getwriteconcern.html">MongoClient::getWriteConcern</a></div>
  <div class="next" style="text-align: right; float: right;"><a href="mongo.listdbs.html">Mongo::listDBs</a></div>
  <div class="up"><a href="class.mongoclient.html">MongoClient</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="mongoclient.killcursor" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">MongoClient::killCursor</h1>
-  <p class="verinfo">(バージョン情報なし。おそらく SVN 版にしか存在しないでしょう)</p><p class="refpurpose"><span class="refname">MongoClient::killCursor</span> &mdash; <span class="dc-title">サーバー上の指定したカーソルを削除する</span></p>
+  <p class="verinfo">(PECL mongo &gt;=1.5.0)</p><p class="refpurpose"><span class="refname">MongoClient::killCursor</span> &mdash; <span class="dc-title">サーバー上の指定したカーソルを削除する</span></p>
 
  </div>
 
@@ -28,10 +28,10 @@
   <p class="para rdfs-comment">
    サーバー上の、特定のカーソルを削除したくなることがあります。
    通常は、未使用のまま 10 分が経過するとカーソルはタイムアウトします。
-   しかし、 <span class="methodname"><a href="mongocursor.immortal.html" class="methodname">MongoCursor::immortal()</a></span> を使って不死身のカーソルも作ることができ、
+   しかし、<span class="methodname"><a href="mongocursor.immortal.html" class="methodname">MongoCursor::immortal()</a></span> を使って不死身のカーソルも作ることができ、
    このカーソルは決してタイムアウトしません。
    不死身のカーソルを削除できるようにするには、
-    <span class="methodname"><a href="mongocursor.info.html" class="methodname">MongoCursor::info()</a></span>
+   <span class="methodname"><a href="mongocursor.info.html" class="methodname">MongoCursor::info()</a></span>
    で得た情報を使ってこのメソッドを呼びます。
   </p>
  </div>
@@ -42,26 +42,27 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">server_hash</code></em>
-     </span>
+      <code class="parameter">server_hash</code>
+     </dt>
+
      <dd>
 
       <p class="para">
        カーソルの情報を持つ、サーバーのハッシュ。これは
-        <span class="methodname"><a href="mongocursor.info.html" class="methodname">MongoCursor::info()</a></span> で取得できます。
+       <span class="methodname"><a href="mongocursor.info.html" class="methodname">MongoCursor::info()</a></span> で取得できます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
 
-    <dt>
+      <code class="parameter">id</code>
+     </dt>
 
-     <span class="term">
-      <em><code class="parameter">id</code></em>
-     </span>
      <dd>
 
       <p class="para">
@@ -72,8 +73,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -84,7 +84,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    カーソルの削除処理を実行した場合に <strong><code>TRUE</code></strong>、
-   引数に何か問題があった場合 (<em><code class="parameter">server_hash</code></em> が間違っている場合など) に <strong><code>FALSE</code></strong> を返します。
+   引数に何か問題があった場合 (<code class="parameter">server_hash</code> が間違っている場合など) に <strong><code>FALSE</code></strong> を返します。
    この返り値は、実際にカーソルが削除されたかどうかを表すもの<em class="emphasis">ではありません</em>。
    サーバーからは、カーソルの削除に成功したかどうかの情報を得られないからです。
   </p>
@@ -94,7 +94,7 @@
  <div class="refsect1 errors" id="refsect1-mongoclient.killcursor-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
-   指定した <em><code class="parameter">server_hash</code></em> が既存の接続にマッチしない場合に警告が発生します。
+   指定した <code class="parameter">server_hash</code> が既存の接続にマッチしない場合に警告が発生します。
    その場合、カーソルの削除は試みません。
   </p>
  </div>
@@ -102,8 +102,8 @@
 
  <div class="refsect1 examples" id="mongo.mongoclient.killcursor.examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1402">
-   <p><strong>例1  <span class="function"><strong>MongoClient::killCursor()</strong></span> の例</strong></p>
+  <div class="example" id="example-1465">
+   <p><strong>例1 <span class="function"><strong>MongoClient::killCursor()</strong></span> の例</strong></p>
    <div class="example-contents"><p>
     この例では、接続してクエリを発行し、カーソルの情報を取得してからカーソルを削除します。
    </p></div>
@@ -118,7 +118,7 @@
  </div>
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mongoclient.getreadpreference.html">MongoClient::getReadPreference</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="mongoclient.getwriteconcern.html">MongoClient::getWriteConcern</a></div>
  <div class="next" style="text-align: right; float: right;"><a href="mongo.listdbs.html">Mongo::listDBs</a></div>
  <div class="up"><a href="class.mongoclient.html">MongoClient</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>

@@ -135,7 +135,7 @@ fi</pre>
    <p class="para">
     先ほどの <var class="filename">config.m4</var> のサンプルで、
     ちょっとしたコメントを除いていちばん最初にあるのは
-     <span class="function"><strong>PHP_ARG_WITH()</strong></span> および  <span class="function"><strong>PHP_ARG_ENABLE()</strong></span>
+    <span class="function"><strong>PHP_ARG_WITH()</strong></span> および <span class="function"><strong>PHP_ARG_ENABLE()</strong></span>
     を使用した 3 行です。これらは、<strong class="command">configure</strong> コマンドで
     <strong class="command">./configure --help</strong> を実行したときに表示される
     オプションとその説明文を指定するものです。
@@ -148,9 +148,9 @@ fi</pre>
     このどちらかに拡張モジュール名とつけたオプションを提供する必要があります。
     これにより、その拡張モジュールを PHP に組み込むかどうかを選択できるようになります。
     規約上では、何らかのパラメータ (その拡張モジュールが必要とするライブラリやプログラムの場所など)
-    を指定させる場合には  <span class="function"><strong>PHP_ARG_WITH()</strong></span> を使うことになっています。
+    を指定させる場合には <span class="function"><strong>PHP_ARG_WITH()</strong></span> を使うことになっています。
     一方、単なるフラグとして使用するオプションの場合は
-     <span class="function"><strong>PHP_ARG_ENABLE()</strong></span> を使用します。
+    <span class="function"><strong>PHP_ARG_ENABLE()</strong></span> を使用します。
    </p>
    <div class="example" id="internals2.buildsys.configunix.php-arg.configure-out">
     <p><strong>例2 configure の出力例</strong></p>
@@ -212,7 +212,7 @@ checking for extra libraries for example... /another/library/path
     </p>
     
     <p class="para">
-     次に、このコードは  <span class="function"><strong>AC_MSG_CHECKING()</strong></span> をコールします。
+     次に、このコードは <span class="function"><strong>AC_MSG_CHECKING()</strong></span> をコールします。
      これは <strong class="command">autoconf</strong> のマクロで、標準的な
      &quot;checking for something&quot; の行を出力してユーザーが
      <strong class="command">example-config</strong> にパスを明示したかどうかを調べます。
@@ -222,24 +222,24 @@ checking for extra libraries for example... /another/library/path
      <strong class="option configure">--with-example</strong>
  だけしか指定しなかった場合は、
      このコードは <strong class="command">$php_shtool path $EXAMPLE_CONFIG</strong>
-     を実行します。これは、そのユーザーの現在の <em>PATH</em>
+     を実行します。これは、そのユーザーの現在の <span class="envar">PATH</span>
      を使用して <strong class="command">example-config</strong> の場所を探します。
      どちらにしても、次に行うのは <em>EXAMPLE_PATH</em>
      が通常の実行可能ファイルであるかどうか、
      そして正常に実行できるかどうかの調査となります。
-     実行できた場合は  <span class="function"><strong>AC_MSG_RESULT()</strong></span> がコールされ、
-      <span class="function"><strong>AC_MSG_CHECKING()</strong></span> で始まる出力行を補完します。
-     それ以外の場合は  <span class="function"><strong>AC_MSG_ERROR()</strong></span> がコールされ、
+     実行できた場合は <span class="function"><strong>AC_MSG_RESULT()</strong></span> がコールされ、
+     <span class="function"><strong>AC_MSG_CHECKING()</strong></span> で始まる出力行を補完します。
+     それ以外の場合は <span class="function"><strong>AC_MSG_ERROR()</strong></span> がコールされ、
      指定されたメッセージを表示して <strong class="command">configure</strong> を即時に終了させます。
     </p>
     
     <p class="para">
      次に、このコードは <strong class="command">example-config</strong>
      を何度か実行してサイト固有の設定情報を取得します。
-     その次にコールするのは  <span class="function"><strong>PHP_CHECK_LIBRARY()</strong></span>
+     その次にコールするのは <span class="function"><strong>PHP_CHECK_LIBRARY()</strong></span>
      です。これは PHP のビルドシステムが <strong class="command">autoconf</strong> の
-      <span class="function"><strong>AC_CHECK_LIB()</strong></span> のラッパーとして用意しているマクロです。
-      <span class="function"><strong>PHP_CHECK_LIBRARY()</strong></span> は、
+     <span class="function"><strong>AC_CHECK_LIB()</strong></span> のラッパーとして用意しているマクロです。
+     <span class="function"><strong>PHP_CHECK_LIBRARY()</strong></span> は、
      最初のパラメータで指定したライブラリの
      2 番目のパラメータで指定したシンボルをコールするプログラムを
      コンパイル、リンクして実行します。
@@ -248,7 +248,7 @@ checking for extra libraries for example... /another/library/path
      インクルードパスやライブラリパス、ライブラリ名を
      <strong class="command">example-config</strong> が返す文字列から通知します。
      失敗すると、かわりに 4 番目のパラメータで指定したスクリプトを実行します。
-     この場合は、 <span class="function"><strong>AC_MSG_ERROR()</strong></span> がコールされて処理を停止します。
+     この場合は、<span class="function"><strong>AC_MSG_ERROR()</strong></span> がコールされて処理を停止します。
     </p>
    </div>
    
@@ -258,7 +258,7 @@ checking for extra libraries for example... /another/library/path
      <strong class="option configure">--enable-example-debug</strong>
 
      の処理はずっと単純です。真値が設定されているかどうかだけを調べます。
-     チェックに成功すると、 <span class="function"><strong>AC_DEFINE()</strong></span>
+     チェックに成功すると、<span class="function"><strong>AC_DEFINE()</strong></span>
      をコールして C のマクロ <em>USE_EXAMPLE_DEBUG</em>
      を作成し、拡張モジュールのソースで使用できるようにします。
      3 番目のパラメータは <var class="filename">config.h</var> 用のコメント文字列です。
@@ -286,20 +286,20 @@ checking for extra libraries for example... /another/library/path
      否定形が指定された場合は、それ以降の処理を行いません。
      これは、そのユーザーが追加機能を必要としなかったことを表します。
      パラメータなしで肯定形が指定された場合は、
-      <span class="function"><strong>AC_MSG_ERROR()</strong></span> がコールされて処理を停止します。
-     その次に、また  <span class="function"><strong>PHP_CHECK_LIBRARY()</strong></span> を実行します。
+     <span class="function"><strong>AC_MSG_ERROR()</strong></span> がコールされて処理を停止します。
+     その次に、また <span class="function"><strong>PHP_CHECK_LIBRARY()</strong></span> を実行します。
      今度は、定義済みのコンパイラオプションはないので、
-      <span class="function"><strong>PHP_ADD_INCLUDE()</strong></span> と
-      <span class="function"><strong>PHP_ADD_LIBRARY_WITH_PATH()</strong></span>
+     <span class="function"><strong>PHP_ADD_INCLUDE()</strong></span> と
+     <span class="function"><strong>PHP_ADD_LIBRARY_WITH_PATH()</strong></span>
      を使用して必要なインクルードパスやライブラリパス、
      追加機能のためのライブラリのフラグを作成します。
-      <span class="function"><strong>AC_DEFINE()</strong></span> もコールされ、
+     <span class="function"><strong>AC_DEFINE()</strong></span> もコールされ、
      追加機能が要求されていてそれが使用可能であることを通知します。
      また、ビルドすべきファイルが別に存在することを示す変数も設定します。
      チェックに失敗すると、おなじみの
-      <span class="function"><strong>AC_MSG_ERROR()</strong></span> がコールされます。
+     <span class="function"><strong>AC_MSG_ERROR()</strong></span> がコールされます。
      失敗時のもうひとつの処理法は、次のように
-      <span class="function"><strong>AC_MSG_WARNING()</strong></span> をコールすることです。
+     <span class="function"><strong>AC_MSG_WARNING()</strong></span> をコールすることです。
     </p>
     <div class="informalexample">
      <div class="example-contents">
@@ -324,18 +324,18 @@ checking for extra libraries for example... /another/library/path
     でも、あとひとつ残っていることがあります。
     ビルドシステムに対して、拡張モジュール自身をビルドすることと
     そのために使用するファイル群を教えてやらなければならないのです。
-    そのためには  <span class="function"><strong>PHP_NEW_EXTENSION()</strong></span> マクロをコールします。
+    そのためには <span class="function"><strong>PHP_NEW_EXTENSION()</strong></span> マクロをコールします。
     このマクロの最初のパラメータは拡張モジュールの名前で、
     これはディレクトリ名と一致します。2 番目のパラメータは、
     その拡張モジュールを構成するすべてのソースファイルのリストです。
     サブディレクトリ内のソースファイルをビルド処理に追加する方法については
-     <span class="function"><strong>PHP_ADD_BUILD_DIR()</strong></span> を参照ください。
+    <span class="function"><strong>PHP_ADD_BUILD_DIR()</strong></span> を参照ください。
     3 番目のパラメータは、常に <em>$ext_shared</em>
     でなければなりません。この値は、
     <strong class="command">configure</strong> の際に
     <strong class="option configure">--with-example[=FILE]</strong>
  用に
-     <span class="function"><strong>PHP_ARG_WITH()</strong></span> がコールされたときに決まります。
+    <span class="function"><strong>PHP_ARG_WITH()</strong></span> がコールされたときに決まります。
     4 番目のパラメータでは &quot;SAPI クラス&quot; を指定します。
     これは CGI SAPI や CLI SAPI を必要とする場合にのみ有用です。
     その他のクラスでは、ここは空のままにしておかなければなりません。
@@ -345,7 +345,7 @@ checking for extra libraries for example... /another/library/path
     拡張モジュール全体のビルドを <em>$CC</em> ではなく
     <em>$CXX</em> を用いて行います。
     3 番目以降のパラメータは、すべてオプションです。
-    最後に  <span class="function"><strong>PHP_SUBST()</strong></span> をコールして、
+    最後に <span class="function"><strong>PHP_SUBST()</strong></span> をコールして、
     拡張モジュールの共有ビルドを有効にします。
     共有モードでの拡張モジュールのビルドをサポートしないようにする方法についての詳細は
     <a href="internals2.faq.html" class="xref">拡張モジュールに関する FAQ</a> を参照ください。

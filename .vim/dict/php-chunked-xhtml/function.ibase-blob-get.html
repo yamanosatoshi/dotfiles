@@ -26,12 +26,12 @@
    )</div>
 
   <p class="para rdfs-comment">
-   この関数は、 <span class="function"><a href="function.ibase-blob-open.html" class="function">ibase_blob_open()</a></span> によって読み込み用に
-   オープンした BLOB から最大 <em><code class="parameter">len</code></em> バイトを返します。
+   この関数は、<span class="function"><a href="function.ibase-blob-open.html" class="function">ibase_blob_open()</a></span> によって読み込み用に
+   オープンした BLOB から最大 <code class="parameter">len</code> バイトを返します。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><a href="function.ibase-blob-create.html" class="function">ibase_blob_create()</a></span> で書き込み用にオープンした
+    <span class="function"><a href="function.ibase-blob-create.html" class="function">ibase_blob_create()</a></span> で書き込み用にオープンした
     BLOB から読み込むことはできません。
    </p>
   </p></blockquote>
@@ -43,21 +43,22 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">blob_handle</code></dt>
 
-     <span class="term"><em><code class="parameter">blob_handle</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.ibase-blob-open.html" class="function">ibase_blob_open()</a></span> でオープンした BLOB ハンドル。
+       <span class="function"><a href="function.ibase-blob-open.html" class="function">ibase_blob_open()</a></span> でオープンした BLOB ハンドル。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">len</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">len</code></em></span>
      <dd>
 
       <p class="para">
@@ -65,8 +66,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -76,7 +76,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.ibase-blob-get-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   BLOB から最大 <em><code class="parameter">len</code></em> バイトを返します。
+   BLOB から最大 <code class="parameter">len</code> バイトを返します。
    失敗した場合は <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
@@ -85,8 +85,8 @@
  <div class="refsect1 examples" id="refsect1-function.ibase-blob-get-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1101">
-    <p><strong>例1  <span class="function"><strong>ibase_blob_get()</strong></span> の例</strong></p>
+   <div class="example" id="example-1159">
+    <p><strong>例1 <span class="function"><strong>ibase_blob_get()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$result&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;blob_value&nbsp;FROM&nbsp;table"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$blob_data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_blob_info</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">BLOB_VALUE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$blob_hndl&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_blob_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">BLOB_VALUE</span><span style="color: #007700">);<br />echo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">ibase_blob_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$blob_hndl</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$blob_data</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -105,9 +105,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ibase-blob-open.html" class="function" rel="rdfs-seeAlso">ibase_blob_open()</a> - データの一部を取得するために blob をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.ibase-blob-close.html" class="function" rel="rdfs-seeAlso">ibase_blob_close()</a> - blob を閉じる</span></li>
-    <li class="member"> <span class="function"><a href="function.ibase-blob-echo.html" class="function" rel="rdfs-seeAlso">ibase_blob_echo()</a> - ブラウザに blob の内容を出力する</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-blob-open.html" class="function" rel="rdfs-seeAlso">ibase_blob_open()</a> - データの一部を取得するために blob をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-blob-close.html" class="function" rel="rdfs-seeAlso">ibase_blob_close()</a> - blob を閉じる</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-blob-echo.html" class="function" rel="rdfs-seeAlso">ibase_blob_echo()</a> - ブラウザに blob の内容を出力する</span></li>
    </ul>
   </p>
  </div>

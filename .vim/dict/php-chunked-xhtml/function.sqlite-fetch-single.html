@@ -39,9 +39,9 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>sqlite_fetch_single()</strong></span> は、
+   <span class="function"><strong>sqlite_fetch_single()</strong></span> は、
    レコードセットの最初のカラムの値を返すことを除いて
-    <span class="function"><a href="function.sqlite-fetch-array.html" class="function">sqlite_fetch_array()</a></span> と等価です。
+   <span class="function"><a href="function.sqlite-fetch-array.html" class="function">sqlite_fetch_array()</a></span> と等価です。
   </p>
   <p class="para">
    この関数は、データの単一カラムの値を確認するだけの場合に
@@ -55,9 +55,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result</code></dt>
 
-     <span class="term"><em><code class="parameter">result</code></em></span>
      <dd>
 
       <p class="para">
@@ -67,23 +68,22 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">decode_binary</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">decode_binary</code></em></span>
      <dd>
 
       <p class="para">
-<em><code class="parameter">decode_binary</code></em> パラメータが <strong><code>TRUE</code></strong> (デフォルト)に
+<code class="parameter">decode_binary</code> パラメータが <strong><code>TRUE</code></strong> (デフォルト)に
 設定された場合、PHP はバイナリエンコーディングをデコードします。
-これは、 <span class="function"><a href="function.sqlite-escape-string.html" class="function">sqlite_escape_string()</a></span> によりエンコードされたデータに
+これは、<span class="function"><a href="function.sqlite-escape-string.html" class="function">sqlite_escape_string()</a></span> によりエンコードされたデータに
 適用されます。sqlite をサポートする他のアプリケーションにより
 作成されたデータベースを処理する時以外は、この値をデフォルトのままにしておくべきです。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -101,8 +101,8 @@
  <div class="refsect1 examples" id="refsect1-function.sqlite-fetch-single-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2140">
-    <p><strong>例1  <span class="function"><strong>sqlite_fetch_single()</strong></span> の例</strong></p>
+   <div class="example" id="example-2337">
+    <p><strong>例1 <span class="function"><strong>sqlite_fetch_single()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$dbhandle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlite_open</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysqlitedb'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0666</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sqliteerror</span><span style="color: #007700">))&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;id&nbsp;FROM&nbsp;sometable&nbsp;WHERE&nbsp;id&nbsp;=&nbsp;42"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlite_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbhandle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">sqlite_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">)&nbsp;&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">sqlite_fetch_single</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;42<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sqlite_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbhandle</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -119,7 +119,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.sqlite-fetch-array.html" class="function" rel="rdfs-seeAlso">sqlite_fetch_array()</a> - 結果セットから次のレコードを配列として取得する</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-fetch-array.html" class="function" rel="rdfs-seeAlso">sqlite_fetch_array()</a> - 結果セットから次のレコードを配列として取得する</span></li>
    </ul>
   </p>
  </div>

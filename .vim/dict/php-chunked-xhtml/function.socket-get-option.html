@@ -27,9 +27,9 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>socket_get_option()</strong></span> 関数は、ソケット
-   <em><code class="parameter">socket</code></em> のオプション <em><code class="parameter">optname</code></em>
-   の値を取得します。 <span class="function"><strong>socket_get_option()</strong></span> は、失敗した場合に
+   <span class="function"><strong>socket_get_option()</strong></span> 関数は、ソケット
+   <code class="parameter">socket</code> のオプション <code class="parameter">optname</code>
+   の値を取得します。<span class="function"><strong>socket_get_option()</strong></span> は、失敗した場合に
    <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
@@ -40,39 +40,40 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">socket</code></dt>
 
-     <span class="term"><em><code class="parameter">socket</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.socket-create.html" class="function">socket_create()</a></span> あるいは  <span class="function"><a href="function.socket-accept.html" class="function">socket_accept()</a></span>
+       <span class="function"><a href="function.socket-create.html" class="function">socket_create()</a></span> あるいは <span class="function"><a href="function.socket-accept.html" class="function">socket_accept()</a></span>
        で作成したソケットリソース。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">level</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">level</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">level</code></em> パラメータは、オプションのプロトコルレベルを指定します。
+       <code class="parameter">level</code> パラメータは、オプションのプロトコルレベルを指定します。
        例えば、オプションをソケットレベルで取得するには
-       <em><code class="parameter">level</code></em> パラメータに <strong><code>SOL_SOCKET</code></strong> を指定します。
+       <code class="parameter">level</code> パラメータに <strong><code>SOL_SOCKET</code></strong> を指定します。
        <strong><code>TCP</code></strong> のようなそれ以外のレベルの場合、そのレベルのプロトコル番号を指定します。
-       プロトコル番号は  <span class="function"><a href="function.getprotobyname.html" class="function">getprotobyname()</a></span>
+       プロトコル番号は <span class="function"><a href="function.getprotobyname.html" class="function">getprotobyname()</a></span>
        関数を使用して取得可能です。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">optname</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">optname</code></em></span>
      <dd>
 
       <table class="doctable table">
@@ -134,11 +135,11 @@
           <td><strong><code>SO_LINGER</code></strong></td>
           <td>
            <p class="para">
-            データがまだ残っているうちに  <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span>
-            をコールした場合に、<em><code class="parameter">socket</code></em> を残存させるかどうかを報告します。
+            データがまだ残っているうちに <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span>
+            をコールした場合に、<code class="parameter">socket</code> を残存させるかどうかを報告します。
             デフォルトでは、ソケットが閉じられる際には未送信のデータをすべて送信しようとします。
             接続ベースのソケットでは、
-             <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> は接続先がデータを認識するまで閉じるのを待ちます。
+            <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> は接続先がデータを認識するまで閉じるのを待ちます。
            </p>
            <p class="para">
             <var class="varname"><var class="varname">l_onoff</var></var> が非ゼロで
@@ -150,11 +151,11 @@
            <p class="para">
             一方 <var class="varname"><var class="varname">l_onoff</var></var> が非ゼロで
             <var class="varname"><var class="varname">l_linger</var></var> も非ゼロの場合は、
-             <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> は
+            <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> は
             全データを送信し終えるか <var class="varname"><var class="varname">l_linger</var></var>
             で指定した時間が経過するまで処理をブロックします。
             ソケットが非ブロックモードの場合は、
-             <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> は失敗してエラーを返します。
+            <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> は失敗してエラーを返します。
            </p>
           </td>
           <td>
@@ -167,7 +168,7 @@
          <tr>
           <td><strong><code>SO_OOBINLINE</code></strong></td>
           <td>
-           <em><code class="parameter">socket</code></em>
+           <code class="parameter">socket</code>
            が帯域外のデータをインラインに残し続けるかを報告します。
           </td>
           <td>
@@ -201,17 +202,17 @@
            エラーステータスに関する情報を報告し、それをクリアします。
           </td>
           <td>
-           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> ( <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> で設定することはできません)
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> (<span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> で設定することはできません)
           </td>
          </tr>
 
          <tr>
           <td><strong><code>SO_TYPE</code></strong></td>
           <td>
-           <em><code class="parameter">socket</code></em> の型 (たとえば <strong><code>SOCK_STREAM</code></strong>) を報告します。
+           <code class="parameter">socket</code> の型 (たとえば <strong><code>SOCK_STREAM</code></strong>) を報告します。
           </td>
           <td>
-           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> ( <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> で設定することはできません)
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> (<span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> で設定することはできません)
           </td>
          </tr>
 
@@ -228,7 +229,7 @@
          <tr>
           <td><strong><code>SO_RCVLOWAT</code></strong></td>
           <td>
-           <em><code class="parameter">socket</code></em> の入力操作を行う際の最小バイト数を報告します。
+           <code class="parameter">socket</code> の入力操作を行う際の最小バイト数を報告します。
           </td>
           <td>
            <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
@@ -262,7 +263,7 @@
          <tr>
           <td><strong><code>SO_SNDLOWAT</code></strong></td>
           <td>
-           <em><code class="parameter">socket</code></em>
+           <code class="parameter">socket</code>
            の出力操作を行う際の最小バイト数を報告します。
           </td>
           <td>
@@ -292,7 +293,7 @@
            <em>&quot;interface&quot;</em> には、インターフェイス番号 (整数値)
            あるいは <em>&quot;eth0&quot;</em> などのインターフェイス名 (文字列) を指定します。
            <em>0</em> を指定すると、ルーティングテーブルを使ってインターフェイスを選択します
-           ( <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> でのみ利用可能)。
+           (<span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> でのみ利用可能)。
           </td>
          </tr>
 
@@ -303,7 +304,7 @@
           </td>
           <td>
            配列。詳細は <strong><code>MCAST_JOIN_GROUP</code></strong> を参照ください
-           ( <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> でのみ利用可能)。
+           (<span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> でのみ利用可能)。
           </td>
          </tr>
 
@@ -318,7 +319,7 @@
            <strong><code>MCAST_JOIN_GROUP</code></strong> と同じキーを含み、さらに追加でもうひとつのキーを含む配列。
            追加のキーは <em>source</em> で、
            ブロック対象となるソースの IPv4 アドレスあるいは IPv6 アドレスを文字列で指定します
-           ( <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> でのみ利用可能)。
+           (<span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> でのみ利用可能)。
           </td>
          </tr>
 
@@ -331,7 +332,7 @@
           </td>
           <td>
            <strong><code>MCAST_BLOCK_SOURCE</code></strong> と同じ形式の配列
-           ( <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> でのみ利用可能)。
+           (<span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> でのみ利用可能)。
           </td>
          </tr>
 
@@ -343,7 +344,7 @@
           </td>
           <td>
            <strong><code>MCAST_BLOCK_SOURCE</code></strong> と同じ形式の配列
-           ( <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> でのみ利用可能)。
+           (<span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> でのみ利用可能)。
           </td>
          </tr>
 
@@ -355,7 +356,7 @@
           </td>
           <td>
            <strong><code>MCAST_BLOCK_SOURCE</code></strong> と同じ形式の配列
-           ( <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> でのみ利用可能)。
+           (<span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> でのみ利用可能)。
           </td>
          </tr>
 
@@ -369,7 +370,7 @@
            インターフェイス番号を表す整数値か、インターフェイス名を表す
            <em>eth0</em> のような文字列。
            <span class="type"><span class="type 0">0</span></span> を指定すると、ルーティングテーブルを使ってインターフェイスを選択します。
-            <span class="function"><strong>socket_get_option()</strong></span> 関数の返り値は、インターフェイスのインデックスとなります。
+           <span class="function"><strong>socket_get_option()</strong></span> 関数の返り値は、インターフェイスのインデックスとなります。
            注意すべき点は、C の API とは違ってこのオプションには IP アドレスを渡せないということです。
            そのため、
            <strong><code>IP_MULTICAST_IF</code></strong> と
@@ -400,7 +401,7 @@
           </td>
           <td>
            整数値 (<em>0</em> あるいは
-           <em>1</em>)。 <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>
+           <em>1</em>)。<span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>
            では任意の値を受け付けますが、通常の PHP のルールに従ってそれを
            boolean 値に変換します。
           </td>
@@ -448,8 +449,7 @@
 
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -467,8 +467,8 @@
  <div class="refsect1 examples" id="refsect1-function.socket-get-option-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4571">
-    <p><strong>例1  <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> の例</strong></p>
+   <div class="example" id="example-5018">
+    <p><strong>例1 <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$socket&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">socket_create_listen</span><span style="color: #007700">(</span><span style="color: #0000BB">1223</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$linger&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'l_linger'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'l_onoff'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">socket_set_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SOL_SOCKET</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SO_LINGER</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$linger</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">socket_get_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SOL_SOCKET</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SO_REUSEADDR</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -477,36 +477,6 @@
     </div>
 
    </div>
-  </p>
- </div>
-
-
- <div class="refsect1 changelog" id="refsect1-function.socket-get-option-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        関数の名前が変わりました。以前は
-        <em>socket_getopt()</em> という名前でした。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
   </p>
  </div>
 

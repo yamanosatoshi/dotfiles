@@ -19,10 +19,22 @@
 
  <div class="refsect1 description" id="refsect1-intlcalendar.createinstance-description">
   <h3 class="title">説明</h3>
+  <p class="para">
+   オブジェクト指向型
+  </p>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="modifier">static</span> <span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span> <span class="methodname"><strong>IntlCalendar::createInstance</strong></span>
     ([ <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$timeZone</code><span class="initializer"> = NULL</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$locale</code><span class="initializer"> = NULL</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$locale</code><span class="initializer"> = &quot;&quot;</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   手続き型
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span> <span class="methodname"><strong>intlcal_create_instance</strong></span>
+    ([ <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$timeZone</code><span class="initializer"> = NULL</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$locale</code><span class="initializer"> = &quot;&quot;</span></span>
   ]] )</div>
 
   <p class="para rdfs-comment">
@@ -33,8 +45,8 @@
   <p class="para">
    The calendar created will represent the time instance at which it was
    created, based on the system time. The fields can all be cleared by calling
-    <span class="function"><strong>IntCalendar::clear()</strong></span> with no arguments. See also
-    <span class="function"><strong>IntlGregorianCalendar::__construct()</strong></span>.
+   <span class="function"><strong>IntCalendar::clear()</strong></span> with no arguments. See also
+   <span class="function"><strong>IntlGregorianCalendar::__construct()</strong></span>.
   </p>
  </div>
 
@@ -43,9 +55,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">timeZone</code></dt>
 
-    <span class="term"><em><code class="parameter">timeZone</code></em></span>
     <dd>
 
      <p class="para">
@@ -59,8 +72,8 @@
   <p class="para">
    <strong><code>NULL</code></strong>。この場合はデフォルトのタイムゾーンを使います。デフォルトは、ini 項目
    <a href="datetime.configuration.html#ini.date.timezone" class="link">date.timezone</a> で設定したものか、
-    <span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span> 関数で指定したもの
-   (そして  <span class="function"><a href="function.date-default-timezone-get.html" class="function">date_default_timezone_get()</a></span> が返すもの) になります。
+   <span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span> 関数で指定したもの
+   (そして <span class="function"><a href="function.date-default-timezone-get.html" class="function">date_default_timezone_get()</a></span> が返すもの) になります。
   </p>
  </li>
  <li class="listitem">
@@ -77,7 +90,7 @@
  <li class="listitem">
   <p class="para">
    文字列。ICU タイムゾーン識別子として有効なものを指定します。
-    <span class="function"><strong>IntlTimeZone::createTimeZoneIDEnumeration()</strong></span> を参照ください。
+   <span class="function"><strong>IntlTimeZone::createTimeZoneIDEnumeration()</strong></span> を参照ください。
    <em>&quot;GMT+08:30&quot;</em> などのオフセットも指定できます。
   </p>
  </li>
@@ -85,11 +98,11 @@
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">locale</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">locale</code></em></span>
     <dd>
 
      <p class="para">
@@ -97,8 +110,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -116,8 +128,8 @@
  <div class="refsect1 examples" id="refsect1-intlcalendar.createinstance-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2585">
-   <p><strong>例1  <span class="function"><strong>IntlCalendar::createInstance()</strong></span></strong></p>
+   <div class="example" id="example-2784">
+   <p><strong>例1 <span class="function"><strong>IntlCalendar::createInstance()</strong></span></strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'intl.default_locale'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'es_ES'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'date.timezone'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Europe/Madrid'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cal&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">createInstance</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #DD0000">"No&nbsp;arguments\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Explicit&nbsp;timezone\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$cal&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">createInstance</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlTimeZone</span><span style="color: #007700">::</span><span style="color: #0000BB">getGMT</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Explicit&nbsp;locale&nbsp;(with&nbsp;calendar)\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$cal&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">createInstance</span><span style="color: #007700">(</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'es_ES@calendar=persian'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">));</span>
@@ -151,7 +163,7 @@ string(70) &quot;martes 28 de Khordad de 1392 14:11:02 Hora de verano de Europa 
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><strong>IntlGregorianCalendar::__construct()</strong></span></li>
+    <li class="member"><span class="methodname"><strong>IntlGregorianCalendar::__construct()</strong></span></li>
    </ul>
   </p>
  </div>

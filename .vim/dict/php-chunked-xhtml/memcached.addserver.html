@@ -27,19 +27,19 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>Memcached::addServer()</strong></span> は、指定したサーバーをサーバープールに追加します。
+   <span class="function"><strong>Memcached::addServer()</strong></span> は、指定したサーバーをサーバープールに追加します。
    この時点では、サーバーへの接続は確立されません。しかし、一貫性のあるキー分散オプションを
    (<strong><code>Memcached::DISTRIBUTION_CONSISTENT</code></strong> あるいは
    <strong><code>Memcached::OPT_LIBKETAMA_COMPATIBLE</code></strong> で) 指定した場合は、
    内部データ構造のうちの一部が更新されます。
    したがって、もし複数のサーバーを追加したい場合は、
-    <span class="methodname"><a href="memcached.addservers.html" class="methodname">Memcached::addServers()</a></span> を使用するほうがよいでしょう。
+   <span class="methodname"><a href="memcached.addservers.html" class="methodname">Memcached::addServers()</a></span> を使用するほうがよいでしょう。
    その場合、更新は一度しか発生しません。
   </p>
   <p class="para">
    同じサーバーがサーバープール内で複数回あらわれることもあります。
    重複チェックはしていないからです。これは望ましい状態ではありません。
-   その代わりに <em><code class="parameter">weight</code></em> オプションを使用して、
+   その代わりに <code class="parameter">weight</code> オプションを使用して、
    このサーバーを選択する重みを増やします。
   </p>
  </div>
@@ -50,35 +50,43 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">host</code></dt>
 
-     <span class="term"><em><code class="parameter">host</code></em></span>
      <dd>
 
       <p class="para">
        memcache サーバーのホスト名。ホスト名が無効な場合は、データ関連の操作の結果コードに
        <strong><code>Memcached::RES_HOST_LOOKUP_FAILURE</code></strong> が設定されます。
+       バージョン 2.0.0b1 以降では、このパラメータにソケットのパス
+       (<em>/path/to/memcached.sock</em> など) を指定すると、
+       UNIX ドメインソケットを使えるようになりました。
+       このとき、<code class="parameter">port</code> には
+       <em>0</em> を設定する必要があります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">port</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">port</code></em></span>
      <dd>
 
       <p class="para">
        memcache が動作しているポート。通常、これは
        <em>11211</em> となります。
+       バージョン 2.0.0b1 以降では、UNIX ドメインソケットを利用する際には
+       <em>0</em> を設定します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">weight</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">weight</code></em></span>
      <dd>
 
       <p class="para">
@@ -89,8 +97,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -108,8 +115,8 @@
  <div class="refsect1 examples" id="refsect1-memcached.addserver-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4407">
-    <p><strong>例1  <span class="function"><strong>Memcached::addServer()</strong></span> の例</strong></p>
+   <div class="example" id="example-4853">
+    <p><strong>例1 <span class="function"><strong>Memcached::addServer()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/*&nbsp;2&nbsp;つのサーバーを追加し、2&nbsp;番目のサーバーが<br />&nbsp;&nbsp;&nbsp;最初のサーバーの&nbsp;2&nbsp;倍の確率で選択されるようにします&nbsp;*/<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">(</span><span style="color: #DD0000">'mem1.domain.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">(</span><span style="color: #DD0000">'mem2.domain.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">67</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -126,8 +133,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="memcached.addservers.html" class="methodname" rel="rdfs-seeAlso">Memcached::addServers()</a> - 複数のサーバーをサーバープールに追加する</span></li>
-    <li class="member"> <span class="methodname"><a href="memcached.resetserverlist.html" class="methodname" rel="rdfs-seeAlso">Memcached::resetServerList()</a> - サーバーリストからすべてのサーバーを消去する</span></li>
+    <li class="member"><span class="methodname"><a href="memcached.addservers.html" class="methodname" rel="rdfs-seeAlso">Memcached::addServers()</a> - 複数のサーバーをサーバープールに追加する</span></li>
+    <li class="member"><span class="methodname"><a href="memcached.resetserverlist.html" class="methodname" rel="rdfs-seeAlso">Memcached::resetServerList()</a> - サーバーリストからすべてのサーバーを消去する</span></li>
    </ul>
   </p>
  </div>

@@ -27,21 +27,21 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">haystack</code></em> の中で <em><code class="parameter">needle</code></em>
+   <code class="parameter">haystack</code> の中で <code class="parameter">needle</code>
    が最初に現れる場所を含めてそこから文字列の終わりまでを返します。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     この関数は大文字小文字を区別することに注意してください。
-    大文字小文字を区別しない検索を行う場合は、 <span class="function"><a href="function.stristr.html" class="function">stristr()</a></span>
+    大文字小文字を区別しない検索を行う場合は、<span class="function"><a href="function.stristr.html" class="function">stristr()</a></span>
     を使用してください。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    もし特定の <em><code class="parameter">haystack</code></em> に
-    <em><code class="parameter">needle</code></em> があるかどうかを調べるだけの場合、
-    より高速でメモリ消費も少ない  <span class="function"><a href="function.strpos.html" class="function">strpos()</a></span>
+    もし特定の <code class="parameter">haystack</code> に
+    <code class="parameter">needle</code> があるかどうかを調べるだけの場合、
+    より高速でメモリ消費も少ない <span class="function"><a href="function.strpos.html" class="function">strpos()</a></span>
     を代わりに使用してください。
    </p>
   </p></blockquote>
@@ -53,9 +53,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">haystack</code></dt>
 
-     <span class="term"><em><code class="parameter">haystack</code></em></span>
      <dd>
 
       <p class="para">
@@ -63,35 +64,34 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">needle</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">needle</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">needle</code></em> が文字列でない場合は、
+       <code class="parameter">needle</code> が文字列でない場合は、
        それを整数に変換し、その番号に対応する文字として扱います。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">before_needle</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">before_needle</code></em></span>
      <dd>
 
       <p class="para">
-       <strong><code>TRUE</code></strong> にすると、 <span class="function"><strong>strstr()</strong></span>
-       の返り値は、<em><code class="parameter">haystack</code></em> の中で最初に
-       <em><code class="parameter">needle</code></em> があらわれる箇所より前の部分となります (needle は含めません)。
+       <strong><code>TRUE</code></strong> にすると、<span class="function"><strong>strstr()</strong></span>
+       の返り値は、<code class="parameter">haystack</code> の中で最初に
+       <code class="parameter">needle</code> があらわれる箇所より前の部分となります (needle は含めません)。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -102,7 +102,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    部分文字列を返します。
-   <em><code class="parameter">needle</code></em> が見つからない場合は <strong><code>FALSE</code></strong> を返します。
+   <code class="parameter">needle</code> が見つからない場合は <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
 
@@ -124,14 +124,14 @@
       <tr>
        <td>5.3.0</td>
        <td>
-        オプションの <em><code class="parameter">before_needle</code></em> パラメータが追加されました。
+        オプションの <code class="parameter">before_needle</code> パラメータが追加されました。
        </td>
       </tr>
 
       <tr>
        <td>4.3.0</td>
        <td>
-         <span class="function"><strong>strstr()</strong></span> がバイナリセーフとなりました。
+        <span class="function"><strong>strstr()</strong></span> がバイナリセーフとなりました。
        </td>
       </tr>
 
@@ -146,8 +146,8 @@
  <div class="refsect1 examples" id="refsect1-function.strstr-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4883">
-    <p><strong>例1  <span class="function"><strong>strstr()</strong></span> の例</strong></p>
+   <div class="example" id="example-5363">
+    <p><strong>例1 <span class="function"><strong>strstr()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$email&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'name@example.com'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$domain&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strstr</span><span style="color: #007700">(</span><span style="color: #0000BB">$email</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$domain</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;@example.com&nbsp;と表示します<br /><br /></span><span style="color: #0000BB">$user&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strstr</span><span style="color: #007700">(</span><span style="color: #0000BB">$email</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;PHP&nbsp;5.3.0&nbsp;以降<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$user</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;name&nbsp;と表示します<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -164,11 +164,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.stristr.html" class="function" rel="rdfs-seeAlso">stristr()</a> - 大文字小文字を区別しない strstr</span></li>
-    <li class="member"> <span class="function"><a href="function.strrchr.html" class="function" rel="rdfs-seeAlso">strrchr()</a> - 文字列中に文字が最後に現れる場所を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.strpos.html" class="function" rel="rdfs-seeAlso">strpos()</a> - 文字列内の部分文字列が最初に現れる場所を見つける</span></li>
-    <li class="member"> <span class="function"><a href="function.strpbrk.html" class="function" rel="rdfs-seeAlso">strpbrk()</a> - 文字列の中から任意の文字を探す</span></li>
-    <li class="member"> <span class="function"><a href="function.preg-match.html" class="function" rel="rdfs-seeAlso">preg_match()</a> - 正規表現によるマッチングを行う</span></li>
+    <li class="member"><span class="function"><a href="function.stristr.html" class="function" rel="rdfs-seeAlso">stristr()</a> - 大文字小文字を区別しない strstr</span></li>
+    <li class="member"><span class="function"><a href="function.strrchr.html" class="function" rel="rdfs-seeAlso">strrchr()</a> - 文字列中に文字が最後に現れる場所を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.strpos.html" class="function" rel="rdfs-seeAlso">strpos()</a> - 文字列内の部分文字列が最初に現れる場所を見つける</span></li>
+    <li class="member"><span class="function"><a href="function.strpbrk.html" class="function" rel="rdfs-seeAlso">strpbrk()</a> - 文字列の中から任意の文字を探す</span></li>
+    <li class="member"><span class="function"><a href="function.preg-match.html" class="function" rel="rdfs-seeAlso">preg_match()</a> - 正規表現によるマッチングを行う</span></li>
    </ul>
   </p>
  </div>

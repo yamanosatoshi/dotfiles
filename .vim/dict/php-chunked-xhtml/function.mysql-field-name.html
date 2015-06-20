@@ -27,8 +27,8 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli-result.fetch-field-direct.html" class="function">mysqli_fetch_field_direct()</a></span> [name] あるいは [orgname]</li>
-    <li class="member"> <span class="methodname"><a href="pdostatement.getcolumnmeta.html" class="methodname">PDOStatement::getColumnMeta()</a></span> [name]</li>
+    <li class="member"><span class="function"><a href="mysqli-result.fetch-field-direct.html" class="function">mysqli_fetch_field_direct()</a></span> [name] あるいは [orgname]</li>
+    <li class="member"><span class="methodname"><a href="pdostatement.getcolumnmeta.html" class="methodname">PDOStatement::getColumnMeta()</a></span> [name]</li>
    </ul>
   </div>
  </div>
@@ -42,7 +42,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>mysql_field_name()</strong></span>は、指定したフィールドの
+   <span class="function"><strong>mysql_field_name()</strong></span>は、指定したフィールドの
    名前を返します。
   </p>
  </div>
@@ -54,21 +54,21 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
+<code class="parameter">
+result</code></dt>
+<dd>
 <p class="para">評価された結果 <span class="type"><span class="type リソース">リソース</span></span>。
-この結果は、 <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
+この結果は、<span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
 </dd>
-</dt>
 
     <dt>
-<span class="term"><em><code class="parameter">
-field_offset</code></em></span><dd>
+<code class="parameter">
+field_offset</code></dt>
+<dd>
 <p class="para">数値フィールドオフセット。
-<em><code class="parameter">field_offset</code></em> は <em>0</em> から始まります。
-<em><code class="parameter">field_offset</code></em> が存在しない場合、
+<code class="parameter">field_offset</code> は <em>0</em> から始まります。
+<code class="parameter">field_offset</code> が存在しない場合、
 <strong><code>E_WARNING</code></strong> レベルのエラーが発行されます。</p></dd>
-</dt>
 
    </dl>
 
@@ -87,8 +87,8 @@ field_offset</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.mysql-field-name-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1588">
-    <p><strong>例1  <span class="function"><strong>mysql_field_name()</strong></span> の例</strong></p>
+   <div class="example" id="example-1767">
+    <p><strong>例1 <span class="function"><strong>mysql_field_name()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;users&nbsp;テーブルには以下の&nbsp;3&nbsp;つのフィールドがある<br />&nbsp;*&nbsp;&nbsp;&nbsp;user_id<br />&nbsp;*&nbsp;&nbsp;&nbsp;username<br />&nbsp;*&nbsp;&nbsp;&nbsp;password.<br />&nbsp;*/<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;connect&nbsp;to&nbsp;MySQL&nbsp;server:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br /></span><span style="color: #0000BB">$dbname&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'mydb'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$db_selected&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbname</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$db_selected</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;set&nbsp;</span><span style="color: #0000BB">$dbname</span><span style="color: #DD0000">:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br /></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">'select&nbsp;*&nbsp;from&nbsp;users'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">mysql_field_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">mysql_field_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -115,7 +115,7 @@ password
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     下位互換のために、次の非推奨別名を使用してもいいでしょう。
-     <span class="function"><strong>mysql_fieldname()</strong></span>
+    <span class="function"><strong>mysql_fieldname()</strong></span>
    </p>
   </p></blockquote>
  </div>
@@ -125,8 +125,8 @@ password
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-field-type.html" class="function" rel="rdfs-seeAlso">mysql_field_type()</a> - 結果において指定したフィールドの型を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-field-len.html" class="function" rel="rdfs-seeAlso">mysql_field_len()</a> - 指定したフィールドの長さを返す</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-field-type.html" class="function" rel="rdfs-seeAlso">mysql_field_type()</a> - 結果において指定したフィールドの型を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-field-len.html" class="function" rel="rdfs-seeAlso">mysql_field_len()</a> - 指定したフィールドの長さを返す</span></li>
    </ul>
   </p>
  </div>

@@ -26,7 +26,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>ftp_rename()</strong></span> は FTP サーバー上のファイルやディレクトリの
+   <span class="function"><strong>ftp_rename()</strong></span> は FTP サーバー上のファイルやディレクトリの
    名前を変更します。
   </p>
  </div>
@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">ftp_stream</code></dt>
 
-     <span class="term"><em><code class="parameter">ftp_stream</code></em></span>
      <dd>
 
       <p class="para">
@@ -46,11 +47,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">oldname</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">oldname</code></em></span>
      <dd>
 
       <p class="para">
@@ -58,11 +59,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">newname</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">newname</code></em></span>
      <dd>
 
       <p class="para">
@@ -70,8 +71,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -87,8 +87,8 @@
  <div class="refsect1 examples" id="refsect1-function.ftp-rename-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4282">
-    <p><strong>例1  <span class="function"><strong>ftp_rename()</strong></span> の例</strong></p>
+   <div class="example" id="example-4730">
+    <p><strong>例1 <span class="function"><strong>ftp_rename()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$old_file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'somefile.txt.bak'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$new_file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'somefile.txt'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;接続を確立する<br /></span><span style="color: #0000BB">$conn_id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$ftp_server</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ユーザー名とパスワードでログインする<br /></span><span style="color: #0000BB">$login_result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_login</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_pass</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;$old_file&nbsp;を&nbsp;$new_file&nbsp;に変更することを試みる<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">ftp_rename</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$old_file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$new_file</span><span style="color: #007700">))&nbsp;{<br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">"successfully&nbsp;renamed&nbsp;</span><span style="color: #0000BB">$old_file</span><span style="color: #DD0000">&nbsp;to&nbsp;</span><span style="color: #0000BB">$new_file</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">"There&nbsp;was&nbsp;a&nbsp;problem&nbsp;while&nbsp;renaming&nbsp;</span><span style="color: #0000BB">$old_file</span><span style="color: #DD0000">&nbsp;to&nbsp;</span><span style="color: #0000BB">$new_file</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;接続を閉じる<br /></span><span style="color: #0000BB">ftp_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

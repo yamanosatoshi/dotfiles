@@ -25,7 +25,13 @@
    [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$args</code><span class="initializer"> = array()</span></span>
   ] )</div>
 
-  <p class="para rdfs-comment">
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    このメソッドが実行する <a href="http://docs.mongodb.org/manual/reference/command/eval/" class="link external">&raquo;&nbsp;eval</a> コマンドは、
+    MongoDB 3.0+ では非推奨となりました。
+   </p>
+  </div>
+  <p class="para">
    Mongo データベースサーバーは JavaScript エンジンを持っています。
    このメソッドを使うと、任意の JavaScript をデータベース上で実行することができます。
    大量のコレクションの操作を軽量に行ったり、
@@ -37,10 +43,12 @@
    つまり、他の操作をブロックするということです。長いスクリプトを実行する前にはこのことを考慮しましょう。
   </p>
   <p class="para">
-   これは、データベースコマンドのラッパーで、次のコードと同じ意味です。
+   これは、データベースコマンド
+   <a href="http://docs.mongodb.org/manual/reference/command/eval/" class="link external">&raquo;&nbsp;eval</a>
+   のラッパーで、次のコードと同じ意味です。
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">command</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'$eval'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$code</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'args'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$args</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$args</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">command</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'eval'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$code</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'args'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$args</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
    </div>
@@ -92,11 +100,12 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">code</code></em>
-     </span>
+      <code class="parameter">code</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -104,13 +113,13 @@
       </p>
      </dd>
 
-    </dt>
-   
-    <dt>
+       
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">args</code></em>
-     </span>
+      <code class="parameter">args</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -118,8 +127,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -136,8 +144,8 @@
 
  <div class="refsect1 examples" id="refsect1-mongodb.execute-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1416">
-   <p><strong>例1 単純な  <span class="function"><strong>MongoDB::execute()</strong></span> の例</strong></p>
+  <div class="example" id="example-1479">
+   <p><strong>例1 単純な <span class="function"><strong>MongoDB::execute()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$response&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(</span><span style="color: #DD0000">"function()&nbsp;{&nbsp;return&nbsp;'Hello,&nbsp;world!';&nbsp;}"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$response</span><span style="color: #007700">[</span><span style="color: #DD0000">'retval'</span><span style="color: #007700">];<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -151,8 +159,8 @@
 Hello, world!<br />
    </div>
   </div>
-  <div class="example" id="example-1417">
-   <p><strong>例2 パラメータつきの  <span class="function"><strong>MongoDB::execute()</strong></span> の例</strong></p>
+  <div class="example" id="example-1480">
+   <p><strong>例2 パラメータつきの <span class="function"><strong>MongoDB::execute()</strong></span> の例</strong></p>
    <div class="example-contents"><p>
     オプションのパラメータ配列を JavaScript の関数に渡します。
    </p></div>
@@ -169,7 +177,7 @@ Hello, world!<br />
 Good bye, Joe!<br />
    </div>
   </div>
-  <div class="example" id="example-1418">
+  <div class="example" id="example-1481">
    <p><strong>例3 スコープの例</strong></p>
    <div class="example-contents"><p>
     文字列のかわりに <a href="class.mongocode.html" class="classname">MongoCode</a> オブジェクトを最初のパラメータに使うと、
@@ -188,6 +196,14 @@ Good bye, Joe!<br />
 Goodbye, Joe, says Fred <br />
    </div>
   </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongodb.execute-seealso">
+  <h3 class="title">参考</h3>
+  <ul class="simplelist">
+   <li class="member">MongoDB の <a href="http://docs.mongodb.org/manual/reference/command/eval/" class="link external">&raquo;&nbsp;eval コマンド</a> のドキュメント</li>
+  </ul>
  </div>
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">

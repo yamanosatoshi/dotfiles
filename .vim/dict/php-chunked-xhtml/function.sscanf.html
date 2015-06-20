@@ -27,11 +27,11 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   関数  <span class="function"><strong>sscanf()</strong></span> は、 <span class="function"><a href="function.printf.html" class="function">printf()</a></span>
-   の入力版です。 <span class="function"><strong>sscanf()</strong></span> は、文字列
-   <em><code class="parameter">str</code></em> を読み込み、これを指定したフォーマット
-   <em><code class="parameter">format</code></em> に基づき解釈します。
-   このフォーマットは、 <span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span>のマニュアルに記述されています。
+   関数 <span class="function"><strong>sscanf()</strong></span> は、<span class="function"><a href="function.printf.html" class="function">printf()</a></span>
+   の入力版です。<span class="function"><strong>sscanf()</strong></span> は、文字列
+   <code class="parameter">str</code> を読み込み、これを指定したフォーマット
+   <code class="parameter">format</code> に基づき解釈します。
+   このフォーマットは、<span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span>のマニュアルに記述されています。
   </p>
   <p class="para">
    フォーマット文字列の中のあらゆる空白文字は、入力文字列の中の
@@ -46,9 +46,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">str</code></dt>
 
-     <span class="term"><em><code class="parameter">str</code></em></span>
      <dd>
 
       <p class="para">
@@ -56,16 +57,16 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">format</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">format</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">str</code></em> を解釈するフォーマット。
-        <span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span> のドキュメントにある説明と比べて、以下の違いがあります。
+       <code class="parameter">str</code> を解釈するフォーマット。
+       <span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span> のドキュメントにある説明と比べて、以下の違いがあります。
        <ul class="simplelist">
         <li class="member">
          ロケールに対応していません。
@@ -87,11 +88,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">...</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">...</code></em></span>
      <dd>
 
       <p class="para">
@@ -100,8 +101,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -117,8 +117,8 @@
    参照渡しにする必要があります。
   </p>
   <p class="para">
-   <em><code class="parameter">format</code></em> で期待する部分文字列のほうが
-   実際に <em><code class="parameter">str</code></em> に存在するものより多い場合は
+   <code class="parameter">format</code> で期待する部分文字列のほうが
+   実際に <code class="parameter">str</code> に存在するものより多い場合は
    <em>-1</em> を返します。
   </p>
  </div>
@@ -127,8 +127,8 @@
  <div class="refsect1 examples" id="refsect1-function.sscanf-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4852">
-    <p><strong>例1  <span class="function"><strong>sscanf()</strong></span> の例</strong></p>
+   <div class="example" id="example-5331">
+    <p><strong>例1 <span class="function"><strong>sscanf()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;シリアル番号を得る<br /></span><span style="color: #007700">list(</span><span style="color: #0000BB">$serial</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">sscanf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SN/2350001"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SN/%d"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;続いて製造日を得る<br /></span><span style="color: #0000BB">$mandate&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"January&nbsp;01&nbsp;2000"</span><span style="color: #007700">;<br />list(</span><span style="color: #0000BB">$month</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$day</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$year</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">sscanf</span><span style="color: #007700">(</span><span style="color: #0000BB">$mandate</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"%s&nbsp;%d&nbsp;%d"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Item&nbsp;</span><span style="color: #0000BB">$serial</span><span style="color: #DD0000">&nbsp;was&nbsp;manufactured&nbsp;on:&nbsp;</span><span style="color: #0000BB">$year</span><span style="color: #DD0000">-"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$month</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"-</span><span style="color: #0000BB">$day</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -142,8 +142,8 @@
    オプションのパラメータが指定された場合、この関数は、代入された値の数を返します。
   </p>
   <p class="para">
-   <div class="example" id="example-4853">
-    <p><strong>例2  <span class="function"><strong>sscanf()</strong></span> - オプションパラメータの使用法</strong></p>
+   <div class="example" id="example-5332">
+    <p><strong>例2 <span class="function"><strong>sscanf()</strong></span> - オプションパラメータの使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;author&nbsp;情報を取得し、DocBook&nbsp;エントリを生成<br /></span><span style="color: #0000BB">$auth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"24\tLewis&nbsp;Carroll"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$n&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sscanf</span><span style="color: #007700">(</span><span style="color: #0000BB">$auth</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"%d\t%s&nbsp;%s"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$first</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$last</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"&lt;author&nbsp;id='</span><span style="color: #0000BB">$id</span><span style="color: #DD0000">'&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;firstname&gt;</span><span style="color: #0000BB">$first</span><span style="color: #DD0000">&lt;/firstname&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;surname&gt;</span><span style="color: #0000BB">$last</span><span style="color: #DD0000">&lt;/surname&gt;<br />&lt;/author&gt;\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -160,9 +160,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.fscanf.html" class="function" rel="rdfs-seeAlso">fscanf()</a> - フォーマットに基づきファイルからの入力を処理する</span></li>
-    <li class="member"> <span class="function"><a href="function.printf.html" class="function" rel="rdfs-seeAlso">printf()</a> - フォーマット済みの文字列を出力する</span></li>
-    <li class="member"> <span class="function"><a href="function.sprintf.html" class="function" rel="rdfs-seeAlso">sprintf()</a> - フォーマットされた文字列を返す</span></li>
+    <li class="member"><span class="function"><a href="function.fscanf.html" class="function" rel="rdfs-seeAlso">fscanf()</a> - フォーマットに基づきファイルからの入力を処理する</span></li>
+    <li class="member"><span class="function"><a href="function.printf.html" class="function" rel="rdfs-seeAlso">printf()</a> - フォーマット済みの文字列を出力する</span></li>
+    <li class="member"><span class="function"><a href="function.sprintf.html" class="function" rel="rdfs-seeAlso">sprintf()</a> - フォーマットされた文字列を返す</span></li>
    </ul>
   </p>
  </div>

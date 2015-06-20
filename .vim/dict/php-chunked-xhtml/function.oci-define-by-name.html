@@ -28,11 +28,11 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   PHP の変数を、 <span class="function"><a href="function.oci-fetch.html" class="function">oci_fetch()</a></span> で取得するクエリのカラムに関連づけます。
+   PHP の変数を、<span class="function"><a href="function.oci-fetch.html" class="function">oci_fetch()</a></span> で取得するクエリのカラムに関連づけます。
   </p>
   <p class="para">
-     <span class="function"><strong>oci_define_by_name()</strong></span> は、
-     <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> を実行する前にコールしなければなりません。
+    <span class="function"><strong>oci_define_by_name()</strong></span> は、
+    <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> を実行する前にコールしなければなりません。
   </p>
  </div>
 
@@ -42,23 +42,24 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">statement</code></dt>
 
-     <span class="term"><em><code class="parameter">statement</code></em></span>
      <dd>
 
        <p class="para">
- <span class="function"><a href="function.oci-parse.html" class="function">oci_parse()</a></span> で作成して
- <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> で実行した有効な OCI8 ステートメント ID、
+<span class="function"><a href="function.oci-parse.html" class="function">oci_parse()</a></span> で作成して
+<span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> で実行した有効な OCI8 ステートメント ID、
 あるいは <em>REF
 CURSOR</em> ステートメント ID。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">column_name</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">column_name</code></em></span>
      <dd>
 
       <p class="para">
@@ -70,11 +71,11 @@ CURSOR</em> ステートメント ID。</p>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">variable</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">variable</code></em></span>
      <dd>
 
       <p class="para">
@@ -82,11 +83,11 @@ CURSOR</em> ステートメント ID。</p>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">type</code></em></span>
      <dd>
 
       <p class="para">
@@ -96,13 +97,12 @@ CURSOR</em> ステートメント ID。</p>
         <em>SQLT_CHR</em> のままとなります。
       </p>
       <p class="para">
-       オプションで、 <span class="function"><a href="function.oci-new-descriptor.html" class="function">oci_new_descriptor()</a></span> を使って
+       オプションで、<span class="function"><a href="function.oci-new-descriptor.html" class="function">oci_new_descriptor()</a></span> を使って
        LOB/ROWID/BFILE の領域を確保することもできます。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -120,8 +120,8 @@ CURSOR</em> ステートメント ID。</p>
  <div class="refsect1 examples" id="refsect1-function.oci-define-by-name-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1963">
-    <p><strong>例1  <span class="function"><strong>oci_define_by_name()</strong></span> の例</strong></p>
+   <div class="example" id="example-2157">
+    <p><strong>例1 <span class="function"><strong>oci_define_by_name()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;location_id,&nbsp;city&nbsp;FROM&nbsp;locations&nbsp;WHERE&nbsp;location_id&nbsp;&lt;&nbsp;1200'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;実行する前に定義しなければなりません<br /></span><span style="color: #0000BB">oci_define_by_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'LOCATION_ID'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$locid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_define_by_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'CITY'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$city</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;フェッチするたびに、さきほど定義した変数に次の行のデータが格納されます<br /></span><span style="color: #007700">while&nbsp;(</span><span style="color: #0000BB">oci_fetch</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Location&nbsp;id&nbsp;</span><span style="color: #0000BB">$locid</span><span style="color: #DD0000">&nbsp;is&nbsp;</span><span style="color: #0000BB">$city</span><span style="color: #DD0000">&lt;br&gt;\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;表示:<br />//&nbsp;&nbsp;&nbsp;Location&nbsp;id&nbsp;1000&nbsp;is&nbsp;Roma<br />//&nbsp;&nbsp;&nbsp;Location&nbsp;id&nbsp;1100&nbsp;is&nbsp;Venice<br /><br /></span><span style="color: #0000BB">oci_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -132,8 +132,8 @@ CURSOR</em> ステートメント ID。</p>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-1964">
-    <p><strong>例2  <span class="function"><strong>oci_define_by_name()</strong></span> での大文字小文字を区別するカラム名の使用</strong></p>
+   <div class="example" id="example-2158">
+    <p><strong>例2 <span class="function"><strong>oci_define_by_name()</strong></span> での大文字小文字を区別するカラム名の使用</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*<br />&nbsp;&nbsp;実行する前に、大文字小文字を区別するカラム名のテーブルを作っておきます<br />&nbsp;&nbsp;&nbsp;&nbsp;CREATE&nbsp;TABLE&nbsp;mytab&nbsp;(id&nbsp;NUMBER,&nbsp;"MyDescription"&nbsp;VARCHAR2(30));<br />&nbsp;&nbsp;&nbsp;&nbsp;INSERT&nbsp;INTO&nbsp;mytab&nbsp;(id,&nbsp;"MyDescription")&nbsp;values&nbsp;(1,&nbsp;'Iced&nbsp;Coffee');<br />&nbsp;&nbsp;&nbsp;&nbsp;COMMIT;<br />*/<br /><br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;*&nbsp;FROM&nbsp;mytab'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;大文字小文字を区別しないカラム名の場合は、大文字を使います<br /></span><span style="color: #0000BB">oci_define_by_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ID'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;大文字小文字を区別するカラム名の場合は、カラム名にあわせます<br /></span><span style="color: #0000BB">oci_define_by_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'MyDescription'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mydesc</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br />while&nbsp;(</span><span style="color: #0000BB">oci_fetch</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"id&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #DD0000">&nbsp;is&nbsp;</span><span style="color: #0000BB">$mydesc</span><span style="color: #DD0000">&lt;br&gt;\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;表示:<br />//&nbsp;&nbsp;&nbsp;id&nbsp;1&nbsp;is&nbsp;Iced&nbsp;Coffee<br /><br /></span><span style="color: #0000BB">oci_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -144,8 +144,8 @@ CURSOR</em> ステートメント ID。</p>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-1965">
-    <p><strong>例3  <span class="function"><strong>oci_define_by_name()</strong></span> での LOB カラムの使用</strong></p>
+   <div class="example" id="example-2159">
+    <p><strong>例3 <span class="function"><strong>oci_define_by_name()</strong></span> での LOB カラムの使用</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*<br />&nbsp;&nbsp;実行する前にテーブルを作ります<br />&nbsp;&nbsp;&nbsp;&nbsp;CREATE&nbsp;TABLE&nbsp;mytab&nbsp;(id&nbsp;NUMBER,&nbsp;fruit&nbsp;CLOB);<br />&nbsp;&nbsp;&nbsp;&nbsp;INSERT&nbsp;INTO&nbsp;mytab&nbsp;(id,&nbsp;fruit)&nbsp;values&nbsp;(1,&nbsp;'apple');<br />&nbsp;&nbsp;&nbsp;&nbsp;INSERT&nbsp;INTO&nbsp;mytab&nbsp;(id,&nbsp;fruit)&nbsp;values&nbsp;(2,&nbsp;'orange');<br />&nbsp;&nbsp;&nbsp;&nbsp;COMMIT;<br />*/<br /><br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;*&nbsp;FROM&nbsp;mytab'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;実行する前に定義しなければなりません<br /></span><span style="color: #0000BB">oci_define_by_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ID'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_define_by_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'FRUIT'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$fruit</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$fruit&nbsp;will&nbsp;become&nbsp;a&nbsp;LOB&nbsp;descriptor<br /><br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br />while&nbsp;(</span><span style="color: #0000BB">oci_fetch</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$id&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&nbsp;is&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$fruit</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br&gt;\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;表示:<br />//&nbsp;&nbsp;&nbsp;1&nbsp;is&nbsp;apple<br />//&nbsp;&nbsp;&nbsp;2&nbsp;is&nbsp;orange<br /><br /></span><span style="color: #0000BB">$fruit</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">free</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">oci_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -156,8 +156,8 @@ CURSOR</em> ステートメント ID。</p>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-1966">
-    <p><strong>例4  <span class="function"><strong>oci_define_by_name()</strong></span> での型の明示</strong></p>
+   <div class="example" id="example-2160">
+    <p><strong>例4 <span class="function"><strong>oci_define_by_name()</strong></span> での型の明示</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*<br />&nbsp;&nbsp;実行する前にテーブルを作ります<br />&nbsp;&nbsp;&nbsp;&nbsp;CREATE&nbsp;TABLE&nbsp;mytab&nbsp;(id&nbsp;NUMBER,&nbsp;fruit&nbsp;CLOB);<br />&nbsp;&nbsp;&nbsp;&nbsp;INSERT&nbsp;INTO&nbsp;mytab&nbsp;(id,&nbsp;fruit)&nbsp;values&nbsp;(1,&nbsp;'apple');<br />&nbsp;&nbsp;&nbsp;&nbsp;INSERT&nbsp;INTO&nbsp;mytab&nbsp;(id,&nbsp;fruit)&nbsp;values&nbsp;(2,&nbsp;'orange');<br />&nbsp;&nbsp;&nbsp;&nbsp;COMMIT;<br />*/<br /><br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;*&nbsp;FROM&nbsp;mytab'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;実行する前に定義しなければなりません<br /></span><span style="color: #0000BB">oci_define_by_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ID'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$fruit&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_new_descriptor</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OCI_D_LOB</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_define_by_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'FRUIT'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$fruit</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OCI_D_CLOB</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br />while&nbsp;(</span><span style="color: #0000BB">oci_fetch</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$id&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&nbsp;is&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$fruit</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br&gt;\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;表示:<br />//&nbsp;&nbsp;&nbsp;1&nbsp;is&nbsp;apple<br />//&nbsp;&nbsp;&nbsp;2&nbsp;is&nbsp;orange<br /><br /></span><span style="color: #0000BB">$fruit</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">free</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">oci_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -174,8 +174,8 @@ CURSOR</em> ステートメント ID。</p>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.oci-fetch.html" class="function" rel="rdfs-seeAlso">oci_fetch()</a> - クエリの次の行を内部バッファに取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.oci-new-descriptor.html" class="function" rel="rdfs-seeAlso">oci_new_descriptor()</a> - 空の新規 LOB あるいは FILE ディスクリプタを初期化する</span></li>
+    <li class="member"><span class="function"><a href="function.oci-fetch.html" class="function" rel="rdfs-seeAlso">oci_fetch()</a> - クエリの次の行を内部バッファに取得する</span></li>
+    <li class="member"><span class="function"><a href="function.oci-new-descriptor.html" class="function" rel="rdfs-seeAlso">oci_new_descriptor()</a> - 空の新規 LOB あるいは FILE ディスクリプタを初期化する</span></li>
    </ul>
   </p>
  </div>

@@ -47,7 +47,6 @@
         <td>&quot;1&quot;</td>
         <td>PHP_INI_SYSTEM</td>
         <td>PHP &lt;= 4.3.4 で PHP_INI_ALL。</td>
-       
        </tr>
 
       <tr>
@@ -611,13 +610,6 @@
       </tr>
 
       <tr>
-       <td>crack.default_dictionary</td>
-       <td>NULL</td>
-       <td>PHP_INI_PERDIR</td>
-       <td>crack &lt;= 0.2 で PHP_INI_SYSTEM。PHP 4.0.5 以降で利用可能。PHP 5.0.0 で削除。</td>
-      </tr>
-
-      <tr>
        <td><a href="curl.configuration.html#ini.curl.cainfo" class="link">curl.cainfo</a></td>
        <td>NULL</td>
        <td>PHP_INI_SYSTEM</td>
@@ -710,9 +702,9 @@
 
       <tr>
        <td><a href="ini.core.html#ini.default-charset" class="link">default_charset</a></td>
-       <td>&quot;&quot;</td>
+       <td>&quot;UTF-8&quot;</td>
        <td>PHP_INI_ALL</td>
-       <td class="empty">&nbsp;</td>
+       <td>PHP 5.6.0 以降でデフォルトが &quot;UTF-8&quot; になりました。それより前のバージョンでは、デフォルトは空文字列でした。</td>
       </tr>
 
       <tr>
@@ -737,10 +729,10 @@
       </tr>
 
       <tr>
-       <td><a href="ini.core.html#ini.detect-unicode" class="link">detect_unicode</a></td>
+       <td>detect_unicode</td>
        <td>&quot;1&quot;</td>
        <td>PHP_INI_ALL</td>
-       <td>PHP 5.1.0 以降で利用可能。PHP 5.4.0 で削除。</td>
+       <td>PHP 5.1.0 以降で利用可能。PHP 5.4.0 では名前を <a href="ini.core.html#ini.zend.detect-unicode" class="link">zend.detect_unicode</a> に変更。</td>
       </tr>
 
       <tr>
@@ -1116,13 +1108,6 @@
       </tr>
 
       <tr>
-       <td><a href="ini.core.html#ini.gpc-order" class="link">gpc_order</a></td>
-       <td>&quot;GPC&quot;</td>
-       <td>PHP_INI_ALL</td>
-       <td>PHP 5.0.0 で削除。</td>
-      </tr>
-
-      <tr>
        <td>hidef.ini_path</td>
        <td>(char*)default_ini_path</td>
        <td>PHP_INI_SYSTEM</td>
@@ -1421,27 +1406,6 @@
        <td>&quot;1&quot;</td>
        <td>PHP_INI_ALL</td>
        <td>pecl_http 1.0.0 以降で利用可能。</td>
-      </tr>
-
-      <tr>
-       <td>hyerwave.allow_persistent</td>
-       <td>&quot;0&quot;</td>
-       <td>PHP_INI_SYSTEM</td>
-       <td>PHP 4.3.2 で削除。</td>
-      </tr>
-
-      <tr>
-       <td>hyperwave.allow_persistent</td>
-       <td>&quot;0&quot;</td>
-       <td>PHP_INI_SYSTEM</td>
-       <td>PHP 4.3.2 以降で利用可能。PHP 5.0.0 で削除。</td>
-      </tr>
-
-      <tr>
-       <td>hyperwave.default_port</td>
-       <td>&quot;418&quot;</td>
-       <td>PHP_INI_ALL</td>
-       <td>PHP 5.0.0 で削除。</td>
       </tr>
 
       <tr>
@@ -2031,7 +1995,7 @@
        <td>mbstring.script_encoding</td>
        <td>NULL</td>
        <td>PHP_INI_ALL</td>
-       <td>PHP 4.3.0 以降で利用可能。</td>
+       <td>PHP 4.3.0 以降で利用可能。PHP 5.4.0 で削除。代わりに <a href="ini.core.html#ini.zend.script-encoding" class="link">zend.script_encoding</a> を使うこと。</td>
       </tr>
 
       <tr>
@@ -2182,9 +2146,9 @@
      </tr>
 <tr>
       <td><a href="mongo.configuration.html#ini.mongo.native-long" class="link">mongo.native_long</a></td>
-      <td>0<a href="mongo.configuration.html#ini.mongo.native-long" class="link">*</a></td>
+      <td>1</td>
       <td>PHP_INI_ALL</td>
-      <td class="empty">&nbsp;</td>
+      <td>1.5.0 までのデフォルト値は 0</td>
      </tr>
 <tr>
       <td><a href="mongo.configuration.html#ini.mongo.ping-interval" class="link">mongo.ping_interval</a></td>
@@ -2475,7 +2439,6 @@
 
       <tr>
        <td><a href="mysqlnd.config.html#ini.mysqlnd.debug" class="link">mysqlnd.debug</a></td>
-       <td>mysqlnd.debug</td>
        <td>&quot;&quot;</td>
        <td>PHP_INI_SYSTEM</td>
        <td>PHP 5.3.0 以降で利用可能。</td>
@@ -3681,7 +3644,6 @@
        <td>PHP 5.0.0 以降で利用可能。</td>
       </tr>
 
-      
       <tr>
        <td><a href="sqlite3.configuration.html#ini.sqlite3.extension-dir" class="link">sqlite3.extension_dir</a></td>
        <td>&quot;&quot;</td>
@@ -3770,7 +3732,7 @@
        <td><a href="sybase.configuration.html#ini.sybct.allow-persistent" class="link">sybct.allow_persistent</a></td>
        <td>&quot;1&quot;</td>
        <td>PHP_INI_SYSTEM</td>
-       <td>PHP &lt;= 4.0.2 では PHP_INI_ALL、PHP 4.0.2 以降で使用可能。PHP 4.0.3 で削除。</td>
+       <td>PHP = 4.0.2 では PHP_INI_ALL、PHP 4.0.2 以降で使用可能。PHP 4.0.3 で削除。</td>
       </tr>
 
       <tr>
@@ -3798,14 +3760,14 @@
        <td><a href="sybase.configuration.html#ini.sybct.max-links" class="link">sybct.max_links</a></td>
        <td>&quot;-1&quot;</td>
        <td>PHP_INI_SYSTEM</td>
-       <td>PHP &lt;= 4.0.2 では PHP_INI_ALL、PHP 4.0.2 以降で使用可能。PHP 4.0.3 で削除。</td>
+       <td>PHP = 4.0.2 では PHP_INI_ALL、PHP 4.0.2 以降で使用可能。PHP 4.0.3 で削除。</td>
       </tr>
 
       <tr>
        <td><a href="sybase.configuration.html#ini.sybct.max-persistent" class="link">sybct.max_persistent</a></td>
        <td>&quot;-1&quot;</td>
        <td>PHP_INI_SYSTEM</td>
-       <td>PHP &lt;= 4.0.2 では PHP_INI_ALL、PHP 4.0.2 以降で使用可能。PHP 4.0.3 で削除。</td>
+       <td>PHP = 4.0.2 では PHP_INI_ALL、PHP 4.0.2 以降で使用可能。PHP 4.0.3 で削除。</td>
       </tr>
 
       <tr>
@@ -3871,14 +3833,6 @@
        <td class="empty">&nbsp;</td>
       </tr>
 
-      <tr>
-       <td><a href="ini.core.html#ini.track-vars" class="link">track_vars</a></td>
-       <td>&quot;1&quot;</td>
-       <td>PHP_INI_ALL</td>
-       <td>PHP 4.0.3 で削除。</td>
-      </tr>
-
-      
       <tr>
        <td>unserialize_callback_func</td>
        <td>NULL</td>
@@ -4405,13 +4359,6 @@
       </tr>
 
       <tr>
-       <td>yaz.log_file</td>
-       <td>NULL</td>
-       <td>PHP_INI_ALL</td>
-       <td>PHP 4.3.0 以降で利用可能。PHP 5.0.0 で削除。</td>
-      </tr>
-
-      <tr>
        <td>yaz.log_mask</td>
        <td>NULL</td>
        <td>PHP_INI_ALL</td>
@@ -4426,7 +4373,7 @@
       </tr>
 
       <tr>
-       <td>zend.detect_unicode</td>
+       <td><a href="ini.core.html#ini.zend.detect-unicode" class="link">zend.detect_unicode</a></td>
        <td>&quot;1&quot;</td>
        <td>PHP_INI_ALL</td>
        <td>PHP 5.4.0 以降で利用可能。</td>

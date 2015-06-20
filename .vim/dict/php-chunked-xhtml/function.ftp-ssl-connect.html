@@ -26,13 +26,13 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>ftp_ssl_connect()</strong></span> は、指定した
-   <em><code class="parameter">host</code></em> への明示的な SSL-FTP 接続をオープンします。
+   <span class="function"><strong>ftp_ssl_connect()</strong></span> は、指定した
+   <code class="parameter">host</code> への明示的な SSL-FTP 接続をオープンします。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <strong>この関数が存在しないことがあるのはなぜですか？</strong><br />
    <p class="para">
-     <span class="function"><strong>ftp_ssl_connect()</strong></span> が使えるのは、
+    <span class="function"><strong>ftp_ssl_connect()</strong></span> が使えるのは、
     ftp モジュールおよび <a href="ref.openssl.html" class="link">OpenSSL</a>
     サポートが静的に PHP に組み込まれている場合のみです。
     つまり、Windows 版の PHP 公式ビルドではこの関数は使えないということです。
@@ -41,8 +41,8 @@
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>ftp_ssl_connect()</strong></span> は、sFTP で使うための関数ではありません。
-    PHP で sFTP を使うには  <span class="function"><a href="function.ssh2-sftp.html" class="function">ssh2_sftp()</a></span> を参照ください。
+    <span class="function"><strong>ftp_ssl_connect()</strong></span> は、sFTP で使うための関数ではありません。
+    PHP で sFTP を使うには <span class="function"><a href="function.ssh2-sftp.html" class="function">ssh2_sftp()</a></span> を参照ください。
    </p>
   </p></blockquote>
  </div>
@@ -52,9 +52,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">host</code></dt>
 
-     <span class="term"><em><code class="parameter">host</code></em></span>
      <dd>
 
       <p class="para">
@@ -63,39 +64,38 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">port</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">port</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">port</code></em> パラメータは別のポートに接続することを
+       <code class="parameter">port</code> パラメータは別のポートに接続することを
        指定します。これを省略するか 0 にした場合、デフォルトの FTP ポート、
        つまり 21 が使用されます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">timeout</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">timeout</code></em></span>
      <dd>
 
       <p class="para">
        このパラメータは、以降の全てのネットワーク処理の
        タイムアウトを指定します。省略された場合の
        デフォルト値は、90 秒となります。timeout は、
-        <span class="function"><a href="function.ftp-set-option.html" class="function">ftp_set_option()</a></span> および
-        <span class="function"><a href="function.ftp-get-option.html" class="function">ftp_get_option()</a></span>
+       <span class="function"><a href="function.ftp-set-option.html" class="function">ftp_set_option()</a></span> および
+       <span class="function"><a href="function.ftp-get-option.html" class="function">ftp_get_option()</a></span>
        でいつでも変更および取得可能です。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -142,8 +142,8 @@
  <div class="refsect1 examples" id="refsect1-function.ftp-ssl-connect-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4287">
-    <p><strong>例1  <span class="function"><strong>ftp_ssl_connect()</strong></span> の例</strong></p>
+   <div class="example" id="example-4735">
+    <p><strong>例1 <span class="function"><strong>ftp_ssl_connect()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;SSL&nbsp;接続を確立する<br /></span><span style="color: #0000BB">$conn_id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_ssl_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$ftp_server</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ユーザー名とパスワードでログインする<br /></span><span style="color: #0000BB">$login_result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_login</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_pass</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">ftp_pwd</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;/<br /><br />//&nbsp;SSL&nbsp;接続を閉じる<br /></span><span style="color: #0000BB">ftp_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -159,7 +159,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ftp-connect.html" class="function" rel="rdfs-seeAlso">ftp_connect()</a> - FTP 接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-connect.html" class="function" rel="rdfs-seeAlso">ftp_connect()</a> - FTP 接続をオープンする</span></li>
    </ul>
   </p>
  </div>

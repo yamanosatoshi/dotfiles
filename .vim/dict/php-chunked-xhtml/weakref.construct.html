@@ -20,9 +20,9 @@
  <div class="refsect1 description" id="refsect1-weakref.construct-description">
   <h3 class="title">説明</h3>
   <div class="constructorsynopsis dc-description">
-   <span class="modifier">public</span>  <span class="methodname"><strong>Weakref::__construct()</strong></span>
-    ([ <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>Weakref::__construct</strong></span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   )</div>
 
   <p class="para rdfs-comment">
    弱い参照を新しく作ります。
@@ -35,9 +35,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">object</code></dt>
 
-     <span class="term"><em><code class="parameter">object</code></em></span>
      <dd>
 
       <p class="para">
@@ -45,8 +46,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -64,8 +64,8 @@
  <div class="refsect1 examples" id="refsect1-weakref.construct-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-548">
-    <p><strong>例1  <span class="methodname"><strong>Weakref::__construct()</strong></span> の例</strong></p>
+   <div class="example" id="example-589">
+    <p><strong>例1 <span class="methodname"><strong>Weakref::__construct()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__destruct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Destroying&nbsp;object!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$o1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$r1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Weakref</span><span style="color: #007700">(</span><span style="color: #0000BB">$o1</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$r1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">valid</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Object&nbsp;still&nbsp;exists!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$r1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">());<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Object&nbsp;is&nbsp;dead!\n"</span><span style="color: #007700">;<br />}<br /><br />unset(</span><span style="color: #0000BB">$o1</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$r1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">valid</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Object&nbsp;still&nbsp;exists!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$r1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">());<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Object&nbsp;is&nbsp;dead!\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -27,7 +27,7 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli.character-set-name.html" class="function">mysqli_character_set_name()</a></span></li>
+    <li class="member"><span class="function"><a href="mysqli.set-charset.html" class="function">mysqli_set_charset()</a></span></li>
     <li class="member">PDO: 接続文字列に <em>charset</em> を追加して <em>charset=utf8</em> などとする</li>
    </ul>
   </div>
@@ -52,9 +52,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">charset</code></dt>
 
-     <span class="term"><em><code class="parameter">charset</code></em></span>
      <dd>
 
       <p class="para">
@@ -62,19 +63,18 @@
       </p>
      </dd>
 
-    </dt>
-
+    
     <dt>
-<span class="term"><em><code class="parameter">
-link_identifier</code></em></span><dd>
+<code class="parameter">
+link_identifier</code></dt>
+<dd>
 <p class="para">MySQL 接続。
-指定されない場合、 <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
+指定されない場合、<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
 指定されたと仮定されます。そのようなリンクがない場合、引数を指定せずに
- <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
+<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
 リンクが見付からない、または、確立できない場合、
 <strong><code>E_WARNING</code></strong> レベルのエラーが生成されます。</p></dd>
 
-</dt>
 
    </dl>
 
@@ -100,7 +100,7 @@ link_identifier</code></em></span><dd>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     文字セットを変更するにはこの方法を使うことを推奨します。
-     <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> で (<em>SET NAMES utf8</em> などとして)
+    <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> で (<em>SET NAMES utf8</em> などとして)
     設定する方法はお勧めできません。詳細は
     <a href="mysqlinfo.concepts.charset.html" class="link">MySQL の文字セットの概念</a>
     を参照ください。
@@ -113,7 +113,7 @@ link_identifier</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-client-encoding.html" class="function" rel="rdfs-seeAlso">mysql_client_encoding()</a> - 文字セット名を返す</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-client-encoding.html" class="function" rel="rdfs-seeAlso">mysql_client_encoding()</a> - 文字セット名を返す</span></li>
     <li class="member"><a href="mysqlinfo.concepts.charset.html" class="link">MySQL での文字セットの設定</a></li>
     <li class="member"><a href="http://dev.mysql.com/doc/mysql/en/charset-charsets.html" class="link external">&raquo;&nbsp;MySQL がサポートする文字セットの一覧</a></li>
    </ul>

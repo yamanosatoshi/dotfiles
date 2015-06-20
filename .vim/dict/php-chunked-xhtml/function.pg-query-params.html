@@ -33,27 +33,27 @@
     とは別に渡すことが可能です。
   </p>
   <p class="para">
-     <span class="function"><strong>pg_query_params()</strong></span> は  <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>
+    <span class="function"><strong>pg_query_params()</strong></span> は <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>
     と似ていますが、追加の機能を有しています。それはパラメータ値が
     コマンド文字列と分離しているということです。
-     <span class="function"><strong>pg_query_params()</strong></span> は PostgreSQL 7.4 以降の接続でのみ
+    <span class="function"><strong>pg_query_params()</strong></span> は PostgreSQL 7.4 以降の接続でのみ
     サポートされます。それ以前のバージョンでは失敗します。
   </p>
   <p class="para">
-    パラメータを使用する際は、<em><code class="parameter">query</code></em> 文字列内で
+    パラメータを使用する際は、<code class="parameter">query</code> 文字列内で
     $1、$2 のように参照されます。
-    <em><code class="parameter">query</code></em> の中で同じパラメータを何度も使えます。
+    <code class="parameter">query</code> の中で同じパラメータを何度も使えます。
     その場合は、それぞれに同じ値が渡されます。
-    <em><code class="parameter">params</code></em> で
+    <code class="parameter">params</code> で
     実際の値を指定します。<strong><code>NULL</code></strong> を指定すると、SQL の <em>NULL</em>
     とみなされます。
   </p>
   <p class="para">
-     <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span> に対する  <span class="function"><strong>pg_query_params()</strong></span>
-    の最大の利点は、パラメータの値を <em><code class="parameter">query</code></em> 文字列から
+    <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span> に対する <span class="function"><strong>pg_query_params()</strong></span>
+    の最大の利点は、パラメータの値を <code class="parameter">query</code> 文字列から
     分離できることです。そのため、退屈でエラーの元となりやすいクォート・
-    エスケープなどをしなくてもよくなります。 <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>
-    と異なり、 <span class="function"><strong>pg_query_params()</strong></span> ではひとつの SQL
+    エスケープなどをしなくてもよくなります。<span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>
+    と異なり、<span class="function"><strong>pg_query_params()</strong></span> ではひとつの SQL
     コマンドしか実行できません（クエリ文字列にセミコロンを含めることは
     可能です。しかしそれ以降にコマンドを続けることはできません）。
   </p>
@@ -65,24 +65,25 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
-       PostgreSQL データベース接続リソース。<em><code class="parameter">connection</code></em>
+       PostgreSQL データベース接続リソース。<code class="parameter">connection</code>
        が指定されていない場合はデフォルトの接続が使用されます。
-       デフォルトの接続は、直近の  <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
-       あるいは  <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
+       デフォルトの接続は、直近の <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
+       あるいは <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -100,11 +101,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">params</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">params</code></em></span>
      <dd>
 
       <p class="para">
@@ -114,12 +115,11 @@
       </p>
       <p class="para">
        <em>bytea</em> フィールド用の値は、パラメータとして指定できません。
-        <span class="function"><a href="function.pg-escape-bytea.html" class="function">pg_escape_bytea()</a></span> を使うか、ラージオブジェクト関数を使うようにしましょう。
+       <span class="function"><a href="function.pg-escape-bytea.html" class="function">pg_escape_bytea()</a></span> を使うか、ラージオブジェクト関数を使うようにしましょう。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -136,8 +136,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-query-params-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2100">
-    <p><strong>例1  <span class="function"><strong>pg_query_params()</strong></span> の使用法</strong></p>
+   <div class="example" id="example-2297">
+    <p><strong>例1 <span class="function"><strong>pg_query_params()</strong></span> の使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;"mary"という名前のデータベースに接続<br /></span><span style="color: #0000BB">$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=mary"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Joe's&nbsp;Widgets&nbsp;という名前の店を探す。"Joe's&nbsp;Widgets"&nbsp;を<br />//&nbsp;エスケープする必要がないことに注意<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query_params</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;*&nbsp;FROM&nbsp;shops&nbsp;WHERE&nbsp;name&nbsp;=&nbsp;$1'</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"Joe's&nbsp;Widgets"</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;pg_query&nbsp;を使用した場合と比較<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_escape_string</span><span style="color: #007700">(</span><span style="color: #DD0000">"Joe's&nbsp;Widgets"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;shops&nbsp;WHERE&nbsp;name&nbsp;=&nbsp;'</span><span style="color: #007700">{</span><span style="color: #0000BB">$str</span><span style="color: #007700">}</span><span style="color: #DD0000">'"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -154,7 +154,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-query.html" class="function" rel="rdfs-seeAlso">pg_query()</a> - クエリを実行する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-query.html" class="function" rel="rdfs-seeAlso">pg_query()</a> - クエリを実行する</span></li>
    </ul>
   </p>
  </div>

@@ -26,10 +26,10 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>mssql_data_seek()</strong></span> は、指定した結果 ID が指す
+   <span class="function"><strong>mssql_data_seek()</strong></span> は、指定した結果 ID が指す
    MS SQL 結果に関する内部行ポインタを指定した行番号に移動します。
    最初の行は行番号 0 となります。
-   この後、 <span class="function"><a href="function.mssql-fetch-row.html" class="function">mssql_fetch_row()</a></span> をコールした場合、
+   この後、<span class="function"><a href="function.mssql-fetch-row.html" class="function">mssql_fetch_row()</a></span> をコールした場合、
    その行を返します。
   </p>
  </div>
@@ -40,9 +40,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result_identifier</code></dt>
 
-     <span class="term"><em><code class="parameter">result_identifier</code></em></span>
      <dd>
 
       <p class="para">
@@ -50,11 +51,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">row_number</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">row_number</code></em></span>
      <dd>
 
       <p class="para">
@@ -62,8 +63,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -81,8 +81,8 @@
  <div class="refsect1 examples" id="refsect1-function.mssql-data-seek-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1522">
-    <p><strong>例1  <span class="function"><strong>mssql_data_seek()</strong></span> の例</strong></p>
+   <div class="example" id="example-1701">
+    <p><strong>例1 <span class="function"><strong>mssql_data_seek()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;MSSQL&nbsp;に接続し、データベースを選択します<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'MANGO\SQLEXPRESS'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sa'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'phpfi'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mssql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">'php'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;すべての人を選択します<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;[name],&nbsp;[age]&nbsp;FROM&nbsp;[persons]&nbsp;WHERE&nbsp;[age]&nbsp;&gt;=&nbsp;13'</span><span style="color: #007700">);<br /><br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Query&nbsp;failed.'</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;結果の中から&nbsp;4&nbsp;人おきに学生を選択します<br /></span><span style="color: #007700">for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">%&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">mssql_data_seek</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;行を取得します&nbsp;...<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #FF8000">//&nbsp;結果を開放します<br /></span><span style="color: #0000BB">mssql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -23,12 +23,12 @@
    <span class="type">int</span> <span class="methodname"><strong>bccomp</strong></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$left_operand</code></span>
    , <span class="methodparam"><span class="type">string</span> <code class="parameter">$right_operand</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$scale</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$scale</code><span class="initializer"> = int</span></span>
   ] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">left_operand</code></em> と
-   <em><code class="parameter">right_operand</code></em> を比較し、
+   <code class="parameter">left_operand</code> と
+   <code class="parameter">right_operand</code> を比較し、
    結果を整数値で返します。
   </p>
  </div>
@@ -39,9 +39,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">left_operand</code></dt>
 
-     <span class="term"><em><code class="parameter">left_operand</code></em></span>
      <dd>
 
       <p class="para">
@@ -49,11 +50,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">right_operand</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">right_operand</code></em></span>
      <dd>
 
       <p class="para">
@@ -61,21 +62,20 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">scale</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">scale</code></em></span>
      <dd>
 
       <p class="para">
-       オプションの <em><code class="parameter">scale</code></em> パラメータで、
+       オプションの <code class="parameter">scale</code> パラメータで、
        小数点以下の桁数を指定します。ここまでを使用して比較を行います。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -86,7 +86,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    ふたつのオペランドが等しければ 0、
-   <em><code class="parameter">left_operand</code></em> が <em><code class="parameter">right_operand</code></em>
+   <code class="parameter">left_operand</code> が <code class="parameter">right_operand</code>
    より大きければ返り値は 1、小さければ -1 を返します。
   </p>
  </div>
@@ -94,8 +94,8 @@
  
  <div class="refsect1 examples" id="refsect1-function.bccomp-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-3371">
-   <p><strong>例1  <span class="function"><strong>bccomp()</strong></span> の例</strong></p>
+  <div class="example" id="example-3795">
+   <p><strong>例1 <span class="function"><strong>bccomp()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">bccomp</span><span style="color: #007700">(</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;-1<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">bccomp</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.00001'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;0<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">bccomp</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.00001'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;1<br /><br /></span><span style="color: #0000BB">?&gt;</span>

@@ -21,13 +21,13 @@
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
    <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>gmp_setbit</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter reference">&$a</code></span>
+    ( <span class="methodparam"><span class="type"><a href="class.gmp.html" class="type GMP">GMP</a></span> <code class="parameter reference">&$a</code></span>
    , <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
    [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$bit_on</code><span class="initializer"> = true</span></span>
   ] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">a</code></em> のビット <em><code class="parameter">index</code></em>
+   <code class="parameter">a</code> のビット <code class="parameter">index</code>
    を設定します。
   </p>
  </div>
@@ -38,23 +38,23 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">a</code></dt>
 
-     <span class="term"><em><code class="parameter">a</code></em></span>
      <dd>
 
       <p class="para">
        変更したい値。
       </p>
-      <p class="para">GMP 数リソース、
-あるいは数値に変換可能な数値形式の文字列。</p> 
+      <p class="para">PHP 5.5 以前での GMP 数リソース、PHP 5.6 以降での <a href="class.gmp.html" class="classname">GMP</a> オブジェクト、あるいは数値に変換可能な数値形式の文字列。</p> 
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">index</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">index</code></em></span>
      <dd>
 
       <p class="para">
@@ -62,11 +62,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">bit_on</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">bit_on</code></em></span>
      <dd>
 
       <p class="para">
@@ -75,8 +75,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -86,7 +85,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.gmp-setbit-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   GMP 数リソースを返します。
+   PHP 5.5 以前は GMP 数リソースを、そして PHP 5.6 以降は <a href="class.gmp.html" class="classname">GMP</a> オブジェクトを返します。
   </p>
  </div>
 
@@ -94,8 +93,8 @@
  <div class="refsect1 examples" id="refsect1-function.gmp-setbit-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3413">
-    <p><strong>例1  <span class="function"><strong>gmp_setbit()</strong></span> の例 - インデックス 0</strong></p>
+   <div class="example" id="example-3841">
+    <p><strong>例1 <span class="function"><strong>gmp_setbit()</strong></span> の例 - インデックス 0</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gmp_init</span><span style="color: #007700">(</span><span style="color: #DD0000">"2"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">gmp_strval</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'&nbsp;-&gt;&nbsp;0b'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">gmp_strval</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">gmp_setbit</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;0b10&nbsp;が&nbsp;0b11&nbsp;になります<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">gmp_strval</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'&nbsp;-&gt;&nbsp;0b'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">gmp_strval</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -112,8 +111,8 @@
     </div>
    </div>
 
-   <div class="example" id="example-3414">
-    <p><strong>例2  <span class="function"><strong>gmp_setbit()</strong></span> の例 - インデックス 1</strong></p>
+   <div class="example" id="example-3842">
+    <p><strong>例2 <span class="function"><strong>gmp_setbit()</strong></span> の例 - インデックス 1</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gmp_init</span><span style="color: #007700">(</span><span style="color: #DD0000">"0xfd"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">gmp_strval</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'&nbsp;-&gt;&nbsp;0b'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">gmp_strval</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">gmp_setbit</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;インデックスは&nbsp;0&nbsp;から始まります<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">gmp_strval</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'&nbsp;-&gt;&nbsp;0b'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">gmp_strval</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -130,8 +129,8 @@
     </div>
    </div>
    
-   <div class="example" id="example-3415">
-    <p><strong>例3  <span class="function"><strong>gmp_setbit()</strong></span> の例 - ビットのクリア</strong></p>
+   <div class="example" id="example-3843">
+    <p><strong>例3 <span class="function"><strong>gmp_setbit()</strong></span> の例 - ビットのクリア</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gmp_init</span><span style="color: #007700">(</span><span style="color: #DD0000">"0xff"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">gmp_strval</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'&nbsp;-&gt;&nbsp;0b'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">gmp_strval</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">gmp_setbit</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;インデックス&nbsp;0&nbsp;のビットをクリアします<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">gmp_strval</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'&nbsp;-&gt;&nbsp;0b'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">gmp_strval</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -156,8 +155,8 @@
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    他の大半の GMP 関数とは異なり、 <span class="function"><strong>gmp_setbit()</strong></span>
-    は必ず既存の GMP リソース (例えば  <span class="function"><a href="function.gmp-init.html" class="function">gmp_init()</a></span>
+    他の大半の GMP 関数とは異なり、<span class="function"><strong>gmp_setbit()</strong></span>
+    は必ず既存の GMP リソース (例えば <span class="function"><a href="function.gmp-init.html" class="function">gmp_init()</a></span>
     を使用して取得したもの) を使用してコールしなければなりません。
     リソースは自動的には作成されません。
    </p>
@@ -169,8 +168,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.gmp-clrbit.html" class="function" rel="rdfs-seeAlso">gmp_clrbit()</a> - ビットをクリアする</span></li>
-    <li class="member"> <span class="function"><a href="function.gmp-testbit.html" class="function" rel="rdfs-seeAlso">gmp_testbit()</a> - ビットが設定されているかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.gmp-clrbit.html" class="function" rel="rdfs-seeAlso">gmp_clrbit()</a> - ビットをクリアする</span></li>
+    <li class="member"><span class="function"><a href="function.gmp-testbit.html" class="function" rel="rdfs-seeAlso">gmp_testbit()</a> - ビットが設定されているかどうかを調べる</span></li>
    </ul>
   </p>
  </div>

@@ -27,7 +27,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_lo_read_all()</strong></span> は、ラージオブジェクトを読み込み
+   <span class="function"><strong>pg_lo_read_all()</strong></span> は、ラージオブジェクトを読み込み
    未送信のヘッダを全て送信した後、ブラウザに直接ラージオブジェクトを
    送信します。これは主に、イメージや音などのバイナリデータを送信するために
    使用します。
@@ -38,7 +38,7 @@
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    この関数は、以前は  <span class="function"><strong>pg_loreadall()</strong></span> と呼ばれていました。
+    この関数は、以前は <span class="function"><strong>pg_loreadall()</strong></span> と呼ばれていました。
    </p>
   </p></blockquote>
  </div>
@@ -49,19 +49,19 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">large_object</code></dt>
 
-     <span class="term"><em><code class="parameter">large_object</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.pg-lo-open.html" class="function">pg_lo_open()</a></span> によって返された
+       <span class="function"><a href="function.pg-lo-open.html" class="function">pg_lo_open()</a></span> によって返された
        PostgreSQL ラージオブジェクト (LOB) リソース。
       </p>
      </dd>
 
-    </dt>
-
+    
 
    </dl>
 
@@ -80,8 +80,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-lo-read-all-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2084">
-    <p><strong>例1  <span class="function"><strong>pg_lo_read_all()</strong></span> の例</strong></p>
+   <div class="example" id="example-2280">
+    <p><strong>例1 <span class="function"><strong>pg_lo_read_all()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type:&nbsp;image/jpeg'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$image_oid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">189762345</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$database&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=jacarta"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"begin"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_lo_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$image_oid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_lo_read_all</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"commit"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -98,7 +98,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-lo-read.html" class="function" rel="rdfs-seeAlso">pg_lo_read()</a> - ラージオブジェクトを読み込む</span></li>
+    <li class="member"><span class="function"><a href="function.pg-lo-read.html" class="function" rel="rdfs-seeAlso">pg_lo_read()</a> - ラージオブジェクトを読み込む</span></li>
    </ul>
   </p>
  </div>

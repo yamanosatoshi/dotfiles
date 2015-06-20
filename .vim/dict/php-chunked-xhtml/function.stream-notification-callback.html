@@ -48,9 +48,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">notification_code</code></dt>
 
-     <span class="term"><em><code class="parameter">notification_code</code></em></span>
      <dd>
 
       <p class="para">
@@ -58,11 +59,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">severity</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">severity</code></em></span>
      <dd>
 
       <p class="para">
@@ -70,11 +71,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">message</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">message</code></em></span>
      <dd>
 
       <p class="para">
@@ -82,11 +83,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">message_code</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">message_code</code></em></span>
      <dd>
 
       <p class="para">
@@ -97,34 +98,33 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">bytes_transferred</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">bytes_transferred</code></em></span>
      <dd>
 
       <p class="para">
-       利用可能な場合は <em><code class="parameter">bytes_transferred</code></em>
+       利用可能な場合は <code class="parameter">bytes_transferred</code>
        の値が格納されます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">bytes_max</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">bytes_max</code></em></span>
      <dd>
 
       <p class="para">
-       利用可能な場合は <em><code class="parameter">bytes_max</code></em>
+       利用可能な場合は <code class="parameter">bytes_max</code>
        の値が格納されます。
       </p>
      </dd>
 
-    </dt>
-
+    
 
    </dl>
 
@@ -144,7 +144,7 @@
   <h3 class="title">例</h3>
   <p class="para">
    <div class="example" id="stream-notification-callback.example.basic">
-    <p><strong>例1  <span class="function"><strong>stream_notification_callback()</strong></span> の例</strong></p>
+    <p><strong>例1 <span class="function"><strong>stream_notification_callback()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">stream_notification_callback</span><span style="color: #007700">(</span><span style="color: #0000BB">$notification_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$severity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bytes_transferred</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bytes_max</span><span style="color: #007700">)&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;switch(</span><span style="color: #0000BB">$notification_code</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">STREAM_NOTIFY_RESOLVE</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">STREAM_NOTIFY_AUTH_REQUIRED</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">STREAM_NOTIFY_COMPLETED</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">STREAM_NOTIFY_FAILURE</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">STREAM_NOTIFY_AUTH_RESULT</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$notification_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$severity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bytes_transferred</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bytes_max</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;無視&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">break;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">STREAM_NOTIFY_REDIRECTED</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Being&nbsp;redirected&nbsp;to:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">STREAM_NOTIFY_CONNECT</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Connected..."</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">STREAM_NOTIFY_FILE_SIZE_IS</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Got&nbsp;the&nbsp;filesize:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bytes_max</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">STREAM_NOTIFY_MIME_TYPE_IS</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Found&nbsp;the&nbsp;mime-type:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">STREAM_NOTIFY_PROGRESS</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Made&nbsp;some&nbsp;progress,&nbsp;downloaded&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bytes_transferred</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;so&nbsp;far"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$ctx&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">stream_context_set_params</span><span style="color: #007700">(</span><span style="color: #0000BB">$ctx</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"notification"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"stream_notification_callback"</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://php.net/contact"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ctx</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

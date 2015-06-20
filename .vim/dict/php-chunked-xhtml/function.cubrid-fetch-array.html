@@ -26,7 +26,7 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    The  <span class="function"><strong>cubrid_fetch_array()</strong></span> function is used to get a
+    The <span class="function"><strong>cubrid_fetch_array()</strong></span> function is used to get a
     single row from the query result and returns an array. The cursor
     automatically moves to the next row after getting the result.
   </p>
@@ -38,23 +38,23 @@
   <p class="para">
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">result</code></dt>
 
-    <span class="term"><em><code class="parameter">result</code></em></span>
     <dd>
-<p class="para"><em><code class="parameter">Result</code></em> comes from a call to  <span class="function"><a href="function.cubrid-execute.html" class="function">cubrid_execute()</a></span></p></dd>
+<p class="para"><code class="parameter">Result</code> comes from a call to <span class="function"><a href="function.cubrid-execute.html" class="function">cubrid_execute()</a></span></p></dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">type</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">type</code></em></span>
     <dd>
 <p class="para">Array type of the fetched result CUBRID_NUM, CUBRID_ASSOC,
       CUBRID_BOTH. If you need to operate the lob object, you can use CUBRID_LOB.</p></dd>
 
-   </dt>
-
+   
   </dl>
 
   </p>
@@ -65,7 +65,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">Returns an array of strings that corresponds to the fetched row, when process is successful.</p>
   <p class="para"><strong><code>FALSE</code></strong>, when there are no more rows; NULL, when process is unsuccessful.</p>
-  <p class="para">The type of returned array depends on how type is defined. By using CUBRID_BOTH (default), you&#039;ll get an array with both associative and number indices, and you can decide which data type to use by setting the <em><code class="parameter">type</code></em> argument. The <em><code class="parameter">type</code></em> variable can be set to one of the following values:</p>
+  <p class="para">The type of returned array depends on how type is defined. By using CUBRID_BOTH (default), you&#039;ll get an array with both associative and number indices, and you can decide which data type to use by setting the <code class="parameter">type</code> argument. The <code class="parameter">type</code> variable can be set to one of the following values:</p>
     <ul class="simplelist">
         <li class="member">CUBRID_NUM : Numerical array (0-based)</li>
         <li class="member">CUBRID_ASSOC : Associative array</li>
@@ -76,8 +76,8 @@
 
  <div class="refsect1 examples" id="refsect1-function.cubrid-fetch-array-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1067">
-   <p><strong>例1  <span class="function"><strong>cubrid_fetch_array()</strong></span> example</strong></p>
+  <div class="example" id="example-1125">
+   <p><strong>例1 <span class="function"><strong>cubrid_fetch_array()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;name,area,seats,address&nbsp;FROM&nbsp;stadium&nbsp;WHERE&nbsp;nation_code='GRE'&nbsp;AND&nbsp;seats&nbsp;&gt;&nbsp;10000"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%-40s&nbsp;%-10s&nbsp;%-6s&nbsp;%-20s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"name"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"area"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"seats"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"address"</span><span style="color: #007700">);<br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_NUM</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%-40s&nbsp;%-10s&nbsp;%-6s&nbsp;%-20s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">]);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;operate&nbsp;LOB&nbsp;object,&nbsp;you&nbsp;can&nbsp;use&nbsp;cubrid_fetch_array($req,&nbsp;CUBRID_NUM&nbsp;|&nbsp;CUBRID_LOB)<br /><br /></span><span style="color: #0000BB">cubrid_close_request</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -109,11 +109,11 @@ Ano Liossia                              34000.00   12000  Ano Liosia, Athens, G
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="function.cubrid-execute.html" class="function" rel="rdfs-seeAlso">cubrid_execute()</a> - Execute a prepared SQL statement</span></li>
-   <li class="member"> <span class="function"><a href="function.cubrid-fetch.html" class="function" rel="rdfs-seeAlso">cubrid_fetch()</a> - Fetch the next row from a result set</span></li>
-   <li class="member"> <span class="function"><a href="function.cubrid-fetch-row.html" class="function" rel="rdfs-seeAlso">cubrid_fetch_row()</a> - Return a numerical array with the values of the current row</span></li>
-   <li class="member"> <span class="function"><a href="function.cubrid-fetch-assoc.html" class="function" rel="rdfs-seeAlso">cubrid_fetch_assoc()</a> - Return the associative array that corresponds to the fetched row</span></li>
-   <li class="member"> <span class="function"><a href="function.cubrid-fetch-object.html" class="function" rel="rdfs-seeAlso">cubrid_fetch_object()</a> - Fetche the next row and returns it as an object</span></li>
+   <li class="member"><span class="function"><a href="function.cubrid-execute.html" class="function" rel="rdfs-seeAlso">cubrid_execute()</a> - Execute a prepared SQL statement</span></li>
+   <li class="member"><span class="function"><a href="function.cubrid-fetch.html" class="function" rel="rdfs-seeAlso">cubrid_fetch()</a> - Fetch the next row from a result set</span></li>
+   <li class="member"><span class="function"><a href="function.cubrid-fetch-row.html" class="function" rel="rdfs-seeAlso">cubrid_fetch_row()</a> - Return a numerical array with the values of the current row</span></li>
+   <li class="member"><span class="function"><a href="function.cubrid-fetch-assoc.html" class="function" rel="rdfs-seeAlso">cubrid_fetch_assoc()</a> - Return the associative array that corresponds to the fetched row</span></li>
+   <li class="member"><span class="function"><a href="function.cubrid-fetch-object.html" class="function" rel="rdfs-seeAlso">cubrid_fetch_object()</a> - Fetche the next row and returns it as an object</span></li>
    </ul>
   </p>
   </div>

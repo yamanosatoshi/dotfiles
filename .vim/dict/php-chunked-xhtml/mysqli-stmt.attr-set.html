@@ -47,14 +47,15 @@
   <p class="para">
    <dl>
 <dt>
-<span class="term"><em><code class="parameter">
-stmt</code></em></span><dd>
+<code class="parameter">
+stmt</code></dt>
+<dd>
 <p class="para">手続き型のみ:
- <span class="function"><a href="mysqli.stmt-init.html" class="function">mysqli_stmt_init()</a></span> が返すステートメント ID。</p></dd>
-</dt>
-<dt>
+<span class="function"><a href="mysqli.stmt-init.html" class="function">mysqli_stmt_init()</a></span> が返すステートメント ID。</p></dd>
 
-     <span class="term"><em><code class="parameter">attr</code></em></span>
+     <dt>
+<code class="parameter">attr</code></dt>
+
      <dd>
 
       <p class="para">
@@ -74,7 +75,7 @@ stmt</code></em></span><dd>
           <tr>
            <td>MYSQLI_STMT_ATTR_UPDATE_MAX_LENGTH</td>
            <td>
-            1 に設定すると、 <span class="function"><a href="mysqli-stmt.store-result.html" class="function">mysqli_stmt_store_result()</a></span> は
+            <strong><code>TRUE</code></strong> に設定すると、<span class="function"><a href="mysqli-stmt.store-result.html" class="function">mysqli_stmt_store_result()</a></span> は
             メタデータ <em>MYSQL_FIELD-&gt;max_length</em> の値を上書きします。
            </td>
           </tr>
@@ -82,9 +83,9 @@ stmt</code></em></span><dd>
           <tr>
            <td>MYSQLI_STMT_ATTR_CURSOR_TYPE</td>
            <td>
-             <span class="function"><a href="mysqli-stmt.execute.html" class="function">mysqli_stmt_execute()</a></span>
+            <span class="function"><a href="mysqli-stmt.execute.html" class="function">mysqli_stmt_execute()</a></span>
             が起動された際にステートメントをオープンするためのカーソル型。
-            <em><code class="parameter">mode</code></em> は、<em>MYSQLI_CURSOR_TYPE_NO_CURSOR</em>
+            <code class="parameter">mode</code> は、<em>MYSQLI_CURSOR_TYPE_NO_CURSOR</em>
             (デフォルト) あるいは <em>MYSQLI_CURSOR_TYPE_READ_ONLY</em> となります。
            </td>
           </tr>
@@ -93,7 +94,7 @@ stmt</code></em></span><dd>
            <td>MYSQLI_STMT_ATTR_PREFETCH_ROWS</td>
            <td>
             カーソルの使用時にサーバーからいちどに取得する行数。
-            <em><code class="parameter">mode</code></em> に指定できる値の範囲は
+            <code class="parameter">mode</code> に指定できる値の範囲は
             1 から unsigned long の最大値までで、デフォルトは 1 です。
            </td>
           </tr>
@@ -106,38 +107,48 @@ stmt</code></em></span><dd>
       <p class="para">
        <em>MYSQLI_STMT_ATTR_CURSOR_TYPE</em> オプションで
        <em>MYSQLI_CURSOR_TYPE_READ_ONLY</em> を使用すると、
-        <span class="function"><a href="mysqli-stmt.execute.html" class="function">mysqli_stmt_execute()</a></span>
+       <span class="function"><a href="mysqli-stmt.execute.html" class="function">mysqli_stmt_execute()</a></span>
        を起動した際にそのステートメント用のカーソルをオープンします。
-       以前に  <span class="function"><a href="mysqli-stmt.execute.html" class="function">mysqli_stmt_execute()</a></span>
+       以前に <span class="function"><a href="mysqli-stmt.execute.html" class="function">mysqli_stmt_execute()</a></span>
        をコールした際にオープンしたカーソルが残っている場合は、
        それを閉じてから新しいカーソルをオープンします。また
-        <span class="function"><a href="mysqli-stmt.reset.html" class="function">mysqli_stmt_reset()</a></span>
+       <span class="function"><a href="mysqli-stmt.reset.html" class="function">mysqli_stmt_reset()</a></span>
        も、オープンしているカーソルをすべて閉じてからステートメント再実行の準備をします。
-        <span class="function"><a href="mysqli-stmt.free-result.html" class="function">mysqli_stmt_free_result()</a></span>
+       <span class="function"><a href="mysqli-stmt.free-result.html" class="function">mysqli_stmt_free_result()</a></span>
        は、オープンしているカーソルをすべて閉じます。
       </p>
       <p class="para">
        プリペアドステートメント用のカーソルをオープンするのなら
-        <span class="function"><a href="mysqli-stmt.store-result.html" class="function">mysqli_stmt_store_result()</a></span> は不要です。
+       <span class="function"><a href="mysqli-stmt.store-result.html" class="function">mysqli_stmt_store_result()</a></span> は不要です。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">mode</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">mode</code></em></span>
      <dd>
 
       <p class="para">属性に割り当てるモード。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
  </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mysqli-stmt.attr-set-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="http://dev.mysql.com/doc/en/mysql-stmt-attr-set.html" class="link external">&raquo;&nbsp;Connector/MySQL mysql_stmt_attr_set()</a></li>
+   </ul>
+  </p>
+ </div>
+
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="mysqli-stmt.attr-get.html">mysqli_stmt::attr_get</a></div>

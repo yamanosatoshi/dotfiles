@@ -25,13 +25,9 @@
     をサポートしています。また、
     <a href="functions.arguments.html#functions.variable-arg-list" class="link">可変長引数リスト</a>
     もサポートしてます。
-     <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span>,
-     <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span>, 
-     <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span> に関する関数リファレンスを
-    参照ください。
    </p>
    <p class="para">
-    <div class="example" id="example-152">
+    <div class="example" id="example-168">
      <p><strong>例1 Passing arrays to functions</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -57,7 +53,7 @@
      アンパサンド(&amp;) を引数名の前に付加することができます。    
     </p>
     <p class="para">
-     <div class="example" id="example-153">
+     <div class="example" id="example-169">
       <p><strong>例2 Passing function parameters by reference</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -79,7 +75,7 @@
      定義することができます。
     </p>
     <p class="para">
-     <div class="example" id="example-154">
+     <div class="example" id="example-170">
       <p><strong>例3 関数におけるデフォルトパラメータの使用法</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -103,7 +99,7 @@ Making a cup of espresso.
      例えば、
     </p>
     <p class="para">
-     <div class="example" id="example-155">
+     <div class="example" id="example-171">
       <p><strong>例4 スカラー型以外をデフォルト値として使用する</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -126,7 +122,7 @@ Making a cup of espresso.
      コードを見てみましょう。
     </p>
     <p class="para">
-     <div class="example" id="example-156">
+     <div class="example" id="example-172">
       <p><strong>例5 関数の引数のデフォルト値の 間違った使用法</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -149,7 +145,7 @@ Making a bowl of raspberry .
      ここで、上の例を次のコードと比べてみましょう。
     </p>
     <p class="para">
-     <div class="example" id="example-157">
+     <div class="example" id="example-173">
       <p><strong>例6 関数の引数のデフォルト値の 正しい使用法</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -178,17 +174,132 @@ Making a bowl of acidophilus raspberry.
     
     <p class="simpara">
      PHP は、可変長引数をユーザー定義関数でサポートしています。
-     可変長引数の使用法は非常に簡単で、
-      <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span>,
-      <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span>, 
-      <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span> 関数を使用します。
+     PHP 5.6 以降では <em>...</em> を使って実装されており、
+     PHP 5.5 以前では
+     <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span>,
+     <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span>,
+     <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span> 関数を使用します。
     </p>
     
-    <p class="simpara">
-     可変長引数に関して特別な構文は必要としません。
-     引数リストは従来と同様に関数定義で明示的に指定することができ、
-     動作も従来と変わりません。
-    </p>
+    <div class="sect3" id="functions.variable-arg-list.new">
+     <h4 class="title">PHP 5.6 以降における <em>...</em></h4>
+
+     <p class="para">
+      PHP 5.6 以降では、引数リストに
+      <em>...</em> トークンを含めることで、
+      その関数が可変長の引数を受け取ることを示せます。
+      引数は、指定した変数に配列として渡されます。次の例を参照ください。
+
+      <div class="example" id="example-174">
+       <p><strong>例7 <em>...</em> を使った、可変長引数へのアクセス</strong></p>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">sum</span><span style="color: #007700">(...</span><span style="color: #0000BB">$numbers</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$acc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$numbers&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$acc&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$acc</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">sum</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+       <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+       <div class="example-contents screen">
+<div class="cdata"><pre>
+10
+</pre></div>
+       </div>
+      </div>
+     </p>
+
+     <p class="para">
+      関数を呼び出すときに <em>...</em> を使うと、
+      配列変数や <a href="class.traversable.html" class="classname">Traversable</a> クラスを引数リストに含めることができます。
+
+      <div class="example" id="example-175">
+       <p><strong>例8 引数での <em>...</em> の使用例</strong></p>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">add</span><span style="color: #007700">(...[</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">]).</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">];<br />echo&nbsp;</span><span style="color: #0000BB">add</span><span style="color: #007700">(...</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+       <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+       <div class="example-contents screen">
+<div class="cdata"><pre>
+3
+3
+</pre></div>
+       </div>
+      </div>
+     </p>
+
+     <p class="para">
+      通常の引数を、<em>...</em> の前に指定することもできます。
+      この場合は、通常の引数リストにマッチしなかったのこりの引数が
+      <em>...</em> による配列に追加されます。
+     </p>
+
+     <p class="para">
+      <em>...</em> トークンの前に、
+      <a href="language.oop5.typehinting.html" class="link">タイプヒント</a> を付加することもできます。
+      タイプヒントがある場合、<em>...</em> が取り込むすべての引数はそのヒントに従わなければいけません。
+
+      <div class="example" id="example-176">
+       <p><strong>例9 タイプヒントつきの可変長引数</strong></p>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">total_intervals</span><span style="color: #007700">(</span><span style="color: #0000BB">$unit</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">DateInterval&nbsp;</span><span style="color: #007700">...</span><span style="color: #0000BB">$intervals</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$time&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$intervals&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$interval</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$time&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">$interval</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$unit</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$time</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateInterval</span><span style="color: #007700">(</span><span style="color: #DD0000">'P1D'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateInterval</span><span style="color: #007700">(</span><span style="color: #DD0000">'P2D'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">total_intervals</span><span style="color: #007700">(</span><span style="color: #DD0000">'d'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">).</span><span style="color: #DD0000">'&nbsp;days'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;これは失敗します。null&nbsp;は&nbsp;DateInterval&nbsp;オブジェクトではないからです。<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">total_intervals</span><span style="color: #007700">(</span><span style="color: #DD0000">'d'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+       <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+       <div class="example-contents screen">
+<div class="cdata"><pre>
+3 days
+Catchable fatal error: Argument 2 passed to total_intervals() must be an instance of DateInterval, null given, called in - on line 14 and defined in - on line 2
+</pre></div>
+       </div>
+      </div>
+     </p>
+
+     <p class="para">
+      可変長引数の
+      <a href="functions.arguments.html#functions.arguments.by-reference" class="link">参照渡し</a>
+      もできます。その場合は、<em>...</em> の前にアンパサンド
+      (<em>&amp;</em>) を付加します。
+     </p>
+    </div>
+
+    <div class="sect3" id="functions.variable-arg-list.old">
+     <h4 class="title">古いバージョンの PHP</h4>
+
+     <p class="para">
+      可変長引数に関して特別な構文は必要としません。しかし、関数の引数にアクセスするには
+      <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span>、<span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span>
+      および <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span> といった関数を使う必要があります。
+     </p>
+
+     <p class="para">
+      先ほどの最初の例を、PHP 5.5 以前のバージョンで実装すると、以下のようになります。
+      earlier:
+
+      <div class="example" id="example-177">
+       <p><strong>例10 可変長引数へのアクセス (PHP 5.5 以前)</strong></p>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">sum</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$acc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$acc&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$acc</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">sum</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+       <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+       <div class="example-contents screen">
+<div class="cdata"><pre>
+10
+</pre></div>
+       </div>
+      </div>
+     </p>
+    </div>
     
    </div>
    

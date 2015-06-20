@@ -26,28 +26,28 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_query()</strong></span> は、指定したデータベース
-   <em><code class="parameter">connection</code></em> 上で <em><code class="parameter">query</code></em>
+   <span class="function"><strong>pg_query()</strong></span> は、指定したデータベース
+   <code class="parameter">connection</code> 上で <code class="parameter">query</code>
    を実行します。
-   特別な理由がない限り、この関数よりも  <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span> を使うほうがいいでしょう。
+   特別な理由がない限り、この関数よりも <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span> を使うほうがいいでしょう。
   </p>
   <p class="para">
    エラーが発生して <strong><code>FALSE</code></strong> が返された場合、もし接続が正常なら
-    <span class="function"><a href="function.pg-last-error.html" class="function">pg_last_error()</a></span> 関数を使用してエラーの詳細情報が
+   <span class="function"><a href="function.pg-last-error.html" class="function">pg_last_error()</a></span> 関数を使用してエラーの詳細情報が
    取得可能です。
   </p>
   <p class="para">
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <span class="simpara">
-     <em><code class="parameter">connection</code></em>は省略可能ですが、それは推奨されません。
+     <code class="parameter">connection</code>は省略可能ですが、それは推奨されません。
      なぜならスクリプトのバグが発見しにくくなるためです。
     </span>
    </p></blockquote>
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    この関数は、以前は  <span class="function"><strong>pg_exec()</strong></span> と呼ばれていました。
-     <span class="function"><strong>pg_exec()</strong></span> は互換性確保のためにまだ使用可能ですが、
+    この関数は、以前は <span class="function"><strong>pg_exec()</strong></span> と呼ばれていました。
+    <span class="function"><strong>pg_exec()</strong></span> は互換性確保のためにまだ使用可能ですが、
     新しい名前を使用することが推奨されています。
    </p>
   </p></blockquote>
@@ -59,24 +59,25 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
-       PostgreSQL データベース接続リソース。<em><code class="parameter">connection</code></em>
+       PostgreSQL データベース接続リソース。<code class="parameter">connection</code>
        が指定されていない場合はデフォルトの接続が使用されます。
-       デフォルトの接続は、直近の  <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
-       あるいは  <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
+       デフォルトの接続は、直近の <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
+       あるいは <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -89,7 +90,7 @@
        <p class="para">
         ユーザーから受け取ったデータを文字列に直接組み込むのは危険で、<a href="security.database.sql-injection.html" class="link">SQL
         インジェクション</a> の脆弱性を引き起こしがちです。クエリ文字列に直接埋め込むのではなく、
-         <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span> を使ってパラメータとして指定することを推奨します。
+        <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span> を使ってパラメータとして指定することを推奨します。
        </p>
        <p class="para">
         ユーザーから受け取ったデータをクエリ文字列に直接埋め込む場合は、
@@ -99,8 +100,7 @@
       </div>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -119,8 +119,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-query-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2101">
-    <p><strong>例1  <span class="function"><strong>pg_query()</strong></span> の例</strong></p>
+   <div class="example" id="example-2298">
+    <p><strong>例1 <span class="function"><strong>pg_query()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_pconnect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"An&nbsp;error&nbsp;occurred.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;author,&nbsp;email&nbsp;FROM&nbsp;authors"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"An&nbsp;error&nbsp;occurred.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;exit;<br />}<br /><br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_fetch_row</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Author:&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;&nbsp;E-mail:&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br />&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -131,8 +131,8 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2102">
-    <p><strong>例2  <span class="function"><strong>pg_query()</strong></span> で複数の文を使用する例</strong></p>
+   <div class="example" id="example-2299">
+    <p><strong>例2 <span class="function"><strong>pg_query()</strong></span> で複数の文を使用する例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_pconnect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;これらの文がひとつのトランザクションとして実行されます<br /><br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"UPDATE&nbsp;authors&nbsp;SET&nbsp;author=UPPER(author)&nbsp;WHERE&nbsp;id=1;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">"UPDATE&nbsp;authors&nbsp;SET&nbsp;author=LOWER(author)&nbsp;WHERE&nbsp;id=2;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">"UPDATE&nbsp;authors&nbsp;SET&nbsp;author=NULL&nbsp;WHERE&nbsp;id=3;"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -149,12 +149,12 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-connect.html" class="function" rel="rdfs-seeAlso">pg_connect()</a> - PostgreSQL 接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-pconnect.html" class="function" rel="rdfs-seeAlso">pg_pconnect()</a> - 持続的な PostgreSQL 接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-fetch-array.html" class="function" rel="rdfs-seeAlso">pg_fetch_array()</a> - 行を配列として取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-fetch-object.html" class="function" rel="rdfs-seeAlso">pg_fetch_object()</a> - 行をオブジェクトとして得る</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-num-rows.html" class="function" rel="rdfs-seeAlso">pg_num_rows()</a> - 行数を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-affected-rows.html" class="function" rel="rdfs-seeAlso">pg_affected_rows()</a> - 変更されたレコード(タプル)の数を返す</span></li>
+    <li class="member"><span class="function"><a href="function.pg-connect.html" class="function" rel="rdfs-seeAlso">pg_connect()</a> - PostgreSQL 接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.pg-pconnect.html" class="function" rel="rdfs-seeAlso">pg_pconnect()</a> - 持続的な PostgreSQL 接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-array.html" class="function" rel="rdfs-seeAlso">pg_fetch_array()</a> - 行を配列として取得する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-object.html" class="function" rel="rdfs-seeAlso">pg_fetch_object()</a> - 行をオブジェクトとして得る</span></li>
+    <li class="member"><span class="function"><a href="function.pg-num-rows.html" class="function" rel="rdfs-seeAlso">pg_num_rows()</a> - 行数を返す</span></li>
+    <li class="member"><span class="function"><a href="function.pg-affected-rows.html" class="function" rel="rdfs-seeAlso">pg_affected_rows()</a> - 変更されたレコード(タプル)の数を返す</span></li>
    </ul>
   </p>
  </div>

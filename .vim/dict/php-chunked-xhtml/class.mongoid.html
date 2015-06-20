@@ -33,7 +33,7 @@
     リレーショナルデータベースにおける自動インクリメントの役割を果たします。
     つまり、データ自体が必然的にもつ一意なキーがない場合にそれを提供するということです。
     自動インクリメントは共有データベースではうまく動作しません。
-    次の番号を瞬時に見つけることが不可能だからです。
+    次の番号を瞬時に見つけることが難しいからです。
     このクラスは、共有環境であっても一意となる値をすばやく生成することができます。
    </p>
    <p class="para">
@@ -72,15 +72,15 @@ C:7:&quot;MongoId&quot;:24:{4af9f23d8ead0e1d32000000}
     <div class="fieldsynopsis">
      <span class="modifier">public</span>
      <span class="type">string</span>
-      <var class="varname"><a href="class.mongoid.html#mongoid.props.id">$<var class="varname">id</var></a></var>
+      <var class="varname"><a href="class.mongoid.html#mongoid.props.id">$<var class="varname">$id</var></a></var>
      <span class="initializer"> = <strong><code>NULL</code></strong></span>
     ;</div>
 
     
     <div class="classsynopsisinfo classsynopsisinfo_comment">/* メソッド */</div>
     <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>  <span class="methodname"><a href="mongoid.construct.html" class="methodname">__construct</a></span>
-    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$id</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+   <span class="modifier">public</span> <span class="methodname"><a href="mongoid.construct.html" class="methodname">__construct</a></span>
+    ([ <span class="methodparam"><span class="type"><span class="type string|MongoId">string|MongoId</span></span> <code class="parameter">$id</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
   ] )</div>
 <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname"><a href="mongoid.gethostname.html" class="methodname">getHostname</a></span>
@@ -97,6 +97,10 @@ C:7:&quot;MongoId&quot;:24:{4af9f23d8ead0e1d32000000}
 <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="mongoid.gettimestamp.html" class="methodname">getTimestamp</a></span>
     ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">bool</span> <span class="methodname"><a href="mongoid.isvalid.html" class="methodname">isValid</a></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>
    )</div>
 <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">MongoId</span> <span class="methodname"><a href="mongoid.set-state.html" class="methodname">__set_state</a></span>
@@ -116,17 +120,24 @@ C:7:&quot;MongoId&quot;:24:{4af9f23d8ead0e1d32000000}
    <h2 class="title">フィールド</h2>
    <dl>
 
-    <dt id="mongoid.props.id">
-     <span class="term"><var class="varname"><var class="varname">id</var></var></span>
+    
+     <dt id="mongoid.props.id"><var class="varname"><var class="varname">$id</var></var></dt>
+
      <dd>
 
       <span class="simpara">
        このフィールドには、このオブジェクトの文字列表現が含まれます。
       </span>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+        <span class="simpara">
+          このプロパティの名前は <em>$</em> で始まります。アクセスするには、
+          <a href="language.types.string.html#language.types.string.parsing.complex" class="link">複雑な構文</a> (<em>$mongoId-&gt;{&#039;$id&#039;}</em> 形式)
+          を利用します。
+        </span>
+      </p></blockquote>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </div>
@@ -134,7 +145,7 @@ C:7:&quot;MongoId&quot;:24:{4af9f23d8ead0e1d32000000}
   <div class="section">
    <h2 class="title">参考</h2>
    <p class="para">
-    MongoDB コアドキュメントの <a href="http://docs.mongodb.org/manual/core/object-id/" class="link external">&raquo;&nbsp;id</a>
+    MongoDB コアドキュメントの <a href="http://docs.mongodb.org/manual/reference/object-id/" class="link external">&raquo;&nbsp;ObjectIds</a>
     を参照ください。
    </p>
   </div>
@@ -198,7 +209,14 @@ C:7:&quot;MongoId&quot;:24:{4af9f23d8ead0e1d32000000}
 
 
 
-<h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="mongoid.construct.html">MongoId::__construct</a> — 新しい ID を作成する</li><li><a href="mongoid.gethostname.html">MongoId::getHostname</a> — このマシンの id に使うホスト名を取得する</li><li><a href="mongoid.getinc.html">MongoId::getInc</a> — この id を作るためにインクリメントされた値を取得する</li><li><a href="mongoid.getpid.html">MongoId::getPID</a> — プロセス ID を取得する</li><li><a href="mongoid.gettimestamp.html">MongoId::getTimestamp</a> — この id が作られたときのエポックからの経過秒数を取得する</li><li><a href="mongoid.set-state.html">MongoId::__set_state</a> — ダミー MongoId を作成する</li><li><a href="mongoid.tostring.html">MongoId::__toString</a> — この ID の 16 進表現を返す</li></ul>
+
+
+
+
+
+
+
+<h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="mongoid.construct.html">MongoId::__construct</a> — 新しい ID を作成する</li><li><a href="mongoid.gethostname.html">MongoId::getHostname</a> — このマシンの id に使うホスト名を取得する</li><li><a href="mongoid.getinc.html">MongoId::getInc</a> — この id を作るためにインクリメントされた値を取得する</li><li><a href="mongoid.getpid.html">MongoId::getPID</a> — プロセス ID を取得する</li><li><a href="mongoid.gettimestamp.html">MongoId::getTimestamp</a> — この id が作られたときのエポックからの経過秒数を取得する</li><li><a href="mongoid.isvalid.html">MongoId::isValid</a> — Check if a value is a valid ObjectId</li><li><a href="mongoid.set-state.html">MongoId::__set_state</a> — ダミー MongoId を作成する</li><li><a href="mongoid.tostring.html">MongoId::__toString</a> — この ID の 16 進表現を返す</li></ul>
 </div>
 <hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="mongo.types.html">型</a></div>

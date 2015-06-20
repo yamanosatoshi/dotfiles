@@ -20,7 +20,7 @@
  <div class="refsect1 description" id="refsect1-recursivefilteriterator.construct-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>  <span class="methodname"><strong>RecursiveFilterIterator::__construct</strong></span>
+   <span class="modifier">public</span> <span class="methodname"><strong>RecursiveFilterIterator::__construct</strong></span>
     ( <span class="methodparam"><span class="type"><a href="class.recursiveiterator.html" class="type RecursiveIterator">RecursiveIterator</a></span> <code class="parameter">$iterator</code></span>
    )</div>
 
@@ -37,9 +37,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">iterator</code></dt>
 
-     <span class="term"><em><code class="parameter">iterator</code></em></span>
      <dd>
 
       <p class="para">
@@ -47,8 +48,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -66,8 +66,8 @@
  <div class="refsect1 examples" id="refsect1-recursivefilteriterator.construct-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3876">
-    <p><strong>例1  <span class="methodname"><strong>RecursiveFilterIterator()</strong></span> の基本例</strong></p>
+   <div class="example" id="example-4331">
+    <p><strong>例1 <span class="methodname"><strong>RecursiveFilterIterator()</strong></span> の基本例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">TestsOnlyFilter&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">RecursiveFilterIterator&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">accept</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;現在のアイテムが再帰可能であるか、値が<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;"test"&nbsp;で始まる場合にのみ許可します<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasChildren</span><span style="color: #007700">()&nbsp;||&nbsp;(</span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">current</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">)&nbsp;!==&nbsp;</span><span style="color: #0000BB">FALSE</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$array&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"test1"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"taste2"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test3"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test4"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"test5"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$iterator&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">RecursiveArrayIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$filter&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">TestsOnlyFilter</span><span style="color: #007700">(</span><span style="color: #0000BB">$iterator</span><span style="color: #007700">);<br /><br />foreach(new&nbsp;</span><span style="color: #0000BB">RecursiveIteratorIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$filter</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -88,8 +88,8 @@ test5
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3877">
-    <p><strong>例2  <span class="methodname"><strong>RecursiveFilterIterator()</strong></span> の例</strong></p>
+   <div class="example" id="example-4332">
+    <p><strong>例2 <span class="methodname"><strong>RecursiveFilterIterator()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">StartsWithFilter&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">RecursiveFilterIterator&nbsp;</span><span style="color: #007700">{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;</span><span style="color: #0000BB">$word</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">RecursiveIterator&nbsp;$rit</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$word</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">word&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$word</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$rit</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">accept</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasChildren</span><span style="color: #007700">()&nbsp;OR&nbsp;</span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">current</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">word</span><span style="color: #007700">)&nbsp;===&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getChildren</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getInnerIterator</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getChildren</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">word</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$array&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"test1"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"taste2"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test3"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test4"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"test5"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$iterator&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">RecursiveArrayIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$filter&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">StartsWithFilter</span><span style="color: #007700">(</span><span style="color: #0000BB">$iterator</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /><br />foreach(new&nbsp;</span><span style="color: #0000BB">RecursiveIteratorIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$filter</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -116,9 +116,9 @@ test5
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="recursivefilteriterator.getchildren.html" class="methodname" rel="rdfs-seeAlso">RecursiveFilterIterator::getChildren()</a> - RecursiveFilterIterator に含まれる内部イテレータの子を返す</span></li>
-    <li class="member"> <span class="methodname"><a href="recursivefilteriterator.haschildren.html" class="methodname" rel="rdfs-seeAlso">RecursiveFilterIterator::hasChildren()</a> - 内部イテレータの現在の要素が子を持つかどうかを調べる</span></li>
-    <li class="member"> <span class="methodname"><a href="filteriterator.accept.html" class="methodname" rel="rdfs-seeAlso">FilterIterator::accept()</a> - イテレータの現在の要素がフィルタを満たすかどうかを調べる</span></li>
+    <li class="member"><span class="methodname"><a href="recursivefilteriterator.getchildren.html" class="methodname" rel="rdfs-seeAlso">RecursiveFilterIterator::getChildren()</a> - RecursiveFilterIterator に含まれる内部イテレータの子を返す</span></li>
+    <li class="member"><span class="methodname"><a href="recursivefilteriterator.haschildren.html" class="methodname" rel="rdfs-seeAlso">RecursiveFilterIterator::hasChildren()</a> - 内部イテレータの現在の要素が子を持つかどうかを調べる</span></li>
+    <li class="member"><span class="methodname"><a href="filteriterator.accept.html" class="methodname" rel="rdfs-seeAlso">FilterIterator::accept()</a> - イテレータの現在の要素がフィルタを満たすかどうかを調べる</span></li>
    </ul>
   </p>
  </div>

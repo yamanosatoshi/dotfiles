@@ -43,9 +43,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">connection</code></dt>
 
-    <span class="term"><em><code class="parameter">connection</code></em></span>
     <dd>
 
      <p class="para">
@@ -53,16 +54,16 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">close_type</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">close_type</code></em></span>
     <dd>
 
      <p class="para">
       Why the connection is to be closed. The value
-      of <em><code class="parameter">close_type</code></em> is one of
+      of <code class="parameter">close_type</code> is one of
       <strong><code>MYSQLND_UH_MYSQLND_CLOSE_EXPLICIT</code></strong>,
       <strong><code>MYSQLND_UH_MYSQLND_CLOSE_IMPLICIT</code></strong>,
       <strong><code>MYSQLND_UH_MYSQLND_CLOSE_DISCONNECTED</code></strong> or
@@ -73,8 +74,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -92,8 +92,8 @@
  <div class="refsect1 examples" id="refsect1-mysqlnduhconnection.close-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1877">
-    <p><strong>例1  <span class="function"><strong>MysqlndUhConnection::close()</strong></span> example</strong></p>
+   <div class="example" id="example-2069">
+    <p><strong>例1 <span class="function"><strong>MysqlndUhConnection::close()</strong></span> example</strong></p>
         <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">close_type_to_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$close_type</span><span style="color: #007700">)&nbsp;{<br />&nbsp;</span><span style="color: #0000BB">$mapping&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;</span><span style="color: #0000BB">MYSQLND_UH_MYSQLND_CLOSE_DISCONNECTED&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"MYSQLND_UH_MYSQLND_CLOSE_DISCONNECTED"</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #0000BB">MYSQLND_UH_MYSQLND_CLOSE_EXPLICIT&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"MYSQLND_UH_MYSQLND_CLOSE_EXPLICIT"</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #0000BB">MYSQLND_UH_MYSQLND_CLOSE_IMPLICIT&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"MYSQLND_UH_MYSQLND_CLOSE_IMPLICIT"</span><span style="color: #007700">,<br />&nbsp;&nbsp;</span><span style="color: #0000BB">MYSQLND_UH_MYSQLND_CLOSE_LAST&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"MYSQLND_UH_MYSQLND_CLOSE_IMPLICIT"<br />&nbsp;</span><span style="color: #007700">);<br />&nbsp;return&nbsp;(isset(</span><span style="color: #0000BB">$mapping</span><span style="color: #007700">[</span><span style="color: #0000BB">$close_type</span><span style="color: #007700">]))&nbsp;?&nbsp;</span><span style="color: #0000BB">$mapping</span><span style="color: #007700">[</span><span style="color: #0000BB">$close_type</span><span style="color: #007700">]&nbsp;:&nbsp;</span><span style="color: #DD0000">'unknown'</span><span style="color: #007700">;<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">proxy&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">MysqlndUhConnection&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">close</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$close_type</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s(%s)\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"close_type&nbsp;=&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">close_type_to_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$close_type</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;WARNING:&nbsp;you&nbsp;must&nbsp;call&nbsp;the&nbsp;parent&nbsp;*/<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">close</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$close_type</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s&nbsp;returns&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$ret</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$ret</span><span style="color: #007700">;<br />&nbsp;}<br />}<br /></span><span style="color: #0000BB">mysqlnd_uh_set_connection_proxy</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">proxy</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"root"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -122,13 +122,13 @@ proxy::close returns true
   <p class="para">
    <ul class="simplelist">
     <li class="member">
-      <span class="function"><a href="function.mysqlnd-uh-set-connection-proxy.html" class="function" rel="rdfs-seeAlso">mysqlnd_uh_set_connection_proxy()</a> - Installs a proxy for mysqlnd connections</span>
+     <span class="function"><a href="function.mysqlnd-uh-set-connection-proxy.html" class="function" rel="rdfs-seeAlso">mysqlnd_uh_set_connection_proxy()</a> - Installs a proxy for mysqlnd connections</span>
     </li>
     <li class="member">
-      <span class="function"><a href="mysqli.close.html" class="function" rel="rdfs-seeAlso">mysqli_close()</a> - 事前にオープンしているデータベース接続を閉じる</span>
+     <span class="function"><a href="mysqli.close.html" class="function" rel="rdfs-seeAlso">mysqli_close()</a> - 事前にオープンしているデータベース接続を閉じる</span>
     </li>
     <li class="member">
-      <span class="function"><a href="function.mysql-close.html" class="function" rel="rdfs-seeAlso">mysql_close()</a> - MySQL 接続を閉じる</span>
+     <span class="function"><a href="function.mysql-close.html" class="function" rel="rdfs-seeAlso">mysql_close()</a> - MySQL 接続を閉じる</span>
     </li>
    </ul>
   </p>

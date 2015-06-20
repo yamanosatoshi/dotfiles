@@ -13,7 +13,7 @@
 </div><hr /><div id="function.is-readable" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">is_readable</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">is_readable</span> &mdash; <span class="dc-title">ファイルが存在し、読み込み可能であるかどうかを知る</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">is_readable</span> &mdash; <span class="dc-title">ファイルが存在し、読み込み可能であるかどうかを知る</span></p>
 
  </div>
  
@@ -35,9 +35,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -45,8 +46,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -56,7 +56,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.is-readable-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">filename</code></em>
+   <code class="parameter">filename</code>
    で指定したファイルあるいはディレクトリが存在し、
    それが読み込み可能であれば <strong><code>TRUE</code></strong>、それ以外の場合に
    <strong><code>FALSE</code></strong> を返します。
@@ -67,8 +67,8 @@
  <div class="refsect1 examples" id="refsect1-function.is-readable-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2394">
-    <p><strong>例1  <span class="function"><strong>is_readable()</strong></span> の例</strong></p>
+   <div class="example" id="example-2593">
+    <p><strong>例1 <span class="function"><strong>is_readable()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'test.txt'</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">is_readable</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'このファイルは読み込み可能です'</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'このファイルは読み込み可能ではありません'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -97,12 +97,12 @@
    PHP 5.1.5 より前のバージョンでは、セーフモードの制限は働きません。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">この関数の結果は
-キャッシュされます。詳細は、 <span class="function"><a href="function.clearstatcache.html" class="function">clearstatcache()</a></span>
+キャッシュされます。詳細は、<span class="function"><a href="function.clearstatcache.html" class="function">clearstatcache()</a></span>
 を参照してください。</span></p></blockquote>
   <div class="tip"><strong class="tip">ヒント</strong><p class="simpara">
 <em>PHP 5.0.0</em> 以降、この関数は、
 <em class="emphasis">何らかの</em> URL ラッパーと組合せて使用することができます。
-どのラッパーが  <span class="function"><a href="function.stat.html" class="function">stat()</a></span> ファミリーをサポートしているかを調べるには
+どのラッパーが <span class="function"><a href="function.stat.html" class="function">stat()</a></span> ファミリーをサポートしているかを調べるには
 <a href="wrappers.html" class="xref">サポートするプロトコル/ラッパー</a> を参照してください。</p></div>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
@@ -112,7 +112,7 @@
   </p></blockquote>
   <p class="para">
    この関数は、ディレクトリに対しても <strong><code>TRUE</code></strong> を返すかもしれません。
-   ファイルとディレクトリを区別するには  <span class="function"><a href="function.is-dir.html" class="function">is_dir()</a></span> を使いましょう。
+   ファイルとディレクトリを区別するには <span class="function"><a href="function.is-dir.html" class="function">is_dir()</a></span> を使いましょう。
   </p>
  </div>
 
@@ -121,9 +121,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.is-writable.html" class="function" rel="rdfs-seeAlso">is_writable()</a> - ファイルが書き込み可能かどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.file-exists.html" class="function" rel="rdfs-seeAlso">file_exists()</a> - ファイルまたはディレクトリが存在するかどうか調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - ファイルポインタから 1 行取得する</span></li>
+    <li class="member"><span class="function"><a href="function.is-writable.html" class="function" rel="rdfs-seeAlso">is_writable()</a> - ファイルが書き込み可能かどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.file-exists.html" class="function" rel="rdfs-seeAlso">file_exists()</a> - ファイルまたはディレクトリが存在するかどうか調べる</span></li>
+    <li class="member"><span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - ファイルポインタから 1 行取得する</span></li>
    </ul>
   </p>
  </div>

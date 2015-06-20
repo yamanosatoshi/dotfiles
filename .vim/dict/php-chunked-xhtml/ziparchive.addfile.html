@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -46,35 +47,23 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">localname</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">localname</code></em></span>
      <dd>
 
       <p class="para">
-       指定した場合は ZIP アーカイブ内部での名前となり、<em><code class="parameter">filename</code></em> を上書きします。
+       指定した場合は ZIP アーカイブ内部での名前となり、<code class="parameter">filename</code> を上書きします。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">start</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">start</code></em></span>
-     <dd>
-
-      <p class="para">
-       このパラメータは使いませんが、<a href="class.ziparchive.html" class="classname">ZipArchive</a> を継承するためには必要です。
-      </p>
-     </dd>
-
-    </dt>
-
-    <dt>
-
-     <span class="term"><em><code class="parameter">length</code></em></span>
      <dd>
 
       <p class="para">
@@ -82,8 +71,19 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">length</code></dt>
 
+     <dd>
+
+      <p class="para">
+       このパラメータは使いませんが、<a href="class.ziparchive.html" class="classname">ZipArchive</a> を継承するためには必要です。
+      </p>
+     </dd>
+
+    
    </dl>
 
   </p>
@@ -103,8 +103,8 @@
      をオープンし、ファイル <var class="filename">/path/to/index.txt</var>
      を <var class="filename">newname.txt</var> という名前で追加します。
     </p>
-    <div class="example" id="example-778">
-     <p><strong>例1 オープンおよび抽出</strong></p>
+    <div class="example" id="example-819">
+     <p><strong>例1 オープンおよび追加</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$zip&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">'test.zip'</span><span style="color: #007700">)&nbsp;===&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFile</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/index.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'newname.txt'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'成功'</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'失敗'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -119,9 +119,11 @@
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    アーカイブにファイルを追加するよう設定すると、PHP
-    はそのファイルのロックを試み、ZIP の操作が完了するまで解放しません。
-    つまり、アーカイブを閉じてからでないと、追加したファイルの削除はできないということです。
+    アーカイブにファイルを追加するよう設定すると、PHP はそのファイルをロックします。
+    ロックが解除されるのは、<span class="methodname"><a href="ziparchive.close.html" class="methodname">ZipArchive::close()</a></span> を呼ぶなり
+    <a href="class.ziparchive.html" class="classname">ZipArchive</a> オブジェクトを破棄するなりして
+    <a href="class.ziparchive.html" class="classname">ZipArchive</a> オブジェクトが閉じられたときだけです。
+    そのため、追加しようとしているファイルがロックが解除される前に削除されるようなことは起こりません。
    </p>
   </p></blockquote>
  </div>

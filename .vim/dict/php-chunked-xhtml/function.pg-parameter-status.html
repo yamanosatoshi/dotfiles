@@ -30,7 +30,7 @@
   </p>
   <p class="para">
     いくつかのパラメータについては、接続の確立時や値の変更時にサーバーから
-    自動的に通知されます。 <span class="function"><strong>pg_parameter_status()</strong></span> は
+    自動的に通知されます。<span class="function"><strong>pg_parameter_status()</strong></span> は
     これらの設定問い合わせるために使用可能です。指定したパラメータが存在する
     場合にその値を、存在しない場合に <strong><code>FALSE</code></strong> を返します。
   </p>
@@ -47,17 +47,17 @@
   </p>
   <p class="para">
     PostgreSQL 7.3 以前のサーバーはパラメータ設定を通知する機能を持っていません。
-    しかし、 <span class="function"><strong>pg_parameter_status()</strong></span> には
+    しかし、<span class="function"><strong>pg_parameter_status()</strong></span> には
     <em>server_version</em> および <em>client_encoding</em>
     を取得する機能を組み込んでいます。これらの値を取得するためにアプリケーションで
-    アドホックなコードを書くのではなく、 <span class="function"><strong>pg_parameter_status()</strong></span>
+    アドホックなコードを書くのではなく、<span class="function"><strong>pg_parameter_status()</strong></span>
     を使用することを推奨します。
   </p>
   <div class="caution"><strong class="caution">警告</strong>
     <p class="para">
       7.4 より前の PostgreSQL サーバーでは、接続の確立後に <em>SET</em>
       を用いて <em>client_encoding</em> を変更しても
-       <span class="function"><strong>pg_parameter_status()</strong></span> には反映されません。
+      <span class="function"><strong>pg_parameter_status()</strong></span> には反映されません。
      </p>
   </div>
  </div>
@@ -68,28 +68,29 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
-       PostgreSQL データベース接続リソース。<em><code class="parameter">connection</code></em>
+       PostgreSQL データベース接続リソース。<code class="parameter">connection</code>
        が指定されていない場合はデフォルトの接続が使用されます。
-       デフォルトの接続は、直近の  <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
-       あるいは  <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
+       デフォルトの接続は、直近の <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
+       あるいは <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">param_name</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">param_name</code></em></span>
      <dd>
 
         <p class="para">
-         指定可能な <em><code class="parameter">param_name</code></em> には以下が含まれます。
+         指定可能な <code class="parameter">param_name</code> には以下が含まれます。
          <em>server_version</em>、
          <em>server_encoding</em>、<em>client_encoding</em>、
          <em>is_superuser</em>、<em>session_authorization</em>、
@@ -98,8 +99,7 @@
         </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -110,7 +110,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    パラメータの値を文字列で返します。失敗した場合や
-   <em><code class="parameter">param_name</code></em> が間違っている場合には
+   <code class="parameter">param_name</code> が間違っている場合には
    <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
@@ -119,8 +119,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-parameter-status-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2094">
-    <p><strong>例1  <span class="function"><strong>pg_parameter_status()</strong></span> の例</strong></p>
+   <div class="example" id="example-2291">
+    <p><strong>例1 <span class="function"><strong>pg_parameter_status()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;connect"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Server&nbsp;encoding:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">pg_parameter_status</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"server_encoding"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

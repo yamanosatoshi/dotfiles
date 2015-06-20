@@ -35,9 +35,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">structure</code></dt>
 
-     <span class="term"><em><code class="parameter">structure</code></em></span>
      <dd>
 
       <p class="para">
@@ -48,8 +49,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -109,8 +109,8 @@
  <div class="refsect1 examples" id="refsect1-swishsearch.setstructure-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4727">
-    <p><strong>例1 基本的な  <span class="function"><strong>SwishSearch::setStructure()</strong></span> の例</strong></p>
+   <div class="example" id="example-5205">
+    <p><strong>例1 基本的な <span class="function"><strong>SwishSearch::setStructure()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">try&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$swish&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Swish</span><span style="color: #007700">(</span><span style="color: #DD0000">"index.swish-e"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$search&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$swish</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$results&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$search</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(</span><span style="color: #DD0000">"time"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"First&nbsp;query&nbsp;found:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$results</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hits</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;hits\n"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$search</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStructure</span><span style="color: #007700">(</span><span style="color: #0000BB">Swish</span><span style="color: #007700">::</span><span style="color: #0000BB">IN_TITLE</span><span style="color: #007700">|</span><span style="color: #0000BB">Swish</span><span style="color: #007700">::</span><span style="color: #0000BB">IN_HEAD</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;title&nbsp;および&nbsp;head&nbsp;を検索します<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$results&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$search</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(</span><span style="color: #DD0000">"time"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Second&nbsp;query&nbsp;found:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$results</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hits</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;hits\n"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$search</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStructure</span><span style="color: #007700">(</span><span style="color: #0000BB">Swish</span><span style="color: #007700">::</span><span style="color: #0000BB">IN_ALL</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;ドキュメント全体を検索します。デフォルト値です<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$results&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$search</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(</span><span style="color: #DD0000">"time"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Third&nbsp;query&nbsp;found:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$results</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hits</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;hits\n"</span><span style="color: #007700">;<br /><br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">SwishException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>

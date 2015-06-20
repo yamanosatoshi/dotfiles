@@ -13,7 +13,7 @@
 </div><hr /><div id="function.fgetc" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">fgetc</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">fgetc</span> &mdash; <span class="dc-title">ファイルポインタから1文字取り出す</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">fgetc</span> &mdash; <span class="dc-title">ファイルポインタから1文字取り出す</span></p>
 
  </div>
  
@@ -35,19 +35,19 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">handle</code></dt>
 
-     <span class="term"><em><code class="parameter">handle</code></em></span>
      <dd>
 
       <p class="para">ファイルポインタは、有効なファイルポインタである必要があり、
- <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> または  <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> で正常にオープンされた
-（そしてまだ  <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span> でクローズされていない）
+<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> または <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> で正常にオープンされた
+（そしてまだ <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span> でクローズされていない）
 ファイルを指している必要があります。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -57,7 +57,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.fgetc-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">handle</code></em>が指すファイルポインタから 1 文字読み出し、
+   <code class="parameter">handle</code>が指すファイルポインタから 1 文字読み出し、
    その文字からなる文字列を返します。EOF の場合に <strong><code>FALSE</code></strong> を返します。
   </p>
   <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は論理値
@@ -72,8 +72,8 @@
  <div class="refsect1 examples" id="refsect1-function.fgetc-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2351">
-    <p><strong>例1  <span class="function"><strong>fgetc()</strong></span> の例</strong></p>
+   <div class="example" id="example-2550">
+    <p><strong>例1 <span class="function"><strong>fgetc()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'somefile.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$fp</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'somefile.txt&nbsp;をオープンできませんでした'</span><span style="color: #007700">;<br />}<br />while&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">!==&nbsp;(</span><span style="color: #0000BB">$char&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fgetc</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">)))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$char</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -97,11 +97,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - バイナリセーフなファイルの読み込み</span></li>
-    <li class="member"> <span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - プロセスへのファイルポインタをオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - インターネット接続もしくは Unix ドメインソケット接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - ファイルポインタから 1 行取得する</span></li>
+    <li class="member"><span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - バイナリセーフなファイルの読み込み</span></li>
+    <li class="member"><span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - プロセスへのファイルポインタをオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - インターネット接続もしくは Unix ドメインソケット接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - ファイルポインタから 1 行取得する</span></li>
    </ul>
   </p>
  </div>

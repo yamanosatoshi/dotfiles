@@ -27,8 +27,8 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="pdo.construct.html" class="methodname">PDO::__construct()</a></span></li>
+    <li class="member"><span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span></li>
+    <li class="member"><span class="methodname"><a href="pdo.construct.html" class="methodname">PDO::__construct()</a></span></li>
    </ul>
   </div>
  </div>
@@ -55,9 +55,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">server</code></dt>
 
-     <span class="term"><em><code class="parameter">server</code></em></span>
      <dd>
 
       <p class="para">
@@ -74,11 +75,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">username</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">username</code></em></span>
      <dd>
 
       <p class="para">
@@ -88,11 +89,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">password</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">password</code></em></span>
      <dd>
 
       <p class="para">
@@ -102,33 +103,33 @@
       </p>
      </dd>
 
-    </dt>
-   
-    <dt>
+       
+    
+     <dt>
+<code class="parameter">new_link</code></dt>
 
-     <span class="term"><em><code class="parameter">new_link</code></em></span>
      <dd>
 
       <p class="para">
-       同じ引数で 2 回  <span class="function"><strong>mysql_connect()</strong></span> をコールした場合、
+       同じ引数で 2 回 <span class="function"><strong>mysql_connect()</strong></span> をコールした場合、
        2 回目は新規のリンクが確立されるのではなく、代わりにすでにオープンされた
        リンクのリンク ID が返されます。
-       パラメータ <em><code class="parameter">new_link</code></em> はこの動作を変更し、既に
-        <span class="function"><strong>mysql_connect()</strong></span> が同じパラメータでコールされて
+       パラメータ <code class="parameter">new_link</code> はこの動作を変更し、既に
+       <span class="function"><strong>mysql_connect()</strong></span> が同じパラメータでコールされて
        いる場合でも常に新規のリンクがオープンされるようにします。
        <a href="ini.core.html#ini.sql.safe-mode" class="link">SQL セーフモード</a> の場合はこのパラメータは無視されます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">client_flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">client_flags</code></em></span>
      <dd>
 
       <p class="para">
-       パラメータ <em><code class="parameter">client_flags</code></em> は、
+       パラメータ <code class="parameter">client_flags</code> は、
        以下の定数の組み合わせです：
        128 (<em>LOAD DATA LOCAL</em> の処理を有効にする)、
        <strong><code>MYSQL_CLIENT_SSL</code></strong>、
@@ -141,8 +142,7 @@
       </p>
      </dd>
 
-    </dt>
- 
+     
    </dl>
 
   </p>
@@ -178,20 +178,6 @@
        </td>
       </tr>
 
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        パラメータ <em><code class="parameter">client_flags</code></em> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.2.0</td>
-       <td>
-        パラメータ <em><code class="parameter">new_link</code></em> が追加されました。
-       </td>
-      </tr>
-
      </tbody>
     
    </table>
@@ -203,8 +189,8 @@
  <div class="refsect1 examples" id="refsect1-function.mysql-connect-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1565">
-    <p><strong>例1  <span class="function"><strong>mysql_connect()</strong></span> の例</strong></p>
+   <div class="example" id="example-1744">
+    <p><strong>例1 <span class="function"><strong>mysql_connect()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'接続できませんでした:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br />echo&nbsp;</span><span style="color: #DD0000">'接続に成功しました'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysql_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -215,8 +201,8 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-1566">
-    <p><strong>例2  <span class="function"><strong>mysql_connect()</strong></span> で <em>hostname:port</em> 構文を使用する例</strong></p>
+   <div class="example" id="example-1745">
+    <p><strong>例2 <span class="function"><strong>mysql_connect()</strong></span> で <em>hostname:port</em> 構文を使用する例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;example.com&nbsp;のポート&nbsp;3307&nbsp;に接続します<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'example.com:3307'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'接続できませんでした:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br />echo&nbsp;</span><span style="color: #DD0000">'接続に成功しました'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysql_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;localhost&nbsp;のポート&nbsp;3307&nbsp;に接続します<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'127.0.0.1:3307'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'接続できませんでした:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br />echo&nbsp;</span><span style="color: #DD0000">'接続に成功しました'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysql_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -227,8 +213,8 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-1567">
-    <p><strong>例3  <span class="function"><strong>mysql_connect()</strong></span> で &quot;:/path/to/socket&quot; 構文を使用する例</strong></p>
+   <div class="example" id="example-1746">
+    <p><strong>例3 <span class="function"><strong>mysql_connect()</strong></span> で &quot;:/path/to/socket&quot; 構文を使用する例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;localhost&nbsp;のソケット（例:&nbsp;/tmp/mysql.sock）に接続します<br /><br />//&nbsp;方法&nbsp;1:&nbsp;localhost&nbsp;を省略する<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">':/tmp/mysql'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'接続できませんでした:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br />echo&nbsp;</span><span style="color: #DD0000">'接続に成功しました'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysql_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /><br /><br /></span><span style="color: #FF8000">//&nbsp;方法&nbsp;2:&nbsp;localhost&nbsp;を指定する<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost:/tmp/mysql.sock'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'接続できませんでした:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br />echo&nbsp;</span><span style="color: #DD0000">'接続に成功しました'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysql_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -257,7 +243,7 @@
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    サーバーへのリンクは、 <span class="function"><a href="function.mysql-close.html" class="function">mysql_close()</a></span> のコールにより
+    サーバーへのリンクは、<span class="function"><a href="function.mysql-close.html" class="function">mysql_close()</a></span> のコールにより
     明示的に閉じられない限り、スクリプトの実行終了と同時に閉じられます。
    </p>
   </p></blockquote>
@@ -282,8 +268,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-pconnect.html" class="function" rel="rdfs-seeAlso">mysql_pconnect()</a> - MySQL サーバーへの持続的な接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-close.html" class="function" rel="rdfs-seeAlso">mysql_close()</a> - MySQL 接続を閉じる</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-pconnect.html" class="function" rel="rdfs-seeAlso">mysql_pconnect()</a> - MySQL サーバーへの持続的な接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-close.html" class="function" rel="rdfs-seeAlso">mysql_close()</a> - MySQL 接続を閉じる</span></li>
    </ul>
   </p>
  </div>

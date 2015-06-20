@@ -7,7 +7,7 @@
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="oci8.examples.html">例</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="oci8.fan.html">OCI8 Fast Application Notification (FAN) Support</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="oci8.fan.html">OCI8 高速アプリケーション通知 (FAN) サポート</a></div>
  <div class="up"><a href="book.oci8.html">OCI8</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="oci8.connection" class="chapter">
@@ -18,12 +18,12 @@
   <p class="para">
    oci8 拡張モジュールは Oracle に接続するための 3
    つの異なる関数を提供しています。標準の接続関数は
-    <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span> です。これは Oracle データベースへの接続を作成し、
+   <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span> です。これは Oracle データベースへの接続を作成し、
    それ以降のデータベースで使うリソースを返します。
   </p>
   <p class="para">
    Oracle サーバーへの接続は、完了まで要する時間という点から見ると、
-   かなりコストのかかる操作です。 <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span> 関数は、
+   かなりコストのかかる操作です。<span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span> 関数は、
    異なるスクリプトリクエスト間で接続の再利用が可能な
    持続的キャッシュを使用します。
    これは、PHP プロセス (もしくは Apache の子プロセス)
@@ -31,7 +31,7 @@
   </p>
   <p class="para">
    もしアプリケーションが信用された異なる Web ユーザー毎に
-   Oracle に接続する場合、 <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
+   Oracle に接続する場合、<span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
    による持続的キャッシュは、
    同時ユーザー数の増加と共に有効ではなくなるでしょう。
    これは、多くのアイドル状態の接続が維持されることが原因で、
@@ -41,16 +41,16 @@
    (持続的接続のキャッシュサイズや生存期間の制御が可能になります)
    を使用してアプリケーションをチューニングする、あるいは
    Oracle Database Resident Connection Pooling を使う (Oracle Database 11g 以降の場合)、もしくは
-    <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span> を使用することが推奨されます。
+   <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span> を使用することが推奨されます。
   </p>
   <p class="para">
-    <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span> と  <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
+   <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span> と <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
    の両者とも接続キャッシュを使用します。もし、同一パラメータと共に
-    <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span> を複数回コールする場合、
-   2 番目以降は既存の接続ハンドルを返します。 <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>
+   <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span> を複数回コールする場合、
+   2 番目以降は既存の接続ハンドルを返します。<span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>
    によって使用されるキャッシュは、スクリプト実行終了時、
    もしくは明示的に接続ハンドルを閉じた時にクリアされます。
-    <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span> も同様の動作をしますが、
+   <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span> も同様の動作をしますが、
    キャッシュは独立して維持され、リクエスト間で残存します。
   </p>
   <p class="para">
@@ -59,23 +59,23 @@
    (実際には同じ接続なので、どのような種類の独立もありません)
    ためです。もしアプリケーションが 2
    つの別々でトランザクション的に独立した接続を必要とする場合、
-    <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span> を使用すべきです。
+   <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span> を使用すべきです。
   </p>
   <p class="para">
-   PHP プロセス終了時に  <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span> キャッシュは消去され、
+   PHP プロセス終了時に <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span> キャッシュは消去され、
    データベース接続は全て閉じられます。
    そのため、持続的接続を効果的に使用するには、
    PHP は Apache のモジュールであるか、または FCGI によって使用されるか、
    または同様のものでなければいけません。
    PHP が CGI によって、またはコマンドラインを介して使用される場合、
-   持続的接続には  <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span> 以上に全く利益がありません。
+   持続的接続には <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span> 以上に全く利益がありません。
   </p>
   <p class="para">
-    <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span> は、他の既存の接続が存在したとしても
+   <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span> は、他の既存の接続が存在したとしても
    常に Oracle サーバーへの新規接続を生成します。
    特にアプリケーションの最も負荷が高い部分など、
    高トラフィックな Web アプリケーションに対しては
-    <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span> の使用を避けてください。
+   <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span> の使用を避けてください。
   </p>
  </div>
  <div class="section">
@@ -93,7 +93,7 @@
    データベースサーバープロセスか、または <em>Shared</em> サーバーを使用しなければいけません。
   </p>
   <p class="para">
-   DRCP は３つの接続機能全てに有益ですが、  <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
+   DRCP は３つの接続機能全てに有益ですが、 <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
    で接続を作成すると最高の拡張性が得られます。
   </p>
   <p class="para">
@@ -304,7 +304,7 @@
 </div>
 <hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="oci8.examples.html">例</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="oci8.fan.html">OCI8 Fast Application Notification (FAN) Support</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="oci8.fan.html">OCI8 高速アプリケーション通知 (FAN) サポート</a></div>
  <div class="up"><a href="book.oci8.html">OCI8</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div></body></html>

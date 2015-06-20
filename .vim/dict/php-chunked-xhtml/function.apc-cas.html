@@ -27,8 +27,8 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>apc_cas()</strong></span> は、既に保存されている整数値が <em><code class="parameter">old</code></em>
-   パラメータにマッチする値のときに、それを <em><code class="parameter">new</code></em>
+   <span class="function"><strong>apc_cas()</strong></span> は、既に保存されている整数値が <code class="parameter">old</code>
+   パラメータにマッチする値のときに、それを <code class="parameter">new</code>
    パラメータの値に更新します。
   </p>
  </div>
@@ -38,9 +38,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">key</code></dt>
 
-    <span class="term"><em><code class="parameter">key</code></em></span>
     <dd>
 
      <p class="para">
@@ -48,11 +49,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">old</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">old</code></em></span>
     <dd>
 
      <p class="para">
@@ -60,11 +61,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">new</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">new</code></em></span>
     <dd>
 
      <p class="para">
@@ -72,8 +73,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
 
@@ -90,8 +90,8 @@
 
  <div class="refsect1 examples" id="refsect1-function.apc-cas-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-404">
-   <p><strong>例1  <span class="function"><strong>apc_cas()</strong></span> の例</strong></p>
+  <div class="example" id="example-429">
+   <p><strong>例1 <span class="function"><strong>apc_cas()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />apc_store</span><span style="color: #007700">(</span><span style="color: #DD0000">'foobar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">'$foobar&nbsp;=&nbsp;2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">'$foobar&nbsp;==&nbsp;1&nbsp;?&nbsp;2&nbsp;:&nbsp;1&nbsp;=&nbsp;'</span><span style="color: #007700">,&nbsp;(</span><span style="color: #0000BB">apc_cas</span><span style="color: #007700">(</span><span style="color: #DD0000">'foobar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'ok'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'fail'</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">'$foobar&nbsp;==&nbsp;2&nbsp;?&nbsp;1&nbsp;:&nbsp;2&nbsp;=&nbsp;'</span><span style="color: #007700">,&nbsp;(</span><span style="color: #0000BB">apc_cas</span><span style="color: #007700">(</span><span style="color: #DD0000">'foobar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'ok'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'fail'</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">'$foobar&nbsp;=&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">apc_fetch</span><span style="color: #007700">(</span><span style="color: #DD0000">'foobar'</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">'$f__bar&nbsp;==&nbsp;1&nbsp;?&nbsp;2&nbsp;:&nbsp;1&nbsp;=&nbsp;'</span><span style="color: #007700">,&nbsp;(</span><span style="color: #0000BB">apc_cas</span><span style="color: #007700">(</span><span style="color: #DD0000">'f__bar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'ok'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'fail'</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">apc_store</span><span style="color: #007700">(</span><span style="color: #DD0000">'perfection'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'xyz'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">'$perfection&nbsp;==&nbsp;2&nbsp;?&nbsp;1&nbsp;:&nbsp;2&nbsp;=&nbsp;'</span><span style="color: #007700">,&nbsp;(</span><span style="color: #0000BB">apc_cas</span><span style="color: #007700">(</span><span style="color: #DD0000">'perfection'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'ok'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'epic&nbsp;fail'</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">'$foobar&nbsp;=&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">apc_fetch</span><span style="color: #007700">(</span><span style="color: #DD0000">'foobar'</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -119,8 +119,8 @@ $foobar = 1
  <div class="refsect1 seealso" id="refsect1-function.apc-cas-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="function.apc-dec.html" class="function" rel="rdfs-seeAlso">apc_dec()</a> - 保存した数値を減らす</span></li>
-   <li class="member"> <span class="function"><a href="function.apc-store.html" class="function" rel="rdfs-seeAlso">apc_store()</a> - 変数をデータ領域にキャッシュする</span></li>
+   <li class="member"><span class="function"><a href="function.apc-dec.html" class="function" rel="rdfs-seeAlso">apc_dec()</a> - 保存した数値を減らす</span></li>
+   <li class="member"><span class="function"><a href="function.apc-store.html" class="function" rel="rdfs-seeAlso">apc_store()</a> - 変数をデータ領域にキャッシュする</span></li>
   </ul>
  </div>
 

@@ -25,7 +25,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>ftp_delete()</strong></span> は、<em><code class="parameter">path</code></em>
+   <span class="function"><strong>ftp_delete()</strong></span> は、<code class="parameter">path</code>
    で指定したファイルを FTP サーバーから削除します。
   </p>
  </div>
@@ -35,9 +35,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">ftp_stream</code></dt>
 
-     <span class="term"><em><code class="parameter">ftp_stream</code></em></span>
      <dd>
 
       <p class="para">
@@ -45,11 +46,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">path</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">path</code></em></span>
      <dd>
 
       <p class="para">
@@ -57,8 +58,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -74,8 +74,8 @@
  <div class="refsect1 examples" id="refsect1-function.ftp-delete-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4259">
-    <p><strong>例1  <span class="function"><strong>ftp_delete()</strong></span> の例</strong></p>
+   <div class="example" id="example-4707">
+    <p><strong>例1 <span class="function"><strong>ftp_delete()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'public_html/old.txt'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;接続を確立する<br /></span><span style="color: #0000BB">$conn_id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$ftp_server</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ユーザー名とパスワードでログインする<br /></span><span style="color: #0000BB">$login_result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_login</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_pass</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;$file&nbsp;の削除を試みる<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">ftp_delete</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">))&nbsp;{<br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">&nbsp;deleted&nbsp;successful\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">"could&nbsp;not&nbsp;delete&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;接続を閉じる<br /></span><span style="color: #0000BB">ftp_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

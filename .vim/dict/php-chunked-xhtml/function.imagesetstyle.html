@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagesetstyle" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagesetstyle</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5)</p><p class="refpurpose"><span class="refname">imagesetstyle</span> &mdash; <span class="dc-title">線描画用のスタイルを設定する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagesetstyle</span> &mdash; <span class="dc-title">線描画用のスタイルを設定する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagesetstyle-description">
@@ -25,11 +25,11 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>imagesetstyle()</strong></span> は、特別な
+   <span class="function"><strong>imagesetstyle()</strong></span> は、特別な
    <em>IMG_COLOR_STYLED</em> または色を有するイメージの線
    <em>IMG_COLOR_STYLEDBRUSHED</em> を描画する際に
-   ( <span class="function"><a href="function.imageline.html" class="function">imageline()</a></span> と
-    <span class="function"><a href="function.imagepolygon.html" class="function">imagepolygon()</a></span> のような)
+   (<span class="function"><a href="function.imageline.html" class="function">imageline()</a></span> と
+   <span class="function"><a href="function.imagepolygon.html" class="function">imagepolygon()</a></span> のような)
    全ての線描画関数で使用されるスタイルを設定します。
   </p>
  </div>
@@ -40,15 +40,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">style</code></dt>
 
-     <span class="term"><em><code class="parameter">style</code></em></span>
      <dd>
 
       <p class="para">
@@ -58,8 +59,7 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -76,8 +76,8 @@ image</code></em></span><dd>
   <h3 class="title">例</h3>
   <p class="para">
    以下の例は、キャンバスの左上から右下隅に破線を描画するスクリプトです。
-   <div class="example" id="example-3268">
-    <p><strong>例1  <span class="function"><strong>imagesetstyle()</strong></span> の例</strong></p>
+   <div class="example" id="example-3467">
+    <p><strong>例1 <span class="function"><strong>imagesetstyle()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-type:&nbsp;image/jpeg"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$im&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$w&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$red&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;5&nbsp;ピクセルの赤線と&nbsp;5&nbsp;ピクセルの白線の破線を描画します&nbsp;*/<br /></span><span style="color: #0000BB">$style&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">$red</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$red</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$red</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$red</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$red</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagesetstyle</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$style</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imageline</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_COLOR_STYLED</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;imagesetstyle&nbsp;を併用した&nbsp;imagesetbrush()&nbsp;を使用して&nbsp;happy&nbsp;face&nbsp;の線を描画します&nbsp;*/<br /></span><span style="color: #0000BB">$style&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$red</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagesetstyle</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$style</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$brush&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefrompng</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://www.libpng.org/pub/png/images/smile.happy.png"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$w2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$brush</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagecolortransparent</span><span style="color: #007700">(</span><span style="color: #0000BB">$brush</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagesetbrush</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$brush</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imageline</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_COLOR_STYLEDBRUSHED</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">imagejpeg</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -101,8 +101,8 @@ image</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imagesetbrush.html" class="function" rel="rdfs-seeAlso">imagesetbrush()</a> - 線の描画用にブラシイメージを設定する</span></li>
-    <li class="member"> <span class="function"><a href="function.imageline.html" class="function" rel="rdfs-seeAlso">imageline()</a> - 直線を描画する</span></li>
+    <li class="member"><span class="function"><a href="function.imagesetbrush.html" class="function" rel="rdfs-seeAlso">imagesetbrush()</a> - 線の描画用にブラシイメージを設定する</span></li>
+    <li class="member"><span class="function"><a href="function.imageline.html" class="function" rel="rdfs-seeAlso">imageline()</a> - 直線を描画する</span></li>
    </ul>
   </p>
  </div>

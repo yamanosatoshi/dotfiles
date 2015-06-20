@@ -27,20 +27,20 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_result_error()</strong></span> は、結果リソース
-   (<em><code class="parameter">result</code></em>)に関連したエラーメッセージを返します。
-   このため、ユーザーが  <span class="function"><a href="function.pg-last-error.html" class="function">pg_last_error()</a></span> よりも適切な
+   <span class="function"><strong>pg_result_error()</strong></span> は、結果リソース
+   (<code class="parameter">result</code>)に関連したエラーメッセージを返します。
+   このため、ユーザーが <span class="function"><a href="function.pg-last-error.html" class="function">pg_last_error()</a></span> よりも適切な
    エラーメッセージを得る可能性があります。
   </p>
   <p class="para">
-    <span class="function"><a href="function.pg-result-error-field.html" class="function">pg_result_error_field()</a></span> は、
-    <span class="function"><strong>pg_result_error()</strong></span> よりもさらに詳細なエラー情報を
+   <span class="function"><a href="function.pg-result-error-field.html" class="function">pg_result_error_field()</a></span> は、
+   <span class="function"><strong>pg_result_error()</strong></span> よりもさらに詳細なエラー情報を
    返します。
   </p>
   <p class="para">
-    <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span> はクエリが失敗した場合に <strong><code>FALSE</code></strong> を返すので、
-   結果ハンドルを取得するには  <span class="function"><a href="function.pg-send-query.html" class="function">pg_send_query()</a></span> および
-    <span class="function"><a href="function.pg-get-result.html" class="function">pg_get_result()</a></span> を使用する必要があります。
+   <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span> はクエリが失敗した場合に <strong><code>FALSE</code></strong> を返すので、
+   結果ハンドルを取得するには <span class="function"><a href="function.pg-send-query.html" class="function">pg_send_query()</a></span> および
+   <span class="function"><a href="function.pg-get-result.html" class="function">pg_get_result()</a></span> を使用する必要があります。
   </p>
  </div>
 
@@ -50,20 +50,20 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result</code></dt>
 
-     <span class="term"><em><code class="parameter">result</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>,  <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span>
-       あるいは  <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> から返される PostgreSQL の
+       <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>, <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span>
+       あるいは <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> から返される PostgreSQL の
        クエリ結果リソース。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -73,8 +73,9 @@
  <div class="refsect1 returnvalues" id="refsect1-function.pg-result-error-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">result</code></em> パラメータに関連付けられたエラーがある場合は
-   それを文字列で返し、それ以外の場合は <strong><code>FALSE</code></strong> を返します。
+   文字列を返します。エラーがない場合は空文字列を返します。
+   <code class="parameter">result</code> パラメータに関連付けられたエラーがある場合は
+   それを文字列で返します。それ以外の場合は <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
 
@@ -82,8 +83,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-result-error-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2104">
-    <p><strong>例1  <span class="function"><strong>pg_result_error()</strong></span> の例</strong></p>
+   <div class="example" id="example-2301">
+    <p><strong>例1 <span class="function"><strong>pg_result_error()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"接続できませんでした"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">pg_connection_busy</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_send_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;doesnotexist;"</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_get_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">pg_result_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$res1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -100,12 +101,12 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-result-error-field.html" class="function" rel="rdfs-seeAlso">pg_result_error_field()</a> - エラー報告の各フィールドを返す</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-query.html" class="function" rel="rdfs-seeAlso">pg_query()</a> - クエリを実行する</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-send-query.html" class="function" rel="rdfs-seeAlso">pg_send_query()</a> - 非同期クエリを送信する</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-get-result.html" class="function" rel="rdfs-seeAlso">pg_get_result()</a> - 非同期クエリの結果を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-last-error.html" class="function" rel="rdfs-seeAlso">pg_last_error()</a> - 特定の接続から直近のエラーメッセージ文字列を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-last-notice.html" class="function" rel="rdfs-seeAlso">pg_last_notice()</a> - PostgreSQL サーバーからの直近の通知メッセージを返す</span></li>
+    <li class="member"><span class="function"><a href="function.pg-result-error-field.html" class="function" rel="rdfs-seeAlso">pg_result_error_field()</a> - エラー報告の各フィールドを返す</span></li>
+    <li class="member"><span class="function"><a href="function.pg-query.html" class="function" rel="rdfs-seeAlso">pg_query()</a> - クエリを実行する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-send-query.html" class="function" rel="rdfs-seeAlso">pg_send_query()</a> - 非同期クエリを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-get-result.html" class="function" rel="rdfs-seeAlso">pg_get_result()</a> - 非同期クエリの結果を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-last-error.html" class="function" rel="rdfs-seeAlso">pg_last_error()</a> - 特定の接続から直近のエラーメッセージ文字列を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-last-notice.html" class="function" rel="rdfs-seeAlso">pg_last_notice()</a> - PostgreSQL サーバーからの直近の通知メッセージを返す</span></li>
    </ul>
   </p>
  </div>

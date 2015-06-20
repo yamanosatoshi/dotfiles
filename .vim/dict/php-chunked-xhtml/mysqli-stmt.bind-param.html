@@ -39,23 +39,23 @@
 
   <p class="para rdfs-comment">
    変数を、SQL ステートメントのパラメータマーカにバインドします。
-   この変数は、 <span class="function"><a href="mysqli.prepare.html" class="function">mysqli_prepare()</a></span>
+   この変数は、<span class="function"><a href="mysqli.prepare.html" class="function">mysqli_prepare()</a></span>
    に渡されたものです。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     データのサイズがパケットサイズの最大値（max_allowed_packet）を
-    こえた場合、<em><code class="parameter">types</code></em> に <em>b</em> を
-    指定して  <span class="function"><a href="mysqli-stmt.send-long-data.html" class="function">mysqli_stmt_send_long_data()</a></span> を使用し、
+    こえた場合、<code class="parameter">types</code> に <em>b</em> を
+    指定して <span class="function"><a href="mysqli-stmt.send-long-data.html" class="function">mysqli_stmt_send_long_data()</a></span> を使用し、
     データをパケットに分割して送信する必要があります。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
     <p class="para">
-       <span class="function"><strong>mysqli_stmt_bind_param()</strong></span> と
-       <span class="function"><a href="function.call-user-func-array.html" class="function">call_user_func_array()</a></span> を組み合わせて使う場合は注意が必要です。
-       <span class="function"><strong>mysqli_stmt_bind_param()</strong></span> へのパラメータは参照渡しでなければなりませんが、
-       <span class="function"><a href="function.call-user-func-array.html" class="function">call_user_func_array()</a></span> には変数のリストをパラメータとして渡すことができます。
+      <span class="function"><strong>mysqli_stmt_bind_param()</strong></span> と
+      <span class="function"><a href="function.call-user-func-array.html" class="function">call_user_func_array()</a></span> を組み合わせて使う場合は注意が必要です。
+      <span class="function"><strong>mysqli_stmt_bind_param()</strong></span> へのパラメータは参照渡しでなければなりませんが、
+      <span class="function"><a href="function.call-user-func-array.html" class="function">call_user_func_array()</a></span> には変数のリストをパラメータとして渡すことができます。
       この変数は参照であっても値であってもかまいません。
     </p>
   </p></blockquote>
@@ -68,15 +68,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-stmt</code></em></span><dd>
+<code class="parameter">
+stmt</code></dt>
+<dd>
 <p class="para">手続き型のみ:
- <span class="function"><a href="mysqli.stmt-init.html" class="function">mysqli_stmt_init()</a></span> が返すステートメント ID。</p></dd>
-</dt>
+<span class="function"><a href="mysqli.stmt-init.html" class="function">mysqli_stmt_init()</a></span> が返すステートメント ID。</p></dd>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">types</code></dt>
 
-     <span class="term"><em><code class="parameter">types</code></em></span>
      <dd>
 
       <p class="para">
@@ -120,22 +121,21 @@ stmt</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">var1</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">var1</code></em></span>
      <dd>
 
       <p class="para">
        変数の数。文字列
-       <em><code class="parameter">types</code></em>
+       <code class="parameter">types</code>
        の長さは、ステートメント中のパラメータの数と一致する必要があります。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -152,7 +152,7 @@ stmt</code></em></span><dd>
 
  <div class="refsect1 examples" id="refsect1-mysqli-stmt.bind-param-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1689">
+  <div class="example" id="example-1868">
    <p><strong>例1 オブジェクト指向型</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -162,7 +162,7 @@ stmt</code></em></span><dd>
    </div>
 
   </div>
-  <div class="example" id="example-1690">
+  <div class="example" id="example-1869">
    <p><strong>例2 手続き型</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -186,13 +186,13 @@ stmt</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli-stmt.bind-result.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_bind_result()</a> - 結果を保存するため、プリペアドステートメントに変数をバインドする</span></li>
-    <li class="member"> <span class="function"><a href="mysqli-stmt.execute.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_execute()</a> - プリペアドクエリを実行する</span></li>
-    <li class="member"> <span class="function"><a href="mysqli-stmt.fetch.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_fetch()</a> - プリペアドステートメントから結果を取得し、バインド変数に格納する</span></li>
-    <li class="member"> <span class="function"><a href="mysqli.prepare.html" class="function" rel="rdfs-seeAlso">mysqli_prepare()</a> - 実行するための SQL ステートメントを準備する</span></li>
-    <li class="member"> <span class="function"><a href="mysqli-stmt.send-long-data.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_send_long_data()</a> - データをブロックで送信する</span></li>
-    <li class="member"> <span class="function"><a href="mysqli-stmt.errno.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_errno()</a> - 直近のステートメントのコールに関するエラーコードを返す</span></li>
-    <li class="member"> <span class="function"><a href="mysqli-stmt.error.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_error()</a> - 直近のステートメントのエラー内容を文字列で返す</span></li>
+    <li class="member"><span class="function"><a href="mysqli-stmt.bind-result.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_bind_result()</a> - 結果を保存するため、プリペアドステートメントに変数をバインドする</span></li>
+    <li class="member"><span class="function"><a href="mysqli-stmt.execute.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_execute()</a> - プリペアドクエリを実行する</span></li>
+    <li class="member"><span class="function"><a href="mysqli-stmt.fetch.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_fetch()</a> - プリペアドステートメントから結果を取得し、バインド変数に格納する</span></li>
+    <li class="member"><span class="function"><a href="mysqli.prepare.html" class="function" rel="rdfs-seeAlso">mysqli_prepare()</a> - 実行するための SQL ステートメントを準備する</span></li>
+    <li class="member"><span class="function"><a href="mysqli-stmt.send-long-data.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_send_long_data()</a> - データをブロックで送信する</span></li>
+    <li class="member"><span class="function"><a href="mysqli-stmt.errno.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_errno()</a> - 直近のステートメントのコールに関するエラーコードを返す</span></li>
+    <li class="member"><span class="function"><a href="mysqli-stmt.error.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_error()</a> - 直近のステートメントのエラー内容を文字列で返す</span></li>
    </ul>
   </p>
  </div>

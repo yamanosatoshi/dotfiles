@@ -19,9 +19,22 @@
 
  <div class="refsect1 description" id="refsect1-intlcalendar.add-description">
   <h3 class="title">説明</h3>
+  <p class="para">
+   オブジェクト指向型
+  </p>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><strong>IntlCalendar::add</strong></span>
     ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$field</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$amount</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   手続き型
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><strong>intlcal_add</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span> <code class="parameter">$cal</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$field</code></span>
    , <span class="methodparam"><span class="type">int</span> <code class="parameter">$amount</code></span>
    )</div>
 
@@ -33,7 +46,7 @@
   <p class="para">
    Other fields may need to adjusted – for instance, adding a month to the 31st
    of January will result in the 28th (or 29th) of February. Contrary to
-    <span class="function"><a href="intlcalendar.roll.html" class="function">IntlCalendar::roll()</a></span>, when a value wraps around, more
+   <span class="function"><a href="intlcalendar.roll.html" class="function">IntlCalendar::roll()</a></span>, when a value wraps around, more
    significant fields may change. For instance, adding a day to the 31st of
    January will result in the 1st of February, not the 1st of Janurary.
   </p>
@@ -44,9 +57,22 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">cal</code></dt>
 
-    <span class="term"><em><code class="parameter">field</code></em></span>
+    <dd>
+
+     <p class="para">
+      The IntlCalendar resource.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">field</code></dt>
+
     <dd>
 
      
@@ -60,11 +86,11 @@
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">amount</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">amount</code></em></span>
     <dd>
 
      <p class="para">
@@ -75,8 +101,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -94,8 +119,8 @@
  <div class="refsect1 examples" id="refsect1-intlcalendar.add-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2582">
-   <p><strong>例1  <span class="function"><strong>IntlCalendar::add()</strong></span></strong></p>
+   <div class="example" id="example-2781">
+   <p><strong>例1 <span class="function"><strong>IntlCalendar::add()</strong></span></strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'intl.default_locale'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'fr_FR'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'date.timezone'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'UTC'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cal&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">IntlGregorianCalendar</span><span style="color: #007700">(</span><span style="color: #0000BB">2012</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #FF8000">/*&nbsp;January&nbsp;*/</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">31</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">FIELD_MONTH</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">FIELD_DAY_OF_MONTH</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;</span>

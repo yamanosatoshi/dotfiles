@@ -27,10 +27,10 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>Memcached::set()</strong></span> は、
-   指定したキー <em><code class="parameter">key</code></em> で memcache サーバー上に
-   <em><code class="parameter">value</code></em> を格納します。
-   <em><code class="parameter">expiration</code></em> パラメータで、
+   <span class="function"><strong>Memcached::set()</strong></span> は、
+   指定したキー <code class="parameter">key</code> で memcache サーバー上に
+   <code class="parameter">value</code> を格納します。
+   <code class="parameter">expiration</code> パラメータで、
    この値をいつ有効期限切れにするのかを制御することができます。
   </p>
   <p class="para">
@@ -47,9 +47,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">key</code></dt>
 
-     <span class="term"><em><code class="parameter">key</code></em></span>
      <dd>
 
       <p class="para">
@@ -57,11 +58,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">value</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">value</code></em></span>
      <dd>
 
       <p class="para">
@@ -69,11 +70,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">expiration</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">expiration</code></em></span>
      <dd>
 
       <p class="para">
@@ -81,8 +82,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -93,7 +93,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
-   必要に応じて  <span class="methodname"><a href="memcached.getresultcode.html" class="methodname">Memcached::getResultCode()</a></span> を使用しましょう。
+   必要に応じて <span class="methodname"><a href="memcached.getresultcode.html" class="methodname">Memcached::getResultCode()</a></span> を使用しましょう。
   </p>
  </div>
 
@@ -101,8 +101,8 @@
  <div class="refsect1 examples" id="refsect1-memcached.set-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4431">
-    <p><strong>例1  <span class="function"><strong>Memcached::set()</strong></span> の例</strong></p>
+   <div class="example" id="example-4877">
+    <p><strong>例1 <span class="function"><strong>Memcached::set()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #DD0000">'int'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">99</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #DD0000">'string'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'a&nbsp;simple&nbsp;string'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #DD0000">'array'</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #0000BB">11</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">));<br /></span><span style="color: #FF8000">/*&nbsp;expire&nbsp;'object'&nbsp;key&nbsp;in&nbsp;5&nbsp;minutes&nbsp;*/<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #DD0000">'object'</span><span style="color: #007700">,&nbsp;new&nbsp;</span><span style="color: #0000BB">stdclass</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()&nbsp;+&nbsp;</span><span style="color: #0000BB">300</span><span style="color: #007700">);<br /><br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #DD0000">'int'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #DD0000">'string'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #DD0000">'array'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #DD0000">'object'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -135,9 +135,9 @@ object(stdClass)#1 (0) {
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="memcached.setbykey.html" class="methodname" rel="rdfs-seeAlso">Memcached::setByKey()</a> - 指定したサーバーにアイテムを格納する</span></li>
-    <li class="member"> <span class="methodname"><a href="memcached.add.html" class="methodname" rel="rdfs-seeAlso">Memcached::add()</a> - アイテムを新しいキーで追加する</span></li>
-    <li class="member"> <span class="methodname"><a href="memcached.replace.html" class="methodname" rel="rdfs-seeAlso">Memcached::replace()</a> - 既存のキーのアイテムを入れ替える</span></li>
+    <li class="member"><span class="methodname"><a href="memcached.setbykey.html" class="methodname" rel="rdfs-seeAlso">Memcached::setByKey()</a> - 指定したサーバーにアイテムを格納する</span></li>
+    <li class="member"><span class="methodname"><a href="memcached.add.html" class="methodname" rel="rdfs-seeAlso">Memcached::add()</a> - アイテムを新しいキーで追加する</span></li>
+    <li class="member"><span class="methodname"><a href="memcached.replace.html" class="methodname" rel="rdfs-seeAlso">Memcached::replace()</a> - 既存のキーのアイテムを入れ替える</span></li>
    </ul>
   </p>
  </div>

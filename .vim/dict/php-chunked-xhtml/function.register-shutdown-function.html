@@ -27,13 +27,13 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-   スクリプト処理が完了したとき、あるいは  <span class="function"><a href="function.exit.html" class="function">exit()</a></span>
+   スクリプト処理が完了したとき、あるいは <span class="function"><a href="function.exit.html" class="function">exit()</a></span>
    がコールされたときに実行するコールバック関数を登録します。
   </p>
   <p class="para">
-    <span class="function"><strong>register_shutdown_function()</strong></span> は複数回コールする
+   <span class="function"><strong>register_shutdown_function()</strong></span> は複数回コールする
    ことが可能で、登録された順に関数がコールされます。
-   登録した関数内で  <span class="function"><a href="function.exit.html" class="function">exit()</a></span> をコールした場合、
+   登録した関数内で <span class="function"><a href="function.exit.html" class="function">exit()</a></span> をコールした場合、
    処理はそこで終了してその他のシャットダウン関数はコールされません。
   </p>
  </div>
@@ -44,9 +44,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">callback</code></dt>
 
-     <span class="term"><em><code class="parameter">callback</code></em></span>
      <dd>
 
       <p class="para">
@@ -58,11 +59,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">parameter</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">parameter</code></em></span>
      <dd>
 
       <p class="para">
@@ -70,19 +71,18 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">...</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">...</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -106,47 +106,11 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.register-shutdown-function-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.1.0</td>
-       <td>
-        シャットダウン関数がリクエストの一部としてコールされるようになりました。
-        以前のバージョンを Apache で動かしている場合、
-        登録されたシャットダウン関数はリクエストの完了後（結果の出力を含む）
-        に実行されます。そのため、 <span class="function"><a href="function.echo.html" class="function">echo</a></span>
-        や  <span class="function"><a href="function.print.html" class="function">print</a></span> を用いてブラウザに出力したり
-         <span class="function"><a href="function.ob-get-contents.html" class="function">ob_get_contents()</a></span>
-        を用いて出力バッファの内容を取得したりすることができませんでした。
-        ヘッダも常に送信された後でした。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.register-shutdown-function-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5097">
-    <p><strong>例1  <span class="function"><strong>register_shutdown_function()</strong></span> の例</strong></p>
+   <div class="example" id="example-5579">
+    <p><strong>例1 <span class="function"><strong>register_shutdown_function()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">shutdown</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;これがシャットダウン関数で、<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;スクリプトの処理が完了する前に<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;ここで何らかの操作をすることができます<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Script&nbsp;executed&nbsp;with&nbsp;success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">register_shutdown_function</span><span style="color: #007700">(</span><span style="color: #DD0000">'shutdown'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -170,8 +134,8 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     SIGTERM あるいは SIGKILL でプロセスが終了した場合は、シャットダウン関数を実行しません。
-    SIGKILL を横取りすることはできませんが、SIGTERM 用のハンドラは  <span class="function"><a href="function.pcntl-signal.html" class="function">pcntl_signal()</a></span>
-    で登録できます。ここで  <span class="function"><a href="function.exit.html" class="function">exit()</a></span> を使えば、きれいに終わらせることができます。
+    SIGKILL を横取りすることはできませんが、SIGTERM 用のハンドラは <span class="function"><a href="function.pcntl-signal.html" class="function">pcntl_signal()</a></span>
+    で登録できます。ここで <span class="function"><a href="function.exit.html" class="function">exit()</a></span> を使えば、きれいに終わらせることができます。
    </p>
   </p></blockquote>
  </div>
@@ -182,7 +146,7 @@
   <p class="para">
    <ul class="simplelist">
     <li class="member"><a href="ini.core.html#ini.auto-append-file" class="link">auto_append_file</a></li>
-    <li class="member"> <span class="function"><a href="function.exit.html" class="function" rel="rdfs-seeAlso">exit()</a> - メッセージを出力し、現在のスクリプトを終了する</span></li>
+    <li class="member"><span class="function"><a href="function.exit.html" class="function" rel="rdfs-seeAlso">exit()</a> - メッセージを出力し、現在のスクリプトを終了する</span></li>
     <li class="member"><a href="features.connection-handling.html" class="link">接続処理</a></li>
    </ul>
   </p>

@@ -27,10 +27,10 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>substr_count()</strong></span> は、文字列
-   <em><code class="parameter">haystack</code></em> の中での副文字列
-   <em><code class="parameter">needle</code></em> の出現回数を返します。
-   <em><code class="parameter">needle</code></em>
+   <span class="function"><strong>substr_count()</strong></span> は、文字列
+   <code class="parameter">haystack</code> の中での副文字列
+   <code class="parameter">needle</code> の出現回数を返します。
+   <code class="parameter">needle</code>
    は英大小文字を区別することに注意してください。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -46,9 +46,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">haystack</code></dt>
 
-     <span class="term"><em><code class="parameter">haystack</code></em></span>
      <dd>
 
       <p class="para">
@@ -56,11 +57,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">needle</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">needle</code></em></span>
      <dd>
 
       <p class="para">
@@ -68,11 +69,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">offset</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">offset</code></em></span>
      <dd>
 
       <p class="para">
@@ -80,22 +81,21 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">length</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">length</code></em></span>
      <dd>
 
       <p class="para">
        指定したオフセット以降に副文字列で検索する最大長。
-       オフセットと長さの総和が <em><code class="parameter">haystack</code></em>
+       オフセットと長さの総和が <code class="parameter">haystack</code>
        の長さよりも長い場合、警告が発生します。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -127,7 +127,7 @@
       <tr>
        <td>5.1.0</td>
        <td>
-        <em><code class="parameter">offset</code></em> と <em><code class="parameter">length</code></em>
+        <code class="parameter">offset</code> と <code class="parameter">length</code>
         パラメータが追加されました。
        </td>
       </tr>
@@ -143,8 +143,8 @@
  <div class="refsect1 examples" id="refsect1-function.substr-count-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4893">
-    <p><strong>例1  <span class="function"><strong>substr_count()</strong></span> の例</strong></p>
+   <div class="example" id="example-5373">
+    <p><strong>例1 <span class="function"><strong>substr_count()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$text&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;test'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;14<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr_count</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'is'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;2<br /><br />//&nbsp;文字列は&nbsp;'s&nbsp;is&nbsp;a&nbsp;test'&nbsp;になっているので,&nbsp;1&nbsp;が表示される<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr_count</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'is'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;テキストは&nbsp;'s&nbsp;i'&nbsp;になっているので,&nbsp;0&nbsp;が表示される<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr_count</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'is'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;5+10&nbsp;&gt;&nbsp;14&nbsp;なので、警告が発生する<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr_count</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'is'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /><br /><br /></span><span style="color: #FF8000">//&nbsp;重なっている副文字列はカウントされないので、1&nbsp;が表示される<br /></span><span style="color: #0000BB">$text2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'gcdgcdgcd'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">substr_count</span><span style="color: #007700">(</span><span style="color: #0000BB">$text2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'gcdgcd'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -161,10 +161,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.count-chars.html" class="function" rel="rdfs-seeAlso">count_chars()</a> - 文字列で使用されている文字に関する情報を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.strpos.html" class="function" rel="rdfs-seeAlso">strpos()</a> - 文字列内の部分文字列が最初に現れる場所を見つける</span></li>
-    <li class="member"> <span class="function"><a href="function.substr.html" class="function" rel="rdfs-seeAlso">substr()</a> - 文字列の一部分を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.strstr.html" class="function" rel="rdfs-seeAlso">strstr()</a> - 文字列が最初に現れる位置を見つける</span></li>
+    <li class="member"><span class="function"><a href="function.count-chars.html" class="function" rel="rdfs-seeAlso">count_chars()</a> - 文字列で使用されている文字に関する情報を返す</span></li>
+    <li class="member"><span class="function"><a href="function.strpos.html" class="function" rel="rdfs-seeAlso">strpos()</a> - 文字列内の部分文字列が最初に現れる場所を見つける</span></li>
+    <li class="member"><span class="function"><a href="function.substr.html" class="function" rel="rdfs-seeAlso">substr()</a> - 文字列の一部分を返す</span></li>
+    <li class="member"><span class="function"><a href="function.strstr.html" class="function" rel="rdfs-seeAlso">strstr()</a> - 文字列が最初に現れる位置を見つける</span></li>
    </ul>
   </p>
  </div>

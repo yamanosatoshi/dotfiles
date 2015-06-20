@@ -35,7 +35,7 @@
   ]]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_fetch_object()</strong></span> は、取得した行のフィールド名に
+   <span class="function"><strong>pg_fetch_object()</strong></span> は、取得した行のフィールド名に
    対応するプロパティを有するオブジェクトを返します。オプションとして、
    指定したクラスのコンストラクタにパラメータを渡してインスタンス化する
    ことも可能です。
@@ -43,8 +43,8 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">この関数は、
 NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定します。</span></p></blockquote>
   <p class="para">
-   速度面では、この関数は  <span class="function"><a href="function.pg-fetch-array.html" class="function">pg_fetch_array()</a></span> と同じであり、
-    <span class="function"><a href="function.pg-fetch-row.html" class="function">pg_fetch_row()</a></span> とほとんど同じ程度です
+   速度面では、この関数は <span class="function"><a href="function.pg-fetch-array.html" class="function">pg_fetch_array()</a></span> と同じであり、
+   <span class="function"><a href="function.pg-fetch-row.html" class="function">pg_fetch_row()</a></span> とほとんど同じ程度です
    （違いはわずかです）。
   </p>
  </div>
@@ -55,23 +55,24 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result</code></dt>
 
-     <span class="term"><em><code class="parameter">result</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>,  <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span>
-       あるいは  <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> から返される PostgreSQL の
+       <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>, <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span>
+       あるいは <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> から返される PostgreSQL の
        クエリ結果リソース。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">row</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">row</code></em></span>
      <dd>
 
       <p class="para">
@@ -80,11 +81,11 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">result_type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">result_type</code></em></span>
       <dd>
 
        <p class="para">
@@ -92,11 +93,11 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
        </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">class_name</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">class_name</code></em></span>
       <dd>
 
        <p class="para">
@@ -105,21 +106,20 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
        </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">params</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">params</code></em></span>
       <dd>
 
        <p class="para">
-        <em><code class="parameter">class_name</code></em> オブジェクトのコンストラクタに
+        <code class="parameter">class_name</code> オブジェクトのコンストラクタに
         渡すオプションの配列。
        </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -133,55 +133,8 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
    データベースの <em>NULL</em> 値は <strong><code>NULL</code></strong> として返します。
   </p>
   <p class="para">
-   <em><code class="parameter">row</code></em> が結果の行数より大きい場合・行が存在しない場合
+   <code class="parameter">row</code> が結果の行数より大きい場合・行が存在しない場合
    、そしてそれ以外のエラーが発生した場合は <strong><code>FALSE</code></strong> を返します。
-  </p>
- </div>
-
-
- <div class="refsect1 changelog" id="refsect1-function.pg-fetch-object-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>5.0.0</td>
-       <td>
-        <em><code class="parameter">class_name</code></em> と <em><code class="parameter">params</code></em>
-        が追加されました。<em><code class="parameter">result_type</code></em>
-        を用いた古い形式は、過去のバージョンとの互換性を保つために残されています。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        <em><code class="parameter">result_type</code></em> のデフォルト値が、
-        <strong><code>PGSQL_BOTH</code></strong> から <strong><code>PGSQL_ASSOC</code></strong>
-        に変わりました。数値インデックスが使用できないためです。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.1.0</td>
-       <td>
-        <em><code class="parameter">row</code></em> パラメータがオプションとなりました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
   </p>
  </div>
 
@@ -189,8 +142,8 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
  <div class="refsect1 examples" id="refsect1-function.pg-fetch-object-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2059">
-    <p><strong>例1  <span class="function"><strong>pg_fetch_object()</strong></span> の例</strong></p>
+   <div class="example" id="example-2255">
+    <p><strong>例1 <span class="function"><strong>pg_fetch_object()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php&nbsp;<br /><br />$database&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"store"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$db_conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"host=localhost&nbsp;port=5432&nbsp;dbname=</span><span style="color: #0000BB">$database</span><span style="color: #DD0000">"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$db_conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Failed&nbsp;connecting&nbsp;to&nbsp;postgres&nbsp;database&nbsp;</span><span style="color: #0000BB">$database</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">$qu&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db_conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;books&nbsp;ORDER&nbsp;BY&nbsp;author"</span><span style="color: #007700">);<br /><br /><br />while&nbsp;(</span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$qu</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">author&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&nbsp;("</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">year&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"):&nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">title&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">pg_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$qu</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">pg_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$db_conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -207,11 +160,11 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-query.html" class="function" rel="rdfs-seeAlso">pg_query()</a> - クエリを実行する</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-fetch-array.html" class="function" rel="rdfs-seeAlso">pg_fetch_array()</a> - 行を配列として取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-fetch-assoc.html" class="function" rel="rdfs-seeAlso">pg_fetch_assoc()</a> - 行を連想配列として取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-fetch-row.html" class="function" rel="rdfs-seeAlso">pg_fetch_row()</a> - 数値添字の配列として行を得る</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-fetch-result.html" class="function" rel="rdfs-seeAlso">pg_fetch_result()</a> - 結果リソースから値を返す</span></li>
+    <li class="member"><span class="function"><a href="function.pg-query.html" class="function" rel="rdfs-seeAlso">pg_query()</a> - クエリを実行する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-array.html" class="function" rel="rdfs-seeAlso">pg_fetch_array()</a> - 行を配列として取得する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-assoc.html" class="function" rel="rdfs-seeAlso">pg_fetch_assoc()</a> - 行を連想配列として取得する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-row.html" class="function" rel="rdfs-seeAlso">pg_fetch_row()</a> - 数値添字の配列として行を得る</span></li>
+    <li class="member"><span class="function"><a href="function.pg-fetch-result.html" class="function" rel="rdfs-seeAlso">pg_fetch_result()</a> - 結果リソースから値を返す</span></li>
    </ul>
   </p>
  </div>

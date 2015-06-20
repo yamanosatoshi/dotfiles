@@ -59,7 +59,7 @@
    2 進数表記を使用する場合、数の前に <em>0b</em> を付ける必要があります。
   </p>
 
-  <div class="example" id="example-68">
+  <div class="example" id="example-82">
    <p><strong>例1 整数リテラル</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -99,6 +99,7 @@ integer     : [+-]?decimal
    整数のサイズはプラットフォームに依存しますが、
    約 20 億 (32 ビット符号付) が一般的な値です。
    64 ビットプラットフォームでの通常の最大値は、およそ 9*10^18 (900京) になります。
+   しかし Windows は例外で、Windows は常に 32 ビットとなります。
    PHP は符号無し整数をサポートしていません。
    整数のサイズは定数 <strong><code>PHP_INT_SIZE</code></strong> で、
    そして整数の最大値は定数 <strong><code>PHP_INT_MAX</code></strong> でそれぞれ決まります。
@@ -111,7 +112,7 @@ integer     : [+-]?decimal
     数値の残りの部分は無視されます。
    </p>
 
-   <div class="example" id="example-69">
+   <div class="example" id="example-83">
     <p><strong>例2 おかしな 8 進数</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -134,7 +135,7 @@ integer     : [+-]?decimal
    <span class="type"><a href="language.types.float.html" class="type float">float</a></span>が代わりに返されます。
   </p>
 
-  <div class="example" id="example-70">
+  <div class="example" id="example-84">
    <p><strong>例3 32 ビットシステムにおける整数のオーバーフロー</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -145,7 +146,7 @@ integer     : [+-]?decimal
 
   </div>
 
-  <div class="example" id="example-71">
+  <div class="example" id="example-85">
    <p><strong>例4 64 ビットシステムにおける整数のオーバーフロー</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -160,8 +161,8 @@ integer     : [+-]?decimal
    PHP には整数の割り算はありません。<em>1/2</em> は <span class="type"><span class="type 
    float ">
    float </span></span> 型の <em>0.5</em> になります。
-   下方向の整数値に値を丸めるためにキャストを使用することができ、
-   また、 <span class="function"><a href="function.round.html" class="function">round()</a></span> 関数を使用することもできます。
+   0 に近い方向の整数値に値を丸めるためにキャストを使用することができ、
+   また、<span class="function"><a href="function.round.html" class="function">round()</a></span> 関数を使用することもできます。
   </p>
 
   <div class="informalexample">
@@ -184,7 +185,12 @@ integer     : [+-]?decimal
    のどちらかを使用してください。しかし、多くの場合、演算子、関数、制御構造が
    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 引数を必要とする場合、値は自動的に変換されるため、
    キャストを使用する必要はありません。
-   関数  <span class="function"><a href="function.intval.html" class="function">intval()</a></span> を用いて値を整数に変換することも可能です。
+   関数 <span class="function"><a href="function.intval.html" class="function">intval()</a></span> を用いて値を整数に変換することも可能です。
+  </p>
+
+  <p class="simpara">
+   <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> を <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> に変換すると、その結果は一意なリソース番号となります。
+   これは、その <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> に対して PHP が実行時に割り当てた番号です。
   </p>
 
   <p class="simpara">
@@ -212,7 +218,7 @@ integer     : [+-]?decimal
     
    <p class="para">
     float が整数の範囲 (通常は、32 ビットプラットフォームでは <em>+/- 2.15e+9 =
-    2^31</em>、64 ビットプラットフォームでは <em>+/- 9.22e+18 = 2^63</em>
+    2^31</em>、Windows 以外の 64 ビットプラットフォームでは <em>+/- 9.22e+18 = 2^63</em>
     ) を越える場合、結果は undefined となります。これは、
     その float が正しい整数の結果を得るために十分な精度を得られなかったからです。
     この場合、警告も通知も発生しません!

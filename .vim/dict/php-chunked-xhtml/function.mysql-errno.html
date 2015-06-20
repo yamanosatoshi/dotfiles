@@ -27,8 +27,8 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli.errno.html" class="function">mysqli_errno()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="pdo.errorcode.html" class="methodname">PDO::errorCode()</a></span></li>
+    <li class="member"><span class="function"><a href="mysqli.errno.html" class="function">mysqli_errno()</a></span></li>
+    <li class="member"><span class="methodname"><a href="pdo.errorcode.html" class="methodname">PDO::errorCode()</a></span></li>
    </ul>
   </div>
  </div>
@@ -45,10 +45,10 @@
   </p>
   <p class="para">
    MySQL データベースバックエンドから返ってくるエラーは、
-   警告を発生しません。代わりに  <span class="function"><strong>mysql_errno()</strong></span> を用いて
+   警告を発生しません。代わりに <span class="function"><strong>mysql_errno()</strong></span> を用いて
    エラー番号を取得してください。この関数が返すのは、直近に実行された
-   MySQL 関数（ <span class="function"><a href="function.mysql-error.html" class="function">mysql_error()</a></span> と
-    <span class="function"><strong>mysql_errno()</strong></span> は除く）のエラーコードだけであることに
+   MySQL 関数（<span class="function"><a href="function.mysql-error.html" class="function">mysql_error()</a></span> と
+   <span class="function"><strong>mysql_errno()</strong></span> は除く）のエラーコードだけであることに
    注意しましょう。この関数を利用するなら、別の MySQL 関数をコールする前に
    値を調べることを忘れないようにしましょう。
   </p>
@@ -61,16 +61,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-link_identifier</code></em></span><dd>
+<code class="parameter">
+link_identifier</code></dt>
+<dd>
 <p class="para">MySQL 接続。
-指定されない場合、 <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
+指定されない場合、<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
 指定されたと仮定されます。そのようなリンクがない場合、引数を指定せずに
- <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
+<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
 リンクが見付からない、または、確立できない場合、
 <strong><code>E_WARNING</code></strong> レベルのエラーが生成されます。</p></dd>
 
-</dt>
 
    </dl>
 
@@ -90,8 +90,8 @@ link_identifier</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.mysql-errno-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1573">
-    <p><strong>例1  <span class="function"><strong>mysql_errno()</strong></span> の例</strong></p>
+   <div class="example" id="example-1752">
+    <p><strong>例1 <span class="function"><strong>mysql_errno()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">);<br /><br />if&nbsp;(!</span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"nonexistentdb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">mysql_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">":&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">).&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"kossu"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;nonexistenttable"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">mysql_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">":&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -116,7 +116,7 @@ link_identifier</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-error.html" class="function" rel="rdfs-seeAlso">mysql_error()</a> - 直近に実行された MySQL 操作のエラーメッセージを返す</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-error.html" class="function" rel="rdfs-seeAlso">mysql_error()</a> - 直近に実行された MySQL 操作のエラーメッセージを返す</span></li>
     <li class="member"><a href="http://dev.mysql.com/doc/mysql/en/error-handling.html" class="link external">&raquo;&nbsp;MySQL エラーコード</a></li>
    </ul>
   </p>

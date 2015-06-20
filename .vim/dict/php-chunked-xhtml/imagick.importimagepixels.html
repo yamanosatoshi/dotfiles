@@ -7,7 +7,7 @@
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="imagick.implodeimage.html">Imagick::implodeImage</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="imagick.labelimage.html">Imagick::labelImage</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imagick.inversefouriertransformimage.html">Imagick::inverseFourierTransformImage</a></div>
  <div class="up"><a href="class.imagick.html">Imagick</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="imagick.importimagepixels" class="refentry">
@@ -31,9 +31,9 @@
    )</div>
 
   <p class="para rdfs-comment">
-   配列から画像にピクセルをインポートします。<em><code class="parameter">map</code></em> は、通常は
+   配列から画像にピクセルをインポートします。<code class="parameter">map</code> は、通常は
    &#039;RGB&#039; です。このメソッドのパラメータには次の制約があります。配列内のピクセルの量が、
-   <em><code class="parameter">width</code></em> x <em><code class="parameter">height</code></em> x mapの長さ
+   <code class="parameter">width</code> x <code class="parameter">height</code> x mapの長さ
    と一致しなければなりません。
    このメソッドは、ImageMagick バージョン 6.4.5 以降で Imagick をコンパイルした場合に使用可能です。
   </p>
@@ -46,9 +46,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">x</code></dt>
 
-     <span class="term"><em><code class="parameter">x</code></em></span>
      <dd>
 
       <p class="para">
@@ -56,11 +57,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">y</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">y</code></em></span>
      <dd>
 
       <p class="para">
@@ -68,11 +69,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">width</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">width</code></em></span>
      <dd>
 
       <p class="para">
@@ -80,11 +81,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">height</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">height</code></em></span>
      <dd>
 
       <p class="para">
@@ -92,11 +93,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">map</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">map</code></em></span>
      <dd>
 
       <p class="para">
@@ -106,11 +107,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">storage</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">storage</code></em></span>
      <dd>
 
       <p class="para">
@@ -119,11 +120,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">pixels</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">pixels</code></em></span>
      <dd>
 
       <p class="para">
@@ -131,8 +132,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -158,8 +158,8 @@
  <div class="refsect1 examples" id="refsect1-imagick.importimagepixels-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3318">
-    <p><strong>例1  <span class="methodname"><strong>Imagick::importImagePixels()</strong></span> の例</strong></p>
+   <div class="example" id="example-3556">
+    <p><strong>例1 <span class="methodname"><strong>Imagick::importImagePixels()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;ピクセルの配列を生成します。各色について&nbsp;2000&nbsp;ピクセルとなります&nbsp;*/<br /></span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2000&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$pixels&nbsp;</span><span style="color: #007700">=&nbsp;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">array_merge</span><span style="color: #007700">(</span><span style="color: #0000BB">array_pad</span><span style="color: #007700">(array(),&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">array_pad</span><span style="color: #007700">(array(),&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">),&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">array_pad</span><span style="color: #007700">(array(),&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">array_pad</span><span style="color: #007700">(array(),&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">array_pad</span><span style="color: #007700">(array(),&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;幅と高さ。ピクセル数を&nbsp;3&nbsp;で割った量が面積となります。<br />&nbsp;&nbsp;&nbsp;3&nbsp;というのは&nbsp;'RGB'&nbsp;からきたもので、1&nbsp;ピクセルあたり&nbsp;3&nbsp;つの値があるということです&nbsp;*/<br /></span><span style="color: #0000BB">$width&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$height&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pow</span><span style="color: #007700">((</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$pixels</span><span style="color: #007700">)&nbsp;/&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">0.5</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;空の画像を作成します&nbsp;*/<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$im</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">newImage</span><span style="color: #007700">(</span><span style="color: #0000BB">$width</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$height</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'gray'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;ピクセルが画像に取り込みます。<br />&nbsp;&nbsp;&nbsp;width&nbsp;*&nbsp;height&nbsp;*&nbsp;strlen("RGB")&nbsp;が&nbsp;count($pixels)&nbsp;と一致しなければなりません&nbsp;*/<br /></span><span style="color: #0000BB">$im</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">importImagePixels</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$width</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$height</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"RGB"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">::</span><span style="color: #0000BB">PIXEL_CHAR</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$pixels</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;jpeg&nbsp;画像として出力します&nbsp;*/<br /></span><span style="color: #0000BB">$im</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setImageFormat</span><span style="color: #007700">(</span><span style="color: #DD0000">'jpg'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-Type:&nbsp;image/jpg"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$im</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -184,7 +184,7 @@
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="imagick.implodeimage.html">Imagick::implodeImage</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="imagick.labelimage.html">Imagick::labelImage</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imagick.inversefouriertransformimage.html">Imagick::inverseFourierTransformImage</a></div>
  <div class="up"><a href="class.imagick.html">Imagick</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div></body></html>

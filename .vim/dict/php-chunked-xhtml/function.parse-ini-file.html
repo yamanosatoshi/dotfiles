@@ -13,7 +13,7 @@
 </div><hr /><div id="function.parse-ini-file" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">parse_ini_file</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">parse_ini_file</span> &mdash; <span class="dc-title">設定ファイルをパースする</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">parse_ini_file</span> &mdash; <span class="dc-title">設定ファイルをパースする</span></p>
 
  </div>
  
@@ -27,8 +27,8 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>parse_ini_file()</strong></span> は、
-   <em><code class="parameter">filename</code></em> で指定した ini ファイルをロードし、
+   <span class="function"><strong>parse_ini_file()</strong></span> は、
+   <code class="parameter">filename</code> で指定した ini ファイルをロードし、
    連想配列としてその設定値を返します。
   </p>
   <p class="para">
@@ -42,9 +42,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -52,25 +53,25 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">process_sections</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">process_sections</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">process_sections</code></em> パラメータに <strong><code>TRUE</code></strong>
+       <code class="parameter">process_sections</code> パラメータに <strong><code>TRUE</code></strong>
        を設定すると、セクション名と設定が含まれた多次元の配列を得ることができます。
-       デフォルトでは、<em><code class="parameter">process_sections</code></em> は <strong><code>FALSE</code></strong> です。
+       デフォルトでは、<code class="parameter">process_sections</code> は <strong><code>FALSE</code></strong> です。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">scanner_mode</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">scanner_mode</code></em></span>
      <dd>
 
       <p class="para">
@@ -80,8 +81,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -115,7 +115,7 @@
       <tr>
        <td>5.3.0</td>
        <td>
-        オプションのパラメータ <em><code class="parameter">scanner_mode</code></em> が追加されました。
+        オプションのパラメータ <code class="parameter">scanner_mode</code> が追加されました。
         シングルクォートも変数の代入に使うことができます。
         ハッシュ記号 (<em>#</em>) はコメントとしては扱われなくなり、
         もし使うと警告が発生します。
@@ -166,7 +166,7 @@
  <div class="refsect1 examples" id="refsect1-function.parse-ini-file-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2405">
+   <div class="example" id="example-2604">
     <p><strong>例1 <var class="filename">sample.ini</var> の内容</strong></p>
     <div class="example-contents">
 <div class="cdata"><pre>
@@ -187,15 +187,18 @@ phpversion[] = &quot;5.0&quot;
 phpversion[] = &quot;5.1&quot;
 phpversion[] = &quot;5.2&quot;
 phpversion[] = &quot;5.3&quot;
+
+urls[svn] = &quot;http://svn.php.net&quot;
+urls[git] = &quot;http://git.php.net&quot;
 </pre></div>
     </div>
 
    </div>
-   <div class="example" id="example-2406">
-    <p><strong>例2  <span class="function"><strong>parse_ini_file()</strong></span> の例</strong></p>
+   <div class="example" id="example-2605">
+    <p><strong>例2 <span class="function"><strong>parse_ini_file()</strong></span> の例</strong></p>
     <div class="example-contents"><p>
      <a href="language.constants.html" class="link">定数</a>も ini ファイル上でパースされます。
-     そのため、 <span class="function"><strong>parse_ini_file()</strong></span> をコールする前に
+     そのため、<span class="function"><strong>parse_ini_file()</strong></span> をコールする前に
      ini ファイル上の値として定数を定義した場合、返り値に統合されます。
      ini ファイル上の値だけが評価されます。以下は例です：
     </p></div>
@@ -225,6 +228,12 @@ Array
             [3] =&gt; 5.3
         )
 
+    [urls] =&gt; Array
+        (
+            [svn] =&gt; http://svn.php.net
+            [git] =&gt; http://git.php.net
+        )
+
 )
 Array
 (
@@ -251,6 +260,12 @@ Array
                     [3] =&gt; 5.3
                 )
 
+            [urls] =&gt; Array
+                (
+                    [svn] =&gt; http://svn.php.net
+                    [git] =&gt; http://git.php.net
+                )
+
         )
 
 )
@@ -259,8 +274,8 @@ Array
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2407">
-    <p><strong>例3  <span class="function"><strong>parse_ini_file()</strong></span> による php.ini ファイルのパース</strong></p>
+   <div class="example" id="example-2606">
+    <p><strong>例3 <span class="function"><strong>parse_ini_file()</strong></span> による php.ini ファイルのパース</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;以下の結果を比較するための簡単な関数<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">yesno</span><span style="color: #007700">(</span><span style="color: #0000BB">$expression</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return(</span><span style="color: #0000BB">$expression&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #DD0000">'Yes'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'No'</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;php.ini&nbsp;へのパスを&nbsp;the&nbsp;php_ini_loaded_file()&nbsp;関数で取得します<br />//&nbsp;この関数は&nbsp;PHP&nbsp;5.2.4&nbsp;以降で使用可能です<br /></span><span style="color: #0000BB">$ini_path&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">php_ini_loaded_file</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;php.ini&nbsp;をパースします<br /></span><span style="color: #0000BB">$ini&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">parse_ini_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$ini_path</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;結果を表示して比較します。get_cfg_var()&nbsp;を使用すると、<br />//&nbsp;ここでパースして読み込んだのと同じ結果が得られることに注意しましょう<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'(parsed)&nbsp;magic_quotes_gpc&nbsp;=&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">yesno</span><span style="color: #007700">(</span><span style="color: #0000BB">$ini</span><span style="color: #007700">[</span><span style="color: #DD0000">'magic_quotes_gpc'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">'(loaded)&nbsp;magic_quotes_gpc&nbsp;=&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">yesno</span><span style="color: #007700">(</span><span style="color: #0000BB">get_cfg_var</span><span style="color: #007700">(</span><span style="color: #DD0000">'magic_quotes_gpc'</span><span style="color: #007700">))&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -300,10 +315,20 @@ Array
    <span class="simpara">
     ini ファイル上でキーとして使ってはいけない単語があります。
     null, yes, no, true, false, on, off, none などです。
-    null, no および false は &quot;&quot; となり、yes および true は &quot;1&quot; となります。
-    次の文字 <em>?{}|&amp;~![()^&quot;</em> は、キーで使ってはいけません。
+    null, off, no および false は &quot;&quot; となり、on, yes および true は &quot;1&quot; となります。
+    次の文字 <em>?{}|&amp;~!()^&quot;</em> は、キーで使ってはいけません。
     また、値の中で特別な意味を持ちます。
    </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    等号が含まれないエントリは無視されます。
+    つまり、&quot;foo&quot; というエントリは無視されますが、
+    &quot;bar =&quot; は、空の値を持つエントリとして追加されます。
+    たとえば MySQL の <var class="filename">my.cnf</var> には
+    &quot;no-auto-rehash&quot; という設定項目がありますが、この項目には何も値を設定しません。
+    そのため、この項目は無視されます。
+   </p>
   </p></blockquote>
  </div>
 
@@ -312,7 +337,7 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.parse-ini-string.html" class="function" rel="rdfs-seeAlso">parse_ini_string()</a> - 設定文字列をパースする</span></li>
+    <li class="member"><span class="function"><a href="function.parse-ini-string.html" class="function" rel="rdfs-seeAlso">parse_ini_string()</a> - 設定文字列をパースする</span></li>
    </ul>
   </p>
  </div>

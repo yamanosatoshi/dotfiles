@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -46,21 +47,20 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">entire_row</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">entire_row</code></em></span>
      <dd>
 
       <p class="para">
-       デフォルトでは、 <span class="function"><strong>querySingle()</strong></span> はクエリが返す結果の最初のカラムの値を返します。
-       <em><code class="parameter">entire_row</code></em> が <strong><code>TRUE</code></strong> の場合は、最初の行全体を配列で返します。
+       デフォルトでは、<span class="function"><strong>querySingle()</strong></span> はクエリが返す結果の最初のカラムの値を返します。
+       <code class="parameter">entire_row</code> が <strong><code>TRUE</code></strong> の場合は、最初の行全体を配列で返します。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -72,11 +72,11 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    結果の最初のカラムの値あるいは最初の行全体の配列
-   (<em><code class="parameter">entire_row</code></em> が <strong><code>TRUE</code></strong> の場合) を返します。
+   (<code class="parameter">entire_row</code> が <strong><code>TRUE</code></strong> の場合) を返します。
   </p>
   <p class="para">
    クエリ自体は有効であるけれども結果が返されなかった場合の返り値は、
-   <em><code class="parameter">entire_row</code></em> が <strong><code>FALSE</code></strong> なら <strong><code>NULL</code></strong>、
+   <code class="parameter">entire_row</code> が <strong><code>FALSE</code></strong> なら <strong><code>NULL</code></strong>、
    そうでなければ空の配列となります。
   </p>
   <p class="para">
@@ -88,8 +88,8 @@
  <div class="refsect1 examples" id="refsect1-sqlite3.querysingle-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2155">
-    <p><strong>例1  <span class="function"><strong>SQLite3::querySingle()</strong></span> の例</strong></p>
+   <div class="example" id="example-2352">
+    <p><strong>例1 <span class="function"><strong>SQLite3::querySingle()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$db&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SQLite3</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysqlitedb.db'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">querySingle</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;username&nbsp;FROM&nbsp;user&nbsp;WHERE&nbsp;userid=1'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">querySingle</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;username,&nbsp;email&nbsp;FROM&nbsp;user&nbsp;WHERE&nbsp;userid=1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>

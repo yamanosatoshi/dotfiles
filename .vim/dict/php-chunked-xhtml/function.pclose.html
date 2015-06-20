@@ -13,7 +13,7 @@
 </div><hr /><div id="function.pclose" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">pclose</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">pclose</span> &mdash; <span class="dc-title">プロセスのファイルポインタをクローズする</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">pclose</span> &mdash; <span class="dc-title">プロセスのファイルポインタをクローズする</span></p>
 
  </div>
  
@@ -25,7 +25,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><a href="function.popen.html" class="function">popen()</a></span> でオープンしたパイプへの
+   <span class="function"><a href="function.popen.html" class="function">popen()</a></span> でオープンしたパイプへの
    ファイルポインタをクローズします。
   </p>
  </div>
@@ -36,19 +36,19 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">handle</code></dt>
 
-     <span class="term"><em><code class="parameter">handle</code></em></span>
      <dd>
 
       <p class="para">
        ファイルポインタは有効なものでなければならず、また
-        <span class="function"><a href="function.popen.html" class="function">popen()</a></span> で正常にオープンされたものである必要があります。
+       <span class="function"><a href="function.popen.html" class="function">popen()</a></span> で正常にオープンされたものである必要があります。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -67,8 +67,8 @@
  <div class="refsect1 examples" id="refsect1-function.pclose-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2410">
-    <p><strong>例1  <span class="function"><strong>pclose()</strong></span> の例</strong></p>
+   <div class="example" id="example-2609">
+    <p><strong>例1 <span class="function"><strong>pclose()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">popen</span><span style="color: #007700">(</span><span style="color: #DD0000">'/bin/ls'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">pclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -86,9 +86,9 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <strong>Unix のみ</strong><br />
    <p class="para">
-     <span class="function"><a href="function.proc-close.html" class="function">proc_close()</a></span> の内部的な実装は、
+    <span class="function"><strong>pclose()</strong></span> の内部的な実装は、
     <em>waitpid(3)</em> システムコールを使っています。
-    実際の終了ステータスを知るには、 <span class="function"><a href="function.pcntl-wexitstatus.html" class="function">pcntl_wexitstatus()</a></span>
+    実際の終了ステータスを知るには、<span class="function"><a href="function.pcntl-wexitstatus.html" class="function">pcntl_wexitstatus()</a></span>
     関数を使わなければなりません。
    </p>
   </p></blockquote>
@@ -99,7 +99,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - プロセスへのファイルポインタをオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - プロセスへのファイルポインタをオープンする</span></li>
    </ul>
   </p>
  </div>

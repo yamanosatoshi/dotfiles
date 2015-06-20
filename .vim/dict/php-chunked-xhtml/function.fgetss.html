@@ -13,7 +13,7 @@
 </div><hr /><div id="function.fgetss" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">fgetss</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">fgetss</span> &mdash; <span class="dc-title">ファイルポインタから 1 行取り出し、HTML タグを取り除く</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">fgetss</span> &mdash; <span class="dc-title">ファイルポインタから 1 行取り出し、HTML タグを取り除く</span></p>
 
  </div>
  
@@ -27,8 +27,8 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span> と同じですが、
-    <span class="function"><strong>fgetss()</strong></span> は読み込んだテキストから
+   <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span> と同じですが、
+   <span class="function"><strong>fgetss()</strong></span> は読み込んだテキストから
    NUL バイト や HTML および PHP のタグを取り除こうとすることが異なります。
   </p>
  </div>
@@ -39,22 +39,23 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">handle</code></dt>
 
-     <span class="term"><em><code class="parameter">handle</code></em></span>
      <dd>
 
       <p class="para">ファイルポインタは、有効なファイルポインタである必要があり、
- <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> または  <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> で正常にオープンされた
-（そしてまだ  <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span> でクローズされていない）
+<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> または <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> で正常にオープンされた
+（そしてまだ <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span> でクローズされていない）
 ファイルを指している必要があります。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">length</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">length</code></em></span>
      <dd>
 
       <p class="para">
@@ -62,11 +63,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">allowable_tags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">allowable_tags</code></em></span>
      <dd>
 
       <p class="para">
@@ -75,8 +76,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -86,8 +86,8 @@
  <div class="refsect1 returnvalues" id="refsect1-function.fgetss-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">handle</code></em> で指定したファイルポインタから最大
-   <em><code class="parameter">length</code></em> - 1 バイト読み出し、
+   <code class="parameter">handle</code> で指定したファイルポインタから最大
+   <code class="parameter">length</code> - 1 バイト読み出し、
    HTML や PHP コードを取り除いた文字列を返します。
   </p>
   <p class="para">
@@ -96,38 +96,9 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.fgetss-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>5.0.0</td>
-       <td>
-        <em><code class="parameter">length</code></em> パラメータがオプションとなりました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.fgetss-examples">
   <p class="para">
-   <div class="example" id="example-2354">
+   <div class="example" id="example-2553">
     <p><strong>例1 PHP ファイルの 1 行ごとの読み込み</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -164,11 +135,11 @@ Text outside of the HTML block.
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - ファイルポインタから 1 行取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - プロセスへのファイルポインタをオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - インターネット接続もしくは Unix ドメインソケット接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.strip-tags.html" class="function" rel="rdfs-seeAlso">strip_tags()</a> - 文字列から HTML および PHP タグを取り除く</span></li>
+    <li class="member"><span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - ファイルポインタから 1 行取得する</span></li>
+    <li class="member"><span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - プロセスへのファイルポインタをオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - インターネット接続もしくは Unix ドメインソケット接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.strip-tags.html" class="function" rel="rdfs-seeAlso">strip_tags()</a> - 文字列から HTML および PHP タグを取り除く</span></li>
    </ul>
   </p>
  </div>

@@ -34,7 +34,7 @@
 
   <p class="simpara">
    暗号化設定が確立されると、それ以降は
-   <em><code class="parameter">enable</code></em> パラメータに <strong><code>TRUE</code></strong> あるいは <strong><code>FALSE</code></strong>
+   <code class="parameter">enable</code> パラメータに <strong><code>TRUE</code></strong> あるいは <strong><code>FALSE</code></strong>
    を指定することで暗号化の on/off を動的に切り替えられます。
   </p>
  </div>
@@ -45,9 +45,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">stream</code></dt>
 
-     <span class="term"><em><code class="parameter">stream</code></em></span>
      <dd>
 
       <p class="para">
@@ -55,11 +56,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">enable</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">enable</code></em></span>
      <dd>
 
       <p class="para">
@@ -67,11 +68,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">crypto_type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">crypto_type</code></em></span>
      <dd>
 
       <p class="para">
@@ -87,22 +88,25 @@
         <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_TLS_SERVER</code></strong></span></li>
        </ul>
       </p>
-     </dd>
-
-    </dt>
-
-    <dt>
-
-     <span class="term"><em><code class="parameter">session_stream</code></em></span>
-     <dd>
-
       <p class="para">
-       ストリームで <em><code class="parameter">session_stream</code></em> からの設定を送信します。
+       省略した場合は、ストリームの SSL コンテキストのオプション <code class="parameter">crypto_type</code>
+       を利用します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">session_stream</code></dt>
 
+     <dd>
+
+      <p class="para">
+       ストリームで <code class="parameter">session_stream</code> からの設定を送信します。
+      </p>
+     </dd>
+
+    
    </dl>
 
   </p>
@@ -118,12 +122,41 @@
   </p>
  </div>
 
+
+ <div class="refsect1 changelog" id="refsect1-function.stream-socket-enable-crypto-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.6.0</td>
+       <td>
+        <code class="parameter">crypto_type</code> がオプションになりました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
  
  <div class="refsect1 examples" id="refsect1-function.stream-socket-enable-crypto-examples">
   <h3 class="title">例</h3>
   <p class="para">
    <div class="example" id="stream-socket-enable-crypto.example.basic">
-    <p><strong>例1  <span class="function"><strong>stream_socket_enable_crypto()</strong></span> の例</strong></p>
+    <p><strong>例1 <span class="function"><strong>stream_socket_enable_crypto()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_socket_client</span><span style="color: #007700">(</span><span style="color: #DD0000">"tcp://myproto.example.com:31337"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errno</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errstr</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">30</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$fp</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"接続できません:&nbsp;</span><span style="color: #0000BB">$errstr</span><span style="color: #DD0000">&nbsp;(</span><span style="color: #0000BB">$errno</span><span style="color: #DD0000">)"</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;ログイン時の暗号化を有効にします&nbsp;*/<br /></span><span style="color: #0000BB">stream_socket_enable_crypto</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">STREAM_CRYPTO_METHOD_SSLv23_CLIENT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"USER&nbsp;god\r\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"PASS&nbsp;secret\r\n"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;それ以外では暗号化を無効にします&nbsp;*/<br /></span><span style="color: #0000BB">stream_socket_enable_crypto</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /><br />while&nbsp;(</span><span style="color: #0000BB">$motd&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$motd</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

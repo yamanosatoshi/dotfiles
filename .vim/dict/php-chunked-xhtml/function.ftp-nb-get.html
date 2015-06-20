@@ -28,11 +28,11 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>ftp_nb_get()</strong></span> は FTP サーバーからリモートファイルを取得し、
+   <span class="function"><strong>ftp_nb_get()</strong></span> は FTP サーバーからリモートファイルを取得し、
    それをローカルファイルに保存します。
   </p>
   <p class="para">
-    <span class="function"><a href="function.ftp-get.html" class="function">ftp_get()</a></span> との違いは、この関数が
+   <span class="function"><a href="function.ftp-get.html" class="function">ftp_get()</a></span> との違いは、この関数が
    非同期処理でファイルを取得するということです。そのため、
    ファイルをダウンロードしている最中に別の処理を行うことができます。
   </p>
@@ -43,9 +43,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">ftp_stream</code></dt>
 
-     <span class="term"><em><code class="parameter">ftp_stream</code></em></span>
      <dd>
 
       <p class="para">
@@ -53,11 +54,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">local_file</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">local_file</code></em></span>
      <dd>
 
       <p class="para">
@@ -65,11 +66,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">remote_file</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">remote_file</code></em></span>
      <dd>
 
       <p class="para">
@@ -77,11 +78,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">mode</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">mode</code></em></span>
      <dd>
 
       <p class="para">
@@ -90,18 +91,17 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">resumepos</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">resumepos</code></em></span>
      <dd>
 
       <p class="para">ダウンロードを開始する、リモートファイル内の位置。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -118,8 +118,8 @@
  <div class="refsect1 examples" id="refsect1-function.ftp-nb-get-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4271">
-    <p><strong>例1  <span class="function"><strong>ftp_nb_get()</strong></span> の例</strong></p>
+   <div class="example" id="example-4719">
+    <p><strong>例1 <span class="function"><strong>ftp_nb_get()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;ダウンロードを開始する<br /></span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_nb_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$my_connection</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"README"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">FTP_BINARY</span><span style="color: #007700">);<br />while&nbsp;(</span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">FTP_MOREDATA</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;何かお好みの動作を<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"."</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;ダウンロードを継続する…<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_nb_continue</span><span style="color: #007700">(</span><span style="color: #0000BB">$my_connection</span><span style="color: #007700">);<br />}<br />if&nbsp;(</span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">!=&nbsp;</span><span style="color: #0000BB">FTP_FINISHED</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"There&nbsp;was&nbsp;an&nbsp;error&nbsp;downloading&nbsp;the&nbsp;file..."</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;exit(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -128,8 +128,8 @@
     </div>
 
    </div>
-   <div class="example" id="example-4272">
-    <p><strong>例2  <span class="function"><strong>ftp_nb_get()</strong></span> でダウンロードを再開する</strong></p>
+   <div class="example" id="example-4720">
+    <p><strong>例2 <span class="function"><strong>ftp_nb_get()</strong></span> でダウンロードを再開する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;開始<br /></span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_nb_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$my_connection</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"README"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">FTP_BINARY</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #DD0000">"test"</span><span style="color: #007700">));<br /></span><span style="color: #FF8000">//&nbsp;あるいは:&nbsp;$ret&nbsp;=&nbsp;ftp_nb_get($my_connection,&nbsp;"test",&nbsp;"README",&nbsp;<br />//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FTP_BINARY,&nbsp;FTP_AUTORESUME);<br /></span><span style="color: #007700">while&nbsp;(</span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">FTP_MOREDATA</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;何かお好みの動作を<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"."</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;ダウンロードを継続する…<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_nb_continue</span><span style="color: #007700">(</span><span style="color: #0000BB">$my_connection</span><span style="color: #007700">);<br />}<br />if&nbsp;(</span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">!=&nbsp;</span><span style="color: #0000BB">FTP_FINISHED</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"There&nbsp;was&nbsp;an&nbsp;error&nbsp;downloading&nbsp;the&nbsp;file..."</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;exit(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -138,9 +138,9 @@
     </div>
 
    </div>
-   <div class="example" id="example-4273">
+   <div class="example" id="example-4721">
     <p><strong>例3 
-      <span class="function"><strong>ftp_nb_get()</strong></span> を用い、ファイルの 100 バイト目以降から
+     <span class="function"><strong>ftp_nb_get()</strong></span> を用い、ファイルの 100 バイト目以降から
      ダウンロードを再開する
     </strong></p>
     <div class="example-contents">
@@ -166,10 +166,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ftp-nb-fget.html" class="function" rel="rdfs-seeAlso">ftp_nb_fget()</a> - FTP サーバーからファイルをダウンロードし、オープン中のファイルに保存する（非ブロッキング）</span></li>
-    <li class="member"> <span class="function"><a href="function.ftp-nb-continue.html" class="function" rel="rdfs-seeAlso">ftp_nb_continue()</a> - ファイルの取得/送信を継続する（非ブロッキング）</span></li>
-    <li class="member"> <span class="function"><a href="function.ftp-fget.html" class="function" rel="rdfs-seeAlso">ftp_fget()</a> - FTP サーバーからファイルをダウンロードし、オープン中のファイルに保存する</span></li>
-    <li class="member"> <span class="function"><a href="function.ftp-get.html" class="function" rel="rdfs-seeAlso">ftp_get()</a> - FTP サーバーからファイルをダウンロードする</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-nb-fget.html" class="function" rel="rdfs-seeAlso">ftp_nb_fget()</a> - FTP サーバーからファイルをダウンロードし、オープン中のファイルに保存する（非ブロッキング）</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-nb-continue.html" class="function" rel="rdfs-seeAlso">ftp_nb_continue()</a> - ファイルの取得/送信を継続する（非ブロッキング）</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-fget.html" class="function" rel="rdfs-seeAlso">ftp_fget()</a> - FTP サーバーからファイルをダウンロードし、オープン中のファイルに保存する</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-get.html" class="function" rel="rdfs-seeAlso">ftp_get()</a> - FTP サーバーからファイルをダウンロードする</span></li>
    </ul>
   </p>
  </div>

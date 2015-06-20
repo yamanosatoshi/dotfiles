@@ -28,12 +28,12 @@
   ]]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>sem_get()</strong></span> は、
+   <span class="function"><strong>sem_get()</strong></span> は、
    System V セマフォを指定したキーでアクセスするために使用可能な
    ID を返します。
   </p>
   <p class="para">
-   同じキーで  <span class="function"><strong>sem_get()</strong></span> を 2 度コールした場合、
+   同じキーで <span class="function"><strong>sem_get()</strong></span> を 2 度コールした場合、
    別のセマフォ ID が返されます。
    しかし、どちらの ID も同じそのセマフォをアクセスします。
   </p>
@@ -45,33 +45,34 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">key</code></dt>
 
-     <span class="term"><em><code class="parameter">key</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">max_acquire</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">max_acquire</code></em></span>
      <dd>
 
       <p class="para">
        同時にセマフォを得ることが可能なプロセス数を
-       <em><code class="parameter">max_acquire</code></em> にセットします。
+       <code class="parameter">max_acquire</code> にセットします。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">perm</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">perm</code></em></span>
      <dd>
 
       <p class="para">
@@ -81,11 +82,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">auto_release</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">auto_release</code></em></span>
      <dd>
 
       <p class="para">
@@ -93,8 +94,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -109,32 +109,16 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.sem-get-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        <em><code class="parameter">auto_release</code></em> が追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
+ <div class="refsect1 notes" id="refsect1-function.sem-get-notes">
+  <h3 class="title">注意</h3>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="simpara">
+    PHP 以外のところで作られたセマフォに <span class="function"><strong>sem_get()</strong></span> でアクセスするときには、
+    3 つのセマフォのセットとして作ったものでなければいけないことに注意しましょう
+    (たとえば、C の <em>semget()</em> 関数で作るなら、<em>nsems</em> に 3 を指定します)。
+    そうしないと、PHP からそのセマフォにアクセスできなくなります。
+   </p>
+  </div>
  </div>
 
 
@@ -142,9 +126,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.sem-acquire.html" class="function" rel="rdfs-seeAlso">sem_acquire()</a> - セマフォを得る</span></li>
-    <li class="member"> <span class="function"><a href="function.sem-release.html" class="function" rel="rdfs-seeAlso">sem_release()</a> - セマフォを解放する</span></li>
-    <li class="member"> <span class="function"><a href="function.ftok.html" class="function" rel="rdfs-seeAlso">ftok()</a> - パス名とプロジェクト ID を、System V IPC キーに変換する</span></li>
+    <li class="member"><span class="function"><a href="function.sem-acquire.html" class="function" rel="rdfs-seeAlso">sem_acquire()</a> - セマフォを得る</span></li>
+    <li class="member"><span class="function"><a href="function.sem-release.html" class="function" rel="rdfs-seeAlso">sem_release()</a> - セマフォを解放する</span></li>
+    <li class="member"><span class="function"><a href="function.ftok.html" class="function" rel="rdfs-seeAlso">ftok()</a> - パス名とプロジェクト ID を、System V IPC キーに変換する</span></li>
    </ul>
   </p>
  </div>

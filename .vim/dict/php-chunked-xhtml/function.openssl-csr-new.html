@@ -28,8 +28,8 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>openssl_csr_new()</strong></span> は、新しい CSR (Certificate Signing Request)
-   を <em><code class="parameter">dn</code></em> の情報に基づいて作成します。dn は、証明書で使用される識別名です。
+   <span class="function"><strong>openssl_csr_new()</strong></span> は、新しい CSR (Certificate Signing Request)
+   を <code class="parameter">dn</code> の情報に基づいて作成します。dn は、証明書で使用される識別名です。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
  <span class="simpara">
@@ -47,9 +47,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">dn</code></dt>
 
-     <span class="term"><em><code class="parameter">dn</code></em></span>
      <dd>
 
       <p class="para">
@@ -57,41 +58,41 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">privkey</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">privkey</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">privkey</code></em> には、事前に  <span class="function"><a href="function.openssl-pkey-new.html" class="function">openssl_pkey_new()</a></span>
+       <code class="parameter">privkey</code> には、事前に <span class="function"><a href="function.openssl-pkey-new.html" class="function">openssl_pkey_new()</a></span>
        （あるいはその他の openssl_pkey 系の関数）で作成した秘密鍵を設定します。
        これに対応する公開鍵が、CSR への署名に使用されます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">configargs</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">configargs</code></em></span>
      <dd>
 
       <p class="para">
        デフォルトでは、システムの <em>openssl.conf</em> の設定に
-       したがってリクエストが初期化されます。<em><code class="parameter">configargs</code></em>
+       したがってリクエストが初期化されます。<code class="parameter">configargs</code>
        のキー <em>config_section_section</em> を設定することで、この
        デフォルト項目を変更することが可能です。また、キー <em>config</em>
        に別の openssl 設定ファイルを指定することで別の設定を使用することも可能です。
-       もし <em><code class="parameter">configargs</code></em> に以下の表のキーが存在すれば、それらは
+       もし <code class="parameter">configargs</code> に以下の表のキーが存在すれば、それらは
        <em>openssl.conf</em> の対応する項目と同じ働きをします。
        <table class="doctable table">
         <caption><strong>設定の上書き</strong></caption>
         
          <thead>
           <tr>
-           <th><em><code class="parameter">configargs</code></em> のキー</th>
+           <th><code class="parameter">configargs</code> のキー</th>
            <th>型</th>
            <th><em>openssl.conf</em> で同等の意味を持つ項目</th>
            <th>説明</th>
@@ -164,23 +165,22 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">extraattribs</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">extraattribs</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">extraattribs</code></em> は、CSR に関する追加の設定情報を
-       設定するために使用します。<em><code class="parameter">dn</code></em> および
-       <em><code class="parameter">extraattribs</code></em> はどちらも連想配列で、それらの
+       <code class="parameter">extraattribs</code> は、CSR に関する追加の設定情報を
+       設定するために使用します。<code class="parameter">dn</code> および
+       <code class="parameter">extraattribs</code> はどちらも連想配列で、それらの
        キーが OID に変換されたうえでリクエストの関連する部分に適用されます。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -198,7 +198,7 @@
  <div class="refsect1 examples" id="refsect1-function.openssl-csr-new-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-856">
+   <div class="example" id="example-900">
     <p><strong>例1 自己署名証明書の作成</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">

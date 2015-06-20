@@ -13,7 +13,7 @@
 </div><hr /><div id="function.feof" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">feof</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">feof</span> &mdash; <span class="dc-title">ファイルポインタがファイル終端に達しているかどうか調べる</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">feof</span> &mdash; <span class="dc-title">ファイルポインタがファイル終端に達しているかどうか調べる</span></p>
 
  </div>
  
@@ -35,19 +35,19 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">handle</code></dt>
 
-     <span class="term"><em><code class="parameter">handle</code></em></span>
      <dd>
 
       <p class="para">ファイルポインタは、有効なファイルポインタである必要があり、
- <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> または  <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> で正常にオープンされた
-（そしてまだ  <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span> でクローズされていない）
+<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> または <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> で正常にオープンされた
+（そしてまだ <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span> でクローズされていない）
 ファイルを指している必要があります。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -68,11 +68,11 @@
   <h3 class="title">注意</h3>
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
-     <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span>
-    でオープンした接続がサーバーによって閉じられていない場合、 <span class="function"><strong>feof()</strong></span>
+    <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span>
+    でオープンした接続がサーバーによって閉じられていない場合、<span class="function"><strong>feof()</strong></span>
     はハングします。回避策は以下の例を参照ください。
-    <div class="example" id="example-2348">
-     <p><strong>例1  <span class="function"><strong>feof()</strong></span> のタイムアウト処理</strong></p>
+    <div class="example" id="example-2547">
+     <p><strong>例1 <span class="function"><strong>feof()</strong></span> のタイムアウト処理</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">safe_feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;&amp;</span><span style="color: #0000BB">$start&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">)&nbsp;{<br />&nbsp;</span><span style="color: #0000BB">$start&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br />&nbsp;return&nbsp;</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;$fp&nbsp;は事前に&nbsp;fsockopen()&nbsp;でオープンしているものとします&nbsp;*/<br /><br /></span><span style="color: #0000BB">$start&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$timeout&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'default_socket_timeout'</span><span style="color: #007700">);<br /><br />while(!</span><span style="color: #0000BB">safe_feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$start</span><span style="color: #007700">)&nbsp;&amp;&amp;&nbsp;(</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">$start</span><span style="color: #007700">)&nbsp;&lt;&nbsp;</span><span style="color: #0000BB">$timeout</span><span style="color: #007700">)<br />{<br />&nbsp;</span><span style="color: #FF8000">/*&nbsp;処理&nbsp;*/<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -86,9 +86,9 @@
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
     無効なファイルポインタを渡した場合、無限ループに陥ることがあります。
-    なぜなら  <span class="function"><strong>feof()</strong></span> が <strong><code>TRUE</code></strong> を返すことができないからです。
-    <div class="example" id="example-2349">
-     <p><strong>例2  <span class="function"><strong>feof()</strong></span> に無効なファイルポインタを使用する例</strong></p>
+    なぜなら <span class="function"><strong>feof()</strong></span> が <strong><code>TRUE</code></strong> を返すことができないからです。
+    <div class="example" id="example-2548">
+     <p><strong>例2 <span class="function"><strong>feof()</strong></span> に無効なファイルポインタを使用する例</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;ファイルを読み込めなかったりファイルが存在しなかったりした場合、<br />//&nbsp;fopen&nbsp;関数は&nbsp;FALSE&nbsp;を返します。<br /></span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;@</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"no_such_file"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;fopen&nbsp;からの&nbsp;FALSE&nbsp;が警告を発生させ、ここで無限ループとなります。<br /></span><span style="color: #007700">while&nbsp;(!</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">))&nbsp;{<br />}<br /><br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -31,33 +31,65 @@
   <p class="para">
    <dl>
 
-    <dt id="context.ssl.verify-peer">
-     <span class="term">
-      <em><code class="parameter">verify_peer</code></em>
+    
+     <dt id="context.ssl.peer-name">
+      <code class="parameter">peer_name</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       使用するピア名。省略した場合は、ストリームをオープンしたときに使ったホスト名をもとに、名前を推測します。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.verify-peer">
+      <code class="parameter">verify_peer</code>
       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
        SSL サーバー証明書の検証を要求するかどうか。
       </p>
       <p class="para">
-       デフォルトは <strong><code>FALSE</code></strong> です。
+       デフォルトは <strong><code>TRUE</code></strong> です。
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.allow-self-signed">
-     <span class="term">
-      <em><code class="parameter">allow_self_signed</code></em>
+    
+    
+     <dt id="context.ssl.verify-peer-name">
+      <code class="parameter">verify_peer_name</code>
       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-     </span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       ピア名の検証を要求するかどうか。
+      </p>
+      <p class="para">
+       デフォルトは <strong><code>TRUE</code></strong> です。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.ssl.allow-self-signed">
+      <code class="parameter">allow_self_signed</code>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </dt>
+
      <dd>
 
       <p class="para">
        自己証明の証明書を許可するかどうか。
-       <a href="context.ssl.html#context.ssl.verify-peer" class="link"><em><code class="parameter">verify_peer</code></em></a>
+       <a href="context.ssl.html#context.ssl.verify-peer" class="link"><code class="parameter">verify_peer</code></a>
        が必要です。
       </p>
       <p class="para">
@@ -65,13 +97,13 @@
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.cafile">
-     <span class="term">
-      <em><code class="parameter">cafile</code></em>
+    
+    
+     <dt id="context.ssl.cafile">
+      <code class="parameter">cafile</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -81,13 +113,13 @@
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.capath">
-     <span class="term">
-      <em><code class="parameter">capath</code></em>
+    
+    
+     <dt id="context.ssl.capath">
+      <code class="parameter">capath</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -98,13 +130,13 @@
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.local-cert">
-     <span class="term">
-      <em><code class="parameter">local_cert</code></em>
+    
+    
+     <dt id="context.ssl.local-cert">
+      <code class="parameter">local_cert</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -115,13 +147,13 @@
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.passphrase">
-     <span class="term">
-      <em><code class="parameter">passphrase</code></em>
+    
+    
+     <dt id="context.ssl.passphrase">
+      <code class="parameter">passphrase</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -130,13 +162,13 @@
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.cn-match">
-     <span class="term">
-      <em><code class="parameter">CN_match</code></em>
+    
+    
+     <dt id="context.ssl.cn-match">
+      <code class="parameter">CN_match</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -144,15 +176,21 @@
        行います。もし一般名がこれにマッチしなかった場合、接続の試行は
        失敗します。
       </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+        <span class="simpara">
+          このオプションは非推奨です。PHP 5.6.0 以降では <code class="parameter">peer_name</code>
+          を使いましょう。
+        </span>
+      </p></blockquote>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.verify-depth">
-     <span class="term">
-      <em><code class="parameter">verify_depth</code></em>
+    
+    
+     <dt id="context.ssl.verify-depth">
+      <code class="parameter">verify_depth</code>
       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -163,13 +201,13 @@
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.ciphers">
-     <span class="term">
-      <em><code class="parameter">ciphers</code></em>
+    
+    
+     <dt id="context.ssl.ciphers">
+      <code class="parameter">ciphers</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -181,13 +219,13 @@
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.capture-peer-cert">
-     <span class="term">
-      <em><code class="parameter">capture_peer_cert</code></em>
+    
+    
+     <dt id="context.ssl.capture-peer-cert">
+      <code class="parameter">capture_peer_cert</code>
       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -196,13 +234,13 @@
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.capture-peer-cert-chain">
-     <span class="term">
-      <em><code class="parameter">capture_peer_cert_chain</code></em>
+    
+    
+     <dt id="context.ssl.capture-peer-cert-chain">
+      <code class="parameter">capture_peer_cert_chain</code>
       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -211,13 +249,13 @@
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.sni-enabled">
-     <span class="term">
-      <em><code class="parameter">SNI_enabled</code></em>
+    
+    
+     <dt id="context.ssl.sni-enabled">
+      <code class="parameter">SNI_enabled</code>
       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -226,28 +264,34 @@
       </p>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.sni-server-name">
-     <span class="term">
-      <em><code class="parameter">SNI_server_name</code></em>
+    
+    
+     <dt id="context.ssl.sni-server-name">
+      <code class="parameter">SNI_server_name</code>
       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
        設定すると、この値がサーバー名として用いられるようになります。
        設定されていない場合は、ストリームをオープンしたときに使ったホスト名からサーバー名を推測します。
       </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+        <span class="simpara">
+          このオプションは非推奨です。PHP 5.6.0 以降では <code class="parameter">peer_name</code>
+          を使いましょう。
+        </span>
+      </p></blockquote>
      </dd>
 
-    </dt>
-
-    <dt id="context.ssl.disable-compression">
-     <span class="term">
-      <em><code class="parameter">disable_compression</code></em>
+    
+    
+     <dt id="context.ssl.disable-compression">
+      <code class="parameter">disable_compression</code>
       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-     </span>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -255,8 +299,29 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt id="context.ssl.peer-fingerprint">
+      <code class="parameter">peer_fingerprint</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span> | <span class="type"><a href="language.types.array.html" class="type array">array</a></span>
+     </dt>
 
+     <dd>
+
+      <p class="para">
+       リモート証明書のダイジェストが指定したハッシュに一致しない場合に、異常終了させます。
+      </p>
+      <p class="para">
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span> を指定する場合は、その長さでハッシュアルゴリズムを判断します。
+       &quot;md5&quot; (32) あるいは &quot;sha1&quot; (40) のいずれかです。
+      </p>
+      <p class="para">
+       <span class="type"><a href="language.types.array.html" class="type array">array</a></span> を指定する場合は、キーがハッシュアルゴリズムで、
+       それに対応する値がダイジェストとなります。
+      </p>
+     </dd>
+
+    
    </dl>
 
   </p>
@@ -278,26 +343,34 @@
 
      <tbody class="tbody">
       <tr>
+       <td>5.6.0</td>
+       <td>
+        <code class="parameter">peer_fingerprint</code> と <code class="parameter">verify_peer_name</code> が追加されました。
+        <code class="parameter">verify_peer</code> のデフォルトが <strong><code>TRUE</code></strong> に変わりました。
+       </td>
+      </tr>
+
+      <tr>
        <td>5.4.13</td>
        <td>
-        <em><code class="parameter">disable_compression</code></em> が追加されました。OpenSSL &gt;= 1.0.0 が必要です。
+        <code class="parameter">disable_compression</code> が追加されました。OpenSSL &gt;= 1.0.0 が必要です。
        </td>
       </tr>
 
       <tr>
        <td>5.3.2</td>
        <td>
-        <em><code class="parameter">SNI_enabled</code></em> および
-        <em><code class="parameter">SNI_server_name</code></em> が追加されました。
+        <code class="parameter">SNI_enabled</code> および
+        <code class="parameter">SNI_server_name</code> が追加されました。
        </td>
       </tr>
 
       <tr>
        <td>5.0.0</td>
        <td>
-        <em><code class="parameter">capture_peer_cert</code></em>、
-        <em><code class="parameter">capture_peer_chain</code></em> および
-        <em><code class="parameter">ciphers</code></em> が追加されました。
+        <code class="parameter">capture_peer_cert</code>、
+        <code class="parameter">capture_peer_chain</code> および
+        <code class="parameter">ciphers</code> が追加されました。
        </td>
       </tr>
 

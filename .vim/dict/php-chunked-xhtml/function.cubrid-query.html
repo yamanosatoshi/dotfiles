@@ -26,8 +26,8 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>cubrid_query()</strong></span> sends a unique query (multiple queries are not supported) to the 
-   currently active database on the server that&#039;s associated with the specified <em><code class="parameter">conn_identifier</code></em>.
+   <span class="function"><strong>cubrid_query()</strong></span> sends a unique query (multiple queries are not supported) to the 
+   currently active database on the server that&#039;s associated with the specified <code class="parameter">conn_identifier</code>.
   </p>
  </div>
 
@@ -37,9 +37,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -50,22 +51,21 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">conn_identifier</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">conn_identifier</code></em></span>
      <dd>
 
       <p class="para">
        The CUBRID connection. If the connection identifier is not specified,
-       the last connection opened by  <span class="function"><a href="function.cubrid-connect.html" class="function">cubrid_connect()</a></span> is
+       the last connection opened by <span class="function"><a href="function.cubrid-connect.html" class="function">cubrid_connect()</a></span> is
        assumed.
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -76,22 +76,22 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    For SELECT, SHOW, DESCRIBE, EXPLAIN and other statements returning resultset,
-    <span class="function"><strong>cubrid_query()</strong></span> returns a <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> on success, or <strong><code>FALSE</code></strong> on error.
+   <span class="function"><strong>cubrid_query()</strong></span> returns a <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> on success, or <strong><code>FALSE</code></strong> on error.
   </p>
   <p class="para">
    For other type of SQL statements, INSERT, UPDATE, DELETE, DROP, etc,
-    <span class="function"><strong>cubrid_query()</strong></span> returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on error.
+   <span class="function"><strong>cubrid_query()</strong></span> returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on error.
   </p>
   <p class="para">
-   The returned result resource should be passed to  <span class="function"><a href="function.cubrid-fetch-array.html" class="function">cubrid_fetch_array()</a></span>, and other
+   The returned result resource should be passed to <span class="function"><a href="function.cubrid-fetch-array.html" class="function">cubrid_fetch_array()</a></span>, and other
    functions for dealing with result tables, to access the returned data.
   </p>
   <p class="para">
-   Use  <span class="function"><a href="function.cubrid-num-rows.html" class="function">cubrid_num_rows()</a></span> to find out how many rows were returned for a SELECT statement or
-    <span class="function"><a href="function.cubrid-affected-rows.html" class="function">cubrid_affected_rows()</a></span> to find out how many rows were affected by a DELETE, INSERT, REPLACE, or UPDATE statement.
+   Use <span class="function"><a href="function.cubrid-num-rows.html" class="function">cubrid_num_rows()</a></span> to find out how many rows were returned for a SELECT statement or
+   <span class="function"><a href="function.cubrid-affected-rows.html" class="function">cubrid_affected_rows()</a></span> to find out how many rows were affected by a DELETE, INSERT, REPLACE, or UPDATE statement.
   </p>
   <p class="para">
-    <span class="function"><strong>cubrid_query()</strong></span> will also fail and return <strong><code>FALSE</code></strong>
+   <span class="function"><strong>cubrid_query()</strong></span> will also fail and return <strong><code>FALSE</code></strong>
    if the user does not have permission to access the table(s) referenced by the query.
   </p>
  </div>
@@ -100,10 +100,10 @@
  <div class="refsect1 examples" id="refsect1-function.cubrid-query-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1082">
+   <div class="example" id="example-1140">
     <p><strong>例1 Invalid Query</strong></p>
     <div class="example-contents"><p>
-     The following query is syntactically invalid, so  <span class="function"><strong>cubrid_query()</strong></span> fails and returns <strong><code>FALSE</code></strong>.
+     The following query is syntactically invalid, so <span class="function"><strong>cubrid_query()</strong></span> fails and returns <strong><code>FALSE</code></strong>.
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -115,10 +115,10 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-1083">
+   <div class="example" id="example-1141">
     <p><strong>例2 Valid Query</strong></p>
     <div class="example-contents"><p>
-     The following query is valid, so  <span class="function"><strong>cubrid_query()</strong></span> returns a <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>.
+     The following query is valid, so <span class="function"><strong>cubrid_query()</strong></span> returns a <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>.
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -136,12 +136,12 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.cubrid-connect.html" class="function" rel="rdfs-seeAlso">cubrid_connect()</a> - Open a connection to a CUBRID Server</span></li>
-    <li class="member"> <span class="function"><a href="function.cubrid-error.html" class="function" rel="rdfs-seeAlso">cubrid_error()</a> - Get the error message</span></li>
-    <li class="member"> <span class="function"><a href="function.cubrid-real-escape-string.html" class="function" rel="rdfs-seeAlso">cubrid_real_escape_string()</a> - Escape special characters in a string for use in an SQL statement</span></li>
-    <li class="member"> <span class="function"><a href="function.cubrid-result.html" class="function" rel="rdfs-seeAlso">cubrid_result()</a> - Return the value of a specific field in a specific row</span></li>
-    <li class="member"> <span class="function"><a href="function.cubrid-fetch-assoc.html" class="function" rel="rdfs-seeAlso">cubrid_fetch_assoc()</a> - Return the associative array that corresponds to the fetched row</span></li>
-    <li class="member"> <span class="function"><a href="function.cubrid-unbuffered-query.html" class="function" rel="rdfs-seeAlso">cubrid_unbuffered_query()</a> - Perform a query without fetching the results into memory</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-connect.html" class="function" rel="rdfs-seeAlso">cubrid_connect()</a> - Open a connection to a CUBRID Server</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-error.html" class="function" rel="rdfs-seeAlso">cubrid_error()</a> - Get the error message</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-real-escape-string.html" class="function" rel="rdfs-seeAlso">cubrid_real_escape_string()</a> - Escape special characters in a string for use in an SQL statement</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-result.html" class="function" rel="rdfs-seeAlso">cubrid_result()</a> - Return the value of a specific field in a specific row</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-fetch-assoc.html" class="function" rel="rdfs-seeAlso">cubrid_fetch_assoc()</a> - Return the associative array that corresponds to the fetched row</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-unbuffered-query.html" class="function" rel="rdfs-seeAlso">cubrid_unbuffered_query()</a> - Perform a query without fetching the results into memory</span></li>
    </ul>
   </p>
  </div>

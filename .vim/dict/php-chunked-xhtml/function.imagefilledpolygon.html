@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagefilledpolygon" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagefilledpolygon</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">imagefilledpolygon</span> &mdash; <span class="dc-title">塗りつぶした多角形を描画する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagefilledpolygon</span> &mdash; <span class="dc-title">塗りつぶした多角形を描画する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagefilledpolygon-description">
@@ -27,8 +27,8 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>imagefilledpolygon()</strong></span> は画像
-   <em><code class="parameter">image</code></em> 上に塗りつぶした多角形を生成します。
+   <span class="function"><strong>imagefilledpolygon()</strong></span> は画像
+   <code class="parameter">image</code> 上に塗りつぶした多角形を生成します。
   </p>
  </div>
 
@@ -38,15 +38,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">points</code></dt>
 
-     <span class="term"><em><code class="parameter">points</code></em></span>
      <dd>
 
       <p class="para">
@@ -55,11 +56,11 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">num_points</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">num_points</code></em></span>
      <dd>
 
       <p class="para">
@@ -68,20 +69,19 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">color</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">color</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span> で作成した色 ID。
+       <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span> で作成した色 ID。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -97,8 +97,8 @@ image</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imagefilledpolygon-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3219">
-    <p><strong>例1  <span class="function"><strong>imagefilledpolygon()</strong></span> の例</strong></p>
+   <div class="example" id="example-3418">
+    <p><strong>例1 <span class="function"><strong>imagefilledpolygon()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;多角形の点の配列を準備します<br /></span><span style="color: #0000BB">$values&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">40</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Point&nbsp;1&nbsp;(x,&nbsp;y)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">240</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//&nbsp;Point&nbsp;2&nbsp;(x,&nbsp;y)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">60</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">60</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Point&nbsp;3&nbsp;(x,&nbsp;y)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">240</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Point&nbsp;4&nbsp;(x,&nbsp;y)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">40</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Point&nbsp;5&nbsp;(x,&nbsp;y)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">10&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Point&nbsp;6&nbsp;(x,&nbsp;y)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;画像を生成します<br /></span><span style="color: #0000BB">$image&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">250</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">250</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;色を割り当てます<br /></span><span style="color: #0000BB">$bg&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$blue&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;背景を塗りつぶします<br /></span><span style="color: #0000BB">imagefilledrectangle</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">249</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">249</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bg</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;多角形を描画します<br /></span><span style="color: #0000BB">imagefilledpolygon</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$values</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$blue</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;画像を出力します<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type:&nbsp;image/png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$image</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

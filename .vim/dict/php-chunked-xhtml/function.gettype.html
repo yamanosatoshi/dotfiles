@@ -13,7 +13,7 @@
 </div><hr /><div id="function.gettype" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">gettype</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">gettype</span> &mdash; <span class="dc-title">変数の型を取得する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">gettype</span> &mdash; <span class="dc-title">変数の型を取得する</span></p>
 
  </div>
 
@@ -25,7 +25,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-   PHP 変数 <em><code class="parameter">var</code></em> の型を返します。
+   PHP 変数 <code class="parameter">var</code> の型を返します。
    型のチェックには、この関数ではなく <em>is_*</em> 関数を使います。
   </p>
  </div>
@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">var</code></dt>
 
-     <span class="term"><em><code class="parameter">var</code></em></span>
      <dd>
 
       <p class="para">
@@ -46,8 +47,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -113,8 +113,8 @@
  <div class="refsect1 examples" id="refsect1-function.gettype-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5230">
-    <p><strong>例1  <span class="function"><strong>gettype()</strong></span> の例</strong></p>
+   <div class="example" id="example-5710">
+    <p><strong>例1 <span class="function"><strong>gettype()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$data&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1.</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;new&nbsp;</span><span style="color: #0000BB">stdClass</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">gettype</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -142,20 +142,21 @@ string
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.settype.html" class="function" rel="rdfs-seeAlso">settype()</a> - 変数の型をセットする</span></li>
-    <li class="member"> <span class="function"><a href="function.get-class.html" class="function" rel="rdfs-seeAlso">get_class()</a> - オブジェクトのクラス名を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.is-array.html" class="function" rel="rdfs-seeAlso">is_array()</a> - 変数が配列かどうかを検査する</span></li>
-    <li class="member"> <span class="function"><a href="function.is-bool.html" class="function" rel="rdfs-seeAlso">is_bool()</a> - 変数が boolean であるかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.is-float.html" class="function" rel="rdfs-seeAlso">is_float()</a> - 変数の型が float かどうか調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.is-int.html" class="function" rel="rdfs-seeAlso">is_int()</a> - 変数が整数型かどうかを検査する</span></li>
-    <li class="member"> <span class="function"><a href="function.is-null.html" class="function" rel="rdfs-seeAlso">is_null()</a> - 変数が NULL かどうか調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.is-numeric.html" class="function" rel="rdfs-seeAlso">is_numeric()</a> - 変数が数字または数値形式の文字列であるかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.is-object.html" class="function" rel="rdfs-seeAlso">is_object()</a> - 変数がオブジェクトかどうかを検査する</span></li>
-    <li class="member"> <span class="function"><a href="function.is-resource.html" class="function" rel="rdfs-seeAlso">is_resource()</a> - 変数がリソースかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.is-scalar.html" class="function" rel="rdfs-seeAlso">is_scalar()</a> - 変数がスカラかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.is-string.html" class="function" rel="rdfs-seeAlso">is_string()</a> - 変数の型が文字列かどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.function-exists.html" class="function" rel="rdfs-seeAlso">function_exists()</a> - 指定した関数が定義されている場合に TRUE を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.method-exists.html" class="function" rel="rdfs-seeAlso">method_exists()</a> - クラスメソッドが存在するかどうかを確認する</span></li>
+    <li class="member"><span class="function"><a href="function.settype.html" class="function" rel="rdfs-seeAlso">settype()</a> - 変数の型をセットする</span></li>
+    <li class="member"><span class="function"><a href="function.get-class.html" class="function" rel="rdfs-seeAlso">get_class()</a> - オブジェクトのクラス名を返す</span></li>
+    <li class="member"><span class="function"><a href="function.is-array.html" class="function" rel="rdfs-seeAlso">is_array()</a> - 変数が配列かどうかを検査する</span></li>
+    <li class="member"><span class="function"><a href="function.is-bool.html" class="function" rel="rdfs-seeAlso">is_bool()</a> - 変数が boolean であるかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.is-callable.html" class="function" rel="rdfs-seeAlso">is_callable()</a> - 引数が、関数としてコール可能な構造であるかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.is-float.html" class="function" rel="rdfs-seeAlso">is_float()</a> - 変数の型が float かどうか調べる</span></li>
+    <li class="member"><span class="function"><a href="function.is-int.html" class="function" rel="rdfs-seeAlso">is_int()</a> - 変数が整数型かどうかを検査する</span></li>
+    <li class="member"><span class="function"><a href="function.is-null.html" class="function" rel="rdfs-seeAlso">is_null()</a> - 変数が NULL かどうか調べる</span></li>
+    <li class="member"><span class="function"><a href="function.is-numeric.html" class="function" rel="rdfs-seeAlso">is_numeric()</a> - 変数が数字または数値形式の文字列であるかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.is-object.html" class="function" rel="rdfs-seeAlso">is_object()</a> - 変数がオブジェクトかどうかを検査する</span></li>
+    <li class="member"><span class="function"><a href="function.is-resource.html" class="function" rel="rdfs-seeAlso">is_resource()</a> - 変数がリソースかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.is-scalar.html" class="function" rel="rdfs-seeAlso">is_scalar()</a> - 変数がスカラかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.is-string.html" class="function" rel="rdfs-seeAlso">is_string()</a> - 変数の型が文字列かどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.function-exists.html" class="function" rel="rdfs-seeAlso">function_exists()</a> - 指定した関数が定義されている場合に TRUE を返す</span></li>
+    <li class="member"><span class="function"><a href="function.method-exists.html" class="function" rel="rdfs-seeAlso">method_exists()</a> - クラスメソッドが存在するかどうかを確認する</span></li>
    </ul>
   </p>
  </div>

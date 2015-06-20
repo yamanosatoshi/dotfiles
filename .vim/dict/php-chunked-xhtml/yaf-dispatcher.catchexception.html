@@ -26,11 +26,11 @@
 
   <p class="para rdfs-comment">
      application.dispatcher.throwException が On
-     (あるいは  <span class="methodname"><strong>Yaf_Dispatcher::throwException(TRUE)()</strong></span> で有効にした)
+     (あるいは <span class="methodname"><strong>Yaf_Dispatcher::throwException(TRUE)()</strong></span> で有効にした)
      他愛、Yaf でエラーが発生したときに例外をスローします。
   </p>
   <p class="para">   
-     そのとき、 <span class="methodname"><strong>Yaf_Dispatcher::catchException()</strong></span> を有効にする
+     そのとき、<span class="methodname"><strong>Yaf_Dispatcher::catchException()</strong></span> を有効にする
      (あるいは <a href="yaf.appconfig.html#configuration.yaf.dispatcher.catchexception" class="link">application.dispatcher.catchException</a> で有効にする) と、
      もし ErrorController::error を定義していれば
      キャッチしなかった例外はすべて ErrorController::error に送られます。
@@ -42,9 +42,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">flag</code></dt>
 
-    <span class="term"><em><code class="parameter">flag</code></em></span>
     <dd>
 
      <p class="para">
@@ -52,8 +53,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -69,8 +69,8 @@
 
  <div class="refsect1 examples" id="refsect1-yaf-dispatcher.catchexception-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-4108">
-   <p><strong>例1  <span class="function"><strong>Yaf_Dispatcher::catchException()</strong></span> の例</strong></p>
+  <div class="example" id="example-4564">
+   <p><strong>例1 <span class="function"><strong>Yaf_Dispatcher::catchException()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 /*&nbsp;次のような&nbsp;ErrorController&nbsp;を定義しているものとします&nbsp;*/<br /><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">ErrorController&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">Yaf_Controller_Abstract&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Yaf_Request_Abstract::getException&nbsp;を呼んで<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;未処理の例外を取得します<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">errorAction</span><span style="color: #007700">(</span><span style="color: #0000BB">$exception</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;エラーが発生した&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">switch&nbsp;(</span><span style="color: #0000BB">$exception</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCode</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">YAF_ERR_NOTFOUND_MODULE</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">YAF_ERR_NOTFOUND_CONTROLLER</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">YAF_ERR_NOTFOUND_ACTION</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">YAF_ERR_NOTFOUND_VIEW</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">404</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">":"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$exception</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$exception</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">":"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$exception</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -93,8 +93,8 @@
  <div class="refsect1 seealso" id="refsect1-yaf-dispatcher.catchexception-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="methodname"><a href="yaf-dispatcher.throwexception.html" class="methodname" rel="rdfs-seeAlso">Yaf_Dispatcher::throwException()</a> - 例外のスローのオン/オフを切り替える</span></li>
-   <li class="member"> <span class="methodname"><a href="yaf-dispatcher.seterrorhandler.html" class="methodname" rel="rdfs-seeAlso">Yaf_Dispatcher::setErrorHandler()</a> - エラーハンドラを設定する</span></li>
+   <li class="member"><span class="methodname"><a href="yaf-dispatcher.throwexception.html" class="methodname" rel="rdfs-seeAlso">Yaf_Dispatcher::throwException()</a> - 例外のスローのオン/オフを切り替える</span></li>
+   <li class="member"><span class="methodname"><a href="yaf-dispatcher.seterrorhandler.html" class="methodname" rel="rdfs-seeAlso">Yaf_Dispatcher::setErrorHandler()</a> - エラーハンドラを設定する</span></li>
   </ul>
  </div>
 

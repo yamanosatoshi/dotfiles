@@ -27,20 +27,20 @@
   ]]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>exif_thumbnail()</strong></span> は、
+   <span class="function"><strong>exif_thumbnail()</strong></span> は、
    <acronym title="Tagged Image File Format">TIFF</acronym> あるいは <acronym title="Joint Photographic Experts Group">JPEG</acronym> 画像に
    埋め込まれたサムネイルを読み込みます。
   </p>
   <p class="para">
    この関数を使用してサムネイルを出力したい場合は、
-    <span class="function"><a href="function.header.html" class="function">header()</a></span> 関数を使用して mimetype 情報を送信する
+   <span class="function"><a href="function.header.html" class="function">header()</a></span> 関数を使用して mimetype 情報を送信する
    必要があります。
   </p>
   <p class="para">
-    <span class="function"><strong>exif_thumbnail()</strong></span> が画像を作成することはできないが、
+   <span class="function"><strong>exif_thumbnail()</strong></span> が画像を作成することはできないが、
    そのサイズだけはわかるという可能性があります。そのような場合、返り値は
-   <strong><code>FALSE</code></strong> となりますが <em><code class="parameter">width</code></em> および
-   <em><code class="parameter">height</code></em> を設定されています。
+   <strong><code>FALSE</code></strong> となりますが <code class="parameter">width</code> および
+   <code class="parameter">height</code> を設定されています。
   </p>
  </div>
 
@@ -49,9 +49,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -59,11 +60,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">width</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">width</code></em></span>
      <dd>
 
       <p class="para">
@@ -71,11 +72,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">height</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">height</code></em></span>
      <dd>
 
       <p class="para">
@@ -83,11 +84,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">imagetype</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">imagetype</code></em></span>
      <dd>
 
       <p class="para">
@@ -97,8 +98,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -112,48 +112,11 @@
   </p>
  </div>
 
- <div class="refsect1 changelog" id="refsect1-function.exif-thumbnail-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        オプションで <em><code class="parameter">width</code></em>、
-        <em><code class="parameter">height</code></em> および <em><code class="parameter">imagetype</code></em> 
-        が使用可能になりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        サムネイルを <acronym title="Tagged Image File Format">TIFF</acronym> フォーマットで返すことがあります。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
  <div class="refsect1 examples" id="refsect1-function.exif-thumbnail-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3156">
-    <p><strong>例1  <span class="function"><strong>exif_thumbnail()</strong></span> の例</strong></p>
+   <div class="example" id="example-3355">
+    <p><strong>例1 <span class="function"><strong>exif_thumbnail()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">array_key_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'file'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_REQUEST</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$image&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">exif_thumbnail</span><span style="color: #007700">(</span><span style="color: #0000BB">$_REQUEST</span><span style="color: #007700">[</span><span style="color: #DD0000">'file'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$width</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$height</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">);<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$image&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />}<br />if&nbsp;(</span><span style="color: #0000BB">$image</span><span style="color: #007700">!==</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type:&nbsp;'&nbsp;</span><span style="color: #007700">.</span><span style="color: #0000BB">image_type_to_mime_type</span><span style="color: #007700">(</span><span style="color: #0000BB">$type</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$image</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;no&nbsp;thumbnail&nbsp;available,&nbsp;handle&nbsp;the&nbsp;error&nbsp;here<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'No&nbsp;thumbnail&nbsp;available'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -169,9 +132,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.exif-read-data.html" class="function" rel="rdfs-seeAlso">exif_read_data()</a> - JPEG あるいは TIFF から
+    <li class="member"><span class="function"><a href="function.exif-read-data.html" class="function" rel="rdfs-seeAlso">exif_read_data()</a> - JPEG あるいは TIFF から
    EXIF ヘッダを読み込む</span></li>
-    <li class="member"> <span class="function"><a href="function.image-type-to-mime-type.html" class="function" rel="rdfs-seeAlso">image_type_to_mime_type()</a> - getimagesize, exif_read_data, exif_thumbnail, exif_imagetypeから返される
+    <li class="member"><span class="function"><a href="function.image-type-to-mime-type.html" class="function" rel="rdfs-seeAlso">image_type_to_mime_type()</a> - getimagesize, exif_read_data, exif_thumbnail, exif_imagetypeから返される
    画像形式のMIMEタイプを取得する</span></li>
    </ul>
   </p>

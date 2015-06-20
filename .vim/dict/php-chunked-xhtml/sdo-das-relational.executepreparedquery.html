@@ -26,8 +26,8 @@
  <div class="refsect1 description" id="refsect1-sdo-das-relational.executepreparedquery-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><span class="type SDODataObject">SDODataObject</span></span>
-    <span class="methodname"><strong>SDO_DAS_Relational::executePreparedQuery</strong></span>
+   <span class="type"><span class="type SDODataObject">SDODataObject</span></span> 
+   <span class="methodname"><strong>SDO_DAS_Relational::executePreparedQuery</strong></span>
     ( <span class="methodparam">
     <span class="type"><a href="class.pdo.html" class="type PDO">PDO</a></span>
      <code class="parameter">$database_handle</code>
@@ -56,7 +56,7 @@
   <p class="para">
    クエリをリレーショナルデータベースに対して実行します。
    実行には、渡された PDO データベースハンドルを使用します。
-   シンプルな  <span class="function"><strong>executeQuery()</strong></span> と違う点は、
+   シンプルな <span class="function"><strong>executeQuery()</strong></span> と違う点は、
    こちらはプリペアドステートメントと値のリストを受け取るというところです。
    これを使用するほうがよい場面としては、次のふたつが考えられます。
    まず、同じ文が引数だけを変えて何度も実行される場合。このような場合は、
@@ -70,7 +70,7 @@
    を使用した SQL 文を準備しておくほうが安全です。
    実際に使用する値のリストは、別の引数として指定します。
    それ以外の点では、この関数は
-    <span class="function"><strong>executeQuery()</strong></span> と同じです。つまり、
+   <span class="function"><strong>executeQuery()</strong></span> と同じです。つまり、
    メタデータから作成されたモデルを使用し、結果セットを取得します。
    そして結果をデータグラフとして返します。
   </p>
@@ -82,9 +82,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+PDO_database_handle</dt>
 
-     <span class="term">PDO_database_handle</span>
      <dd>
 
       <p class="para">
@@ -99,24 +100,24 @@ $dbh&nbsp;=&nbsp;new&nbsp;PDO("mysql:dbname=COMPANYDB;host=localhost",DATABASE_U
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+prepared_statement</dt>
 
-    <dt>
-
-     <span class="term">prepared_statement</span>
      <dd>
 
       <p class="para">
        データベースに対して実行するプリペアドステートメント。
-       PDO の  <span class="function"><strong>prepare()</strong></span> メソッドによって評価されます。
+       PDO の <span class="function"><strong>prepare()</strong></span> メソッドによって評価されます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+value_list</dt>
 
-    <dt>
-
-     <span class="term">value_list</span>
      <dd>
 
       <p class="para">
@@ -126,11 +127,11 @@ $dbh&nbsp;=&nbsp;new&nbsp;PDO("mysql:dbname=COMPANYDB;host=localhost",DATABASE_U
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+column_specifier</dt>
 
-    <dt>
-
-     <span class="term">column_specifier</span>
      <dd>
 
       <p class="para">
@@ -176,8 +177,7 @@ $dbh&nbsp;=&nbsp;new&nbsp;PDO("mysql:dbname=COMPANYDB;host=localhost",DATABASE_U
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -205,7 +205,7 @@ $dbh&nbsp;=&nbsp;new&nbsp;PDO("mysql:dbname=COMPANYDB;host=localhost",DATABASE_U
  <div class="refsect1 errors" id="refsect1-sdo-das-relational.executepreparedquery-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
-    <span class="function"><strong>SDO_DAS_Relational::executePreparedQuery()</strong></span>
+   <span class="function"><strong>SDO_DAS_Relational::executePreparedQuery()</strong></span>
    は、データグラフを正常に作成できなかった場合に
    <strong class="classname">SDO_DAS_Relational_Exception</strong> をスローします。
    これが起こる原因は、いろいろ考えられます。例えば、
@@ -220,9 +220,9 @@ $dbh&nbsp;=&nbsp;new&nbsp;PDO("mysql:dbname=COMPANYDB;host=localhost",DATABASE_U
  <div class="refsect1 examples" id="refsect1-sdo-das-relational.executepreparedquery-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5440">
+   <div class="example" id="example-5908">
     <p><strong>例1 
-      <span class="function"><strong>executePreparedQuery()</strong></span>
+     <span class="function"><strong>executePreparedQuery()</strong></span>
      によるデータオブジェクトの取得
     </strong></p>
     <div class="example-contents"><p>
@@ -233,7 +233,7 @@ $dbh&nbsp;=&nbsp;new&nbsp;PDO("mysql:dbname=COMPANYDB;host=localhost",DATABASE_U
      の内容を表示します。
     </p></div>
     <div class="example-contents"><p>
-      <span class="function"><strong>executePreparedQuery()</strong></span>
+     <span class="function"><strong>executePreparedQuery()</strong></span>
      の使用法についてのその他の例は、
      <var class="filename">sdo/DAS/Relational/Scenarios</var>
      にあるサンプルコードを参照ください。

@@ -26,10 +26,10 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">msg_number</code></em> が指すメッセージに
+   <code class="parameter">msg_number</code> が指すメッセージに
    削除予定のマークをします。削除マークを付けられたメッセージは、
-    <span class="function"><a href="function.imap-expunge.html" class="function">imap_expunge()</a></span> がコールされるか
-    <span class="function"><a href="function.imap-close.html" class="function">imap_close()</a></span> に <strong><code>CL_EXPUNGE</code></strong>
+   <span class="function"><a href="function.imap-expunge.html" class="function">imap_expunge()</a></span> がコールされるか
+   <span class="function"><a href="function.imap-close.html" class="function">imap_close()</a></span> に <strong><code>CL_EXPUNGE</code></strong>
    を付けてコールされるかのどちらかが行われるまでメールボックスに残ったままになります。
   </p>
  </div>
@@ -40,15 +40,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-imap_stream</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
+<code class="parameter">
+imap_stream</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
 が返す IMAP ストリーム。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">msg_number</code></dt>
 
-     <span class="term"><em><code class="parameter">msg_number</code></em></span>
      <dd>
 
       <p class="para">
@@ -56,22 +57,21 @@ imap_stream</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">options</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">FT_UID</code></em> を指定すると、
-       引数 <em><code class="parameter">msg_number</code></em> を
-       <em><code class="parameter">UID</code></em> として処理することを関数に指示できます。
+       <code class="parameter">FT_UID</code> を指定すると、
+       引数 <code class="parameter">msg_number</code> を
+       <code class="parameter">UID</code> として処理することを関数に指示できます。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -87,8 +87,8 @@ imap_stream</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imap-delete-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3337">
-    <p><strong>例1  <span class="function"><strong>imap_delete()</strong></span> の例</strong></p>
+   <div class="example" id="example-3761">
+    <p><strong>例1 <span class="function"><strong>imap_delete()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$mbox&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_open</span><span style="color: #007700">(</span><span style="color: #DD0000">"{imap.example.org}INBOX"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"接続できません:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">imap_last_error</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">$check&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_mailboxmsginfo</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Messages&nbsp;before&nbsp;delete:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$check</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Nmsgs&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">imap_delete</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$check&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_mailboxmsginfo</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Messages&nbsp;after&nbsp;&nbsp;delete:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$check</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Nmsgs&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">imap_expunge</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$check&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_mailboxmsginfo</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Messages&nbsp;after&nbsp;expunge:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$check</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Nmsgs&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">imap_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -105,8 +105,8 @@ imap_stream</code></em></span><dd>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     IMAP メールボックスは、コネクション間で保存可能なメッセージフラグを持っていません。
-    そのため、削除マークをつけたメッセージを本当に削除するためには、
-    同一の接続内で  <span class="function"><a href="function.imap-expunge.html" class="function">imap_expunge()</a></span> をコールする必要があります。
+    そのため、削除マークをつけたメッセージが本当に削除されたことを保証するためには、
+    同一の接続内で <span class="function"><a href="function.imap-expunge.html" class="function">imap_expunge()</a></span> をコールする必要があります。
    </p>
   </p></blockquote>
  </div>
@@ -115,9 +115,9 @@ imap_stream</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imap-undelete.html" class="function" rel="rdfs-seeAlso">imap_undelete()</a> - 削除マークがついているメッセージのマークをはずす</span></li>
-    <li class="member"> <span class="function"><a href="function.imap-expunge.html" class="function" rel="rdfs-seeAlso">imap_expunge()</a> - 削除用にマークされたすべてのメッセージを削除する</span></li>
-    <li class="member"> <span class="function"><a href="function.imap-close.html" class="function" rel="rdfs-seeAlso">imap_close()</a> - IMAP ストリームをクローズする</span></li>
+    <li class="member"><span class="function"><a href="function.imap-undelete.html" class="function" rel="rdfs-seeAlso">imap_undelete()</a> - 削除マークがついているメッセージのマークをはずす</span></li>
+    <li class="member"><span class="function"><a href="function.imap-expunge.html" class="function" rel="rdfs-seeAlso">imap_expunge()</a> - 削除用にマークされたすべてのメッセージを削除する</span></li>
+    <li class="member"><span class="function"><a href="function.imap-close.html" class="function" rel="rdfs-seeAlso">imap_close()</a> - IMAP ストリームをクローズする</span></li>
    </ul>
   </p>
  </div>

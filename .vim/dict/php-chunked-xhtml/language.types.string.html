@@ -13,7 +13,6 @@
 </div><hr /><div id="language.types.string" class="sect1">
  <h2 class="title">文字列</h2>
 
- 
  <p class="para">
   <span class="type"><a href="language.types.string.html" class="type string">string</a></span> は、文字が連結されたものです。PHP では、
   文字は 1 バイトと同じです。つまり、256 個の異なる文字を使用可能です。
@@ -23,7 +22,7 @@
 
  <blockquote class="note"><p><strong class="note">注意</strong>: 
   <span class="simpara">
-   文字列の最大長は 2GB です。
+   文字列の最大長は 2GB (2147483647 バイト) です。
   </span>
  </p></blockquote>
 
@@ -142,7 +141,7 @@
 
       <tr>
        <td><em>\e</em></td>
-       <td>エスケープ (ESC あるいはアスキーの 0x1B (27)) (PHP 5.4.0 以降)</td>
+       <td>エスケープ (ESC あるいはアスキーの 0x1B (27)) (PHP 5.4.4 以降)</td>
       </tr>
 
       <tr>
@@ -238,7 +237,7 @@
      PHP 5.3 以降では、変数を含まないヒアドキュメントではこの制約はなくなりました。
     </p>
 
-    <div class="example" id="example-72">
+    <div class="example" id="example-86">
      <p><strong>例1 間違った例</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -258,7 +257,7 @@
     ヒアドキュメントの内部で複雑な変数を表わす場合には注意が必要です。
    </p>
 
-   <div class="example" id="example-73"> 
+   <div class="example" id="example-87"> 
     <p><strong>例2 ヒアドキュメントで文字列を括る例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -281,7 +280,7 @@ This should print a capital &#039;A&#039;: A</pre></div>
     関数の引数にデータを渡すこともできます。
    </p>
 
-   <div class="example" id="example-74"> 
+   <div class="example" id="example-88"> 
     <p><strong>例3 ヒアドキュメントを引数に使用する例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -297,7 +296,7 @@ This should print a capital &#039;A&#039;: A</pre></div>
     ヒアドキュメント構文で初期化できるようになりました。
    </p>
 
-   <div class="example" id="example-75"> 
+   <div class="example" id="example-89"> 
     <p><strong>例4 ヒアドキュメントを用いた静的な値の初期化</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -312,7 +311,7 @@ This should print a capital &#039;A&#039;: A</pre></div>
     PHP 5.3.0 以降では、ヒアドキュメントの宣言をダブルクォートで囲めるようにもなりました。
    </p>
 
-   <div class="example" id="example-76"> 
+   <div class="example" id="example-90"> 
     <p><strong>例5 ヒアドキュメントでのダブルクォート</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -350,7 +349,7 @@ This should print a capital &#039;A&#039;: A</pre></div>
     の識別子にも当てはまります。特に終了識別子の書き方に関する決まりに注意しましょう。
    </p>
    
-   <div class="example" id="example-77">
+   <div class="example" id="example-91">
     <p><strong>例6 Nowdoc による文字列のクォートの例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -375,7 +374,7 @@ This should not print a capital &#039;A&#039;: \x41</pre></div>
     </p>
    </p></blockquote>
     
-   <div class="example" id="example-78">
+   <div class="example" id="example-92">
     <p><strong>例7 静的データの例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -444,10 +443,10 @@ He drank some juice made of .
      シンプルな変数の場合と同じ規則が、オブジェクトのプロパティに対しても適用されます。
     </p>
 
-    <div class="example" id="example-79"><p><strong>例8 簡単な構文の例</strong></p>
+    <div class="example" id="example-93"><p><strong>例8 簡単な構文の例</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$juices&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"apple"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"orange"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"koolaid1"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"purple"</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;juice&nbsp;made&nbsp;of&nbsp;</span><span style="color: #0000BB">$juice</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]</span><span style="color: #DD0000">s."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;動作しません<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #0000BB">koolaid1</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />class&nbsp;</span><span style="color: #0000BB">people&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$john&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"John&nbsp;Smith"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$jane&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Jane&nbsp;Smith"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$robert&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Robert&nbsp;Paulsen"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$smith&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Smith"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$people&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">people</span><span style="color: #007700">();<br /><br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">john</span><span style="color: #DD0000">&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">john</span><span style="color: #DD0000">&nbsp;then&nbsp;said&nbsp;hello&nbsp;to&nbsp;</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">jane</span><span style="color: #DD0000">."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">john</span><span style="color: #DD0000">'s&nbsp;wife&nbsp;greeted&nbsp;</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">robert</span><span style="color: #DD0000">."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">robert</span><span style="color: #DD0000">&nbsp;greeted&nbsp;the&nbsp;two&nbsp;</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">smiths</span><span style="color: #DD0000">."</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;動作しません<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$juices&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"apple"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"orange"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"koolaid1"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"purple"</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #0000BB">koolaid1</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />class&nbsp;</span><span style="color: #0000BB">people&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$john&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"John&nbsp;Smith"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$jane&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Jane&nbsp;Smith"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$robert&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Robert&nbsp;Paulsen"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$smith&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Smith"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$people&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">people</span><span style="color: #007700">();<br /><br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">john</span><span style="color: #DD0000">&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">john</span><span style="color: #DD0000">&nbsp;then&nbsp;said&nbsp;hello&nbsp;to&nbsp;</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">jane</span><span style="color: #DD0000">."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">john</span><span style="color: #DD0000">'s&nbsp;wife&nbsp;greeted&nbsp;</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">robert</span><span style="color: #DD0000">."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">robert</span><span style="color: #DD0000">&nbsp;greeted&nbsp;the&nbsp;two&nbsp;</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">smiths</span><span style="color: #DD0000">."</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;動作しません<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -457,7 +456,6 @@ He drank some juice made of .
 <div class="cdata"><pre>
 He drank some apple juice.
 He drank some orange juice.
-He drank some juice made of s.
 He drank some purple juice.
 John Smith drank some apple juice.
 John Smith then said hello to Jane Smith.
@@ -556,7 +554,7 @@ I am bar.
     文字列内の任意の文字にアクセスし、修正することが可能です。
     つまり、文字列を文字の配列として考えるわけです。
     複数の文字を取り出したり変更したりしたいときは、関数
-     <span class="function"><a href="function.substr.html" class="function">substr()</a></span> および  <span class="function"><a href="function.substr-replace.html" class="function">substr_replace()</a></span>
+    <span class="function"><a href="function.substr.html" class="function">substr()</a></span> および <span class="function"><a href="function.substr-replace.html" class="function">substr_replace()</a></span>
     が使えます。
    </p>
 
@@ -587,7 +585,7 @@ I am bar.
     </p>
    </div>
 
-   <div class="example" id="example-80">
+   <div class="example" id="example-94">
     <p><strong>例9 文字列の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -604,7 +602,7 @@ I am bar.
     <em>&quot;foo&quot;</em> のようなオフセットを指定しても単に <em>0</em> にキャストされるだけでした。
    </p>
 
-   <div class="example" id="example-81">
+   <div class="example" id="example-95">
     <p><strong>例10 PHP 5.3 と PHP 5.4 の違い</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -701,15 +699,15 @@ bool(false)
   <h3 class="title">文字列への変換</h3>
   
   <p class="para">
-   <em>(string)</em> キャストや  <span class="function"><a href="function.strval.html" class="function">strval()</a></span>
+   <em>(string)</em> キャストや <span class="function"><a href="function.strval.html" class="function">strval()</a></span>
    関数を使って変数を文字列へ変換することができます。
    文字列型を必要とする式のスコープにおいて、文字列への変換は自動的に行われます。
-    <span class="function"><a href="function.echo.html" class="function">echo</a></span> や  <span class="function"><a href="function.print.html" class="function">print</a></span> 関数を使うとき、
+   <span class="function"><a href="function.echo.html" class="function">echo</a></span> や <span class="function"><a href="function.print.html" class="function">print</a></span> 関数を使うとき、
    あるいは可変変数を文字列を比較するときにこの自動変換が行われます。
    マニュアルの<a href="language.types.html" class="link">型</a> と
    <a href="language.types.type-juggling.html" class="link">型の相互変換</a>
    の項を読むとわかりやすいでしょう。
-    <span class="function"><a href="function.settype.html" class="function">settype()</a></span>も参照してください。
+   <span class="function"><a href="function.settype.html" class="function">settype()</a></span>も参照してください。
   </p>
   
   <p class="para">
@@ -729,14 +727,14 @@ bool(false)
    <p class="para">
     小数点を表す文字は、スクリプトのロケール (LC_NUMERIC カテゴリ)
     によって決まります。
-     <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> を参照ください。
+    <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> を参照ください。
    </p>
   </p></blockquote>
 
   <p class="para">
    配列は常に <em>&quot;Array&quot;</em> という文字列に変換されるので、
-   <span class="type"><a href="language.types.array.html" class="type array">array</a></span> の中を見るために  <span class="function"><a href="function.echo.html" class="function">echo</a></span> や
-    <span class="function"><a href="function.print.html" class="function">print</a></span> を使ってダンプさせることはできません。
+   <span class="type"><a href="language.types.array.html" class="type array">array</a></span> の中を見るために <span class="function"><a href="function.echo.html" class="function">echo</a></span> や
+   <span class="function"><a href="function.print.html" class="function">print</a></span> を使ってダンプさせることはできません。
    一つの要素を見るためには、<em>echo $arr[&#039;foo&#039;]</em>
    のようにしてください。内容の全てをダンプ/見るためには以降の TIP をご覧ください。
   </p>
@@ -745,7 +743,7 @@ bool(false)
    PHP 4 のオブジェクトは、常に <em>&quot;Object&quot;</em> という文字列に変換されます。
    デバッグ等のために <span class="type"><a href="language.types.object.html" class="type object">object</a></span> の内部の変数を出力するような場合には、
    以下をご覧ください。オブジェクトがなんという名前のクラスの
-   インスタンスなのかを知るには  <span class="function"><a href="function.get-class.html" class="function">get_class()</a></span> をご覧ください。
+   インスタンスなのかを知るには <span class="function"><a href="function.get-class.html" class="function">get_class()</a></span> をご覧ください。
    PHP 5 以降では、もし存在すれば __toString() メソッドを使用します。
   </p>
 
@@ -753,8 +751,11 @@ bool(false)
    リソースは常に <em>&quot;Resource id #1&quot;</em>
    という文字列に変換されます。<em>1</em> は実行中の
    PHP によって割り当てられる
-   <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> のユニークな番号です。
-   リソースの型を知るためには  <span class="function"><a href="function.get-resource-type.html" class="function">get_resource_type()</a></span>
+   <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> の番号です。
+   この文字列の構造に依存したコードを書いてはいけません (この構造は変わる可能性があります)
+   が、スクリプトの実行中 (ウェブのリクエストや CLI プロセスの処理中) は、指定したリソースに対してこの文字列が一意に割り当てられることが保証されます。
+   他のリソースで同じ文字列が再利用されることはありません。
+   リソースの型を知るためには <span class="function"><a href="function.get-resource-type.html" class="function">get_resource_type()</a></span>
    を使用してください。
   </p>
 
@@ -766,14 +767,14 @@ bool(false)
    以上に述べたように、配列、オブジェクト、リソースをプリントアウトしても
    その値に関する有益な情報を得られるわけではありません。
    デバッグのために値を出力するのによりよい方法が知りたければ、
-    <span class="function"><a href="function.print-r.html" class="function">print_r()</a></span> や
-    <span class="function"><a href="function.var-dump.html" class="function">var_dump()</a></span> を参照ください。
+   <span class="function"><a href="function.print-r.html" class="function">print_r()</a></span> や
+   <span class="function"><a href="function.var-dump.html" class="function">var_dump()</a></span> を参照ください。
   </p>
   
   <p class="para">
    PHP 変数を恒久的に保存するための文字列に変換することもできます。
    この方法はシリアライゼーションと呼ばれ、
-    <span class="function"><a href="function.serialize.html" class="function">serialize()</a></span> 関数によって実現できます。
+   <span class="function"><a href="function.serialize.html" class="function">serialize()</a></span> 関数によって実現できます。
    <a href="ref.wddx.html" class="link">WDDX</a> サポートを有効にして PHP
    をセットアップすれば、PHP 変数を XML 構造にシリアライズすることもできます。
   </p>
@@ -836,8 +837,8 @@ bool(false)
   <p class="para">
    (C 言語で行われるように) 数値に変換することで
    一つの文字のコードを取得できると期待してはいけません。
-   文字と文字コードを相互に変換するには  <span class="function"><a href="function.ord.html" class="function">ord()</a></span>
-   および  <span class="function"><a href="function.chr.html" class="function">chr()</a></span> 関数を使用してください。
+   文字と文字コードを相互に変換するには <span class="function"><a href="function.ord.html" class="function">ord()</a></span>
+   および <span class="function"><a href="function.chr.html" class="function">chr()</a></span> 関数を使用してください。
   </p>
 
  </div>
@@ -893,9 +894,9 @@ bool(false)
     <span class="simpara">
      いくつかの関数は、文字列が何らかのシングルバイトエンコーディングで符号化されているものと見なします。
      しかし、文字列内の各バイトが必ずしも特定の文字に変換できなくてもかまいません。
-     このタイプの関数は、 <span class="function"><a href="function.substr.html" class="function">substr()</a></span> や
-      <span class="function"><a href="function.strpos.html" class="function">strpos()</a></span>、 <span class="function"><a href="function.strlen.html" class="function">strlen()</a></span>、
-      <span class="function"><a href="function.strcmp.html" class="function">strcmp()</a></span> などです。
+     このタイプの関数は、<span class="function"><a href="function.substr.html" class="function">substr()</a></span> や
+     <span class="function"><a href="function.strpos.html" class="function">strpos()</a></span>、<span class="function"><a href="function.strlen.html" class="function">strlen()</a></span>、
+     <span class="function"><a href="function.strcmp.html" class="function">strcmp()</a></span> などです。
      これらの関数については、文字列を扱うというよりメモリ上のバッファを扱うものととらえてもよいでしょう。
      つまり、バイト列とバイトオフセットで考えるということです。
     </span>
@@ -904,16 +905,16 @@ bool(false)
     <span class="simpara">
      文字列のエンコーディングを受け取る関数もあります。
      エンコーディング情報を省略したときにはデフォルトを用意していることもあるでしょう。
-     このタイプの関数の例は、 <span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span> や
+     このタイプの関数の例は、<span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span> や
      大半の <a href="book.mbstring.html" class="link">mbstring</a> 関数です。
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     現在のロケール ( <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> を参照ください) を使うけれども、
+     現在のロケール (<span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> を参照ください) を使うけれども、
      処理はバイト単位で行う関数もあります。
-     このタイプの関数は  <span class="function"><a href="function.strcasecmp.html" class="function">strcasecmp()</a></span> や
-      <span class="function"><a href="function.strtoupper.html" class="function">strtoupper()</a></span> そして  <span class="function"><a href="function.ucfirst.html" class="function">ucfirst()</a></span> です。
+     このタイプの関数は <span class="function"><a href="function.strcasecmp.html" class="function">strcasecmp()</a></span> や
+     <span class="function"><a href="function.strtoupper.html" class="function">strtoupper()</a></span> そして <span class="function"><a href="function.ucfirst.html" class="function">ucfirst()</a></span> です。
      つまり、これらの関数はシングルバイトエンコーディングでしか使えず、
      さらにエンコーディングとロケールがマッチしていなければならないということです。
      たとえば、<em>strtoupper(&quot;á&quot;)</em> が正しく <em>&quot;Á&quot;</em>
@@ -931,8 +932,8 @@ bool(false)
      <a href="book.pcre.html" class="link">PCRE</a> の関数
      (<em>u</em> 修飾子を使う場合のみ)
      の多くがこのタイプになります。また、その関数の目的上、
-      <span class="function"><a href="function.utf8-decode.html" class="function">utf8_decode()</a></span> 関数は入力が UTF-8 であることを前提とし、
-      <span class="function"><a href="function.utf8-encode.html" class="function">utf8_encode()</a></span> 関数は入力が ISO-8859-1 であることを前提としています。
+     <span class="function"><a href="function.utf8-decode.html" class="function">utf8_decode()</a></span> 関数は入力が UTF-8 であることを前提とし、
+     <span class="function"><a href="function.utf8-encode.html" class="function">utf8_encode()</a></span> 関数は入力が ISO-8859-1 であることを前提としています。
     </span>
    </li>
   </ul>

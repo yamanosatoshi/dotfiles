@@ -35,9 +35,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">errorsOrWarnings</code></dt>
 
-     <span class="term"><em><code class="parameter">errorsOrWarnings</code></em></span>
      <dd>
 
       <p class="para">
@@ -48,8 +49,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -109,8 +109,8 @@
  <div class="refsect1 examples" id="refsect1-function.sqlsrv-errors-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2166">
-    <p><strong>例1  <span class="function"><strong>functionname()</strong></span> example</strong></p>
+   <div class="example" id="example-2363">
+    <p><strong>例1 <span class="function"><strong>functionname()</strong></span> example</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$serverName&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"serverName/sqlexpress"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$connectionInfo&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">"Database"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"dbName"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"UID"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"PWD"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_connect</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$serverName</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$connectionInfo</span><span style="color: #007700">);<br />if(&nbsp;</span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">sqlsrv_errors</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Set&nbsp;up&nbsp;a&nbsp;query&nbsp;to&nbsp;select&nbsp;an&nbsp;invalid&nbsp;column&nbsp;name.&nbsp;*/<br /></span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;BadColumnName&nbsp;FROM&nbsp;Table_1"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*&nbsp;Execution&nbsp;of&nbsp;the&nbsp;query&nbsp;will&nbsp;fail&nbsp;because&nbsp;of&nbsp;the&nbsp;bad&nbsp;column&nbsp;name.&nbsp;*/<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_query</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">);<br />if(&nbsp;</span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(&nbsp;(</span><span style="color: #0000BB">$errors&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_errors</span><span style="color: #007700">()&nbsp;)&nbsp;!=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(&nbsp;</span><span style="color: #0000BB">$errors&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$error&nbsp;</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"SQLSTATE:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$error</span><span style="color: #007700">[&nbsp;</span><span style="color: #DD0000">'SQLSTATE'</span><span style="color: #007700">].</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"code:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$error</span><span style="color: #007700">[&nbsp;</span><span style="color: #DD0000">'code'</span><span style="color: #007700">].</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"message:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$error</span><span style="color: #007700">[&nbsp;</span><span style="color: #DD0000">'message'</span><span style="color: #007700">].</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -130,7 +130,7 @@
    as errors. This means that if a warning occurs on a call to a SQLSRV function, 
    the function returns <strong><code>FALSE</code></strong>. However, warnings that correspond to SQLSTATE 
    values 01000, 01001, 01003, and 01S02 are never treated as errors. For 
-   information about changing this behavior, see  <span class="function"><a href="function.sqlsrv-configure.html" class="function">sqlsrv_configure()</a></span> 
+   information about changing this behavior, see <span class="function"><a href="function.sqlsrv-configure.html" class="function">sqlsrv_configure()</a></span> 
    and the WarningsReturnAsErrors setting.
   </p>
  </div>
@@ -140,7 +140,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.sqlsrv-configure.html" class="function" rel="rdfs-seeAlso">sqlsrv_configure()</a> - Changes the driver error handling and logging configurations</span></li>
+    <li class="member"><span class="function"><a href="function.sqlsrv-configure.html" class="function" rel="rdfs-seeAlso">sqlsrv_configure()</a> - Changes the driver error handling and logging configurations</span></li>
    </ul>
   </p>
  </div>

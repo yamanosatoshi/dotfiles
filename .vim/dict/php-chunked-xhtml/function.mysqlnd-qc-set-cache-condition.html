@@ -20,8 +20,8 @@
  <div class="refsect1 description" id="refsect1-function.mysqlnd-qc-set-cache-condition-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span>
-    <span class="methodname"><strong>mysqlnd_qc_set_cache_condition</strong></span>
+   <span class="type">bool</span> 
+   <span class="methodname"><strong>mysqlnd_qc_set_cache_condition</strong></span>
     ( <span class="methodparam">
     <span class="type">int</span>
      <code class="parameter">$condition_type</code>
@@ -47,11 +47,12 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
 
-    <span class="term">
-     <em><code class="parameter">condition_type</code></em>
-    </span>
+     <code class="parameter">condition_type</code>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -60,13 +61,13 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
 
-   <dt>
+     <code class="parameter">condition</code>
+    </dt>
 
-    <span class="term">
-     <em><code class="parameter">condition</code></em>
-    </span>
     <dd>
 
      <p class="para">
@@ -92,13 +93,13 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
 
-   <dt>
+     <code class="parameter">condition_option</code>
+    </dt>
 
-    <span class="term">
-     <em><code class="parameter">condition_option</code></em>
-    </span>
     <dd>
 
      <p class="para">
@@ -112,8 +113,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -121,8 +121,8 @@
 
  <div class="refsect1 examples" id="refsect1-function.mysqlnd-qc-set-cache-condition-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1864">
-   <p><strong>例1  <span class="function"><strong>mysqlnd_qc_set_cache_condition()</strong></span> example</strong></p>
+  <div class="example" id="example-2056">
+   <p><strong>例1 <span class="function"><strong>mysqlnd_qc_set_cache_condition()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Cache&nbsp;all&nbsp;accesses&nbsp;to&nbsp;tables&nbsp;with&nbsp;the&nbsp;name&nbsp;"new%"&nbsp;in&nbsp;schema/database&nbsp;"db_example"&nbsp;for&nbsp;1&nbsp;second&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">mysqlnd_qc_set_cache_condition</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLND_QC_CONDITION_META_SCHEMA_PATTERN</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"db_example.new%"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;die(</span><span style="color: #DD0000">"Failed&nbsp;to&nbsp;set&nbsp;cache&nbsp;condition!"</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"host"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"db_example"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"port"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;cached&nbsp;although&nbsp;no&nbsp;SQL&nbsp;hint&nbsp;given&nbsp;&nbsp;*/<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,&nbsp;title&nbsp;FROM&nbsp;news"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$pdo_mysql&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">"mysql:host=host;dbname=db_example;port=port"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;not&nbsp;cached:&nbsp;no&nbsp;SQL&nbsp;hint,&nbsp;no&nbsp;pattern&nbsp;match&nbsp;*/<br /></span><span style="color: #0000BB">$pdo_mysql</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,&nbsp;title&nbsp;FROM&nbsp;latest_news"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;cached:&nbsp;TTL&nbsp;1&nbsp;second,&nbsp;pattern&nbsp;match&nbsp;*/<br /></span><span style="color: #0000BB">$pdo_mysql</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,&nbsp;title&nbsp;FROM&nbsp;news"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

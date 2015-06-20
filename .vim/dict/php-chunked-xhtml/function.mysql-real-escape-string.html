@@ -27,8 +27,8 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli.real-escape-string.html" class="function">mysqli_real_escape_string()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="pdo.quote.html" class="methodname">PDO::quote()</a></span></li>
+    <li class="member"><span class="function"><a href="mysqli.real-escape-string.html" class="function">mysqli_real_escape_string()</a></span></li>
+    <li class="member"><span class="methodname"><a href="pdo.quote.html" class="methodname">PDO::quote()</a></span></li>
    </ul>
   </div>
  </div>
@@ -42,13 +42,13 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   現在の接続の文字セットで <em><code class="parameter">unescaped_string</code></em>
-   の特殊文字をエスケープし、  <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span>
+   現在の接続の文字セットで <code class="parameter">unescaped_string</code>
+   の特殊文字をエスケープし、 <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span>
    で安全に利用できる形式に変換します。バイナリデータを挿入しようとしている場合、
    必ずこの関数を利用しなければなりません。
   </p>
   <p class="para">
-    <span class="function"><strong>mysql_real_escape_string()</strong></span> は、MySQL のライブラリ関数
+   <span class="function"><strong>mysql_real_escape_string()</strong></span> は、MySQL のライブラリ関数
    mysql_real_escape_string をコールしています。
    これは以下の文字について先頭にバックスラッシュを付加します。
    <em>\x00</em>, <em>\n</em>,
@@ -64,9 +64,9 @@
    <h1 class="title">セキュリティ: デフォルトの文字セット</h1>
    <p class="para">
     サーバーレベルで設定するなり API 関数
-     <span class="function"><a href="function.mysql-set-charset.html" class="function">mysql_set_charset()</a></span> を使うなりして、
+    <span class="function"><a href="function.mysql-set-charset.html" class="function">mysql_set_charset()</a></span> を使うなりして、
     文字セットを明示しておく必要があります。この文字セットが
-     <span class="function"><strong>mysql_real_escape_string()</strong></span>
+    <span class="function"><strong>mysql_real_escape_string()</strong></span>
     に影響を及ぼします。詳細は
     <a href="mysqlinfo.concepts.charset.html" class="link">文字セットの概念</a>
     を参照ください。
@@ -80,9 +80,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">unescaped_string</code></dt>
 
-     <span class="term"><em><code class="parameter">unescaped_string</code></em></span>
      <dd>
 
       <p class="para">
@@ -90,19 +91,18 @@
       </p>
      </dd>
 
-    </dt>
-
+    
     <dt>
-<span class="term"><em><code class="parameter">
-link_identifier</code></em></span><dd>
+<code class="parameter">
+link_identifier</code></dt>
+<dd>
 <p class="para">MySQL 接続。
-指定されない場合、 <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
+指定されない場合、<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
 指定されたと仮定されます。そのようなリンクがない場合、引数を指定せずに
- <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
+<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
 リンクが見付からない、または、確立できない場合、
 <strong><code>E_WARNING</code></strong> レベルのエラーが生成されます。</p></dd>
 
-</dt>
 
    </dl>
 
@@ -121,8 +121,8 @@ link_identifier</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.mysql-real-escape-string-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1607">
-    <p><strong>例1 単純な  <span class="function"><strong>mysql_real_escape_string()</strong></span> の例</strong></p>
+   <div class="example" id="example-1786">
+    <p><strong>例1 単純な <span class="function"><strong>mysql_real_escape_string()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;接続<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysql_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;die(</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br /><br /></span><span style="color: #FF8000">//&nbsp;クエリ<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;users&nbsp;WHERE&nbsp;user='%s'&nbsp;AND&nbsp;password='%s'"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$user</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$password</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -133,7 +133,7 @@ link_identifier</code></em></span><dd>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-1608">
+   <div class="example" id="example-1787">
     <p><strong>例2 SQL インジェクション攻撃の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -162,17 +162,17 @@ SELECT * FROM users WHERE user=&#039;aidan&#039; AND password=&#039;&#039; OR &#
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>mysql_real_escape_string()</strong></span> を利用する前に、MySQL
+    <span class="function"><strong>mysql_real_escape_string()</strong></span> を利用する前に、MySQL
     接続が確立されている必要があります。もし存在しなければ、
     <strong><code>E_WARNING</code></strong> レベルのエラーが生成され、<strong><code>FALSE</code></strong>
-    が返されます。<em><code class="parameter">link_identifier</code></em> が指定されなかった場合は、
+    が返されます。<code class="parameter">link_identifier</code> が指定されなかった場合は、
     直近の MySQL 接続が用いられます。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a> が有効な場合は、
-    まず最初に  <span class="function"><a href="function.stripslashes.html" class="function">stripslashes()</a></span> を適用します。そうしないと、
+    まず最初に <span class="function"><a href="function.stripslashes.html" class="function">stripslashes()</a></span> を適用します。そうしないと、
     すでにエスケープされているデータに対してさらにエスケープ処理を
     してしまうことになります。
    </p>
@@ -186,7 +186,7 @@ SELECT * FROM users WHERE user=&#039;aidan&#039; AND password=&#039;&#039; OR &#
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <span class="simpara">
-     <span class="function"><strong>mysql_real_escape_string()</strong></span> は
+    <span class="function"><strong>mysql_real_escape_string()</strong></span> は
     <em>%</em> や <em>_</em> をエスケープしません。
     MySQL では、これらの文字を <em>LIKE</em>, <em>GRANT</em>,
     または <em>REVOKE</em> とともに用いることで、
@@ -200,10 +200,10 @@ SELECT * FROM users WHERE user=&#039;aidan&#039; AND password=&#039;&#039; OR &#
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-set-charset.html" class="function" rel="rdfs-seeAlso">mysql_set_charset()</a> - クライアントの文字セットを設定する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-client-encoding.html" class="function" rel="rdfs-seeAlso">mysql_client_encoding()</a> - 文字セット名を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.addslashes.html" class="function" rel="rdfs-seeAlso">addslashes()</a> - 文字列をスラッシュでクォートする</span></li>
-    <li class="member"> <span class="function"><a href="function.stripslashes.html" class="function" rel="rdfs-seeAlso">stripslashes()</a> - クォートされた文字列のクォート部分を取り除く</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-set-charset.html" class="function" rel="rdfs-seeAlso">mysql_set_charset()</a> - クライアントの文字セットを設定する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-client-encoding.html" class="function" rel="rdfs-seeAlso">mysql_client_encoding()</a> - 文字セット名を返す</span></li>
+    <li class="member"><span class="function"><a href="function.addslashes.html" class="function" rel="rdfs-seeAlso">addslashes()</a> - 文字列をスラッシュでクォートする</span></li>
+    <li class="member"><span class="function"><a href="function.stripslashes.html" class="function" rel="rdfs-seeAlso">stripslashes()</a> - クォートされた文字列のクォート部分を取り除く</span></li>
     <li class="member">The <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a> ディレクティブ</li>
     <li class="member">The <a href="info.configuration.html#ini.magic-quotes-runtime" class="link">magic_quotes_runtime</a> ディレクティブ</li>
    </ul>

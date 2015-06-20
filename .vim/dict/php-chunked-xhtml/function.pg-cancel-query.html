@@ -27,10 +27,10 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_cancel_query()</strong></span> は、
-    <span class="function"><a href="function.pg-send-query.html" class="function">pg_send_query()</a></span>・ <span class="function"><a href="function.pg-send-query-params.html" class="function">pg_send_query_params()</a></span>
-   あるいは  <span class="function"><a href="function.pg-send-execute.html" class="function">pg_send_execute()</a></span> により送信された非同期クエリを
-   キャンセルします。 <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span> により実行されたクエリを
+   <span class="function"><strong>pg_cancel_query()</strong></span> は、
+   <span class="function"><a href="function.pg-send-query.html" class="function">pg_send_query()</a></span>・<span class="function"><a href="function.pg-send-query-params.html" class="function">pg_send_query_params()</a></span>
+   あるいは <span class="function"><a href="function.pg-send-execute.html" class="function">pg_send_execute()</a></span> により送信された非同期クエリを
+   キャンセルします。<span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span> により実行されたクエリを
    キャンセルすることはできません。
   </p>
  </div>
@@ -41,9 +41,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
@@ -51,8 +52,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -70,8 +70,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-cancel-query-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2037">
-    <p><strong>例1  <span class="function"><strong>pg_cancel_query()</strong></span> の例</strong></p>
+   <div class="example" id="example-2233">
+    <p><strong>例1 <span class="function"><strong>pg_cancel_query()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;connect"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">pg_connection_busy</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_send_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;authors;&nbsp;select&nbsp;count(*)&nbsp;from&nbsp;authors;"</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_get_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"First&nbsp;call&nbsp;to&nbsp;pg_get_result():&nbsp;</span><span style="color: #0000BB">$res1</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$rows1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$res1</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$res1</span><span style="color: #DD0000">&nbsp;has&nbsp;</span><span style="color: #0000BB">$rows1</span><span style="color: #DD0000">&nbsp;records\n\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;実行中のクエリをキャンセルする。もしまだ実行中なら、2&nbsp;番目のクエリが<br />&nbsp;&nbsp;//&nbsp;対象となるだろう。<br />&nbsp;&nbsp;</span><span style="color: #0000BB">pg_cancel_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -95,8 +95,8 @@ Resource id #3 has 3 records
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-send-query.html" class="function" rel="rdfs-seeAlso">pg_send_query()</a> - 非同期クエリを送信する</span></li>
-    <li class="member"> <span class="function"><a href="function.pg-connection-busy.html" class="function" rel="rdfs-seeAlso">pg_connection_busy()</a> - 接続がビジーかどうか調べる</span></li>
+    <li class="member"><span class="function"><a href="function.pg-send-query.html" class="function" rel="rdfs-seeAlso">pg_send_query()</a> - 非同期クエリを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-connection-busy.html" class="function" rel="rdfs-seeAlso">pg_connection_busy()</a> - 接続がビジーかどうか調べる</span></li>
    </ul>
   </p>
  </div>

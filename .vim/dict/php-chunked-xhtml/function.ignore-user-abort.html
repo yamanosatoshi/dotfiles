@@ -31,7 +31,7 @@
    PHP をコマンドラインスクリプトとして実行していて
    スクリプトを終了させずに tty が消えた場合は、
    次に何かを書こうとしたときにスクリプトが終了します。これは
-   <em><code class="parameter">value</code></em> が <strong><code>TRUE</code></strong> に設定されていても同じです。
+   <code class="parameter">value</code> が <strong><code>TRUE</code></strong> に設定されていても同じです。
   </p>
  </div>
 
@@ -41,20 +41,20 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">value</code></dt>
 
-     <span class="term"><em><code class="parameter">value</code></em></span>
      <dd>
 
       <p class="para">
        指定すると、この関数は ini 項目 <a href="misc.configuration.html#ini.ignore-user-abort" class="link">ignore_user_abort</a>
-       に <em><code class="parameter">value</code></em> の値を設定します。
+       に <code class="parameter">value</code> の値を設定します。
        省略した場合、この関数は前の設定をそのまま返し、何も変更しません。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -72,8 +72,8 @@
  <div class="refsect1 examples" id="refsect1-function.ignore-user-abort-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3762">
-    <p><strong>例1  <span class="function"><strong>ignore_user_abort()</strong></span> の例</strong></p>
+   <div class="example" id="example-4216">
+    <p><strong>例1 <span class="function"><strong>ignore_user_abort()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;ユーザーによる中断を無視し、<br />//&nbsp;スクリプトを永遠に実行させます<br /></span><span style="color: #0000BB">ignore_user_abort</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">set_time_limit</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">'PHP&nbsp;における接続ハンドリングのテスト'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;無意味なループを繰り返します。<br />//&nbsp;きっと誰かが他のページに移動したり<br />//&nbsp;"中止"&nbsp;ボタンを押したりしてくれるでしょう<br /></span><span style="color: #007700">while(</span><span style="color: #0000BB">1</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;接続失敗?<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if(</span><span style="color: #0000BB">connection_status</span><span style="color: #007700">()&nbsp;!=&nbsp;</span><span style="color: #0000BB">CONNECTION_NORMAL</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;10&nbsp;秒間お休み<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sleep</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;ここに到達したということは、while&nbsp;ループ内で<br />//&nbsp;'break'&nbsp;が実行されたのでしょう<br /><br />//&nbsp;ここで、ログを記録したりなどの必要な処理を行います<br />//&nbsp;これは、ブラウザに依存せずに行えます<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -92,7 +92,7 @@
    PHP は、クライアントに情報を送信しない限り
    ユーザーが接続を切断したかどうかを検出できません。
    単に echo 文を使っただけでは、情報が送信されたかどうかを保証できません。
-    <span class="function"><a href="function.flush.html" class="function">flush()</a></span> を参照ください。
+   <span class="function"><a href="function.flush.html" class="function">flush()</a></span> を参照ください。
   </p>
  </div>
 
@@ -101,8 +101,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.connection-aborted.html" class="function" rel="rdfs-seeAlso">connection_aborted()</a> - クライアントとの接続が切断されているかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.connection-status.html" class="function" rel="rdfs-seeAlso">connection_status()</a> - 接続ステータスのビットフィールドを返す</span></li>
+    <li class="member"><span class="function"><a href="function.connection-aborted.html" class="function" rel="rdfs-seeAlso">connection_aborted()</a> - クライアントとの接続が切断されているかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.connection-status.html" class="function" rel="rdfs-seeAlso">connection_status()</a> - 接続ステータスのビットフィールドを返す</span></li>
     <li class="member">
      PHP における接続処理についての説明は
      <a href="features.connection-handling.html" class="link">接続処理</a>

@@ -27,9 +27,9 @@
    )</div>
 
   <p class="simpara">
-   この関数は、<em><code class="parameter">string</code></em> をスキャンして
-   <em><code class="parameter">pattern</code></em> にマッチするものを探し、
-   マッチしたテキストを <em><code class="parameter">replacement</code></em>
+   この関数は、<code class="parameter">string</code> をスキャンして
+   <code class="parameter">pattern</code> にマッチするものを探し、
+   マッチしたテキストを <code class="parameter">replacement</code>
    で置換します。
   </p>
   <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は PHP 5.3.0 で
@@ -43,9 +43,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">pattern</code></dt>
 
-     <span class="term"><em><code class="parameter">pattern</code></em></span>
      <dd>
 
       <p class="para">
@@ -53,16 +54,16 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">replacement</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">replacement</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">pattern</code></em> の中に括弧でくくられた部分
-       文字列が含まれている場合、<em><code class="parameter">replacement</code></em>
+       <code class="parameter">pattern</code> の中に括弧でくくられた部分
+       文字列が含まれている場合、<code class="parameter">replacement</code>
        の中に <em>\<span class="replaceable">数字</span></em>
        のような部分文字列を埋め込むこともできます。この部分は、
        「数字」番目の括弧でくくられた部分文字列にマッチする文字列に
@@ -73,11 +74,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">string</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">string</code></em></span>
      <dd>
 
       <p class="para">
@@ -85,8 +86,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -108,8 +108,8 @@
    たとえば、以下のサンプルコードは &quot;This was a test&quot; と 3 回表示します。
   </p>
   <p class="para">
-   <div class="example" id="example-4785">
-    <p><strong>例1  <span class="function"><strong>ereg_replace()</strong></span> の例</strong></p>
+   <div class="example" id="example-5263">
+    <p><strong>例1 <span class="function"><strong>ereg_replace()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;a&nbsp;test"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">"&nbsp;is"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;was"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">ereg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">"(&nbsp;)is"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\\1was"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">ereg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">"((&nbsp;)is)"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\\2was"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -121,14 +121,14 @@
   </p>
   <p class="para">
    注意しなければならないのは、パラメータ
-   <em><code class="parameter">replacement</code></em> として整数値を使用する場合、
+   <code class="parameter">replacement</code> として整数値を使用する場合、
    期待する結果が得られない可能性があるということです。これは、
-    <span class="function"><strong>ereg_replace()</strong></span> がその数値を文字コードとして
+   <span class="function"><strong>ereg_replace()</strong></span> がその数値を文字コードとして
    解釈し使用するためです。例えば、次のようになります。
   </p>
   <p class="para">
-   <div class="example" id="example-4786">
-    <p><strong>例2  <span class="function"><strong>ereg_replace()</strong></span> の例</strong></p>
+   <div class="example" id="example-5264">
+    <p><strong>例2 <span class="function"><strong>ereg_replace()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;これは期待した通りに動作しません。&nbsp;*/<br /></span><span style="color: #0000BB">$num&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"This&nbsp;string&nbsp;has&nbsp;four&nbsp;words."</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ereg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'four'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$num</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;出力:&nbsp;'This&nbsp;string&nbsp;has&nbsp;&nbsp;&nbsp;words.'&nbsp;*/<br /><br />/*&nbsp;これは動作します。&nbsp;*/<br /></span><span style="color: #0000BB">$num&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'4'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"This&nbsp;string&nbsp;has&nbsp;four&nbsp;words."</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ereg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'four'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$num</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;出力:&nbsp;'This&nbsp;string&nbsp;has&nbsp;4&nbsp;words.'&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -139,7 +139,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4787">
+   <div class="example" id="example-5265">
     <p><strong>例3 URL をリンクで置換する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -163,8 +163,8 @@ PCRE への変換についてのヘルプは <a href="reference.pcre.pattern.pos
 相違点の一覧</a> を参照ください。</p></p></blockquote>
   <div class="tip"><strong class="tip">ヒント</strong>
    <p class="para">
-     <span class="function"><strong>ereg_replace()</strong></span> は PHP 5.3.0 以降で非推奨になりました。この関数のかわりに
-     <span class="function"><a href="function.preg-replace.html" class="function">preg_replace()</a></span> を使うことを推奨します。
+    <span class="function"><strong>ereg_replace()</strong></span> は PHP 5.3.0 以降で非推奨になりました。この関数のかわりに
+    <span class="function"><a href="function.preg-replace.html" class="function">preg_replace()</a></span> を使うことを推奨します。
    </p>
   </div>
  </div>
@@ -174,12 +174,12 @@ PCRE への変換についてのヘルプは <a href="reference.pcre.pattern.pos
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ereg.html" class="function" rel="rdfs-seeAlso">ereg()</a> - 正規表現によるマッチングを行う</span></li>
-    <li class="member"> <span class="function"><a href="function.eregi.html" class="function" rel="rdfs-seeAlso">eregi()</a> - 大文字小文字を区別せずに正規表現によるマッチングを行う</span></li>
-    <li class="member"> <span class="function"><a href="function.eregi-replace.html" class="function" rel="rdfs-seeAlso">eregi_replace()</a> - 大文字小文字を区別せずに正規表現による置換を行う</span></li>
-    <li class="member"> <span class="function"><a href="function.str-replace.html" class="function" rel="rdfs-seeAlso">str_replace()</a> - 検索文字列に一致したすべての文字列を置換する</span></li>
-    <li class="member"> <span class="function"><a href="function.preg-replace.html" class="function" rel="rdfs-seeAlso">preg_replace()</a> - 正規表現検索および置換を行う</span></li>
-    <li class="member"> <span class="function"><a href="function.quotemeta.html" class="function" rel="rdfs-seeAlso">quotemeta()</a> - メタ文字をクォートする</span></li>
+    <li class="member"><span class="function"><a href="function.ereg.html" class="function" rel="rdfs-seeAlso">ereg()</a> - 正規表現によるマッチングを行う</span></li>
+    <li class="member"><span class="function"><a href="function.eregi.html" class="function" rel="rdfs-seeAlso">eregi()</a> - 大文字小文字を区別せずに正規表現によるマッチングを行う</span></li>
+    <li class="member"><span class="function"><a href="function.eregi-replace.html" class="function" rel="rdfs-seeAlso">eregi_replace()</a> - 大文字小文字を区別せずに正規表現による置換を行う</span></li>
+    <li class="member"><span class="function"><a href="function.str-replace.html" class="function" rel="rdfs-seeAlso">str_replace()</a> - 検索文字列に一致したすべての文字列を置換する</span></li>
+    <li class="member"><span class="function"><a href="function.preg-replace.html" class="function" rel="rdfs-seeAlso">preg_replace()</a> - 正規表現検索および置換を行う</span></li>
+    <li class="member"><span class="function"><a href="function.quotemeta.html" class="function" rel="rdfs-seeAlso">quotemeta()</a> - メタ文字をクォートする</span></li>
    </ul>
   </p>
  </div>

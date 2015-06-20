@@ -27,8 +27,8 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>dbx_compare()</strong></span> は
-    <span class="function"><a href="function.dbx-sort.html" class="function">dbx_sort()</a></span> のヘルパ関数で、
+   <span class="function"><strong>dbx_compare()</strong></span> は
+   <span class="function"><a href="function.dbx-sort.html" class="function">dbx_sort()</a></span> のヘルパ関数で、
    独自のソート関数を作成しやすくします。
   </p>
  </div>
@@ -38,9 +38,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">row_a</code></dt>
 
-     <span class="term"><em><code class="parameter">row_a</code></em></span>
      <dd>
 
       <p class="para">
@@ -48,11 +49,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">row_b</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">row_b</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,11 +61,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">column_key</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">column_key</code></em></span>
      <dd>
 
       <p class="para">
@@ -72,15 +73,15 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">flags</code></em> によって比較の方向を指定します。
+       <code class="parameter">flags</code> によって比較の方向を指定します。
        <ul class="itemizedlist">
         <li class="listitem">
          <span class="simpara">
@@ -116,8 +117,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -137,8 +137,8 @@
  <div class="refsect1 examples" id="refsect1-function.dbx-compare-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-878">
-    <p><strong>例1  <span class="function"><strong>dbx_compare()</strong></span> の例</strong></p>
+   <div class="example" id="example-935">
+    <p><strong>例1 <span class="function"><strong>dbx_compare()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">user_re_order</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$rv&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbx_compare</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"parentid"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">DBX_CMP_DESC</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$rv</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$rv&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbx_compare</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"id"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">DBX_CMP_NUMBER</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$rv</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$link&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbx_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">DBX_ODBC</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"db"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"接続できませんでした"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbx_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;id,&nbsp;parentid,&nbsp;description&nbsp;FROM&nbsp;table&nbsp;ORDER&nbsp;BY&nbsp;id"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$result&nbsp;のデータは&nbsp;id&nbsp;で並べ替えられます<br /><br /></span><span style="color: #0000BB">dbx_sort</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user_re_order"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$result&nbsp;のデータは、まず&nbsp;parentid&nbsp;の降順で並べ替えられ、次に&nbsp;id&nbsp;で並べ替えられます<br /><br /></span><span style="color: #0000BB">dbx_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -154,7 +154,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.dbx-sort.html" class="function" rel="rdfs-seeAlso">dbx_sort()</a> - カスタマイズされたソート関数により、dbx_query から結果をソートする</span></li>
+    <li class="member"><span class="function"><a href="function.dbx-sort.html" class="function" rel="rdfs-seeAlso">dbx_sort()</a> - カスタマイズされたソート関数により、dbx_query から結果をソートする</span></li>
    </ul>
   </p>
  </div>

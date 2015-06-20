@@ -19,9 +19,21 @@
 
  <div class="refsect1 description" id="refsect1-intlcalendar.isequivalentto-description">
   <h3 class="title">説明</h3>
+  <p class="para">
+   オブジェクト指向型
+  </p>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><strong>IntlCalendar::isEquivalentTo</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span> <code class="parameter">$calendar</code></span>
+    ( <span class="methodparam"><span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span> <code class="parameter">$other</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   手続き型
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><strong>intlcal_is_equivalent_to</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span> <code class="parameter">$cal</code></span>
+   , <span class="methodparam"><span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span> <code class="parameter">$other</code></span>
    )</div>
 
   <p class="para rdfs-comment">
@@ -43,9 +55,22 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">cal</code></dt>
 
-    <span class="term"><em><code class="parameter">calendar</code></em></span>
+    <dd>
+
+     <p class="para">
+      The IntlCalendar resource.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">other</code></dt>
+
     <dd>
 
      <p class="para">
@@ -53,8 +78,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -73,8 +97,8 @@
  <div class="refsect1 examples" id="refsect1-intlcalendar.isequivalentto-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2607">
-   <p><strong>例1  <span class="function"><strong>IntlCalendar::isEquivalentTo()</strong></span></strong></p>
+   <div class="example" id="example-2806">
+   <p><strong>例1 <span class="function"><strong>IntlCalendar::isEquivalentTo()</strong></span></strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$cal1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">createInstance</span><span style="color: #007700">(</span><span style="color: #DD0000">'Europe/Lisbon'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pt_PT'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cal2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">createInstance</span><span style="color: #007700">(</span><span style="color: #DD0000">'Europe/Lisbon'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'es_ES'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cal2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">clear</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isEquivalentTo</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal2</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;true<br /><br /></span><span style="color: #0000BB">$cal3&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">createInstance</span><span style="color: #007700">(</span><span style="color: #DD0000">'Europe/Lisbon'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'en_US'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isEquivalentTo</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal3</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;false<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFirstDayOfWeek</span><span style="color: #007700">(),&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;2&nbsp;(Monday)<br /></span><span style="color: #0000BB">$cal3</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFirstDayOfWeek</span><span style="color: #007700">());&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;1&nbsp;(Sunday)</span>
@@ -100,7 +124,7 @@ int(1)
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="intlcalendar.equals.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::equals()</a> - Compare time of two IntlCalendar objects for equality</span></li>
+    <li class="member"><span class="methodname"><a href="intlcalendar.equals.html" class="methodname" rel="rdfs-seeAlso">IntlCalendar::equals()</a> - Compare time of two IntlCalendar objects for equality</span></li>
    </ul>
   </p>
  </div>

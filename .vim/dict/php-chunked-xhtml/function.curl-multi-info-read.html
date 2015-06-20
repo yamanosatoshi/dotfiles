@@ -32,13 +32,13 @@
   <p class="para">   
    この関数を繰り返しコールすると、毎回新しい結果を返します。<strong><code>FALSE</code></strong>
    が返されると、その時点でもう取得する結果がないことを意味します。
-   <em><code class="parameter">msgs_in_queue</code></em> がさす値は、
+   <code class="parameter">msgs_in_queue</code> がさす値は、
    この関数をコールした後に残っているメッセージの数となります。
   </p>
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
     返されたリソースがさすデータは、
-     <span class="function"><a href="function.curl-multi-remove-handle.html" class="function">curl_multi_remove_handle()</a></span>
+    <span class="function"><a href="function.curl-multi-remove-handle.html" class="function">curl_multi_remove_handle()</a></span>
     をコールした後には残りません。
    </p>
   </div>
@@ -51,15 +51,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">mh</code></em>
-</span><dd>
-<p class="para"> <span class="function"><a href="function.curl-multi-init.html" class="function">curl_multi_init()</a></span>
-が返す cURL マルチハンドル。</p></dd>
+<code class="parameter">mh</code>
 </dt>
+<dd>
+<p class="para"><span class="function"><a href="function.curl-multi-init.html" class="function">curl_multi_init()</a></span>
+が返す cURL マルチハンドル。</p></dd>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">msgs_in_queue</code></dt>
 
-     <span class="term"><em><code class="parameter">msgs_in_queue</code></em></span>
      <dd>
 
       <p class="para">
@@ -67,8 +68,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -120,8 +120,8 @@
  <div class="refsect1 examples" id="refsect1-function.curl-multi-info-read-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4198">
-    <p><strong>例1  <span class="function"><strong>curl_multi_info_read()</strong></span> の例</strong></p>
+   <div class="example" id="example-4644">
+    <p><strong>例1 <span class="function"><strong>curl_multi_info_read()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$urls&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"http://www.cnn.com/"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"http://www.bbc.co.uk/"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"http://www.yahoo.com/"<br /></span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$mh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_multi_init</span><span style="color: #007700">();<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$urls&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$url</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">curl_init</span><span style="color: #007700">(</span><span style="color: #0000BB">$url</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">CURLOPT_RETURNTRANSFER</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">curl_multi_add_handle</span><span style="color: #007700">(</span><span style="color: #0000BB">$mh</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]);<br />}<br /><br />do&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$status&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_multi_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$mh</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$active</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_multi_info_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$mh</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">!==&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$info</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}&nbsp;while&nbsp;(</span><span style="color: #0000BB">$status&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">CURLM_CALL_MULTI_PERFORM&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">$active</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$urls&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$url</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$res</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">curl_multi_getcontent</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]);<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">curl_multi_info_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$mh</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -182,7 +182,7 @@ bool(false)
       <tr>
        <td>5.2.0</td>
        <td>
-        <em><code class="parameter">msgs_in_queue</code></em> が追加されました。
+        <code class="parameter">msgs_in_queue</code> が追加されました。
        </td>
       </tr>
 
@@ -198,7 +198,7 @@ bool(false)
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.curl-multi-init.html" class="function" rel="rdfs-seeAlso">curl_multi_init()</a> - 新規 cURL マルチハンドルを返す</span></li>
+    <li class="member"><span class="function"><a href="function.curl-multi-init.html" class="function" rel="rdfs-seeAlso">curl_multi_init()</a> - 新規 cURL マルチハンドルを返す</span></li>
    </ul>
   </p>
  </div>

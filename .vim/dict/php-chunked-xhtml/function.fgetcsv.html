@@ -13,7 +13,7 @@
 </div><hr /><div id="function.fgetcsv" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">fgetcsv</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">fgetcsv</span> &mdash; <span class="dc-title">ファイルポインタから行を取得し、CSVフィールドを処理する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">fgetcsv</span> &mdash; <span class="dc-title">ファイルポインタから行を取得し、CSVフィールドを処理する</span></p>
 
  </div>
  
@@ -23,14 +23,14 @@
    <span class="type">array</span> <span class="methodname"><strong>fgetcsv</strong></span>
     ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$handle</code></span>
    [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code><span class="initializer"> = 0</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$delimiter</code><span class="initializer"> = &#039;,&#039;</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$delimiter</code><span class="initializer"> = &quot;,&quot;</span></span>
    [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$enclosure</code><span class="initializer"> = &#039;&quot;&#039;</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$escape</code><span class="initializer"> = &#039;\\&#039;</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$escape</code><span class="initializer"> = &quot;\&quot;</span></span>
   ]]]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span> に動作は似ていますが、
-    <span class="function"><strong>fgetcsv()</strong></span> は行を <acronym title="Comma Separated Value">CSV</acronym>
+   <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span> に動作は似ていますが、
+   <span class="function"><strong>fgetcsv()</strong></span> は行を <acronym title="Comma Separated Value">CSV</acronym>
    フォーマットのフィールドとして読込み処理を行い、
    読み込んだフィールドを含む配列を返すという違いがあります。
   </p>
@@ -42,73 +42,73 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">handle</code></dt>
 
-     <span class="term"><em><code class="parameter">handle</code></em></span>
      <dd>
 
       <p class="para">
        ファイルポインタは有効なものでなければならず、また
-        <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>,
-        <span class="function"><a href="function.popen.html" class="function">popen()</a></span>, もしくは  <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span>
+       <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>,
+       <span class="function"><a href="function.popen.html" class="function">popen()</a></span>, もしくは <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span>
        で正常にオープンされたファイルを指している必要があります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">length</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">length</code></em></span>
      <dd>
 
       <p class="para">
        (行末文字を考慮して) CSV
        ファイルにある最も長い行よりも大きい必要があります。
        PHP 5 でオプションになりました。このパラメータを省略
-       (もしくは PHP 5.0.4 かそれ以降で 0 を設定) すると、
+       (もしくは PHP 5.1.0 以降で 0 を設定) すると、
        最大行長は制限されません。この場合、若干動作が遅くなります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">delimiter</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">delimiter</code></em></span>
      <dd>
 
       <p class="para">
-       フィールドのデリミタ (1 文字のみ) を設定します。
+       オプションの <code class="parameter">delimiter</code> パラメータで、フィールドのデリミタ (1 文字のみ) を設定します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">enclosure</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">enclosure</code></em></span>
      <dd>
 
       <p class="para">
-       フィールド囲いこみ文字 (1 文字のみ) を設定します。
+       オプションの <code class="parameter">enclosure</code> パラメータで、フィールド囲いこみ文字 (1 文字のみ) を設定します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">escape</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">escape</code></em></span>
      <dd>
 
       <p class="para">
-       エスケープ文字 (1 文字のみ) を設定します。
+       オプションの <code class="parameter">escape</code> パラメータで、エスケープ文字 (1 文字のみ) を設定します。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -133,7 +133,7 @@
 実行時の設定オプション<a href="filesystem.configuration.html#ini.auto-detect-line-endings" class="link">auto_detect_line_endings</a> を有効にする必要が生じるかもしれません。</span>
 </p></blockquote>
   <p class="para">
-    <span class="function"><strong>fgetcsv()</strong></span> は、無効な <em><code class="parameter">handle</code></em>
+   <span class="function"><strong>fgetcsv()</strong></span> は、無効な <code class="parameter">handle</code>
    を受け取った場合に <strong><code>NULL</code></strong> を返します。
    また、ファイルの終端に達した場合を含めたその他のエラー時には <strong><code>FALSE</code></strong> を返します。
   </p>
@@ -157,21 +157,23 @@
       <tr>
        <td>5.3.0</td>
        <td>
-        <em><code class="parameter">escape</code></em> パラメータが追加されました。
+        <code class="parameter">escape</code> パラメータが追加されました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        <code class="parameter">length</code> が必須ではなくなりました。
+        デフォルトは <em>0</em> で、これは長さの制限がないことを表します。
+        
        </td>
       </tr>
 
       <tr>
        <td>4.3.5</td>
        <td>
-         <span class="function"><strong>fgetcsv()</strong></span> はバイナリセーフとなりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        <em><code class="parameter">enclosure</code></em> パラメータが追加されました。
+        <span class="function"><strong>fgetcsv()</strong></span> はバイナリセーフとなりました。
        </td>
       </tr>
 
@@ -186,7 +188,7 @@
  <div class="refsect1 examples" id="refsect1-function.fgetcsv-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2352">
+   <div class="example" id="example-2551">
     <p><strong>例1 CSV ファイルの全てのコンテンツを読み込み、表示する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -216,11 +218,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.str-getcsv.html" class="function" rel="rdfs-seeAlso">str_getcsv()</a> - CSV 文字列をパースして配列に格納する</span></li>
-    <li class="member"> <span class="function"><a href="function.explode.html" class="function" rel="rdfs-seeAlso">explode()</a> - 文字列を文字列により分割する</span></li>
-    <li class="member"> <span class="function"><a href="function.file.html" class="function" rel="rdfs-seeAlso">file()</a> - ファイル全体を読み込んで配列に格納する</span></li>
-    <li class="member"> <span class="function"><a href="function.pack.html" class="function" rel="rdfs-seeAlso">pack()</a> - データをバイナリ文字列にパックする</span></li>
-    <li class="member"> <span class="function"><a href="function.fputcsv.html" class="function" rel="rdfs-seeAlso">fputcsv()</a> - 行を CSV 形式にフォーマットし、ファイルポインタに書き込む</span></li>
+    <li class="member"><span class="function"><a href="function.str-getcsv.html" class="function" rel="rdfs-seeAlso">str_getcsv()</a> - CSV 文字列をパースして配列に格納する</span></li>
+    <li class="member"><span class="function"><a href="function.explode.html" class="function" rel="rdfs-seeAlso">explode()</a> - 文字列を文字列により分割する</span></li>
+    <li class="member"><span class="function"><a href="function.file.html" class="function" rel="rdfs-seeAlso">file()</a> - ファイル全体を読み込んで配列に格納する</span></li>
+    <li class="member"><span class="function"><a href="function.pack.html" class="function" rel="rdfs-seeAlso">pack()</a> - データをバイナリ文字列にパックする</span></li>
+    <li class="member"><span class="function"><a href="function.fputcsv.html" class="function" rel="rdfs-seeAlso">fputcsv()</a> - 行を CSV 形式にフォーマットし、ファイルポインタに書き込む</span></li>
    </ul>
   </p>
  </div>

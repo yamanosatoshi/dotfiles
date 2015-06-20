@@ -20,8 +20,8 @@
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span>
-   <span class="type"><a href="class.eventbufferevent.html" class="type EventBufferEvent">EventBufferEvent</a></span>
-    <span class="methodname"><a href="eventhttprequest.closeconnection.html" class="methodname">EventHttpRequest::closeConnection</a></span>
+   <span class="type"><a href="class.eventbufferevent.html" class="type EventBufferEvent">EventBufferEvent</a></span> 
+   <span class="methodname"><a href="eventhttprequest.closeconnection.html" class="methodname">EventHttpRequest::closeConnection</a></span>
     ( <span class="methodparam">void</span>
    )</div>
 
@@ -30,6 +30,16 @@
    <a href="class.eventbufferevent.html" class="classname">EventBufferEvent</a>
    object which represents buffer event that the connection is using.
   </p>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    The reference counter of the returned object will be incremented by one to
+    protect internal structures against premature destruction when the method
+    is called from a user callback. So the
+    <a href="class.eventbufferevent.html" class="classname">EventBufferEvent</a> object should be freed explicitly
+    with <span class="methodname"><a href="eventbufferevent.free.html" class="methodname">EventBufferEvent::free()</a></span> method.
+    Otherwise memory will leak.
+   </p>
+  </div>
  </div>
 
  <div class="refsect1 parameters" id="refsect1-eventhttprequest.getbufferevent-parameters">
@@ -50,7 +60,7 @@
   <h3 class="title">参考</h3>
   <ul class="simplelist">
    <li class="member">
-     <span class="methodname"><a href="eventhttprequest.getconnection.html" class="methodname" rel="rdfs-seeAlso">EventHttpRequest::getConnection()</a> - Returns EventHttpConnection object</span>
+    <span class="methodname"><a href="eventhttprequest.getconnection.html" class="methodname" rel="rdfs-seeAlso">EventHttpRequest::getConnection()</a> - Returns EventHttpConnection object</span>
    </li>
   </ul>
  </div>

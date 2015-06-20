@@ -37,9 +37,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">encoded_headers</code></dt>
 
-     <span class="term"><em><code class="parameter">encoded_headers</code></em></span>
      <dd>
 
       <p class="para">
@@ -47,19 +48,19 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">mode</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">mode</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">mode</code></em> は、 <span class="function"><strong>iconv_mime_decode_headers()</strong></span>
+       <code class="parameter">mode</code> は、<span class="function"><strong>iconv_mime_decode_headers()</strong></span>
        が不正な形式の <em>MIME</em> ヘッダフィールドに遭遇した場合の
        振る舞いを定義します。以下のビットマスクの組み合わせで指定が可能です。
        <table class="doctable table">
-        <caption><strong> <span class="function"><strong>iconv_mime_decode_headers()</strong></span> で指定できるビットマスク</strong></caption>
+        <caption><strong><span class="function"><strong>iconv_mime_decode_headers()</strong></span> で指定できるビットマスク</strong></caption>
         
          <thead>
           <tr>
@@ -87,7 +88,7 @@
            <td>2</td>
            <td>ICONV_MIME_DECODE_CONTINUE_ON_ERROR</td>
            <td>
-            指定すると、 <span class="function"><strong>iconv_mime_decode_headers()</strong></span>
+            指定すると、<span class="function"><strong>iconv_mime_decode_headers()</strong></span>
             は文法的なエラーを無視し、デコード作業を継続します。
            </td>
           </tr>
@@ -99,23 +100,22 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">charset</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">charset</code></em></span>
      <dd>
 
       <p class="para">
-       オプションの <em><code class="parameter">charset</code></em> パラメータは、結果の
+       オプションの <code class="parameter">charset</code> パラメータは、結果の
        文字セットを指定します。指定されなかった場合は
        <a href="iconv.configuration.html" class="link">iconv.internal_encoding</a>
        が用いられます。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -126,14 +126,14 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    成功した場合は連想配列を返します。その中身には
-   <em><code class="parameter">encoded_headers</code></em> で指定した
+   <code class="parameter">encoded_headers</code> で指定した
    <em>MIME</em> ヘッダフィールドがすべて含まれています。
    デコード中にエラーが発生した場合は <strong><code>FALSE</code></strong> を返します。
   </p>
   <p class="para">
    連想配列の個々のキーがフィールド名を表し、対応する要素がフィールドの
    値を表します。同じ名前のフィールドが複数存在する場合は、
-    <span class="function"><strong>iconv_mime_decode_headers()</strong></span> が自動的に連番つきの
+   <span class="function"><strong>iconv_mime_decode_headers()</strong></span> が自動的に連番つきの
    配列をつくり、出現順にその配列に入れられます。
   </p>
  </div>
@@ -142,8 +142,8 @@
  <div class="refsect1 examples" id="refsect1-function.iconv-mime-decode-headers-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2467">
-    <p><strong>例1  <span class="function"><strong>iconv_mime_decode_headers()</strong></span> の例</strong></p>
+   <div class="example" id="example-2666">
+    <p><strong>例1 <span class="function"><strong>iconv_mime_decode_headers()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$headers_string&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;EOF<br /></span><span style="color: #DD0000">Subject:&nbsp;=?UTF-8?B?UHLDvGZ1bmcgUHLDvGZ1bmc=?=<br />To:&nbsp;example@example.com<br />Date:&nbsp;Thu,&nbsp;1&nbsp;Jan&nbsp;1970&nbsp;00:00:00&nbsp;+0000<br />Message-Id:&nbsp;&lt;example@example.com&gt;<br />Received:&nbsp;from&nbsp;localhost&nbsp;(localhost&nbsp;[127.0.0.1])&nbsp;by&nbsp;localhost<br />&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;SMTP&nbsp;id&nbsp;example&nbsp;for&nbsp;&lt;example@example.com&gt;;<br />&nbsp;&nbsp;&nbsp;&nbsp;Thu,&nbsp;1&nbsp;Jan&nbsp;1970&nbsp;00:00:00&nbsp;+0000&nbsp;(UTC)<br />&nbsp;&nbsp;&nbsp;&nbsp;(envelope-from&nbsp;example-return-0000-example=example.com@example.com)<br />Received:&nbsp;(qmail&nbsp;0&nbsp;invoked&nbsp;by&nbsp;uid&nbsp;65534);&nbsp;1&nbsp;Thu&nbsp;2003&nbsp;00:00:00&nbsp;+0000<br /><br /></span><span style="color: #007700">EOF;<br /><br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">=&nbsp;&nbsp;</span><span style="color: #0000BB">iconv_mime_decode_headers</span><span style="color: #007700">(</span><span style="color: #0000BB">$headers_string</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"ISO-8859-1"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$headers</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -178,11 +178,11 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.iconv-mime-decode.html" class="function" rel="rdfs-seeAlso">iconv_mime_decode()</a> - MIME ヘッダフィールドをデコードする</span></li>
-    <li class="member"> <span class="function"><a href="function.mb-decode-mimeheader.html" class="function" rel="rdfs-seeAlso">mb_decode_mimeheader()</a> - MIME ヘッダフィールドの文字列をデコードする</span></li>
-    <li class="member"> <span class="function"><a href="function.imap-mime-header-decode.html" class="function" rel="rdfs-seeAlso">imap_mime_header_decode()</a> - MIME ヘッダ要素をデコードする</span></li>
-    <li class="member"> <span class="function"><a href="function.imap-base64.html" class="function" rel="rdfs-seeAlso">imap_base64()</a> - BASE64 でエンコードされたテキストをデコードする</span></li>
-    <li class="member"> <span class="function"><a href="function.imap-qprint.html" class="function" rel="rdfs-seeAlso">imap_qprint()</a> - quoted-printable 文字列を 8 ビット文字列に変換する</span></li>
+    <li class="member"><span class="function"><a href="function.iconv-mime-decode.html" class="function" rel="rdfs-seeAlso">iconv_mime_decode()</a> - MIME ヘッダフィールドをデコードする</span></li>
+    <li class="member"><span class="function"><a href="function.mb-decode-mimeheader.html" class="function" rel="rdfs-seeAlso">mb_decode_mimeheader()</a> - MIME ヘッダフィールドの文字列をデコードする</span></li>
+    <li class="member"><span class="function"><a href="function.imap-mime-header-decode.html" class="function" rel="rdfs-seeAlso">imap_mime_header_decode()</a> - MIME ヘッダ要素をデコードする</span></li>
+    <li class="member"><span class="function"><a href="function.imap-base64.html" class="function" rel="rdfs-seeAlso">imap_base64()</a> - BASE64 でエンコードされたテキストをデコードする</span></li>
+    <li class="member"><span class="function"><a href="function.imap-qprint.html" class="function" rel="rdfs-seeAlso">imap_qprint()</a> - quoted-printable 文字列を 8 ビット文字列に変換する</span></li>
    </ul>
   </p>
  </div>

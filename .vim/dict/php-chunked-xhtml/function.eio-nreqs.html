@@ -25,8 +25,8 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>eio_nreqs()</strong></span> は、
-    <span class="function"><a href="function.eio-poll.html" class="function">eio_poll()</a></span> を呼ぶカスタムループの中からコールされます。
+   <span class="function"><strong>eio_nreqs()</strong></span> は、
+   <span class="function"><a href="function.eio-poll.html" class="function">eio_poll()</a></span> を呼ぶカスタムループの中からコールされます。
   </p>
 
  </div>
@@ -41,15 +41,15 @@
  <div class="refsect1 returnvalues" id="refsect1-function.eio-nreqs-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    <span class="function"><strong>eio_nreqs()</strong></span> は、処理対象のリクエスト数を返します。
+   <span class="function"><strong>eio_nreqs()</strong></span> は、処理対象のリクエスト数を返します。
   </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.eio-nreqs-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-3579">
-   <p><strong>例1  <span class="function"><strong>eio_nreqs()</strong></span> の例</strong></p>
+  <div class="example" id="example-4003">
+   <p><strong>例1 <span class="function"><strong>eio_nreqs()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">res_cb</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">eio_nop</span><span style="color: #007700">(</span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"res_cb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"1"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_nop</span><span style="color: #007700">(</span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"res_cb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"2"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_nop</span><span style="color: #007700">(</span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"res_cb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"3"</span><span style="color: #007700">);<br /><br />while&nbsp;(</span><span style="color: #0000BB">eio_nreqs</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">eio_poll</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">?&gt;</span>

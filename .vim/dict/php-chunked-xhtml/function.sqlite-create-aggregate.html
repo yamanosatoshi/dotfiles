@@ -39,19 +39,19 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>sqlite_create_aggregate()</strong></span> は、
-    <span class="function"><a href="function.sqlite-create-function.html" class="function">sqlite_create_function()</a></span> に似ていますが、
+   <span class="function"><strong>sqlite_create_aggregate()</strong></span> は、
+   <span class="function"><a href="function.sqlite-create-function.html" class="function">sqlite_create_function()</a></span> に似ていますが、
    クエリの全レコードを通じて集約された結果を計算するために使用される
    関数を登録するところが異なります。
   </p>
   <p class="para">
-   この関数と  <span class="function"><a href="function.sqlite-create-function.html" class="function">sqlite_create_function()</a></span> の主な違い
+   この関数と <span class="function"><a href="function.sqlite-create-function.html" class="function">sqlite_create_function()</a></span> の主な違い
    は、二つの関数が集約を管理するために必要であることです。
-   <em><code class="parameter">step_func</code></em>は、結果セットの各レコードに関して
+   <code class="parameter">step_func</code>は、結果セットの各レコードに関して
    コールされます。PHP関数は、結果を加算し、集約コンテキストに保存する
    必要があります。
    全レコードが処理された後、
-   <em><code class="parameter">finalize_func</code></em>がコールされ、
+   <code class="parameter">finalize_func</code>がコールされ、
    集約コンテキストからデータが取得され、結果が返されます。
    コールバック関数は SQLite が認識可能な型 (すなわち
    <a href="language.types.intro.html" class="link">スカラー型</a>)
@@ -65,24 +65,25 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">dbhandle</code></dt>
 
-     <span class="term"><em><code class="parameter">dbhandle</code></em></span>
      <dd>
 
       <p class="para">
        SQLite データベースリソース。手続きに従って、
-        <span class="function"><a href="function.sqlite-open.html" class="function">sqlite_open()</a></span> から返されます。
+       <span class="function"><a href="function.sqlite-open.html" class="function">sqlite_open()</a></span> から返されます。
        このパラメータは、
        オブジェクト指向言語型メソッドを使用する場合は不要です。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">function_name</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">function_name</code></em></span>
      <dd>
 
       <p class="para">
@@ -90,11 +91,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">step_func</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">step_func</code></em></span>
      <dd>
 
       <p class="para">
@@ -103,11 +104,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">finalize_func</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">finalize_func</code></em></span>
      <dd>
 
       <p class="para">
@@ -117,11 +118,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">num_args</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">num_args</code></em></span>
      <dd>
 
       <p class="para">
@@ -130,8 +131,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -149,7 +149,7 @@
  <div class="refsect1 examples" id="refsect1-function.sqlite-create-aggregate-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2128">
+   <div class="example" id="example-2325">
     <p><strong>例1 max_length 集約関数の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -163,17 +163,17 @@
   <p class="para">
    この例では、テーブルのあるカラムに存在する最長な文字列長を計算する
    集約関数を生成します。各レコードに対して <em>max_len_step</em>
-   関数がコールされ、<em><code class="parameter">context</code></em> パラメータが渡されます。
+   関数がコールされ、<code class="parameter">context</code> パラメータが渡されます。
    コンテキストパラメータは他の PHP 変数と同様で、
    配列もしくはオブジェクト値を保持するよう設定されます。
    この例では、単純にこれまでの最大長を保持するために使用しています。
-   もし <em><code class="parameter">string</code></em> が現在の最大長よりも長い場合、
+   もし <code class="parameter">string</code> が現在の最大長よりも長い場合、
    新しい最大長を保持するためにコンテキストを更新します。
   </p>
   <p class="para">
    全てのレコードが処理された後、SQLite は集約結果を決定するために
    <em>max_len_finalize</em> 関数をコールします。
-   ここで、<em><code class="parameter">context</code></em> 内に見つかったデータに基づいた
+   ここで、<code class="parameter">context</code> 内に見つかったデータに基づいた
    計算のような処理を実行することができます。
    ただ、この簡単な例では、クエリの処理が進むと共に結果を計算しているので、
    単純にコンテキストの値を返す必要があります。
@@ -183,7 +183,7 @@
     上記の例は、カラムがバイナリデータを含む場合に正しく動作しません。
     なぜそうなるか、またどのようにバイナリエンコーディングを考慮するか
     についてはマニュアルページの
-     <span class="function"><a href="function.sqlite-udf-decode-binary.html" class="function">sqlite_udf_decode_binary()</a></span>
+    <span class="function"><a href="function.sqlite-udf-decode-binary.html" class="function">sqlite_udf_decode_binary()</a></span>
     を参照ください。
    </p>
   </p></blockquote>
@@ -198,8 +198,8 @@
   </div>
   <div class="tip"><strong class="tip">ヒント</strong>
    <p class="para">
-     <span class="function"><a href="function.sqlite-create-function.html" class="function">sqlite_create_function()</a></span> や
-     <span class="function"><strong>sqlite_create_aggregate()</strong></span> を用いることで、
+    <span class="function"><a href="function.sqlite-create-function.html" class="function">sqlite_create_function()</a></span> や
+    <span class="function"><strong>sqlite_create_aggregate()</strong></span> を用いることで、
     SQLite のネイティブな SQL 関数をオーバーライドすることが可能です。
    </p>
   </div>
@@ -210,9 +210,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.sqlite-create-function.html" class="function" rel="rdfs-seeAlso">sqlite_create_function()</a> - SQLステートメントで使用するために&quot;通常の&quot;ユーザー定義関数を登録する</span></li>
-    <li class="member"> <span class="function"><a href="function.sqlite-udf-encode-binary.html" class="function" rel="rdfs-seeAlso">sqlite_udf_encode_binary()</a> - UDFから返す前にバイナリデータをエンコードする</span></li>
-    <li class="member"> <span class="function"><a href="function.sqlite-udf-decode-binary.html" class="function" rel="rdfs-seeAlso">sqlite_udf_decode_binary()</a> - UDFにパラメータとして渡されたバイナリデータをデコードする</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-create-function.html" class="function" rel="rdfs-seeAlso">sqlite_create_function()</a> - SQLステートメントで使用するために&quot;通常の&quot;ユーザー定義関数を登録する</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-udf-encode-binary.html" class="function" rel="rdfs-seeAlso">sqlite_udf_encode_binary()</a> - UDFから返す前にバイナリデータをエンコードする</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-udf-decode-binary.html" class="function" rel="rdfs-seeAlso">sqlite_udf_decode_binary()</a> - UDFにパラメータとして渡されたバイナリデータをデコードする</span></li>
    </ul>
   </p>
  </div>

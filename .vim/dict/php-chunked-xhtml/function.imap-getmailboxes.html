@@ -36,46 +36,46 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-imap_stream</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
+<code class="parameter">
+imap_stream</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
 が返す IMAP ストリーム。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">ref</code></dt>
 
-     <span class="term"><em><code class="parameter">ref</code></em></span>
      <dd>
 
       <p class="para">
-       通常、<em><code class="parameter">ref</code></em> は
-        <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span> で述べられているサーバー定義です。
+       通常、<code class="parameter">ref</code> は
+       <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span> で述べられているサーバー定義です。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">pattern</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">pattern</code></em></span>
      <dd>
 
       <p class="para">検索を開始するメールボックスの階層を指定します。</p>
-<p class="para"><em><code class="parameter">pattern</code></em> の中で使用できる特別な文字として
+<p class="para"><code class="parameter">pattern</code> の中で使用できる特別な文字として
 &#039;<em>*</em>&#039; および &#039;<em>%</em>&#039; があります。
 &#039;<em>*</em>&#039; は、すべてのメールボックスを意味します。
-<em><code class="parameter">pattern</code></em> に &#039;<em>*</em>&#039; を指定すると、
+<code class="parameter">pattern</code> に &#039;<em>*</em>&#039; を指定すると、
 メールボックス階層全体のリストが得られます。
 &#039;<em>%</em>&#039; は現在のレベルのみを意味します。
-&#039;<em>%</em>&#039; を <em><code class="parameter">pattern</code></em> に指定すると、
+&#039;<em>%</em>&#039; を <code class="parameter">pattern</code> に指定すると、
 トップレベルのメールボックスのみを返します。<em>UW_IMAPD</em> の場合、
 &#039;<em>~/mail/%</em>&#039; は
 <var class="filename">~/mail</var> ディレクトリ内のすべてのメールボックスを返しますが、
 そのディレクトリのサブフォルダにあるメールボックスは返しません。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -85,17 +85,17 @@ imap_stream</code></em></span><dd>
   <h3 class="title">返り値</h3>
   <p class="para">
    メールボックス情報を有するオブジェクトの配列を返します。各オブジェクトには、
-   メールボックスの完全な名前である <em><code class="parameter">name</code></em>、
-   このメールボックスの階層の区切りを示す属性 <em><code class="parameter">delimiter</code></em>、
-   そして <em><code class="parameter">attributes</code></em> が存在します。
-   <em><code class="parameter">attributes</code></em> はビットマスクであり、
+   メールボックスの完全な名前である <code class="parameter">name</code>、
+   このメールボックスの階層の区切りを示す属性 <code class="parameter">delimiter</code>、
+   そして <code class="parameter">attributes</code> が存在します。
+   <code class="parameter">attributes</code> はビットマスクであり、
    次のものについて調べることができます。
    <ul class="itemizedlist">
     <li class="listitem">
      <p class="para">
       <strong><code>LATT_NOINFERIORS</code></strong> - このメールボックスには
       「子供」がいるかいないかはわかりません（このボックスの中にメールボックスはありません）。
-      このメールボックスに対して  <span class="function"><a href="function.imap-createmailbox.html" class="function">imap_createmailbox()</a></span>
+      このメールボックスに対して <span class="function"><a href="function.imap-createmailbox.html" class="function">imap_createmailbox()</a></span>
       をコールしても動作しません。
      </p>
     </li>
@@ -128,8 +128,8 @@ imap_stream</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imap-getmailboxes-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3344">
-    <p><strong>例1  <span class="function"><strong>imap_getmailboxes()</strong></span> の例</strong></p>
+   <div class="example" id="example-3768">
+    <p><strong>例1 <span class="function"><strong>imap_getmailboxes()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$mbox&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_open</span><span style="color: #007700">(</span><span style="color: #DD0000">"{imap.example.org}"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OP_HALFOPEN</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"接続できません:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">imap_last_error</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">$list&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_getmailboxes</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"{imap.example.org}"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"*"</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$list</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$list&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"(</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">)&nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">imap_utf7_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">","</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"'"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delimiter&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"',"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">attributes&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"imap_getmailboxes&nbsp;failed:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">imap_last_error</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">imap_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -145,7 +145,7 @@ imap_stream</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imap-getsubscribed.html" class="function" rel="rdfs-seeAlso">imap_getsubscribed()</a> - 購読中の全メールボックスの一覧を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.imap-getsubscribed.html" class="function" rel="rdfs-seeAlso">imap_getsubscribed()</a> - 購読中の全メールボックスの一覧を取得する</span></li>
    </ul>
   </p>
  </div>

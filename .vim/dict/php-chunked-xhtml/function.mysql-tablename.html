@@ -41,11 +41,11 @@
    )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">result</code></em> からテーブル名を取得します。
+   <code class="parameter">result</code> からテーブル名を取得します。
   </p>
   <p class="para">
    この関数は非推奨です。かわりに
-    <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> を利用して <em>SHOW TABLES 
+   <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> を利用して <em>SHOW TABLES 
    [FROM db_name] [LIKE &#039;pattern&#039;]</em> 文を発行することを推奨します。
   </p>
  </div>
@@ -56,22 +56,23 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result</code></dt>
 
-     <span class="term"><em><code class="parameter">result</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.mysql-list-tables.html" class="function">mysql_list_tables()</a></span> から返される
+       <span class="function"><a href="function.mysql-list-tables.html" class="function">mysql_list_tables()</a></span> から返される
        結果ポインタ <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> 。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">i</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">i</code></em></span>
      <dd>
 
       <p class="para">
@@ -79,8 +80,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -94,8 +94,8 @@
   </p>
   <p class="para">
    結果ポインタの中身を調べるために
-    <span class="function"><strong>mysql_tablename()</strong></span> 関数を利用し、取得したテーブルを
-   利用するには  <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> などの関数を
+   <span class="function"><strong>mysql_tablename()</strong></span> 関数を利用し、取得したテーブルを
+   利用するには <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> などの関数を
    利用してください。
   </p>
  </div>
@@ -118,7 +118,7 @@
       <tr>
        <td>5.5.0</td>
        <td>
-         <span class="function"><strong>mysql_tablename()</strong></span> 関数は非推奨となり、
+        <span class="function"><strong>mysql_tablename()</strong></span> 関数は非推奨となり、
         <strong><code>E_DEPRECATED</code></strong> レベルのエラーが発生するようになりました。
        </td>
       </tr>
@@ -134,8 +134,8 @@
  <div class="refsect1 examples" id="refsect1-function.mysql-tablename-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1613">
-    <p><strong>例1  <span class="function"><strong>mysql_tablename()</strong></span> の例</strong></p>
+   <div class="example" id="example-1792">
+    <p><strong>例1 <span class="function"><strong>mysql_tablename()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_list_tables</span><span style="color: #007700">(</span><span style="color: #DD0000">"mydb"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$num_rows&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br />for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$num_rows</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Table:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysql_tablename</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -153,7 +153,7 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     結果ポインタに含まれるテーブル数を調べるには
-     <span class="function"><a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a></span> 関数を利用します。
+    <span class="function"><a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a></span> 関数を利用します。
    </p>
   </p></blockquote>
  </div>
@@ -163,9 +163,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-list-tables.html" class="function" rel="rdfs-seeAlso">mysql_list_tables()</a> - MySQL データベース上のテーブルのリストを得る</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-field-table.html" class="function" rel="rdfs-seeAlso">mysql_field_table()</a> - 指定したフィールドが含まれるテーブルの名前を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-db-name.html" class="function" rel="rdfs-seeAlso">mysql_db_name()</a> - mysql_list_dbs のコール結果からデータベース名を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-list-tables.html" class="function" rel="rdfs-seeAlso">mysql_list_tables()</a> - MySQL データベース上のテーブルのリストを得る</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-field-table.html" class="function" rel="rdfs-seeAlso">mysql_field_table()</a> - 指定したフィールドが含まれるテーブルの名前を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-db-name.html" class="function" rel="rdfs-seeAlso">mysql_db_name()</a> - mysql_list_dbs のコール結果からデータベース名を取得する</span></li>
    </ul>
   </p>
  </div>

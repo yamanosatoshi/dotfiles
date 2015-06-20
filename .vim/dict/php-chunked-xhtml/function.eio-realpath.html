@@ -28,9 +28,9 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   <span class="function"><strong>eio_realpath()</strong></span> は、正規化した絶対パスを
-  <em><code class="parameter">callback</code></em> 関数の
-  <em><code class="parameter">result</code></em> 引数で返します。
+  <span class="function"><strong>eio_realpath()</strong></span> は、正規化した絶対パスを
+  <code class="parameter">callback</code> 関数の
+  <code class="parameter">result</code> 引数で返します。
   </p>
 
  </div>
@@ -40,9 +40,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">path</code></dt>
 
-    <span class="term"><em><code class="parameter">path</code></em></span>
     <dd>
 
      <p class="para">
@@ -51,11 +52,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">pri</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">pri</code></em></span>
     <dd>
 
      <p class="para">
@@ -63,11 +64,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">callback</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">callback</code></em></span>
     <dd>
 
      <p class="para">
@@ -75,11 +76,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">data</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">data</code></em></span>
     <dd>
 
      <p class="para">
@@ -87,8 +88,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -104,8 +104,8 @@
 
  <div class="refsect1 examples" id="refsect1-function.eio-realpath-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-3585">
-   <p><strong>例1  <span class="function"><strong>eio_realpath()</strong></span> の例</strong></p>
+  <div class="example" id="example-4009">
+   <p><strong>例1 <span class="function"><strong>eio_realpath()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">getcwd</span><span style="color: #007700">());<br /><br />function&nbsp;</span><span style="color: #0000BB">my_realpath_allback</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">eio_realpath</span><span style="color: #007700">(</span><span style="color: #DD0000">"../"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_realpath_allback"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>

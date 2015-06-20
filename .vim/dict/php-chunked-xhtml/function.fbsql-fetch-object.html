@@ -25,16 +25,16 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>fbsql_fetch_object()</strong></span> は
-    <span class="function"><a href="function.fbsql-fetch-array.html" class="function">fbsql_fetch_array()</a></span> と似ていますが 1 点だけ違いが
+   <span class="function"><strong>fbsql_fetch_object()</strong></span> は
+   <span class="function"><a href="function.fbsql-fetch-array.html" class="function">fbsql_fetch_array()</a></span> と似ていますが 1 点だけ違いが
    あります。それは、返されるのが配列ではなくオブジェクトであるという点です。
    つまり、データへのアクセスはフィールド名によってのみ可能で、
    そのオフセットではアクセスできない(数値はプロパティ名として使用できません)
    ということです。
   </p>
   <p class="para">
-   速度面では、この関数は  <span class="function"><a href="function.fbsql-fetch-array.html" class="function">fbsql_fetch_array()</a></span>
-   とまったく同等で、 <span class="function"><a href="function.fbsql-fetch-row.html" class="function">fbsql_fetch_row()</a></span> と比べても
+   速度面では、この関数は <span class="function"><a href="function.fbsql-fetch-array.html" class="function">fbsql_fetch_array()</a></span>
+   とまったく同等で、<span class="function"><a href="function.fbsql-fetch-row.html" class="function">fbsql_fetch_row()</a></span> と比べても
    ほぼ同じです (その差はごくわずかです)。
   </p>
  </div>
@@ -46,11 +46,11 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
-<p class="para">  <span class="function"><a href="function.fbsql-query.html" class="function">fbsql_query()</a></span> あるいは
- <span class="function"><a href="function.fbsql-db-query.html" class="function">fbsql_db_query()</a></span> が返す結果 ID。</p></dd>
-</dt>
+<code class="parameter">
+result</code></dt>
+<dd>
+<p class="para"> <span class="function"><a href="function.fbsql-query.html" class="function">fbsql_query()</a></span> あるいは
+<span class="function"><a href="function.fbsql-db-query.html" class="function">fbsql_db_query()</a></span> が返す結果 ID。</p></dd>
 
    </dl>
 
@@ -70,8 +70,8 @@ result</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.fbsql-fetch-object-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1123">
-    <p><strong>例1  <span class="function"><strong>fbsql_fetch_object()</strong></span> の例</strong></p>
+   <div class="example" id="example-1181">
+    <p><strong>例1 <span class="function"><strong>fbsql_fetch_object()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />fbsql_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$host</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$user</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fbsql_db_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"database"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;table"</span><span style="color: #007700">);<br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fbsql_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">user_id</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fullname</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">fbsql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -88,9 +88,9 @@ result</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.fbsql-fetch-array.html" class="function" rel="rdfs-seeAlso">fbsql_fetch_array()</a> - 連想配列、数値配列、またはその両方として結果レコードを取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.fbsql-fetch-row.html" class="function" rel="rdfs-seeAlso">fbsql_fetch_row()</a> - 数値配列として結果レコードを得る</span></li>
-    <li class="member"> <span class="function"><a href="function.fbsql-fetch-assoc.html" class="function" rel="rdfs-seeAlso">fbsql_fetch_assoc()</a> - 連想配列として結果レコードを取得する</span></li>
+    <li class="member"><span class="function"><a href="function.fbsql-fetch-array.html" class="function" rel="rdfs-seeAlso">fbsql_fetch_array()</a> - 連想配列、数値配列、またはその両方として結果レコードを取得する</span></li>
+    <li class="member"><span class="function"><a href="function.fbsql-fetch-row.html" class="function" rel="rdfs-seeAlso">fbsql_fetch_row()</a> - 数値配列として結果レコードを得る</span></li>
+    <li class="member"><span class="function"><a href="function.fbsql-fetch-assoc.html" class="function" rel="rdfs-seeAlso">fbsql_fetch_assoc()</a> - 連想配列として結果レコードを取得する</span></li>
    </ul>
   </p>
  </div>

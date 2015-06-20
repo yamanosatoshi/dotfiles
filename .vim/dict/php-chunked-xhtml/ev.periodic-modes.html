@@ -16,17 +16,17 @@
  <p class="para">
   <a href="class.evperiodic.html" class="classname">EvPeriodic</a>
   ウォッチャーは、パラメータ
-  <em><code class="parameter">offset</code></em>、<em><code class="parameter">interval</code></em>
-  および <em><code class="parameter">reschedule_cb</code></em>
+  <code class="parameter">offset</code>、<code class="parameter">interval</code>
+  および <code class="parameter">reschedule_cb</code>
   の設定によってさまざまなモードで動作します。
  </p>
  <ol type="1">
   <li class="listitem">
    <p class="para">
     <em class="emphasis">絶対時刻のタイマー</em>。
-    このモードでは、<em><code class="parameter">interval</code></em> = <strong><code>0</code></strong>
-    そして <em><code class="parameter">reschedule_cb</code></em> = <strong><code>NULL</code></strong> となります。
-    このときは、単純に <em><code class="parameter">offset</code></em> で指定した時刻に実行してその後は繰り返しません。
+    このモードでは、<code class="parameter">interval</code> = <strong><code>0</code></strong>
+    そして <code class="parameter">reschedule_cb</code> = <strong><code>NULL</code></strong> となります。
+    このときは、単純に <code class="parameter">offset</code> で指定した時刻に実行してその後は繰り返しません。
     時刻の飛びがあっても調整はしません。つまり、
     <em class="emphasis">January 1st 2014</em> に実行するように設定した場合は、
     システム時刻がこの時刻に達するかこの時刻を過ぎたときに実行されます。
@@ -35,10 +35,10 @@
   <li class="listitem">
    <p class="para">
     <em class="emphasis">繰り返しタイマー</em>。
-    このモードでは、<em><code class="parameter">interval</code></em> &gt; <strong><code>0</code></strong>
-    そして <em><code class="parameter">reschedule_cb</code></em> = <strong><code>NULL</code></strong>
+    このモードでは、<code class="parameter">interval</code> &gt; <strong><code>0</code></strong>
+    そして <code class="parameter">reschedule_cb</code> = <strong><code>NULL</code></strong>
     となります。ウォッチャーは常に、
-    <em><code class="parameter">offset</code></em> + <strong><code>N</code></strong> * <em><code class="parameter">interval</code></em>
+    <code class="parameter">offset</code> + <strong><code>N</code></strong> * <code class="parameter">interval</code>
     (<strong><code>N</code></strong> は何らかの整数) 経過後にタイムアウトするようにスケジュールされ、
     その後繰り返します。時刻の飛びは気にしません。
    </p>
@@ -56,8 +56,8 @@
    </p>
    <p class="para">
     <a href="class.evperiodic.html" class="classname">EvPeriodic</a> は、
-    <var class="varname"><var class="varname">time</var></var> = <em><code class="parameter">offset</code></em>
-    (<em>mod</em> <em><code class="parameter">interval</code></em>)
+    <var class="varname"><var class="varname">time</var></var> = <code class="parameter">offset</code>
+    (<em>mod</em> <code class="parameter">interval</code>)
     となる次の時刻にコールバックをこのモードで実行しようと試みます。
     時刻の飛びは気にしません。
    </p>
@@ -65,13 +65,13 @@
   <li class="listitem">
    <p class="para">
     <em class="emphasis">手動再スケジュールモード</em>。
-    このモードでは、<em><code class="parameter">reschedule_cb</code></em>
+    このモードでは、<code class="parameter">reschedule_cb</code>
     が <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> になります。
    </p>
    <p class="para">
-    <em><code class="parameter">interval</code></em> と <em><code class="parameter">offset</code></em>
+    <code class="parameter">interval</code> と <code class="parameter">offset</code>
     はどちらも無視します。毎回定期ウォッチャーがスケジュールされ、再スケジュールコールバック
-    (<em><code class="parameter">reschedule_cb</code></em>) が呼び出されます。
+    (<code class="parameter">reschedule_cb</code>) が呼び出されます。
     コールバックの最初の引数がウォッチャー、そして二番目の引数が現在時刻となります。
    </p>
    <p class="para">
@@ -89,7 +89,7 @@
     (つまり、二番目の引数で受け取った時刻と同じかそれよりも大きな値を返します)。
     コールバックが呼ばれるのは、通常はイベントが発生する直前ですが、それ以外の場合にも呼ばれる可能性があります。
    </p>
-   <div class="example" id="example-3603">
+   <div class="example" id="example-4027">
     <p><strong>例1 再スケジュールコールバックの利用</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">

@@ -25,8 +25,8 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> や  <span class="function"><a href="function.readfile.html" class="function">readfile()</a></span>、
-    <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span>、 <span class="function"><a href="function.opendir.html" class="function">opendir()</a></span>
+   <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> や <span class="function"><a href="function.readfile.html" class="function">readfile()</a></span>、
+   <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span>、<span class="function"><a href="function.opendir.html" class="function">opendir()</a></span>
    などの stat 関連の関数をすべて phar に横取りさせます。
    phar アーカイブ内で相対パスを指定してこれらの関数がコールされると、
    それが phar アーカイブ内のファイルへのアクセスに変更されます。
@@ -57,8 +57,8 @@
   <div class="refsect1 examples" id="refsect1-phar.interceptfilefuncs-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-680">
-    <p><strong>例1  <span class="function"><strong>Phar::interceptFileFuncs()</strong></span> の例</strong></p>
+   <div class="example" id="example-721">
+    <p><strong>例1 <span class="function"><strong>Phar::interceptFileFuncs()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">interceptFileFuncs</span><span style="color: #007700">();<br />include&nbsp;</span><span style="color: #DD0000">'phar://'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">__FILE__&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'/file.php'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -75,8 +75,8 @@
    <em>file.php</em> にこのようなコードが含まれていた場合、
   </p>
   <p class="para">
-   <div class="example" id="example-681">
-    <p><strong>例2  <span class="function"><strong>Phar::interceptFileFuncs()</strong></span> の例</strong></p>
+   <div class="example" id="example-722">
+    <p><strong>例2 <span class="function"><strong>Phar::interceptFileFuncs()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'file2.txt'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -90,7 +90,7 @@
    通常は、PHP はカレントディレクトリの <em>file2.txt</em>
    を探します。カレントディレクトリの場所は、file.php と同じ場所かあるいは
    コマンドラインで実行した際のカレントディレクトリとなります。
-    <span class="function"><strong>Phar::interceptFileFuncs()</strong></span> を使用した場合は、
+   <span class="function"><strong>Phar::interceptFileFuncs()</strong></span> を使用した場合は、
    PHP はカレントディレクトリを <em>phar:///path/to/myphar.phar/</em>
    とみなし、上のコードの場合は
    <em>phar:///path/to/myphar.phar/file2.txt</em> をオープンします。

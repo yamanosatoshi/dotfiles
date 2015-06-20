@@ -27,9 +27,15 @@
   <p class="para rdfs-comment">
    出力用バッファの内容を消去し、出力のバッファリングをオフにします。
    バッファの内容について更に何らかの処理を行いたい場合には、
-   バッファの内容は  <span class="function"><strong>ob_end_clean()</strong></span> がコールされると
-   破棄されるため、 <span class="function"><strong>ob_end_clean()</strong></span> の前に
-    <span class="function"><a href="function.ob-get-contents.html" class="function">ob_get_contents()</a></span> をコールしなければなりません。
+   バッファの内容は <span class="function"><strong>ob_end_clean()</strong></span> がコールされると
+   破棄されるため、<span class="function"><strong>ob_end_clean()</strong></span> の前に
+   <span class="function"><a href="function.ob-get-contents.html" class="function">ob_get_contents()</a></span> をコールしなければなりません。
+  </p>
+  <p class="para">
+   出力バッファを開始するときに、
+   <span class="function"><a href="function.ob-start.html" class="function">ob_start()</a></span> で <a href="outcontrol.constants.html#constant.php-output-handler-cleanable" class="link">PHP_OUTPUT_HANDLER_CLEANABLE</a>
+   および <a href="outcontrol.constants.html#constant.php-output-handler-removable" class="link">PHP_OUTPUT_HANDLER_REMOVABLE</a>
+   フラグを指定する必要があります。指定しなければ、<span class="function"><strong>ob_end_clean()</strong></span> は動作しません。
   </p>
  </div>
 
@@ -53,43 +59,14 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.ob-end-clean-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.2.0</td>
-       <td>
-        boolean 型の戻り値が追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.ob-end-clean-examples">
   <h3 class="title">例</h3>
   <p class="para">
    以下は全ての出力バッファを消去する簡単な方法の例です。
   </p>
   <p class="para">
-   <div class="example" id="example-462">
-    <p><strong>例1  <span class="function"><strong>ob_end_clean()</strong></span> の例</strong></p>
+   <div class="example" id="example-487">
+    <p><strong>例1 <span class="function"><strong>ob_end_clean()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />ob_start</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #DD0000">'Text&nbsp;that&nbsp;won\'t&nbsp;get&nbsp;displayed.'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">ob_end_clean</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -106,9 +83,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ob-start.html" class="function" rel="rdfs-seeAlso">ob_start()</a> - 出力のバッファリングを有効にする</span></li>
-    <li class="member"> <span class="function"><a href="function.ob-get-contents.html" class="function" rel="rdfs-seeAlso">ob_get_contents()</a> - 出力用バッファの内容を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.ob-flush.html" class="function" rel="rdfs-seeAlso">ob_flush()</a> - 出力バッファをフラッシュ(送信)する</span></li>
+    <li class="member"><span class="function"><a href="function.ob-start.html" class="function" rel="rdfs-seeAlso">ob_start()</a> - 出力のバッファリングを有効にする</span></li>
+    <li class="member"><span class="function"><a href="function.ob-get-contents.html" class="function" rel="rdfs-seeAlso">ob_get_contents()</a> - 出力用バッファの内容を返す</span></li>
+    <li class="member"><span class="function"><a href="function.ob-flush.html" class="function" rel="rdfs-seeAlso">ob_flush()</a> - 出力バッファをフラッシュ(送信)する</span></li>
    </ul>
   </p>
  </div>

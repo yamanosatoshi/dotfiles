@@ -26,23 +26,20 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">array</code></em> を入力とし、値に重複のない新規配列を返します。
+   <code class="parameter">array</code> を入力とし、値に重複のない新規配列を返します。
   </p>
   <p class="para">
    キーは保持されることに注意してください。
-    <span class="function"><strong>array_unique()</strong></span> はまず文字列として値をソートし、
+   <span class="function"><strong>array_unique()</strong></span> はまず文字列として値をソートし、
    各値の最初のキーを保持し、2回目以降の全てのキーを無視します。
-   これは、ソート前の <em><code class="parameter">array</code></em>
+   これは、ソート前の <code class="parameter">array</code>
    で最初の関連する値のキーが保持されるという意味ではありません。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <span class="simpara">
     <em>(string) $elem1 === (string) $elem2</em>
     の場合のみ二つの要素は等しいとみなされます。
-    言い換えると、文字列表現が同じ場合となります。
-   </span>
-   <span class="simpara">
-    最初の要素が使用されます。
+    つまり、文字列表現が同じである場合は、最初の要素を使用します。
    </span>
   </p></blockquote>
  </div>
@@ -53,9 +50,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">array</code></dt>
 
-     <span class="term"><em><code class="parameter">array</code></em></span>
      <dd>
 
       <p class="para">
@@ -63,15 +61,15 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">sort_flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">sort_flags</code></em></span>
      <dd>
 
       <p class="para">
-       オプションの 2 番目のパラメータ <em><code class="parameter">sort_flags</code></em>
+       オプションの 2 番目のパラメータ <code class="parameter">sort_flags</code>
        にこれらの値を使用して、ソートの挙動を変更します。
       </p>
       <p class="para">
@@ -90,15 +88,13 @@
         <li class="listitem">
          <span class="simpara"><strong><code>SORT_LOCALE_STRING</code></strong> -
           現在のロケールにもとづいて文字列として比較します。
-          
          </span>
         </li>
        </ul>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -130,7 +126,7 @@
       <tr>
        <td>5.2.10</td>
        <td>
-        <em><code class="parameter">sort_flags</code></em> のデフォルト値を
+        <code class="parameter">sort_flags</code> のデフォルト値を
         <strong><code>SORT_STRING</code></strong> に戻しました。
        </td>
       </tr>
@@ -138,7 +134,7 @@
       <tr>
        <td>5.2.9</td>
        <td>
-        オプションの <em><code class="parameter">sort_flags</code></em> が追加され、
+        オプションの <code class="parameter">sort_flags</code> が追加され、
         デフォルトは <strong><code>SORT_REGULAR</code></strong> となりました。5.2.9 より前のバージョンでは、
         この関数は内部的に <strong><code>SORT_STRING</code></strong> によるソートを行っていました。
        </td>
@@ -155,8 +151,8 @@
  <div class="refsect1 examples" id="refsect1-function.array-unique-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4972">
-    <p><strong>例1  <span class="function"><strong>array_unique()</strong></span> の例</strong></p>
+   <div class="example" id="example-5454">
+    <p><strong>例1 <span class="function"><strong>array_unique()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$input&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"a"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"green"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"red"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"green"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"blue"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"red"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_unique</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -178,8 +174,8 @@ Array
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4973">
-    <p><strong>例2  <span class="function"><strong>array_unique()</strong></span> と型</strong></p>
+   <div class="example" id="example-5455">
+    <p><strong>例2 <span class="function"><strong>array_unique()</strong></span> と型</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$input&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"4"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"3"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"3"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_unique</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -205,7 +201,7 @@ array(2) {
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.array-count-values.html" class="function" rel="rdfs-seeAlso">array_count_values()</a> - 配列の値の数を数える</span></li>
+    <li class="member"><span class="function"><a href="function.array-count-values.html" class="function" rel="rdfs-seeAlso">array_count_values()</a> - 配列の値の数を数える</span></li>
    </ul>
   </p>
  </div>
@@ -215,7 +211,7 @@ array(2) {
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <span class="simpara">
-     <span class="function"><strong>array_unique()</strong></span> は、
+    <span class="function"><strong>array_unique()</strong></span> は、
     多次元配列での使用を想定したものではないことに注意しましょう。
    </span>
   </p></blockquote>

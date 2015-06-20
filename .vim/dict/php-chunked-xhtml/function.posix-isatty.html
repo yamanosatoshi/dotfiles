@@ -21,11 +21,11 @@
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
    <span class="type">bool</span> <span class="methodname"><strong>posix_isatty</strong></span>
-    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$fd</code></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$fd</code></span>
    )</div>
 
    <p class="para rdfs-comment">
-    ファイル記述子 <em><code class="parameter">fd</code></em> が、
+    ファイル記述子 <code class="parameter">fd</code> が、
     有効な端末デバイスを指しているかどうかを調べます。
   </p>
  </div>
@@ -36,17 +36,21 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+ <dt>
+<code class="parameter">fd</code></dt>
 
-     <span class="term"><em><code class="parameter">fd</code></em></span>
-     <dd>
+ <dd>
 
-      <p class="para">
-       ファイル記述子。
-      </p>
-     </dd>
+  <p class="para">
+   ファイル記述子。ファイルリソースか、あるいは <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> で指定します。
+   <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> を指定した場合は、システムコールにそのまま渡せるファイル記述子だとみなします。
+  </p>
+  <p class="para">
+   たいていの場合は、ファイルリソースで指定することになるでしょう。
+  </p>
+ </dd>
 
-    </dt>
 
    </dl>
 
@@ -57,7 +61,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.posix-isatty-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">fd</code></em> がオープンされており、
+   <code class="parameter">fd</code> がオープンされており、
    かつ端末に接続されている場合に <strong><code>TRUE</code></strong>、
    それ以外の場合に <strong><code>FALSE</code></strong> を返します。
   </p>
@@ -68,7 +72,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.posix-ttyname.html" class="function" rel="rdfs-seeAlso">posix_ttyname()</a> - 端末のデバイス名を調べる</span></li>
+    <li class="member"><span class="function"><a href="function.posix-ttyname.html" class="function" rel="rdfs-seeAlso">posix_ttyname()</a> - 端末のデバイス名を調べる</span></li>
    </ul>
   </p>
  </div>

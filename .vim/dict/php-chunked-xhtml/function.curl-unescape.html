@@ -36,15 +36,16 @@
   <dl>
 
    <dt>
-<span class="term"><em><code class="parameter">ch</code></em>
-</span><dd>
-<p class="para"> <span class="function"><a href="function.curl-init.html" class="function">curl_init()</a></span>
-が返す cURL ハンドル。</p></dd>
+<code class="parameter">ch</code>
 </dt>
+<dd>
+<p class="para"><span class="function"><a href="function.curl-init.html" class="function">curl_init()</a></span>
+が返す cURL ハンドル。</p></dd>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">str</code></dt>
 
-    <span class="term"><em><code class="parameter">str</code></em></span>
     <dd>
 
      <p class="para">
@@ -52,8 +53,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -70,8 +70,8 @@
  <div class="refsect1 examples" id="refsect1-function.curl-unescape-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4210">
-    <p><strong>例1  <span class="function"><a href="function.curl-escape.html" class="function">curl_escape()</a></span> の例</strong></p>
+   <div class="example" id="example-4656">
+    <p><strong>例1 <span class="function"><a href="function.curl-escape.html" class="function">curl_escape()</a></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;curl&nbsp;ハンドルを作ります<br /></span><span style="color: #0000BB">$ch&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_init</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://example.com/redirect.php'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;HTTP&nbsp;リクエストを送信し、リダイレクトにしたがいます<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CURLOPT_FOLLOWLOCATION</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;直近の実効&nbsp;URL&nbsp;を取得します<br /></span><span style="color: #0000BB">$effective_url&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_getinfo</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CURLINFO_EFFECTIVE_URL</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;"http://example.com/show_location.php?loc=M%C3%BCnchen"<br /><br />//&nbsp;URL&nbsp;をデコードします<br /></span><span style="color: #0000BB">$effective_url_decoded&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_unescape</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$effective_url</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;"http://example.com/show_location.php?loc=München"<br /><br />//&nbsp;ハンドルを閉じます<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -88,8 +88,8 @@
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>curl_unescape()</strong></span> は、プラス記号 (+) をスペースに変換しません。
-     <span class="function"><a href="function.urldecode.html" class="function">urldecode()</a></span> は、この変換をします。
+    <span class="function"><strong>curl_unescape()</strong></span> は、プラス記号 (+) をスペースに変換しません。
+    <span class="function"><a href="function.urldecode.html" class="function">urldecode()</a></span> は、この変換をします。
    </p>
   </p></blockquote>
  </div>
@@ -99,11 +99,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.curl-escape.html" class="function" rel="rdfs-seeAlso">curl_escape()</a> - 指定した文字列を URL エンコードする</span></li>
-    <li class="member"> <span class="function"><a href="function.urlencode.html" class="function" rel="rdfs-seeAlso">urlencode()</a> - 文字列を URL エンコードする</span></li>
-    <li class="member"> <span class="function"><a href="function.urldecode.html" class="function" rel="rdfs-seeAlso">urldecode()</a> - URL エンコードされた文字列をデコードする</span></li>
-    <li class="member"> <span class="function"><a href="function.rawurlencode.html" class="function" rel="rdfs-seeAlso">rawurlencode()</a> - RFC 3986 に基づき URL エンコードを行う</span></li>
-    <li class="member"> <span class="function"><a href="function.rawurldecode.html" class="function" rel="rdfs-seeAlso">rawurldecode()</a> - URL エンコードされた文字列をデコードする</span></li>
+    <li class="member"><span class="function"><a href="function.curl-escape.html" class="function" rel="rdfs-seeAlso">curl_escape()</a> - 指定した文字列を URL エンコードする</span></li>
+    <li class="member"><span class="function"><a href="function.urlencode.html" class="function" rel="rdfs-seeAlso">urlencode()</a> - 文字列を URL エンコードする</span></li>
+    <li class="member"><span class="function"><a href="function.urldecode.html" class="function" rel="rdfs-seeAlso">urldecode()</a> - URL エンコードされた文字列をデコードする</span></li>
+    <li class="member"><span class="function"><a href="function.rawurlencode.html" class="function" rel="rdfs-seeAlso">rawurlencode()</a> - RFC 3986 に基づき URL エンコードを行う</span></li>
+    <li class="member"><span class="function"><a href="function.rawurldecode.html" class="function" rel="rdfs-seeAlso">rawurldecode()</a> - URL エンコードされた文字列をデコードする</span></li>
    </ul>
   </p>
  </div>

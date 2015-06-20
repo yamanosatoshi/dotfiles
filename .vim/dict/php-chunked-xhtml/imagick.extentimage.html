@@ -7,7 +7,7 @@
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="imagick.exportimagepixels.html">Imagick::exportImagePixels</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="imagick.flattenimages.html">Imagick::flattenImages</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imagick.filter.html">Imagick::filter</a></div>
  <div class="up"><a href="class.imagick.html">Imagick</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="imagick.extentimage" class="refentry">
@@ -33,6 +33,20 @@
    このメソッドは、画像のサイズおよび新しい領域を開始する x 座標、y 座標を設定することができます。
    このメソッドは、ImageMagick バージョン 6.3.1 以降で Imagick をコンパイルした場合に使用可能です。
   </p>
+
+  <div class="caution"><strong class="caution">警告</strong>
+   <p class="para">
+  ImageMagick 6.5.7-8 (1623) より前のバージョンでは、$x は、左にシフトするときが正で右にシフトするときが負でした。
+  また $y は、上にシフトするときが正で下にシフトするときが負でした。
+
+  ImageMagick 6.3.7 (1591) から ImageMagick 6.5.7-8 (1623) までのどこかで、$x と $y の座標が反転しました。
+  つまり、$x は、左にシフトするときが負で右にシフトするときが正になりました。
+  また $y も、上にシフトするときが負で下にシフトするときが正になりました。
+
+  そして ImageMagick 6.5.7-8 (1623) から ImageMagick 6.6.9-7 (1641) までのどこかで、$x と $y の座標が再び反転して、ImageMagick 6.5.7-8 (1623) より前のバージョンと同じ状態に戻りました。
+
+   </p>
+  </div>
  </div>
 
 
@@ -41,9 +55,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">width</code></dt>
 
-     <span class="term"><em><code class="parameter">width</code></em></span>
      <dd>
 
       <p class="para">
@@ -51,11 +66,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">height</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">height</code></em></span>
      <dd>
 
       <p class="para">
@@ -63,11 +78,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">x</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">x</code></em></span>
      <dd>
 
       <p class="para">
@@ -75,11 +90,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">y</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">y</code></em></span>
      <dd>
 
       <p class="para">
@@ -87,8 +102,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -107,9 +121,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="imagick.resizeimage.html" class="function" rel="rdfs-seeAlso">Imagick::resizeImage()</a> - 画像のサイズを変更する</span></li>
-    <li class="member"> <span class="function"><a href="imagick.thumbnailimage.html" class="function" rel="rdfs-seeAlso">Imagick::thumbnailImage()</a> - 画像のサイズを変更する</span></li>
-    <li class="member"> <span class="function"><a href="imagick.cropimage.html" class="function" rel="rdfs-seeAlso">Imagick::cropImage()</a> - 画像の一部を抽出する</span></li>
+    <li class="member"><span class="function"><a href="imagick.resizeimage.html" class="function" rel="rdfs-seeAlso">Imagick::resizeImage()</a> - 画像のサイズを変更する</span></li>
+    <li class="member"><span class="function"><a href="imagick.thumbnailimage.html" class="function" rel="rdfs-seeAlso">Imagick::thumbnailImage()</a> - 画像のサイズを変更する</span></li>
+    <li class="member"><span class="function"><a href="imagick.cropimage.html" class="function" rel="rdfs-seeAlso">Imagick::cropImage()</a> - 画像の一部を抽出する</span></li>
    </ul>
   </p>
  </div>
@@ -117,7 +131,7 @@
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="imagick.exportimagepixels.html">Imagick::exportImagePixels</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="imagick.flattenimages.html">Imagick::flattenImages</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imagick.filter.html">Imagick::filter</a></div>
  <div class="up"><a href="class.imagick.html">Imagick</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div></body></html>

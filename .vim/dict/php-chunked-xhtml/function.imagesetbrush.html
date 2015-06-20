@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagesetbrush" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagesetbrush</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.5.0)</p><p class="refpurpose"><span class="refname">imagesetbrush</span> &mdash; <span class="dc-title">線の描画用にブラシイメージを設定する</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7)</p><p class="refpurpose"><span class="refname">imagesetbrush</span> &mdash; <span class="dc-title">線の描画用にブラシイメージを設定する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagesetbrush-description">
@@ -25,11 +25,11 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>imagesetbrush()</strong></span> は、特別な色
+   <span class="function"><strong>imagesetbrush()</strong></span> は、特別な色
    <strong><code>IMG_COLOR_BRUSHED</code></strong> または
    <strong><code>IMG_COLOR_STYLEDBRUSHED</code></strong> で描画される際に
-   ( <span class="function"><a href="function.imageline.html" class="function">imageline()</a></span> や
-    <span class="function"><a href="function.imagepolygon.html" class="function">imagepolygon()</a></span> のような)
+   (<span class="function"><a href="function.imageline.html" class="function">imageline()</a></span> や
+   <span class="function"><a href="function.imagepolygon.html" class="function">imagepolygon()</a></span> のような)
    全ての線描画関数で使用されるブラシイメージを設定します。
   </p>
  </div>
@@ -40,15 +40,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">brush</code></dt>
 
-     <span class="term"><em><code class="parameter">brush</code></em></span>
      <dd>
 
       <p class="para">
@@ -56,8 +57,7 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -73,8 +73,8 @@ image</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imagesetbrush-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3265">
-    <p><strong>例1  <span class="function"><strong>imagesetbrush()</strong></span> の例</strong></p>
+   <div class="example" id="example-3464">
+    <p><strong>例1 <span class="function"><strong>imagesetbrush()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;小さい&nbsp;php&nbsp;ロゴを読み込みます<br /></span><span style="color: #0000BB">$php&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefrompng</span><span style="color: #007700">(</span><span style="color: #DD0000">'./php.png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;100x100&nbsp;のメイン画像を作成します<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;背景を白で塗りつぶします<br /></span><span style="color: #0000BB">$white&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagefilledrectangle</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">299</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">99</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$white</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ブラシを設定します<br /></span><span style="color: #0000BB">imagesetbrush</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$php</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;いくつかのブラシを重ねます<br /></span><span style="color: #0000BB">imageline</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">60</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_COLOR_BRUSHED</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;画像をブラウザに出力します<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type:&nbsp;image/png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$php</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

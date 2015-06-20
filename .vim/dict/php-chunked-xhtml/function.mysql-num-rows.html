@@ -27,8 +27,9 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli-stmt.num-rows.html" class="function">mysqli_stmt_num_rows()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="pdostatement.rowcount.html" class="methodname">PDOStatement::rowCount()</a></span></li>
+    <li class="member"><span class="function"><a href="mysqli-result.num-rows.html" class="function">mysqli_num_rows()</a></span></li>
+    <li class="member"><span class="function"><a href="mysqli-stmt.num-rows.html" class="function">mysqli_stmt_num_rows()</a></span></li>
+    <li class="member"><span class="methodname"><a href="pdostatement.rowcount.html" class="methodname">PDOStatement::rowCount()</a></span></li>
    </ul>
   </div>
  </div>
@@ -44,7 +45,7 @@
    結果セットから行の数を取得します。このコマンドは、
    SELECT や SHOW のような、実際に結果セットを返す文に対してのみ有効です。
    INSERT、UPDATE、REPLACE、DELETE クエリで変更された行の数を得るには、
-    <span class="function"><a href="function.mysql-affected-rows.html" class="function">mysql_affected_rows()</a></span> を使用してください。
+   <span class="function"><a href="function.mysql-affected-rows.html" class="function">mysql_affected_rows()</a></span> を使用してください。
   </p>
  </div>
 
@@ -55,12 +56,12 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
+<code class="parameter">
+result</code></dt>
+<dd>
 <p class="para">評価された結果 <span class="type"><span class="type リソース">リソース</span></span>。
-この結果は、 <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
+この結果は、<span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
 </dd>
-</dt>
 
    </dl>
 
@@ -79,8 +80,8 @@ result</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.mysql-num-rows-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1603">
-    <p><strong>例1  <span class="function"><strong>mysql_num_rows()</strong></span> の例</strong></p>
+   <div class="example" id="example-1782">
+    <p><strong>例1 <span class="function"><strong>mysql_num_rows()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"database"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;table1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$num_rows&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$num_rows</span><span style="color: #DD0000">&nbsp;Rows\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -97,15 +98,15 @@ result</code></em></span><dd>
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><a href="function.mysql-unbuffered-query.html" class="function">mysql_unbuffered_query()</a></span> を使用した場合、
+    <span class="function"><a href="function.mysql-unbuffered-query.html" class="function">mysql_unbuffered_query()</a></span> を使用した場合、
     結果セットのすべての行を取得するまで
-     <span class="function"><strong>mysql_num_rows()</strong></span> は正しい値を返しません。
+    <span class="function"><strong>mysql_num_rows()</strong></span> は正しい値を返しません。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     下位互換のために、次の非推奨別名を使用してもいいでしょう。
-     <span class="function"><strong>mysql_numrows()</strong></span>
+    <span class="function"><strong>mysql_numrows()</strong></span>
    </p>
   </p></blockquote>
  </div>
@@ -115,11 +116,11 @@ result</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-affected-rows.html" class="function" rel="rdfs-seeAlso">mysql_affected_rows()</a> - 一番最近の操作で変更された行の数を得る</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-connect.html" class="function" rel="rdfs-seeAlso">mysql_connect()</a> - MySQL サーバーへの接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-data-seek.html" class="function" rel="rdfs-seeAlso">mysql_data_seek()</a> - 内部的な結果ポインタを移動する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-select-db.html" class="function" rel="rdfs-seeAlso">mysql_select_db()</a> - MySQL データベースを選択する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - MySQL クエリを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-affected-rows.html" class="function" rel="rdfs-seeAlso">mysql_affected_rows()</a> - 一番最近の操作で変更された行の数を得る</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-connect.html" class="function" rel="rdfs-seeAlso">mysql_connect()</a> - MySQL サーバーへの接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-data-seek.html" class="function" rel="rdfs-seeAlso">mysql_data_seek()</a> - 内部的な結果ポインタを移動する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-select-db.html" class="function" rel="rdfs-seeAlso">mysql_select_db()</a> - MySQL データベースを選択する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - MySQL クエリを送信する</span></li>
    </ul>
   </p>
  </div>

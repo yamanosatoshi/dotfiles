@@ -20,8 +20,8 @@
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span>
-   <span class="type">bool</span>
-    <span class="methodname"><strong>EventHttp::accept</strong></span>
+   <span class="type">bool</span> 
+   <span class="methodname"><strong>EventHttp::accept</strong></span>
     ( <span class="methodparam">
     <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
      <code class="parameter">$socket</code>
@@ -43,9 +43,9 @@
     <em>
      accept</em>
     connections on the socket in s single call use
-     <span class="methodname"><a href="eventhttp.bind.html" class="methodname">EventHttp::bind()</a></span>
+    <span class="methodname"><a href="eventhttp.bind.html" class="methodname">EventHttp::bind()</a></span>
     .
-     <span class="methodname"><strong>EventHttp::accept()</strong></span>
+    <span class="methodname"><strong>EventHttp::accept()</strong></span>
     is needed only if one already has a socket ready to accept connections.
    </p>
   </p></blockquote>
@@ -55,11 +55,12 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
 
-    <span class="term">
-     <em><code class="parameter">socket</code></em>
-    </span>
+     <code class="parameter">socket</code>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -68,8 +69,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -83,9 +83,9 @@
 
  <div class="refsect1 examples" id="refsect1-eventhttp.accept-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-4240">
+  <div class="example" id="example-4688">
    <p><strong>例1 
-     <span class="function"><strong>EventHttp::accept()</strong></span> example</strong></p>
+    <span class="function"><strong>EventHttp::accept()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$base&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">EventBase</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$http&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">EventHttp</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$addresses&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">8091&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"127.0.0.1"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">8092&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"127.0.0.2"</span><span style="color: #007700">,<br />);<br /></span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$socket&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$addresses&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$port&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$ip</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$ip</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$port</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$socket</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">socket_create</span><span style="color: #007700">(</span><span style="color: #0000BB">AF_INET</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SOCK_STREAM</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SOL_TCP</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">socket_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$ip</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$port</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(</span><span style="color: #DD0000">"socket_bind&nbsp;failed\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">socket_listen</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">socket_set_nonblock</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$http</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">accept</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Accept&nbsp;failed\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;++</span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$http</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCallback</span><span style="color: #007700">(</span><span style="color: #DD0000">"/some-page"</span><span style="color: #007700">,&nbsp;function()&nbsp;{<br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">"(some-page)\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"URI:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$req</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getUri</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$req</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sendReply</span><span style="color: #007700">(</span><span style="color: #0000BB">200</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"OK"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"OK\n"</span><span style="color: #007700">;<br />});<br /><br /></span><span style="color: #0000BB">$http</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setDefaultCallback</span><span style="color: #007700">(function(</span><span style="color: #0000BB">$req</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"URI:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$req</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getUri</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$req</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sendReply</span><span style="color: #007700">(</span><span style="color: #0000BB">200</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"OK"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"OK\n"</span><span style="color: #007700">;<br />});<br /><br /></span><span style="color: #0000BB">$signal&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Event</span><span style="color: #007700">::</span><span style="color: #0000BB">signal</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SIGINT</span><span style="color: #007700">,&nbsp;function&nbsp;()&nbsp;use&nbsp;(</span><span style="color: #0000BB">$base</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Caught&nbsp;SIGINT.&nbsp;Stopping...\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$base</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">stop</span><span style="color: #007700">();<br />});<br /></span><span style="color: #0000BB">$signal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$base</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dispatch</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #DD0000">"END\n"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;We&nbsp;didn't&nbsp;close&nbsp;sockets,&nbsp;since&nbsp;Libevent&nbsp;already&nbsp;sets<br />//&nbsp;CLOSE_ON_FREE&nbsp;and&nbsp;CLOSE_ON_EXEC&nbsp;flags&nbsp;on&nbsp;the&nbsp;file&nbsp;<br />//&nbsp;descriptor&nbsp;associated&nbsp;with&nbsp;the&nbsp;sockets.<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -120,7 +120,7 @@ OK
   <h3 class="title">参考</h3>
   <ul class="simplelist">
    <li class="member">
-     <span class="methodname"><a href="eventhttp.bind.html" class="methodname" rel="rdfs-seeAlso">EventHttp::bind()</a> - Binds an HTTP server on the specified address and port</span>
+    <span class="methodname"><a href="eventhttp.bind.html" class="methodname" rel="rdfs-seeAlso">EventHttp::bind()</a> - Binds an HTTP server on the specified address and port</span>
    </li>
   </ul>
  </div>

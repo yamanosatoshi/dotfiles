@@ -15,7 +15,7 @@
  <div class="refnamediv">
   <h1 class="refname">sqlsrv_field_metadata</h1>
   <p class="verinfo">(バージョン情報なし。おそらく SVN 版にしか存在しないでしょう)</p><p class="refpurpose"><span class="refname">sqlsrv_field_metadata</span> &mdash; <span class="dc-title">Retrieves metadata for the fields of a statement prepared by 
-   <span class="function"><a href="function.sqlsrv-prepare.html" class="function">sqlsrv_prepare()</a></span> or  <span class="function"><a href="function.sqlsrv-query.html" class="function">sqlsrv_query()</a></span>
+  <span class="function"><a href="function.sqlsrv-prepare.html" class="function">sqlsrv_prepare()</a></span> or <span class="function"><a href="function.sqlsrv-query.html" class="function">sqlsrv_query()</a></span>
   </span></p>
 
  </div>
@@ -28,8 +28,8 @@
 
   <p class="para rdfs-comment">
    Retrieves metadata for the fields of a statement prepared by 
-    <span class="function"><a href="function.sqlsrv-prepare.html" class="function">sqlsrv_prepare()</a></span> or  <span class="function"><a href="function.sqlsrv-query.html" class="function">sqlsrv_query()</a></span>. 
-    <span class="function"><strong>sqlsrv_field_metadata()</strong></span> can be called on a statement before 
+   <span class="function"><a href="function.sqlsrv-prepare.html" class="function">sqlsrv_prepare()</a></span> or <span class="function"><a href="function.sqlsrv-query.html" class="function">sqlsrv_query()</a></span>. 
+   <span class="function"><strong>sqlsrv_field_metadata()</strong></span> can be called on a statement before 
    or after statement execution.
   </p>
  </div>
@@ -40,9 +40,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">stmt</code></dt>
 
-     <span class="term"><em><code class="parameter">stmt</code></em></span>
      <dd>
 
       <p class="para">
@@ -50,8 +51,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -120,8 +120,8 @@
  <div class="refsect1 examples" id="refsect1-function.sqlsrv-field-metadata-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2172">
-    <p><strong>例1  <span class="function"><strong>sqlsrv_field_metadata()</strong></span> example</strong></p>
+   <div class="example" id="example-2369">
+    <p><strong>例1 <span class="function"><strong>sqlsrv_field_metadata()</strong></span> example</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$serverName&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"serverName\sqlexpress"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$connectionInfo&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">"Database"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"AdventureWorks"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"UID"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"PWD"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_connect</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$serverName</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$connectionInfo</span><span style="color: #007700">);<br />if(&nbsp;</span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;die(&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">sqlsrv_errors</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;Table_1"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_prepare</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">);<br /><br />foreach(&nbsp;</span><span style="color: #0000BB">sqlsrv_field_metadata</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$fieldMetadata&nbsp;</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach(&nbsp;</span><span style="color: #0000BB">$fieldMetadata&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -138,7 +138,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.sqlsrv-client-info.html" class="function" rel="rdfs-seeAlso">sqlsrv_client_info()</a> - Returns information about the client and specified connection</span></li>
+    <li class="member"><span class="function"><a href="function.sqlsrv-client-info.html" class="function" rel="rdfs-seeAlso">sqlsrv_client_info()</a> - Returns information about the client and specified connection</span></li>
    </ul>
   </p>
  </div>

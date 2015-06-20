@@ -25,15 +25,19 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>escapeshellarg()</strong></span> は、文字列をシングルクオート
+   <span class="function"><strong>escapeshellarg()</strong></span> は、文字列をシングルクオート
    で括り、既存のシングルクオートを全てクオート/エスケープします。こ
    れにより、文字列を直接シェル関数に渡し、単一の安全な引数として処
    理することを可能にします。この関数は、ユーザー入力からの入力を
    シェル関数への引数として渡す際にエスケープするために使用する必要
-   があります。シェル関数には、 <span class="function"><a href="function.exec.html" class="function">exec()</a></span>,
-    <span class="function"><a href="function.system.html" class="function">system()</a></span>そして
+   があります。シェル関数には、<span class="function"><a href="function.exec.html" class="function">exec()</a></span>,
+   <span class="function"><a href="function.system.html" class="function">system()</a></span>そして
    <a href="language.operators.execution.html" class="link">バックティック演算子</a>
    を含むシェル関数が含まれます。
+  </p>
+  <p class="para">
+   Windows では、<span class="function"><strong>escapeshellarg()</strong></span>
+   はパーセント記号を削除します。また、ダブルクォートはスペースに置き換えて、文字列はダブルクォートで囲みます。
   </p>
  </div>
 
@@ -43,9 +47,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">arg</code></dt>
 
-     <span class="term"><em><code class="parameter">arg</code></em></span>
      <dd>
 
       <p class="para">
@@ -53,8 +58,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -72,8 +76,8 @@
  <div class="refsect1 examples" id="refsect1-function.escapeshellarg-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3655">
-    <p><strong>例1  <span class="function"><strong>escapeshellarg()</strong></span> の例</strong></p>
+   <div class="example" id="example-4079">
+    <p><strong>例1 <span class="function"><strong>escapeshellarg()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />system</span><span style="color: #007700">(</span><span style="color: #DD0000">'ls&nbsp;'</span><span style="color: #007700">.</span><span style="color: #0000BB">escapeshellarg</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -90,10 +94,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.escapeshellcmd.html" class="function" rel="rdfs-seeAlso">escapeshellcmd()</a> - シェルのメタ文字をエスケープする</span></li>
-    <li class="member"> <span class="function"><a href="function.exec.html" class="function" rel="rdfs-seeAlso">exec()</a> - 外部プログラムを実行する</span></li>
-    <li class="member"> <span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - プロセスへのファイルポインタをオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.system.html" class="function" rel="rdfs-seeAlso">system()</a> - 外部プログラムを実行し、出力を表示する</span></li>
+    <li class="member"><span class="function"><a href="function.escapeshellcmd.html" class="function" rel="rdfs-seeAlso">escapeshellcmd()</a> - シェルのメタ文字をエスケープする</span></li>
+    <li class="member"><span class="function"><a href="function.exec.html" class="function" rel="rdfs-seeAlso">exec()</a> - 外部プログラムを実行する</span></li>
+    <li class="member"><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - プロセスへのファイルポインタをオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.system.html" class="function" rel="rdfs-seeAlso">system()</a> - 外部プログラムを実行し、出力を表示する</span></li>
     <li class="member"><a href="language.operators.execution.html" class="link">バックティック演算子</a></li>
    </ul>
   </p>

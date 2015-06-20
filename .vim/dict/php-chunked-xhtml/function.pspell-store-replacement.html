@@ -27,16 +27,16 @@
    )</div>
 
   <p class="simpara">
-    <span class="function"><strong>pspell_store_replacement()</strong></span> は、単語の置換候補を
+   <span class="function"><strong>pspell_store_replacement()</strong></span> は、単語の置換候補を
    保存します。これにより、この後の
-    <span class="function"><a href="function.pspell-suggest.html" class="function">pspell_suggest()</a></span> で置換候補を返すことが可能と
+   <span class="function"><a href="function.pspell-suggest.html" class="function">pspell_suggest()</a></span> で置換候補を返すことが可能と
    なります。この関数の利点を活かすためには、辞書をオープンする際に
-    <span class="function"><a href="function.pspell-new-personal.html" class="function">pspell_new_personal()</a></span> を使用する必要があります。
+   <span class="function"><a href="function.pspell-new-personal.html" class="function">pspell_new_personal()</a></span> を使用する必要があります。
    置換候補を恒久的に保存するためには
-    <span class="function"><a href="function.pspell-config-personal.html" class="function">pspell_config_personal()</a></span> を使用する必要があり、
-    <span class="function"><a href="function.pspell-config-repl.html" class="function">pspell_config_repl()</a></span> によりカスタム単語リストを
+   <span class="function"><a href="function.pspell-config-personal.html" class="function">pspell_config_personal()</a></span> を使用する必要があり、
+   <span class="function"><a href="function.pspell-config-repl.html" class="function">pspell_config_repl()</a></span> によりカスタム単語リストを
    保存するパスを設定し、この後、変更点をディスクへ書き込むために
-    <span class="function"><a href="function.pspell-save-wordlist.html" class="function">pspell_save_wordlist()</a></span> を使用する必要があります。
+   <span class="function"><a href="function.pspell-save-wordlist.html" class="function">pspell_save_wordlist()</a></span> を使用する必要があります。
   </p>
  </div>
 
@@ -46,22 +46,23 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">dictionary_link</code></dt>
 
-     <span class="term"><em><code class="parameter">dictionary_link</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.pspell-new-personal.html" class="function">pspell_new_personal()</a></span>
+       <span class="function"><a href="function.pspell-new-personal.html" class="function">pspell_new_personal()</a></span>
        でオープンした辞書リンク ID。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">misspelled</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">misspelled</code></em></span>
      <dd>
 
       <p class="para">
@@ -69,20 +70,19 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">correct</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">correct</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">misspelled</code></em> を修正した単語。
+       <code class="parameter">misspelled</code> を修正した単語。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -100,8 +100,8 @@
  <div class="refsect1 examples" id="refsect1-function.pspell-store-replacement-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2729">
-    <p><strong>例1  <span class="function"><strong>pspell_store_replacement()</strong></span></strong></p>
+   <div class="example" id="example-2928">
+    <p><strong>例1 <span class="function"><strong>pspell_store_replacement()</strong></span></strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$pspell_config&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pspell_config_create</span><span style="color: #007700">(</span><span style="color: #DD0000">"en"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">pspell_config_personal</span><span style="color: #007700">(</span><span style="color: #0000BB">$pspell_config</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"/var/dictionaries/custom.pws"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">pspell_config_repl</span><span style="color: #007700">(</span><span style="color: #0000BB">$pspell_config</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"/var/dictionaries/custom.repl"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$pspell_link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pspell_new_config</span><span style="color: #007700">(</span><span style="color: #0000BB">$pspell_config</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">pspell_store_replacement</span><span style="color: #007700">(</span><span style="color: #0000BB">$pspell_link</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$misspelled</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$correct</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">pspell_save_wordlist</span><span style="color: #007700">(</span><span style="color: #0000BB">$pspell_link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

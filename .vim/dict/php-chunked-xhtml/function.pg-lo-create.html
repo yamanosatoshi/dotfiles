@@ -31,7 +31,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_lo_create()</strong></span> はラージオブジェクトを
+   <span class="function"><strong>pg_lo_create()</strong></span> はラージオブジェクトを
    生成し、そのラージオブジェクトの <var class="varname"><var class="varname">OID</var></var> を返します。
    PostgreSQL アクセスモード
    <strong><code>INV_READ</code></strong>、<strong><code>INV_WRITE</code></strong> および
@@ -47,11 +47,11 @@
   <p class="para">
    ラージオブジェクトインターフェイス（アクセス制御もできないし使用が面倒）
    を使用するかわりに、PostgreSQL の <var class="varname"><var class="varname">bytea</var></var> カラム型と
-    <span class="function"><a href="function.pg-escape-bytea.html" class="function">pg_escape_bytea()</a></span> を試してください。
+   <span class="function"><a href="function.pg-escape-bytea.html" class="function">pg_escape_bytea()</a></span> を試してください。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    この関数は、以前は  <span class="function"><strong>pg_locreate()</strong></span> と呼ばれていました。
+    この関数は、以前は <span class="function"><strong>pg_locreate()</strong></span> と呼ばれていました。
    </p>
   </p></blockquote>
  </div>
@@ -62,28 +62,29 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
-       PostgreSQL データベース接続リソース。<em><code class="parameter">connection</code></em>
+       PostgreSQL データベース接続リソース。<code class="parameter">connection</code>
        が指定されていない場合はデフォルトの接続が使用されます。
-       デフォルトの接続は、直近の  <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
-       あるいは  <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
+       デフォルトの接続は、直近の <span class="function"><a href="function.pg-connect.html" class="function">pg_connect()</a></span>
+       あるいは <span class="function"><a href="function.pg-pconnect.html" class="function">pg_pconnect()</a></span> によって作成されたものです。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">object_id</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">object_id</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">object_id</code></em> が指定されると、
+       <code class="parameter">object_id</code> が指定されると、
        この関数は指定された ID のラージオブジェクトを作成しようとします。
        それ以外の場合は、サーバーから割り当てられたオブジェクト ID を使用します。
        このパラメータは PHP 5.3 で追加されたもので、
@@ -91,8 +92,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -126,7 +126,7 @@
       <tr>
        <td>5.3.0</td>
        <td><p class="para">
-        オプションの <em><code class="parameter">object_id</code></em> が追加されました。
+        オプションの <code class="parameter">object_id</code> が追加されました。
        </p></td>
       </tr>
 
@@ -141,8 +141,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-lo-create-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2080">
-    <p><strong>例1  <span class="function"><strong>pg_lo_create()</strong></span> の例</strong></p>
+   <div class="example" id="example-2276">
+    <p><strong>例1 <span class="function"><strong>pg_lo_create()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;$database&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=jacarta"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"begin"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$oid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_lo_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$oid</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_lo_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$oid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$handle</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_lo_write</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"large&nbsp;object&nbsp;data"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_lo_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"commit"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

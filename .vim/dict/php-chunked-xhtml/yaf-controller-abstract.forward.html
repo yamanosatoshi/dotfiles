@@ -56,9 +56,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">module</code></dt>
 
-    <span class="term"><em><code class="parameter">module</code></em></span>
     <dd>
 
      <p class="para">
@@ -66,11 +67,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">controller</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">controller</code></em></span>
     <dd>
 
      <p class="para">
@@ -78,11 +79,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">action</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">action</code></em></span>
     <dd>
 
      <p class="para">
@@ -90,11 +91,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">paramters</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">paramters</code></em></span>
     <dd>
 
      <p class="para">
@@ -102,8 +103,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -111,8 +111,8 @@
 
  <div class="refsect1 examples" id="refsect1-yaf-controller-abstract.forward-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-4117">
-   <p><strong>例1  <span class="function"><strong>Yaf_Controller_Abstract::forward()</strong></span> の例</strong></p>
+  <div class="example" id="example-4573">
+   <p><strong>例1 <span class="function"><strong>Yaf_Controller_Abstract::forward()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">IndexController&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">Yaf_Controller_Abstract<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">indexAction</span><span style="color: #007700">(){&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$logined&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">"login"</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$logined</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">forward</span><span style="color: #007700">(</span><span style="color: #DD0000">"login"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"from"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"Index"</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;login&nbsp;アクションに転送します<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">FALSE</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;これが重要です。ここで現在の作業フローが終了し、<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Yaf&nbsp;に対して自動レンダリングをしないよう指示します。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;別の処理<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">loginAction</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"login,&nbsp;redirected&nbsp;from&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_request</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getParam</span><span style="color: #007700">(</span><span style="color: #DD0000">"from"</span><span style="color: #007700">)&nbsp;,&nbsp;</span><span style="color: #DD0000">"&nbsp;action"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -143,7 +143,7 @@
  <div class="refsect1 seealso" id="refsect1-yaf-controller-abstract.forward-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="methodname"><strong>Yaf_Request_Abstrace::getParam()</strong></span></li>
+   <li class="member"><span class="methodname"><strong>Yaf_Request_Abstrace::getParam()</strong></span></li>
   </ul>
  </div>
 

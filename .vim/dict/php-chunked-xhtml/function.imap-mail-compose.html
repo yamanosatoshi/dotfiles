@@ -29,8 +29,8 @@
    )</div>
 
   <p class="para rdfs-comment">
-   指定したエンベロープ <em><code class="parameter">envelope</code></em>
-   およびボディセクション <em><code class="parameter">body</code></em> に基づいて
+   指定したエンベロープ <code class="parameter">envelope</code>
+   およびボディセクション <code class="parameter">body</code> に基づいて
    MIME メッセージを作成します。
   </p>
  </div>
@@ -40,9 +40,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">envelope</code></dt>
 
-     <span class="term"><em><code class="parameter">envelope</code></em></span>
      <dd>
 
       <p class="para">
@@ -53,11 +54,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">body</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">body</code></em></span>
      <dd>
 
       <p class="para">
@@ -71,8 +72,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -88,8 +88,8 @@
  <div class="refsect1 examples" id="refsect1-function.imap-mail-compose-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3346">
-    <p><strong>例1  <span class="function"><strong>imap_mail_compose()</strong></span> の例</strong></p>
+   <div class="example" id="example-3770">
+    <p><strong>例1 <span class="function"><strong>imap_mail_compose()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$envelope</span><span style="color: #007700">[</span><span style="color: #DD0000">"from"</span><span style="color: #007700">]=&nbsp;</span><span style="color: #DD0000">"joe@example.com"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$envelope</span><span style="color: #007700">[</span><span style="color: #DD0000">"to"</span><span style="color: #007700">]&nbsp;&nbsp;=&nbsp;</span><span style="color: #DD0000">"foo@example.com"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$envelope</span><span style="color: #007700">[</span><span style="color: #DD0000">"cc"</span><span style="color: #007700">]&nbsp;&nbsp;=&nbsp;</span><span style="color: #DD0000">"bar@example.com"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$part1</span><span style="color: #007700">[</span><span style="color: #DD0000">"type"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">TYPEMULTIPART</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$part1</span><span style="color: #007700">[</span><span style="color: #DD0000">"subtype"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"mixed"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/tmp/imap.c.gz"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$contents&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$part2</span><span style="color: #007700">[</span><span style="color: #DD0000">"type"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">TYPEAPPLICATION</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$part2</span><span style="color: #007700">[</span><span style="color: #DD0000">"encoding"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">ENCBINARY</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$part2</span><span style="color: #007700">[</span><span style="color: #DD0000">"subtype"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"octet-stream"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$part2</span><span style="color: #007700">[</span><span style="color: #DD0000">"description"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">basename</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$part2</span><span style="color: #007700">[</span><span style="color: #DD0000">"contents.data"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$contents</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$part3</span><span style="color: #007700">[</span><span style="color: #DD0000">"type"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">TYPETEXT</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$part3</span><span style="color: #007700">[</span><span style="color: #DD0000">"subtype"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"plain"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$part3</span><span style="color: #007700">[</span><span style="color: #DD0000">"description"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"description3"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$part3</span><span style="color: #007700">[</span><span style="color: #DD0000">"contents.data"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"contents.data3\n\n\n\t"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$body</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$part1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$body</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$part2</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$body</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$part3</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">nl2br</span><span style="color: #007700">(</span><span style="color: #0000BB">imap_mail_compose</span><span style="color: #007700">(</span><span style="color: #0000BB">$envelope</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$body</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">?&gt;</span>

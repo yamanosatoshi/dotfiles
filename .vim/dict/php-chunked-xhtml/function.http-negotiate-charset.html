@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">supported</code></dt>
 
-     <span class="term"><em><code class="parameter">supported</code></em></span>
      <dd>
 
       <p class="para">
@@ -46,11 +47,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">result</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">result</code></em></span>
      <dd>
 
       <p class="para">
@@ -58,8 +59,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -83,8 +83,8 @@
  <div class="refsect1 examples" id="refsect1-function.http-negotiate-charset-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4341">
-    <p><strong>例1  <span class="function"><strong>http_negotiate_charset()</strong></span> の使用法</strong></p>
+   <div class="example" id="example-4789">
+    <p><strong>例1 <span class="function"><strong>http_negotiate_charset()</strong></span> の使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$charsets&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'iso-8859-1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//&nbsp;デフォルト<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'iso-8859-2'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'iso-8859-15'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'utf-8'<br /></span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$pref&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">http_negotiate_charset</span><span style="color: #007700">(</span><span style="color: #0000BB">$charsets</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">strcmp</span><span style="color: #007700">(</span><span style="color: #0000BB">$pref</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'iso-8859-1'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">iconv_set_encoding</span><span style="color: #007700">(</span><span style="color: #DD0000">'internal_encoding'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'iso-8859-1'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">iconv_set_encoding</span><span style="color: #007700">(</span><span style="color: #DD0000">'output_encoding'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$pref</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">ob_start</span><span style="color: #007700">(</span><span style="color: #DD0000">'ob_iconv_handler'</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

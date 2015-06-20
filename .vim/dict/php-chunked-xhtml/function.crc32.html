@@ -25,7 +25,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">str</code></em> の 32 ビット長の CRC (cyclic redundancy
+   <code class="parameter">str</code> の 32 ビット長の CRC (cyclic redundancy
    checksum) チェックサムを生成します。
    これは通常、送信したデータの整合性を検証するために使用します。
   </p>
@@ -33,20 +33,20 @@
    <p class="simpara">
     PHP の整数型は符号付きで、多くの crc32
     チェックサムは 32 ビットシステム上では負の整数になります。
-    しかし、64 ビット環境では  <span class="function"><strong>crc32()</strong></span>
+    しかし、64 ビット環境では <span class="function"><strong>crc32()</strong></span>
     の結果はすべて正の整数となります。
    </p>
    <p class="simpara">
-    つまり、符号なしの  <span class="function"><strong>crc32()</strong></span> チェックサムの文字列表記を
+    つまり、符号なしの <span class="function"><strong>crc32()</strong></span> チェックサムの文字列表記を
     十進形式で取得するには、
-     <span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span> もしくは  <span class="function"><a href="function.printf.html" class="function">printf()</a></span> の
+    <span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span> もしくは <span class="function"><a href="function.printf.html" class="function">printf()</a></span> の
     &quot;%u&quot; フォーマッタを使う必要があります。
    </p>
    <p class="simpara">
-    チェックサムの十六進表記を取得するには、 <span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span> あるいは  <span class="function"><a href="function.printf.html" class="function">printf()</a></span>
+    チェックサムの十六進表記を取得するには、<span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span> あるいは <span class="function"><a href="function.printf.html" class="function">printf()</a></span>
     の &quot;%x&quot; フォーマッタを使うか、あるいは変換関数
-     <span class="function"><a href="function.dechex.html" class="function">dechex()</a></span> を使います。これらはいずれも、
-     <span class="function"><strong>crc32()</strong></span> の結果を符号なし整数に変換することも行います。
+    <span class="function"><a href="function.dechex.html" class="function">dechex()</a></span> を使います。これらはいずれも、
+    <span class="function"><strong>crc32()</strong></span> の結果を符号なし整数に変換することも行います。
    </p>
    <p class="simpara">
     64 ビット環境でも、返り値が大きくなると負の整数を返すことが考えられます。
@@ -59,12 +59,12 @@
    </p>
    <p class="simpara">
     今思えば、この関数が整数値を返すようにしたというのがまずい判断でした。
-    最初から、 <span class="function"><a href="function.md5.html" class="function">md5()</a></span>
+    最初から、<span class="function"><a href="function.md5.html" class="function">md5()</a></span>
     のように十六進形式の文字列をを直接返すようにしておけばよかったのでしょう。
    </p>
    <p class="simpara">
     移植性を考慮した選択肢として、より汎用的な
-     <span class="function"><a href="function.hash.html" class="function">hash()</a></span> を使う方法もあります。
+    <span class="function"><a href="function.hash.html" class="function">hash()</a></span> を使う方法もあります。
     <code class="code">hash(&quot;crc32b&quot;, $str)</code> は
     <code class="code">dechex(crc32($str))</code> と同じ文字列を返します。
    </p>
@@ -77,9 +77,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">str</code></dt>
 
-     <span class="term"><em><code class="parameter">str</code></em></span>
      <dd>
 
       <p class="para">
@@ -87,8 +88,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -98,7 +98,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.crc32-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">str</code></em> の crc32 チェックサムを整数値で返します。
+   <code class="parameter">str</code> の crc32 チェックサムを整数値で返します。
   </p>
  </div>
 
@@ -106,10 +106,10 @@
  <div class="refsect1 examples" id="refsect1-function.crc32-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4802">
+   <div class="example" id="example-5280">
     <p><strong>例1 crc32 チェックサムの表示</strong></p>
     <div class="example-contents"><p>
-     この例は  <span class="function"><a href="function.printf.html" class="function">printf()</a></span>
+     この例は <span class="function"><a href="function.printf.html" class="function">printf()</a></span>
      関数を用いた変換後のチェックサムの表示方法を示しています。
     </p></div>
     <div class="example-contents">
@@ -128,9 +128,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.hash.html" class="function" rel="rdfs-seeAlso">hash()</a> - ハッシュ値 (メッセージダイジェスト) を生成する</span></li>
-    <li class="member"> <span class="function"><a href="function.md5.html" class="function" rel="rdfs-seeAlso">md5()</a> - 文字列のmd5ハッシュ値を計算する</span></li>
-    <li class="member"> <span class="function"><a href="function.sha1.html" class="function" rel="rdfs-seeAlso">sha1()</a> - 文字列の sha1 ハッシュを計算する</span></li>
+    <li class="member"><span class="function"><a href="function.hash.html" class="function" rel="rdfs-seeAlso">hash()</a> - ハッシュ値 (メッセージダイジェスト) を生成する</span></li>
+    <li class="member"><span class="function"><a href="function.md5.html" class="function" rel="rdfs-seeAlso">md5()</a> - 文字列のmd5ハッシュ値を計算する</span></li>
+    <li class="member"><span class="function"><a href="function.sha1.html" class="function" rel="rdfs-seeAlso">sha1()</a> - 文字列の sha1 ハッシュを計算する</span></li>
    </ul>
   </p>
  </div>

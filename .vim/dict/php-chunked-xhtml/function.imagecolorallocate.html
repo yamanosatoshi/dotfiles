@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagecolorallocate" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagecolorallocate</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">imagecolorallocate</span> &mdash; <span class="dc-title">画像で使用する色を作成する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagecolorallocate</span> &mdash; <span class="dc-title">画像で使用する色を作成する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagecolorallocate-description">
@@ -30,13 +30,13 @@
    指定した <acronym title="Red-Green-Blue">RGB</acronym> を配色とする色の ID を返します。
   </p>
   <p class="para">
-    <span class="function"><strong>imagecolorallocate()</strong></span> は <em><code class="parameter">image</code></em>
+   <span class="function"><strong>imagecolorallocate()</strong></span> は <code class="parameter">image</code>
    で表される画像上で使用する各々の色を作成する際にコールする必要があります。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>imagecolorallocate()</strong></span> の最初のコールで
-    パレットをもとにした画像 ( <span class="function"><a href="function.imagecreate.html" class="function">imagecreate()</a></span>
+    <span class="function"><strong>imagecolorallocate()</strong></span> の最初のコールで
+    パレットをもとにした画像 (<span class="function"><a href="function.imagecreate.html" class="function">imagecreate()</a></span>
     を使用して作成した画像) で背景色がセットされます。
    </p>
   </p></blockquote>
@@ -48,42 +48,42 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">red</code></dt>
 
-     <span class="term"><em><code class="parameter">red</code></em></span>
      <dd>
 
       <p class="para">赤コンポーネントの値。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">green</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">green</code></em></span>
      <dd>
 
       <p class="para">緑コンポーネントの値。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">blue</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">blue</code></em></span>
      <dd>
 
       <p class="para">青コンポーネントの値。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
    これらの値は 0 から 255 までの整数か、あるいは 0x00 から 0XFF までの 16 進数です。
@@ -135,8 +135,8 @@ image</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imagecolorallocate-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3174">
-    <p><strong>例1  <span class="function"><strong>imagecolorallocate()</strong></span> の例</strong></p>
+   <div class="example" id="example-3373">
+    <p><strong>例1 <span class="function"><strong>imagecolorallocate()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreate</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;背景色を赤にします<br /></span><span style="color: #0000BB">$background&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;その他の色を設定します<br /></span><span style="color: #0000BB">$white&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$black&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;十六進で指定します<br /></span><span style="color: #0000BB">$white&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xFF</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xFF</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0xFF</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$black&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x00</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x00</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0x00</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -152,8 +152,8 @@ image</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imagecolorallocatealpha.html" class="function" rel="rdfs-seeAlso">imagecolorallocatealpha()</a> - 画像で使用する色を透過度を指定して作成する</span></li>
-    <li class="member"> <span class="function"><a href="function.imagecolordeallocate.html" class="function" rel="rdfs-seeAlso">imagecolordeallocate()</a> - イメージの色リソースを開放する</span></li>
+    <li class="member"><span class="function"><a href="function.imagecolorallocatealpha.html" class="function" rel="rdfs-seeAlso">imagecolorallocatealpha()</a> - 画像で使用する色を透過度を指定して作成する</span></li>
+    <li class="member"><span class="function"><a href="function.imagecolordeallocate.html" class="function" rel="rdfs-seeAlso">imagecolordeallocate()</a> - イメージの色リソースを開放する</span></li>
    </ul>
   </p>
  </div>

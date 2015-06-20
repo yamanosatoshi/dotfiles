@@ -30,23 +30,23 @@
   ]]]]] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">remote_socket</code></em> で指定された接続先との、
+   <code class="parameter">remote_socket</code> で指定された接続先との、
    ストリームまたはデータグラム接続を確立します。
    作成されるソケットのタイプは、<em>[トランスポート]://[ターゲット]</em>
    という形式の URL フォーマットによって指定された
    トランスポートによって決定されます。
    TCP や UDP といったインターネットドメインのソケット (AF_INET)
-   には、<em><code class="parameter">remote_socket</code></em> パラメータの
+   には、<code class="parameter">remote_socket</code> パラメータの
    <em>ターゲット</em> の部分は、ホスト名または IP アドレスと、
    それに続くコロンで区切られたポート番号から構成されていなければなりません。
-   Unix ドメインのソケットの場合は、<em><code class="parameter">ターゲット</code></em>
+   Unix ドメインのソケットの場合は、<code class="parameter">ターゲット</code>
    の部分は、ファイルシステムにおけるソケットのファイルを指定しなくては
    いけません。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     ストリームはデフォルトではブロックモードで開かれますが、
-     <span class="function"><a href="function.stream-set-blocking.html" class="function">stream_set_blocking()</a></span> を使うことで非ブロックモードに
+    <span class="function"><a href="function.stream-set-blocking.html" class="function">stream_set_blocking()</a></span> を使うことで非ブロックモードに
     変更することができます。
    </p>
   </p></blockquote>
@@ -58,9 +58,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">remote_socket</code></dt>
 
-     <span class="term"><em><code class="parameter">remote_socket</code></em></span>
      <dd>
 
       <p class="para">
@@ -68,11 +69,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">errno</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">errno</code></em></span>
      <dd>
 
       <p class="para">
@@ -80,11 +81,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">errstr</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">errstr</code></em></span>
      <dd>
 
       <p class="para">
@@ -92,11 +93,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">timeout</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">timeout</code></em></span>
      <dd>
 
       <p class="para">
@@ -109,19 +110,19 @@
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
          ソケット上のデータの読み書きに関してタイムアウトを設定する必要がある場合は、
-          <span class="function"><a href="function.stream-set-timeout.html" class="function">stream_set_timeout()</a></span> を使ってください。
-          <span class="function"><strong>stream_socket_client()</strong></span> に渡される
-         <em><code class="parameter">timeout</code></em> は、ソケットの接続時にのみ適用されます。
+         <span class="function"><a href="function.stream-set-timeout.html" class="function">stream_set_timeout()</a></span> を使ってください。
+         <span class="function"><strong>stream_socket_client()</strong></span> に渡される
+         <code class="parameter">timeout</code> は、ソケットの接続時にのみ適用されます。
         </p>
        </p></blockquote>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
@@ -133,20 +134,19 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">context</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">context</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span> で作成した有効なコンテキストリソース。
+       <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span> で作成した有効なコンテキストリソース。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -157,9 +157,9 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    成功した場合に、
-    <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span>,  <span class="function"><a href="function.fgetss.html" class="function">fgetss()</a></span>,
-    <span class="function"><a href="function.fwrite.html" class="function">fwrite()</a></span>,  <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span>,
-    <span class="function"><a href="function.feof.html" class="function">feof()</a></span> といった、ファイル関数と共に使うことのできるストリームリソースを返します。
+   <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span>, <span class="function"><a href="function.fgetss.html" class="function">fgetss()</a></span>,
+   <span class="function"><a href="function.fwrite.html" class="function">fwrite()</a></span>, <span class="function"><a href="function.fclose.html" class="function">fclose()</a></span>,
+   <span class="function"><a href="function.feof.html" class="function">feof()</a></span> といった、ファイル関数と共に使うことのできるストリームリソースを返します。
   </p>
  </div>
 
@@ -167,16 +167,16 @@
  <div class="refsect1 errors" id="refsect1-function.stream-socket-client-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
-   失敗した場合は、<em><code class="parameter">errno</code></em> と
-   <em><code class="parameter">errstr</code></em> に
+   失敗した場合は、<code class="parameter">errno</code> と
+   <code class="parameter">errstr</code> に
    システムレベルの <em>connect()</em>
    関数の実行時に発生したシステムレベルのエラーを表す値を返します。
-   もし、<em><code class="parameter">errno</code></em> に返された値が <em>0</em>
+   もし、<code class="parameter">errno</code> に返された値が <em>0</em>
    で、かつ、 この関数が <strong><code>FALSE</code></strong> を返した時は、
    <em>connect()</em> システムコールの前に何らかのエラーが
    発生したことを示しています。これは、多くの場合、ソケットの初期化
-   に失敗したことで起こります。<em><code class="parameter">errno</code></em> と 
-   <em><code class="parameter">errstr</code></em> パラメータは常に参照渡しされることに
+   に失敗したことで起こります。<code class="parameter">errno</code> と 
+   <code class="parameter">errstr</code> パラメータは常に参照渡しされることに
    留意してください。
   </p>
  </div>
@@ -187,7 +187,7 @@
   <h3 class="title">例</h3>
   <p class="para">
    <div class="example" id="stream-socket-client.example.basic">
-    <p><strong>例1  <span class="function"><strong>stream_socket_client()</strong></span> の例</strong></p>
+    <p><strong>例1 <span class="function"><strong>stream_socket_client()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_socket_client</span><span style="color: #007700">(</span><span style="color: #DD0000">"tcp://www.example.com:80"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errno</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errstr</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">30</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$fp</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$errstr</span><span style="color: #DD0000">&nbsp;(</span><span style="color: #0000BB">$errno</span><span style="color: #DD0000">)&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"GET&nbsp;/&nbsp;HTTP/1.0\r\nHost:&nbsp;www.example.com\r\nAccept:&nbsp;*/*\r\n\r\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(!</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1024</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -233,7 +233,7 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     環境により、Unix ドメインや接続タイムアウトが利用できない場合があります。
-    有効なトランスポートのリストは、 <span class="function"><a href="function.stream-get-transports.html" class="function">stream_get_transports()</a></span>
+    有効なトランスポートのリストは、<span class="function"><a href="function.stream-get-transports.html" class="function">stream_get_transports()</a></span>
     で取得できます。組み込むのポートの一覧については、
     <a href="transports.html" class="xref">サポートされるソケットトランスポートのリスト</a> を参照ください。
    </p>
@@ -245,16 +245,16 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.stream-socket-server.html" class="function" rel="rdfs-seeAlso">stream_socket_server()</a> - インターネットドメインまたは Unix ドメインのサーバーソケットを作成する</span></li>
-    <li class="member"> <span class="function"><a href="function.stream-set-blocking.html" class="function" rel="rdfs-seeAlso">stream_set_blocking()</a> - ストリームのブロックモードを有効にする / 解除する</span></li>
-    <li class="member"> <span class="function"><a href="function.stream-set-timeout.html" class="function" rel="rdfs-seeAlso">stream_set_timeout()</a> - ストリームにタイムアウトを設定する</span></li>
-    <li class="member"> <span class="function"><a href="function.stream-select.html" class="function" rel="rdfs-seeAlso">stream_select()</a> - select() システムコールと同等の操作を、
+    <li class="member"><span class="function"><a href="function.stream-socket-server.html" class="function" rel="rdfs-seeAlso">stream_socket_server()</a> - インターネットドメインまたは Unix ドメインのサーバーソケットを作成する</span></li>
+    <li class="member"><span class="function"><a href="function.stream-set-blocking.html" class="function" rel="rdfs-seeAlso">stream_set_blocking()</a> - ストリームのブロックモードを有効にする / 解除する</span></li>
+    <li class="member"><span class="function"><a href="function.stream-set-timeout.html" class="function" rel="rdfs-seeAlso">stream_set_timeout()</a> - ストリームにタイムアウトを設定する</span></li>
+    <li class="member"><span class="function"><a href="function.stream-select.html" class="function" rel="rdfs-seeAlso">stream_select()</a> - select() システムコールと同等の操作を、
    ストリームの配列に対して tv_sec と tv_usec で指定されたタイムアウト時間をもって行う</span></li>
-    <li class="member"> <span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - ファイルポインタから 1 行取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.fgetss.html" class="function" rel="rdfs-seeAlso">fgetss()</a> - ファイルポインタから 1 行取り出し、HTML タグを取り除く</span></li>
-    <li class="member"> <span class="function"><a href="function.fwrite.html" class="function" rel="rdfs-seeAlso">fwrite()</a> - バイナリセーフなファイル書き込み処理</span></li>
-    <li class="member"> <span class="function"><a href="function.fclose.html" class="function" rel="rdfs-seeAlso">fclose()</a> - オープンされたファイルポインタをクローズする</span></li>
-    <li class="member"> <span class="function"><a href="function.feof.html" class="function" rel="rdfs-seeAlso">feof()</a> - ファイルポインタがファイル終端に達しているかどうか調べる</span></li>
+    <li class="member"><span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - ファイルポインタから 1 行取得する</span></li>
+    <li class="member"><span class="function"><a href="function.fgetss.html" class="function" rel="rdfs-seeAlso">fgetss()</a> - ファイルポインタから 1 行取り出し、HTML タグを取り除く</span></li>
+    <li class="member"><span class="function"><a href="function.fwrite.html" class="function" rel="rdfs-seeAlso">fwrite()</a> - バイナリセーフなファイル書き込み処理</span></li>
+    <li class="member"><span class="function"><a href="function.fclose.html" class="function" rel="rdfs-seeAlso">fclose()</a> - オープンされたファイルポインタをクローズする</span></li>
+    <li class="member"><span class="function"><a href="function.feof.html" class="function" rel="rdfs-seeAlso">feof()</a> - ファイルポインタがファイル終端に達しているかどうか調べる</span></li>
     <li class="member"><a href="ref.curl.html" class="xref">cURL 関数</a></li>
    </ul>
   </p>

@@ -31,9 +31,9 @@
 
   
   <p class="para rdfs-comment">
-    <span class="function"><strong>Memcache::setServerParams()</strong></span> は、
+   <span class="function"><strong>Memcache::setServerParams()</strong></span> は、
    サーバーのパラメータを実行時に変更します。
-    <span class="function"><strong>memcache_set_server_params()</strong></span> 関数を使用することも可能です。
+   <span class="function"><strong>memcache_set_server_params()</strong></span> 関数を使用することも可能です。
   </p>
   
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -50,9 +50,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">host</code></dt>
 
-     <span class="term"><em><code class="parameter">host</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,11 +61,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">port</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">port</code></em></span>
      <dd>
 
       <p class="para">
@@ -72,11 +73,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">timeout</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">timeout</code></em></span>
      <dd>
 
       <p class="para">
@@ -87,47 +88,47 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">retry_interval</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">retry_interval</code></em></span>
      <dd>
 
       <p class="para">
        サーバーとの接続が失敗した際に再試行を行う頻度を設定します。
        デフォルト値は 15 秒です。このパラメータを -1 にすると、
        自動的な再試行を行いません。
-        <span class="function"><a href="function.dl.html" class="function">dl()</a></span> を使用してこの拡張モジュールが動的に
+       <span class="function"><a href="function.dl.html" class="function">dl()</a></span> を使用してこの拡張モジュールが動的に
        読み込まれている場合は、このパラメータおよび
-       <em><code class="parameter">persistent</code></em> は何の効果も及ぼしません。
+       <code class="parameter">persistent</code> は何の効果も及ぼしません。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">status</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">status</code></em></span>
      <dd>
 
       <p class="para">
        サーバーがオンライン状態であるかどうかを制御します。このパラメータを
-       <strong><code>FALSE</code></strong> にし、<em><code class="parameter">retry_interval</code></em> を -1
+       <strong><code>FALSE</code></strong> にし、<code class="parameter">retry_interval</code> を -1
        と設定すると、失敗したサーバーもコネクションプールに残します。
        これにより、キー配布アルゴリズムに影響を与えないようにします。
        このサーバーへのリクエストは、フェイルオーバーされるか失敗します。
-       どちらになるかは <em><code class="parameter">memcache.allow_failover</code></em>
+       どちらになるかは <code class="parameter">memcache.allow_failover</code>
        の設定によって決まります。デフォルトは <strong><code>TRUE</code></strong> で、
        サーバーがオンライン状態であることを意味します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">failure_callback</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">failure_callback</code></em></span>
      <dd>
 
       <p class="para">
@@ -138,8 +139,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -157,8 +157,8 @@
  <div class="refsect1 examples" id="refsect1-memcache.setserverparams-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4404">
-    <p><strong>例1  <span class="function"><strong>Memcache::setServerParams()</strong></span> の例</strong></p>
+   <div class="example" id="example-4850">
+    <p><strong>例1 <span class="function"><strong>Memcache::setServerParams()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">_callback_memcache_failure</span><span style="color: #007700">(</span><span style="color: #0000BB">$host</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$port</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"memcache&nbsp;'</span><span style="color: #0000BB">$host</span><span style="color: #DD0000">:</span><span style="color: #0000BB">$port</span><span style="color: #DD0000">'&nbsp;failed"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;オブジェクト指向の&nbsp;API&nbsp;*/<br /><br /></span><span style="color: #0000BB">$memcache&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcache</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;サーバーをオフラインモードで追加します<br /></span><span style="color: #0000BB">$memcache</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;サーバーをオンラインに変更します<br /></span><span style="color: #0000BB">$memcache</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setServerParams</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">15</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'_callback_memcache_failure'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;手続き型の&nbsp;API&nbsp;*/<br /><br /></span><span style="color: #0000BB">$memcache_obj&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">memcache_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">memcache_set_server_params</span><span style="color: #007700">(</span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">15</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'_callback_memcache_failure'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -175,8 +175,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="memcache.addserver.html" class="function" rel="rdfs-seeAlso">Memcache::addServer()</a> - コネクションプールに memcached サーバーを追加する</span></li>
-    <li class="member"> <span class="function"><a href="memcache.getserverstatus.html" class="function" rel="rdfs-seeAlso">Memcache::getServerStatus()</a> - サーバーの状態を返す</span></li>
+    <li class="member"><span class="function"><a href="memcache.addserver.html" class="function" rel="rdfs-seeAlso">Memcache::addServer()</a> - コネクションプールに memcached サーバーを追加する</span></li>
+    <li class="member"><span class="function"><a href="memcache.getserverstatus.html" class="function" rel="rdfs-seeAlso">Memcache::getServerStatus()</a> - サーバーの状態を返す</span></li>
    </ul>
   </p>
  </div>

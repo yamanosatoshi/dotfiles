@@ -20,7 +20,7 @@
  <div class="refsect1 description" id="refsect1-reflectionfunction.construct-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>  <span class="methodname"><strong>ReflectionFunction::__construct</strong></span>
+   <span class="modifier">public</span> <span class="methodname"><strong>ReflectionFunction::__construct</strong></span>
     ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$name</code></span>
    )</div>
 
@@ -35,9 +35,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">name</code></dt>
 
-     <span class="term"><em><code class="parameter">name</code></em></span>
      <dd>
 
       <p class="para">
@@ -45,8 +46,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -64,7 +64,7 @@
  <div class="refsect1 errors" id="refsect1-reflectionfunction.construct-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
-   <em><code class="parameter">name</code></em> パラメータが正しい関数名でない場合に
+   <code class="parameter">name</code> パラメータが正しい関数名でない場合に
    <a href="class.reflectionexception.html" class="classname">ReflectionException</a> が発生します。
   </p>
  </div>
@@ -87,7 +87,7 @@
       <tr>
        <td>5.3.0</td>
        <td>
-        <em><code class="parameter">name</code></em> に <a href="functions.anonymous.html" class="link">クロージャ</a>
+        <code class="parameter">name</code> に <a href="functions.anonymous.html" class="link">クロージャ</a>
         を指定できるようになりました。
        </td>
       </tr>
@@ -103,8 +103,8 @@
  <div class="refsect1 examples" id="refsect1-reflectionfunction.construct-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5202">
-    <p><strong>例1  <span class="methodname"><strong>ReflectionFunction::__construct()</strong></span> の例</strong></p>
+   <div class="example" id="example-5679">
+    <p><strong>例1 <span class="methodname"><strong>ReflectionFunction::__construct()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/**<br />&nbsp;*&nbsp;簡単なカウンタ<br />&nbsp;*<br />&nbsp;*&nbsp;@return&nbsp;&nbsp;&nbsp;&nbsp;int<br />&nbsp;*/<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">counter1</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;++</span><span style="color: #0000BB">$c</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">/**<br />&nbsp;*&nbsp;別の簡単なカウンタ<br />&nbsp;*<br />&nbsp;*&nbsp;@return&nbsp;&nbsp;&nbsp;&nbsp;int<br />&nbsp;*/<br /></span><span style="color: #0000BB">$counter2&nbsp;</span><span style="color: #007700">=&nbsp;function()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;++</span><span style="color: #0000BB">$d</span><span style="color: #007700">;<br /><br />};<br /><br />function&nbsp;</span><span style="color: #0000BB">dumpReflectionFunction</span><span style="color: #007700">(</span><span style="color: #0000BB">$func</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;基本情報を表示します<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"\n\n===&gt;&nbsp;The&nbsp;%s&nbsp;function&nbsp;'%s'\n"</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;declared&nbsp;in&nbsp;%s\n"</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lines&nbsp;%d&nbsp;to&nbsp;%d\n"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$func</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isInternal</span><span style="color: #007700">()&nbsp;?&nbsp;</span><span style="color: #DD0000">'internal'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'user-defined'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$func</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getName</span><span style="color: #007700">(),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$func</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFileName</span><span style="color: #007700">(),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$func</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStartLine</span><span style="color: #007700">(),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$func</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getEndline</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;ドキュメントコメントを表示します<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"---&gt;&nbsp;Documentation:\n&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$func</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDocComment</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;静的変数が存在すれば表示します<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$statics&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$func</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStaticVariables</span><span style="color: #007700">())<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"---&gt;&nbsp;Static&nbsp;variables:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$statics</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;ReflectionFunction&nbsp;クラスのインスタンスを作成します<br /></span><span style="color: #0000BB">dumpReflectionFunction</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">ReflectionFunction</span><span style="color: #007700">(</span><span style="color: #DD0000">'counter1'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">dumpReflectionFunction</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">ReflectionFunction</span><span style="color: #007700">(</span><span style="color: #0000BB">$counter2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -153,7 +153,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="reflectionmethod.construct.html" class="methodname" rel="rdfs-seeAlso">ReflectionMethod::__construct()</a> - ReflectionMethod を作成する</span></li>
+    <li class="member"><span class="methodname"><a href="reflectionmethod.construct.html" class="methodname" rel="rdfs-seeAlso">ReflectionMethod::__construct()</a> - ReflectionMethod を作成する</span></li>
     <li class="member"><a href="language.oop5.decon.html#language.oop5.decon.constructor" class="link">コンストラクタ</a></li>
    </ul>
   </p>

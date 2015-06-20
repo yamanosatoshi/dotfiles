@@ -55,7 +55,7 @@
       <td><a href="opcache.configuration.html#ini.opcache.interned-strings-buffer" class="link">opcache.interned_strings_buffer</a></td>
       <td>&quot;4&quot;</td>
       <td>PHP_INI_SYSTEM</td>
-      <td>PHP 5.3.0 以降で使用可能です。</td>
+      <td class="empty">&nbsp;</td>
      </tr>
 
      <tr>
@@ -212,6 +212,13 @@
       <td class="empty">&nbsp;</td>
      </tr>
 
+     <tr>
+      <td><a href="opcache.configuration.html#ini.opcache.restrict-api" class="link">opcache.restrict_api</a></td>
+      <td>&quot;&quot;</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
     </tbody>
    
   </table>
@@ -226,26 +233,30 @@
  <p class="para">
   <dl>
 
-   <dt id="ini.opcache.enable">
-    <span class="term">
-     <em><code class="parameter">opcache.enable</code></em>
+   
+    <dt id="ini.opcache.enable">
+     <code class="parameter">opcache.enable</code>
      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
       オペコード・キャッシュを有効にします。
       無効にした場合、コードは最適化もキャッシュもされません。
+      <em>opcache.enable</em> の設定を、実行時に
+      <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span> で有効化することはできません。
+      実行時にできるのは、無効化だけです。スクリプト内で有効化しようとすると、警告が発生します。
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.enable-cli">
-    <span class="term">
-     <em><code class="parameter">opcache.enable_cli</code></em>
+   
+   
+    <dt id="ini.opcache.enable-cli">
+     <code class="parameter">opcache.enable_cli</code>
      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -254,13 +265,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.memory-consumption">
-    <span class="term">
-     <em><code class="parameter">opcache.memory_consumption</code></em>
+   
+   
+    <dt id="ini.opcache.memory-consumption">
+     <code class="parameter">opcache.memory_consumption</code>
      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -268,13 +279,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.interned-strings-buffer">
-    <span class="term">
-     <em><code class="parameter">opcache.interned_strings_buffer</code></em>
+   
+   
+    <dt id="ini.opcache.interned-strings-buffer">
+     <code class="parameter">opcache.interned_strings_buffer</code>
      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -283,13 +294,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.max-accelerated-files">
-    <span class="term">
-     <em><code class="parameter">opcache.max_accelerated_files</code></em>
+   
+   
+    <dt id="ini.opcache.max-accelerated-files">
+     <code class="parameter">opcache.max_accelerated_files</code>
      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -301,13 +312,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.max-wasted-percentage">
-    <span class="term">
-     <em><code class="parameter">opcache.max_wasted_percentage</code></em>
+   
+   
+    <dt id="ini.opcache.max-wasted-percentage">
+     <code class="parameter">opcache.max_wasted_percentage</code>
      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -315,13 +326,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.use-cwd">
-    <span class="term">
-     <em><code class="parameter">opcache.use_cwd</code></em>
+   
+   
+    <dt id="ini.opcache.use-cwd">
+     <code class="parameter">opcache.use_cwd</code>
      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -331,31 +342,31 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.validate-timestamps">
-    <span class="term">
-     <em><code class="parameter">opcache.validate_timestamps</code></em>
+   
+   
+    <dt id="ini.opcache.validate-timestamps">
+     <code class="parameter">opcache.validate_timestamps</code>
      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
       有効にすると、OPcache は、スクリプトが更新されたか
       <a href="opcache.configuration.html#ini.opcache.revalidate-freq" class="link">opcache.revalidate_freq</a> 秒ごとにチェックします。
       このディレクティブが無効な場合、ファイルシステムへの変更を反映するには、
-       <span class="function"><a href="function.opcache-reset.html" class="function">opcache_reset()</a></span> または  <span class="function"><a href="function.opcache-invalidate.html" class="function">opcache_invalidate()</a></span> 関数を介して、
+      <span class="function"><a href="function.opcache-reset.html" class="function">opcache_reset()</a></span> または <span class="function"><a href="function.opcache-invalidate.html" class="function">opcache_invalidate()</a></span> 関数を介して、
       または Web サーバを再起動して手動で OPcache をリセットしなければいけません。
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.revalidate-freq">
-    <span class="term">
-     <em><code class="parameter">opcache.revalidate_freq</code></em>
+   
+   
+    <dt id="ini.opcache.revalidate-freq">
+     <code class="parameter">opcache.revalidate_freq</code>
      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -369,13 +380,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.revalidate-path">
-    <span class="term">
-     <em><code class="parameter">opcache.revalidate_path</code></em>
+   
+   
+    <dt id="ini.opcache.revalidate-path">
+     <code class="parameter">opcache.revalidate_path</code>
      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -386,13 +397,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.save-comments">
-    <span class="term">
-     <em><code class="parameter">opcache.save_comments</code></em>
+   
+   
+    <dt id="ini.opcache.save-comments">
+     <code class="parameter">opcache.save_comments</code>
      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -402,13 +413,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.load-comments">
-    <span class="term">
-     <em><code class="parameter">opcache.load_comments</code></em>
+   
+   
+    <dt id="ini.opcache.load-comments">
+     <code class="parameter">opcache.load_comments</code>
      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -418,13 +429,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.fast-shutdown">
-    <span class="term">
-     <em><code class="parameter">opcache.fast_shutdown</code></em>
+   
+   
+    <dt id="ini.opcache.fast-shutdown">
+     <code class="parameter">opcache.fast_shutdown</code>
      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -433,18 +444,18 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.enable-file-override">
-    <span class="term">
-     <em><code class="parameter">opcache.enable_file_override</code></em>
+   
+   
+    <dt id="ini.opcache.enable-file-override">
+     <code class="parameter">opcache.enable_file_override</code>
      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
-      有効にすると、オペコード・キャッシュは  <span class="function"><a href="function.file-exists.html" class="function">file_exists()</a></span>、
-       <span class="function"><a href="function.is-file.html" class="function">is_file()</a></span> および  <span class="function"><a href="function.is-readable.html" class="function">is_readable()</a></span> が呼ばれた際に、
+      有効にすると、オペコード・キャッシュは <span class="function"><a href="function.file-exists.html" class="function">file_exists()</a></span>、
+      <span class="function"><a href="function.is-file.html" class="function">is_file()</a></span> および <span class="function"><a href="function.is-readable.html" class="function">is_readable()</a></span> が呼ばれた際に、
       ファイルが既にキャッシュ済みかどうかチェックします。
       これは、PHP スクリプトの存在と読みやすさをチェックするアプリケーションでパフォーマンスを増大するかもしれません。
       しかし、<a href="opcache.configuration.html#ini.opcache.validate-timestamps" class="link">opcache.validate_timestamps</a> を無効にすると、
@@ -452,13 +463,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.optimization-level">
-    <span class="term">
-     <em><code class="parameter">opcache.optimization_level</code></em>
+   
+   
+    <dt id="ini.opcache.optimization-level">
+     <code class="parameter">opcache.optimization_level</code>
      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -466,13 +477,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.inherited-hack">
-    <span class="term">
-     <em><code class="parameter">opcache.inherited_hack</code></em>
+   
+   
+    <dt id="ini.opcache.inherited-hack">
+     <code class="parameter">opcache.inherited_hack</code>
      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -488,13 +499,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.dups-fix">
-    <span class="term">
-     <em><code class="parameter">opcache.dups_fix</code></em>
+   
+   
+    <dt id="ini.opcache.dups-fix">
+     <code class="parameter">opcache.dups_fix</code>
      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -502,13 +513,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.blacklist-filename">
-    <span class="term">
-     <em><code class="parameter">opcache.blacklist_filename</code></em>
+   
+   
+    <dt id="ini.opcache.blacklist-filename">
+     <code class="parameter">opcache.blacklist_filename</code>
      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -535,13 +546,13 @@
      </div>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.max-file-size">
-    <span class="term">
-     <em><code class="parameter">opcache.max_file_size</code></em>
+   
+   
+    <dt id="ini.opcache.max-file-size">
+     <code class="parameter">opcache.max_file_size</code>
      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -550,13 +561,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.consistency-checks">
-    <span class="term">
-     <em><code class="parameter">opcache.consistency_checks</code></em>
+   
+   
+    <dt id="ini.opcache.consistency-checks">
+     <code class="parameter">opcache.consistency_checks</code>
      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -566,13 +577,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.force-restart-timeout">
-    <span class="term">
-     <em><code class="parameter">opcache.force_restart_timeout</code></em>
+   
+   
+    <dt id="ini.opcache.force-restart-timeout">
+     <code class="parameter">opcache.force_restart_timeout</code>
      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -585,13 +596,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.error-log">
-    <span class="term">
-     <em><code class="parameter">opcache.error_log</code></em>
+   
+   
+    <dt id="ini.opcache.error-log">
+     <code class="parameter">opcache.error_log</code>
      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -601,13 +612,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.log-verbosity-level">
-    <span class="term">
-     <em><code class="parameter">opcache.log_verbosity_level</code></em>
+   
+   
+    <dt id="ini.opcache.log-verbosity-level">
+     <code class="parameter">opcache.log_verbosity_level</code>
      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -617,13 +628,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.preferred-memory-model">
-    <span class="term">
-     <em><code class="parameter">opcache.preferred_memory_model</code></em>
+   
+   
+    <dt id="ini.opcache.preferred-memory-model">
+     <code class="parameter">opcache.preferred_memory_model</code>
      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -637,13 +648,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.protect-memory">
-    <span class="term">
-     <em><code class="parameter">opcache.protect_memory</code></em>
+   
+   
+    <dt id="ini.opcache.protect-memory">
+     <code class="parameter">opcache.protect_memory</code>
      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -652,13 +663,13 @@
      </p>
     </dd>
 
-   </dt>
-
-   <dt id="ini.opcache.mmap-base">
-    <span class="term">
-     <em><code class="parameter">opcache.mmap_base</code></em>
+   
+   
+    <dt id="ini.opcache.mmap-base">
+     <code class="parameter">opcache.mmap_base</code>
      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
-    </span>
+    </dt>
+
     <dd>
 
      <p class="para">
@@ -668,8 +679,22 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt id="ini.opcache.restrict-api">
+     <code class="parameter">opcache.restrict_api</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
 
+    <dd>
+
+     <p class="para">
+      OPcache API 関数の呼び出しを、指定した文字列から始まるパス上の PHP スクリプトからだけに制限します。
+      デフォルトは &quot;&quot; で、これは、何も制限しないことを意味します。
+     </p>
+    </dd>
+
+   
   </dl>
 
  </p>

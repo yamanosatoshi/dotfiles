@@ -53,9 +53,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">compression</code></dt>
 
-     <span class="term"><em><code class="parameter">compression</code></em></span>
      <dd>
 
       <p class="para">
@@ -65,11 +66,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">extension</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">extension</code></em></span>
      <dd>
 
       <p class="para">
@@ -79,8 +80,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -110,11 +110,11 @@
  <div class="refsect1 examples" id="refsect1-phardata.compress-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-708">
-    <p><strong>例1  <span class="function"><strong>PharData::compress()</strong></span> の例</strong></p>
+   <div class="example" id="example-749">
+    <p><strong>例1 <span class="function"><strong>PharData::compress()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PharData</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/my.tar'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'myfile.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'myfile2.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">compress</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">GZ</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;/path/to/my.phar.gz&nbsp;にコピーします<br /></span><span style="color: #0000BB">$p2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">compress</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">BZ2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;/path/to/my.phar.bz2&nbsp;にコピーします<br /></span><span style="color: #0000BB">$p3&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">compress</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">NONE</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;例外:&nbsp;/path/to/my.phar&nbsp;already&nbsp;exists<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PharData</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/my.tar'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'myfile.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'myfile2.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">compress</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">GZ</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;/path/to/my.tar.gz&nbsp;にコピーします<br /></span><span style="color: #0000BB">$p2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">compress</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">BZ2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;/path/to/my.tar.bz2&nbsp;にコピーします<br /></span><span style="color: #0000BB">$p3&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">compress</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">NONE</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;例外:&nbsp;/path/to/my.tar&nbsp;が既に存在します<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -128,7 +128,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="phar.compress.html" class="function" rel="rdfs-seeAlso">Phar::compress()</a> - Phar アーカイブ全体を Gzip あるいは Bzip2 で圧縮する</span></li>
+    <li class="member"><span class="function"><a href="phar.compress.html" class="function" rel="rdfs-seeAlso">Phar::compress()</a> - Phar アーカイブ全体を Gzip あるいは Bzip2 で圧縮する</span></li>
    </ul>
   </p>
  </div>

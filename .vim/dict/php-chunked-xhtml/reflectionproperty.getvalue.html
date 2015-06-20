@@ -35,21 +35,21 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">object</code></dt>
 
-     <span class="term"><em><code class="parameter">object</code></em></span>
      <dd>
 
       <p class="para">
        静的でないプロパティの場合は、プロパティを取得したいオブジェクトを指定しなければなりません。
        オブジェクトを指定せずにデフォルトのプロパティを取得したい場合は、かわりに
-        <span class="methodname"><a href="reflectionclass.getdefaultproperties.html" class="methodname">ReflectionClass::getDefaultProperties()</a></span>
+       <span class="methodname"><a href="reflectionclass.getdefaultproperties.html" class="methodname">ReflectionClass::getDefaultProperties()</a></span>
        を使います。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -69,7 +69,7 @@
   <p class="para">
    プロパティにアクセスできない場合に <a href="class.reflectionexception.html" class="classname">ReflectionException</a> をスローします。
    protected や private なプロパティにアクセスするには、
-    <span class="methodname"><a href="reflectionproperty.setaccessible.html" class="methodname">ReflectionProperty::setAccessible()</a></span> を使います。
+   <span class="methodname"><a href="reflectionproperty.setaccessible.html" class="methodname">ReflectionProperty::setAccessible()</a></span> を使います。
   </p>
  </div>
 
@@ -77,8 +77,8 @@
  <div class="refsect1 examples" id="refsect1-reflectionproperty.getvalue-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5219">
-    <p><strong>例1  <span class="methodname"><strong>ReflectionProperty::getValue()</strong></span> の例</strong></p>
+   <div class="example" id="example-5698">
+    <p><strong>例1 <span class="methodname"><strong>ReflectionProperty::getValue()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;</span><span style="color: #0000BB">$staticProperty&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'foobar'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$property&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'barfoo'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;</span><span style="color: #0000BB">$privateProperty&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'foofoo'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$reflectionClass&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #DD0000">'Foo'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$reflectionClass</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getProperty</span><span style="color: #007700">(</span><span style="color: #DD0000">'staticProperty'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">getValue</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$reflectionClass</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getProperty</span><span style="color: #007700">(</span><span style="color: #DD0000">'property'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">getValue</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$reflectionProperty&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$reflectionClass</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getProperty</span><span style="color: #007700">(</span><span style="color: #DD0000">'privateProperty'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$reflectionProperty</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAccessible</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$reflectionProperty</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getValue</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -103,10 +103,10 @@ string(6) &quot;foofoo&quot;
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="reflectionproperty.setvalue.html" class="methodname" rel="rdfs-seeAlso">ReflectionProperty::setValue()</a> - プロパティの値を設定する</span></li>
-    <li class="member"> <span class="methodname"><a href="reflectionproperty.setaccessible.html" class="methodname" rel="rdfs-seeAlso">ReflectionProperty::setAccessible()</a> - プロパティのアクセス範囲を設定する</span></li>
-    <li class="member"> <span class="methodname"><a href="reflectionclass.getdefaultproperties.html" class="methodname" rel="rdfs-seeAlso">ReflectionClass::getDefaultProperties()</a> - デフォルトプロパティを取得する</span></li>
-    <li class="member"> <span class="methodname"><a href="reflectionclass.getstaticpropertyvalue.html" class="methodname" rel="rdfs-seeAlso">ReflectionClass::getStaticPropertyValue()</a> - 静的なプロパティの値を取得する</span></li>
+    <li class="member"><span class="methodname"><a href="reflectionproperty.setvalue.html" class="methodname" rel="rdfs-seeAlso">ReflectionProperty::setValue()</a> - プロパティの値を設定する</span></li>
+    <li class="member"><span class="methodname"><a href="reflectionproperty.setaccessible.html" class="methodname" rel="rdfs-seeAlso">ReflectionProperty::setAccessible()</a> - プロパティのアクセス範囲を設定する</span></li>
+    <li class="member"><span class="methodname"><a href="reflectionclass.getdefaultproperties.html" class="methodname" rel="rdfs-seeAlso">ReflectionClass::getDefaultProperties()</a> - デフォルトプロパティを取得する</span></li>
+    <li class="member"><span class="methodname"><a href="reflectionclass.getstaticpropertyvalue.html" class="methodname" rel="rdfs-seeAlso">ReflectionClass::getStaticPropertyValue()</a> - 静的なプロパティの値を取得する</span></li>
    </ul>
   </p>
  </div>

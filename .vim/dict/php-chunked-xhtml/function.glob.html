@@ -13,7 +13,7 @@
 </div><hr /><div id="function.glob" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">glob</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">glob</span> &mdash; <span class="dc-title">パターンにマッチするパス名を探す</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">glob</span> &mdash; <span class="dc-title">パターンにマッチするパス名を探す</span></p>
 
  </div>
  
@@ -26,9 +26,9 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>glob()</strong></span> 関数は libc の glob()
+   <span class="function"><strong>glob()</strong></span> 関数は libc の glob()
    関数で使われるルールに基づいて
-   <em><code class="parameter">pattern</code></em> にマッチする全てのパス名を検索します。
+   <code class="parameter">pattern</code> にマッチする全てのパス名を検索します。
    ルールは、一般のシェルで使われるルールと似ています。
   </p>
  </div>
@@ -39,9 +39,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">pattern</code></dt>
 
-     <span class="term"><em><code class="parameter">pattern</code></em></span>
      <dd>
 
       <p class="para">
@@ -49,11 +50,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
@@ -67,7 +68,7 @@
         <li class="listitem">
          <span class="simpara">
           <strong><code>GLOB_NOSORT</code></strong> - ディレクトリに存在するファイルを返します
-          (ソートはされません)
+          (ソートはされません)。このフラグを使わない場合は、パス名をアルファベット順にソートします。
          </span>
         </li>
         <li class="listitem">
@@ -103,8 +104,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -147,14 +147,6 @@
        </td>
       </tr>
 
-      <tr>
-       <td>4.3.3</td>
-       <td>
-        <strong><code>GLOB_ONLYDIR</code></strong> が、
-        Windows やその他の GNU C ライブラリを使用しないシステムでも利用できるようになりました。
-       </td>
-      </tr>
-
      </tbody>
     
    </table>
@@ -166,9 +158,9 @@
  <div class="refsect1 examples" id="refsect1-function.glob-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2389">
+   <div class="example" id="example-2588">
     <p><strong>例1 
-      <span class="function"><strong>glob()</strong></span> が  <span class="function"><a href="function.opendir.html" class="function">opendir()</a></span>
+     <span class="function"><strong>glob()</strong></span> が <span class="function"><a href="function.opendir.html" class="function">opendir()</a></span>
      と関連する関数群の代替策になるかを示す簡便な方法
     </strong></p>
     <div class="example-contents">
@@ -216,10 +208,10 @@ quickref.txt size 137820
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.opendir.html" class="function" rel="rdfs-seeAlso">opendir()</a> - ディレクトリハンドルをオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.readdir.html" class="function" rel="rdfs-seeAlso">readdir()</a> - ディレクトリハンドルからエントリを読み込む</span></li>
-    <li class="member"> <span class="function"><a href="function.closedir.html" class="function" rel="rdfs-seeAlso">closedir()</a> - ディレクトリハンドルをクローズする</span></li>
-    <li class="member"> <span class="function"><a href="function.fnmatch.html" class="function" rel="rdfs-seeAlso">fnmatch()</a> - ファイル名がパターンにマッチするか調べる</span></li>
+    <li class="member"><span class="function"><a href="function.opendir.html" class="function" rel="rdfs-seeAlso">opendir()</a> - ディレクトリハンドルをオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.readdir.html" class="function" rel="rdfs-seeAlso">readdir()</a> - ディレクトリハンドルからエントリを読み込む</span></li>
+    <li class="member"><span class="function"><a href="function.closedir.html" class="function" rel="rdfs-seeAlso">closedir()</a> - ディレクトリハンドルをクローズする</span></li>
+    <li class="member"><span class="function"><a href="function.fnmatch.html" class="function" rel="rdfs-seeAlso">fnmatch()</a> - ファイル名がパターンにマッチするか調べる</span></li>
    </ul>
   </p>
  </div>

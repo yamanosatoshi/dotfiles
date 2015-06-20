@@ -38,9 +38,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">protected_resource_url</code></dt>
 
-     <span class="term"><em><code class="parameter">protected_resource_url</code></em></span>
      <dd>
 
       <p class="para">
@@ -48,11 +49,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">extra_parameters</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">extra_parameters</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,11 +61,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">http_method</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">http_method</code></em></span>
      <dd>
 
       <p class="para">
@@ -80,11 +81,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">http_headers</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">http_headers</code></em></span>
      <dd>
 
       <p class="para">
@@ -92,8 +93,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -132,14 +132,14 @@
       <tr>
        <td>0.99.5</td>
        <td>
-        <em><code class="parameter">http_method</code></em> パラメータが追加されました。
+        <code class="parameter">http_method</code> パラメータが追加されました。
        </td>
       </tr>
 
       <tr>
        <td>0.99.8</td>
        <td>
-        <em><code class="parameter">http_headers</code></em> パラメータが追加されました。
+        <code class="parameter">http_headers</code> パラメータが追加されました。
        </td>
       </tr>
 
@@ -154,8 +154,8 @@
  <div class="refsect1 examples" id="refsect1-oauth.fetch-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5260">
-    <p><strong>例1  <span class="function"><strong>OAuth::fetch()</strong></span> の例</strong></p>
+   <div class="example" id="example-5740">
+    <p><strong>例1 <span class="function"><strong>OAuth::fetch()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$oauth&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">OAuth</span><span style="color: #007700">(</span><span style="color: #DD0000">"consumer_key"</span><span style="color: #007700">,</span><span style="color: #DD0000">"consumer_secret"</span><span style="color: #007700">,</span><span style="color: #0000BB">OAUTH_SIG_METHOD_HMACSHA1</span><span style="color: #007700">,</span><span style="color: #0000BB">OAUTH_AUTH_TYPE_AUTHORIZATION</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$oauth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setToken</span><span style="color: #007700">(</span><span style="color: #DD0000">"access_token"</span><span style="color: #007700">,</span><span style="color: #DD0000">"access_token_secret"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$oauth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://photos.example.net/photo?file=vacation.jpg"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$response_info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$oauth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLastResponseInfo</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-Type:&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$response_info</span><span style="color: #007700">[</span><span style="color: #DD0000">"content_type"</span><span style="color: #007700">]}</span><span style="color: #DD0000">"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$oauth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLastResponse</span><span style="color: #007700">();<br />}&nbsp;catch(</span><span style="color: #0000BB">OAuthException&nbsp;$E</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Exception&nbsp;caught!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Response:&nbsp;"</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$E</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">lastResponse&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -172,9 +172,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="oauth.getlastresponse.html" class="methodname" rel="rdfs-seeAlso">OAuth::getLastResponse()</a> - 直近のレスポンスを取得する</span></li>
-    <li class="member"> <span class="methodname"><a href="oauth.getlastresponseinfo.html" class="methodname" rel="rdfs-seeAlso">OAuth::getLastResponseInfo()</a> - 直近のレスポンスの HTTP 情報を取得する</span></li>
-    <li class="member"> <span class="methodname"><a href="oauth.settoken.html" class="methodname" rel="rdfs-seeAlso">OAuth::setToken()</a> - トークンと secret を設定する</span></li>
+    <li class="member"><span class="methodname"><a href="oauth.getlastresponse.html" class="methodname" rel="rdfs-seeAlso">OAuth::getLastResponse()</a> - 直近のレスポンスを取得する</span></li>
+    <li class="member"><span class="methodname"><a href="oauth.getlastresponseinfo.html" class="methodname" rel="rdfs-seeAlso">OAuth::getLastResponseInfo()</a> - 直近のレスポンスの HTTP 情報を取得する</span></li>
+    <li class="member"><span class="methodname"><a href="oauth.settoken.html" class="methodname" rel="rdfs-seeAlso">OAuth::setToken()</a> - トークンと secret を設定する</span></li>
    </ul>
   </p>
  </div>

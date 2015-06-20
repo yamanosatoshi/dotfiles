@@ -20,21 +20,22 @@
  <div class="refsect1 description" id="refsect1-mongobindata.construct-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>  <span class="methodname"><strong>MongoBinData::__construct</strong></span>
+   <span class="modifier">public</span> <span class="methodname"><strong>MongoBinData::__construct</strong></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code><span class="initializer"> = 2</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code><span class="initializer"> = 0</span></span>
   ] )</div>
 
   <p class="para rdfs-comment">
    新しいバイナリデータオブジェクトを作成します。
   </p>
   <p class="para">
-   現在の BSON 仕様には、次の 5 種類のバイナリデータ型があります。
-   関数 (0x01), バイト配列 (0x02), UUID (0x03), MD5 (0x05), そしてユーザー定義型
-   (0x80) です。デフォルトの型はバイト配列 (0x02) です。
-   ドライバやサーバーがこの型の違いによって処理を変えることはないので、
-   今のところこれは無意味です。0 から 255 までの任意の数を型に使うことができますが、
-   将来データベースが型を見てバイナリデータの処理を変えるようになる可能性を考えなければなりません。
+   現在の BSON 仕様には 7 種類のバイナリデータ型があり、それらが
+   <a href="class.mongobindata.html#mongobindata.constants.types" class="link">クラス定数</a>で定義されています。
+   過去のバージョンとの互換性のため、デフォルトは
+   <strong><code>MongoBinData::BYTE_ARRAY</code></strong>
+   となっていますが、将来のバージョンでは
+   <strong><code>MongoBinData::GENERIC</code></strong> に変わるかもしれません。
+   デフォルトに頼るのではなく、自分で型を指定するようにしましょう。
   </p>
  </div>
 
@@ -44,11 +45,12 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">data</code></em>
-     </span>
+      <code class="parameter">data</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -56,13 +58,13 @@
       </p>
      </dd>
 
-    </dt>
-     
-    <dt>
+         
+    
+     <dt>
 
-     <span class="term">
-      <em><code class="parameter">type</code></em>
-     </span>
+      <code class="parameter">type</code>
+     </dt>
+
      <dd>
 
       <p class="para">
@@ -70,8 +72,7 @@
       </p>
      </dd>
 
-    </dt>
-     
+         
    </dl>
 
   </p>
@@ -101,10 +102,19 @@
 
      <tbody class="tbody">
       <tr>
+       <td>1.5.0</td>
+       <td>
+        デフォルトが <em>2</em>
+        (<strong><code>MongoBinData::BYTE_ARRAY</code></strong>) から
+        <em>0</em> (<strong><code>MongoBinData::GENERIC</code></strong>) に変わりました。
+       </td>
+      </tr>
+
+      <tr>
        <td>1.2.11</td>
        <td>
         二番目の引数を省略すると <strong><code>E_DEPRECATED</code></strong> を発行します。
-        <em><code class="parameter">type</code></em> のデフォルト値は近い将来変わる見込みです。
+        <code class="parameter">type</code> のデフォルト値は近い将来変わる見込みです。
        </td>
       </tr>
 

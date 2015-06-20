@@ -36,27 +36,28 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">key</code></dt>
 
-     <span class="term"><em><code class="parameter">key</code></em></span>
      <dd>
 
       <p class="para">
        変数をキャッシュに格納するときに使ったキーの名前。
-       <em><code class="parameter">key</code></em> は大文字小文字を区別します。
-       <em><code class="parameter">key</code></em> にはキーの配列を指定することもできます。
-       その場合の返り値は、<em><code class="parameter">key</code></em> 配列の各要素の値の配列となります。
+       <code class="parameter">key</code> は大文字小文字を区別します。
+       <code class="parameter">key</code> にはキーの配列を指定することもできます。
+       その場合の返り値は、<code class="parameter">key</code> 配列の各要素の値の配列となります。
        オブジェクト、あるいはオブジェクトを含む配列が返されるときには、
        オブジェクトがデシリアライズされます。シリアライズしたオブジェクトの復元についての詳細は
        <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a> を参照ください。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">success</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">success</code></em></span>
      <dd>
 
       <p class="para">
@@ -64,8 +65,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -74,12 +74,12 @@
  <div class="refsect1 returnvalues" id="refsect1-function.wincache-ucache-get-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="simpara">
-   <em><code class="parameter">key</code></em> が文字列のときは、そのキーに格納された変数の値を返します。
-   <em><code class="parameter">success</code></em> には、成功した場合に <strong><code>TRUE</code></strong>、
+   <code class="parameter">key</code> が文字列のときは、そのキーに格納された変数の値を返します。
+   <code class="parameter">success</code> には、成功した場合に <strong><code>TRUE</code></strong>、
    失敗した場合に <strong><code>FALSE</code></strong> が設定されます。
   </p>
   <p class="simpara">
-   <em><code class="parameter">key</code></em> が配列のときは、<em><code class="parameter">success</code></em> には常に
+   <code class="parameter">key</code> が配列のときは、<code class="parameter">success</code> には常に
    <strong><code>TRUE</code></strong> が設定されます。返される配列 (name =&gt; value のペア)
    には、取得に成功したペアだけが含まれます。指定したキーがひとつもユーザーキャッシュから見つからなかった場合は
    空の配列を返します。
@@ -89,8 +89,8 @@
  <div class="refsect1 examples" id="refsect1-function.wincache-ucache-get-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-575">
-    <p><strong>例1  <span class="function"><strong>wincache_ucache_get()</strong></span> で <em><code class="parameter">key</code></em> に文字列を使う例</strong></p>
+   <div class="example" id="example-616">
+    <p><strong>例1 <span class="function"><strong>wincache_ucache_get()</strong></span> で <code class="parameter">key</code> に文字列を使う例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />wincache_ucache_add</span><span style="color: #007700">(</span><span style="color: #DD0000">'color'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'blue'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">wincache_ucache_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'color'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$success</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$success</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -108,8 +108,8 @@ bool(true)
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-576">
-    <p><strong>例2  <span class="function"><strong>wincache_ucache_get()</strong></span> で <em><code class="parameter">key</code></em> に配列を使う例</strong></p>
+   <div class="example" id="example-617">
+    <p><strong>例2 <span class="function"><strong>wincache_ucache_get()</strong></span> で <code class="parameter">key</code> に配列を使う例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$array1&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'green'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'5'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Blue'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'6'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'yellow'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'7'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'cyan'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'8'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">wincache_ucache_set</span><span style="color: #007700">(</span><span style="color: #0000BB">$array1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$array2&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'green'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Blue'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'yellow'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'cyan'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">wincache_ucache_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$array2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$success</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$success</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -136,13 +136,13 @@ bool(true)
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.wincache-ucache-add.html" class="function" rel="rdfs-seeAlso">wincache_ucache_add()</a> - 変数が既にキャッシュに存在しない場合にのみ変数をユーザーキャッシュに追加する</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-ucache-set.html" class="function" rel="rdfs-seeAlso">wincache_ucache_set()</a> - 変数をユーザーキャッシュに追加し、変数が既にキャッシュに存在する場合はそれを上書きする</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-ucache-delete.html" class="function" rel="rdfs-seeAlso">wincache_ucache_delete()</a> - 変数をユーザーキャッシュから削除する</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-ucache-clear.html" class="function" rel="rdfs-seeAlso">wincache_ucache_clear()</a> - ユーザーキャッシュの中身全体を削除する</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-ucache-exists.html" class="function" rel="rdfs-seeAlso">wincache_ucache_exists()</a> - 変数がユーザーキャッシュに存在するかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-ucache-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_ucache_meminfo()</a> - ユーザーキャッシュのメモリ使用状況についての情報を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-ucache-info.html" class="function" rel="rdfs-seeAlso">wincache_ucache_info()</a> - ユーザーキャッシュにキャッシュされたファイルについての情報を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-ucache-add.html" class="function" rel="rdfs-seeAlso">wincache_ucache_add()</a> - 変数が既にキャッシュに存在しない場合にのみ変数をユーザーキャッシュに追加する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-ucache-set.html" class="function" rel="rdfs-seeAlso">wincache_ucache_set()</a> - 変数をユーザーキャッシュに追加し、変数が既にキャッシュに存在する場合はそれを上書きする</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-ucache-delete.html" class="function" rel="rdfs-seeAlso">wincache_ucache_delete()</a> - 変数をユーザーキャッシュから削除する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-ucache-clear.html" class="function" rel="rdfs-seeAlso">wincache_ucache_clear()</a> - ユーザーキャッシュの中身全体を削除する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-ucache-exists.html" class="function" rel="rdfs-seeAlso">wincache_ucache_exists()</a> - 変数がユーザーキャッシュに存在するかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-ucache-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_ucache_meminfo()</a> - ユーザーキャッシュのメモリ使用状況についての情報を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-ucache-info.html" class="function" rel="rdfs-seeAlso">wincache_ucache_info()</a> - ユーザーキャッシュにキャッシュされたファイルについての情報を取得する</span></li>
     <li class="member"><a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a></li>
    </ul>
   </p>

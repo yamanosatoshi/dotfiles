@@ -7,7 +7,7 @@
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="function.session-register-shutdown.html">session_register_shutdown</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.session-save-path.html">session_save_path</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.session-reset.html">session_reset</a></div>
  <div class="up"><a href="ref.session.html">セッション関数</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="function.session-register" class="refentry">
@@ -26,10 +26,10 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>session_register()</strong></span> の引数の数は可変であり、
+   <span class="function"><strong>session_register()</strong></span> の引数の数は可変であり、
    各引数は変数名を保持する文字列または変数名からなる配列
    とすることが可能です。
-   各変数名が処理される毎に、 <span class="function"><strong>session_register()</strong></span>
+   各変数名が処理される毎に、<span class="function"><strong>session_register()</strong></span>
    は、その変数名のグローバル変数を現在のセッションに登録します。
   </p>
   <p class="para">
@@ -47,11 +47,11 @@
    </div>
   </p>
   <p class="para">
-   この関数をコールする前に  <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span>
+   この関数をコールする前に <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span>
    をコールしていない場合、暗黙のうちに引数を付けずに
-    <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> がコールされます。
+   <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> がコールされます。
    <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> を使う場合はこの動作とは違い、
-   使用前に必ず  <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> をコールする必要があります。
+   使用前に必ず <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> をコールする必要があります。
   </p>
   <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は PHP 5.3.0 で
 <em class="emphasis">非推奨</em>となり、
@@ -64,9 +64,10 @@ PHP 5.4.0 で<em class="emphasis">削除</em>されました。</p></div>
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">name</code></dt>
 
-     <span class="term"><em><code class="parameter">name</code></em></span>
      <dd>
 
       <p class="para">
@@ -75,19 +76,18 @@ PHP 5.4.0 で<em class="emphasis">削除</em>されました。</p></div>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">...</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">...</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -111,7 +111,7 @@ PHP 5.4.0 で<em class="emphasis">削除</em>されました。</p></div>
     <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>
     配列を代わりに使用する必要があります。
     <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> のエントリは自動的に登録されます。
-    スクリプトで  <span class="function"><strong>session_register()</strong></span>
+    スクリプトで <span class="function"><strong>session_register()</strong></span>
     を使用している場合には、それは
     <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
     を不可としている環境下では動作しません。
@@ -138,9 +138,9 @@ PHP コミュニティは、ユーザーがこのディレクティブの設定�
    <p class="para">
     <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>
     (あるいは <var class="varname"><var class="varname">$HTTP_SESSION_VARS</var></var>) を使用する場合は
-     <span class="function"><strong>session_register()</strong></span>、
-     <span class="function"><a href="function.session-is-registered.html" class="function">session_is_registered()</a></span> および
-     <span class="function"><a href="function.session-unregister.html" class="function">session_unregister()</a></span> を使用しないでください。
+    <span class="function"><strong>session_register()</strong></span>、
+    <span class="function"><a href="function.session-is-registered.html" class="function">session_is_registered()</a></span> および
+    <span class="function"><a href="function.session-unregister.html" class="function">session_unregister()</a></span> を使用しないでください。
    </p>
   </div>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -167,8 +167,8 @@ PHP コミュニティは、ユーザーがこのディレクティブの設定�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.session-is-registered.html" class="function" rel="rdfs-seeAlso">session_is_registered()</a> - 変数がセッションに登録されているかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.session-unregister.html" class="function" rel="rdfs-seeAlso">session_unregister()</a> - 現在のセッションから変数の登録を削除する</span></li>
+    <li class="member"><span class="function"><a href="function.session-is-registered.html" class="function" rel="rdfs-seeAlso">session_is_registered()</a> - 変数がセッションに登録されているかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.session-unregister.html" class="function" rel="rdfs-seeAlso">session_unregister()</a> - 現在のセッションから変数の登録を削除する</span></li>
     <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var></li>
    </ul>
   </p>
@@ -177,7 +177,7 @@ PHP コミュニティは、ユーザーがこのディレクティブの設定�
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="function.session-register-shutdown.html">session_register_shutdown</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.session-save-path.html">session_save_path</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.session-reset.html">session_reset</a></div>
  <div class="up"><a href="ref.session.html">セッション関数</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div></body></html>

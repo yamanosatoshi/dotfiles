@@ -19,9 +19,21 @@
 
  <div class="refsect1 description" id="refsect1-intlcalendar.getdayofweektype-description">
   <h3 class="title">説明</h3>
+  <p class="para">
+   オブジェクト指向型
+  </p>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><strong>IntlCalendar::getDayOfWeekType</strong></span>
     ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$dayOfWeek</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   手続き型
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><strong>intlcal_get_day_of_week_type</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span> <code class="parameter">$cal</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$dayOfWeek</code></span>
    )</div>
 
   <p class="para rdfs-comment">
@@ -37,7 +49,7 @@
    If the return is either
    <strong><code>IntlCalendar::DOW_TYPE_WEEKEND_OFFSET</code></strong> or
    <strong><code>IntlCalendar::DOW_TYPE_WEEKEND_CEASE</code></strong>, then
-    <span class="function"><a href="intlcalendar.getweekendtransition.html" class="function">IntlCalendar::getWeekendTransition()</a></span> can be called to
+   <span class="function"><a href="intlcalendar.getweekendtransition.html" class="function">IntlCalendar::getWeekendTransition()</a></span> can be called to
    obtain the time of the transition.
   </p>
   <p class="para">
@@ -51,9 +63,22 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">cal</code></dt>
 
-    <span class="term"><em><code class="parameter">dayOfWeek</code></em></span>
+    <dd>
+
+     <p class="para">
+      The IntlCalendar resource.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">dayOfWeek</code></dt>
+
     <dd>
 
      <p class="para">
@@ -63,8 +88,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -86,8 +110,8 @@
  <div class="refsect1 examples" id="refsect1-intlcalendar.getdayofweektype-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2592">
-   <p><strong>例1  <span class="function"><strong>IntlCalendar::getDayOfWeekType()</strong></span></strong></p>
+   <div class="example" id="example-2791">
+   <p><strong>例1 <span class="function"><strong>IntlCalendar::getDayOfWeekType()</strong></span></strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">foreach&nbsp;(array(</span><span style="color: #DD0000">'en_US'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ar_SA'</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$locale</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Locale:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">Locale</span><span style="color: #007700">::</span><span style="color: #0000BB">getDisplayName</span><span style="color: #007700">(</span><span style="color: #0000BB">$locale</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"en_US"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cal&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">createInstance</span><span style="color: #007700">(</span><span style="color: #DD0000">'UTC'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$locale</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">DOW_SUNDAY</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">DOW_SATURDAY</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDayOfWeekType</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"&nbsp;"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDayOfWeekType</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;&gt;=&nbsp;</span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">DOW_TYPE_WEEKEND_OFFSET<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">$cal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getWeekendTransition</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}</span>

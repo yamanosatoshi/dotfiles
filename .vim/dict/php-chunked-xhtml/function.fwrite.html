@@ -13,7 +13,7 @@
 </div><hr /><div id="function.fwrite" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">fwrite</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">fwrite</span> &mdash; <span class="dc-title">バイナリセーフなファイル書き込み処理</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">fwrite</span> &mdash; <span class="dc-title">バイナリセーフなファイル書き込み処理</span></p>
 
  </div>
  
@@ -27,8 +27,8 @@
   ] )</div>
 
   <p class="simpara">
-    <span class="function"><strong>fwrite()</strong></span>は<em><code class="parameter">string</code></em>の内容を
-   <em><code class="parameter">handle</code></em>が指しているファイル・ストリームに書き込みます。
+   <span class="function"><strong>fwrite()</strong></span>は<code class="parameter">string</code>の内容を
+   <code class="parameter">handle</code>が指しているファイル・ストリームに書き込みます。
   </p>
  </div>
 
@@ -38,20 +38,21 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">handle</code></dt>
 
-     <span class="term"><em><code class="parameter">handle</code></em></span>
      <dd>
 
-      <p class="para"> <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>
+      <p class="para"><span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>
 を使用して作成したファイルシステムポインタリソース。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">string</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">string</code></em></span>
      <dd>
 
       <p class="para">
@@ -59,29 +60,28 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">length</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">length</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">length</code></em>パラメータが与えられている場合、
-       <em><code class="parameter">length</code></em>バイト数分の書き込みが完了したか、
-       <em><code class="parameter">string</code></em>が終わりに達したかのいずれか早い方の
+       <code class="parameter">length</code>パラメータが与えられている場合、
+       <code class="parameter">length</code>バイト数分の書き込みが完了したか、
+       <code class="parameter">string</code>が終わりに達したかのいずれか早い方の
        事象により書き込みは中止されます。
       </p>
       <p class="para">
-       <em><code class="parameter">length</code></em> パラメータが指定されている場合、
+       <code class="parameter">length</code> パラメータが指定されている場合、
        <a href="info.configuration.html#ini.magic-quotes-runtime" class="link">magic_quotes_runtime</a>
-       構成オプションは無視され、<em><code class="parameter">string</code></em>からの
+       構成オプションは無視され、<code class="parameter">string</code>からの
        スラッシュ文字の取り除きは行われないことに注意してください。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -91,7 +91,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.fwrite-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="simpara">
-    <span class="function"><strong>fwrite()</strong></span> は、
+   <span class="function"><strong>fwrite()</strong></span> は、
    書き込んだバイト数、またはエラー時に <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
@@ -103,7 +103,7 @@
    <p class="para">
     ネットワークストリームへの書き込みは、
     すべての文字列を書き込み終える前に終了する可能性があります。
-     <span class="function"><strong>fwrite()</strong></span> の返り値を確かめるようにしましょう。
+    <span class="function"><strong>fwrite()</strong></span> の返り値を確かめるようにしましょう。
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">fwrite_stream</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(</span><span style="color: #0000BB">$written&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$written&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">);&nbsp;</span><span style="color: #0000BB">$written&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">$fwrite</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$fwrite&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$written</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$fwrite&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$written</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$written</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -117,19 +117,19 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     (Windowsのように)バイナリとテキストファイルの形式が異なるシステムにおいては、ファイルをオープンする際に
-     <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>の mode パラメータに &#039;b&#039; を指定する必要があります。
+    <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>の mode パラメータに &#039;b&#039; を指定する必要があります。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を使用して追記モードでオープンした
-    <em><code class="parameter">handle</code></em> の場合、
-     <span class="function"><strong>fwrite()</strong></span> はアトミックになります
-    (ただし、一部のプラットフォームにおいて <em><code class="parameter">string</code></em>
+    <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> を使用して追記モードでオープンした
+    <code class="parameter">handle</code> の場合、
+    <span class="function"><strong>fwrite()</strong></span> はアトミックになります
+    (ただし、一部のプラットフォームにおいて <code class="parameter">string</code>
     がファイルシステムのブロックサイズを超えない場合、
     そしてローカルファイルシステム上のファイルである場合に限ります)。
-    アトミックであるとは、つまり  <span class="function"><strong>fwrite()</strong></span>
-    をコールする前にリソースを  <span class="function"><a href="function.flock.html" class="function">flock()</a></span>
+    アトミックであるとは、つまり <span class="function"><strong>fwrite()</strong></span>
+    をコールする前にリソースを <span class="function"><a href="function.flock.html" class="function">flock()</a></span>
     する必要がないということです。データの書き込みが中断されることはありません。
    </p>
   </p></blockquote>
@@ -152,8 +152,8 @@
  <div class="refsect1 examples" id="refsect1-function.fwrite-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2388">
-    <p><strong>例1 簡単な  <span class="function"><strong>fwrite()</strong></span> の例</strong></p>
+   <div class="example" id="example-2587">
+    <p><strong>例1 簡単な <span class="function"><strong>fwrite()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'test.txt'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$somecontent&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Add&nbsp;this&nbsp;to&nbsp;the&nbsp;file\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;ファイルが存在しかつ書き込み可能かどうか確認します<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_writable</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">))&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;この例では$filenameを追加モードでオープンします。<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;ファイルポインタはファイルの終端になりますので<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;そこがfwrite()で$somecontentが追加される位置になります。<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'a'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Cannot&nbsp;open&nbsp;file&nbsp;(</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">)"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;オープンしたファイルに$somecontentを書き込みます<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$somecontent</span><span style="color: #007700">)&nbsp;===&nbsp;</span><span style="color: #0000BB">FALSE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Cannot&nbsp;write&nbsp;to&nbsp;file&nbsp;(</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">)"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Success,&nbsp;wrote&nbsp;(</span><span style="color: #0000BB">$somecontent</span><span style="color: #DD0000">)&nbsp;to&nbsp;file&nbsp;(</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">)"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /><br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"The&nbsp;file&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">&nbsp;is&nbsp;not&nbsp;writable"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -170,11 +170,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - バイナリセーフなファイルの読み込み</span></li>
-    <li class="member"> <span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - インターネット接続もしくは Unix ドメインソケット接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - プロセスへのファイルポインタをオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.file-get-contents.html" class="function" rel="rdfs-seeAlso">file_get_contents()</a> - ファイルの内容を全て文字列に読み込む</span></li>
+    <li class="member"><span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - バイナリセーフなファイルの読み込み</span></li>
+    <li class="member"><span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - インターネット接続もしくは Unix ドメインソケット接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - プロセスへのファイルポインタをオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.file-get-contents.html" class="function" rel="rdfs-seeAlso">file_get_contents()</a> - ファイルの内容を全て文字列に読み込む</span></li>
    </ul>
   </p>
  </div>

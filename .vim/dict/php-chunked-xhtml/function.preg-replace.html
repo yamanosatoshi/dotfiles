@@ -29,9 +29,9 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">subject</code></em> に関して
-   <em><code class="parameter">pattern</code></em> を用いて検索を行い、
-   <em><code class="parameter">replacement</code></em> に置換します。
+   <code class="parameter">subject</code> に関して
+   <code class="parameter">pattern</code> を用いて検索を行い、
+   <code class="parameter">replacement</code> に置換します。
   </p>
  </div>
 
@@ -41,9 +41,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">pattern</code></dt>
 
-     <span class="term"><em><code class="parameter">pattern</code></em></span>
      <dd>
 
       <p class="para">
@@ -51,30 +52,30 @@
       </p>
       <p class="para">
        <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE 修飾子</a>
-       も使えます。非推奨の &#039;<em>e</em>&#039; (PREG_REPLACE_EVAL) は、この関数でだけ使える修飾子です。
+       も使えます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">replacement</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">replacement</code></em></span>
      <dd>
 
       <p class="para">
        置換を行う文字列もしくは文字列の配列。
-       この引数が文字列で、<em><code class="parameter">pattern</code></em> 引数が配列の場合、
+       この引数が文字列で、<code class="parameter">pattern</code> 引数が配列の場合、
        すべてのパターンがこの文字列に置換されます。
-       <em><code class="parameter">pattern</code></em> および <em><code class="parameter">replacement</code></em>
-       のいずれもが配列の場合、各 <em><code class="parameter">pattern</code></em> は
-       対応する <em><code class="parameter">replacement</code></em> に置換されます。
-       もし、<em><code class="parameter">replacement</code></em> 配列の要素の数が <em><code class="parameter">pattern</code></em>
-       配列よりも少ない場合は、余った <em><code class="parameter">pattern</code></em> は
+       <code class="parameter">pattern</code> および <code class="parameter">replacement</code>
+       のいずれもが配列の場合、各 <code class="parameter">pattern</code> は
+       対応する <code class="parameter">replacement</code> に置換されます。
+       もし、<code class="parameter">replacement</code> 配列の要素の数が <code class="parameter">pattern</code>
+       配列よりも少ない場合は、余った <code class="parameter">pattern</code> は
        空文字に置換されます。
       </p>
       <p class="para">
-       <em><code class="parameter">replacement</code></em> では、
+       <code class="parameter">replacement</code> では、
        <em>\\<span class="replaceable">n</span></em> 形式または
        <em>$<span class="replaceable">n</span></em>
        形式（PHP 4.0.4 以降）で参照を指定することができます。
@@ -95,7 +96,7 @@
        後方参照 <em>\\1</em> の後にリテラル
        <em>1</em> が続くのか、後方参照 <em>\\11</em> で
        その後には何も続かないのかが不明のため、
-        <span class="function"><strong>preg_replace()</strong></span> を混乱させる可能性があります。
+       <span class="function"><strong>preg_replace()</strong></span> を混乱させる可能性があります。
        この場合、解決策は、<em>\${1}1</em> を使用することです。
        こうすることで、<em>1</em> はリテラルとなり、後方参照
        <em>$1</em> を明確に作成できます。
@@ -113,42 +114,42 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">subject</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">subject</code></em></span>
      <dd>
 
       <p class="para">
        検索・置換対象となる文字列もしくは文字列の配列
       </p>
       <p class="para">
-       <em><code class="parameter">subject</code></em> が配列の場合、検索と置換は
-       <em><code class="parameter">subject</code></em>
+       <code class="parameter">subject</code> が配列の場合、検索と置換は
+       <code class="parameter">subject</code>
        の各要素に対して行われ、返り値も配列となります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">limit</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">limit</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">subject</code></em> 文字列において、各パターンによる
+       <code class="parameter">subject</code> 文字列において、各パターンによる
        置換を行う最大回数。デフォルトは
        <em>-1</em> (制限無し)。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">count</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">count</code></em></span>
      <dd>
 
       <p class="para">
@@ -156,8 +157,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -167,13 +167,13 @@
  <div class="refsect1 returnvalues" id="refsect1-function.preg-replace-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    <span class="function"><strong>preg_replace()</strong></span> は、
-   <em><code class="parameter">subject</code></em> 引数が配列の場合は配列を、
+   <span class="function"><strong>preg_replace()</strong></span> は、
+   <code class="parameter">subject</code> 引数が配列の場合は配列を、
    その他の場合は文字列を返します。
   </p>
   <p class="para">
-   パターンがマッチした場合、〔置換が行われた〕新しい <em><code class="parameter">subject</code></em>
-   を返します。マッチしなかった場合、<em><code class="parameter">subject</code></em>
+   パターンがマッチした場合、〔置換が行われた〕新しい <code class="parameter">subject</code>
+   を返します。マッチしなかった場合、<code class="parameter">subject</code>
    をそのまま返します。エラーが発生した場合、<strong><code>NULL</code></strong> を返します。
   </p>
  </div>
@@ -182,8 +182,10 @@
  <div class="refsect1 errors" id="refsect1-function.preg-replace-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
-   &quot;\e&quot; 修飾子を使うと、
+   PHP 5.5.0 以降で &quot;\e&quot; 修飾子を使うと、
    <strong><code>E_DEPRECATED</code></strong> レベルのエラーが発生します。
+   PHP 7.0.0 以降では
+   <strong><code>E_WARNING</code></strong> レベルのエラーが発生し、 &quot;\e&quot; 修飾子は何の効力も持たなくなります。
   </p>
  </div>
 
@@ -203,10 +205,18 @@
 
      <tbody class="tbody">
       <tr>
+       <td>7.0.0</td>
+       <td>
+        <em>/e</em> 修飾子をサポートしなくなりました。かわりに
+        <span class="function"><a href="function.preg-replace-callback.html" class="function">preg_replace_callback()</a></span> を使いましょう。
+       </td>
+      </tr>
+
+      <tr>
        <td>5.5.0</td>
        <td>
         <em>/e</em> 修飾子が非推奨になりました。かわりに
-         <span class="function"><a href="function.preg-replace-callback.html" class="function">preg_replace_callback()</a></span> を使いましょう。
+        <span class="function"><a href="function.preg-replace-callback.html" class="function">preg_replace_callback()</a></span> を使いましょう。
         セキュリティ上のリスクの関する詳細は
         <a href="reference.pcre.pattern.modifiers.html#reference.pcre.pattern.modifiers.eval" class="link">PREG_REPLACE_EVAL</a>
         のドキュメントを参照ください。
@@ -216,21 +226,7 @@
       <tr>
        <td>5.1.0</td>
        <td>
-        <em><code class="parameter">count</code></em> 引数が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.0.4</td>
-       <td>
-        <em><code class="parameter">replacement</code></em> 引数に &#039;$n&#039; 形式が使用できるようになりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.0.2</td>
-       <td>
-        <em><code class="parameter">limit</code></em> 引数が追加されました。
+        <code class="parameter">count</code> 引数が追加されました。
        </td>
       </tr>
 
@@ -245,7 +241,7 @@
  <div class="refsect1 examples" id="refsect1-function.preg-replace-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4776">
+   <div class="example" id="example-5254">
     <p><strong>例1 数字リテラルが後に続く後方参照</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -263,7 +259,7 @@ April1,2003
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4777">
+   <div class="example" id="example-5255">
     <p><strong>例2 添字配列の使用</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -297,7 +293,7 @@ The slow black bear jumped over the lazy dog.
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4778">
+   <div class="example" id="example-5256">
     <p><strong>例3 複数値の置換</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -315,7 +311,7 @@ $startDate = 5/27/1999
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4779">
+   <div class="example" id="example-5257">
     <p><strong>例4 空白の削除</strong></p>
     <div class="example-contents"><p>
      この例は、文字列から余分な空白を取り除きます。
@@ -330,8 +326,8 @@ $startDate = 5/27/1999
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4780">
-    <p><strong>例5 <em><code class="parameter">count</code></em> 引数の使用</strong></p>
+   <div class="example" id="example-5258">
+    <p><strong>例5 <code class="parameter">count</code> 引数の使用</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'/\d/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'/\s/'</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'*'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'xp&nbsp;4&nbsp;to'</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//3<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -355,13 +351,13 @@ xp***to
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    <em><code class="parameter">pattern</code></em> および <em><code class="parameter">replacement</code></em>
+    <code class="parameter">pattern</code> および <code class="parameter">replacement</code>
     を使用する際、配列の並び順に処理されます。添字は整数であっても、
     その並びは値の小さい順になっているとは<em class="emphasis">限りません</em>。
-    ですから、配列の添字を使って、どの <em><code class="parameter">pattern</code></em>
-    が、どの <em><code class="parameter">replacement</code></em> に置換されるかを指定しようとする場合は、
-     <span class="function"><strong>preg_replace()</strong></span> をコールする前に、各配列に対し
-     <span class="function"><a href="function.ksort.html" class="function">ksort()</a></span> を実行しておくべきです。
+    ですから、配列の添字を使って、どの <code class="parameter">pattern</code>
+    が、どの <code class="parameter">replacement</code> に置換されるかを指定しようとする場合は、
+    <span class="function"><strong>preg_replace()</strong></span> をコールする前に、各配列に対し
+    <span class="function"><a href="function.ksort.html" class="function">ksort()</a></span> を実行しておくべきです。
    </p>
   </p></blockquote>
  </div>
@@ -372,11 +368,12 @@ xp***to
   <p class="para">
    <ul class="simplelist">
     <li class="member"><a href="pcre.pattern.html" class="link">PCRE のパターン</a></li>
-    <li class="member"> <span class="function"><a href="function.preg-filter.html" class="function" rel="rdfs-seeAlso">preg_filter()</a> - 正規表現による検索と置換を行う</span></li>
-    <li class="member"> <span class="function"><a href="function.preg-match.html" class="function" rel="rdfs-seeAlso">preg_match()</a> - 正規表現によるマッチングを行う</span></li>
-    <li class="member"> <span class="function"><a href="function.preg-replace-callback.html" class="function" rel="rdfs-seeAlso">preg_replace_callback()</a> - 正規表現検索を行い、コールバック関数を使用して置換を行う</span></li>
-    <li class="member"> <span class="function"><a href="function.preg-split.html" class="function" rel="rdfs-seeAlso">preg_split()</a> - 正規表現で文字列を分割する</span></li>
-    <li class="member"> <span class="function"><a href="function.preg-last-error.html" class="function" rel="rdfs-seeAlso">preg_last_error()</a> - 直近の PCRE 正規表現処理のエラーコードを返す</span></li>
+    <li class="member"><span class="function"><a href="function.preg-quote.html" class="function" rel="rdfs-seeAlso">preg_quote()</a> - 正規表現文字をクオートする</span></li>
+    <li class="member"><span class="function"><a href="function.preg-filter.html" class="function" rel="rdfs-seeAlso">preg_filter()</a> - 正規表現による検索と置換を行う</span></li>
+    <li class="member"><span class="function"><a href="function.preg-match.html" class="function" rel="rdfs-seeAlso">preg_match()</a> - 正規表現によるマッチングを行う</span></li>
+    <li class="member"><span class="function"><a href="function.preg-replace-callback.html" class="function" rel="rdfs-seeAlso">preg_replace_callback()</a> - 正規表現検索を行い、コールバック関数を使用して置換を行う</span></li>
+    <li class="member"><span class="function"><a href="function.preg-split.html" class="function" rel="rdfs-seeAlso">preg_split()</a> - 正規表現で文字列を分割する</span></li>
+    <li class="member"><span class="function"><a href="function.preg-last-error.html" class="function" rel="rdfs-seeAlso">preg_last_error()</a> - 直近の PCRE 正規表現処理のエラーコードを返す</span></li>
    </ul>
   </p>
  </div>

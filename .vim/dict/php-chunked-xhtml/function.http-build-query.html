@@ -39,35 +39,36 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">query_data</code></dt>
 
-     <span class="term"><em><code class="parameter">query_data</code></em></span>
      <dd>
 
       <p class="para">
        プロパティを含む配列もしくはオブジェクト。
       </p>
       <p class="para">
-       <em><code class="parameter">query_data</code></em> が配列の場合の形式は、
+       <code class="parameter">query_data</code> が配列の場合の形式は、
        単純な一次元構造か
        あるいは配列の配列 (言い換えると、他の配列を含む配列) となります。
       </p>
       <p class="para">
-       <em><code class="parameter">query_data</code></em> がオブジェクトの場合、
+       <code class="parameter">query_data</code> がオブジェクトの場合、
        public プロパティだけが結果に含められます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">numeric_prefix</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">numeric_prefix</code></em></span>
      <dd>
 
       <p class="para">
        もし数値インデックスが基底となる配列に使用されたり
-       <em><code class="parameter">numeric_prefix</code></em> が指定された場合、
+       <code class="parameter">numeric_prefix</code> が指定された場合、
        基底となる配列の要素に対する数値インデックスの前にこれが追加されます。
       </p>
       <p class="para">
@@ -77,11 +78,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">arg_separator</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">arg_separator</code></em></span>
      <dd>
 
       <p class="para">
@@ -92,33 +93,32 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">enc_type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">enc_type</code></em></span>
      <dd>
 
       <p class="para">
        デフォルトは <strong><code>PHP_QUERY_RFC1738</code></strong> です。
       </p>
       <p class="para">
-       <em><code class="parameter">enc_type</code></em> が
+       <code class="parameter">enc_type</code> が
        <strong><code>PHP_QUERY_RFC1738</code></strong> の場合は
        <a href="http://www.faqs.org/rfcs/rfc1738" class="link external">&raquo;&nbsp;RFC 1738</a> に従ってエンコードされ、メディアタイプは
        <em>application/x-www-form-urlencoded</em> となります。
        つまり、スペースはプラス記号 (<em>+</em>) にエンコードされるということです。
       </p>
       <p class="para">
-       <em><code class="parameter">enc_type</code></em> が
+       <code class="parameter">enc_type</code> が
        <strong><code>PHP_QUERY_RFC3986</code></strong> の場合は
        <a href="http://www.faqs.org/rfcs/rfc3986" class="link external">&raquo;&nbsp;RFC 3986</a> に従ってエンコードされ、
        スペースはパーセント形式 (<em>%20</em>) となります。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -150,7 +150,7 @@
       <tr>
        <td>5.4.0</td>
        <td>
-        <em><code class="parameter">enc_type</code></em> パラメータが追加されました。
+        <code class="parameter">enc_type</code> パラメータが追加されました。
        </td>
       </tr>
 
@@ -164,7 +164,7 @@
       <tr>
        <td>5.1.2</td>
        <td>
-        パラメータ <em><code class="parameter">arg_separator</code></em> が追加されました。
+        パラメータ <code class="parameter">arg_separator</code> が追加されました。
        </td>
       </tr>
 
@@ -178,8 +178,8 @@
 
  <div class="refsect1 examples" id="refsect1-function.http-build-query-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-4066">
-   <p><strong>例1  <span class="function"><strong>http_build_query()</strong></span> の簡単な使用法</strong></p>
+  <div class="example" id="example-4522">
+   <p><strong>例1 <span class="function"><strong>http_build_query()</strong></span> の簡単な使用法</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$data&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'baz'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'boom'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'cow'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'milk'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'php'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'hypertext&nbsp;processor'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">http_build_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">http_build_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'&amp;amp;'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -196,9 +196,9 @@ foo=bar&amp;amp;baz=boom&amp;amp;cow=milk&amp;amp;php=hypertext+processor
    </div>
   </div>
 
-  <div class="example" id="example-4067">
+  <div class="example" id="example-4523">
    <p><strong>例2 数値インデックス要素の場合での
-    <span class="function"><strong>http_build_query()</strong></span></strong></p>
+   <span class="function"><strong>http_build_query()</strong></span></strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$data&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'baz'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'boom'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'cow'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'milk'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'php'&nbsp;</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'hypertext&nbsp;processor'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">http_build_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">http_build_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'myvar_'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -214,8 +214,8 @@ myvar_0=foo&amp;myvar_1=bar&amp;myvar_2=baz&amp;myvar_3=boom&amp;cow=milk&amp;ph
 </pre></div>
    </div>
   </div>
-  <div class="example" id="example-4068">
-   <p><strong>例3 複雑な配列の場合での  <span class="function"><strong>http_build_query()</strong></span></strong></p>
+  <div class="example" id="example-4524">
+   <p><strong>例3 複雑な配列の場合での <span class="function"><strong>http_build_query()</strong></span></strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$data&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'user'</span><span style="color: #007700">=&gt;array(</span><span style="color: #DD0000">'name'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'Bob&nbsp;Smith'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'age'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">47</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'sex'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'M'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'dob'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'5/12/1956'</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'pastimes'</span><span style="color: #007700">=&gt;array(</span><span style="color: #DD0000">'golf'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'opera'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'poker'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'rap'</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'children'</span><span style="color: #007700">=&gt;array(</span><span style="color: #DD0000">'bobby'</span><span style="color: #007700">=&gt;array(</span><span style="color: #DD0000">'age'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">12</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'sex'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'M'</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'sally'</span><span style="color: #007700">=&gt;array(</span><span style="color: #DD0000">'age'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">8</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'sex'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'F'</span><span style="color: #007700">)),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'CEO'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">http_build_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'flags_'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -246,8 +246,8 @@ children%5Bsally%5D%5Bsex%5D=F&amp;flags_0=CEO
    </p></div>
   </div>
 
-  <div class="example" id="example-4069">
-   <p><strong>例4 オブジェクトの場合の  <span class="function"><strong>http_build_query()</strong></span> の使用</strong></p>
+  <div class="example" id="example-4525">
+   <p><strong>例4 オブジェクトの場合の <span class="function"><strong>http_build_query()</strong></span> の使用</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">parentClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$pub&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'publicParent'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;</span><span style="color: #0000BB">$prot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'protectedParent'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$priv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'privateParent'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$pub_bar&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Null</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;</span><span style="color: #0000BB">$prot_bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Null</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$priv_bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Null</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(){<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pub_bar&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">childClass</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prot_bar&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">childClass</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">priv_bar&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">childClass</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">childClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$pub&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'publicChild'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;</span><span style="color: #0000BB">$prot&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'protectedChild'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$priv&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'privateChild'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$parent&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">parentClass</span><span style="color: #007700">();<br /><br />echo&nbsp;</span><span style="color: #0000BB">http_build_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$parent</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -269,10 +269,10 @@ pub=publicParent&amp;pub_bar%5Bpub%5D=publicChild
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.parse-str.html" class="function" rel="rdfs-seeAlso">parse_str()</a> - 文字列を処理し、変数に代入する</span></li>
-    <li class="member"> <span class="function"><a href="function.parse-url.html" class="function" rel="rdfs-seeAlso">parse_url()</a> - URL を解釈し、その構成要素を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.urlencode.html" class="function" rel="rdfs-seeAlso">urlencode()</a> - 文字列を URL エンコードする</span></li>
-    <li class="member"> <span class="function"><a href="function.array-walk.html" class="function" rel="rdfs-seeAlso">array_walk()</a> - 配列の全ての要素にユーザー関数を適用する</span></li>
+    <li class="member"><span class="function"><a href="function.parse-str.html" class="function" rel="rdfs-seeAlso">parse_str()</a> - 文字列を処理し、変数に代入する</span></li>
+    <li class="member"><span class="function"><a href="function.parse-url.html" class="function" rel="rdfs-seeAlso">parse_url()</a> - URL を解釈し、その構成要素を返す</span></li>
+    <li class="member"><span class="function"><a href="function.urlencode.html" class="function" rel="rdfs-seeAlso">urlencode()</a> - 文字列を URL エンコードする</span></li>
+    <li class="member"><span class="function"><a href="function.array-walk.html" class="function" rel="rdfs-seeAlso">array_walk()</a> - 配列の全ての要素にユーザー定義の関数を適用する</span></li>
    </ul>
   </p>
  </div>

@@ -25,10 +25,10 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>Memcached::flush()</strong></span> は、既存のキャッシュ内のすべてのアイテムを即時
-   (デフォルト) あるいは指定した <em><code class="parameter">delay</code></em> の後に無効化します。
+   <span class="function"><strong>Memcached::flush()</strong></span> は、既存のキャッシュ内のすべてのアイテムを即時
+   (デフォルト) あるいは指定した <code class="parameter">delay</code> の後に無効化します。
    無効化した後は、取得系のコマンドには一切アイテムを返さなくなります
-   ( <span class="function"><strong>Memcached::flush()</strong></span> がアイテムを無効化したあとで同名のキーを改めて格納した場合は別です)。
+   (<span class="function"><strong>Memcached::flush()</strong></span> がアイテムを無効化したあとで同名のキーを改めて格納した場合は別です)。
    既存のアイテムが確保していたメモリはその時点では開放されません。
    新しいアイテムが格納されるたびに徐々に開放されていきます。
   </p>
@@ -40,9 +40,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">delay</code></dt>
 
-     <span class="term"><em><code class="parameter">delay</code></em></span>
      <dd>
 
       <p class="para">
@@ -50,8 +51,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -62,7 +62,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
-   必要に応じて  <span class="methodname"><a href="memcached.getresultcode.html" class="methodname">Memcached::getResultCode()</a></span> を使用しましょう。
+   必要に応じて <span class="methodname"><a href="memcached.getresultcode.html" class="methodname">Memcached::getResultCode()</a></span> を使用しましょう。
   </p>
  </div>
 
@@ -70,8 +70,8 @@
  <div class="refsect1 examples" id="refsect1-memcached.flush-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4416">
-    <p><strong>例1  <span class="function"><strong>Memcached::flush()</strong></span> の例</strong></p>
+   <div class="example" id="example-4862">
+    <p><strong>例1 <span class="function"><strong>Memcached::flush()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;全アイテムを&nbsp;10&nbsp;秒後にフラッシュします&nbsp;*/<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">flush</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -90,13 +90,13 @@ PHP_MINIT_FUNCTION(pdo_SKEL)
 /* }}} */</pre></div></pre>
     <p class="para">
      この標準 PHP 拡張モジュール関数は、ドライバを PDO に登録するために
-     使用されます。登録するには、 <span class="function"><strong>php_pdo_register_driver()</strong></span>
+     使用されます。登録するには、<span class="function"><strong>php_pdo_register_driver()</strong></span>
      関数に <span class="type"><span class="type pdo_driver_t">pdo_driver_t</span></span> 型の構造体へのポインタを渡して
      コールします。この構造体の名前は、一般的には
      <em>pdo_SKEL_driver</em> となります。
      <span class="type"><span class="type pdo_driver_t">pdo_driver_t</span></span> には、マクロ
      <em>PDO_DRIVER_HEADER(SKEL)</em> を使用して生成した
-     ヘッダおよび  <span class="function"><strong>pdo_SKEL_handle_factory()</strong></span>
+     ヘッダおよび <span class="function"><strong>pdo_SKEL_handle_factory()</strong></span>
      関数へのポインタが含まれます。実際の関数については
      <var class="filename">SKEL_dbh.c</var> の説明の中で述べます。
     </p>
@@ -115,7 +115,7 @@ PHP_MSHUTDOWN_FUNCTION(pdo_SKEL)
     <p class="para">
      この標準 PHP 拡張モジュール関数は、ドライバを PDO から登録解除する
      ために使用されます。解除するには、
-      <span class="function"><strong>php_pdo_unregister_driver()</strong></span> 関数に
+     <span class="function"><strong>php_pdo_unregister_driver()</strong></span> 関数に
      上で渡したのと同じ構造体 <em>pdo_SKEL_driver</em>
      を渡してコールします。
     </p>
@@ -124,7 +124,7 @@ PHP_MSHUTDOWN_FUNCTION(pdo_SKEL)
     <h5 class="title">PHP_MINFO_FUNCTION</h5>
     <p class="para">
      これもまた標準 PHP 拡張モジュール関数です。この関数の目的は、
-     スクリプト内で  <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> がコールされた際に
+     スクリプト内で <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> がコールされた際に
      モジュールの情報を表示することです。規約では、モジュールの
      バージョンおよび対応するデータベースのバージョン、そして
      関連する設定情報を表示することになっています。
@@ -162,26 +162,27 @@ PHP_MSHUTDOWN_FUNCTION(pdo_SKEL)
     PDO ソース内のファイル pdo_sqlstate.c には、PDO が明示的に理解する
     一般的な SQLSTATE コードのテーブルがあります。エラーコードの設定は、
     この関数がコールされる前に終わっていなければなりません。この関数は、
-    グローバル変数 <em><code class="parameter">pdo_err</code></em> に
+    グローバル変数 <code class="parameter">pdo_err</code> に
     dbh あるいは stmt (stmt が NULL でない場合)
     で見つかったエラーを設定します。
    </p>
 
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+stmt</dt>
 
-    <dt>
-
-     <span class="term">stmt</span>
      <dd>
 
       <p class="para">
@@ -190,28 +191,27 @@ PHP_MSHUTDOWN_FUNCTION(pdo_SKEL)
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+file</dt>
 
-    <dt>
-
-     <span class="term">file</span>
      <dd>
 
       <p class="para">エラーが発生したソースファイルあるいは取得できない場合は NULL。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+line</dt>
 
-    <dt>
-
-     <span class="term">line</span>
      <dd>
 
       <p class="para">取得可能な場合に、ソースファイル内の行番号。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
  
    <p class="para">
@@ -255,25 +255,26 @@ PHP_MSHUTDOWN_FUNCTION(pdo_SKEL)
     取得することです。ここには、ドライバ固有のエラーコードや
     人間が理解できる形式のメッセージが含まれます。また、必要に応じて
     それ以外の追加情報も含められます。この関数は、PHP スクリプトで
-     <span class="function"><a href="pdo.errorinfo.html" class="function">PDO::errorInfo()</a></span> メソッドをコールした際に
+    <span class="function"><a href="pdo.errorinfo.html" class="function">PDO::errorInfo()</a></span> メソッドをコールした際に
     呼び出されます。
    </p>
 
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+stmt</dt>
 
-    <dt>
-
-     <span class="term">stmt</span>
      <dd>
 
       <p class="para">
@@ -282,18 +283,17 @@ PHP_MSHUTDOWN_FUNCTION(pdo_SKEL)
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+info</dt>
 
-    <dt>
-
-     <span class="term">info</span>
      <dd>
 
       <p class="para">エラーコードおよびメッセージを含むハッシュテーブル。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -328,16 +328,16 @@ add_next_index_string(info, message, 0); /* 可読形式のエラーメッセー
 
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
    <p class="para">
@@ -353,64 +353,64 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <p class="para">
     この関数は、PHP スクリプトで
-     <span class="function"><a href="pdo.query.html" class="function">PDO::query()</a></span> および  <span class="function"><a href="pdo.prepare.html" class="function">PDO::prepare()</a></span>
+    <span class="function"><a href="pdo.query.html" class="function">PDO::query()</a></span> および <span class="function"><a href="pdo.prepare.html" class="function">PDO::prepare()</a></span>
     がコールされた場合に PDO から呼び出されます。この関数の目的は、
-    実行する SQL を準備し、渡された <em><code class="parameter">stmt</code></em> に
+    実行する SQL を準備し、渡された <code class="parameter">stmt</code> に
     しかるべき値を格納することです。
    </p>
 
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+sql</dt>
 
-    <dt>
-
-     <span class="term">sql</span>
      <dd>
 
       <p class="para">準備される SQL ステートメントを含む文字列へのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+sql_len</dt>
 
-    <dt>
-
-     <span class="term">sql_len</span>
      <dd>
 
       <p class="para">SQL ステートメントの長さ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+Stmt</dt>
 
-    <dt>
-
-     <span class="term">Stmt</span>
      <dd>
 
       <p class="para">返される statement へのポインタか、エラーが発生した場合には NULL。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+driver_options</dt>
 
-    <dt>
-
-     <span class="term">driver_options</span>
      <dd>
 
       <p class="para">ドライバ固有の (ドライバで定義した) オプション。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
    <p class="para">
@@ -436,7 +436,7 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
     接続先のサーバーのバージョンによってこの設定が変化するなどの理由で、
     この設定を実行時に行わなければならないこともあるかもしれません。
     ドライバが、名前で指定するパラメータ・位置で指定するパラメータのいすれも
-    サポートしていない場合は、 <span class="function"><strong>pdo_parse_params()</strong></span> API
+    サポートしていない場合は、<span class="function"><strong>pdo_parse_params()</strong></span> API
     を使用して PDO にクエリを書き換えさせることでこの機能を
     サポートさせなければなりません。
    </p>
@@ -505,36 +505,36 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+sql</dt>
 
-    <dt>
-
-     <span class="term">sql</span>
      <dd>
 
       <p class="para">準備される SQL ステートメントを含む文字列へのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+sql_len</dt>
 
-    <dt>
-
-     <span class="term">sql_len</span>
      <dd>
 
       <p class="para">SQL ステートメントの長さ。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -555,71 +555,71 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+unquoted</dt>
 
-    <dt>
-
-     <span class="term">unquoted</span>
      <dd>
 
       <p class="para">クォートされる文字列を含む文字列へのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+unquoted_len</dt>
 
-    <dt>
-
-     <span class="term">unquoted_len</span>
      <dd>
 
       <p class="para">クォートされる文字列の長さ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+quoted</dt>
 
-    <dt>
-
-     <span class="term">quoted</span>
      <dd>
 
       <p class="para">クォートされた文字列へのポインタが返されるアドレスへのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+quoted_len</dt>
 
-    <dt>
-
-     <span class="term">quoted_len</span>
      <dd>
 
       <p class="para">新しい文字列の長さ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+param_type</dt>
 
-    <dt>
-
-     <span class="term">param_type</span>
      <dd>
 
       <p class="para">別のクォート形式を使用しているドライバ用の、ドライバ固有のヒント</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
    <p class="para">
     この関数は、
-     <span class="function"><a href="pdo.quote.html" class="function">PDO::quote()</a></span> がコールされた場合、
+    <span class="function"><a href="pdo.quote.html" class="function">PDO::quote()</a></span> がコールされた場合、
     あるいはドライバが <em>supports_placeholder</em>
     を <strong><code>PDO_PLACEHOLDER_NONE</code></strong> に設定した場合に
     PDO から呼び出されます。この関数の目的は、SQL ステートメントを
@@ -645,16 +645,16 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
    </p>
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
    <p class="para">
@@ -673,16 +673,16 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -701,16 +701,16 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
    </p>
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
    <p class="para">
@@ -726,19 +726,20 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+attr</dt>
 
-    <dt>
-
-     <span class="term">attr</span>
      <dd>
 
       <p class="para">
@@ -747,18 +748,17 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+return_value</dt>
 
-    <dt>
-
-     <span class="term">return_value</span>
      <dd>
 
       <p class="para">返される属性の値。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
    <p class="para">
@@ -777,24 +777,25 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
    <pre class="synopsis">static int SKEL_handle_set_attribute(pdo_dbh_t *dbh, long attr, zval *val TSRMLS_DC)</pre>
    <p class="para">
     この関数は、データベースの属性を設定するために PDO から呼び出されます。
-    通常、これはスクリプトから  <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span>
+    通常、これはスクリプトから <span class="function"><a href="pdo.setattribute.html" class="function">PDO::setAttribute()</a></span>
     をコールした場合に発生します。
    </p>
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+attr</dt>
 
-    <dt>
-
-     <span class="term">attr</span>
      <dd>
 
       <p class="para">
@@ -803,18 +804,17 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+val</dt>
 
-    <dt>
-
-     <span class="term">val</span>
      <dd>
 
       <p class="para">属性の新しい値。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -842,19 +842,20 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+name</dt>
 
-    <dt>
-
-     <span class="term">name</span>
      <dd>
 
       <p class="para">
@@ -862,18 +863,17 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+len</dt>
 
-    <dt>
-
-     <span class="term">len</span>
      <dd>
 
-      <p class="para">パラメータ <em><code class="parameter">name</code></em> の長さ。</p>
+      <p class="para">パラメータ <code class="parameter">name</code> の長さ。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -895,16 +895,16 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -934,27 +934,29 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+kind</dt>
 
-    <dt>
-
-     <span class="term">kind</span>
      <dd>
 
       <p class="para">以下のいずれか。</p>
       <dl>
 
-       <dt>
+       
+        <dt>
+PDO_DBH_DRIVER_METHOD_KIND_DBH</dt>
 
-        <span class="term">PDO_DBH_DRIVER_METHOD_KIND_DBH</span>
         <dd>
 
          <p class="para">
@@ -966,11 +968,11 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
          </p>
         </dd>
 
-       </dt>
+       
+       
+        <dt>
+PDO_DBH_DRIVER_METHOD_KIND_STMT</dt>
 
-       <dt>
-
-        <span class="term">PDO_DBH_DRIVER_METHOD_KIND_STMT</span>
         <dd>
 
          <p class="para">
@@ -982,14 +984,12 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
          </p>
         </dd>
 
-       </dt>
-
+       
       </dl>
 
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -1012,19 +1012,20 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <dl>
 
-    <dt>
+    
+     <dt>
+dbh</dt>
 
-     <span class="term">dbh</span>
      <dd>
 
       <p class="para">ハンドルファクトリで初期化したデータベースハンドルへのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+driver_options</dt>
 
-    <dt>
-
-     <span class="term">driver_options</span>
      <dd>
 
       <p class="para">
@@ -1034,8 +1035,7 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
       </p>
      </dd>
 
-    </dt>
-
+    
 
    </dl>
 
@@ -1088,16 +1088,16 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
    </p>
    <dl>
 
-    <dt>
+    
+     <dt>
+stmt</dt>
 
-     <span class="term">stmt</span>
      <dd>
 
       <p class="para">SKEL_handle_preparer で初期化されたステートメント構造体へのポインタ。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -1116,16 +1116,16 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
    </p>
    <dl>
 
-    <dt>
+    
+     <dt>
+stmt</dt>
 
-     <span class="term">stmt</span>
      <dd>
 
       <p class="para">SKEL_handle_preparer で初期化されたステートメント構造体へのポインタ。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -1145,31 +1145,32 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <dl>
 
-    <dt>
+    
+     <dt>
+stmt</dt>
 
-     <span class="term">stmt</span>
      <dd>
 
       <p class="para">SKEL_handle_preparer で初期化されたステートメント構造体へのポインタ。</p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+ori</dt>
 
-    <dt>
-
-     <span class="term">ori</span>
      <dd>
 
       <p class="para">どの行を取得するのかを、PDO_FETCH_ORI_xxx のいずれかで指定します。</p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+offset</dt>
 
-    <dt>
-
-     <span class="term">offset</span>
      <dd>
 
       <p class="para">
@@ -1180,8 +1181,7 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -1205,20 +1205,21 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <dl>
 
-    <dt>
+    
+     <dt>
+stmt</dt>
 
-     <span class="term">stmt</span>
      <dd>
 
       <p class="para">SKEL_handle_preparer で初期化されたステートメント構造体へのポインタ。</p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+param</dt>
 
-    <dt>
-
-     <span class="term">param</span>
      <dd>
 
       <p class="para">
@@ -1226,28 +1227,29 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
       </p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+event_type</dt>
 
-    <dt>
-
-     <span class="term">event_type</span>
      <dd>
 
       <p class="para">このパラメータに発生するイベントの型。以下のいずれかです。</p>
       <dl>
 
 
-       <dt>
+       
+        <dt>
+PDO_PARAM_EVT_ALLOC</dt>
 
-        <span class="term">PDO_PARAM_EVT_ALLOC</span>
         <dd>
 
          <p class="para">
           PDO がバインドを割り当てる際にコールされます。
-           <span class="function"><a href="pdostatement.bindparam.html" class="function">PDOStatement::bindParam()</a></span> や
-           <span class="function"><a href="pdostatement.bindvalue.html" class="function">PDOStatement::bindValue()</a></span> のコール、あるいは
-           <span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span> による暗黙的な
+          <span class="function"><a href="pdostatement.bindparam.html" class="function">PDOStatement::bindParam()</a></span> や
+          <span class="function"><a href="pdostatement.bindvalue.html" class="function">PDOStatement::bindValue()</a></span> のコール、あるいは
+          <span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span> による暗黙的な
           バインドの際に発生します。この時点で、何らかのアクションを
           とることができます。プリペアドステートメントをネイティブに
           実装するドライバの場合、典型的なアクションとしては
@@ -1259,11 +1261,11 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
          </p>
         </dd>
 
-       </dt>
+       
+       
+        <dt>
+PDO_PARAM_EVT_FREE</dt>
 
-       <dt>
-
-        <span class="term">PDO_PARAM_EVT_FREE</span>
         <dd>
 
          <p class="para">
@@ -1272,26 +1274,26 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
          </p>
         </dd>
 
-       </dt>
+       
+       
+        <dt>
+PDO_PARAM_EXEC_PRE</dt>
 
-       <dt>
-
-        <span class="term">PDO_PARAM_EXEC_PRE</span>
         <dd>
 
          <p class="para">
           SKEL_stmt_execute がコールされる直前に、パラメータごとにコールされます。
           実行前の最後の調整をここで行います。特に注意すべき点として、
-           <span class="function"><a href="pdostatement.bindparam.html" class="function">PDOStatement::bindParam()</a></span> による変数のバインドは
+          <span class="function"><a href="pdostatement.bindparam.html" class="function">PDOStatement::bindParam()</a></span> による変数のバインドは
           ここでのみ行うべきで、それより前の段階で行ってはなりません。
          </p>
         </dd>
 
-       </dt>
+       
+       
+        <dt>
+PDO_PARAM_EXEC_POST</dt>
 
-       <dt>
-
-        <span class="term">PDO_PARAM_EXEC_POST</span>
         <dd>
 
          <p class="para">
@@ -1300,11 +1302,11 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
          </p>
         </dd>
 
-       </dt>
+       
+       
+        <dt>
+PDO_PARAM_FETCH_PRE</dt>
 
-       <dt>
-
-        <span class="term">PDO_PARAM_FETCH_PRE</span>
         <dd>
 
          <p class="para">
@@ -1312,11 +1314,11 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
          </p>
         </dd>
 
-       </dt>
+       
+       
+        <dt>
+PDO_PARAM_FETCH_POST</dt>
 
-       <dt>
-
-        <span class="term">PDO_PARAM_FETCH_POST</span>
         <dd>
 
          <p class="para">
@@ -1324,15 +1326,13 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
          </p>
         </dd>
 
-       </dt>
-
+       
 
        </dl>
 
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -1345,8 +1345,8 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
    </p>
    <p class="para">
     その他のすべてのイベントでは、スクリプトが
-     <span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span> および
-     <span class="function"><a href="pdostatement.fetch.html" class="function">PDOStatement::fetch()</a></span> をコールするたびに
+    <span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span> および
+    <span class="function"><a href="pdostatement.fetch.html" class="function">PDOStatement::fetch()</a></span> をコールするたびに
     PDO からコールされることになります。
    </p>
    <p class="para">
@@ -1370,26 +1370,26 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <dl>
 
-    <dt>
+    
+     <dt>
+stmt</dt>
 
-     <span class="term">stmt</span>
      <dd>
 
       <p class="para">SKEL_handle_preparer で初期化されたステートメント構造体へのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+colno</dt>
 
-    <dt>
-
-     <span class="term">colno</span>
      <dd>
 
       <p class="para">調べたいカラムの番号。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
    <p class="para">
@@ -1408,49 +1408,50 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
    </p>
    <dl>
 
-    <dt>
+    
+     <dt>
+stmt</dt>
 
-     <span class="term">stmt</span>
      <dd>
 
       <p class="para">SKEL_handle_preparer で初期化されたステートメント構造体へのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+colno</dt>
 
-    <dt>
-
-     <span class="term">colno</span>
      <dd>
 
       <p class="para">取得したいカラムの番号。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+ptr</dt>
 
-    <dt>
-
-     <span class="term">ptr</span>
      <dd>
 
       <p class="para">取得したデータへのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+len</dt>
 
-    <dt>
-
-     <span class="term">len</span>
      <dd>
 
       <p class="para">ptf が指すデータの長さ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+caller_frees</dt>
 
-    <dt>
-
-     <span class="term">caller_frees</span>
      <dd>
 
       <p class="para">
@@ -1461,8 +1462,7 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
    <p class="para">
@@ -1483,19 +1483,20 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
   <dl>
 
-   <dt>
+   
+    <dt>
+stmt</dt>
 
-    <span class="term">stmt</span>
     <dd>
 
      <p class="para">SKEL_handle_preparer で初期化されたステートメント構造体へのポインタ。</p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+attr</dt>
 
-   <dt>
-
-    <span class="term">attr</span>
     <dd>
 
      <p class="para">
@@ -1504,18 +1505,17 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+val</dt>
 
-   <dt>
-
-    <span class="term">val</span>
     <dd>
 
      <p class="para">属性の新しい値。</p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
 
@@ -1540,19 +1540,20 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
 
    <dl>
 
-    <dt>
+    
+     <dt>
+stmt</dt>
 
-     <span class="term">stmt</span>
      <dd>
 
       <p class="para">SKEL_handle_preparer で初期化されたステートメント構造体へのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+attr</dt>
 
-    <dt>
-
-     <span class="term">attr</span>
      <dd>
 
       <p class="para">
@@ -1561,18 +1562,17 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+return_value</dt>
 
-    <dt>
-
-     <span class="term">return_value</span>
      <dd>
 
       <p class="para">返される属性の値。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 
@@ -1601,36 +1601,36 @@ long sql_len, pdo_stmt_t *stmt, zval *driver_options TSRMLS_DC)</pre></div></pre
    </p>
    <dl>
 
-    <dt>
+    
+     <dt>
+stmt</dt>
 
-     <span class="term">stmt</span>
      <dd>
 
       <p class="para">SKEL_handle_preparer で初期化されたステートメント構造体へのポインタ。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+colno</dt>
 
-    <dt>
-
-     <span class="term">colno</span>
      <dd>
 
       <p class="para">データを取得するカラム番号。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+return_value</dt>
 
-    <dt>
-
-     <span class="term">return_value</span>
      <dd>
 
       <p class="para">返されるメタデータを保持します。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
 

@@ -28,7 +28,7 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>ftp_get()</strong></span> は FTP サーバーからリモートファイルを取得し、
+   <span class="function"><strong>ftp_get()</strong></span> は FTP サーバーからリモートファイルを取得し、
    それをローカルファイルに保存します。
   </p>
  </div>
@@ -38,9 +38,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">ftp_stream</code></dt>
 
-     <span class="term"><em><code class="parameter">ftp_stream</code></em></span>
      <dd>
 
       <p class="para">
@@ -48,11 +49,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">local_file</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">local_file</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,11 +61,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">remote_file</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">remote_file</code></em></span>
      <dd>
 
       <p class="para">
@@ -72,11 +73,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">mode</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">mode</code></em></span>
      <dd>
 
       <p class="para">
@@ -85,11 +86,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">resumepos</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">resumepos</code></em></span>
      <dd>
 
       <p class="para">
@@ -97,8 +98,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -114,8 +114,8 @@
  <div class="refsect1 examples" id="refsect1-function.ftp-get-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4264">
-    <p><strong>例1  <span class="function"><strong>ftp_get()</strong></span> の例</strong></p>
+   <div class="example" id="example-4712">
+    <p><strong>例1 <span class="function"><strong>ftp_get()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;変数を定義する<br /></span><span style="color: #0000BB">$local_file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'local.zip'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$server_file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'server.zip'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;接続を確立する<br /></span><span style="color: #0000BB">$conn_id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$ftp_server</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ユーザー名とパスワードでログインする<br /></span><span style="color: #0000BB">$login_result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_login</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_pass</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;$server_file&nbsp;をダウンロードし、$local_file&nbsp;への保存を試みる<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">ftp_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$local_file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$server_file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">FTP_BINARY</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Successfully&nbsp;written&nbsp;to&nbsp;</span><span style="color: #0000BB">$local_file</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"There&nbsp;was&nbsp;a&nbsp;problem\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;接続を閉じる<br /></span><span style="color: #0000BB">ftp_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -127,42 +127,14 @@
   </p>
  </div>
 
- <div class="refsect1 changelog" id="refsect1-function.ftp-get-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        <em><code class="parameter">resumepos</code></em> が追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
  <div class="refsect1 seealso" id="refsect1-function.ftp-get-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ftp-pasv.html" class="function" rel="rdfs-seeAlso">ftp_pasv()</a> - パッシブモードをオンまたはオフにする</span></li>
-    <li class="member"> <span class="function"><a href="function.ftp-fget.html" class="function" rel="rdfs-seeAlso">ftp_fget()</a> - FTP サーバーからファイルをダウンロードし、オープン中のファイルに保存する</span></li>
-    <li class="member"> <span class="function"><a href="function.ftp-nb-get.html" class="function" rel="rdfs-seeAlso">ftp_nb_get()</a> - FTP サーバーからファイルを取得し、ローカルファイルに書き込む（非ブロッキング）</span></li>
-    <li class="member"> <span class="function"><a href="function.ftp-nb-fget.html" class="function" rel="rdfs-seeAlso">ftp_nb_fget()</a> - FTP サーバーからファイルをダウンロードし、オープン中のファイルに保存する（非ブロッキング）</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-pasv.html" class="function" rel="rdfs-seeAlso">ftp_pasv()</a> - パッシブモードをオンまたはオフにする</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-fget.html" class="function" rel="rdfs-seeAlso">ftp_fget()</a> - FTP サーバーからファイルをダウンロードし、オープン中のファイルに保存する</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-nb-get.html" class="function" rel="rdfs-seeAlso">ftp_nb_get()</a> - FTP サーバーからファイルを取得し、ローカルファイルに書き込む（非ブロッキング）</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-nb-fget.html" class="function" rel="rdfs-seeAlso">ftp_nb_fget()</a> - FTP サーバーからファイルをダウンロードし、オープン中のファイルに保存する（非ブロッキング）</span></li>
    </ul>
   </p>
  </div>

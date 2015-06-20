@@ -28,10 +28,10 @@
   ]]]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>mssql_connect()</strong></span> はMS SQL サーバーへの接続を確立します。
+   <span class="function"><strong>mssql_connect()</strong></span> はMS SQL サーバーへの接続を確立します。
   </p>
   <p class="para">
-   サーバーへのリンクは、事前に  <span class="function"><a href="function.mssql-close.html" class="function">mssql_close()</a></span> により
+   サーバーへのリンクは、事前に <span class="function"><a href="function.mssql-close.html" class="function">mssql_close()</a></span> により
    明示的に閉じられていない限り、スクリプト終了後すぐに閉じられます。
   </p>
  </div>
@@ -42,9 +42,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">servername</code></dt>
 
-     <span class="term"><em><code class="parameter">servername</code></em></span>
      <dd>
 
       <p class="para">
@@ -55,11 +56,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">username</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">username</code></em></span>
      <dd>
 
       <p class="para">
@@ -67,11 +68,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">password</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">password</code></em></span>
      <dd>
 
       <p class="para">
@@ -79,25 +80,24 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">new_link</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">new_link</code></em></span>
      <dd>
 
       <p class="para">
-       同じ引数で  <span class="function"><strong>mssql_connect()</strong></span> が再度コールされた場合、
+       同じ引数で <span class="function"><strong>mssql_connect()</strong></span> が再度コールされた場合、
        新規のリンクは作成されず、代わりに既にオープンされたリンク ID が返されます。
-       このパラメータは、この振る舞いを変更し、 <span class="function"><strong>mssql_connect()</strong></span>
+       このパラメータは、この振る舞いを変更し、<span class="function"><strong>mssql_connect()</strong></span>
        が常に新しいリンクを返すようにします。同じパラメータで事前に
-        <span class="function"><strong>mssql_connect()</strong></span> がコールされていたとしても、
+       <span class="function"><strong>mssql_connect()</strong></span> がコールされていたとしても、
        新しいリンクを返します。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -127,9 +127,9 @@
 
      <tbody class="tbody">
       <tr>
-       <td>4.4.1 および 5.1.0</td>
+       <td>5.1.0</td>
        <td>
-        パラメータ <em><code class="parameter">new_link</code></em> が追加されました。
+        パラメータ <code class="parameter">new_link</code> が追加されました。
        </td>
       </tr>
 
@@ -144,8 +144,8 @@
  <div class="refsect1 examples" id="refsect1-function.mssql-connect-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1521">
-    <p><strong>例1  <span class="function"><strong>mssql_connect()</strong></span> の例</strong></p>
+   <div class="example" id="example-1700">
+    <p><strong>例1 <span class="function"><strong>mssql_connect()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;サーバーの書式は&nbsp;&lt;computer&gt;\&lt;instance&nbsp;name&gt;、<br />//&nbsp;あるいはデフォルト以外のポートを使う場合は&nbsp;&lt;server&gt;,&lt;port&gt;&nbsp;となります<br /></span><span style="color: #0000BB">$server&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'KALLESPC\SQLEXPRESS'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;MSSQL&nbsp;に接続します<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mssql_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$server</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sa'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'phpfi'</span><span style="color: #007700">);<br /><br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Something&nbsp;went&nbsp;wrong&nbsp;while&nbsp;connecting&nbsp;to&nbsp;MSSQL'</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -162,8 +162,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mssql-close.html" class="function" rel="rdfs-seeAlso">mssql_close()</a> - MS SQL Server への接続を閉じる</span></li>
-    <li class="member"> <span class="function"><a href="function.mssql-pconnect.html" class="function" rel="rdfs-seeAlso">mssql_pconnect()</a> - 持続的 MS SQL 接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.mssql-close.html" class="function" rel="rdfs-seeAlso">mssql_close()</a> - MS SQL Server への接続を閉じる</span></li>
+    <li class="member"><span class="function"><a href="function.mssql-pconnect.html" class="function" rel="rdfs-seeAlso">mssql_pconnect()</a> - 持続的 MS SQL 接続をオープンする</span></li>
    </ul>
   </p>
  </div>

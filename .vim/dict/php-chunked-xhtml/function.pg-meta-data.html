@@ -25,17 +25,13 @@
    <span class="type">array</span> <span class="methodname"><strong>pg_meta_data</strong></span>
     ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$connection</code></span>
    , <span class="methodparam"><span class="type">string</span> <code class="parameter">$table_name</code></span>
-   )</div>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$extended</code></span>
+  ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_meta_data()</strong></span> は、<em>table_name</em>
+   <span class="function"><strong>pg_meta_data()</strong></span> は、<em>table_name</em>
    のテーブル定義を配列として返します。
   </p>
-  <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は、
-<em class="emphasis">実験的</em> なものです。この関数の動作・
-名前・その他ドキュメントに書かれている事項は、予告なく、将来的な PHP
-のリリースにおいて変更される可能性があります。
-この関数は自己責任で使用してください。</p></div> 
  </div>
 
 
@@ -44,9 +40,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
@@ -54,11 +51,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">table_name</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">table_name</code></em></span>
      <dd>
 
       <p class="para">
@@ -66,8 +63,19 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">extended</code></dt>
 
+     <dd>
+
+      <p class="para">
+       拡張メタデータを返すかどうかを表すフラグ。デフォルトは <strong><code>FALSE</code></strong>。
+      </p>
+     </dd>
+
+    
    </dl>
 
   </p>
@@ -85,7 +93,7 @@
  <div class="refsect1 examples" id="refsect1-function.pg-meta-data-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2090">
+   <div class="example" id="example-2287">
     <p><strong>例1 テーブルのメタデータを得る</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -140,7 +148,37 @@ array(5) {
 }
 </pre></div>
     </div>
-   </div> 
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.pg-meta-data-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.6.0</td>
+       <td>
+        実験的な関数ではなくなりました。デフォルト属性として &quot;is enum&quot; が追加されました。
+        <code class="parameter">extended</code> フラグが追加されました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
   </p>
  </div>
 
@@ -149,7 +187,7 @@ array(5) {
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-convert.html" class="function" rel="rdfs-seeAlso">pg_convert()</a> - 連想配列の値を、SQL 文として実行可能な形式に変換する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-convert.html" class="function" rel="rdfs-seeAlso">pg_convert()</a> - 連想配列の値を、SQL 文として実行可能な形式に変換する</span></li>
    </ul>
   </p>
  </div>

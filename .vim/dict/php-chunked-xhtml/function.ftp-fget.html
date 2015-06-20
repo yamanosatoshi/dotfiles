@@ -28,9 +28,9 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>ftp_fget()</strong></span> は、FTP サーバーから
-   <em><code class="parameter">remote_file</code></em> を取得し、指定したファイルポインタ
-   <em><code class="parameter">fp</code></em> に書きこみます。
+   <span class="function"><strong>ftp_fget()</strong></span> は、FTP サーバーから
+   <code class="parameter">remote_file</code> を取得し、指定したファイルポインタ
+   <code class="parameter">fp</code> に書きこみます。
   </p>
  </div>
 
@@ -39,9 +39,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">ftp_stream</code></dt>
 
-     <span class="term"><em><code class="parameter">ftp_stream</code></em></span>
      <dd>
 
       <p class="para">
@@ -49,11 +50,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">handle</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">handle</code></em></span>
      <dd>
 
       <p class="para">
@@ -61,11 +62,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">remote_file</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">remote_file</code></em></span>
      <dd>
 
       <p class="para">
@@ -73,11 +74,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">mode</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">mode</code></em></span>
      <dd>
 
       <p class="para">
@@ -86,11 +87,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">resumepos</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">resumepos</code></em></span>
      <dd>
 
       <p class="para">
@@ -98,8 +99,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -115,8 +115,8 @@
  <div class="refsect1 examples" id="refsect1-function.ftp-fget-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4261">
-    <p><strong>例1  <span class="function"><strong>ftp_fget()</strong></span> の例</strong></p>
+   <div class="example" id="example-4709">
+    <p><strong>例1 <span class="function"><strong>ftp_fget()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;リモートファイルへのパス。<br /></span><span style="color: #0000BB">$remote_file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'somefile.txt'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$local_file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'localfile.txt'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;書き込み用のファイルをオープンします。<br /></span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$local_file</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;接続を確立します。<br /></span><span style="color: #0000BB">$conn_id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$ftp_server</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ユーザー名とパスワードを指定してログインします。<br /></span><span style="color: #0000BB">$login_result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_login</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_pass</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;$remote_file&nbsp;をダウンロードし、$handle&nbsp;に保存しようとします。<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">ftp_fget</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$remote_file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">FTP_ASCII</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">))&nbsp;{<br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$local_file</span><span style="color: #DD0000">&nbsp;への書き込みに成功しました\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$remote_file</span><span style="color: #DD0000">&nbsp;を&nbsp;</span><span style="color: #0000BB">$local_file</span><span style="color: #DD0000">&nbsp;にダウンロードする際に問題が発生しました\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;接続およびファイルハンドラを閉じます。<br /></span><span style="color: #0000BB">ftp_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -128,41 +128,13 @@
   </p>
  </div>
 
- <div class="refsect1 changelog" id="refsect1-function.ftp-fget-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        <em><code class="parameter">resumepos</code></em> が追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
  <div class="refsect1 seealso" id="refsect1-function.ftp-fget-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ftp-get.html" class="function" rel="rdfs-seeAlso">ftp_get()</a> - FTP サーバーからファイルをダウンロードする</span></li>
-    <li class="member"> <span class="function"><a href="function.ftp-nb-get.html" class="function" rel="rdfs-seeAlso">ftp_nb_get()</a> - FTP サーバーからファイルを取得し、ローカルファイルに書き込む（非ブロッキング）</span></li>
-    <li class="member"> <span class="function"><a href="function.ftp-nb-fget.html" class="function" rel="rdfs-seeAlso">ftp_nb_fget()</a> - FTP サーバーからファイルをダウンロードし、オープン中のファイルに保存する（非ブロッキング）</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-get.html" class="function" rel="rdfs-seeAlso">ftp_get()</a> - FTP サーバーからファイルをダウンロードする</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-nb-get.html" class="function" rel="rdfs-seeAlso">ftp_nb_get()</a> - FTP サーバーからファイルを取得し、ローカルファイルに書き込む（非ブロッキング）</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-nb-fget.html" class="function" rel="rdfs-seeAlso">ftp_nb_fget()</a> - FTP サーバーからファイルをダウンロードし、オープン中のファイルに保存する（非ブロッキング）</span></li>
    </ul>
   </p>
  </div>

@@ -27,8 +27,8 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli-result.free.html" class="function">mysqli_free_result()</a></span></li>
-    <li class="member"><strong><code>NULL</code></strong> を PDO オブジェクトに代入、あるいは  <span class="methodname"><a href="pdostatement.closecursor.html" class="methodname">PDOStatement::closeCursor()</a></span></li>
+    <li class="member"><span class="function"><a href="mysqli-result.free.html" class="function">mysqli_free_result()</a></span></li>
+    <li class="member"><strong><code>NULL</code></strong> を PDO オブジェクトに代入、あるいは <span class="methodname"><a href="pdostatement.closecursor.html" class="methodname">PDOStatement::closeCursor()</a></span></li>
    </ul>
   </div>
  </div>
@@ -41,11 +41,11 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>mysql_free_result()</strong></span> は、結果 ID <em><code class="parameter">result</code></em>
+   <span class="function"><strong>mysql_free_result()</strong></span> は、結果 ID <code class="parameter">result</code>
    に関するすべてのメモリを開放します。
   </p>
   <p class="para">
-    <span class="function"><strong>mysql_free_result()</strong></span> は、
+   <span class="function"><strong>mysql_free_result()</strong></span> は、
    スクリプト実行のメモリの使用量が多すぎると懸念される場合にのみ
    必要になります。指定した結果 ID に関する全ての結果保持用メモリは、
    スクリプトの実行後に自動的に開放されます。
@@ -59,12 +59,12 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
+<code class="parameter">
+result</code></dt>
+<dd>
 <p class="para">評価された結果 <span class="type"><span class="type リソース">リソース</span></span>。
-この結果は、 <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
+この結果は、<span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
 </dd>
-</dt>
 
    </dl>
 
@@ -78,9 +78,9 @@ result</code></em></span><dd>
    成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
   </p>
   <p class="para">
-   <em><code class="parameter">result</code></em> がリソースではなかった場合、
+   <code class="parameter">result</code> がリソースではなかった場合、
    E_WARNING レベルのエラーが発生します。
-    <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> が <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>
+   <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> が <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>
    を返すのは SELECT, SHOW, EXPLAIN, そして DESCRIBE
    の場合だけであることに注意しましょう。
   </p>
@@ -90,8 +90,8 @@ result</code></em></span><dd>
   <div class="refsect1 examples" id="refsect1-function.mysql-free-result-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1591">
-    <p><strong>例1  <span class="function"><strong>mysql_free_result()</strong></span> の例</strong></p>
+   <div class="example" id="example-1770">
+    <p><strong>例1 <span class="function"><strong>mysql_free_result()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,email&nbsp;FROM&nbsp;people&nbsp;WHERE&nbsp;id&nbsp;=&nbsp;'42'"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;run&nbsp;query:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #FF8000">/*&nbsp;結果を利用する。ここでは、その後結果を利用したものと仮定する&nbsp;*/<br /></span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;結果を開放し、さらにスクリプトの処理を進める&nbsp;*/<br /></span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'id'</span><span style="color: #007700">];<br />echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'email'</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -109,7 +109,7 @@ result</code></em></span><dd>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     下位互換のために、次の非推奨別名を使用してもいいでしょう。
-     <span class="function"><strong>mysql_freeresult()</strong></span>
+    <span class="function"><strong>mysql_freeresult()</strong></span>
    </p>
   </p></blockquote>
  </div>
@@ -119,8 +119,8 @@ result</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - MySQL クエリを送信する</span></li>
-    <li class="member"> <span class="function"><a href="function.is-resource.html" class="function" rel="rdfs-seeAlso">is_resource()</a> - 変数がリソースかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - MySQL クエリを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.is-resource.html" class="function" rel="rdfs-seeAlso">is_resource()</a> - 変数がリソースかどうかを調べる</span></li>
    </ul>
   </p>
  </div>

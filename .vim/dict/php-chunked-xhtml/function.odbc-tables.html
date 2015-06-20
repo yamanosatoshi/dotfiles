@@ -33,14 +33,14 @@
   </p>
   <p class="para">
    限定子、所有者、テーブル名を数えるために、
-   <em><code class="parameter">qualifier</code></em>、<em><code class="parameter">owner</code></em>、
-   <em><code class="parameter">name</code></em>、<em><code class="parameter">table_type</code></em>
+   <code class="parameter">qualifier</code>、<code class="parameter">owner</code>、
+   <code class="parameter">name</code>、<code class="parameter">table_type</code>
    について以下のような特別な記号が使用可能です。
    <ul class="itemizedlist">
     <li class="listitem">
      <span class="simpara">
-      <em><code class="parameter">qualifier</code></em> がパーセント記号 (%) のみで、
-      <em><code class="parameter">owner</code></em> および <em><code class="parameter">name</code></em>
+      <code class="parameter">qualifier</code> がパーセント記号 (%) のみで、
+      <code class="parameter">owner</code> および <code class="parameter">name</code>
       が空文字列であった場合、結果にはそのデータソースに関する
       有効な限定子のリスト (<strong><code>NULL</code></strong> を有する TABLE_QUALIFIER カラム以外の
       全てのカラム)が含まれます。
@@ -48,18 +48,18 @@
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em><code class="parameter">owner</code></em> がパーセント記号 (%) のみで、
-      <em><code class="parameter">qualifier</code></em> および
-      <em><code class="parameter">name</code></em> が空文字列の場合、結果にはその
+      <code class="parameter">owner</code> がパーセント記号 (%) のみで、
+      <code class="parameter">qualifier</code> および
+      <code class="parameter">name</code> が空文字列の場合、結果にはその
       データソースに関する有効な所有者のリスト (<strong><code>NULL</code></strong> を有する
       TABLE_OWNER カラム以外の全てのカラム) が含まれます。
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em><code class="parameter">table_type</code></em> がパーセント記号 (%) のみで、
-      <em><code class="parameter">qualifier</code></em>、<em><code class="parameter">owner</code></em>、
-      <em><code class="parameter">name</code></em> が空文字列の場合、結果にはそのデータソースに
+      <code class="parameter">table_type</code> がパーセント記号 (%) のみで、
+      <code class="parameter">qualifier</code>、<code class="parameter">owner</code>、
+      <code class="parameter">name</code> が空文字列の場合、結果にはそのデータソースに
       関する有効なテーブル型のリスト (<strong><code>NULL</code></strong> を有する TABLE_TYPE
       カラム以外の全てのカラム) が含まれます。
      </span>
@@ -74,20 +74,21 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection_id</code></dt>
 
-     <span class="term"><em><code class="parameter">connection_id</code></em></span>
      <dd>
 
       <p class="para">ODBC 接続 ID。詳細は
- <span class="function"><a href="function.odbc-connect.html" class="function">odbc_connect()</a></span> を参照ください。</p>
+<span class="function"><a href="function.odbc-connect.html" class="function">odbc_connect()</a></span> を参照ください。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">qualifier</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">qualifier</code></em></span>
      <dd>
 
       <p class="para">
@@ -95,11 +96,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">owner</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">owner</code></em></span>
      <dd>
 
       <p class="para">
@@ -109,11 +110,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">name</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">name</code></em></span>
      <dd>
 
       <p class="para">
@@ -123,26 +124,25 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">types</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">types</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">table_type</code></em> が空の文字列ではない場合、検索する型に
+       <code class="parameter">table_type</code> が空の文字列ではない場合、検索する型に
        ついてカンマで区切った値のリストを指定する必要があります。
        各値は、シングルクオート(&#039;)で括るかまたは括らない形で指定可能です。
        例えば、&quot;&#039;TABLE&#039;,&#039;VIEW&#039;&quot; または &quot;TABLE, VIEW&quot; となります。データソースが
        が指定したテーブル型をサポートしていない場合、
-        <span class="function"><strong>odbc_tables()</strong></span> はその型についていかなる結果も
+       <span class="function"><strong>odbc_tables()</strong></span> はその型についていかなる結果も
        返しません。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -176,7 +176,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.odbc-tableprivileges.html" class="function" rel="rdfs-seeAlso">odbc_tableprivileges()</a> - 各テーブルのリストおよび関連する権限のリストを取得する</span></li>
+    <li class="member"><span class="function"><a href="function.odbc-tableprivileges.html" class="function" rel="rdfs-seeAlso">odbc_tableprivileges()</a> - 各テーブルのリストおよび関連する権限のリストを取得する</span></li>
    </ul>
   </p>
  </div>

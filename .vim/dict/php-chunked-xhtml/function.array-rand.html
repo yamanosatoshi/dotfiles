@@ -35,9 +35,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">array</code></dt>
 
-     <span class="term"><em><code class="parameter">array</code></em></span>
      <dd>
 
       <p class="para">
@@ -45,22 +46,19 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">num</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">num</code></em></span>
      <dd>
 
       <p class="para">
        取得するエントリの数を指定します。
-       配列の要素数より多くの要素を取り出そうとすると
-       <strong><code>E_WARNING</code></strong> レベルのエラーとなります。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -70,10 +68,11 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    エントリを一つだけ取得する場合、
-    <span class="function"><strong>array_rand()</strong></span> はランダムなエントリのキーを返します。
+   <span class="function"><strong>array_rand()</strong></span> はランダムなエントリのキーを返します。
    その他の場合は、ランダムなエントリのキーの配列を返します。
-   これにより、ランダムなキーを取得し、
-   配列から値を取得することが可能になります。
+   これにより、ランダムな値だけではなくランダムなキーも配列から取得できるようになります。
+   配列の中にある要素数より多くの要素を取り出そうとすると
+   <strong><code>E_WARNING</code></strong> レベルのエラーが発生し、NULL を返します。
   </p>
  </div>
 
@@ -98,9 +97,6 @@
        </td>
       </tr>
 
-      <tr><td>4.2.0</td><td>
-乱数生成器が自動的にシードを生成するようになりました。</td></tr>
-
      </tbody>
     
    </table>
@@ -111,8 +107,8 @@
  <div class="refsect1 examples" id="refsect1-function.array-rand-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4953">
-    <p><strong>例1  <span class="function"><strong>array_rand()</strong></span> の例</strong></p>
+   <div class="example" id="example-5435">
+    <p><strong>例1 <span class="function"><strong>array_rand()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />srand</span><span style="color: #007700">((float)&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">()&nbsp;*&nbsp;</span><span style="color: #0000BB">10000000</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$input&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"ネオ"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"モーフィアス"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"トリニティ"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"サイファー"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"タンク"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$rand_keys&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_rand</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$input</span><span style="color: #007700">[</span><span style="color: #0000BB">$rand_keys</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$input</span><span style="color: #007700">[</span><span style="color: #0000BB">$rand_keys</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -126,9 +122,9 @@
 
  <div class="refsect1 notes" id="refsect1-function.array-rand-notes">
   <h3 class="title">注意</h3>
-  <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">PHP 4.2.0 以降、
- <span class="function"><a href="function.srand.html" class="function">srand()</a></span> または
- <span class="function"><a href="function.mt-srand.html" class="function">mt_srand()</a></span>
+  <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">
+<span class="function"><a href="function.srand.html" class="function">srand()</a></span> または
+<span class="function"><a href="function.mt-srand.html" class="function">mt_srand()</a></span>
 によりランダム数生成器にシードを与える必要はありません。
 これは、この処理が自動的に行われるためです。</span></p></blockquote>
  </div>
@@ -137,7 +133,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.shuffle.html" class="function" rel="rdfs-seeAlso">shuffle()</a> - 配列をシャッフルする</span></li>
+    <li class="member"><span class="function"><a href="function.shuffle.html" class="function" rel="rdfs-seeAlso">shuffle()</a> - 配列をシャッフルする</span></li>
    </ul>
   </p>
  </div>

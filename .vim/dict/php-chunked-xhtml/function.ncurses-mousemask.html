@@ -34,10 +34,10 @@
    どのマウスイベントについても報告されません。
   </p>
   <p class="para">
-   マウスイベントは、 <span class="function"><a href="function.ncurses-wgetch.html" class="function">ncurses_wgetch()</a></span>
+   マウスイベントは、<span class="function"><a href="function.ncurses-wgetch.html" class="function">ncurses_wgetch()</a></span>
    入力ストリーム内では <strong><code>NCURSES_KEY_MOUSE</code></strong> で表されます。
    イベントデータを読み込んでキューからイベントを取り出すには、
-    <span class="function"><a href="function.ncurses-getmouse.html" class="function">ncurses_getmouse()</a></span> をコールします。
+   <span class="function"><a href="function.ncurses-getmouse.html" class="function">ncurses_getmouse()</a></span> をコールします。
   </p>
  </div>
 
@@ -46,9 +46,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">newmask</code></dt>
 
-     <span class="term"><em><code class="parameter">newmask</code></em></span>
      <dd>
 
       <p class="para">
@@ -82,17 +83,17 @@
        </ul>
       </p>
       <p class="para">
-       副作用として、<em><code class="parameter">newmask</code></em> にゼロを設定すると
+       副作用として、<code class="parameter">newmask</code> にゼロを設定すると
        マウスポインタを消去します。ゼロ以外の値を設定すると
        マウスポインタが表示されます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">oldmask</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">oldmask</code></em></span>
      <dd>
 
       <p class="para">
@@ -100,8 +101,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -110,16 +110,15 @@
  <div class="refsect1 returnvalues" id="refsect1-function.ncurses-mousemask-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">newmask</code></em> が指定するイベントを報告することが
-   できるマスクを返します。失敗した場合は 0 を返します。
+   イベントを報告することができるマスクを返します。失敗した場合は <em>0</em> を返します。
   </p>
  </div>
 
  <div class="refsect1 examples" id="refsect1-function.ncurses-mousemask-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-629">
-    <p><strong>例1  <span class="function"><strong>ncurses_mousemask()</strong></span> の例</strong></p>
+   <div class="example" id="example-670">
+    <p><strong>例1 <span class="function"><strong>ncurses_mousemask()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$newmask&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NCURSES_BUTTON1_CLICKED&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">NCURSES_BUTTON1_RELEASED</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$mask&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ncurses_mousemask</span><span style="color: #007700">(</span><span style="color: #0000BB">$newmask</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$oldmask</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$mask&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">$newmask</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"All&nbsp;specified&nbsp;mouse&nbsp;options&nbsp;will&nbsp;be&nbsp;supported\n"</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -135,9 +134,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ncurses-getch.html" class="function" rel="rdfs-seeAlso">ncurses_getch()</a> - キーボードから 1 文字読み込む</span></li>
-    <li class="member"> <span class="function"><a href="function.ncurses-getmouse.html" class="function" rel="rdfs-seeAlso">ncurses_getmouse()</a> - マウスイベントを読みこむ</span></li>
-    <li class="member"> <span class="function"><a href="function.ncurses-ungetmouse.html" class="function" rel="rdfs-seeAlso">ncurses_ungetmouse()</a> - マウスイベントをキューにプッシュする</span></li>
+    <li class="member"><span class="function"><a href="function.ncurses-getch.html" class="function" rel="rdfs-seeAlso">ncurses_getch()</a> - キーボードから 1 文字読み込む</span></li>
+    <li class="member"><span class="function"><a href="function.ncurses-getmouse.html" class="function" rel="rdfs-seeAlso">ncurses_getmouse()</a> - マウスイベントを読みこむ</span></li>
+    <li class="member"><span class="function"><a href="function.ncurses-ungetmouse.html" class="function" rel="rdfs-seeAlso">ncurses_ungetmouse()</a> - マウスイベントをキューにプッシュする</span></li>
    </ul>
   </p>
  </div>

@@ -27,10 +27,10 @@
    )</div>
 
   <p class="para rdfs-comment">
-    新しいページを開始します。<em><code class="parameter">width</code></em> や
-    <em><code class="parameter">height</code></em> というパラメータを見ると
+    新しいページを開始します。<code class="parameter">width</code> や
+    <code class="parameter">height</code> というパラメータを見ると
     いかにもページ単位でサイズを変えられるように思えますが、PostScript
-    ではこれは不可能です。最初に  <span class="function"><strong>ps_begin_page()</strong></span>
+    ではこれは不可能です。最初に <span class="function"><strong>ps_begin_page()</strong></span>
     を呼んだ際に指定されたサイズが、ドキュメント全体に適用されます。
     2 回目以降に呼ばれた場合はこのパラメータは意味を持たず、
     単に新しいページが作られるだけです。しかし、もしあなたが PostScript ドキュメントを
@@ -53,24 +53,24 @@
     あるページで設定した情報のほとんどは次のページに引き継がれないということです。
   </p>
   <p class="para">
-    最初の  <span class="function"><strong>ps_begin_page()</strong></span> 呼び出しまでに一度も
-     <span class="function"><a href="function.ps-findfont.html" class="function">ps_findfont()</a></span> が呼び出されていなかった場合は、
+    最初の <span class="function"><strong>ps_begin_page()</strong></span> 呼び出しまでに一度も
+    <span class="function"><a href="function.ps-findfont.html" class="function">ps_findfont()</a></span> が呼び出されていなかった場合は、
     PostScript ドキュメントのヘッダが出力され、
     バウンディングボックスが最初のページのサイズに設定されます。
     バウンディングボックスの左下角は (0, 0) に設定されます。もしすでに
-     <span class="function"><a href="function.ps-findfont.html" class="function">ps_findfont()</a></span> が呼ばれていた場合は既にヘッダが出力されてしまっており、
+    <span class="function"><a href="function.ps-findfont.html" class="function">ps_findfont()</a></span> が呼ばれていた場合は既にヘッダが出力されてしまっており、
     ドキュメントに適切なバウンディングボックスが設定されていないことになります。
-    このようなことを避けるために、 <span class="function"><a href="function.ps-findfont.html" class="function">ps_findfont()</a></span> や
-     <span class="function"><strong>ps_begin_page()</strong></span> を実行する前にはいつも
-     <span class="function"><a href="function.ps-set-info.html" class="function">ps_set_info()</a></span> を実行し、
+    このようなことを避けるために、<span class="function"><a href="function.ps-findfont.html" class="function">ps_findfont()</a></span> や
+    <span class="function"><strong>ps_begin_page()</strong></span> を実行する前にはいつも
+    <span class="function"><a href="function.ps-set-info.html" class="function">ps_set_info()</a></span> を実行し、
     <em>BoundingBox</em> や <em>Orientation</em>
     の値を設定しておくべきです。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     pslib のバージョン 0.2.6 まででは、
-     <span class="function"><a href="function.ps-set-info.html" class="function">ps_set_info()</a></span> によって事前に設定されていたり
-     <span class="function"><a href="function.ps-findfont.html" class="function">ps_findfont()</a></span> が事前にコールされていない限り、
+    <span class="function"><a href="function.ps-set-info.html" class="function">ps_set_info()</a></span> によって事前に設定されていたり
+    <span class="function"><a href="function.ps-findfont.html" class="function">ps_findfont()</a></span> が事前にコールされていない限り、
     この関数は常に BoundingBox および Orientation を上書きします。
    </p>
   </p></blockquote>
@@ -82,22 +82,23 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">psdoc</code></dt>
 
-     <span class="term"><em><code class="parameter">psdoc</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.ps-new.html" class="function">ps_new()</a></span> が返す、postscript
+       <span class="function"><a href="function.ps-new.html" class="function">ps_new()</a></span> が返す、postscript
        ファイルのリソース ID。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">width</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">width</code></em></span>
      <dd>
 
       <p class="para">
@@ -105,11 +106,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">height</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">height</code></em></span>
      <dd>
 
       <p class="para">
@@ -117,8 +118,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -137,9 +137,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ps-end-page.html" class="function" rel="rdfs-seeAlso">ps_end_page()</a> - ページを終了する</span></li>
-    <li class="member"> <span class="function"><a href="function.ps-findfont.html" class="function" rel="rdfs-seeAlso">ps_findfont()</a> - フォントを読み込む</span></li>
-    <li class="member"> <span class="function"><a href="function.ps-set-info.html" class="function" rel="rdfs-seeAlso">ps_set_info()</a> - ドキュメントの情報を設定する</span></li>
+    <li class="member"><span class="function"><a href="function.ps-end-page.html" class="function" rel="rdfs-seeAlso">ps_end_page()</a> - ページを終了する</span></li>
+    <li class="member"><span class="function"><a href="function.ps-findfont.html" class="function" rel="rdfs-seeAlso">ps_findfont()</a> - フォントを読み込む</span></li>
+    <li class="member"><span class="function"><a href="function.ps-set-info.html" class="function" rel="rdfs-seeAlso">ps_set_info()</a> - ドキュメントの情報を設定する</span></li>
    </ul>
   </p>
  </div>

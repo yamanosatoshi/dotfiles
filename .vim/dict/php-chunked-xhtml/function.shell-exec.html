@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">cmd</code></dt>
 
-     <span class="term"><em><code class="parameter">cmd</code></em></span>
      <dd>
 
       <p class="para">
@@ -46,8 +47,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -57,16 +57,24 @@
  <div class="refsect1 returnvalues" id="refsect1-function.shell-exec-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   実行されたコマンドからの出力、あるいはエラーが発生した場合は <strong><code>NULL</code></strong> を返します。
+   実行されたコマンドからの出力を返します。
+   エラーが発生した場合やコマンドが何も出力しなかった場合は <strong><code>NULL</code></strong> を返します。
   </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    この関数は、エラーが発生した場合だけでなくプログラムが何も出力しなかった場合にも <strong><code>NULL</code></strong> を返します。
+    そのため、実行に失敗したノかどうかをこの関数では判断できません。
+    プログラムの終了コードを調べる必要があるときには <span class="function"><a href="function.exec.html" class="function">exec()</a></span> を使いましょう。
+   </p>
+  </p></blockquote>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.shell-exec-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3659">
-    <p><strong>例1  <span class="function"><strong>shell_exec()</strong></span> の例</strong></p>
+   <div class="example" id="example-4083">
+    <p><strong>例1 <span class="function"><strong>shell_exec()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">shell_exec</span><span style="color: #007700">(</span><span style="color: #DD0000">'ls&nbsp;-lart'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"&lt;pre&gt;</span><span style="color: #0000BB">$output</span><span style="color: #DD0000">&lt;/pre&gt;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -93,8 +101,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.exec.html" class="function" rel="rdfs-seeAlso">exec()</a> - 外部プログラムを実行する</span></li>
-    <li class="member"> <span class="function"><a href="function.escapeshellcmd.html" class="function" rel="rdfs-seeAlso">escapeshellcmd()</a> - シェルのメタ文字をエスケープする</span></li>
+    <li class="member"><span class="function"><a href="function.exec.html" class="function" rel="rdfs-seeAlso">exec()</a> - 外部プログラムを実行する</span></li>
+    <li class="member"><span class="function"><a href="function.escapeshellcmd.html" class="function" rel="rdfs-seeAlso">escapeshellcmd()</a> - シェルのメタ文字をエスケープする</span></li>
    </ul>
   </p>
  </div>

@@ -28,19 +28,19 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>socket_recv()</strong></span> 関数は、
-   <em><code class="parameter">socket</code></em> から
-   <em><code class="parameter">len</code></em> バイトのデータを受信して
-   <em><code class="parameter">buf</code></em> に格納します。
-    <span class="function"><strong>socket_recv()</strong></span> を使うと、
+   <span class="function"><strong>socket_recv()</strong></span> 関数は、
+   <code class="parameter">socket</code> から
+   <code class="parameter">len</code> バイトのデータを受信して
+   <code class="parameter">buf</code> に格納します。
+   <span class="function"><strong>socket_recv()</strong></span> を使うと、
    接続したソケットからデータを収集することができます。
    さらに、フラグを指定して関数の挙動を変更することもできます。
   </p>
   <p class="para">
-   <em><code class="parameter">buf</code></em> は参照渡しなので、
+   <code class="parameter">buf</code> は参照渡しなので、
    引数リストには変数で渡さなければなりません。
-   <em><code class="parameter">socket</code></em> から  <span class="function"><strong>socket_recv()</strong></span>
-   で読み込んだデータが <em><code class="parameter">buf</code></em> に入ります。
+   <code class="parameter">socket</code> から <span class="function"><strong>socket_recv()</strong></span>
+   で読み込んだデータが <code class="parameter">buf</code> に入ります。
   </p>
  </div>
 
@@ -50,61 +50,62 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">socket</code></dt>
 
-     <span class="term"><em><code class="parameter">socket</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">socket</code></em> は、事前に
+       <code class="parameter">socket</code> は、事前に
        socket_create() で作成したソケットリソースでなければなりません。
       </p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+<code class="parameter">buf</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">buf</code></em></span>
      <dd>
 
       <p class="para">
        受信したデータが、
-       <em><code class="parameter">buf</code></em> で指定した変数に格納されます。
+       <code class="parameter">buf</code> で指定した変数に格納されます。
        エラーが発生したり接続がリセットされたりデータが存在しなかったりした場合は、
-       <em><code class="parameter">buf</code></em> には <strong><code>NULL</code></strong> が設定されます。
+       <code class="parameter">buf</code> には <strong><code>NULL</code></strong> が設定されます。
       </p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+<code class="parameter">len</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">len</code></em></span>
      <dd>
 
       <p class="para">
-       最大 <em><code class="parameter">len</code></em> バイトまでをリモートホストから取得します。
+       最大 <code class="parameter">len</code> バイトまでをリモートホストから取得します。
       </p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">flags</code></em> の値は、次のフラグを論理 OR
+       <code class="parameter">flags</code> の値は、次のフラグを論理 OR
        (<em>|</em>) 演算子で組み合わせたものとなります。
       </p>
       
       <table class="doctable table">
-       <caption><strong><em><code class="parameter">flags</code></em> のとりうる値</strong></caption>
+       <caption><strong><code class="parameter">flags</code> のとりうる値</strong></caption>
        
         <thead>
          <tr>
@@ -132,7 +133,7 @@
          <tr>
           <td><strong><code>MSG_WAITALL</code></strong></td>
           <td>
-           最低 <em><code class="parameter">len</code></em> バイト受信するまでブロックします。
+           最低 <code class="parameter">len</code> バイト受信するまでブロックします。
            しかし、シグナルを受け取ったりリモートホストが接続を切断したりした場合は、
            この関数が返すデータがそれより少なくなる可能性があります。
           </td>
@@ -151,8 +152,7 @@
 
      </dd>
 
-    </dt>
-    
+        
    </dl>
 
   </p>
@@ -162,11 +162,11 @@
  <div class="refsect1 returnvalues" id="refsect1-function.socket-recv-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    <span class="function"><strong>socket_recv()</strong></span> は、受信したバイト数を返します。
+   <span class="function"><strong>socket_recv()</strong></span> は、受信したバイト数を返します。
    エラーが発生した場合は <strong><code>FALSE</code></strong> を返します。
    実際のエラーコードを取得するには
-    <span class="function"><a href="function.socket-last-error.html" class="function">socket_last_error()</a></span> をコールします。
-   このエラーコードを  <span class="function"><a href="function.socket-strerror.html" class="function">socket_strerror()</a></span>
+   <span class="function"><a href="function.socket-last-error.html" class="function">socket_last_error()</a></span> をコールします。
+   このエラーコードを <span class="function"><a href="function.socket-strerror.html" class="function">socket_strerror()</a></span>
    に渡すと、エラーに関する説明テキストを取得することができます。
   </p>
  </div>
@@ -175,12 +175,12 @@
  <div class="refsect1 examples" id="refsect1-function.socket-recv-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4574">
-    <p><strong>例1  <span class="function"><strong>socket_recv()</strong></span> の例</strong></p>
+   <div class="example" id="example-5021">
+    <p><strong>例1 <span class="function"><strong>socket_recv()</strong></span> の例</strong></p>
     <div class="example-contents"><p>
      この例は、
      <a href="sockets.examples.html" class="xref">例</a> の最初の例を書き換えて
-      <span class="function"><strong>socket_recv()</strong></span> を使う形式にしたものです。
+     <span class="function"><strong>socket_recv()</strong></span> を使う形式にしたものです。
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">

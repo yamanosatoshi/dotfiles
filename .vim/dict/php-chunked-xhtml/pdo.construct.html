@@ -21,11 +21,11 @@
  <div class="refsect1 description" id="refsect1-pdo.construct-description">
   <h3 class="title">説明</h3>
   <div class="constructorsynopsis dc-description">
-   <span class="modifier">public</span>  <span class="methodname"><strong>PDO::__construct()</strong></span>
+   <span class="modifier">public</span> <span class="methodname"><strong>PDO::__construct</strong></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$dsn</code></span>
    [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$username</code></span>
    [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$password</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$driver_options</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code></span>
   ]]] )</div>
 
   <p class="para rdfs-comment">
@@ -39,7 +39,8 @@
    <dl>
 
     <dt>
-<span class="term">dsn</span>
+dsn</dt>
+
      <dd>
 
       <p class="para">
@@ -53,45 +54,46 @@
        にあります。
       </p>
       <p class="para">
-       <em><code class="parameter">dsn</code></em> パラメータは、データベースへの接続を生成する
+       <code class="parameter">dsn</code> パラメータは、データベースへの接続を生成する
        ために必要な引数を指定する方法として、3種類の方法をサポートします。
       </p>
       <p class="para">
        <dl>
 
         <dt>
-<span class="term">ドライバ呼び出し</span>
+ドライバ呼び出し</dt>
+
          <dd>
 
           <p class="para">
-           <em><code class="parameter">dsn</code></em> に完全な DSN を指定します。
+           <code class="parameter">dsn</code> に完全な DSN を指定します。
           </p>
          </dd>
 
-        </dt>
-
+        
         <dt>
-<span class="term">URI 呼び出し</span>
+URI 呼び出し</dt>
+
          <dd>
 
           <p class="para">
-           <em><code class="parameter">dsn</code></em> は、<strong class="userinput"><code>uri:</code></strong> の後に
+           <code class="parameter">dsn</code> は、<strong class="userinput"><code>uri:</code></strong> の後に
            DSN 文字列を含むファイルの位置を定義する URI が続く形式となります。
            この URI には、ローカルファイルまたはリモート URL を指定することができます。
           </p>
           <p class="para"><strong class="userinput"><code>uri:file:///path/to/dsnfile</code></strong></p>
          </dd>
 
-        </dt>
-
+        
         <dt>
-<span class="term">エイリアス</span>
+エイリアス</dt>
+
          <dd>
 
           <p class="para">
-           <em><code class="parameter">dsn</code></em> は、DSN 文字列を定義する
+           <code class="parameter">dsn</code> は、DSN 文字列を定義する
            <var class="filename">php.ini</var> の <em>pdo.dsn.name</em>
-           へマップする名前 <em><code class="parameter">name</code></em> からなります。
+           へマップする名前 <code class="parameter">name</code> からなります。
           </p>
           <blockquote class="note"><p><strong class="note">注意</strong>: 
            <p class="para">
@@ -101,17 +103,16 @@
           </p></blockquote>
          </dd>
 
-        </dt>
-
+        
        </dl>
 
       </p>
      </dd>
 
-    </dt>
-
+    
     <dt>
-<span class="term">username</span>
+username</dt>
+
      <dd>
 
       <p class="para">
@@ -119,10 +120,10 @@
       </p>
      </dd>
 
-    </dt>
-
+    
     <dt>
-<span class="term">password</span>
+password</dt>
+
      <dd>
 
       <p class="para">
@@ -130,10 +131,10 @@
       </p>
      </dd>
 
-    </dt>
-
+    
     <dt>
-<span class="term">driver_options</span>
+options</dt>
+
      <dd>
 
       <p class="para">
@@ -141,8 +142,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -160,7 +160,7 @@
  <div class="refsect1 errors" id="refsect1-pdo.construct-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
-    <span class="function"><strong>PDO::__construct()</strong></span> は、
+   <span class="function"><strong>PDO::__construct()</strong></span> は、
    指定されたデータベースへの接続に失敗した場合、
    <a href="class.pdoexception.html" class="classname">PDOException</a> を投げます。
   </p>
@@ -170,7 +170,7 @@
  <div class="refsect1 examples" id="refsect1-pdo.construct-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-915"><p><strong>例1 ドライバ呼び出しにより PDO インスタンスを生成する</strong></p>
+   <div class="example" id="example-972"><p><strong>例1 ドライバ呼び出しにより PDO インスタンスを生成する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;ドライバ呼び出しを使用して&nbsp;ODBC&nbsp;データベースに接続する&nbsp;*/<br /></span><span style="color: #0000BB">$dsn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'mysql:dbname=testdb;host=127.0.0.1'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$user&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'dbuser'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$password&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'dbpass'</span><span style="color: #007700">;<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$dbh&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$user</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">);<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">PDOException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Connection&nbsp;failed:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -179,7 +179,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-916"><p><strong>例2 URI 呼び出しにより PDO インスタンスを生成する</strong></p>
+   <div class="example" id="example-973"><p><strong>例2 URI 呼び出しにより PDO インスタンスを生成する</strong></p>
     <div class="example-contents"><p>
      以下の例では、ファイル <var class="filename">/usr/local/dbconnect</var> が存在し、
      PHP がこのファイルを読み込む権限を有していることを仮定します。
@@ -203,7 +203,7 @@ odbc:DSN=SAMPLE;UID=john;PWD=mypass
     </div>
 
    </div>
-   <div class="example" id="example-917"><p><strong>例3 エイリアスにより PDO インスタンスを生成する</strong></p>
+   <div class="example" id="example-974"><p><strong>例3 エイリアスにより PDO インスタンスを生成する</strong></p>
     <div class="example-contents"><p>
      以下の例では、<var class="filename">php.ini</var> にエイリアス <em>mydb</em> のみで
      MySQL データベースに接続できるようにするための以下のエントリが含まれることを
@@ -222,6 +222,14 @@ pdo.dsn.mydb=&quot;mysql:dbname=testdb;host=localhost&quot;</pre>
 
    </div>
   </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    PHP 5.3 より前のバージョンでは、PDO を継承してマジックメソッド <em>__call</em>
+    を実装したクラスは、常に小文字の <code class="parameter">$method</code> を受け取ります。
+   </p>
+  </p></blockquote>
+  
+  
  </div>
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">

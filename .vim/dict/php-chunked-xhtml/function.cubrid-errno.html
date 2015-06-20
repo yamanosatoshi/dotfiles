@@ -28,7 +28,7 @@
    Returns the error number from the last CUBRID function. 
   </p>
   <p class="para">
-   The  <span class="function"><strong>cubrid_errno()</strong></span> function is used to get the
+   The <span class="function"><strong>cubrid_errno()</strong></span> function is used to get the
    error code of the error that occurred during the API execution.  Usually,
    it gets the error code when API returns false as its return value.
   </p>
@@ -40,20 +40,20 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">conn_identifier</code></dt>
 
-     <span class="term"><em><code class="parameter">conn_identifier</code></em></span>
      <dd>
 
       <p class="para">
        The CUBRID connection identifier. If the connection identifier is not
        specified, the last connection opened by
-        <span class="function"><a href="function.cubrid-connect.html" class="function">cubrid_connect()</a></span> is assumed.
+       <span class="function"><a href="function.cubrid-connect.html" class="function">cubrid_connect()</a></span> is assumed.
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -71,8 +71,8 @@
  <div class="refsect1 examples" id="refsect1-function.cubrid-errno-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1065">
-    <p><strong>例1  <span class="function"><strong>cubrid_errno()</strong></span> example</strong></p>
+   <div class="example" id="example-1123">
+    <p><strong>例1 <span class="function"><strong>cubrid_errno()</strong></span> example</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$con&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'demodb'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'dba'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;id,&nbsp;name&nbsp;from&nbsp;person"</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$req</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(list&nbsp;(</span><span style="color: #0000BB">$id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">cubrid_fetch</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">))&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Error&nbsp;Code:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">cubrid_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Error&nbsp;Message:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">cubrid_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -95,9 +95,9 @@ Error Code: -493 Error Message: Syntax: Unknown class &quot;person&quot;. select
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.cubrid-error.html" class="function" rel="rdfs-seeAlso">cubrid_error()</a> - Get the error message</span></li>
-    <li class="member"> <span class="function"><a href="function.cubrid-error-code.html" class="function" rel="rdfs-seeAlso">cubrid_error_code()</a> - Get error code for the most recent function call</span></li>
-    <li class="member"> <span class="function"><a href="function.cubrid-error-msg.html" class="function" rel="rdfs-seeAlso">cubrid_error_msg()</a> - Get last error message for the most recent function call</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-error.html" class="function" rel="rdfs-seeAlso">cubrid_error()</a> - Get the error message</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-error-code.html" class="function" rel="rdfs-seeAlso">cubrid_error_code()</a> - Get error code for the most recent function call</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-error-msg.html" class="function" rel="rdfs-seeAlso">cubrid_error_msg()</a> - Get last error message for the most recent function call</span></li>
    </ul>
   </p>
  </div>

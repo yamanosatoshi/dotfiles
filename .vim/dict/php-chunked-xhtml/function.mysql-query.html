@@ -27,8 +27,8 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="pdo.query.html" class="methodname">PDO::query()</a></span></li>
+    <li class="member"><span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span></li>
+    <li class="member"><span class="methodname"><a href="pdo.query.html" class="methodname">PDO::query()</a></span></li>
    </ul>
   </div>
  </div>
@@ -36,15 +36,15 @@
  <div class="refsect1 description" id="refsect1-function.mysql-query-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">resource</span> <span class="methodname"><strong>mysql_query</strong></span>
+   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>mysql_query</strong></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$query</code></span>
    [, <span class="methodparam"><span class="type">resource</span> <code class="parameter">$link_identifier</code><span class="initializer"> = NULL</span></span>
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>mysql_query()</strong></span> は、
+   <span class="function"><strong>mysql_query()</strong></span> は、
    ひとつのクエリを送信します (複数クエリの送信はサポートしません)。
-   送信先は、<em><code class="parameter">link_identifier</code></em>
+   送信先は、<code class="parameter">link_identifier</code>
    で指定したサーバー上にある、現在アクティブなデータベースです。
   </p>
  </div>
@@ -55,9 +55,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -70,19 +71,18 @@
       </p>
      </dd>
 
-    </dt>
-
+    
     <dt>
-<span class="term"><em><code class="parameter">
-link_identifier</code></em></span><dd>
+<code class="parameter">
+link_identifier</code></dt>
+<dd>
 <p class="para">MySQL 接続。
-指定されない場合、 <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
+指定されない場合、<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
 指定されたと仮定されます。そのようなリンクがない場合、引数を指定せずに
- <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
+<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
 リンクが見付からない、または、確立できない場合、
 <strong><code>E_WARNING</code></strong> レベルのエラーが生成されます。</p></dd>
 
-</dt>
 
    </dl>
 
@@ -94,27 +94,27 @@ link_identifier</code></em></span><dd>
   <h3 class="title">返り値</h3>
   <p class="para">
    SELECT, SHOW, DESCRIBE や EXPLAIN 文、その他結果セットを返す文では、
-    <span class="function"><strong>mysql_query()</strong></span> は成功した場合に
+   <span class="function"><strong>mysql_query()</strong></span> は成功した場合に
    <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> を返します。エラー時には <strong><code>FALSE</code></strong> を返します。
   </p>
   <p class="para">
    それ以外の SQL 文 INSERT, UPDATE, DELETE, DROP などでは、
-    <span class="function"><strong>mysql_query()</strong></span> は成功した場合に
+   <span class="function"><strong>mysql_query()</strong></span> は成功した場合に
    <strong><code>TRUE</code></strong> 、エラー時に <strong><code>FALSE</code></strong> を返します。
   </p>
   <p class="para">
    返された結果にアクセスするためには、結果リソースを
-    <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> やその他の関数に渡します。
+   <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> やその他の関数に渡します。
   </p>
   <p class="para">
    SELECT 文によって返された行の数を知るには
-    <span class="function"><a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a></span> を用います。また
+   <span class="function"><a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a></span> を用います。また
    DELETE, INSERT, REPLACE, または UPDATE 文で変更された行の数を
-   知るには  <span class="function"><a href="function.mysql-affected-rows.html" class="function">mysql_affected_rows()</a></span> を用います。
+   知るには <span class="function"><a href="function.mysql-affected-rows.html" class="function">mysql_affected_rows()</a></span> を用います。
   </p>
   <p class="para">
    クエリが参照するテーブルにアクセスする権限がない場合も
-    <span class="function"><strong>mysql_query()</strong></span>は失敗し、<strong><code>FALSE</code></strong> が返されます。
+   <span class="function"><strong>mysql_query()</strong></span>は失敗し、<strong><code>FALSE</code></strong> が返されます。
   </p>
  </div>
 
@@ -122,11 +122,11 @@ link_identifier</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.mysql-query-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1605">
+   <div class="example" id="example-1784">
     <p><strong>例1 間違ったクエリ</strong></p>
     <div class="example-contents"><p>
      次のクエリは文法的に間違っているので、
-      <span class="function"><strong>mysql_query()</strong></span>は失敗し <strong><code>FALSE</code></strong>を返します。
+     <span class="function"><strong>mysql_query()</strong></span>は失敗し <strong><code>FALSE</code></strong>を返します。
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -138,10 +138,10 @@ link_identifier</code></em></span><dd>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-1606">
+   <div class="example" id="example-1785">
     <p><strong>例2 正しいクエリ</strong></p>
     <div class="example-contents"><p>
-     次のクエリは正しいので、 <span class="function"><strong>mysql_query()</strong></span>
+     次のクエリは正しいので、<span class="function"><strong>mysql_query()</strong></span>
      は <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> を返します。
     </p></div>
     <div class="example-contents">
@@ -160,12 +160,12 @@ link_identifier</code></em></span><dd>
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-connect.html" class="function" rel="rdfs-seeAlso">mysql_connect()</a> - MySQL サーバーへの接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-error.html" class="function" rel="rdfs-seeAlso">mysql_error()</a> - 直近に実行された MySQL 操作のエラーメッセージを返す</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-real-escape-string.html" class="function" rel="rdfs-seeAlso">mysql_real_escape_string()</a> - SQL 文中で用いる文字列の特殊文字をエスケープする</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-result.html" class="function" rel="rdfs-seeAlso">mysql_result()</a> - 結果データを得る</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-fetch-assoc.html" class="function" rel="rdfs-seeAlso">mysql_fetch_assoc()</a> - 連想配列として結果の行を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-unbuffered-query.html" class="function" rel="rdfs-seeAlso">mysql_unbuffered_query()</a> - MySQL に SQL クエリを送信するが、結果に対してのフェッチやバッファリングは行わない</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-connect.html" class="function" rel="rdfs-seeAlso">mysql_connect()</a> - MySQL サーバーへの接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-error.html" class="function" rel="rdfs-seeAlso">mysql_error()</a> - 直近に実行された MySQL 操作のエラーメッセージを返す</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-real-escape-string.html" class="function" rel="rdfs-seeAlso">mysql_real_escape_string()</a> - SQL 文中で用いる文字列の特殊文字をエスケープする</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-result.html" class="function" rel="rdfs-seeAlso">mysql_result()</a> - 結果データを得る</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-assoc.html" class="function" rel="rdfs-seeAlso">mysql_fetch_assoc()</a> - 連想配列として結果の行を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-unbuffered-query.html" class="function" rel="rdfs-seeAlso">mysql_unbuffered_query()</a> - MySQL に SQL クエリを送信するが、結果に対してのフェッチやバッファリングは行わない</span></li>
    </ul>
   </p>
  </div>

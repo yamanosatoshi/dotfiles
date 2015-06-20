@@ -37,23 +37,24 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">algo</code></dt>
 
-     <span class="term"><em><code class="parameter">algo</code></em></span>
      <dd>
 
       <p class="para">
        ハッシュアルゴリズムの名前 (たとえば <em>md5</em>,
        <em>sha256</em>, <em>haval160,4</em> など)。サポートされるアルゴリズムの一覧は
-        <span class="function"><a href="function.hash-algos.html" class="function">hash_algos()</a></span> をご参照ください。
+       <span class="function"><a href="function.hash-algos.html" class="function">hash_algos()</a></span> をご参照ください。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">password</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">password</code></em></span>
      <dd>
 
       <p class="para">
@@ -61,23 +62,23 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">salt</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">salt</code></em></span>
      <dd>
 
       <p class="para">
-       派生に使うソルト
+       派生に使うソルト。ランダムに生成した値でなければいけません。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">iterations</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">iterations</code></em></span>
      <dd>
 
       <p class="para">
@@ -85,23 +86,26 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">length</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">length</code></em></span>
      <dd>
 
       <p class="para">
-       出力する派生キーの長さ。<em>0</em> の場合、渡されたアルゴリズムの長さが使われます。
+       出力する文字列の長さ。<code class="parameter">raw_output</code> が <strong><code>TRUE</code></strong>
+       の場合、これは派生キーのバイト長になります。
+       <code class="parameter">raw_output</code> が <strong><code>FALSE</code></strong> の場合、
+       これは派生キーのバイト長の二倍になります (キーの全バイトが十六進二桁で返されるからです)。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">raw_output</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">raw_output</code></em></span>
      <dd>
 
       <p class="para">
@@ -109,8 +113,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -120,7 +123,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.hash-pbkdf2-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   小文字の16進数を含む文字列が返されます。<em><code class="parameter">raw_output</code></em> が true の場合、派生キーの生のバイナリ表現が返されます。
+   小文字の16進数を含む文字列が返されます。<code class="parameter">raw_output</code> が <strong><code>TRUE</code></strong> の場合、派生キーの生のバイナリ表現が返されます。
   </p>
  </div>
 
@@ -128,7 +131,7 @@
  <div class="refsect1 errors" id="refsect1-function.hash-pbkdf2-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
-    <strong><code>E_WARNING</code></strong> が発生するのはアルゴリズムが未知である場合、<em><code class="parameter">iterations</code></em> パラメータが <em>0</em> 以下である場合、<em><code class="parameter">length</code></em> が <em>0</em> 以下である場合、<em><code class="parameter">salt</code></em> が長すぎる場合
+    <strong><code>E_WARNING</code></strong> が発生するのはアルゴリズムが未知である場合、<code class="parameter">iterations</code> パラメータが <em>0</em> 以下である場合、<code class="parameter">length</code> が <em>0</em> 以下である場合、<code class="parameter">salt</code> が長すぎる場合
    (<strong><code>INT_MAX</code></strong><em> - 4</em> よりも大きい) です。
   </p>
  </div>
@@ -137,16 +140,17 @@
  <div class="refsect1 examples" id="refsect1-function.hash-pbkdf2-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-832">
-    <p><strong>例1  <span class="function"><strong>hash_pbkdf2()</strong></span> の基本的な使い方の例</strong></p>
+   <div class="example" id="example-876">
+    <p><strong>例1 <span class="function"><strong>hash_pbkdf2()</strong></span> の基本的な使い方の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$password&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$salt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"salt"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$hash&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">hash_pbkdf2</span><span style="color: #007700">(</span><span style="color: #DD0000">"sha256"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$salt</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$hash</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$password&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$iterations&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1000</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;ランダムな&nbsp;IV&nbsp;を、mcrypt_create_iv()&nbsp;や<br />//&nbsp;openssl_random_pseudo_bytes()&nbsp;などの適切なソースを使って生成します。<br /></span><span style="color: #0000BB">$salt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mcrypt_create_iv</span><span style="color: #007700">(</span><span style="color: #0000BB">16</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MCRYPT_DEV_URANDOM</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$hash&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">hash_pbkdf2</span><span style="color: #007700">(</span><span style="color: #DD0000">"sha256"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$salt</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$iterations</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$hash</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
 
-    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
     <div class="example-contents screen">
 <div class="cdata"><pre>
 120fb6cffcf8b32c43e7
@@ -161,8 +165,9 @@
   <h3 class="title">注意</h3>
   <div class="caution"><strong class="caution">警告</strong>
    <p class="para">
-    PBKDF2 による方法はパスワードのハッシュを保存するために使うことができます (NIST が認めた利用方法です)。
-    しかしながら、<strong><code>CRYPT_BLOWFISH</code></strong> のほうがパスワードの保存に適しており、 <span class="function"><a href="function.crypt.html" class="function">crypt()</a></span> を通じて利用できることを記しておきます。
+    PBKDF2 による方法はパスワードのハッシュを保存するために使うことができます。
+    しかし、<span class="function"><a href="function.password-hash.html" class="function">password_hash()</a></span> や <span class="function"><a href="function.crypt.html" class="function">crypt()</a></span>
+    で <strong><code>CRYPT_BLOWFISH</code></strong> を使うのほうが、パスワードの保存に適しています。
    </p>
   </div>
  </div>
@@ -172,12 +177,13 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.crypt.html" class="function" rel="rdfs-seeAlso">crypt()</a> - 文字列の一方向のハッシュ化を行う</span></li>
-    <li class="member"> <span class="function"><a href="function.hash.html" class="function" rel="rdfs-seeAlso">hash()</a> - ハッシュ値 (メッセージダイジェスト) を生成する</span></li>
-    <li class="member"> <span class="function"><a href="function.hash-algos.html" class="function" rel="rdfs-seeAlso">hash_algos()</a> - 登録されているハッシュアルゴリズムの一覧を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.hash-init.html" class="function" rel="rdfs-seeAlso">hash_init()</a> - 段階的なハッシュコンテキストを初期化する</span></li>
-    <li class="member"> <span class="function"><a href="function.hash-hmac.html" class="function" rel="rdfs-seeAlso">hash_hmac()</a> - HMAC 方式を使用してハッシュ値を生成する</span></li>
-    <li class="member"> <span class="function"><a href="function.hash-hmac-file.html" class="function" rel="rdfs-seeAlso">hash_hmac_file()</a> - HMAC 方式を使用して、指定されたファイルの内容からハッシュ値を生成する</span></li>
+    <li class="member"><span class="function"><a href="function.crypt.html" class="function" rel="rdfs-seeAlso">crypt()</a> - 文字列の一方向のハッシュ化を行う</span></li>
+    <li class="member"><span class="function"><a href="function.password-hash.html" class="function" rel="rdfs-seeAlso">password_hash()</a> - パスワードハッシュを作る</span></li>
+    <li class="member"><span class="function"><a href="function.hash.html" class="function" rel="rdfs-seeAlso">hash()</a> - ハッシュ値 (メッセージダイジェスト) を生成する</span></li>
+    <li class="member"><span class="function"><a href="function.hash-algos.html" class="function" rel="rdfs-seeAlso">hash_algos()</a> - 登録されているハッシュアルゴリズムの一覧を返す</span></li>
+    <li class="member"><span class="function"><a href="function.hash-init.html" class="function" rel="rdfs-seeAlso">hash_init()</a> - 段階的なハッシュコンテキストを初期化する</span></li>
+    <li class="member"><span class="function"><a href="function.hash-hmac.html" class="function" rel="rdfs-seeAlso">hash_hmac()</a> - HMAC 方式を使用してハッシュ値を生成する</span></li>
+    <li class="member"><span class="function"><a href="function.hash-hmac-file.html" class="function" rel="rdfs-seeAlso">hash_hmac_file()</a> - HMAC 方式を使用して、指定されたファイルの内容からハッシュ値を生成する</span></li>
    </ul>
   </p>
  </div>

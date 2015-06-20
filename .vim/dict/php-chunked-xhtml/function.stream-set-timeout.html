@@ -26,13 +26,13 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">stream</code></em> にタイムアウトの値を設定します。
-   この値は、<em><code class="parameter">seconds</code></em> と
-   <em><code class="parameter">microseconds</code></em> の和で表されます。
+   <code class="parameter">stream</code> にタイムアウトの値を設定します。
+   この値は、<code class="parameter">seconds</code> と
+   <code class="parameter">microseconds</code> の和で表されます。
   </p>
   <p class="para">
    ストリームがタイムアウトとなった場合は、
-    <span class="function"><a href="function.stream-get-meta-data.html" class="function">stream_get_meta_data()</a></span> が返す配列のキー &#039;timed_out&#039;
+   <span class="function"><a href="function.stream-get-meta-data.html" class="function">stream_get_meta_data()</a></span> が返す配列のキー &#039;timed_out&#039;
    の値が <strong><code>TRUE</code></strong> に設定されます。エラーや警告が発生していなくても同様になります。
   </p>
  </div>
@@ -43,9 +43,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">stream</code></dt>
 
-     <span class="term"><em><code class="parameter">stream</code></em></span>
      <dd>
 
       <p class="para">
@@ -53,11 +54,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">seconds</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">seconds</code></em></span>
      <dd>
 
       <p class="para">
@@ -65,11 +66,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">microseconds</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">microseconds</code></em></span>
      <dd>
 
       <p class="para">
@@ -77,8 +78,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -129,8 +129,8 @@
  <div class="refsect1 examples" id="refsect1-function.stream-set-timeout-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4012">
-    <p><strong>例1  <span class="function"><strong>stream_set_timeout()</strong></span> の例</strong></p>
+   <div class="example" id="example-4468">
+    <p><strong>例1 <span class="function"><strong>stream_set_timeout()</strong></span> の例</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fsockopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"www.example.com"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">80</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$fp</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"開けません\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"GET&nbsp;/&nbsp;HTTP/1.0\r\n\r\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">stream_set_timeout</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2000</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_get_meta_data</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">'timed_out'</span><span style="color: #007700">])&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Connection&nbsp;timed&nbsp;out!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$res</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -147,15 +147,15 @@
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    この関数では、 <span class="function"><a href="function.stream-socket-recvfrom.html" class="function">stream_socket_recvfrom()</a></span> のような
+    この関数では、<span class="function"><a href="function.stream-socket-recvfrom.html" class="function">stream_socket_recvfrom()</a></span> のような
     高度な操作はできません。そのかわりに、timeout パラメータを指定して
-     <span class="function"><a href="function.stream-select.html" class="function">stream_select()</a></span> を使用してください。
+    <span class="function"><a href="function.stream-select.html" class="function">stream_select()</a></span> を使用してください。
    </p>
   </p></blockquote>
   <p class="para">
    この関数は、以前は
-    <span class="function"><strong>set_socket_timeout()</strong></span> 、その後は
-    <span class="function"><a href="function.socket-set-timeout.html" class="function">socket_set_timeout()</a></span> と呼ばれたこともありましたが、
+   <span class="function"><strong>set_socket_timeout()</strong></span> 、その後は
+   <span class="function"><a href="function.socket-set-timeout.html" class="function">socket_set_timeout()</a></span> と呼ばれたこともありましたが、
    これらの利用は推奨されません。
   </p>
  </div>
@@ -164,8 +164,8 @@
  <div class="refsect1 seealso" id="refsect1-function.stream-set-timeout-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - インターネット接続もしくは Unix ドメインソケット接続をオープンする</span></li>
-   <li class="member"> <span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
+   <li class="member"><span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - インターネット接続もしくは Unix ドメインソケット接続をオープンする</span></li>
+   <li class="member"><span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - ファイルまたは URL をオープンする</span></li>
   </ul>
  </div>
 

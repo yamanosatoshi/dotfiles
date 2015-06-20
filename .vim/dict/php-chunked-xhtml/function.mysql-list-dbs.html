@@ -20,7 +20,8 @@
  <div id="function.mysql-list-dbs-refsynopsisdiv">
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
-この拡張モジュールは PHP 5.5.0 で非推奨になりました。将来のバージョンで削除される予定です。
+この関数は PHP 5.4.0 で非推奨になりました。将来のバージョンで
+<a href="book.mysql.html" class="link">MySQL 拡張モジュール</a> 全体とあわせて削除される予定です。
 <a href="book.mysqli.html" class="link">MySQLi</a> あるいは
 <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a> を使うべきです。詳細な情報は
 <a href="mysqlinfo.api.choosing.html" class="link">MySQL: API の選択</a> や
@@ -42,10 +43,6 @@
   <p class="para rdfs-comment">
    現在の mysql デーモンで利用可能なデータベースの結果ポインタを返します。
   </p>
-
-  <div class="warning"><strong class="warning">警告</strong>
-<p class="simpara">この関数は、PHP 5.4.0 以降では<em class="emphasis">非推奨</em>となりました。
-この関数は決して使わないようにしましょう。</p></div>
  </div>
 
 
@@ -55,16 +52,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-link_identifier</code></em></span><dd>
+<code class="parameter">
+link_identifier</code></dt>
+<dd>
 <p class="para">MySQL 接続。
-指定されない場合、 <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
+指定されない場合、<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> により直近にオープンされたリンクが
 指定されたと仮定されます。そのようなリンクがない場合、引数を指定せずに
- <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
+<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> がコールした時と同様にリンクを確立します。
 リンクが見付からない、または、確立できない場合、
 <strong><code>E_WARNING</code></strong> レベルのエラーが生成されます。</p></dd>
 
-</dt>
 
    </dl>
 
@@ -77,8 +74,8 @@ link_identifier</code></em></span><dd>
   <p class="para">
    成功した場合に結果ポインタ <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> を、失敗した場合に
    <strong><code>FALSE</code></strong> を返します。結果ポインタの中身を調べるために
-    <span class="function"><a href="function.mysql-tablename.html" class="function">mysql_tablename()</a></span> 関数を利用し、取得したテーブルを
-   利用するには  <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> などの関数を
+   <span class="function"><a href="function.mysql-tablename.html" class="function">mysql_tablename()</a></span> 関数を利用し、取得したテーブルを
+   利用するには <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> などの関数を
    利用してください。
   </p>
  </div>
@@ -87,8 +84,8 @@ link_identifier</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.mysql-list-dbs-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1598">
-    <p><strong>例1  <span class="function"><strong>mysql_list_dbs()</strong></span> の例</strong></p>
+   <div class="example" id="example-1777">
+    <p><strong>例1 <span class="function"><strong>mysql_list_dbs()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;mysql_list_dbs()&nbsp;を使わない方法<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SHOW&nbsp;DATABASES"</span><span style="color: #007700">);<br /><br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'Database'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;5.4.0&nbsp;からは非推奨<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$db_list&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_list_dbs</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /><br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$db_list</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Database&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -115,7 +112,7 @@ database3
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     下位互換のために、次の非推奨別名を使用してもいいでしょう。
-     <span class="function"><strong>mysql_listdbs()</strong></span>
+    <span class="function"><strong>mysql_listdbs()</strong></span>
    </p>
   </p></blockquote>
  </div>
@@ -125,8 +122,8 @@ database3
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-db-name.html" class="function" rel="rdfs-seeAlso">mysql_db_name()</a> - mysql_list_dbs のコール結果からデータベース名を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-select-db.html" class="function" rel="rdfs-seeAlso">mysql_select_db()</a> - MySQL データベースを選択する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-db-name.html" class="function" rel="rdfs-seeAlso">mysql_db_name()</a> - mysql_list_dbs のコール結果からデータベース名を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-select-db.html" class="function" rel="rdfs-seeAlso">mysql_select_db()</a> - MySQL データベースを選択する</span></li>
    </ul>
   </p>
  </div>

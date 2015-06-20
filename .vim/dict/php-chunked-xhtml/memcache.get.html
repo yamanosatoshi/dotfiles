@@ -33,13 +33,13 @@
 
   
   <p class="para rdfs-comment">
-    <span class="function"><strong>Memcache::get()</strong></span> は、その時点でサーバー上に
-   <em><code class="parameter">key</code></em> というキーのデータが存在する場合に、
+   <span class="function"><strong>Memcache::get()</strong></span> は、その時点でサーバー上に
+   <code class="parameter">key</code> というキーのデータが存在する場合に、
    格納されているデータを返します。
   </p>
 
   <p class="para">
-    <span class="function"><strong>Memcache::get()</strong></span> にキーの配列を渡すことにより、
+   <span class="function"><strong>Memcache::get()</strong></span> にキーの配列を渡すことにより、
    値の配列を取得することができます。この配列には、サーバー上で見つかった
    キーと値のペアのみが含まれます。
   </p>
@@ -52,9 +52,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">key</code></dt>
 
-     <span class="term"><em><code class="parameter">key</code></em></span>
      <dd>
 
       <p class="para">
@@ -62,24 +63,23 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
        存在した場合は、値とともに取得したフラグをここに書き込みます。
-       これらのフラグは、たとえば  <span class="function"><a href="memcache.set.html" class="function">Memcache::set()</a></span>
+       これらのフラグは、たとえば <span class="function"><a href="memcache.set.html" class="function">Memcache::set()</a></span>
        に渡すものと同じです。int の最下位バイトは pecl/memcache
        で内部的に使用するために予約されています
        (たとえば圧縮やシリアライズに関する状態を表します)。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -89,11 +89,11 @@
  <div class="refsect1 returnvalues" id="refsect1-memcache.get-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">key</code></em> に関連付けられた文字列を返します。
-   <em><code class="parameter">key</code></em> が配列の場合は、
+   <code class="parameter">key</code> に関連付けられた文字列を返します。
+   <code class="parameter">key</code> が配列の場合は、
    見つかったキー・値のペアを配列で返します。
-   取得に失敗したり <em><code class="parameter">key</code></em> が見つからなかったり、
-   あるいは <em><code class="parameter">key</code></em> が空だったりした場合は <strong><code>FALSE</code></strong> を返します。
+   取得に失敗したり <code class="parameter">key</code> が見つからなかったり、
+   あるいは <code class="parameter">key</code> が空だったりした場合は <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>
 
@@ -101,8 +101,8 @@
  <div class="refsect1 examples" id="refsect1-memcache.get-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4394">
-    <p><strong>例1  <span class="function"><strong>Memcache::get()</strong></span> の例</strong></p>
+   <div class="example" id="example-4840">
+    <p><strong>例1 <span class="function"><strong>Memcache::get()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;手続き型の&nbsp;API&nbsp;*/<br /></span><span style="color: #0000BB">$memcache_obj&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">memcache_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">memcache_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'some_key'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;オブジェクト指向の&nbsp;API&nbsp;*/<br /></span><span style="color: #0000BB">$memcache_obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcache</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #DD0000">'some_key'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;<br />キーの配列をパラメータとして使用することもできます。<br />もしキーに対応する項目がサーバー上で見つからなければ、<br />結果の配列の中にはそのキーは含まれません。<br />*/<br /><br />/*&nbsp;手続き型の&nbsp;API&nbsp;*/<br /></span><span style="color: #0000BB">$memcache_obj&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">memcache_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">memcache_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">,&nbsp;Array(</span><span style="color: #DD0000">'some_key'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'another_key'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;オブジェクト指向の&nbsp;API&nbsp;*/<br /></span><span style="color: #0000BB">$memcache_obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcache</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(Array(</span><span style="color: #DD0000">'some_key'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'second_key'</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">?&gt;</span>

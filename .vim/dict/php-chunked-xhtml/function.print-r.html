@@ -13,7 +13,7 @@
 </div><hr /><div id="function.print-r" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">print_r</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">print_r</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">print_r</span> &mdash; <span class="dc-title">
    指定した変数に関する情報を解りやすく出力する
   </span></p>
 
@@ -28,12 +28,12 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>print_r()</strong></span> は、
+   <span class="function"><strong>print_r()</strong></span> は、
    変数の値に関する情報を解り易い形式で表示します。
   </p>
   <p class="para">
-    <span class="function"><strong>print_r()</strong></span>、 <span class="function"><a href="function.var-dump.html" class="function">var_dump()</a></span>
-   および  <span class="function"><a href="function.var-export.html" class="function">var_export()</a></span>
+   <span class="function"><strong>print_r()</strong></span>、<span class="function"><a href="function.var-dump.html" class="function">var_dump()</a></span>
+   および <span class="function"><a href="function.var-export.html" class="function">var_export()</a></span>
    は、PHP 5 においてオブジェクトの protected および private のプロパティも表示します。
    静的なクラスメンバーは表示されません。
   </p>
@@ -45,9 +45,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">expression</code></dt>
 
-     <span class="term"><em><code class="parameter">expression</code></em></span>
      <dd>
 
       <p class="para">
@@ -55,23 +56,22 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">return</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">return</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><strong>print_r()</strong></span> の結果を取得したい場合には
-       <em><code class="parameter">return</code></em> 引数を使います。
+       <span class="function"><strong>print_r()</strong></span> の結果を取得したい場合には
+       <code class="parameter">return</code> 引数を使います。
        この引数が <strong><code>TRUE</code></strong> の場合には、
-        <span class="function"><strong>print_r()</strong></span> は情報を表示するかわりに情報を返します。
+       <span class="function"><strong>print_r()</strong></span> は情報を表示するかわりに情報を返します。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -87,7 +87,7 @@
    表示されます。<span class="type"><a href="language.types.object.html" class="type object">object</a></span> に関しても同様の表示形式となります。
   </p>
   <p class="para">
-   <em><code class="parameter">return</code></em> パラメータが <strong><code>TRUE</code></strong> の場合は、
+   <code class="parameter">return</code> パラメータが <strong><code>TRUE</code></strong> の場合は、
    この関数は <span class="type"><a href="language.types.string.html" class="type string">string</a></span> を返します。それ以外の場合の返り値は <strong><code>TRUE</code></strong> です。
   </p>
  </div>
@@ -96,60 +96,16 @@
  <div class="refsect1 notes" id="refsect1-function.print-r-notes">
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: <p class="para">
-<em><code class="parameter">return</code></em> パラメータを使う場合、この関数は内部的に出力バッファリングを使います。
-そのため、 <span class="function"><a href="function.ob-start.html" class="function">ob_start()</a></span> コールバック関数の中では使えません。</p></p></blockquote>
- </div>
-
-
- <div class="refsect1 changelog" id="refsect1-function.print-r-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        <em><code class="parameter">return</code></em> 引数が PHP 4.3.0 以降追加されました。
-        PHP4.3.0 より前のバージョンを使っている場合で
-         <span class="function"><strong>print_r()</strong></span> の結果を取得したい場合には、
-        <a href="ref.outcontrol.html" class="link">出力制御関数</a>を使用してください。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.0.4</td>
-       <td>
-        PHP 4.0.4 より前のバージョンでは、自分自身への直接または間接の
-        参照を含む <span class="type"><a href="language.types.array.html" class="type array">array</a></span> または <span class="type"><a href="language.types.object.html" class="type object">object</a></span> が指定された
-        場合には、無限に  <span class="function"><strong>print_r()</strong></span> が実行されてしまいました。
-        <em>print_r($GLOBALS)</em> が例で、
-        <em>$GLOBALS</em> はそれ自体自分自身への参照を有する
-        グローバル変数です。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
+<code class="parameter">return</code> パラメータを使う場合、この関数は内部的に出力バッファリングを使います。
+そのため、<span class="function"><a href="function.ob-start.html" class="function">ob_start()</a></span> コールバック関数の中では使えません。</p></p></blockquote>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.print-r-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5246">
-    <p><strong>例1  <span class="function"><strong>print_r()</strong></span> の例</strong></p>
+   <div class="example" id="example-5726">
+    <p><strong>例1 <span class="function"><strong>print_r()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 &lt;pre&gt;<br /><span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'b'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'banana'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'c'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array&nbsp;(</span><span style="color: #DD0000">'x'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'y'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'z'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">print_r&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;<br /></span>&lt;/pre&gt;</span>
@@ -177,8 +133,8 @@ Array
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5247">
-    <p><strong>例2 <em><code class="parameter">return</code></em> 引数の例</strong></p>
+   <div class="example" id="example-5727">
+    <p><strong>例2 <code class="parameter">return</code> 引数の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$b&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(</span><span style="color: #DD0000">'m'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'monkey'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'foo'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array&nbsp;(</span><span style="color: #DD0000">'x'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'y'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'z'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$results&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;print_r&nbsp;の結果が&nbsp;$results&nbsp;に格納されます<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -195,9 +151,9 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ob-start.html" class="function" rel="rdfs-seeAlso">ob_start()</a> - 出力のバッファリングを有効にする</span></li>
-    <li class="member"> <span class="function"><a href="function.var-dump.html" class="function" rel="rdfs-seeAlso">var_dump()</a> - 変数に関する情報をダンプする</span></li>
-    <li class="member"> <span class="function"><a href="function.var-export.html" class="function" rel="rdfs-seeAlso">var_export()</a> - 変数の文字列表現を出力または返す</span></li>
+    <li class="member"><span class="function"><a href="function.ob-start.html" class="function" rel="rdfs-seeAlso">ob_start()</a> - 出力のバッファリングを有効にする</span></li>
+    <li class="member"><span class="function"><a href="function.var-dump.html" class="function" rel="rdfs-seeAlso">var_dump()</a> - 変数に関する情報をダンプする</span></li>
+    <li class="member"><span class="function"><a href="function.var-export.html" class="function" rel="rdfs-seeAlso">var_export()</a> - 変数の文字列表現を出力または返す</span></li>
    </ul>
   </p>
  </div>

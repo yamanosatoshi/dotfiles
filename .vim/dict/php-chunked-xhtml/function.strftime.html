@@ -30,12 +30,12 @@
   <p class="para rdfs-comment">
    ローカルの時刻・日付を、ロケール設定にもとづいてフォーマットします。
    月および曜日の名前、およびその他の言語依存の文字列は、
-    <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> で設定された現在のロケールを尊重して表示されます。
+   <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> で設定された現在のロケールを尊重して表示されます。
   </p>
   <p class="para">
    使用する C ライブラリで、すべての変換指定子がサポートされているとは限りません。
    そのような場合、該当する変換指定子は PHP の
-    <span class="function"><strong>strftime()</strong></span> ではサポートされません。
+   <span class="function"><strong>strftime()</strong></span> ではサポートされません。
    また、全てのプラットフォームが負のタイムスタンプをサポートしているわけではないため、
    Unix Epoch (1970 年 1 月 1 日）以前の日付を扱えないかもしれません。
    つまり、Windows や一部の Linux ディストリビューション、そしてその他のごく一部の
@@ -54,18 +54,19 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">format</code></dt>
 
-     <span class="term"><em><code class="parameter">format</code></em></span>
      <dd>
 
       <p class="para">
        <table class="doctable table">
-        <caption><strong>次の変換指定子が <em><code class="parameter">format</code></em> パラメータ用の文字列として認識されます</strong></caption>
+        <caption><strong>次の変換指定子が <code class="parameter">format</code> パラメータ用の文字列として認識されます</strong></caption>
         
          <thead>
           <tr>
-           <th><em><code class="parameter">format</code></em></th>
+           <th><code class="parameter">format</code></th>
            <th>説明</th>
            <th>返り値の例</th>
           </tr>
@@ -115,7 +116,7 @@
           <tr>
            <td><em>%u</em></td>
            <td>ISO-8601 数値表現であらわした曜日</td>
-           <td><em>1</em> (月曜日) から <em>7</em> (土曜日)</td>
+           <td><em>1</em> (月曜日) から <em>7</em> (日曜日)</td>
           </tr>
 
           <tr>
@@ -332,7 +333,7 @@
 
           <tr>
            <td><em>%s</em></td>
-           <td>Unix エポックからのタイムスタンプ ( <span class="function"><a href="function.time.html" class="function">time()</a></span>
+           <td>Unix エポックからのタイムスタンプ (<span class="function"><a href="function.time.html" class="function">time()</a></span>
            関数と同じ)</td>
            <td>1979 年 9 月 10 日午前 08:40:00 なら <em>305815200</em></td>
           </tr>
@@ -403,20 +404,19 @@
       </div>
      </dd>
 
-    </dt>
-
+    
 
     
 <dt>
-<span class="term"><em><code class="parameter">timestamp</code></em></span><dd>
+<code class="parameter">timestamp</code></dt>
+<dd>
 <p class="para">
-オプションのパラメータ <em><code class="parameter">timestamp</code></em> は、
+オプションのパラメータ <code class="parameter">timestamp</code> は、
 <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 型の Unix タイムスタンプです。
-<em><code class="parameter">timestamp</code></em> が指定されなかった場合のデフォルト値は、
+<code class="parameter">timestamp</code> が指定されなかった場合のデフォルト値は、
 現在の時刻です。言い換えると、デフォルトは
- <span class="function"><a href="function.time.html" class="function">time()</a></span> の返り値となります。
+<span class="function"><a href="function.time.html" class="function">time()</a></span> の返り値となります。
 </p></dd>
-</dt>
 
 
    </dl>
@@ -428,11 +428,11 @@
  <div class="refsect1 returnvalues" id="refsect1-function.strftime-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   指定した <em><code class="parameter">timestamp</code></em> または timestamp
+   指定した <code class="parameter">timestamp</code> または timestamp
    が指定されていない場合に現在のローカル時間を用いて、
    指定したフォーマット文字列に基づき文字列をフォーマットして返します。
    月および曜日の名前、およびその他の言語依存の文字列は、
-    <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> で設定された現在のロケールを尊重して表示されます。
+   <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> で設定された現在のロケールを尊重して表示されます。
   </p>
  </div>
 
@@ -445,7 +445,7 @@
 を発生させます。また、システム設定のタイムゾーンあるいは環境変数
 <var class="varname"><var class="varname">TZ</var></var> を使用した場合には <strong><code>E_STRICT</code></strong>
 あるいは <strong><code>E_WARNING</code></strong> を発生させます。
- <span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span> も参照ください。</p>
+<span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span> も参照ください。</p>
   <p class="para">
    出力内容は元となった C ライブラリに依存するため、サポートしていない変換指定子もあります。
    Windows では、対応していない変換指定子を渡すと
@@ -489,8 +489,8 @@
   <h3 class="title">例</h3>
   <p class="para">
    この例は、それぞれのロケールがシステムにインストールされている場合にのみ動作します。
-   <div class="example" id="example-2309">
-    <p><strong>例1  <span class="function"><strong>strftime()</strong></span> のロケールの例</strong></p>
+   <div class="example" id="example-2507">
+    <p><strong>例1 <span class="function"><strong>strftime()</strong></span> のロケールの例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_TIME</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"C"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"%A"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_TIME</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"fi_FI"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"&nbsp;in&nbsp;Finnish&nbsp;is&nbsp;%A,"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_TIME</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"fr_FR"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"&nbsp;in&nbsp;French&nbsp;%A&nbsp;and"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_TIME</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"de_DE"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"&nbsp;in&nbsp;German&nbsp;%A.\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -501,7 +501,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2310">
+   <div class="example" id="example-2508">
     <p><strong>例2 ISO 8601:1988 の週番号の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -513,7 +513,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2311">
+   <div class="example" id="example-2509">
     <p><strong>例3 <em>%e</em> 修飾子を使う、クロスプラットフォーム対応の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -525,7 +525,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2312">
+   <div class="example" id="example-2510">
     <p><strong>例4 すべての書式の表示</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -581,7 +581,7 @@ Unknown format : &#039;f&#039;
 Unknown format : &#039;g&#039;                       ( Two digit representation of the year going by ISO-8601:1988 standards (see %V) )
 Unknown format : &#039;h&#039;                       ( Abbreviated month name, based on the locale (an alias of %b) )
 Unknown format : &#039;i&#039;
-Unknown format : &#039;k&#039;
+Unknown format : &#039;k&#039;                       ( Hour in 24-hour format, with a space preceding single digits )
 Unknown format : &#039;l&#039;                       ( Hour in 12-hour format, with a space preceding single digits )
 Unknown format : &#039;n&#039;                       ( A newline character (&quot;\n&quot;) )
 Unknown format : &#039;o&#039;
@@ -616,11 +616,11 @@ Unknown format : &#039;v&#039;
   <p class="para">
    <ul class="simplelist">
     <li class="member"><a href="http://strftime.net/" class="link external">&raquo;&nbsp;オンラインの strftime() 書式デザインツール</a></li>
-    <li class="member"> <span class="function"><a href="function.setlocale.html" class="function" rel="rdfs-seeAlso">setlocale()</a> - ロケール情報を設定する</span></li>
-    <li class="member"> <span class="function"><a href="function.mktime.html" class="function" rel="rdfs-seeAlso">mktime()</a> - 日付を Unix のタイムスタンプとして取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.strptime.html" class="function" rel="rdfs-seeAlso">strptime()</a> - strftime が生成した日付/時刻をパースする</span></li>
-    <li class="member"> <span class="function"><a href="function.gmstrftime.html" class="function" rel="rdfs-seeAlso">gmstrftime()</a> - ロケールの設定に基づいて GMT/UTC 時刻/日付をフォーマットする</span></li>
-    <li class="member"><a href="http://www.opengroup.org/onlinepubs/007908799/xsh/strftime.html" class="link external">&raquo;&nbsp;Open Group による  <span class="function"><strong>strftime()</strong></span> の定義</a></li>
+    <li class="member"><span class="function"><a href="function.setlocale.html" class="function" rel="rdfs-seeAlso">setlocale()</a> - ロケール情報を設定する</span></li>
+    <li class="member"><span class="function"><a href="function.mktime.html" class="function" rel="rdfs-seeAlso">mktime()</a> - 日付を Unix のタイムスタンプとして取得する</span></li>
+    <li class="member"><span class="function"><a href="function.strptime.html" class="function" rel="rdfs-seeAlso">strptime()</a> - strftime が生成した日付/時刻をパースする</span></li>
+    <li class="member"><span class="function"><a href="function.gmstrftime.html" class="function" rel="rdfs-seeAlso">gmstrftime()</a> - ロケールの設定に基づいて GMT/UTC 時刻/日付をフォーマットする</span></li>
+    <li class="member"><a href="http://www.opengroup.org/onlinepubs/007908799/xsh/strftime.html" class="link external">&raquo;&nbsp;Open Group による <span class="function"><strong>strftime()</strong></span> の定義</a></li>
    </ul>
   </p>
  </div>

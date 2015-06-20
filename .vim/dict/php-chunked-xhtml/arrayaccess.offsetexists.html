@@ -29,13 +29,13 @@
   </p>
   <p class="para">
    このメソッドが実行されるのは、<a href="class.arrayaccess.html" class="classname">ArrayAccess</a>
-   を実装したオブジェクト上で  <span class="function"><a href="function.isset.html" class="function">isset()</a></span> あるいは
-    <span class="function"><a href="function.empty.html" class="function">empty()</a></span> を使用した場合です。
+   を実装したオブジェクト上で <span class="function"><a href="function.isset.html" class="function">isset()</a></span> あるいは
+   <span class="function"><a href="function.empty.html" class="function">empty()</a></span> を使用した場合です。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><a href="function.empty.html" class="function">empty()</a></span> を使用すると  <span class="function"><a href="arrayaccess.offsetget.html" class="function">ArrayAccess::offsetGet()</a></span>
-    がコールされ、 <span class="function"><strong>ArrayAccess::offsetExists()</strong></span> が
+    <span class="function"><a href="function.empty.html" class="function">empty()</a></span> を使用すると <span class="function"><a href="arrayaccess.offsetget.html" class="function">ArrayAccess::offsetGet()</a></span>
+    がコールされ、<span class="function"><strong>ArrayAccess::offsetExists()</strong></span> が
     <strong><code>TRUE</code></strong> を返すかどうかで空かどうかを判断します。
    </p>
   </p></blockquote>
@@ -48,7 +48,8 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">offset</code></em></span>
+<code class="parameter">offset</code></dt>
+
      <dd>
 
       <p class="para">
@@ -56,8 +57,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -81,8 +81,8 @@
  <div class="refsect1 examples" id="refsect1-arrayaccess.offsetexists-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-303">
-    <p><strong>例1  <span class="function"><strong>ArrayAccess::offsetExists()</strong></span> の例</strong></p>
+   <div class="example" id="example-326">
+    <p><strong>例1 <span class="function"><strong>ArrayAccess::offsetExists()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">obj&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">arrayaccess&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">offsetSet</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">offsetExists</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">offsetUnset</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">offsetGet</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"value"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">obj</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Runs&nbsp;obj::offsetExists()\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">]));<br /><br />echo&nbsp;</span><span style="color: #DD0000">"\nRuns&nbsp;obj::offsetExists()&nbsp;and&nbsp;obj::offsetGet()\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">]));<br /><br />echo&nbsp;</span><span style="color: #DD0000">"\nRuns&nbsp;obj::offsetExists(),&nbsp;*not*&nbsp;obj:offsetGet()&nbsp;as&nbsp;there&nbsp;is&nbsp;nothing&nbsp;to&nbsp;get\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"foobaz"</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -28,7 +28,7 @@
   ]]] )</div>
 
   <p class="para rdfs-comment">
-   The  <span class="function"><strong>cubrid_connect_with_url()</strong></span> function is used to
+   The <span class="function"><strong>cubrid_connect_with_url()</strong></span> function is used to
    establish the environment for connecting to your server by using connection
    information passed with an url string argument. If the HA feature is
    enabled in CUBRID, you must specify the connection information of the
@@ -135,45 +135,45 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">conn_url</code></dt>
 
-     <span class="term"><em><code class="parameter">conn_url</code></em></span>
      <dd>
 <p class="para">A character string that contains server connection information.</p></dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">userid</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">userid</code></em></span>
      <dd>
 <p class="para">User name for the database.</p></dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">passwd</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">passwd</code></em></span>
      <dd>
 <p class="para">User password.</p></dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">new_link</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">new_link</code></em></span>
      <dd>
 <p class="para">If a second call is made to
-        <span class="function"><strong>cubrid_connect_with_url()</strong></span> with the same arguments,
+       <span class="function"><strong>cubrid_connect_with_url()</strong></span> with the same arguments,
        no new connection will be established, but instead, the connection
        identifier of the already opened connection will be returned. The
-       <em><code class="parameter">new_link</code></em> parameter modifies this behavior and
-       makes  <span class="function"><strong>cubrid_connect_with_url()</strong></span> always open a new
-       connection, even if  <span class="function"><strong>cubrid_connect_with_url()</strong></span> was
+       <code class="parameter">new_link</code> parameter modifies this behavior and
+       makes <span class="function"><strong>cubrid_connect_with_url()</strong></span> always open a new
+       connection, even if <span class="function"><strong>cubrid_connect_with_url()</strong></span> was
        called before with the same parameters.</p></dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -193,8 +193,8 @@
  
  <div class="refsect1 examples" id="refsect1-function.cubrid-connect-with-url-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1005">
-   <p><strong>例1  <span class="function"><strong>cubrid_connect_with_url()</strong></span> url without properties example</strong></p>
+  <div class="example" id="example-1063">
+   <p><strong>例1 <span class="function"><strong>cubrid_connect_with_url()</strong></span> url without properties example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$conn_url&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"CUBRID:localhost:33000:demodb:dba::"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$con&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect_with_url</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_url</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$con</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"connected&nbsp;successfully"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"create&nbsp;table&nbsp;person(id&nbsp;int,name&nbsp;char(16))"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"insert&nbsp;into&nbsp;person&nbsp;values(1,'James')"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$req</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_close_request</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_commit</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_rollback</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -204,8 +204,8 @@
 
   </div>
   
-  <div class="example" id="example-1006">
-   <p><strong>例2  <span class="function"><strong>cubrid_connect_with_url()</strong></span> url with properties example</strong></p>
+  <div class="example" id="example-1064">
+   <p><strong>例2 <span class="function"><strong>cubrid_connect_with_url()</strong></span> url with properties example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$conn_url&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"CUBRID:127.0.0.1:33000:demodb:dba::?login_timeout=100"<br /></span><span style="color: #0000BB">$con&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect_with_url&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_url</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$con</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"connected&nbsp;successfully"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"create&nbsp;table&nbsp;person(id&nbsp;int,name&nbsp;char(16))"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"insert&nbsp;into&nbsp;person&nbsp;values(1,'James')"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$req</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_close_request</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_commit</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_rollback</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -221,11 +221,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.cubrid-connect.html" class="function" rel="rdfs-seeAlso">cubrid_connect()</a> - Open a connection to a CUBRID Server</span></li>
-    <li class="member"> <span class="function"><a href="function.cubrid-pconnect.html" class="function" rel="rdfs-seeAlso">cubrid_pconnect()</a> - Open a persistent connection to a CUBRID server</span></li>
-    <li class="member"> <span class="function"><a href="function.cubrid-pconnect-with-url.html" class="function" rel="rdfs-seeAlso">cubrid_pconnect_with_url()</a> - Open a persistent connection to CUBRID server</span></li>
-    <li class="member"> <span class="function"><a href="function.cubrid-disconnect.html" class="function" rel="rdfs-seeAlso">cubrid_disconnect()</a> - Close a database connection</span></li>
-    <li class="member"> <span class="function"><a href="function.cubrid-close.html" class="function" rel="rdfs-seeAlso">cubrid_close()</a> - Close CUBRID connection</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-connect.html" class="function" rel="rdfs-seeAlso">cubrid_connect()</a> - Open a connection to a CUBRID Server</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-pconnect.html" class="function" rel="rdfs-seeAlso">cubrid_pconnect()</a> - Open a persistent connection to a CUBRID server</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-pconnect-with-url.html" class="function" rel="rdfs-seeAlso">cubrid_pconnect_with_url()</a> - Open a persistent connection to CUBRID server</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-disconnect.html" class="function" rel="rdfs-seeAlso">cubrid_disconnect()</a> - Close a database connection</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-close.html" class="function" rel="rdfs-seeAlso">cubrid_close()</a> - Close CUBRID connection</span></li>
    </ul>
   </p>
  </div>

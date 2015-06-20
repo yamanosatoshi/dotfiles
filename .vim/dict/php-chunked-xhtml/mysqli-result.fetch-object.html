@@ -23,7 +23,7 @@
   <p class="para">オブジェクト指向型</p>
   <div class="methodsynopsis dc-description">
    <span class="type">object</span> <span class="methodname"><strong>mysqli_result::fetch_object</strong></span>
-    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$class_name</code></span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$class_name</code><span class="initializer"> = &quot;stdClass&quot;</span></span>
    [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$params</code></span>
   ]] )</div>
 
@@ -31,17 +31,17 @@
   <div class="methodsynopsis dc-description">
    <span class="type">object</span> <span class="methodname"><strong>mysqli_fetch_object</strong></span>
     ( <span class="methodparam"><span class="type"><a href="class.mysqli-result.html" class="type mysqli_result">mysqli_result</a></span> <code class="parameter">$result</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$class_name</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$class_name</code><span class="initializer"> = &quot;stdClass&quot;</span></span>
    [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$params</code></span>
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>mysqli_fetch_object()</strong></span> は、結果セットの現在の行を
+   <span class="function"><strong>mysqli_fetch_object()</strong></span> は、結果セットの現在の行を
    オブジェクトで返します。このオブジェクトは、結果セットのフィールド名を
    属性として持ちます。
   </p>
   <p class="para">
-     <span class="function"><strong>mysqli_fetch_object()</strong></span> がオブジェクトのプロパティを設定するのは、
+    <span class="function"><strong>mysqli_fetch_object()</strong></span> がオブジェクトのプロパティを設定するのは、
     オブジェクトのコンストラクタをコールする前であることに注意しましょう。
   </p>
  </div>
@@ -53,16 +53,17 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
+<code class="parameter">
+result</code></dt>
+<dd>
 <p class="para">手続き型のみ:
- <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span>、 <span class="function"><a href="mysqli.store-result.html" class="function">mysqli_store_result()</a></span>
-あるいは  <span class="function"><a href="mysqli.use-result.html" class="function">mysqli_use_result()</a></span> が返す結果セット ID。</p></dd>
-</dt>
+<span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span>、<span class="function"><a href="mysqli.store-result.html" class="function">mysqli_store_result()</a></span>
+あるいは <span class="function"><a href="mysqli.use-result.html" class="function">mysqli_use_result()</a></span> が返す結果セット ID。</p></dd>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">class_name</code></dt>
 
-     <span class="term"><em><code class="parameter">class_name</code></em></span>
      <dd>
 
       <p class="para">
@@ -71,21 +72,20 @@ result</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">params</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">params</code></em></span>
      <dd>
 
       <p class="para">
        オプションのパラメータの配列で、
-       <em><code class="parameter">class_name</code></em> オブジェクトのコンストラクタに渡します。
+       <code class="parameter">class_name</code> オブジェクトのコンストラクタに渡します。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -105,38 +105,9 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-mysqli-result.fetch-object-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>5.0.0</td>
-       <td>
-        さまざまな型のオブジェクトで結果を返せるようになりました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-mysqli-result.fetch-object-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1735">
+  <div class="example" id="example-1914">
    <p><strong>例1 オブジェクト指向型</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -146,7 +117,7 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
    </div>
 
   </div>
-  <div class="example" id="example-1736">
+  <div class="example" id="example-1915">
    <p><strong>例2 手続き型</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -173,11 +144,11 @@ Santa Clara (USA)
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli-result.fetch-array.html" class="function" rel="rdfs-seeAlso">mysqli_fetch_array()</a> - 結果の行を連想配列・数値添字配列あるいはその両方の形式で取得する</span></li>
-    <li class="member"> <span class="function"><a href="mysqli-result.fetch-assoc.html" class="function" rel="rdfs-seeAlso">mysqli_fetch_assoc()</a> - 結果の行を連想配列で取得する</span></li>
-    <li class="member"> <span class="function"><a href="mysqli-result.fetch-row.html" class="function" rel="rdfs-seeAlso">mysqli_fetch_row()</a> - 結果の行を数値添字配列で取得する</span></li>
-    <li class="member"> <span class="function"><a href="mysqli.query.html" class="function" rel="rdfs-seeAlso">mysqli_query()</a> - データベース上でクエリを実行する</span></li>
-    <li class="member"> <span class="function"><a href="mysqli-result.data-seek.html" class="function" rel="rdfs-seeAlso">mysqli_data_seek()</a> - 結果の任意の行にポインタを移動する</span></li>
+    <li class="member"><span class="function"><a href="mysqli-result.fetch-array.html" class="function" rel="rdfs-seeAlso">mysqli_fetch_array()</a> - 結果の行を連想配列・数値添字配列あるいはその両方の形式で取得する</span></li>
+    <li class="member"><span class="function"><a href="mysqli-result.fetch-assoc.html" class="function" rel="rdfs-seeAlso">mysqli_fetch_assoc()</a> - 結果の行を連想配列で取得する</span></li>
+    <li class="member"><span class="function"><a href="mysqli-result.fetch-row.html" class="function" rel="rdfs-seeAlso">mysqli_fetch_row()</a> - 結果の行を数値添字配列で取得する</span></li>
+    <li class="member"><span class="function"><a href="mysqli.query.html" class="function" rel="rdfs-seeAlso">mysqli_query()</a> - データベース上でクエリを実行する</span></li>
+    <li class="member"><span class="function"><a href="mysqli-result.data-seek.html" class="function" rel="rdfs-seeAlso">mysqli_data_seek()</a> - 結果の任意の行にポインタを移動する</span></li>
    </ul>
   </p>
  </div>

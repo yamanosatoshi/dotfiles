@@ -13,7 +13,7 @@
 </div><hr /><div id="function.floatval" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">floatval</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5)</p><p class="refpurpose"><span class="refname">floatval</span> &mdash; <span class="dc-title">変数の float 値を取得する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">floatval</span> &mdash; <span class="dc-title">変数の float 値を取得する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.floatval-description">
@@ -24,7 +24,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">var</code></em> の <span class="type"><a href="language.types.float.html" class="type float">float</a></span> 値を返します。
+   <code class="parameter">var</code> の <span class="type"><a href="language.types.float.html" class="type float">float</a></span> 値を返します。
   </p>
  </div>
 
@@ -33,20 +33,20 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">var</code></dt>
 
-     <span class="term"><em><code class="parameter">var</code></em></span>
      <dd>
 
       <p class="para">
        あらゆるスカラ型を指定できます。オブジェクトに
-        <span class="function"><strong>floatval()</strong></span> を使用することはできません。
+       <span class="function"><strong>floatval()</strong></span> を使用することはできません。
        その場合は <strong><code>E_NOTICE</code></strong> レベルのエラーを発して 1 を返します。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -68,11 +68,23 @@
  <div class="refsect1 examples" id="refsect1-function.floatval-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5227">
-    <p><strong>例1  <span class="function"><strong>floatval()</strong></span> の例</strong></p>
+   <div class="example" id="example-5706">
+    <p><strong>例1 <span class="function"><strong>floatval()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'122.34343The'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$float_value_of_var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">floatval</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$float_value_of_var</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;122.34343<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5707">
+    <p><strong>例2 <span class="function"><strong>floatval()</strong></span> で、先頭が非数値である場合の例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'The122.34343'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$float_value_of_var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">floatval</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$float_value_of_var</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;0<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -85,10 +97,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.boolval.html" class="function" rel="rdfs-seeAlso">boolval()</a> - 変数の boolean としての値を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.intval.html" class="function" rel="rdfs-seeAlso">intval()</a> - 変数の整数としての値を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.strval.html" class="function" rel="rdfs-seeAlso">strval()</a> - 変数の文字列としての値を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.settype.html" class="function" rel="rdfs-seeAlso">settype()</a> - 変数の型をセットする</span></li>
+    <li class="member"><span class="function"><a href="function.boolval.html" class="function" rel="rdfs-seeAlso">boolval()</a> - 変数の boolean としての値を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.intval.html" class="function" rel="rdfs-seeAlso">intval()</a> - 変数の整数としての値を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.strval.html" class="function" rel="rdfs-seeAlso">strval()</a> - 変数の文字列としての値を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.settype.html" class="function" rel="rdfs-seeAlso">settype()</a> - 変数の型をセットする</span></li>
     <li class="member"><a href="language.types.type-juggling.html" class="link">型の相互変換</a></li>
    </ul>
   </p>

@@ -29,7 +29,7 @@
    指定した結果 ID から、行を疑似オブジェクトとして取得します。
   </p>
   <p class="para">
-    <span class="function"><strong>ibase_fetch_object()</strong></span> を続けてコールすると、
+   <span class="function"><strong>ibase_fetch_object()</strong></span> を続けてコールすると、
    結果セットの次の行を返します。
   </p>
  </div>
@@ -40,26 +40,27 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result_id</code></dt>
 
-     <span class="term"><em><code class="parameter">result_id</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.ibase-query.html" class="function">ibase_query()</a></span> あるいは  <span class="function"><a href="function.ibase-execute.html" class="function">ibase_execute()</a></span>
+       <span class="function"><a href="function.ibase-query.html" class="function">ibase_query()</a></span> あるいは <span class="function"><a href="function.ibase-execute.html" class="function">ibase_execute()</a></span>
        で取得した InterBase 結果 ID。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">fetch_flag</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">fetch_flag</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">fetch_flag</code></em> は、定数 <strong><code>IBASE_TEXT</code></strong>
+       <code class="parameter">fetch_flag</code> は、定数 <strong><code>IBASE_TEXT</code></strong>
        および <strong><code>IBASE_UNIXTIME</code></strong>
        を論理和で指定します。<strong><code>IBASE_TEXT</code></strong> を渡すと、BLOB ID のかわりに BLOB
        の内容自体を返します。<strong><code>IBASE_UNIXTIME</code></strong> を渡すと、日付/時刻の値を文字列ではなく
@@ -67,8 +68,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -87,8 +87,8 @@
  <div class="refsect1 examples" id="refsect1-function.ibase-fetch-object-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1105">
-    <p><strong>例1  <span class="function"><strong>ibase_fetch_object()</strong></span> の例</strong></p>
+   <div class="example" id="example-1163">
+    <p><strong>例1 <span class="function"><strong>ibase_fetch_object()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$dbh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$host</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;*&nbsp;FROM&nbsp;tblname'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$sth</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">email&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">ibase_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -105,8 +105,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ibase-fetch-row.html" class="function" rel="rdfs-seeAlso">ibase_fetch_row()</a> - InterBase データベースから 1 行分の結果を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.ibase-fetch-assoc.html" class="function" rel="rdfs-seeAlso">ibase_fetch_assoc()</a> - クエリの結果から、行を連想配列として取得する</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-fetch-row.html" class="function" rel="rdfs-seeAlso">ibase_fetch_row()</a> - InterBase データベースから 1 行分の結果を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-fetch-assoc.html" class="function" rel="rdfs-seeAlso">ibase_fetch_assoc()</a> - クエリの結果から、行を連想配列として取得する</span></li>
    </ul>
   </p>
  </div>

@@ -37,15 +37,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">ch</code></em>
-</span><dd>
-<p class="para"> <span class="function"><a href="function.curl-init.html" class="function">curl_init()</a></span>
-が返す cURL ハンドル。</p></dd>
+<code class="parameter">ch</code>
 </dt>
+<dd>
+<p class="para"><span class="function"><a href="function.curl-init.html" class="function">curl_init()</a></span>
+が返す cURL ハンドル。</p></dd>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">opt</code></dt>
 
-     <span class="term"><em><code class="parameter">opt</code></em></span>
      <dd>
 
       <p class="para">
@@ -94,12 +95,40 @@
         </li>
         <li class="listitem">
          <span class="simpara">
-          <strong><code>CURLINFO_REDIRECT_COUNT</code></strong> - リダイレクト処理の回数
+          <strong><code>CURLINFO_REDIRECT_COUNT</code></strong> - リダイレクト処理の回数 (<strong><code>CURLOPT_FOLLOWLOCATION</code></strong> オプションが有効な場合)
          </span>
         </li>
         <li class="listitem">
          <span class="simpara">
-          <strong><code>CURLINFO_REDIRECT_TIME</code></strong> - 伝送が始まるまでのリダイレクト処理の秒数
+          <strong><code>CURLINFO_REDIRECT_TIME</code></strong> - 伝送が始まるまでのリダイレクト処理の秒数 (<strong><code>CURLOPT_FOLLOWLOCATION</code></strong> オプションが有効な場合)
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_REDIRECT_URL</code></strong> - <strong><code>CURLOPT_FOLLOWLOCATION</code></strong> オプションが無効な場合:
+          直近のトランザクションで見つかったリダイレクト先 URL。これを、次に手動でリクエストしなければいけません。
+          <strong><code>CURLOPT_FOLLOWLOCATION</code></strong> オプションが有効な場合: これは空になります。
+          この場合のリダイレクト先 URL は、<strong><code>CURLINFO_EFFECTIVE_URL</code></strong> となります。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_PRIMARY_IP</code></strong> - 直近の接続の IP アドレス
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_PRIMARY_PORT</code></strong> - 直近の接続の接続先ポート
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_LOCAL_IP</code></strong> - 直近の接続の接続元 IP アドレス
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_LOCAL_PORT</code></strong> - 直近の接続の接続元ポート
          </span>
         </li>
         <li class="listitem">
@@ -130,7 +159,7 @@
         <li class="listitem">
          <span class="simpara">
           <strong><code>CURLINFO_HEADER_OUT</code></strong> - 送信したリクエスト文字列。
-          これを動作させるには、 <span class="function"><a href="function.curl-setopt.html" class="function">curl_setopt()</a></span> をコールする際に
+          これを動作させるには、<span class="function"><a href="function.curl-setopt.html" class="function">curl_setopt()</a></span> をコールする際に
           <strong><code>CURLINFO_HEADER_OUT</code></strong> オプションを使うようにしておく必要があります。
          </span>
         </li>
@@ -164,12 +193,17 @@
           NULL は、サーバーが適切な <em>Content-Type:</em> ヘッダを返さなかったことを示す
          </span>
         </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_PRIVATE</code></strong> - この cURL ハンドルに関連づけられたプライベートデータ。
+          事前に <span class="function"><a href="function.curl-setopt.html" class="function">curl_setopt()</a></span> の <strong><code>CURLOPT_PRIVATE</code></strong> オプションで設定したもの。
+         </span>
+        </li>
        </ul>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -179,9 +213,9 @@
  <div class="refsect1 returnvalues" id="refsect1-function.curl-getinfo-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em><code class="parameter">opt</code></em> を指定した場合は、その値を返します。
+   <code class="parameter">opt</code> を指定した場合は、その値を返します。
    それ以外の場合は、以下の要素をもつ連想配列を返します
-   (それぞれの要素が <em><code class="parameter">opt</code></em> に対応します)。
+   (それぞれの要素が <code class="parameter">opt</code> に対応します)。
    失敗した場合は <strong><code>FALSE</code></strong> を返します。
    <ul class="itemizedlist">
     <li class="listitem">
@@ -291,11 +325,37 @@
     </li>
     <li class="listitem">
      <span class="simpara">
-      &quot;request_header&quot; (これが設定されるのは、事前に  <span class="function"><a href="function.curl-setopt.html" class="function">curl_setopt()</a></span>
+      &quot;primary_ip&quot;
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;primary_port&quot;
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;local_ip&quot;
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;local_port&quot;
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;redirect_url&quot;
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;request_header&quot; (これが設定されるのは、事前に <span class="function"><a href="function.curl-setopt.html" class="function">curl_setopt()</a></span>
       をコールしたときに <strong><code>CURLINFO_HEADER_OUT</code></strong> を設定した場合のみです)
      </span>
     </li>
    </ul>
+   プライベートデータはこの連想配列には含まれず、<strong><code>CURLINFO_PRIVATE</code></strong> オプションで個別に取得しなければいけないことに注意しましょう。
   </p>
  </div>
 
@@ -315,6 +375,30 @@
 
      <tbody class="tbody">
       <tr>
+       <td>5.4.7</td>
+       <td>
+        <strong><code>CURLINFO_PRIMARY_IP</code></strong>、
+        <strong><code>CURLINFO_PRIMARY_PORT</code></strong>、
+        <strong><code>CURLINFO_LOCAL_IP</code></strong> および
+        <strong><code>CURLINFO_LOCAL_PORT</code></strong> が追加されました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.3.7</td>
+       <td>
+        <strong><code>CURLINFO_REDIRECT_URL</code></strong> が追加されました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.4</td>
+       <td>
+        <strong><code>CURLINFO_PRIVATE</code></strong> が追加されました。
+       </td>
+      </tr>
+
+      <tr>
        <td>5.1.3</td>
        <td>
         <strong><code>CURLINFO_HEADER_OUT</code></strong> が追加されました。
@@ -332,8 +416,8 @@
  <div class="refsect1 examples" id="refsect1-function.curl-getinfo-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4193">
-    <p><strong>例1  <span class="function"><strong>curl_getinfo()</strong></span> の例</strong></p>
+   <div class="example" id="example-4639">
+    <p><strong>例1 <span class="function"><strong>curl_getinfo()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;curl&nbsp;ハンドルを作成します<br /></span><span style="color: #0000BB">$ch&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_init</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.yahoo.com/'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;実行します<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;エラーが発生したかどうかを確認します<br /></span><span style="color: #007700">if(!</span><span style="color: #0000BB">curl_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">))<br />{<br />&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_getinfo</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Took&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">'total_time'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">'&nbsp;seconds&nbsp;to&nbsp;send&nbsp;a&nbsp;request&nbsp;to&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">'url'</span><span style="color: #007700">];<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;ハンドルを閉じます<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

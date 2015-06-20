@@ -36,18 +36,18 @@
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>ibase_trans()</strong></span> を最初にコールした際には、接続の
-    デフォルトのトランザクションを返しません。 <span class="function"><strong>ibase_trans()</strong></span>
-    によって開始されたすべてのトランザクションは、 <span class="function"><a href="function.ibase-commit.html" class="function">ibase_commit()</a></span>
-    や  <span class="function"><a href="function.ibase-rollback.html" class="function">ibase_rollback()</a></span> を使用してコミットあるいは
+    <span class="function"><strong>ibase_trans()</strong></span> を最初にコールした際には、接続の
+    デフォルトのトランザクションを返しません。<span class="function"><strong>ibase_trans()</strong></span>
+    によって開始されたすべてのトランザクションは、<span class="function"><a href="function.ibase-commit.html" class="function">ibase_commit()</a></span>
+    や <span class="function"><a href="function.ibase-rollback.html" class="function">ibase_rollback()</a></span> を使用してコミットあるいは
     ロールバックを明示的に行わない限り、スクリプトの終了時に自動的に
     ロールバックされます。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    この関数は複数の <em><code class="parameter">trans_args</code></em> および
-    <em><code class="parameter">link_identifier</code></em> を指定することが可能です。これにより、
+    この関数は複数の <code class="parameter">trans_args</code> および
+    <code class="parameter">link_identifier</code> を指定することが可能です。これにより、
     複数のデータベース接続にまたがるトランザクションを扱えるようになり、
     2 フェーズコミット機能を使用したコミットが可能になります。つまり、複数の
     データベースの更新内容が成功したか失敗したかによる判断ができるということです。
@@ -56,9 +56,9 @@
    </p>
    <p class="para">
     複数データベースにまたがるトランザクションを使用する場合、
-     <span class="function"><a href="function.ibase-query.html" class="function">ibase_query()</a></span> および  <span class="function"><a href="function.ibase-prepare.html" class="function">ibase_prepare()</a></span>
-    をコールする際には <em><code class="parameter">link_id</code></em> および
-    <em><code class="parameter">transaction_id</code></em> の両方を指定する必要があります。
+    <span class="function"><a href="function.ibase-query.html" class="function">ibase_query()</a></span> および <span class="function"><a href="function.ibase-prepare.html" class="function">ibase_prepare()</a></span>
+    をコールする際には <code class="parameter">link_id</code> および
+    <code class="parameter">transaction_id</code> の両方を指定する必要があります。
    </p>
   </p></blockquote>
  </div>
@@ -69,13 +69,14 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">trans_args</code></dt>
 
-     <span class="term"><em><code class="parameter">trans_args</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">trans_args</code></em> は、以下の
+       <code class="parameter">trans_args</code> は、以下の
        <strong><code>IBASE_READ</code></strong>、
        <strong><code>IBASE_WRITE</code></strong>、
        <strong><code>IBASE_COMMITTED</code></strong>、
@@ -89,11 +90,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">link_identifier</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">link_identifier</code></em></span>
      <dd>
 
       <p class="para">
@@ -102,8 +103,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>

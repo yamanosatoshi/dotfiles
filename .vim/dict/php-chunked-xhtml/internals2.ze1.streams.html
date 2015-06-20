@@ -63,8 +63,8 @@
     大きな問題もなくサードパーティ製のライブラリと組み合わせて使用する
     ことができます。これにより、これらのライブラリがURLソースからデータに
     直接アクセスできるようになります。
-    使用するシステムに <span class="function"><strong>fopencookie()</strong></span>または
-     <span class="function"><strong>funopen()</strong></span>関数がある場合、
+    使用するシステムに<span class="function"><strong>fopencookie()</strong></span>または
+    <span class="function"><strong>funopen()</strong></span>関数がある場合、
     任意のPHPストリームをANSI stdioを使う任意のライブラリに渡すことさえ
     できます!
   </p>
@@ -76,11 +76,11 @@
     ストリームの使用方法は、ANSI stdio関数の使用と非常に似ています。
     主な違いは、使用を開始するストリームを得る方法です。
     多くの場合、ストリームのハンドルを得るために
-     <span class="function"><strong>php_stream_open_wrapper()</strong></span>を使用します。
+    <span class="function"><strong>php_stream_open_wrapper()</strong></span>を使用します。
     この関数の動作は、以下の例で示すようにfopenと非常によくにています。
   </p>
   <p class="para">
-     <div class="example" id="example-5546">
+     <div class="example" id="example-6003">
      <p><strong>例1 PHPホームページを表示するための簡単なストリームの例</strong></p>
       <div class="example-contents">
 <div class="ccode"><pre class="ccode">php_stream * stream = php_stream_open_wrapper(&quot;http://www.php.net&quot;, &quot;rb&quot;, REPORT_ERRORS, NULL);
@@ -236,7 +236,7 @@ if (stream) {
    ストリーム API により、この処理が楽にできるようになっています。
   </p>
   <p class="para">
-     <div class="example" id="example-5547">
+     <div class="example" id="example-6004">
       <p><strong>例2 ストリームをパラメータとして受け取る方法</strong></p>
       <div class="example-contents">
 <div class="ccode"><pre class="ccode">PHP_FUNCTION(example_write_hello)
@@ -264,7 +264,7 @@ if (stream) {
      </div>
   </p>
   <p class="para">
-     <div class="example" id="example-5548">
+     <div class="example" id="example-6005">
       <p><strong>例3 関数からストリームを返す方法</strong></p>
       <div class="example-contents">
 <div class="ccode"><pre class="ccode">PHP_FUNCTION(example_open_php_home_page)
@@ -315,7 +315,7 @@ if (stream) {
    「このストリームの後始末は自動処理にまかせる」という印をつけることができます。
    こうすると、ストリームの後始末が自動的に行われた際に、
    ストリーム API は何の警告も発しなくなります。この印をつけるには
-    <span class="function"><strong>php_stream_auto_cleanup()</strong></span> を使用します。
+   <span class="function"><strong>php_stream_auto_cleanup()</strong></span> を使用します。
   </p>
  </div>
 
@@ -332,11 +332,12 @@ if (stream) {
    これらの定数は、ストリームファクトリ関数の操作に影響を及ぼします。
    <dl>
 
-    <dt>
+    
+     <dt>
 
-     <span class="term">
       <strong><code>IGNORE_PATH</code></strong> 
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -345,14 +346,14 @@ if (stream) {
       </span>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>USE_PATH</code></strong> 
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -360,14 +361,14 @@ if (stream) {
       </span>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>IGNORE_URL</code></strong> 
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -378,14 +379,14 @@ if (stream) {
       </span>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>IGNORE_URL_WIN</code></strong> 
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -394,14 +395,14 @@ if (stream) {
       </span>
      </dd>
 
-    </dt>
-
     
-    <dt>
+    
+    
+     <dt>
 
-     <span class="term">
       <strong><code>ENFORCE_SAFE_MODE</code></strong> 
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -412,14 +413,14 @@ if (stream) {
       </span>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>REPORT_ERRORS</code></strong> 
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -434,14 +435,14 @@ if (stream) {
       </span>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>STREAM_MUST_SEEK</code></strong> 
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -464,14 +465,14 @@ if (stream) {
       </p></blockquote>        
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
 
-    <dt>
-
-     <span class="term">
       <strong><code>STREAM_WILL_CAST</code></strong> 
-     </span>
+     </dt>
+
      <dd>
 
       <span class="simpara">
@@ -479,7 +480,7 @@ if (stream) {
        そのライブラリには FILE* かファイルディスクリプタを渡さなくては
        ならないとき、このフラグを使うと、ストリーム API にリソースを
        オープンしても、バッファリングは行わないよう指示することができます。
-       その後、 <span class="function"><strong>php_stream_cast()</strong></span> を使い、そのライブラリの
+       その後、<span class="function"><strong>php_stream_cast()</strong></span> を使い、そのライブラリの
        必要とする FILE* や ファイルディスクリプタを取得できます。
       </span>
       <span class="simpara">
@@ -498,8 +499,7 @@ if (stream) {
       </span>
      </dd>
 
-    </dt>
-
+    
    </dl>
     
   </p>

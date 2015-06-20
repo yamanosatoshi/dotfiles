@@ -14,17 +14,17 @@
   <h2 class="title">Executing statements</h2>
   <p class="para">
    Statements can be executed with the
-    <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span>,  <span class="function"><a href="mysqli.real-query.html" class="function">mysqli_real_query()</a></span>
-   and  <span class="function"><a href="mysqli.multi-query.html" class="function">mysqli_multi_query()</a></span> functions.
-   The  <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span> function is the most
+   <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span>, <span class="function"><a href="mysqli.real-query.html" class="function">mysqli_real_query()</a></span>
+   and <span class="function"><a href="mysqli.multi-query.html" class="function">mysqli_multi_query()</a></span> functions.
+   The <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span> function is the most
    common, and combines the executing statement with a
    buffered fetch of its result set, if any, in one call.
-   Calling  <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span> is identical to
-   calling  <span class="function"><a href="mysqli.real-query.html" class="function">mysqli_real_query()</a></span>
-   followed by  <span class="function"><a href="mysqli.store-result.html" class="function">mysqli_store_result()</a></span>.
+   Calling <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span> is identical to
+   calling <span class="function"><a href="mysqli.real-query.html" class="function">mysqli_real_query()</a></span>
+   followed by <span class="function"><a href="mysqli.store-result.html" class="function">mysqli_store_result()</a></span>.
   </p>
   <p class="para">
-   <div class="example" id="example-1620">
+   <div class="example" id="example-1799">
     <p><strong>例1 Connecting to MySQL</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -44,7 +44,7 @@
    allows the server to free resources associated with the statement
    results as early as possible. Generally speaking, clients are slow
    consuming result sets. Therefore, it is recommended to use buffered
-   result sets.  <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span> combines statement
+   result sets. <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span> combines statement
    execution and result set buffering.
   </p>
   <p class="para">
@@ -54,7 +54,7 @@
    it is to scale the server.
   </p>
   <p class="para">
-   <div class="example" id="example-1621">
+   <div class="example" id="example-1800">
     <p><strong>例2 Navigation through buffered results</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -88,7 +88,7 @@ Result set order...
    is not possible before all rows have been read.
   </p>
   <p class="para">
-   <div class="example" id="example-1622">
+   <div class="example" id="example-1801">
     <p><strong>例3 Navigation through unbuffered results</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -103,8 +103,8 @@ Result set order...
    <em class="emphasis">Result set values data types</em>
   </p>
   <p class="para">
-   The  <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span>,  <span class="function"><a href="mysqli.real-query.html" class="function">mysqli_real_query()</a></span>
-   and  <span class="function"><a href="mysqli.multi-query.html" class="function">mysqli_multi_query()</a></span> functions are used to execute
+   The <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span>, <span class="function"><a href="mysqli.real-query.html" class="function">mysqli_real_query()</a></span>
+   and <span class="function"><a href="mysqli.multi-query.html" class="function">mysqli_multi_query()</a></span> functions are used to execute
    non-prepared statements.  At the level of the MySQL Client Server Protocol,
    the command <em>COM_QUERY</em> and the text protocol are used
    for statement execution. With the text protocol, the MySQL server converts
@@ -115,7 +115,7 @@ Result set order...
    provided as PHP strings.
   </p>
   <p class="para">
-   <div class="example" id="example-1623">
+   <div class="example" id="example-1802">
     <p><strong>例4 Text protocol returns strings by default</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -142,7 +142,7 @@ label = a (string)
    This way, for example, SQL INT columns are returned as integers.
   </p>
   <p class="para">
-   <div class="example" id="example-1624">
+   <div class="example" id="example-1803">
     <p><strong>例5 Native data types with mysqlnd and connection option</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -165,15 +165,15 @@ label = a (string)
   </p>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="mysqli.construct.html" class="methodname">mysqli::__construct()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="mysqli.init.html" class="methodname">mysqli::init()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="mysqli.options.html" class="methodname">mysqli::options()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="mysqli.real-connect.html" class="methodname">mysqli::real_connect()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="mysqli.query.html" class="methodname">mysqli::query()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="mysqli.multi-query.html" class="methodname">mysqli::multi_query()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="mysqli.use-result.html" class="methodname">mysqli::use_result()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="mysqli.store-result.html" class="methodname">mysqli::store_result()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="mysqli-result.free.html" class="methodname">mysqli_result::free()</a></span></li>
+    <li class="member"><span class="methodname"><a href="mysqli.construct.html" class="methodname">mysqli::__construct()</a></span></li>
+    <li class="member"><span class="methodname"><a href="mysqli.init.html" class="methodname">mysqli::init()</a></span></li>
+    <li class="member"><span class="methodname"><a href="mysqli.options.html" class="methodname">mysqli::options()</a></span></li>
+    <li class="member"><span class="methodname"><a href="mysqli.real-connect.html" class="methodname">mysqli::real_connect()</a></span></li>
+    <li class="member"><span class="methodname"><a href="mysqli.query.html" class="methodname">mysqli::query()</a></span></li>
+    <li class="member"><span class="methodname"><a href="mysqli.multi-query.html" class="methodname">mysqli::multi_query()</a></span></li>
+    <li class="member"><span class="methodname"><a href="mysqli.use-result.html" class="methodname">mysqli::use_result()</a></span></li>
+    <li class="member"><span class="methodname"><a href="mysqli.store-result.html" class="methodname">mysqli::store_result()</a></span></li>
+    <li class="member"><span class="methodname"><a href="mysqli-result.free.html" class="methodname">mysqli_result::free()</a></span></li>
    </ul>
   </p>
  </div><hr /><div class="manualnavbar" style="text-align: center;">

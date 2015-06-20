@@ -23,7 +23,7 @@
   <div class="methodsynopsis dc-description">
    <span class="type">array</span> <span class="methodname"><strong>wincache_ucache_info</strong></span>
     ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$summaryonly</code><span class="initializer"> = false</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code><span class="initializer"> = NULL</span></span>
   ]] )</div>
 
   <p class="para rdfs-comment">
@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">summaryonly</code></dt>
 
-     <span class="term"><em><code class="parameter">summaryonly</code></em></span>
      <dd>
 
       <p class="para">
@@ -46,24 +47,23 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">key</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">key</code></em></span>
      <dd>
 
       <p class="para">
        ユーザーキャッシュ内のエントリのキー。
        これを指定すると、返される配列にはそのキャッシュエントリの情報だけを含むようになります。
-       これを指定せず、さらに <em><code class="parameter">summaryonly</code></em> が
+       これを指定せず、さらに <code class="parameter">summaryonly</code> が
        <strong><code>FALSE</code></strong> の場合は、
        返される配列にはキャッシュ内のすべてのエントリについての情報を含むようになります。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -157,8 +157,8 @@
  <div class="refsect1 examples" id="refsect1-function.wincache-ucache-info-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-578">
-    <p><strong>例1  <span class="function"><strong>wincache_ucache_info()</strong></span> の使用</strong></p>
+   <div class="example" id="example-619">
+    <p><strong>例1 <span class="function"><strong>wincache_ucache_info()</strong></span> の使用</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />wincache_ucache_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'green'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">wincache_ucache_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'green'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2922</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">wincache_ucache_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'green'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">wincache_ucache_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'green'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">wincache_ucache_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'green'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">wincache_ucache_info</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -198,15 +198,15 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.wincache-fcache-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_fcache_meminfo()</a> - ファイルキャッシュのメモリ使用状況についての情報を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-ocache-fileinfo.html" class="function" rel="rdfs-seeAlso">wincache_ocache_fileinfo()</a> - opcode キャッシュにキャッシュされたファイルについての情報を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-ocache-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_ocache_meminfo()</a> - opcode キャッシュのメモリ使用状況についての情報を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-rplist-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_rplist_meminfo()</a> - ファイルパス解決キャッシュのメモリ使用状況についての情報を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-rplist-fileinfo.html" class="function" rel="rdfs-seeAlso">wincache_rplist_fileinfo()</a> - ファイルパス解決キャッシュについての情報を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-refresh-if-changed.html" class="function" rel="rdfs-seeAlso">wincache_refresh_if_changed()</a> - キャッシュされたファイルのキャッシュエントリをリフレッシュする</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-ucache-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_ucache_meminfo()</a> - ユーザーキャッシュのメモリ使用状況についての情報を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-scache-info.html" class="function" rel="rdfs-seeAlso">wincache_scache_info()</a> - セッションキャッシュにキャッシュされたファイルについての情報を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.wincache-scache-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_scache_meminfo()</a> - セッションキャッシュのメモリ使用状況についての情報を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-fcache-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_fcache_meminfo()</a> - ファイルキャッシュのメモリ使用状況についての情報を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-ocache-fileinfo.html" class="function" rel="rdfs-seeAlso">wincache_ocache_fileinfo()</a> - opcode キャッシュにキャッシュされたファイルについての情報を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-ocache-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_ocache_meminfo()</a> - opcode キャッシュのメモリ使用状況についての情報を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-rplist-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_rplist_meminfo()</a> - ファイルパス解決キャッシュのメモリ使用状況についての情報を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-rplist-fileinfo.html" class="function" rel="rdfs-seeAlso">wincache_rplist_fileinfo()</a> - ファイルパス解決キャッシュについての情報を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-refresh-if-changed.html" class="function" rel="rdfs-seeAlso">wincache_refresh_if_changed()</a> - キャッシュされたファイルのキャッシュエントリをリフレッシュする</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-ucache-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_ucache_meminfo()</a> - ユーザーキャッシュのメモリ使用状況についての情報を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-scache-info.html" class="function" rel="rdfs-seeAlso">wincache_scache_info()</a> - セッションキャッシュにキャッシュされたファイルについての情報を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.wincache-scache-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_scache_meminfo()</a> - セッションキャッシュのメモリ使用状況についての情報を取得する</span></li>
    </ul>
   </p>
  </div>

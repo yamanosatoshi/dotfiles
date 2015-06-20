@@ -27,8 +27,8 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-   <em><code class="parameter">data</code></em> で指定したデータを
-   <em><code class="parameter">socket</code></em> で指定したソケットに送信します。
+   <code class="parameter">data</code> で指定したデータを
+   <code class="parameter">socket</code> で指定したソケットに送信します。
   </p>
  </div>
 
@@ -38,21 +38,22 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">socket</code></dt>
 
-     <span class="term"><em><code class="parameter">socket</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">data</code></em> を送信するソケット。
+       <code class="parameter">data</code> を送信するソケット。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">data</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">data</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,17 +61,17 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">flags</code></em> は以下の値の組み合わせです。
+       <code class="parameter">flags</code> は以下の値の組み合わせです。
        <table class="doctable table">
-        <caption><strong><em><code class="parameter">flags</code></em> でとりうる値</strong></caption>
+        <caption><strong><code class="parameter">flags</code> でとりうる値</strong></caption>
         
          <tbody class="tbody">
           <tr>
@@ -87,15 +88,15 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">address</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">address</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">address</code></em> で別のアドレスが指定されていない限り、
+       <code class="parameter">address</code> で別のアドレスが指定されていない限り、
        ソケットストリームが作成された際のアドレスを使用します。
       </p>
       <p class="para">
@@ -103,8 +104,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -122,8 +122,8 @@
  <div class="refsect1 examples" id="refsect1-function.stream-socket-sendto-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4019">
-    <p><strong>例1  <span class="function"><strong>stream_socket_sendto()</strong></span> の例</strong></p>
+   <div class="example" id="example-4475">
+    <p><strong>例1 <span class="function"><strong>stream_socket_sendto()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;localhost&nbsp;のポート&nbsp;1234&nbsp;へのソケットをオープンします&nbsp;*/<br /></span><span style="color: #0000BB">$socket&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_socket_client</span><span style="color: #007700">(</span><span style="color: #DD0000">'tcp://127.0.0.1:1234'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;普通のデータを普通のチャネルで送信します&nbsp;*/<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Normal&nbsp;data&nbsp;transmit."</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;帯域外のデータを送信します&nbsp;*/<br /></span><span style="color: #0000BB">stream_socket_sendto</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Out&nbsp;of&nbsp;Band&nbsp;data."</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">STREAM_OOB</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;ソケットを閉じます&nbsp;*/<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -139,9 +139,9 @@
  <div class="refsect1 seealso" id="refsect1-function.stream-socket-sendto-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="function.stream-socket-recvfrom.html" class="function" rel="rdfs-seeAlso">stream_socket_recvfrom()</a> - 接続されているかどうかにかかわらず、ソケットからのデータを受信する</span></li>
-   <li class="member"> <span class="function"><a href="function.stream-socket-client.html" class="function" rel="rdfs-seeAlso">stream_socket_client()</a> - インターネットドメインまたは Unix ドメインのソケット接続を開く</span></li>
-   <li class="member"> <span class="function"><a href="function.stream-socket-server.html" class="function" rel="rdfs-seeAlso">stream_socket_server()</a> - インターネットドメインまたは Unix ドメインのサーバーソケットを作成する</span></li>
+   <li class="member"><span class="function"><a href="function.stream-socket-recvfrom.html" class="function" rel="rdfs-seeAlso">stream_socket_recvfrom()</a> - 接続されているかどうかにかかわらず、ソケットからのデータを受信する</span></li>
+   <li class="member"><span class="function"><a href="function.stream-socket-client.html" class="function" rel="rdfs-seeAlso">stream_socket_client()</a> - インターネットドメインまたは Unix ドメインのソケット接続を開く</span></li>
+   <li class="member"><span class="function"><a href="function.stream-socket-server.html" class="function" rel="rdfs-seeAlso">stream_socket_server()</a> - インターネットドメインまたは Unix ドメインのサーバーソケットを作成する</span></li>
   </ul>
  </div>
 

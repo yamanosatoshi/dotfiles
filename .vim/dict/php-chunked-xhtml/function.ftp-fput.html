@@ -28,7 +28,7 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>ftp_fput()</strong></span> は、ファイルポインタが指すデータを
+   <span class="function"><strong>ftp_fput()</strong></span> は、ファイルポインタが指すデータを
    FTP サーバー上のリモートファイルへアップロードします。
   </p>
  </div>
@@ -38,9 +38,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">ftp_stream</code></dt>
 
-     <span class="term"><em><code class="parameter">ftp_stream</code></em></span>
      <dd>
 
       <p class="para">
@@ -48,11 +49,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">remote_file</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">remote_file</code></em></span>
      <dd>
 
       <p class="para">
@@ -60,11 +61,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">handle</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">handle</code></em></span>
      <dd>
 
       <p class="para">
@@ -73,11 +74,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">mode</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">mode</code></em></span>
      <dd>
 
       <p class="para">
@@ -86,18 +87,17 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">startpos</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">startpos</code></em></span>
      <dd>
 
       <p class="para">リモートファイル内での、アップロード開始位置。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -113,8 +113,8 @@
  <div class="refsect1 examples" id="refsect1-function.ftp-fput-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4262">
-    <p><strong>例1  <span class="function"><strong>ftp_fput()</strong></span> の例</strong></p>
+   <div class="example" id="example-4710">
+    <p><strong>例1 <span class="function"><strong>ftp_fput()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;ファイルを読み込みモードで開く<br /></span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'somefile.txt'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;接続を確立する<br /></span><span style="color: #0000BB">$conn_id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$ftp_server</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ユーザー名とパスワードでログインする<br /></span><span style="color: #0000BB">$login_result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_login</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_pass</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;$file&nbsp;のアップロードを試みる<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">ftp_fput</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">FTP_ASCII</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Successfully&nbsp;uploaded&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"There&nbsp;was&nbsp;a&nbsp;problem&nbsp;while&nbsp;uploading&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;接続を閉じ、ファイルを閉じる<br /></span><span style="color: #0000BB">ftp_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -126,41 +126,13 @@
   </p>
  </div>
 
- <div class="refsect1 changelog" id="refsect1-function.ftp-fput-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        <em><code class="parameter">startpos</code></em> が追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
  <div class="refsect1 seealso" id="refsect1-function.ftp-fput-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ftp-put.html" class="function" rel="rdfs-seeAlso">ftp_put()</a> - FTP サーバーにファイルをアップロードする</span></li>
-    <li class="member"> <span class="function"><a href="function.ftp-nb-fput.html" class="function" rel="rdfs-seeAlso">ftp_nb_fput()</a> - オープン中のファイルを FTP サーバーに保存する（非ブロッキング）</span></li>
-    <li class="member"> <span class="function"><a href="function.ftp-nb-put.html" class="function" rel="rdfs-seeAlso">ftp_nb_put()</a> - FTP サーバーにファイルを保存する（非ブロッキング）</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-put.html" class="function" rel="rdfs-seeAlso">ftp_put()</a> - FTP サーバーにファイルをアップロードする</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-nb-fput.html" class="function" rel="rdfs-seeAlso">ftp_nb_fput()</a> - オープン中のファイルを FTP サーバーに保存する（非ブロッキング）</span></li>
+    <li class="member"><span class="function"><a href="function.ftp-nb-put.html" class="function" rel="rdfs-seeAlso">ftp_nb_put()</a> - FTP サーバーにファイルを保存する（非ブロッキング）</span></li>
    </ul>
   </p>
  </div>

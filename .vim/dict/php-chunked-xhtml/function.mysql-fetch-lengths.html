@@ -27,8 +27,8 @@
 <a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli-result.lengths.html" class="function">mysqli_fetch_lengths()</a></span></li>
-    <li class="member"> <span class="methodname"><a href="pdostatement.getcolumnmeta.html" class="methodname">PDOStatement::getColumnMeta()</a></span></li>
+    <li class="member"><span class="function"><a href="mysqli-result.lengths.html" class="function">mysqli_fetch_lengths()</a></span></li>
+    <li class="member"><span class="methodname"><a href="pdostatement.getcolumnmeta.html" class="methodname">PDOStatement::getColumnMeta()</a></span></li>
    </ul>
   </div>
  </div>
@@ -45,11 +45,11 @@
    格納した配列を返します。
   </p>
   <p class="para">
-    <span class="function"><strong>mysql_fetch_lengths()</strong></span>は、
-    <span class="function"><a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a></span>,
-    <span class="function"><a href="function.mysql-fetch-assoc.html" class="function">mysql_fetch_assoc()</a></span>,
-    <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span>, そして
-    <span class="function"><a href="function.mysql-fetch-object.html" class="function">mysql_fetch_object()</a></span> により一番最近に返された
+   <span class="function"><strong>mysql_fetch_lengths()</strong></span>は、
+   <span class="function"><a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a></span>,
+   <span class="function"><a href="function.mysql-fetch-assoc.html" class="function">mysql_fetch_assoc()</a></span>,
+   <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span>, そして
+   <span class="function"><a href="function.mysql-fetch-object.html" class="function">mysql_fetch_object()</a></span> により一番最近に返された
    各結果カラムの長さを格納した配列を返します。この配列のオフセットは
    0 から始まります。
   </p>
@@ -62,12 +62,12 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-result</code></em></span><dd>
+<code class="parameter">
+result</code></dt>
+<dd>
 <p class="para">評価された結果 <span class="type"><span class="type リソース">リソース</span></span>。
-この結果は、 <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
+この結果は、<span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> のコールにより得られたものです。</p>
 </dd>
-</dt>
 
    </dl>
 
@@ -87,8 +87,8 @@ result</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.mysql-fetch-lengths-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1582">
-    <p><strong>例1  <span class="function"><strong>mysql_fetch_lengths()</strong></span> の例</strong></p>
+   <div class="example" id="example-1761">
+    <p><strong>例1 <span class="function"><strong>mysql_fetch_lengths()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,email&nbsp;FROM&nbsp;people&nbsp;WHERE&nbsp;id&nbsp;=&nbsp;'42'"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;run&nbsp;query:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #0000BB">$row&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$lengths&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_lengths</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$row</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$lengths</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -121,9 +121,9 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.mysql-field-len.html" class="function" rel="rdfs-seeAlso">mysql_field_len()</a> - 指定したフィールドの長さを返す</span></li>
-    <li class="member"> <span class="function"><a href="function.mysql-fetch-row.html" class="function" rel="rdfs-seeAlso">mysql_fetch_row()</a> - 結果を添字配列として取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.strlen.html" class="function" rel="rdfs-seeAlso">strlen()</a> - 文字列の長さを得る</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-field-len.html" class="function" rel="rdfs-seeAlso">mysql_field_len()</a> - 指定したフィールドの長さを返す</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-fetch-row.html" class="function" rel="rdfs-seeAlso">mysql_fetch_row()</a> - 結果を添字配列として取得する</span></li>
+    <li class="member"><span class="function"><a href="function.strlen.html" class="function" rel="rdfs-seeAlso">strlen()</a> - 文字列の長さを得る</span></li>
    </ul>
   </p>
  </div>

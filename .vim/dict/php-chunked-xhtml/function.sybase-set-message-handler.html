@@ -26,7 +26,7 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>sybase_set_message_handler()</strong></span> は、
+   <span class="function"><strong>sybase_set_message_handler()</strong></span> は、
    サーバーからのメッセージを処理するユーザー関数を設定します。グローバル関数の名前、
    あるいはオブジェクトへの参照とメソッド名を保持する配列を指定します。
   </p>
@@ -38,9 +38,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">handler</code></dt>
 
-     <span class="term"><em><code class="parameter">handler</code></em></span>
      <dd>
 
       <p class="para">
@@ -51,11 +52,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">link_identifier</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">link_identifier</code></em></span>
      <dd>
 
       <p class="para">
@@ -63,8 +64,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -79,40 +79,11 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.sybase-set-message-handler-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.3.5</td>
-       <td>
-        <em><code class="parameter">link_identifier</code></em> パラメータが追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.sybase-set-message-handler-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2189">
-    <p><strong>例1  <span class="function"><strong>sybase_set_message_handler()</strong></span> コールバック関数</strong></p>
+   <div class="example" id="example-2386">
+    <p><strong>例1 <span class="function"><strong>sybase_set_message_handler()</strong></span> コールバック関数</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">msg_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$msgnumber</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$severity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$state</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$msgnumber</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$severity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$state</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sybase_set_message_handler</span><span style="color: #007700">(</span><span style="color: #DD0000">'msg_handler'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -121,8 +92,8 @@
     </div>
 
    </div>
-   <div class="example" id="example-2190">
-    <p><strong>例2 クラスへの  <span class="function"><strong>sybase_set_message_handler()</strong></span> コールバック</strong></p>
+   <div class="example" id="example-2387">
+    <p><strong>例2 クラスへの <span class="function"><strong>sybase_set_message_handler()</strong></span> コールバック</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Sybase&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$msgnumber</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$severity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$state</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$msgnumber</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$severity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$state</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sybase</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Sybase</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sybase_set_message_handler</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$sybase</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'handler'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -131,8 +102,8 @@
     </div>
 
    </div>
-   <div class="example" id="example-2191">
-    <p><strong>例3  <span class="function"><strong>sybase_set_message_handler()</strong></span> が処理しないメッセージ</strong></p>
+   <div class="example" id="example-2388">
+    <p><strong>例3 <span class="function"><strong>sybase_set_message_handler()</strong></span> が処理しないメッセージ</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;この関数から&nbsp;FALSE&nbsp;を返すことは、それをこの関数では処理しないことを<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;意味します。エラーは警告として表示され、ハンドラが何も設定されていない<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;場合と同様に処理できます。<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">msg_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$msgnumber</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$severity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$state</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">257&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">$msgnumber</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$msgnumber</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$severity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$state</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sybase_set_message_handler</span><span style="color: #007700">(</span><span style="color: #DD0000">'msg_handler'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

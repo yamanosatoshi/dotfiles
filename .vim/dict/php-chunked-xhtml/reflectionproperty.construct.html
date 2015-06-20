@@ -20,7 +20,7 @@
  <div class="refsect1 description" id="refsect1-reflectionproperty.construct-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>  <span class="methodname"><strong>ReflectionProperty::__construct</strong></span>
+   <span class="modifier">public</span> <span class="methodname"><strong>ReflectionProperty::__construct</strong></span>
     ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$class</code></span>
    , <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
    )</div>
@@ -41,9 +41,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">class</code></dt>
 
-     <span class="term"><em><code class="parameter">class</code></em></span>
      <dd>
 
       <p class="para">
@@ -51,11 +52,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">name</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">name</code></em></span>
      <dd>
 
       <p class="para">
@@ -63,8 +64,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -91,8 +91,8 @@
  <div class="refsect1 examples" id="refsect1-reflectionproperty.construct-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5217">
-    <p><strong>例1  <span class="methodname"><strong>ReflectionProperty::__construct()</strong></span> の例</strong></p>
+   <div class="example" id="example-5696">
+    <p><strong>例1 <span class="methodname"><strong>ReflectionProperty::__construct()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">String<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$length&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;ReflectionProperty&nbsp;クラスのインスタンスを作成します<br /></span><span style="color: #0000BB">$prop&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ReflectionProperty</span><span style="color: #007700">(</span><span style="color: #DD0000">'String'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'length'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;基本情報を表示します<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"===&gt;&nbsp;The%s%s%s%s&nbsp;property&nbsp;'%s'&nbsp;(which&nbsp;was&nbsp;%s)\n"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;having&nbsp;the&nbsp;modifiers&nbsp;%s\n"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$prop</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isPublic</span><span style="color: #007700">()&nbsp;?&nbsp;</span><span style="color: #DD0000">'&nbsp;public'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$prop</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isPrivate</span><span style="color: #007700">()&nbsp;?&nbsp;</span><span style="color: #DD0000">'&nbsp;private'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$prop</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isProtected</span><span style="color: #007700">()&nbsp;?&nbsp;</span><span style="color: #DD0000">'&nbsp;protected'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$prop</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isStatic</span><span style="color: #007700">()&nbsp;?&nbsp;</span><span style="color: #DD0000">'&nbsp;static'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$prop</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getName</span><span style="color: #007700">(),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$prop</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isDefault</span><span style="color: #007700">()&nbsp;?&nbsp;</span><span style="color: #DD0000">'declared&nbsp;at&nbsp;compile-time'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'created&nbsp;at&nbsp;run-time'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">Reflection</span><span style="color: #007700">::</span><span style="color: #0000BB">getModifierNames</span><span style="color: #007700">(</span><span style="color: #0000BB">$prop</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getModifiers</span><span style="color: #007700">()),&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #FF8000">//&nbsp;String&nbsp;のインスタンスを作成します<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">String</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;現在の値を取得します<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"---&gt;&nbsp;Value&nbsp;is:&nbsp;"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$prop</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getValue</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;値を変更します<br /></span><span style="color: #0000BB">$prop</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setValue</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"---&gt;&nbsp;Setting&nbsp;value&nbsp;to&nbsp;10,&nbsp;new&nbsp;value&nbsp;is:&nbsp;"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$prop</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getValue</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;オブジェクトを出力します<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -117,7 +117,7 @@ object(String)#2 (1) {
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-5218">
+   <div class="example" id="example-5697">
     <p><strong>例2 <a href="class.reflectionproperty.html" class="classname">ReflectionProperty</a> クラスを用いた、private および protected プロパティの値の取得</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -143,7 +143,7 @@ int(3)
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="reflectionproperty.getname.html" class="methodname" rel="rdfs-seeAlso">ReflectionProperty::getName()</a> - プロパティ名を取得する</span></li>
+    <li class="member"><span class="methodname"><a href="reflectionproperty.getname.html" class="methodname" rel="rdfs-seeAlso">ReflectionProperty::getName()</a> - プロパティ名を取得する</span></li>
     <li class="member"><a href="language.oop5.decon.html#language.oop5.decon.constructor" class="link">コンストラクタ</a></li>
    </ul>
   </p>

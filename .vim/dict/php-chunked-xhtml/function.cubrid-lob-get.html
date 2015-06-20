@@ -26,12 +26,12 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>cubrid_lob_get()</strong></span> is used to get BLOB/CLOB meta info from CUBRID database, 
+   <span class="function"><strong>cubrid_lob_get()</strong></span> is used to get BLOB/CLOB meta info from CUBRID database, 
    CUBRID gets BLOB/CLOB by executing the SQL statement, and returns all LOBs as a resource array. 
    Be sure that the SQL retrieves only one column and its data type is BLOB or CLOB.
   </p>
   <p class="para">
-   Remember to use  <span class="function"><a href="function.cubrid-lob-close.html" class="function">cubrid_lob_close()</a></span> to release the LOBs if you don&#039;t need it any more.
+   Remember to use <span class="function"><a href="function.cubrid-lob-close.html" class="function">cubrid_lob_close()</a></span> to release the LOBs if you don&#039;t need it any more.
   </p>
  </div>
 
@@ -41,22 +41,22 @@
   <p class="para">
   <dl>
 
-    <dt>
+    
+  <dt>
+<code class="parameter">conn_identifier</code></dt>
 
-  <span class="term"><em><code class="parameter">conn_identifier</code></em></span>
   <dd>
 <p class="para">Connection identifier.</p></dd>
 
-   </dt>
+   
+   
+  <dt>
+<code class="parameter">sql</code></dt>
 
-   <dt>
-
-  <span class="term"><em><code class="parameter">sql</code></em></span>
   <dd>
 <p class="para">SQL statement to be executed.</p></dd>
 
-   </dt>
-
+   
   </dl>
 
   </p>
@@ -76,8 +76,8 @@
 
  <div class="refsect1 examples" id="refsect1-function.cubrid-lob-get-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1028">
-   <p><strong>例1  <span class="function"><strong>cubrid_lob_get()</strong></span> example</strong></p>
+  <div class="example" id="example-1086">
+   <p><strong>例1 <span class="function"><strong>cubrid_lob_get()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dba"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,</span><span style="color: #DD0000">"DROP&nbsp;TABLE&nbsp;if&nbsp;exists&nbsp;doc"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;doc&nbsp;(id&nbsp;INT,&nbsp;doc_content&nbsp;CLOB)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;doc&nbsp;VALUES&nbsp;(5,'hello,cubrid')"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$lobs&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_lob_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;doc_content&nbsp;FROM&nbsp;doc&nbsp;WHERE&nbsp;id=5"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Doc&nbsp;size:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">cubrid_lob_size</span><span style="color: #007700">(</span><span style="color: #0000BB">$lobs</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]).</span><span style="color: #DD0000">"&nbsp;bytes"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">cubrid_lob_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$lobs</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"doc_5.txt"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_lob_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$lobs</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -93,10 +93,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.cubrid-lob-close.html" class="function" rel="rdfs-seeAlso">cubrid_lob_close()</a> - Close BLOB/CLOB data</span></li>  
-    <li class="member"> <span class="function"><a href="function.cubrid-lob-size.html" class="function" rel="rdfs-seeAlso">cubrid_lob_size()</a> - Get BLOB/CLOB data size</span></li>  
-    <li class="member"> <span class="function"><a href="function.cubrid-lob-export.html" class="function" rel="rdfs-seeAlso">cubrid_lob_export()</a> - Export BLOB/CLOB data to file</span></li>     
-    <li class="member"> <span class="function"><a href="function.cubrid-lob-send.html" class="function" rel="rdfs-seeAlso">cubrid_lob_send()</a> - Read BLOB/CLOB data and send straight to browser</span></li>     
+    <li class="member"><span class="function"><a href="function.cubrid-lob-close.html" class="function" rel="rdfs-seeAlso">cubrid_lob_close()</a> - Close BLOB/CLOB data</span></li>  
+    <li class="member"><span class="function"><a href="function.cubrid-lob-size.html" class="function" rel="rdfs-seeAlso">cubrid_lob_size()</a> - Get BLOB/CLOB data size</span></li>  
+    <li class="member"><span class="function"><a href="function.cubrid-lob-export.html" class="function" rel="rdfs-seeAlso">cubrid_lob_export()</a> - Export BLOB/CLOB data to file</span></li>     
+    <li class="member"><span class="function"><a href="function.cubrid-lob-send.html" class="function" rel="rdfs-seeAlso">cubrid_lob_send()</a> - Read BLOB/CLOB data and send straight to browser</span></li>     
    </ul>
   </p>
   </div>

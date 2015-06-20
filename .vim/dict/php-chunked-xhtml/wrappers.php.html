@@ -50,7 +50,7 @@
   </div>
 
 
-  <div class="refsect2 unknown-unknown-descriptiop" id="refsect2-wrappers.php-unknown-unknown-descriptiop">
+  <div class="refsect2 unknown-unknown-descriptiop" id="wrappers.php.input">
    <h4 class="title">php://input</h4>
    <p class="simpara">
     <var class="filename">php://input</var> は読み込み専用のストリームで、
@@ -66,7 +66,8 @@
    </p>
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <span class="simpara">
-     <var class="filename">php://input</var> でオープンしたストリームは、は一度しか読み込めません。
+     PHP 5.6 より前のバージョンでは、
+     <var class="filename">php://input</var> でオープンしたストリームは、一度しか読み込めません。
      また、このストリームは seek 操作をサポートしていません。
      しかし、SAPI の実装によっては、別の <var class="filename">php://input</var>
      ストリームをオープンして読み込みを再開できる可能性もあります。
@@ -82,7 +83,7 @@
    <h4 class="title">php://output</h4>
    <p class="para">
     <var class="filename">php://output</var> は書き込み専用のストリームで、
-     <span class="function"><a href="function.print.html" class="function">print</a></span> および  <span class="function"><a href="function.echo.html" class="function">echo</a></span>
+    <span class="function"><a href="function.print.html" class="function">print</a></span> および <span class="function"><a href="function.echo.html" class="function">echo</a></span>
     と同じ方法での出力バッファへの書き込みを許可します。
    </p>
   </div>
@@ -107,7 +108,7 @@
     <var class="filename">php://temp</var> は定義済みの上限 (デフォルトは 2 MB)
     に達するとテンポラリファイルを使うという点です。
     このテンポラリファイルの場所は、
-     <span class="function"><a href="function.sys-get-temp-dir.html" class="function">sys_get_temp_dir()</a></span> 関数と同じ方法で決めます。
+    <span class="function"><a href="function.sys-get-temp-dir.html" class="function">sys_get_temp_dir()</a></span> 関数と同じ方法で決めます。
    </p>
    <p class="simpara">
     <var class="filename">php://temp</var> のメモリ制限を制御するには
@@ -123,8 +124,8 @@
    <p class="simpara">
     <var class="filename">php://filter</var> は、<a href="filters.html" class="link">フィルタ</a>アプリケーションが
     ストリームをオープンすることを許可するために設計されたメタラッパーです。
-    これは、 <span class="function"><a href="function.readfile.html" class="function">readfile()</a></span>、 <span class="function"><a href="function.file.html" class="function">file()</a></span>
-    および  <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span> のようなオールインワンの
+    これは、<span class="function"><a href="function.readfile.html" class="function">readfile()</a></span>、<span class="function"><a href="function.file.html" class="function">file()</a></span>
+    および <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span> のようなオールインワンの
     ファイル関数とともに使用すると有用です。これらの関数には、コンテンツが
     読み込まれる前にストリームにフィルタを適用する手段がありません。
    </p>
@@ -274,7 +275,7 @@
       </tr>
 
       <tr>
-       <td> <span class="function"><a href="function.stat.html" class="function">stat()</a></span> のサポート</td>
+       <td><span class="function"><a href="function.stat.html" class="function">stat()</a></span> のサポート</td>
        <td>
         <em>php://memory</em> および
         <em>php://temp</em> のみ。
@@ -282,27 +283,27 @@
       </tr>
 
       <tr>
-       <td> <span class="function"><a href="function.unlink.html" class="function">unlink()</a></span> のサポート</td>
+       <td><span class="function"><a href="function.unlink.html" class="function">unlink()</a></span> のサポート</td>
        <td>No</td>
       </tr>
 
       <tr>
-       <td> <span class="function"><a href="function.rename.html" class="function">rename()</a></span> のサポート</td>
+       <td><span class="function"><a href="function.rename.html" class="function">rename()</a></span> のサポート</td>
        <td>No</td>
       </tr>
 
       <tr>
-       <td> <span class="function"><a href="function.mkdir.html" class="function">mkdir()</a></span> のサポート</td>
+       <td><span class="function"><a href="function.mkdir.html" class="function">mkdir()</a></span> のサポート</td>
        <td>No</td>
       </tr>
 
       <tr>
-       <td> <span class="function"><a href="function.rmdir.html" class="function">rmdir()</a></span> のサポート</td>
+       <td><span class="function"><a href="function.rmdir.html" class="function">rmdir()</a></span> のサポート</td>
        <td>No</td>
       </tr>
 
       <tr>
-       <td> <span class="function"><a href="function.stream-select.html" class="function">stream_select()</a></span> のサポート</td>
+       <td><span class="function"><a href="function.stream-select.html" class="function">stream_select()</a></span> のサポート</td>
        <td>
         <em>php://stdin</em>、
         <em>php://stdout</em>、
@@ -335,6 +336,13 @@
 
      <tbody class="tbody">
       <tr>
+       <td>5.6.0</td>
+       <td>
+        <var class="filename">php://input</var> が再利用可能になりました。
+       </td>
+      </tr>
+
+      <tr>
        <td>5.3.6</td>
        <td>
         <var class="filename">php://fd</var> が追加されました。
@@ -366,7 +374,7 @@
 
  <div class="refsect1 examples" id="refsect1-wrappers.php-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-313">
+  <div class="example" id="example-338">
    <p><strong>例1 php://temp/maxmemory</strong></p>
    <div class="example-contents"><p>
     このオプションパラメータは、<var class="filename">php://temp</var>
@@ -380,7 +388,7 @@
    </div>
 
   </div>
-  <div class="example" id="example-314">
+  <div class="example" id="example-339">
    <p><strong>例2 php://filter/resource=&lt;フィルタの対象となるストリーム&gt;</strong></p>
    <div class="example-contents"><p>
     このパラメータは、
@@ -395,7 +403,7 @@
    </div>
 
   </div>
-  <div class="example" id="example-315">
+  <div class="example" id="example-340">
    <p><strong>例3 php://filter/read=&lt;読み込みチェーンに適用するフィルタのリスト&gt;</strong></p>
    <div class="example-contents"><p>
     このパラメータは 1 つ以上のフィルタ名を
@@ -409,7 +417,7 @@
    </div>
 
   </div>
-  <div class="example" id="example-316">
+  <div class="example" id="example-341">
    <p><strong>例4 php://filter/write=&lt;書き込みチェーンに適用するフィルタのリスト&gt;</strong></p>
    <div class="example-contents"><p>
     このパラメータは 1 つ以上のフィルタ名を

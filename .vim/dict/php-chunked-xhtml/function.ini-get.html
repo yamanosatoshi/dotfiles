@@ -35,9 +35,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">varname</code></dt>
 
-     <span class="term"><em><code class="parameter">varname</code></em></span>
      <dd>
 
       <p class="para">
@@ -45,8 +46,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -66,8 +66,8 @@
  <div class="refsect1 examples" id="refsect1-function.ini-get-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-498">
-    <p><strong>例1  <span class="function"><strong>ini_get()</strong></span> の例</strong></p>
+   <div class="example" id="example-523">
+    <p><strong>例1 <span class="function"><strong>ini_get()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*<br />php.ini&nbsp;で以下のように設定されているものとします<br /><br />display_errors&nbsp;=&nbsp;On<br />register_globals&nbsp;=&nbsp;Off<br />post_max_size&nbsp;=&nbsp;8M<br />*/<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'display_errors&nbsp;=&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'display_errors'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">'register_globals&nbsp;=&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'register_globals'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">'post_max_size&nbsp;=&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'post_max_size'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">'post_max_size+1&nbsp;=&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;(</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'post_max_size'</span><span style="color: #007700">)+</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">'post_max_size&nbsp;in&nbsp;bytes&nbsp;=&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">return_bytes</span><span style="color: #007700">(</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'post_max_size'</span><span style="color: #007700">));<br /><br />function&nbsp;</span><span style="color: #0000BB">return_bytes</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$last&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">[</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">)-</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;switch(</span><span style="color: #0000BB">$last</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;'G'&nbsp;は&nbsp;PHP&nbsp;5.1.0&nbsp;以降で使用可能です<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">case&nbsp;</span><span style="color: #DD0000">'g'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">*=&nbsp;</span><span style="color: #0000BB">1024</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'m'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">*=&nbsp;</span><span style="color: #0000BB">1024</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'k'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">*=&nbsp;</span><span style="color: #0000BB">1024</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -109,7 +109,7 @@ post_max_size in bytes = 8388608
     <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a>
     のようなメモリサイズの値の場合、
     <var class="filename">php.ini</var>上で省略形で格納されています。
-     <span class="function"><strong>ini_get()</strong></span>は<var class="filename">php.ini</var>に格納されている値を
+    <span class="function"><strong>ini_get()</strong></span>は<var class="filename">php.ini</var>に格納されている値を
     そのままの形式で返します。整数表現に変換したりは<em class="emphasis">しません</em>。
     これらの値に通常の算術的な関数を施すと予期しない結果を
     得てしまいます。上の例では、省略形の表記から本来のバイト数に変換する
@@ -152,10 +152,10 @@ post_max_size in bytes = 8388608
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.get-cfg-var.html" class="function" rel="rdfs-seeAlso">get_cfg_var()</a> - PHP 設定オプションの値を取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.ini-get-all.html" class="function" rel="rdfs-seeAlso">ini_get_all()</a> - すべての設定オプションを得る</span></li>
-    <li class="member"> <span class="function"><a href="function.ini-restore.html" class="function" rel="rdfs-seeAlso">ini_restore()</a> - 設定オプションの値を元に戻す</span></li>
-    <li class="member"> <span class="function"><a href="function.ini-set.html" class="function" rel="rdfs-seeAlso">ini_set()</a> - 設定オプションの値を設定する</span></li>
+    <li class="member"><span class="function"><a href="function.get-cfg-var.html" class="function" rel="rdfs-seeAlso">get_cfg_var()</a> - PHP 設定オプションの値を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.ini-get-all.html" class="function" rel="rdfs-seeAlso">ini_get_all()</a> - すべての設定オプションを得る</span></li>
+    <li class="member"><span class="function"><a href="function.ini-restore.html" class="function" rel="rdfs-seeAlso">ini_restore()</a> - 設定オプションの値を元に戻す</span></li>
+    <li class="member"><span class="function"><a href="function.ini-set.html" class="function" rel="rdfs-seeAlso">ini_set()</a> - 設定オプションの値を設定する</span></li>
    </ul>
   </p>
  </div>

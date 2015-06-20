@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">restrict</code></dt>
 
-     <span class="term"><em><code class="parameter">restrict</code></em></span>
      <dd>
 
       <p class="para">
@@ -49,8 +50,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -71,7 +71,7 @@
    次の例では、以下のような内容の <var class="filename">book.xml</var> を使います。
   </p>
   <p class="para">
-   <div class="example" id="example-5398">
+   <div class="example" id="example-5866">
     <p><strong>例1 book.xml</strong></p>
     <div class="example-contents">
 <div class="xmlcode"><pre class="xmlcode">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
@@ -96,8 +96,8 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5399">
-    <p><strong>例2  <span class="methodname"><strong>DOMXPath::registerPHPFunctions()</strong></span> と <em>php:functionString</em> の例</strong></p>
+   <div class="example" id="example-5867">
+    <p><strong>例2 <span class="methodname"><strong>DOMXPath::registerPHPFunctions()</strong></span> と <em>php:functionString</em> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$doc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #DD0000">'book.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$xpath&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMXPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$doc</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;名前空間&nbsp;php:&nbsp;を登録します&nbsp;(必須)<br /></span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerNamespace</span><span style="color: #007700">(</span><span style="color: #DD0000">"php"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"http://php.net/xpath"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;の関数を登録します&nbsp;(無制限)<br /></span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerPHPFunctions</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;substr&nbsp;関数を&nbsp;book&nbsp;の&nbsp;title&nbsp;に適用します<br /></span><span style="color: #0000BB">$nodes&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">'//book[php:functionString("substr",&nbsp;title,&nbsp;0,&nbsp;3)&nbsp;=&nbsp;"PHP"]'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Found&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$nodes</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">length</span><span style="color: #007700">}</span><span style="color: #DD0000">&nbsp;books&nbsp;starting&nbsp;with&nbsp;'PHP':\n"</span><span style="color: #007700">;<br />foreach&nbsp;(</span><span style="color: #0000BB">$nodes&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$node</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$title&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$node</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">"title"</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">item</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">nodeValue</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$author&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$node</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">"author"</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">item</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">nodeValue</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$title</span><span style="color: #DD0000">&nbsp;by&nbsp;</span><span style="color: #0000BB">$author</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -117,8 +117,8 @@ PHP Secrets by Jenny Smythe
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5400">
-    <p><strong>例3  <span class="methodname"><strong>DOMXPath::registerPHPFunctions()</strong></span> と <em>php:function</em> の例</strong></p>
+   <div class="example" id="example-5868">
+    <p><strong>例3 <span class="methodname"><strong>DOMXPath::registerPHPFunctions()</strong></span> と <em>php:function</em> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$doc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #DD0000">'book.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$xpath&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMXPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$doc</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;名前空間&nbsp;php:&nbsp;を登録します&nbsp;(必須)<br /></span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerNamespace</span><span style="color: #007700">(</span><span style="color: #DD0000">"php"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"http://php.net/xpath"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;の関数を登録します&nbsp;(has_multiple&nbsp;限定)<br /></span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerPHPFunctions</span><span style="color: #007700">(</span><span style="color: #DD0000">"has_multiple"</span><span style="color: #007700">);<br />&nbsp;<br />function&nbsp;</span><span style="color: #0000BB">has_multiple</span><span style="color: #007700">(</span><span style="color: #0000BB">$nodes</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;author&nbsp;が複数ある場合に&nbsp;true&nbsp;を返します<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$nodes</span><span style="color: #007700">)&nbsp;&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br /></span><span style="color: #FF8000">//&nbsp;複数の&nbsp;author&nbsp;がいる&nbsp;book&nbsp;のみを取り出します<br /></span><span style="color: #0000BB">$books&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">'//book[php:function("has_multiple",&nbsp;author)]'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Books&nbsp;with&nbsp;multiple&nbsp;authors:\n"</span><span style="color: #007700">;<br />foreach&nbsp;(</span><span style="color: #0000BB">$books&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$book</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$book</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">"title"</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">item</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">nodeValue&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -143,9 +143,9 @@ PHP Basics
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="domxpath.registernamespace.html" class="methodname" rel="rdfs-seeAlso">DOMXPath::registerNamespace()</a> - DOMXPath オブジェクトの名前空間を登録する</span></li>
-    <li class="member"> <span class="methodname"><a href="domxpath.query.html" class="methodname" rel="rdfs-seeAlso">DOMXPath::query()</a> - 与えられた XPath 式を評価する</span></li>
-    <li class="member"> <span class="methodname"><a href="domxpath.evaluate.html" class="methodname" rel="rdfs-seeAlso">DOMXPath::evaluate()</a> - 与えられた XPath 式を評価し、可能であれば結果を返す</span></li>
+    <li class="member"><span class="methodname"><a href="domxpath.registernamespace.html" class="methodname" rel="rdfs-seeAlso">DOMXPath::registerNamespace()</a> - DOMXPath オブジェクトの名前空間を登録する</span></li>
+    <li class="member"><span class="methodname"><a href="domxpath.query.html" class="methodname" rel="rdfs-seeAlso">DOMXPath::query()</a> - 与えられた XPath 式を評価する</span></li>
+    <li class="member"><span class="methodname"><a href="domxpath.evaluate.html" class="methodname" rel="rdfs-seeAlso">DOMXPath::evaluate()</a> - 与えられた XPath 式を評価し、可能であれば結果を返す</span></li>
    </ul>
   </p>
  </div>

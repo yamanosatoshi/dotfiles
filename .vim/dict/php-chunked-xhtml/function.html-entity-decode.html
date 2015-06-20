@@ -23,12 +23,12 @@
    <span class="type">string</span> <span class="methodname"><strong>html_entity_decode</strong></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>
    [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = ENT_COMPAT | ENT_HTML401</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code><span class="initializer"> = &#039;UTF-8&#039;</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code><span class="initializer"> = ini_get(&quot;default_charset&quot;)</span></span>
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>html_entity_decode()</strong></span> は
-    <span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span> の反対で、<em><code class="parameter">string</code></em>
+   <span class="function"><strong>html_entity_decode()</strong></span> は
+   <span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span> の反対で、<code class="parameter">string</code>
    にあるすべての HTML エンティティを適切な文字に変換します。
   </p>
   <p class="para">
@@ -47,9 +47,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">string</code></dt>
 
-     <span class="term"><em><code class="parameter">string</code></em></span>
      <dd>
 
       <p class="para">
@@ -57,18 +58,18 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">flags</code></em></span>
      <dd>
 
       <p class="para">
        以下のフラグのビットマスクによる組み合わせで、クォートの扱いやドキュメントの形式を指定します。
        デフォルトは <em>ENT_COMPAT | ENT_HTML401</em> です。
        <table class="doctable table">
-        <caption><strong>使用可能な <em><code class="parameter">flags</code></em> 定数</strong></caption>
+        <caption><strong>使用可能な <code class="parameter">flags</code> 定数</strong></caption>
         
          <thead>
           <tr>
@@ -129,18 +130,34 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">encoding</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">encoding</code></em></span>
      <dd>
 
-      <p class="para">
-       使用するエンコーディング。省略した場合のデフォルト値は、
-       PHP 5.4.0 より前のバージョンでは ISO-8859-1、そして
-       PHP 5.4.0 以降では UTF-8 となります。
-      </p>
+      
+ <p class="para">
+  オプションの引数。文字を変換するときに使うエンコーディングを定義します。
+ </p>
+
+ <p class="para">
+  省略した場の <code class="parameter">encoding</code> のデフォルト値は、varies
+  PHP のバージョンによって異なります。
+  PHP 5.6.0 以降では、デフォルト値として <a href="ini.core.html#ini.default-charset" class="link">default_charset</a>
+  の値を使います。PHP 5.4 と PHP 5.5 のデフォルト値は、
+  <em>UTF-8</em> で、それより前のバージョンの PHP のデフォルト値は
+  <em>ISO-8859-1</em> でした。
+ </p>
+
+ <p class="para">
+  技術的にはこの引数を省略可能ですが、PHP 5.5 以前のバージョンを使っている場合や、
+  <a href="ini.core.html#ini.default-charset" class="link">default_charset</a>
+  の指定が入力とは違う文字セットになっている場合は、
+  適切な値を指定しておくことを強く推奨します。
+ </p>
+
       
 
 
@@ -279,8 +296,8 @@
       空文字列を指定すると、
       スクリプトのエンコーディング (Zend multibyte)、
       <a href="ini.core.html#ini.default-charset" class="link">default_charset</a>、
-      そして現在のロケール ( <span class="function"><a href="function.nl-langinfo.html" class="function">nl_langinfo()</a></span> および
-       <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> を参照ください)
+      そして現在のロケール (<span class="function"><a href="function.nl-langinfo.html" class="function">nl_langinfo()</a></span> および
+      <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> を参照ください)
       の順でエンコーディングを検出します。
       この方法はおすすめしません。
      </td>
@@ -301,8 +318,7 @@
 
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -331,6 +347,16 @@
      </thead>
 
      <tbody class="tbody">
+      
+ <tr>
+  <td>5.6.0</td>
+  <td>
+   <code class="parameter">encoding</code> パラメータのデフォルト値が、
+   <a href="ini.core.html#ini.default-charset" class="link">default_charset</a> の設定値に変わりました。
+  </td>
+ </tr>
+
+
       <tr>
        <td>5.3.3</td>
        <td>
@@ -346,13 +372,6 @@
        </td>
       </tr>
 
-      <tr>
-       <td>5.0.0</td>
-       <td>
-        マルチバイトエンコーディングをサポートするようになりました。
-       </td>
-      </tr>
-
      </tbody>
     
    </table>
@@ -364,7 +383,7 @@
  <div class="refsect1 examples" id="refsect1-function.html-entity-decode-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4814">
+   <div class="example" id="example-5292">
     <p><strong>例1 HTML エンティティのデコード</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -386,7 +405,7 @@
     ならないことを疑問に思う人もいるでしょう。なぜそうなるのかというと、
     デフォルトのエンコーディング ISO-8859-1 では
     &#039;&amp;nbsp;&#039; エンティティが ASCII コード 32 (これは
-     <span class="function"><a href="function.trim.html" class="function">trim()</a></span> で取り除かれる) ではなく
+    <span class="function"><a href="function.trim.html" class="function">trim()</a></span> で取り除かれる) ではなく
     ASCII コード 160 (0xa0) に変換されるからです。
    </p>
   </p></blockquote>
@@ -397,10 +416,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.htmlentities.html" class="function" rel="rdfs-seeAlso">htmlentities()</a> - 適用可能な文字を全て HTML エンティティに変換する</span></li>
-    <li class="member"> <span class="function"><a href="function.htmlspecialchars.html" class="function" rel="rdfs-seeAlso">htmlspecialchars()</a> - 特殊文字を HTML エンティティに変換する</span></li>
-    <li class="member"> <span class="function"><a href="function.get-html-translation-table.html" class="function" rel="rdfs-seeAlso">get_html_translation_table()</a> - htmlspecialchars および htmlentities で使用される変換テーブルを返す</span></li>
-    <li class="member"> <span class="function"><a href="function.urldecode.html" class="function" rel="rdfs-seeAlso">urldecode()</a> - URL エンコードされた文字列をデコードする</span></li>
+    <li class="member"><span class="function"><a href="function.htmlentities.html" class="function" rel="rdfs-seeAlso">htmlentities()</a> - 適用可能な文字を全て HTML エンティティに変換する</span></li>
+    <li class="member"><span class="function"><a href="function.htmlspecialchars.html" class="function" rel="rdfs-seeAlso">htmlspecialchars()</a> - 特殊文字を HTML エンティティに変換する</span></li>
+    <li class="member"><span class="function"><a href="function.get-html-translation-table.html" class="function" rel="rdfs-seeAlso">get_html_translation_table()</a> - htmlspecialchars および htmlentities で使用される変換テーブルを返す</span></li>
+    <li class="member"><span class="function"><a href="function.urldecode.html" class="function" rel="rdfs-seeAlso">urldecode()</a> - URL エンコードされた文字列をデコードする</span></li>
    </ul>
   </p>
  </div>

@@ -45,18 +45,18 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>sqlite_array_query()</strong></span> は与えられたクエリを実行し、
+   <span class="function"><strong>sqlite_array_query()</strong></span> は与えられたクエリを実行し、
    結果セット全体を配列で返します。これは、結果セットの各レコードに関して
-    <span class="function"><a href="function.sqlite-query.html" class="function">sqlite_query()</a></span>に続いて
-    <span class="function"><a href="function.sqlite-fetch-array.html" class="function">sqlite_fetch_array()</a></span>をコールすることに似ています。
-    <span class="function"><strong>sqlite_array_query()</strong></span> は前述の方法よりも著しく高速です。
+   <span class="function"><a href="function.sqlite-query.html" class="function">sqlite_query()</a></span>に続いて
+   <span class="function"><a href="function.sqlite-fetch-array.html" class="function">sqlite_fetch_array()</a></span>をコールすることに似ています。
+   <span class="function"><strong>sqlite_array_query()</strong></span> は前述の方法よりも著しく高速です。
   </p>
   <div class="tip"><strong class="tip">ヒント</strong>
    <p class="para">
-     <span class="function"><strong>sqlite_array_query()</strong></span> は、返すレコードが45件以下
+    <span class="function"><strong>sqlite_array_query()</strong></span> は、返すレコードが45件以下
     のクエリーで最も有効です。これ以上のデータがある場合には、
     より性能を最適化するために、代わりに
-     <span class="function"><a href="function.sqlite-unbuffered-query.html" class="function">sqlite_unbuffered_query()</a></span>を使用するようなスクリ
+    <span class="function"><a href="function.sqlite-unbuffered-query.html" class="function">sqlite_unbuffered_query()</a></span>を使用するようなスクリ
     プトを書くことをお薦めします。
    </p>
   </div>
@@ -68,9 +68,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -82,29 +83,29 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">dbhandle</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">dbhandle</code></em></span>
      <dd>
 
       <p class="para">
        SQLite データベースリソース。手続きに従って、
-        <span class="function"><a href="function.sqlite-open.html" class="function">sqlite_open()</a></span> から返されます。
+       <span class="function"><a href="function.sqlite-open.html" class="function">sqlite_open()</a></span> から返されます。
        このパラメータは、
        オブジェクト指向言語型メソッドを使用する場合は不要です。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">result_type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">result_type</code></em></span>
      <dd>
 
-      <p class="para">オプションの <em><code class="parameter">result_type</code></em>
+      <p class="para">オプションの <code class="parameter">result_type</code>
 パラメータには定数を指定でき、返される配列の添字を定義します。
 <strong><code>SQLITE_ASSOC</code></strong> を用いると、連想配列の添字(名前フィールド)のみが
 返されます。一方、<strong><code>SQLITE_NUM</code></strong> は、
@@ -113,30 +114,29 @@
 <strong><code>SQLITE_BOTH</code></strong> がこの関数のデフォルトです。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">decode_binary</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">decode_binary</code></em></span>
      <dd>
 
       <p class="para">
-<em><code class="parameter">decode_binary</code></em> パラメータが <strong><code>TRUE</code></strong> (デフォルト)に
+<code class="parameter">decode_binary</code> パラメータが <strong><code>TRUE</code></strong> (デフォルト)に
 設定された場合、PHP はバイナリエンコーディングをデコードします。
-これは、 <span class="function"><a href="function.sqlite-escape-string.html" class="function">sqlite_escape_string()</a></span> によりエンコードされたデータに
+これは、<span class="function"><a href="function.sqlite-escape-string.html" class="function">sqlite_escape_string()</a></span> によりエンコードされたデータに
 適用されます。sqlite をサポートする他のアプリケーションにより
 作成されたデータベースを処理する時以外は、この値をデフォルトのままにしておくべきです。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">
 (MySQL のような)他のデータベースエクステンションとの互換性のため、
 2 種類の構文がサポートされています。
-推奨されるのは最初の構文で、<em><code class="parameter">dbhandle</code></em> パラメータを
+推奨されるのは最初の構文で、<code class="parameter">dbhandle</code> パラメータを
 関数の最初のパラメータとするものです。</span></p></blockquote>
  </div>
 
@@ -157,7 +157,7 @@
  <div class="refsect1 examples" id="refsect1-function.sqlite-array-query-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2121">
+   <div class="example" id="example-2318">
     <p><strong>例1 手続き型</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -169,7 +169,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2122">
+   <div class="example" id="example-2319">
     <p><strong>例2 オブジェクト指向言語型スタイル</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -187,10 +187,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.sqlite-query.html" class="function" rel="rdfs-seeAlso">sqlite_query()</a> - 指定したデータベースに対してクエリを実行し、結果ハンドル
+    <li class="member"><span class="function"><a href="function.sqlite-query.html" class="function" rel="rdfs-seeAlso">sqlite_query()</a> - 指定したデータベースに対してクエリを実行し、結果ハンドル
   を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.sqlite-fetch-array.html" class="function" rel="rdfs-seeAlso">sqlite_fetch_array()</a> - 結果セットから次のレコードを配列として取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.sqlite-fetch-string.html" class="function" rel="rdfs-seeAlso">sqlite_fetch_string()</a> - sqlite_fetch_single のエイリアス</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-fetch-array.html" class="function" rel="rdfs-seeAlso">sqlite_fetch_array()</a> - 結果セットから次のレコードを配列として取得する</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-fetch-string.html" class="function" rel="rdfs-seeAlso">sqlite_fetch_string()</a> - sqlite_fetch_single のエイリアス</span></li>
    </ul>
   </p>
  </div>

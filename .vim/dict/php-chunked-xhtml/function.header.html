@@ -27,19 +27,19 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>header()</strong></span> は、生の
+   <span class="function"><strong>header()</strong></span> は、生の
    <acronym title="Hypertext Transfer Protocol">HTTP</acronym> ヘッダを送信するために使用されます。
    <acronym title="Hypertext Transfer Protocol">HTTP</acronym> ヘッダについての詳細な情報は
    <a href="http://www.faqs.org/rfcs/rfc2616" class="link external">&raquo;&nbsp;HTTP/1.1 仕様</a>
    を参照ください。
   </p>
   <p class="para">
-   覚えておいて頂きたいのは、 <span class="function"><strong>header()</strong></span> 関数は、
+   覚えておいて頂きたいのは、<span class="function"><strong>header()</strong></span> 関数は、
    通常の HTML タグまたは PHP からの出力にかかわらず、すべての実際の
    出力の前にコールする必要があることです。
-   頻出するエラーとして、 <span class="function"><a href="function.include.html" class="function">include</a></span>
-   または  <span class="function"><a href="function.require.html" class="function">require</a></span> 関数、他のファイルをアクセスする関数に
-   空白または空行があり、 <span class="function"><strong>header()</strong></span> の前に出力が
+   頻出するエラーとして、<span class="function"><a href="function.include.html" class="function">include</a></span>
+   または <span class="function"><a href="function.require.html" class="function">require</a></span> 関数、他のファイルをアクセスする関数に
+   空白または空行があり、<span class="function"><strong>header()</strong></span> の前に出力が
    行われてしまうというものがあります。同じ問題は、単一の PHP/HTML
    ファイルを使用している場合でも存在します。
    <div class="informalexample">
@@ -60,9 +60,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">string</code></dt>
 
-     <span class="term"><em><code class="parameter">string</code></em></span>
      <dd>
 
       <p class="para">
@@ -109,15 +110,15 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">replace</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">replace</code></em></span>
      <dd>
 
       <p class="para">
-       オプションのパラメータ <em><code class="parameter">replace</code></em> は、ヘッダが
+       オプションのパラメータ <code class="parameter">replace</code> は、ヘッダが
        前に送信された類似のヘッダを置換するか、または、同じ形式の二番目の
        ヘッダを追加するかどうかを指定します。デフォルトでは、この関数は
        置換を行ないますが、二番目の引数に <strong><code>FALSE</code></strong> を指定すると、同じ型の
@@ -136,21 +137,20 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">http_response_code</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">http_response_code</code></em></span>
      <dd>
 
       <p class="para">
        HTTP レスポンスコードを強制的に指定の値にします。このパラメータが意味をなすのは
-       <em><code class="parameter">string</code></em> が空文字列でないときだけであることに注意しましょう。
+       <code class="parameter">string</code> が空文字列でないときだけであることに注意しましょう。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -180,24 +180,10 @@
 
      <tbody class="tbody">
       <tr>
-       <td>4.4.2 および 5.1.2</td>
+       <td>5.1.2</td>
        <td>
         この関数は一度に複数のヘッダを送信できないようになりました。
         これは、ヘッダインジェクション攻撃への対策です。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        <em><code class="parameter">http_response_code</code></em> パラメータが追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.0.4</td>
-       <td>
-        <em><code class="parameter">replace</code></em> パラメータが追加されました。
        </td>
       </tr>
 
@@ -212,7 +198,7 @@
  <div class="refsect1 examples" id="refsect1-function.header-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4463">
+   <div class="example" id="example-4909">
     <p><strong>例1 ダウンロードダイアログ</strong></p>
     <div class="example-contents"><p>
      PDF ファイルを生成した場合など、
@@ -222,7 +208,7 @@
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;PDFを出力します<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type:&nbsp;application/pdf'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;downloaded.pdf&nbsp;という名前で保存させます<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Disposition:&nbsp;attachment;&nbsp;filename="downloaded.pdf"'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;もとの&nbsp;PDF&nbsp;ソースは&nbsp;original.pdf&nbsp;です<br /></span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #DD0000">'original.pdf'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;PDFを出力します<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;application/pdf'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;downloaded.pdf&nbsp;という名前で保存させます<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Disposition:&nbsp;attachment;&nbsp;filename="downloaded.pdf"'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;もとの&nbsp;PDF&nbsp;ソースは&nbsp;original.pdf&nbsp;です<br /></span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #DD0000">'original.pdf'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -230,7 +216,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4464">
+   <div class="example" id="example-4910">
     <p><strong>例2 キャッシュディレクティブ</strong></p>
     <div class="example-contents"><p>
      PHP スクリプトはしばしば動的に HTML を生成するため、クライアント
@@ -255,7 +241,7 @@
        可能性がある設定を上書きするべきです。
       </p>
       <p class="para">
-       さらに、 <span class="function"><a href="function.session-cache-limiter.html" class="function">session_cache_limiter()</a></span> および
+       さらに、<span class="function"><a href="function.session-cache-limiter.html" class="function">session_cache_limiter()</a></span> および
        設定 <em>session.cache_limiter</em> を用いると、
        セッションが使用された際にキャッシュ関係の正しいヘッダを
        自動的に生成させることもできます。
@@ -281,8 +267,8 @@
     出力のバッファリングを使用してこの問題を回避することができます。
     この場合、ブラウザへの出力が送信するまでサーバーに
     全てバッファリングされるオーバーヘッドがあります。出力バッファリングは、
-     <span class="function"><a href="function.ob-start.html" class="function">ob_start()</a></span> と
-     <span class="function"><a href="function.ob-end-flush.html" class="function">ob_end_flush()</a></span> をスクリプトでコールするか
+    <span class="function"><a href="function.ob-start.html" class="function">ob_start()</a></span> と
+    <span class="function"><a href="function.ob-end-flush.html" class="function">ob_end_flush()</a></span> をスクリプトでコールするか
     <var class="filename">php.ini</var> またはサーバー設定ファイルの設定ディレクティブ
     <em>output_buffering</em> を設定することにより
     行うことが可能です。
@@ -290,11 +276,11 @@
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    実際に  <span class="function"><strong>header()</strong></span> が最初にコールされたか
+    実際に <span class="function"><strong>header()</strong></span> が最初にコールされたか
     どうかにかかわらず、HTTP ステータスヘッダ行は
     クライアントに対し常に最初に送信されます。
     HTTP ヘッダが既に送信されていない限り、
-     <span class="function"><strong>header()</strong></span> をコールすることでステータスは
+    <span class="function"><strong>header()</strong></span> をコールすることでステータスは
     常に上書きされます。
    </p>
   </p></blockquote>
@@ -322,7 +308,7 @@
     通常は、相対 URI から絶対 URI を作成するためには
     <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['HTTP_HOST']</a></var></var>、
     <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['PHP_SELF']</a></var></var> および
-     <span class="function"><a href="function.dirname.html" class="function">dirname()</a></span> を使用できます。
+    <span class="function"><a href="function.dirname.html" class="function">dirname()</a></span> を使用できます。
     <div class="informalexample">
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -349,9 +335,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.headers-sent.html" class="function" rel="rdfs-seeAlso">headers_sent()</a> - ヘッダが既に送信されているかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.setcookie.html" class="function" rel="rdfs-seeAlso">setcookie()</a> - クッキーを送信する</span></li>
-    <li class="member"> <span class="function"><a href="function.http-response-code.html" class="function" rel="rdfs-seeAlso">http_response_code()</a> - HTTP レスポンスコードを取得または設定</span></li>
+    <li class="member"><span class="function"><a href="function.headers-sent.html" class="function" rel="rdfs-seeAlso">headers_sent()</a> - ヘッダが既に送信されているかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.setcookie.html" class="function" rel="rdfs-seeAlso">setcookie()</a> - クッキーを送信する</span></li>
+    <li class="member"><span class="function"><a href="function.http-response-code.html" class="function" rel="rdfs-seeAlso">http_response_code()</a> - HTTP レスポンスコードを取得または設定</span></li>
     <li class="member">
      <a href="features.http-auth.html" class="link">HTTP
      認証</a>

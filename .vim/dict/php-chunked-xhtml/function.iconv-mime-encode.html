@@ -45,9 +45,10 @@ Subject: =?ISO-8859-1?Q?Pr=FCfung_f=FCr?= Entwerfen von einer MIME kopfzeile
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">field_name</code></dt>
 
-     <span class="term"><em><code class="parameter">field_name</code></em></span>
      <dd>
 
       <p class="para">
@@ -55,11 +56,11 @@ Subject: =?ISO-8859-1?Q?Pr=FCfung_f=FCr?= Entwerfen von einer MIME kopfzeile
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">field_value</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">field_value</code></em></span>
      <dd>
 
       <p class="para">
@@ -67,20 +68,20 @@ Subject: =?ISO-8859-1?Q?Pr=FCfung_f=FCr?= Entwerfen von einer MIME kopfzeile
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">preferences</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">preferences</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><strong>iconv_mime_encode()</strong></span> の振る舞いを変更するには、
+       <span class="function"><strong>iconv_mime_encode()</strong></span> の振る舞いを変更するには、
        ここで設定項目を含む連想配列を指定します。
-        <span class="function"><strong>iconv_mime_encode()</strong></span> でサポートされている項目は
+       <span class="function"><strong>iconv_mime_encode()</strong></span> でサポートされている項目は
        以下のとおりです。項目名の大文字・小文字は区別されることに注意してください。
        <table class="doctable table">
-        <caption><strong> <span class="function"><strong>iconv_mime_encode()</strong></span> でサポートされる設定項目</strong></caption>
+        <caption><strong><span class="function"><strong>iconv_mime_encode()</strong></span> でサポートされる設定項目</strong></caption>
         
          <thead>
           <tr>
@@ -111,9 +112,9 @@ Subject: =?ISO-8859-1?Q?Pr=FCfung_f=FCr?= Entwerfen von einer MIME kopfzeile
            <td>input-charset</td>
            <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
            <td>
-            第 1 パラメータ <em><code class="parameter">field_name</code></em> と第 2 パラメータ
-            <em><code class="parameter">field_value</code></em> の文字セットを指定します。
-            指定されなかった場合は、 <span class="function"><strong>iconv_mime_encode()</strong></span>
+            第 1 パラメータ <code class="parameter">field_name</code> と第 2 パラメータ
+            <code class="parameter">field_value</code> の文字セットを指定します。
+            指定されなかった場合は、<span class="function"><strong>iconv_mime_encode()</strong></span>
             は ini 設定
             <a href="iconv.configuration.html" class="link">iconv.internal_encoding</a>
             であると仮定します。
@@ -172,8 +173,7 @@ Subject: =?ISO-8859-1?Q?Pr=FCfung_f=FCr?= Entwerfen von einer MIME kopfzeile
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -192,8 +192,8 @@ Subject: =?ISO-8859-1?Q?Pr=FCfung_f=FCr?= Entwerfen von einer MIME kopfzeile
  <div class="refsect1 examples" id="refsect1-function.iconv-mime-encode-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2469">
-    <p><strong>例1  <span class="function"><strong>iconv_mime_encode()</strong></span> の例:</strong></p>
+   <div class="example" id="example-2668">
+    <p><strong>例1 <span class="function"><strong>iconv_mime_encode()</strong></span> の例:</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$preferences&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"input-charset"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"ISO-8859-1"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"output-charset"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"UTF-8"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"line-length"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">76</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"line-break-chars"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"\n"<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$preferences</span><span style="color: #007700">[</span><span style="color: #DD0000">"scheme"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"Q"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;この結果は&nbsp;"Subject:&nbsp;=?UTF-8?Q?Pr=C3=BCfung=20Pr=C3=BCfung?="&nbsp;となります。<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">iconv_mime_encode</span><span style="color: #007700">(</span><span style="color: #DD0000">"Subject"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Prüfung&nbsp;Prüfung"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$preferences</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$preferences</span><span style="color: #007700">[</span><span style="color: #DD0000">"scheme"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"B"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;この結果は&nbsp;"Subject:&nbsp;=?UTF-8?B?UHLDvGZ1bmcgUHLDvGZ1bmc=?="&nbsp;となります。<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">iconv_mime_encode</span><span style="color: #007700">(</span><span style="color: #DD0000">"Subject"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Prüfung&nbsp;Prüfung"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$preferences</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -210,10 +210,10 @@ Subject: =?ISO-8859-1?Q?Pr=FCfung_f=FCr?= Entwerfen von einer MIME kopfzeile
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imap-binary.html" class="function" rel="rdfs-seeAlso">imap_binary()</a> - 8 ビット文字列を base64 文字列に変換する</span></li>
-    <li class="member"> <span class="function"><a href="function.mb-encode-mimeheader.html" class="function" rel="rdfs-seeAlso">mb_encode_mimeheader()</a> - MIMEヘッダの文字列をエンコードする</span></li>
-    <li class="member"> <span class="function"><a href="function.imap-8bit.html" class="function" rel="rdfs-seeAlso">imap_8bit()</a> - 8 ビット文字列を quoted-printable 文字列に変換する</span></li>
-    <li class="member"> <span class="function"><a href="function.quoted-printable-encode.html" class="function" rel="rdfs-seeAlso">quoted_printable_encode()</a> - 8 ビット文字列を quoted-printable 文字列に変換する</span></li>
+    <li class="member"><span class="function"><a href="function.imap-binary.html" class="function" rel="rdfs-seeAlso">imap_binary()</a> - 8 ビット文字列を base64 文字列に変換する</span></li>
+    <li class="member"><span class="function"><a href="function.mb-encode-mimeheader.html" class="function" rel="rdfs-seeAlso">mb_encode_mimeheader()</a> - MIMEヘッダの文字列をエンコードする</span></li>
+    <li class="member"><span class="function"><a href="function.imap-8bit.html" class="function" rel="rdfs-seeAlso">imap_8bit()</a> - 8 ビット文字列を quoted-printable 文字列に変換する</span></li>
+    <li class="member"><span class="function"><a href="function.quoted-printable-encode.html" class="function" rel="rdfs-seeAlso">quoted_printable_encode()</a> - 8 ビット文字列を quoted-printable 文字列に変換する</span></li>
    </ul>
   </p>
  </div>

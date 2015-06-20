@@ -20,7 +20,7 @@
  <div class="refsect1 description" id="refsect1-solrclient.request-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>SolrClient::request</strong></span>
+   <span class="modifier">public</span> <span class="type"><a href="class.solrupdateresponse.html" class="type SolrUpdateResponse">SolrUpdateResponse</a></span> <span class="methodname"><strong>SolrClient::request</strong></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$raw_request</code></span>
    )</div>
 
@@ -36,9 +36,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">raw_request</code></dt>
 
-     <span class="term"><em><code class="parameter">raw_request</code></em></span>
      <dd>
 
       <p class="para">
@@ -46,8 +47,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -57,16 +57,30 @@
  <div class="refsect1 returnvalues" id="refsect1-solrclient.request-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   Returns a SolrUpdateResponse on success. Throws a SolrClientException on failure.
+   Returns a <span class="type"><a href="class.solrupdateresponse.html" class="type SolrUpdateResponse">SolrUpdateResponse</a></span> on success. Throws an exception on failure.
   </p>
  </div>
 
+ 
+ <div class="refsect1 errors" id="refsect1-solrclient.request-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+   Throws <a href="class.solrillegalargumentexception.html" class="classname">SolrIllegalArgumentException</a> if <code class="parameter">raw_request</code> was an empty string
+  </p>
+  <p class="para">
+   Throws <a href="class.solrclientexception.html" class="classname">SolrClientException</a> if the client had failed, or there was a connection issue.
+  </p>
+  <p class="para">
+   Throws <a href="class.solrserverexception.html" class="classname">SolrServerException</a> if the Solr Server had failed to satisfy the query.
+  </p>
+ </div>
 
+ 
  <div class="refsect1 examples" id="refsect1-solrclient.request-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4706">
-    <p><strong>例1  <span class="methodname"><strong>SolrClient::request()</strong></span> example</strong></p>
+   <div class="example" id="example-5155">
+    <p><strong>例1 <span class="methodname"><strong>SolrClient::request()</strong></span> example</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$options&nbsp;</span><span style="color: #007700">=&nbsp;array<br />(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'hostname'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_HOSTNAME</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'login'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_USERNAME</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'password'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_PASSWORD</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'port'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOLR_SERVER_PORT</span><span style="color: #007700">,<br />);<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SolrClient</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$update_response&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$client</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">request</span><span style="color: #007700">(</span><span style="color: #DD0000">"&lt;commit/&gt;"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$response&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$update_response</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getResponse</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$response</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -27,9 +27,9 @@
    )</div>
 
   <p class="para rdfs-comment">
-   文字列 <em><code class="parameter">str</code></em>
-   の文字セットを <em><code class="parameter">in_charset</code></em>
-   から <em><code class="parameter">out_charset</code></em> に変換します。
+   文字列 <code class="parameter">str</code>
+   の文字セットを <code class="parameter">in_charset</code>
+   から <code class="parameter">out_charset</code> に変換します。
   </p>
  </div>
 
@@ -39,9 +39,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">in_charset</code></dt>
 
-     <span class="term"><em><code class="parameter">in_charset</code></em></span>
      <dd>
 
       <p class="para">
@@ -49,32 +50,31 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">out_charset</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">out_charset</code></em></span>
      <dd>
 
       <p class="para">
        出力文字セット。
       </p>
       <p class="para">
-       文字列 <em>//TRANSLIT</em> を <em><code class="parameter">out_charset</code></em>
+       文字列 <em>//TRANSLIT</em> を <code class="parameter">out_charset</code>
        に追加すると、翻字機能が有効になります。これは、指定された文字集合で
        表せない文字を、見た目の似ている別の文字に置き換える機能です。
        文字列 <em>//IGNORE</em> を追加すると、指定された文字集合で
        表せない文字は黙って切り捨てられます。
-       それ以外の場合は、<em><code class="parameter">str</code></em> の中に変換できない文字が
-       出現した時点で変換が打ち切られ、<strong><code>E_NOTICE</code></strong> が発生します。
+       それ以外の場合は <strong><code>E_NOTICE</code></strong> が発生し、この関数は <strong><code>FALSE</code></strong> を返します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">str</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">str</code></em></span>
      <dd>
 
       <p class="para">
@@ -82,8 +82,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -98,11 +97,42 @@
  </div>
 
 
+ <div class="refsect1 changelog" id="refsect1-function.iconv-changelog">
+   <h3 class="title">変更履歴</h3>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>バージョン</th>
+        <th>説明</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>5.4.0</td>
+        <td>
+         このバージョン以降は、出力文字セットに <em>//IGNORE</em> が指定されていない限り、
+         無効な文字に対して <strong><code>FALSE</code></strong> を返すようになりました。
+         以前のバージョンでは、出力文字列の一部だけを返していました。
+        </td>
+       </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div>
+
+
  <div class="refsect1 examples" id="refsect1-function.iconv-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2471">
-    <p><strong>例1  <span class="function"><strong>iconv()</strong></span> の例</strong></p>
+   <div class="example" id="example-2670">
+    <p><strong>例1 <span class="function"><strong>iconv()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$text&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;the&nbsp;Euro&nbsp;symbol&nbsp;'€'."</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">'Original&nbsp;:&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">'TRANSLIT&nbsp;:&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">iconv</span><span style="color: #007700">(</span><span style="color: #DD0000">"UTF-8"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"ISO-8859-1//TRANSLIT"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">'IGNORE&nbsp;&nbsp;&nbsp;:&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">iconv</span><span style="color: #007700">(</span><span style="color: #DD0000">"UTF-8"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"ISO-8859-1//IGNORE"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">'Plain&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">iconv</span><span style="color: #007700">(</span><span style="color: #DD0000">"UTF-8"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"ISO-8859-1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -119,7 +149,6 @@ TRANSLIT : This is the Euro symbol &#039;EUR&#039;.
 IGNORE   : This is the Euro symbol &#039;&#039;.
 Plain    :
 Notice: iconv(): Detected an illegal character in input string in .\iconv-example.php on line 7
-This is the Euro symbol &#039;
 </pre></div>
     </div>
    </div>

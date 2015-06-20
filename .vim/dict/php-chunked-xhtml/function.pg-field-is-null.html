@@ -33,12 +33,12 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_field_is_null()</strong></span> は、PostgreSQL 結果リソースの
+   <span class="function"><strong>pg_field_is_null()</strong></span> は、PostgreSQL 結果リソースの
    フィールドが SQL の <em>NULL</em> であるかどうかを調べます。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    この関数は、以前は  <span class="function"><strong>pg_fieldisnull()</strong></span> と呼ばれていました。
+    この関数は、以前は <span class="function"><strong>pg_fieldisnull()</strong></span> と呼ばれていました。
    </p>
   </p></blockquote>
  </div>
@@ -49,23 +49,24 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result</code></dt>
 
-     <span class="term"><em><code class="parameter">result</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>,  <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span>
-       あるいは  <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> から返される PostgreSQL の
+       <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>, <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span>
+       あるいは <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> から返される PostgreSQL の
        クエリ結果リソース。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">row</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">row</code></em></span>
      <dd>
 
       <p class="para">
@@ -74,11 +75,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">field</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">field</code></em></span>
       <dd>
 
        <p class="para">
@@ -87,8 +88,7 @@
        </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -109,8 +109,8 @@
  <div class="refsect1 examples" id="refsect1-function.pg-field-is-null-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2062">
-    <p><strong>例1  <span class="function"><strong>pg_field_is_null()</strong></span> の例</strong></p>
+   <div class="example" id="example-2258">
+    <p><strong>例1 <span class="function"><strong>pg_field_is_null()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$dbconn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">)&nbsp;or&nbsp;die&nbsp;(</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;connect"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;authors&nbsp;where&nbsp;author&nbsp;=&nbsp;'Orwell'"</span><span style="color: #007700">);<br />&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$res</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">pg_field_is_null</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"year"</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"The&nbsp;value&nbsp;of&nbsp;the&nbsp;field&nbsp;year&nbsp;is&nbsp;null.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">pg_field_is_null</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"year"</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"The&nbsp;value&nbsp;of&nbsp;the&nbsp;field&nbsp;year&nbsp;is&nbsp;not&nbsp;null.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;}<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -27,14 +27,20 @@
   <p class="para rdfs-comment">
    この関数は、出力用バッファの内容を出力し、出力のバッファリングをオフにします。
    出力用バッファの内容を更に処理したい場合には、
-   バッファの内容は  <span class="function"><strong>ob_end_flush()</strong></span> がコールされた後に消去されるため、
-    <span class="function"><strong>ob_end_flush()</strong></span> の前に
-    <span class="function"><a href="function.ob-get-contents.html" class="function">ob_get_contents()</a></span> をコールする必要があります。
+   バッファの内容は <span class="function"><strong>ob_end_flush()</strong></span> がコールされた後に消去されるため、
+   <span class="function"><strong>ob_end_flush()</strong></span> の前に
+   <span class="function"><a href="function.ob-get-contents.html" class="function">ob_get_contents()</a></span> をコールする必要があります。
+  </p>
+  <p class="para">
+   出力バッファを開始するときに、
+   <span class="function"><a href="function.ob-start.html" class="function">ob_start()</a></span> で <a href="outcontrol.constants.html#constant.php-output-handler-flushable" class="link">PHP_OUTPUT_HANDLER_FLUSHABLE</a>
+   および <a href="outcontrol.constants.html#constant.php-output-handler-removable" class="link">PHP_OUTPUT_HANDLER_REMOVABLE</a>
+   フラグを指定する必要があります。指定しなければ、<span class="function"><strong>ob_end_flush()</strong></span> は動作しません。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <span class="simpara">
-    この関数は  <span class="function"><a href="function.ob-get-flush.html" class="function">ob_get_flush()</a></span> に似ていますが、
-     <span class="function"><a href="function.ob-get-flush.html" class="function">ob_get_flush()</a></span> はバッファを文字列として返すという点が違います。
+    この関数は <span class="function"><a href="function.ob-get-flush.html" class="function">ob_get_flush()</a></span> に似ていますが、
+    <span class="function"><a href="function.ob-get-flush.html" class="function">ob_get_flush()</a></span> はバッファを文字列として返すという点が違います。
    </span>
   </p></blockquote>
  </div>
@@ -59,40 +65,11 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.ob-end-flush-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.2.0</td>
-       <td>
-        boolean 型の戻り値が追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.ob-end-flush-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-463">
-    <p><strong>例1  <span class="function"><strong>ob_end_flush()</strong></span> example</strong></p>
+   <div class="example" id="example-488">
+    <p><strong>例1 <span class="function"><strong>ob_end_flush()</strong></span> example</strong></p>
     <div class="example-contents"><p>
      以下は全ての出力バッファをフラッシュし終了する簡単な方法の例です。
     </p></div>
@@ -112,11 +89,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ob-start.html" class="function" rel="rdfs-seeAlso">ob_start()</a> - 出力のバッファリングを有効にする</span></li>
-    <li class="member"> <span class="function"><a href="function.ob-get-contents.html" class="function" rel="rdfs-seeAlso">ob_get_contents()</a> - 出力用バッファの内容を返す</span></li>
-    <li class="member"> <span class="function"><a href="function.ob-get-flush.html" class="function" rel="rdfs-seeAlso">ob_get_flush()</a> - 出力バッファをフラッシュし、その内容を文字列として返した後で出力バッファリングを終了する</span></li>
-    <li class="member"> <span class="function"><a href="function.ob-flush.html" class="function" rel="rdfs-seeAlso">ob_flush()</a> - 出力バッファをフラッシュ(送信)する</span></li>
-    <li class="member"> <span class="function"><a href="function.ob-end-clean.html" class="function" rel="rdfs-seeAlso">ob_end_clean()</a> - 出力用バッファをクリア(消去)し、出力のバッファリングをオフにする</span></li>
+    <li class="member"><span class="function"><a href="function.ob-start.html" class="function" rel="rdfs-seeAlso">ob_start()</a> - 出力のバッファリングを有効にする</span></li>
+    <li class="member"><span class="function"><a href="function.ob-get-contents.html" class="function" rel="rdfs-seeAlso">ob_get_contents()</a> - 出力用バッファの内容を返す</span></li>
+    <li class="member"><span class="function"><a href="function.ob-get-flush.html" class="function" rel="rdfs-seeAlso">ob_get_flush()</a> - 出力バッファをフラッシュし、その内容を文字列として返した後で出力バッファリングを終了する</span></li>
+    <li class="member"><span class="function"><a href="function.ob-flush.html" class="function" rel="rdfs-seeAlso">ob_flush()</a> - 出力バッファをフラッシュ(送信)する</span></li>
+    <li class="member"><span class="function"><a href="function.ob-end-clean.html" class="function" rel="rdfs-seeAlso">ob_end_clean()</a> - 出力用バッファをクリア(消去)し、出力のバッファリングをオフにする</span></li>
    </ul>
   </p>
  </div>

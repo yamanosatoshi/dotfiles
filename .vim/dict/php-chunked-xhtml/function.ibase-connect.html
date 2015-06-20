@@ -35,10 +35,10 @@
    Firebird/InterBase サーバーへの接続を確立します。
   </p>
   <p class="para">
-   同じ引数で  <span class="function"><strong>ibase_connect()</strong></span> が再度コールされた場合、
+   同じ引数で <span class="function"><strong>ibase_connect()</strong></span> が再度コールされた場合、
    新規のリンクは作成されず、代わりに既にオープンされているリンクの
    リンク ID が返されます。
-    <span class="function"><a href="function.ibase-close.html" class="function">ibase_close()</a></span> を明示的にコールしない限り、
+   <span class="function"><a href="function.ibase-close.html" class="function">ibase_close()</a></span> を明示的にコールしない限り、
    サーバーへのリンクはスクリプトの実行終了時に閉じられます。
   </p>
  </div>
@@ -49,25 +49,26 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">database</code></dt>
 
-     <span class="term"><em><code class="parameter">database</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">database</code></em>は接続するサーバー上のデータベース
+       <code class="parameter">database</code>は接続するサーバー上のデータベース
        ファイルへの正しいパスである必要があります。ローカルなサーバーへの
        接続でない場合、使用する接続プロトコルに応じてこの引数の前に
-       &#039;hostname:&#039; (TCP/IP)、&#039;//hostname/&#039; (NetBEUI)
+       &#039;hostname:&#039; (TCP/IP)、&#039;hostname/port:&#039; (カスタム TCP ポート上での interbase サーバーでの TCP/IP)、&#039;//hostname/&#039; (NetBEUI)
        のどれかをつける必要があります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">username</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">username</code></em></span>
      <dd>
 
       <p class="para">
@@ -77,67 +78,67 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">password</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">password</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">username</code></em> のパスワード。
+       <code class="parameter">username</code> のパスワード。
        <var class="filename">php.ini</var> ディレクティブ
        <em>ibase.default_password</em>
        で設定します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">charset</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">charset</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">charset</code></em>
+       <code class="parameter">charset</code>
        はデータベースに関するデフォルトの文字セットです。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">buffers</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">buffers</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">buffers</code></em>
+       <code class="parameter">buffers</code>
        はサーバー側のキャッシュに確保されるデータベースバッファの数です。0
        または省略された場合、サーバーはデフォルト値を用います。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">dialect</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">dialect</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">dialect</code></em> は、接続時に実行される全ての命令に
+       <code class="parameter">dialect</code> は、接続時に実行される全ての命令に
        関する SQL 方言のデフォルト値を選択し、デフォルトではクライアント
        ライブラリでサポートされる方言のうち、最高位のものになります。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">role</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">role</code></em></span>
      <dd>
 
       <p class="para">
@@ -145,19 +146,18 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">sync</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">sync</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -175,7 +175,7 @@
  <div class="refsect1 errors" id="refsect1-function.ibase-connect-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
-   この関数を使用して  <span class="function"><a href="function.ibase-query.html" class="function">ibase_query()</a></span> をコールした後に
+   この関数を使用して <span class="function"><a href="function.ibase-query.html" class="function">ibase_query()</a></span> をコールした後に
    &quot;arithmetic exception, numeric overflow,
    or string truncation. Cannot transliterate character between character
    sets&quot; のようなエラーが発生した場合
@@ -189,8 +189,8 @@
  <div class="refsect1 examples" id="refsect1-function.ibase-connect-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1103">
-    <p><strong>例1  <span class="function"><strong>ibase_connect()</strong></span> の例</strong></p>
+   <div class="example" id="example-1161">
+    <p><strong>例1 <span class="function"><strong>ibase_connect()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$host&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'localhost:/path/to/your.gdb'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$dbh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$host</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;*&nbsp;FROM&nbsp;tblname'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ibase_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$sth</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">email</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">ibase_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$sth</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ibase_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -207,8 +207,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.ibase-pconnect.html" class="function" rel="rdfs-seeAlso">ibase_pconnect()</a> - InterBase データベースへの持続的接続をオープンする</span></li>
-    <li class="member"> <span class="function"><a href="function.ibase-close.html" class="function" rel="rdfs-seeAlso">ibase_close()</a> - InterBase データベースへの接続を閉じる</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-pconnect.html" class="function" rel="rdfs-seeAlso">ibase_pconnect()</a> - InterBase データベースへの持続的接続をオープンする</span></li>
+    <li class="member"><span class="function"><a href="function.ibase-close.html" class="function" rel="rdfs-seeAlso">ibase_close()</a> - InterBase データベースへの接続を閉じる</span></li>
    </ul>
   </p>
  </div>

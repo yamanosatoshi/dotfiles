@@ -32,7 +32,7 @@
 
   <p class="para rdfs-comment">オブジェクト指向型 (コンストラクタ):</p>
   <div class="constructorsynopsis dc-description">
-   <span class="modifier">final</span> <span class="modifier">public</span>  <span class="methodname"><strong>SQLiteDatabase::__construct()</strong></span>
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><strong>SQLiteDatabase::__construct</strong></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
    [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = 0666</span></span>
    [, <span class="methodparam"><span class="type">string</span> <code class="parameter reference">&$error_message</code></span>
@@ -50,9 +50,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">
@@ -64,11 +65,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">mode</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">mode</code></em></span>
      <dd>
 
       <p class="para">
@@ -79,11 +80,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">error_message</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">error_message</code></em></span>
      <dd>
 
       <p class="para">
@@ -93,8 +94,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -112,8 +112,8 @@
  <div class="refsect1 examples" id="refsect1-function.sqlite-open-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2143">
-    <p><strong>例1  <span class="function"><strong>sqlite_open()</strong></span> の例</strong></p>
+   <div class="example" id="example-2340">
+    <p><strong>例1 <span class="function"><strong>sqlite_open()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$db&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlite_open</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysqlitedb'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0666</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sqliteerror</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sqlite_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'CREATE&nbsp;TABLE&nbsp;foo&nbsp;(bar&nbsp;varchar(10))'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sqlite_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;foo&nbsp;VALUES&nbsp;('fnord')"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlite_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'select&nbsp;bar&nbsp;from&nbsp;foo'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">sqlite_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">));<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #0000BB">$sqliteerror</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -153,7 +153,7 @@
    <span class="simpara">
     SQLiteライブラリ バージョン2.8.2以降、
     コンピュータのメモリ上にのみ存在するデータベースを作成するために
-    <em><code class="parameter">filename</code></em>に<em>:memory:</em>を指定
+    <code class="parameter">filename</code>に<em>:memory:</em>を指定
     することができます。
     これは、メモリ上のデータベースは処理完了時に破棄されるため、
     テンポラリな処理を行う場合には有用です。他のデータベースをロードし、
@@ -174,10 +174,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.sqlite-popen.html" class="function" rel="rdfs-seeAlso">sqlite_popen()</a> - SQLiteデータベースへの持続的ハンドルをオープンする。存在しない場合
+    <li class="member"><span class="function"><a href="function.sqlite-popen.html" class="function" rel="rdfs-seeAlso">sqlite_popen()</a> - SQLiteデータベースへの持続的ハンドルをオープンする。存在しない場合
    には、データベースを作成する</span></li>
-    <li class="member"> <span class="function"><a href="function.sqlite-close.html" class="function" rel="rdfs-seeAlso">sqlite_close()</a> - オープンされたSQLiteデータベースを閉じる</span></li>
-    <li class="member"> <span class="function"><a href="function.sqlite-factory.html" class="function" rel="rdfs-seeAlso">sqlite_factory()</a> - SQLite データベースをオープンし、SQLiteDatabse オブジェクトを返す</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-close.html" class="function" rel="rdfs-seeAlso">sqlite_close()</a> - オープンされたSQLiteデータベースを閉じる</span></li>
+    <li class="member"><span class="function"><a href="function.sqlite-factory.html" class="function" rel="rdfs-seeAlso">sqlite_factory()</a> - SQLite データベースをオープンし、SQLiteDatabse オブジェクトを返す</span></li>
    </ul>
   </p>
  </div>

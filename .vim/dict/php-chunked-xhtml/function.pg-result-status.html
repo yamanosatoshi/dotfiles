@@ -28,7 +28,7 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>pg_result_status()</strong></span> は、結果リソースのステータス
+   <span class="function"><strong>pg_result_status()</strong></span> は、結果リソースのステータス
    あるいは結果に関するコマンド補完タグを返します。
   </p>
  </div>
@@ -39,36 +39,36 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">result</code></dt>
 
-     <span class="term"><em><code class="parameter">result</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>,  <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span>
-       あるいは  <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> から返される PostgreSQL の
+       <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>, <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span>
+       あるいは <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span> から返される PostgreSQL の
        クエリ結果リソース。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">type</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">result</code></em> の数値ステータスを返す
+       <code class="parameter">result</code> の数値ステータスを返す
        <strong><code>PGSQL_STATUS_LONG</code></strong>、あるいは
-       <em><code class="parameter">result</code></em> のコマンドタグを返す
+       <code class="parameter">result</code> のコマンドタグを返す
        <strong><code>PGSQL_STATUS_STRING</code></strong> のいずれかです。
        指定しない場合は <strong><code>PGSQL_STATUS_LONG</code></strong> がデフォルトです。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -89,40 +89,11 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.pg-result-status-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        パラメータ <em><code class="parameter">type</code></em> が追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.pg-result-status-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2106">
-    <p><strong>例1  <span class="function"><strong>pg_result_status()</strong></span> の例</strong></p>
+   <div class="example" id="example-2303">
+    <p><strong>例1 <span class="function"><strong>pg_result_status()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;データベースに接続する<br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_pconnect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;COPY&nbsp;を実行する<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"COPY&nbsp;authors&nbsp;FROM&nbsp;STDIN;"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;結果ステータスを得る<br /></span><span style="color: #0000BB">$status&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_result_status</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ステータスの内容を調べる<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$status&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">PGSQL_COPY_IN</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Copy&nbsp;began."</span><span style="color: #007700">;<br />else<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Copy&nbsp;failed."</span><span style="color: #007700">;<br />&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -145,7 +116,7 @@ Copy began.
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pg-connection-status.html" class="function" rel="rdfs-seeAlso">pg_connection_status()</a> - 接続ステータスを取得する</span></li>
+    <li class="member"><span class="function"><a href="function.pg-connection-status.html" class="function" rel="rdfs-seeAlso">pg_connection_status()</a> - 接続ステータスを取得する</span></li>
    </ul>
   </p>
  </div>

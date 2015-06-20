@@ -38,9 +38,9 @@
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    この関数は、<em><code class="parameter">pid</code></em> に <em>-1</em>
-    を指定し、<em><code class="parameter">options</code></em> を何も設定せずに
-     <span class="function"><a href="function.pcntl-waitpid.html" class="function">pcntl_waitpid()</a></span> をコールするのと等価です。
+    この関数は、<code class="parameter">pid</code> に <em>-1</em>
+    を指定し、<code class="parameter">options</code> を何も設定せずに
+    <span class="function"><a href="function.pcntl-waitpid.html" class="function">pcntl_waitpid()</a></span> をコールするのと等価です。
    </p>
   </p></blockquote>
  </div>
@@ -51,41 +51,42 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">status</code></dt>
 
-     <span class="term"><em><code class="parameter">status</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><strong>pcntl_wait()</strong></span> は、パラメータ
-       <em><code class="parameter">status</code></em> の中にステータス情報を保存します。
+       <span class="function"><strong>pcntl_wait()</strong></span> は、パラメータ
+       <code class="parameter">status</code> の中にステータス情報を保存します。
        このステータスは、次の関数を用いて評価可能です。
-        <span class="function"><a href="function.pcntl-wifexited.html" class="function">pcntl_wifexited()</a></span>、
-        <span class="function"><a href="function.pcntl-wifstopped.html" class="function">pcntl_wifstopped()</a></span>、
-        <span class="function"><a href="function.pcntl-wifsignaled.html" class="function">pcntl_wifsignaled()</a></span>、
-        <span class="function"><a href="function.pcntl-wexitstatus.html" class="function">pcntl_wexitstatus()</a></span>、
-        <span class="function"><a href="function.pcntl-wtermsig.html" class="function">pcntl_wtermsig()</a></span> および
-        <span class="function"><a href="function.pcntl-wstopsig.html" class="function">pcntl_wstopsig()</a></span> 。
+       <span class="function"><a href="function.pcntl-wifexited.html" class="function">pcntl_wifexited()</a></span>、
+       <span class="function"><a href="function.pcntl-wifstopped.html" class="function">pcntl_wifstopped()</a></span>、
+       <span class="function"><a href="function.pcntl-wifsignaled.html" class="function">pcntl_wifsignaled()</a></span>、
+       <span class="function"><a href="function.pcntl-wexitstatus.html" class="function">pcntl_wexitstatus()</a></span>、
+       <span class="function"><a href="function.pcntl-wtermsig.html" class="function">pcntl_wtermsig()</a></span> および
+       <span class="function"><a href="function.pcntl-wstopsig.html" class="function">pcntl_wstopsig()</a></span> 。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">options</code></em></span>
      <dd>
 
       <p class="para">
        システム上で wait3 が使用可能な場合 (ほとんどの BSD 系システムが
-       該当します)、オプションのパラメータ <em><code class="parameter">options</code></em>
+       該当します)、オプションのパラメータ <code class="parameter">options</code>
        を使用可能です。このパラメータが指定されない場合、wait はシステムコールに
-       対して使用されます。wait3 が使用できない場合、<em><code class="parameter">options
-       </code></em> に値を設定しても何の影響も及ぼしません。
-       <em><code class="parameter">options</code></em> の値は、次の 2 つのグローバル定数の
+       対して使用されます。wait3 が使用できない場合、<code class="parameter">options
+       </code> に値を設定しても何の影響も及ぼしません。
+       <code class="parameter">options</code> の値は、次の 2 つのグローバル定数の
        ゼロまたはそれ以上の論理和です。
        <table class="doctable table">
-        <caption><strong><em><code class="parameter">options</code></em> のとりうる値</strong></caption>
+        <caption><strong><code class="parameter">options</code> のとりうる値</strong></caption>
         
          <tbody class="tbody">
           <tr>
@@ -110,8 +111,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -121,7 +121,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.pcntl-wait-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    <span class="function"><strong>pcntl_wait()</strong></span> は、終了した子プロセスの
+   <span class="function"><strong>pcntl_wait()</strong></span> は、終了した子プロセスの
    プロセス ID を返します。エラーの場合は -1、(wait3 が使用可能なシステムで)
    WNOHANG が使用され、子プロセスが利用できない場合に 0 を返します。
   </p>
@@ -132,15 +132,15 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.pcntl-fork.html" class="function" rel="rdfs-seeAlso">pcntl_fork()</a> - 現在実行中のプロセスをフォークする</span></li>
-    <li class="member"> <span class="function"><a href="function.pcntl-signal.html" class="function" rel="rdfs-seeAlso">pcntl_signal()</a> - シグナルハンドラを設定する</span></li>
-    <li class="member"> <span class="function"><a href="function.pcntl-wifexited.html" class="function" rel="rdfs-seeAlso">pcntl_wifexited()</a> - ステータスコードが正常終了を表しているかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.pcntl-wifstopped.html" class="function" rel="rdfs-seeAlso">pcntl_wifstopped()</a> - 子プロセスが現在停止しているかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.pcntl-wifsignaled.html" class="function" rel="rdfs-seeAlso">pcntl_wifsignaled()</a> - ステータスコードがシグナルによる終了を表しているかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.pcntl-wexitstatus.html" class="function" rel="rdfs-seeAlso">pcntl_wexitstatus()</a> - 終了した子プロセスのリターンコードを返す</span></li>
-    <li class="member"> <span class="function"><a href="function.pcntl-wtermsig.html" class="function" rel="rdfs-seeAlso">pcntl_wtermsig()</a> - 子プロセスの終了を生じたシグナルを返す</span></li>
-    <li class="member"> <span class="function"><a href="function.pcntl-wstopsig.html" class="function" rel="rdfs-seeAlso">pcntl_wstopsig()</a> - 子プロセスを停止させたシグナルを返す</span></li>
-    <li class="member"> <span class="function"><a href="function.pcntl-waitpid.html" class="function" rel="rdfs-seeAlso">pcntl_waitpid()</a> - 待つかフォークした子プロセスのステータスを返す</span></li>
+    <li class="member"><span class="function"><a href="function.pcntl-fork.html" class="function" rel="rdfs-seeAlso">pcntl_fork()</a> - 現在実行中のプロセスをフォークする</span></li>
+    <li class="member"><span class="function"><a href="function.pcntl-signal.html" class="function" rel="rdfs-seeAlso">pcntl_signal()</a> - シグナルハンドラを設定する</span></li>
+    <li class="member"><span class="function"><a href="function.pcntl-wifexited.html" class="function" rel="rdfs-seeAlso">pcntl_wifexited()</a> - ステータスコードが正常終了を表しているかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.pcntl-wifstopped.html" class="function" rel="rdfs-seeAlso">pcntl_wifstopped()</a> - 子プロセスが現在停止しているかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.pcntl-wifsignaled.html" class="function" rel="rdfs-seeAlso">pcntl_wifsignaled()</a> - ステータスコードがシグナルによる終了を表しているかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.pcntl-wexitstatus.html" class="function" rel="rdfs-seeAlso">pcntl_wexitstatus()</a> - 終了した子プロセスのリターンコードを返す</span></li>
+    <li class="member"><span class="function"><a href="function.pcntl-wtermsig.html" class="function" rel="rdfs-seeAlso">pcntl_wtermsig()</a> - 子プロセスを終了させたシグナルを返す</span></li>
+    <li class="member"><span class="function"><a href="function.pcntl-wstopsig.html" class="function" rel="rdfs-seeAlso">pcntl_wstopsig()</a> - 子プロセスを停止させたシグナルを返す</span></li>
+    <li class="member"><span class="function"><a href="function.pcntl-waitpid.html" class="function" rel="rdfs-seeAlso">pcntl_waitpid()</a> - 待つかフォークした子プロセスのステータスを返す</span></li>
    </ul>
   </p>
  </div>

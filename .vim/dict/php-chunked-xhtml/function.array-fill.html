@@ -27,9 +27,9 @@
    )</div>
 
   <p class="para rdfs-comment">
-   パラメータ <em><code class="parameter">value</code></em> を値とする
-   <em><code class="parameter">num</code></em> 個のエントリからなる配列を埋めます。
-   この際、キーは、<em><code class="parameter">start_index</code></em>
+   パラメータ <code class="parameter">value</code> を値とする
+   <code class="parameter">num</code> 個のエントリからなる配列を埋めます。
+   この際、キーは、<code class="parameter">start_index</code>
    パラメータから開始します。
   </p>
  </div>
@@ -41,43 +41,44 @@
    <dl>
 
 
-    <dt>
+    
+     <dt>
+<code class="parameter">start_index</code></dt>
 
-     <span class="term"><em><code class="parameter">start_index</code></em></span>
      <dd>
 
       <p class="para">
        返される配列の最初のインデックス。
       </p>
       <p class="para">
-       <em><code class="parameter">start_index</code></em> が負の場合は、
+       <code class="parameter">start_index</code> が負の場合は、
        返される配列の最初のインデックスが
-       <em><code class="parameter">start_index</code></em>
+       <code class="parameter">start_index</code>
        となり、それ以降のインデックスはゼロから始まります
        (<a href="function.array-fill.html#function.array-fill.example.basic" class="link">例</a>を参照ください)。
       </p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+<code class="parameter">num</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">num</code></em></span>
      <dd>
 
       <p class="para">
        挿入する要素数。
-       正の数でなければなりません。
+       ゼロ以上の数でなければなりません。
       </p>
      </dd>
 
-    </dt>
+    
 
+    
+     <dt>
+<code class="parameter">value</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">value</code></em></span>
      <dd>
 
       <p class="para">
@@ -85,8 +86,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
 
    </dl>
 
@@ -105,8 +105,38 @@
  <div class="refsect1 errors" id="refsect1-function.array-fill-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
-   <em><code class="parameter">num</code></em> が 1 より小さい場合に
+   <code class="parameter">num</code> がゼロより小さい場合に
    <strong><code>E_WARNING</code></strong> が発生します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.array-fill-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.6.0</td>
+       <td>
+        <code class="parameter">num</code> にゼロを指定できるようになりました。これより前のバージョンでは、
+        <code class="parameter">num</code> には正の数しか指定できませんでした。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
   </p>
  </div>
 
@@ -115,7 +145,7 @@
   <h3 class="title">例</h3>
   <p class="para">
    <div class="example" id="function.array-fill.example.basic">
-    <p><strong>例1  <span class="function"><strong>array_fill()</strong></span> の例</strong></p>
+    <p><strong>例1 <span class="function"><strong>array_fill()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_fill</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'banana'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_fill</span><span style="color: #007700">(-</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pear'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -163,9 +193,9 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.array-fill-keys.html" class="function" rel="rdfs-seeAlso">array_fill_keys()</a> - キーを指定して、配列を値で埋める</span></li>
-    <li class="member"> <span class="function"><a href="function.str-repeat.html" class="function" rel="rdfs-seeAlso">str_repeat()</a> - 文字列を反復する</span></li>
-    <li class="member"> <span class="function"><a href="function.range.html" class="function" rel="rdfs-seeAlso">range()</a> - ある範囲の整数を有する配列を作成する</span></li>
+    <li class="member"><span class="function"><a href="function.array-fill-keys.html" class="function" rel="rdfs-seeAlso">array_fill_keys()</a> - キーを指定して、配列を値で埋める</span></li>
+    <li class="member"><span class="function"><a href="function.str-repeat.html" class="function" rel="rdfs-seeAlso">str_repeat()</a> - 文字列を反復する</span></li>
+    <li class="member"><span class="function"><a href="function.range.html" class="function" rel="rdfs-seeAlso">range()</a> - ある範囲の整数を有する配列を作成する</span></li>
    </ul>
   </p>
  </div>

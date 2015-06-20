@@ -30,9 +30,9 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>stream_select()</strong></span> はストリームの配列を受け取ると、
+   <span class="function"><strong>stream_select()</strong></span> はストリームの配列を受け取ると、
    それらの状態が変化するまで待ちます。機能としては、ストリームに対して
-   働くという点以外では  <span class="function"><a href="function.socket-select.html" class="function">socket_select()</a></span> と同一です。
+   働くという点以外では <span class="function"><a href="function.socket-select.html" class="function">socket_select()</a></span> と同一です。
   </p>
  </div>
 
@@ -42,85 +42,86 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">read</code></dt>
 
-     <span class="term"><em><code class="parameter">read</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">read</code></em> 配列に列挙されたストリームに対しては、
+       <code class="parameter">read</code> 配列に列挙されたストリームに対しては、
        何らかのデータがそのストリーム内で読み出せる状態にあるかどうか
        監視が行われます
        (より正確にいえば、ブロックしないで読み出せる状態かどうか -
        特にストリームが EOF に達したかどうか、です。このとき、
-        <span class="function"><a href="function.fread.html" class="function">fread()</a></span> は長さ 0 の文字列を返します)。
+       <span class="function"><a href="function.fread.html" class="function">fread()</a></span> は長さ 0 の文字列を返します)。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">write</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">write</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">write</code></em> 配列に列挙されたストリームに対しては、
+       <code class="parameter">write</code> 配列に列挙されたストリームに対しては、
        ブロックしないで書き込みができるかどうかの監視が行われます。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">except</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">except</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">except</code></em> 配列に列挙されたストリームに対しては、
+       <code class="parameter">except</code> 配列に列挙されたストリームに対しては、
        重大な例外（&quot;帯域外の&quot;）データが発生したかどうかの監視が行われます。
       </p>
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
-         <span class="function"><strong>stream_select()</strong></span> の終了時には、
+        <span class="function"><strong>stream_select()</strong></span> の終了時には、
         どのストリームの状態が実際に変化したのかが分かるよう、
-        配列 <em><code class="parameter">read</code></em>、<em><code class="parameter">write</code></em> および
-        <em><code class="parameter">except</code></em> に変更が加えられます。
+        配列 <code class="parameter">read</code>、<code class="parameter">write</code> および
+        <code class="parameter">except</code> に変更が加えられます。
        </p>
       </p></blockquote>
       <span class="simpara">
-        <span class="function"><strong>stream_select()</strong></span> のすべてのパラメータに配列を
+       <span class="function"><strong>stream_select()</strong></span> のすべてのパラメータに配列を
        渡す必要はありません。代わりに
        そのままにしておくことも、空の配列を渡すことも、<strong><code>NULL</code></strong> を渡すことも
        できます。このとき、それらの変数は<em class="emphasis">参照渡し</em>で渡されるため、
-        <span class="function"><strong>stream_select()</strong></span> から戻った時点で変更されている
+       <span class="function"><strong>stream_select()</strong></span> から戻った時点で変更されている
        可能性があることに注意してください。
       </span>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">tv_sec</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">tv_sec</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">tv_sec</code></em> と <em><code class="parameter">tv_usec</code></em>
+       <code class="parameter">tv_sec</code> と <code class="parameter">tv_usec</code>
        は、一体となって、<em class="emphasis">timeout</em> パラメータを表現します。
-       <em><code class="parameter">tv_sec</code></em> は秒数を指定し、一方
-       <em><code class="parameter">tv_usec</code></em> はマイクロ秒数を指定します。
-       <em class="emphasis">timeout</em> は、 <span class="function"><strong>stream_select()</strong></span>
+       <code class="parameter">tv_sec</code> は秒数を指定し、一方
+       <code class="parameter">tv_usec</code> はマイクロ秒数を指定します。
+       <em class="emphasis">timeout</em> は、<span class="function"><strong>stream_select()</strong></span>
        の実行から戻るまでの時間の上限です。
-       <em><code class="parameter">tv_sec</code></em> および <em><code class="parameter">tv_usec</code></em>
+       <code class="parameter">tv_sec</code> および <code class="parameter">tv_usec</code>
        の両方に <em>0</em> を指定すると
-        <span class="function"><strong>stream_select()</strong></span> はデータを待たずに一瞬で戻ります。
+       <span class="function"><strong>stream_select()</strong></span> はデータを待たずに一瞬で戻ります。
        これは現在のストリームの状態を示します。
       </p>
       <p class="para">
-       <em><code class="parameter">tv_sec</code></em> が <strong><code>NULL</code></strong> (タイムアウトなし) の場合、
-        <span class="function"><strong>stream_select()</strong></span> はブロックしつづけ、調べている
+       <code class="parameter">tv_sec</code> が <strong><code>NULL</code></strong> (タイムアウトなし) の場合、
+       <span class="function"><strong>stream_select()</strong></span> はブロックしつづけ、調べている
        ストリームのひとつでイベントが発生する（あるいはシグナルがシステム
        コールを中断する）まで終了しません。
       </p>
@@ -140,26 +141,25 @@
        </p>
        <p class="para">
         タイムアウト値は、あくまでも経過時間の最大値であることを覚えておきましょう。
-         <span class="function"><strong>stream_select()</strong></span> は、指定したストリームが使用可能に
+        <span class="function"><strong>stream_select()</strong></span> は、指定したストリームが使用可能に
         なるとすぐに結果を返します。
        </p>
       </div>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">tv_usec</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">tv_usec</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">tv_sec</code></em> の説明を参照ください。
+       <code class="parameter">tv_sec</code> の説明を参照ください。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -169,7 +169,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.stream-select-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合  <span class="function"><strong>stream_select()</strong></span> は、変更された
+   成功した場合 <span class="function"><strong>stream_select()</strong></span> は、変更された
    配列に何個のストリームリソースが格納されたかを示す数を返します。
    もしタイムアウトの時間内に何も規定された事象が起こらなかった場合は
    0 になることもあります。エラーの際は <strong><code>FALSE</code></strong> を返し、警告を発生させます
@@ -181,11 +181,11 @@
  <div class="refsect1 examples" id="refsect1-function.stream-select-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4011">
-    <p><strong>例1  <span class="function"><strong>stream_select()</strong></span> の例</strong></p>
+   <div class="example" id="example-4467">
+    <p><strong>例1 <span class="function"><strong>stream_select()</strong></span> の例</strong></p>
     <div class="example-contents"><p>
-     この例では、<em><code class="parameter">$stream1</code></em> あるいは
-     <em><code class="parameter">$stream2</code></em> のどちらかに読み込めるデータが
+     この例では、<code class="parameter">$stream1</code> あるいは
+     <code class="parameter">$stream2</code> のどちらかに読み込めるデータが
      到達したかどうかを調べます。
      タイムアウトが <em>0</em> なので、すぐに結果を返します。
     </p></div>
@@ -221,7 +221,7 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
    エラーかどうかをチェックするには <em>===</em> を使ってください。
-    <span class="function"><strong>stream_select()</strong></span> は 0 を返すことがあるため、その場合
+   <span class="function"><strong>stream_select()</strong></span> は 0 を返すことがあるため、その場合
    <strong><code>FALSE</code></strong> と <em>==</em> 演算子で比較すると <strong><code>TRUE</code></strong>
    と評価されてしまうからです:
    <div class="example-contents">
@@ -250,13 +250,13 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     Windows の互換性: Windows 98 では、
-     <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span> が返すパイプに対して
-     <span class="function"><strong>stream_select()</strong></span> を使用すると
+    <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span> が返すパイプに対して
+    <span class="function"><strong>stream_select()</strong></span> を使用すると
     データが失われる可能性があります。
    </p>
    <p class="para">
-    Windows では、 <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span> が返すファイル記述子に
-    対して  <span class="function"><strong>stream_select()</strong></span> を使用すると
+    Windows では、<span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span> が返すファイル記述子に
+    対して <span class="function"><strong>stream_select()</strong></span> を使用すると
     失敗して <strong><code>FALSE</code></strong> を返すことがあります。
    </p>
   </p></blockquote>
@@ -266,7 +266,7 @@
  <div class="refsect1 seealso" id="refsect1-function.stream-select-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="function.stream-set-blocking.html" class="function" rel="rdfs-seeAlso">stream_set_blocking()</a> - ストリームのブロックモードを有効にする / 解除する</span></li>
+   <li class="member"><span class="function"><a href="function.stream-set-blocking.html" class="function" rel="rdfs-seeAlso">stream_set_blocking()</a> - ストリームのブロックモードを有効にする / 解除する</span></li>
   </ul>
  </div>
 

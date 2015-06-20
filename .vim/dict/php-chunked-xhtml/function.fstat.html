@@ -13,7 +13,7 @@
 </div><hr /><div id="function.fstat" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">fstat</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">fstat</span> &mdash; <span class="dc-title">オープンしたファイルポインタからファイルに関する情報を取得する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">fstat</span> &mdash; <span class="dc-title">オープンしたファイルポインタからファイルに関する情報を取得する</span></p>
 
  </div>
  
@@ -25,8 +25,8 @@
    )</div>
 
   <p class="para rdfs-comment">
-   ファイルポインタ<em><code class="parameter">handle</code></em>によりオープンされたファイルの統計情報を取得します。
-   この関数は関数 <span class="function"><a href="function.stat.html" class="function">stat()</a></span>に似ていますが、
+   ファイルポインタ<code class="parameter">handle</code>によりオープンされたファイルの統計情報を取得します。
+   この関数は関数<span class="function"><a href="function.stat.html" class="function">stat()</a></span>に似ていますが、
    ファイル名の代わりにオープンされたファイルポインタを指定するところが異なります。
   </p>
  </div>
@@ -37,17 +37,17 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">handle</code></dt>
 
-     <span class="term"><em><code class="parameter">handle</code></em></span>
      <dd>
 
-      <p class="para"> <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>
+      <p class="para"><span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>
 を使用して作成したファイルシステムポインタリソース。</p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -58,7 +58,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    ファイルの統計情報の配列を返します。配列のフォーマットについては
-    <span class="function"><a href="function.stat.html" class="function">stat()</a></span>のマニュアルをご覧ください。
+   <span class="function"><a href="function.stat.html" class="function">stat()</a></span>のマニュアルをご覧ください。
   </p>
  </div>
 
@@ -66,8 +66,8 @@
  <div class="refsect1 examples" id="refsect1-function.fstat-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2385">
-    <p><strong>例1  <span class="function"><strong>fstat()</strong></span> の例</strong></p>
+   <div class="example" id="example-2584">
+    <p><strong>例1 <span class="function"><strong>fstat()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;ファイルをオープンする<br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"/etc/passwd"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;統計情報を収集する<br /></span><span style="color: #0000BB">$fstat&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fstat</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;ファイルをクローズする<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;連想配列部のみ表示する<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$fstat</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">13</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">?&gt;</span>

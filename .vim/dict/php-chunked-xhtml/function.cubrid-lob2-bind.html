@@ -28,12 +28,12 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   The  <span class="function"><strong>cubrid_lob2_bind()</strong></span> function is used to bind BLOB/CLOB datas
+   The <span class="function"><strong>cubrid_lob2_bind()</strong></span> function is used to bind BLOB/CLOB datas
    to a corresponding question mark placeholder in the SQL statement that was passed 
-   to  <span class="function"><a href="function.cubrid-prepare.html" class="function">cubrid_prepare()</a></span>. If <em><code class="parameter">bind_value_type</code></em> 
+   to <span class="function"><a href="function.cubrid-prepare.html" class="function">cubrid_prepare()</a></span>. If <code class="parameter">bind_value_type</code> 
    is not given, string will be &quot;BLOB&quot; as the default. But if you use
-    <span class="function"><a href="function.cubrid-lob2-new.html" class="function">cubrid_lob2_new()</a></span> before, <em><code class="parameter">bind_value_type</code></em>
-   will be consistent with <em><code class="parameter">type</code></em> in  <span class="function"><a href="function.cubrid-lob2-new.html" class="function">cubrid_lob2_new()</a></span> as the default.
+   <span class="function"><a href="function.cubrid-lob2-new.html" class="function">cubrid_lob2_new()</a></span> before, <code class="parameter">bind_value_type</code>
+   will be consistent with <code class="parameter">type</code> in <span class="function"><a href="function.cubrid-lob2-new.html" class="function">cubrid_lob2_new()</a></span> as the default.
   </p>
  </div>
 
@@ -43,46 +43,46 @@
  <p class="para">
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">req_identifier</code></dt>
 
-    <span class="term"><em><code class="parameter">req_identifier</code></em></span>
     <dd>
 
-     <p class="para">Request identifier as a result of  <span class="function"><a href="function.cubrid-prepare.html" class="function">cubrid_prepare()</a></span>.</p>
+     <p class="para">Request identifier as a result of <span class="function"><a href="function.cubrid-prepare.html" class="function">cubrid_prepare()</a></span>.</p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">bind_index</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">bind_index</code></em></span>
     <dd>
 
      <p class="para">Location of binding parameters. It starts with 1.</p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">bind_value</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">bind_value</code></em></span>
     <dd>
 
      <p class="para">Actual value for binding.</p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">bind_value_type</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">bind_value_type</code></em></span>
     <dd>
 
      <p class="para">It must be &quot;BLOB&quot; or &quot;CLOB&quot; and it won&#039;t be case-sensitive. If it not be given, the default value is &quot;BLOB&quot;.</p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
   </p>
@@ -102,8 +102,8 @@
  
  <div class="refsect1 examples" id="refsect1-function.cubrid-lob2-bind-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1031">
-   <p><strong>例1  <span class="function"><strong>cubrid_lob2_bind()</strong></span> example</strong></p>
+  <div class="example" id="example-1089">
+   <p><strong>例1 <span class="function"><strong>cubrid_lob2_bind()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Table:&nbsp;test_lob&nbsp;(id&nbsp;INT,&nbsp;contents&nbsp;CLOB)<br /><br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dba"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,</span><span style="color: #DD0000">"DROP&nbsp;TABLE&nbsp;if&nbsp;exists&nbsp;test_lob"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;test_lob&nbsp;(id&nbsp;INT,&nbsp;contents&nbsp;CLOB)"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;test_lob&nbsp;VALUES&nbsp;(?,&nbsp;?)"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$lob&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_lob2_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'CLOB'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_lob2_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$lob</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_lob2_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'CUBRID&nbsp;LOB2&nbsp;TEST'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'CLOB'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -119,8 +119,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="function.cubrid-lob2-new.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_new()</a> - Create a lob object.</span></li>
-   <li class="member"> <span class="function"><a href="function.cubrid-lob2-close.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_close()</a> - Close LOB object.</span></li>
+   <li class="member"><span class="function"><a href="function.cubrid-lob2-new.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_new()</a> - Create a lob object.</span></li>
+   <li class="member"><span class="function"><a href="function.cubrid-lob2-close.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_close()</a> - Close LOB object.</span></li>
    </ul>
   </p>
  </div>

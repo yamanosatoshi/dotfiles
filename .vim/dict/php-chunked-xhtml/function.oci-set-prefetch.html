@@ -26,7 +26,7 @@
    )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span>
+   <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span>
    のコール、およびそれに伴う内部的なデータベースへのリクエストがすべて成功した後に
    Oracle Client ライブラリがバッファに取り込む行数を設定します。
    クエリが返す結果の行数が多くなる場合は、プリフェッチ行数をデフォルトの
@@ -39,13 +39,13 @@
    ネットワークや CPU の利用効率がよくなります。
    行のバッファリングは OCI8 の内部的なものであり、
    プリフェッチ行数が変わっても OCI8 のフェッチ関数群の挙動は変わりません。
-   たとえば、 <span class="function"><a href="function.oci-fetch-row.html" class="function">oci_fetch_row()</a></span> は、常に一行だけを返します。
+   たとえば、<span class="function"><a href="function.oci-fetch-row.html" class="function">oci_fetch_row()</a></span> は、常に一行だけを返します。
    プリフェッチバッファはステートメント単位で設定されるものであり、
    ステートメントを再実行したときや他の接続から実行したときには使われません。
   </p>
   <p class="para">
-    <span class="function"><strong>oci_set_prefetch()</strong></span> は
-    <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> の前にコールします。
+   <span class="function"><strong>oci_set_prefetch()</strong></span> は
+   <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> の前にコールします。
   </p>
   <p class="para">
    ネットワークやデータベースの状況を考慮して、
@@ -82,23 +82,24 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">statement</code></dt>
 
-     <span class="term"><em><code class="parameter">statement</code></em></span>
      <dd>
 
        <p class="para">
- <span class="function"><a href="function.oci-parse.html" class="function">oci_parse()</a></span> で作成して
- <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> で実行した有効な OCI8 ステートメント ID、
+<span class="function"><a href="function.oci-parse.html" class="function">oci_parse()</a></span> で作成して
+<span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> で実行した有効な OCI8 ステートメント ID、
 あるいは <em>REF
 CURSOR</em> ステートメント ID。</p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">rows</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">rows</code></em></span>
      <dd>
 
       <p class="para">
@@ -106,8 +107,7 @@ CURSOR</em> ステートメント ID。</p>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -139,7 +139,7 @@ CURSOR</em> ステートメント ID。</p>
       <tr>
        <td>5.3.2 (PECL OCI8 1.4)</td>
        <td>
-         これより前のバージョンでは、<em><code class="parameter">rows</code></em>
+         これより前のバージョンでは、<code class="parameter">rows</code>
          は 1 以上でなければなりませんでした。
        </td>
       </tr>
@@ -148,8 +148,8 @@ CURSOR</em> ステートメント ID。</p>
         <td>5.3.0 (PECL OCI8 1.3.4)</td>
         <td>
          これより前のバージョンでは、プリフェッチの上限は
-         <em><code class="parameter">rows</code></em> 行と 1024
-         * <em><code class="parameter">rows</code></em> バイトのうちの少ないほうでした。
+         <code class="parameter">rows</code> 行と 1024
+         * <code class="parameter">rows</code> バイトのうちの少ないほうでした。
          バイト数の制限は、このバージョンで取り除かれました。
         </td>
       </tr>
@@ -165,7 +165,7 @@ CURSOR</em> ステートメント ID。</p>
  <div class="refsect1 examples" id="refsect1-function.oci-set-prefetch-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2018">
+   <div class="example" id="example-2221">
     <p><strong>例1 クエリのデフォルトプリフェッチ値の変更</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -177,7 +177,7 @@ CURSOR</em> ステートメント ID。</p>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2019">
+   <div class="example" id="example-2222">
     <p><strong>例2 REF CURSOR のデフォルトプリフェッチの変更</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -195,7 +195,7 @@ CURSOR</em> ステートメント ID。</p>
    に設定して行が結果セットから &quot;失われる&quot; ことを防ぎます。
    プリフェッチの値は OCI8 内部でのデータベースへのリクエスト時に余計に取得する行数です。
    つまり、<strong><code>0</code></strong> に設定すると一度に一行だけ取得するということになります。
-   <div class="example" id="example-2020">
+   <div class="example" id="example-2223">
     <p><strong>例3 REF CURSOR を Oracle に戻すときのプリフェッチの設定</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">

@@ -20,7 +20,7 @@
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span>
-    <span class="methodname"><strong>EventHttpRequest::__construct</strong></span>
+   <span class="methodname"><strong>EventHttpRequest::__construct</strong></span>
     ( <span class="methodparam">
     <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>
      <code class="parameter">$callback</code>
@@ -41,19 +41,20 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
 
-    <span class="term">
-     <em><code class="parameter">callback</code></em>
-    </span>
+     <code class="parameter">callback</code>
+    </dt>
+
     <dd>
 
      <p class="para">
       Gets invoked on requesting path. Should match the following prototype:
      </p>
      <div class="methodsynopsis dc-description">
-      <span class="type"><span class="type void">void</span></span>
-       <span class="methodname"><strong>callback</strong></span>
+      <span class="type"><span class="type void">void</span></span> 
+      <span class="methodname"><strong>callback</strong></span>
        ([ <span class="methodparam">
        <span class="type"><a href="class.eventhttprequest.html" class="type EventHttpRequest">EventHttpRequest</a></span>
         <code class="parameter">$req</code>
@@ -68,13 +69,13 @@
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
 
-   <dt>
+     <code class="parameter">data</code>
+    </dt>
 
-    <span class="term">
-     <em><code class="parameter">data</code></em>
-    </span>
     <dd>
 
      <p class="para">
@@ -82,8 +83,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -97,9 +97,9 @@
 
  <div class="refsect1 examples" id="refsect1-eventhttprequest.construct-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-4248">
+  <div class="example" id="example-4696">
    <p><strong>例1 
-     <span class="function"><strong>EventHttpRequest::__construct()</strong></span> example</strong></p>
+    <span class="function"><strong>EventHttpRequest::__construct()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">_request_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$base</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__FUNCTION__</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">is_null</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Timed&nbsp;out\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$response_code&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$req</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getResponseCode</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$response_code&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Connection&nbsp;refused\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;elseif&nbsp;(</span><span style="color: #0000BB">$response_code&nbsp;</span><span style="color: #007700">!=&nbsp;</span><span style="color: #0000BB">200</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Unexpected&nbsp;response:&nbsp;</span><span style="color: #0000BB">$response_code</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Success:&nbsp;</span><span style="color: #0000BB">$response_code</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$buf&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$req</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getInputBuffer</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Body:\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(</span><span style="color: #0000BB">$s&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$buf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">readLine</span><span style="color: #007700">(</span><span style="color: #0000BB">EventBuffer</span><span style="color: #007700">::</span><span style="color: #0000BB">EOL_ANY</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$s</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$base</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exit</span><span style="color: #007700">(</span><span style="color: #0000BB">NULL</span><span style="color: #007700">);<br />}<br /><br /><br /></span><span style="color: #0000BB">$address&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"127.0.0.1"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$port&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">80</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$base&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">EventBase</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">EventHttpConnection</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$address</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$port</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setTimeout</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">EventHttpRequest</span><span style="color: #007700">(</span><span style="color: #DD0000">"_request_handler"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$base</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$req</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addHeader</span><span style="color: #007700">(</span><span style="color: #DD0000">"Host"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$address</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">EventHttpRequest</span><span style="color: #007700">::</span><span style="color: #0000BB">OUTPUT_HEADER</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$req</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addHeader</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-Length"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"0"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">EventHttpRequest</span><span style="color: #007700">::</span><span style="color: #0000BB">OUTPUT_HEADER</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">makeRequest</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">EventHttpRequest</span><span style="color: #007700">::</span><span style="color: #0000BB">CMD_GET</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"/index.cphp"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$base</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -114,10 +114,10 @@
   <h3 class="title">参考</h3>
   <ul class="simplelist">
    <li class="member">
-     <span class="methodname"><a href="eventhttprequest.cancel.html" class="methodname" rel="rdfs-seeAlso">EventHttpRequest::cancel()</a> - Cancels a pending HTTP request</span>
+    <span class="methodname"><a href="eventhttprequest.cancel.html" class="methodname" rel="rdfs-seeAlso">EventHttpRequest::cancel()</a> - Cancels a pending HTTP request</span>
    </li>
    <li class="member">
-     <span class="methodname"><a href="eventhttprequest.addheader.html" class="methodname" rel="rdfs-seeAlso">EventHttpRequest::addHeader()</a> - Adds an HTTP header to the headers of the request</span>
+    <span class="methodname"><a href="eventhttprequest.addheader.html" class="methodname" rel="rdfs-seeAlso">EventHttpRequest::addHeader()</a> - Adds an HTTP header to the headers of the request</span>
    </li>
   </ul>
  </div>

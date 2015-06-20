@@ -28,9 +28,20 @@
    <a href="info.configuration.html#ini.magic-quotes-runtime" class="link">magic_quotes_runtime</a>
    の現在アクティブな設定をセットします。
   </p>
+  
   <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は PHP 5.3.0 で
-<em class="emphasis">非推奨</em>となり、
-PHP 5.4.0 で<em class="emphasis">削除</em>されました。</p></div>
+<em class="emphasis">非推奨</em>となりました。
+この機能を使用しないことを強く推奨します。</p></div>
+  
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.set-magic-quotes-runtime-errors">
+ <h3 class="title">エラー / 例外</h3>
+ <p class="para">
+  PHP 5.3 以降ではこの関数は非推奨となり、実行すると E_DEPRECATED が発生するようになりました。
+  PHP 5.4 以降では、マジッククォートを有効にしようとして、さらに E_CORE_ERROR も発生するようになりました。
+ </p>
  </div>
 
 
@@ -39,9 +50,10 @@ PHP 5.4.0 で<em class="emphasis">削除</em>されました。</p></div>
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">new_setting</code></dt>
 
-     <span class="term"><em><code class="parameter">new_setting</code></em></span>
      <dd>
 
       <p class="para">
@@ -49,8 +61,7 @@ PHP 5.4.0 で<em class="emphasis">削除</em>されました。</p></div>
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -68,8 +79,8 @@ PHP 5.4.0 で<em class="emphasis">削除</em>されました。</p></div>
  <div class="refsect1 examples" id="refsect1-function.set-magic-quotes-runtime-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-518">
-    <p><strong>例1  <span class="function"><strong>set_magic_quotes_runtime()</strong></span> の例</strong></p>
+   <div class="example" id="example-543">
+    <p><strong>例1 <span class="function"><strong>set_magic_quotes_runtime()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;一時的なファイルポインタを作成します<br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">tmpfile</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;データをポインタに書き込みます<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'\'PHP\'&nbsp;is&nbsp;a&nbsp;Recursive&nbsp;acronym'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;magic_quotes_runtime&nbsp;なしの場合<br /></span><span style="color: #0000BB">rewind</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">set_magic_quotes_runtime</span><span style="color: #007700">(</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">'Without&nbsp;magic_quotes_runtime:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">64</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;magic_quotes_runtime&nbsp;ありの場合<br /></span><span style="color: #0000BB">rewind</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">set_magic_quotes_runtime</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">'With&nbsp;magic_quotes_runtime:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">64</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;後始末<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -93,8 +104,8 @@ With magic_quotes_runtime: \&#039;PHP\&#039; is a Recursive acronym
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.get-magic-quotes-gpc.html" class="function" rel="rdfs-seeAlso">get_magic_quotes_gpc()</a> - magic_quotes_gpc の現在の設定を得る</span></li>
-    <li class="member"> <span class="function"><a href="function.get-magic-quotes-runtime.html" class="function" rel="rdfs-seeAlso">get_magic_quotes_runtime()</a> - magic_quotes_runtime の現在アクティブな設定値を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.get-magic-quotes-gpc.html" class="function" rel="rdfs-seeAlso">get_magic_quotes_gpc()</a> - magic_quotes_gpc の現在の設定を得る</span></li>
+    <li class="member"><span class="function"><a href="function.get-magic-quotes-runtime.html" class="function" rel="rdfs-seeAlso">get_magic_quotes_runtime()</a> - magic_quotes_runtime の現在アクティブな設定値を取得する</span></li>
    </ul>
   </p>
  </div>

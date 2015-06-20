@@ -13,7 +13,7 @@
 </div><hr /><div id="function.unset" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">unset</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">unset</span> &mdash; <span class="dc-title">指定した変数の割当を解除する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">unset</span> &mdash; <span class="dc-title">指定した変数の割当を解除する</span></p>
 
  </div>
  
@@ -26,16 +26,16 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>unset()</strong></span> は指定した変数を破棄します。
+   <span class="function"><strong>unset()</strong></span> は指定した変数を破棄します。
   </p>
   <p class="para">
-   関数  <span class="function"><strong>unset()</strong></span> の内部動作は、
+   関数 <span class="function"><strong>unset()</strong></span> の内部動作は、
    破棄しようとする変数の型に依存します。
   </p>
   <p class="para">
-   あるグローバル変数が関数の中で  <span class="function"><strong>unset()</strong></span>
+   あるグローバル変数が関数の中で <span class="function"><strong>unset()</strong></span>
    された場合、ローカル変数のみが破棄されます。呼出側の環境にある変数は、
-    <span class="function"><strong>unset()</strong></span> がコールされる前と同じ値を保持します。
+   <span class="function"><strong>unset()</strong></span> がコールされる前と同じ値を保持します。
    <div class="informalexample">
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -57,7 +57,7 @@ bar
    </div>
   </p>
   <p class="para">
-   グローバル変数を関数の内部で  <span class="function"><strong>unset()</strong></span> するには、
+   グローバル変数を関数の内部で <span class="function"><strong>unset()</strong></span> するには、
    <var class="varname"><var class="varname"><a href="reserved.variables.globals.html" class="classname">$GLOBALS</a></var></var> 配列を使います。
    <div class="informalexample">
     <div class="example-contents">
@@ -70,9 +70,9 @@ bar
    </div>
   </p>
   <p class="para">
-   参照渡しされた変数が関数内で  <span class="function"><strong>unset()</strong></span> された場合に、
+   参照渡しされた変数が関数内で <span class="function"><strong>unset()</strong></span> された場合に、
    ローカル変数のみが破棄されます。呼出側の環境でその変数は、
-    <span class="function"><strong>unset()</strong></span> がコールされる前と同じ値を保持します。
+   <span class="function"><strong>unset()</strong></span> がコールされる前と同じ値を保持します。
    <div class="informalexample">
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -95,8 +95,8 @@ something
    </div>
   </p>
   <p class="para">
-   静的変数が関数の内部で  <span class="function"><strong>unset()</strong></span> された場合、
-    <span class="function"><strong>unset()</strong></span> は、その関数の残りのコンテキスト内においてのみ
+   静的変数が関数の内部で <span class="function"><strong>unset()</strong></span> された場合、
+   <span class="function"><strong>unset()</strong></span> は、その関数の残りのコンテキスト内においてのみ
    変数を破棄します。関数を再度コールすると、破棄する前の値が復元されます。
    <div class="informalexample">
     <div class="example-contents">
@@ -122,15 +122,16 @@ Before unset: 3, after unset: 23
   </p>
  </div>
 
-  
+
  <div class="refsect1 parameters" id="refsect1-function.unset-parameters">
   <h3 class="title">パラメータ</h3>
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">var</code></dt>
 
-     <span class="term"><em><code class="parameter">var</code></em></span>
      <dd>
 
       <p class="para">
@@ -138,11 +139,11 @@ Before unset: 3, after unset: 23
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">...</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">...</code></em></span>
      <dd>
 
       <p class="para">
@@ -150,8 +151,7 @@ Before unset: 3, after unset: 23
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -166,40 +166,11 @@ Before unset: 3, after unset: 23
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.unset-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.0.1</td>
-       <td>
-        複数の引数がサポートされるようになりました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.unset-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5253">
-    <p><strong>例1  <span class="function"><strong>unset()</strong></span> の例</strong></p>
+   <div class="example" id="example-5733">
+    <p><strong>例1 <span class="function"><strong>unset()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;変数を一つ破棄する<br /></span><span style="color: #007700">unset(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;配列の要素の一つを破棄する<br /></span><span style="color: #007700">unset(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">[</span><span style="color: #DD0000">'quux'</span><span style="color: #007700">]);<br /><br /></span><span style="color: #FF8000">//&nbsp;複数の変数を破棄する<br /></span><span style="color: #007700">unset(</span><span style="color: #0000BB">$foo1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$foo2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$foo3</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -208,11 +179,11 @@ Before unset: 3, after unset: 23
     </div>
 
    </div>
-   <div class="example" id="example-5254">
+   <div class="example" id="example-5734">
     <p><strong>例2 <em>(unset)</em> によるキャスト</strong></p>
     <div class="example-contents"><p>
      <em>(unset)</em> によるキャストは
-      <span class="function"><strong>unset()</strong></span> 関数と混同されがちです。
+     <span class="function"><strong>unset()</strong></span> 関数と混同されがちです。
      <em>(unset)</em> によるキャストは、
      単に <em>NULL</em> 型へのキャストを徹底するだけであり、
      キャストした変数の値を書き換えるわけではありません。
@@ -255,7 +226,7 @@ string(6) &quot;Felipe&quot;
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    オブジェクトのアクセス不能なプロパティに対して  <span class="function"><strong>unset()</strong></span>
+    オブジェクトのアクセス不能なプロパティに対して <span class="function"><strong>unset()</strong></span>
     を使用した場合は、もしオーバーロードメソッド
     <a href="language.oop5.overloading.html#object.unset" class="link">__unset()</a>
     が宣言されていればそれをコールします。
@@ -268,10 +239,10 @@ string(6) &quot;Felipe&quot;
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - 変数がセットされていること、そして NULL でないことを検査する</span></li>
-    <li class="member"> <span class="function"><a href="function.empty.html" class="function" rel="rdfs-seeAlso">empty()</a> - 変数が空であるかどうかを検査する</span></li>
+    <li class="member"><span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - 変数がセットされていること、そして NULL でないことを検査する</span></li>
+    <li class="member"><span class="function"><a href="function.empty.html" class="function" rel="rdfs-seeAlso">empty()</a> - 変数が空であるかどうかを検査する</span></li>
     <li class="member"><a href="language.oop5.overloading.html#object.unset" class="link">__unset()</a></li>
-    <li class="member"> <span class="function"><a href="function.array-splice.html" class="function" rel="rdfs-seeAlso">array_splice()</a> - 配列の一部を削除し、他の要素で置換する</span></li>
+    <li class="member"><span class="function"><a href="function.array-splice.html" class="function" rel="rdfs-seeAlso">array_splice()</a> - 配列の一部を削除し、他の要素で置換する</span></li>
    </ul>
   </p>
  </div>

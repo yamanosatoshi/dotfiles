@@ -13,7 +13,7 @@
 </div><hr /><div id="function.eio-seek" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">eio_seek</h1>
-  <p class="verinfo">(PECL eio &gt;= 0.5.0b)</p><p class="refpurpose"><span class="refname">eio_seek</span> &mdash; <span class="dc-title"><em><code class="parameter">fd</code></em> で指定したファイル内でのオフセットを、<em><code class="parameter">offset</code></em> と <em><code class="parameter">whence</code></em> に従って移動する</span></p>
+  <p class="verinfo">(PECL eio &gt;= 0.5.0b)</p><p class="refpurpose"><span class="refname">eio_seek</span> &mdash; <span class="dc-title"><code class="parameter">fd</code> で指定したファイル内でのオフセットを、<code class="parameter">offset</code> と <code class="parameter">whence</code> に従って移動する</span></p>
 
  </div>
 
@@ -30,13 +30,13 @@
   ]]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>eio_seek()</strong></span> は、<em><code class="parameter">fd</code></em>
-   で指定したファイル内でのオフセットを、<em><code class="parameter">offset</code></em> と
-   <em><code class="parameter">whence</code></em> で指定した位置に移動します。<em><code class="parameter">whence</code></em> の意味は次のとおりです。
+   <span class="function"><strong>eio_seek()</strong></span> は、<code class="parameter">fd</code>
+   で指定したファイル内でのオフセットを、<code class="parameter">offset</code> と
+   <code class="parameter">whence</code> で指定した位置に移動します。<code class="parameter">whence</code> の意味は次のとおりです。
    <ul class="simplelist">
-    <li class="member"><strong><code>EIO_SEEK_SET</code></strong> - 戦闘から <em><code class="parameter">offset</code></em> バイトの位置に移動する。</li>
-    <li class="member"><strong><code>EIO_SEEK_CUR</code></strong> - 現在の位置から <em><code class="parameter">offset</code></em> バイト進める。</li>
-    <li class="member"><strong><code>EIO_SEEK_END</code></strong> - ファイルの末尾から <em><code class="parameter">offset</code></em> バイト進める。</li>
+    <li class="member"><strong><code>EIO_SEEK_SET</code></strong> - 戦闘から <code class="parameter">offset</code> バイトの位置に移動する。</li>
+    <li class="member"><strong><code>EIO_SEEK_CUR</code></strong> - 現在の位置から <code class="parameter">offset</code> バイト進める。</li>
+    <li class="member"><strong><code>EIO_SEEK_END</code></strong> - ファイルの末尾から <code class="parameter">offset</code> バイト進める。</li>
    </ul>
   </p>
  </div>
@@ -46,9 +46,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">fd</code></dt>
 
-    <span class="term"><em><code class="parameter">fd</code></em></span>
     <dd>
 
      <p class="para">
@@ -56,11 +57,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">offset</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">offset</code></em></span>
     <dd>
 
      <p class="para">
@@ -68,11 +69,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">length</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">length</code></em></span>
     <dd>
 
      <p class="para">
@@ -80,29 +81,29 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">pri</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">pri</code></em></span>
     <dd>
 
     <p class="para">リクエストの優先順位。<strong><code>EIO_PRI_DEFAULT</code></strong>、<strong><code>EIO_PRI_MIN</code></strong>、<strong><code>EIO_PRI_MAX</code></strong> あるいは <strong><code>NULL</code></strong> を指定します。
-<strong><code>NULL</code></strong> を渡した場合、<em><code class="parameter">pri</code></em> は内部的に
+<strong><code>NULL</code></strong> を渡した場合、<code class="parameter">pri</code> は内部的に
 <strong><code>EIO_PRI_DEFAULT</code></strong> となります。
 </p>
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">callback</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">callback</code></em></span>
     <dd>
 
      <p class="para">
-<em><code class="parameter">callback</code></em> 関数が、リクエスト終了時にコールされます。
+<code class="parameter">callback</code> 関数が、リクエスト終了時にコールされます。
 この関数のプロトタイプは、<div class="example-contents"><div class="phpcode"><code><span style="color: #000000">
 void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;$req]);</span>
 </code></div></div>
@@ -110,30 +111,30 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 に一致しなければなりません。
 <dl>
 
-<dt>
 
-<span class="term"><em><code class="parameter">data</code></em></span>
+<dt>
+<code class="parameter">data</code></dt>
+
 <dd>
 <p class="para">は、リクエストに渡すカスタムデータです。</p></dd>
 
-</dt>
+
 
 <dt>
+<code class="parameter">result</code></dt>
 
-<span class="term"><em><code class="parameter">result</code></em></span>
 <dd>
 <p class="para">にはリクエスト固有の結果が格納されます。基本的には、対応するシステムコールが返すそのままの値となります。</p></dd>
 
-</dt>
+
 
 <dt>
+<code class="parameter">req</code></dt>
 
-<span class="term"><em><code class="parameter">req</code></em></span>
 <dd>
 <p class="para">はオプションで指定するリクエストリソースです。
- <span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span> のような関数で使えます。</p></dd>
+<span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span> のような関数で使えます。</p></dd>
 
-</dt>
 
 </dl>
 
@@ -141,20 +142,19 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">data</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">data</code></em></span>
     <dd>
 
      <p class="para">
-     <em><code class="parameter">callback</code></em> に渡す任意の引数。
+     <code class="parameter">callback</code> に渡す任意の引数。
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -163,7 +163,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
  <div class="refsect1 returnvalues" id="refsect1-function.eio-seek-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    <span class="function"><strong>eio_seek()</strong></span>
+   <span class="function"><strong>eio_seek()</strong></span>
    は、成功した場合にリクエストリソースを返します。エラー時に <strong><code>FALSE</code></strong> を返します。
   </p>
  </div>

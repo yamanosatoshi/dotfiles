@@ -37,9 +37,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">name</code></dt>
 
-     <span class="term"><em><code class="parameter">name</code></em></span>
      <dd>
 
       <p class="para">
@@ -47,15 +48,16 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">value</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">value</code></em></span>
      <dd>
 
       <p class="para">
        定数の値。スカラー値あるいは <span class="type"><a href="language.types.null.html" class="type null">null</a></span> 値のみを指定できます。
+       PHP 7 以降では、<span class="type"><a href="language.types.array.html" class="type array">array</a></span> を指定することもできます。
        スカラー値とは <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> か
        <span class="type"><a href="language.types.float.html" class="type float">float</a></span>、<span class="type"><a href="language.types.string.html" class="type string">string</a></span>、<span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
        のいずれかのことです。リソース定数を定義することもできますが、
@@ -63,11 +65,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">case_insensitive</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">case_insensitive</code></em></span>
      <dd>
 
       <p class="para">
@@ -83,8 +85,7 @@
       </p></blockquote>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -99,14 +100,43 @@
  </div>
 
 
+ <div class="refsect1 changelog" id="refsect1-function.define-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.0.0</td>
+       <td>
+        <span class="type"><a href="language.types.array.html" class="type array">array</a></span> が使えるようになりました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
  <div class="refsect1 examples" id="refsect1-function.define-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3753">
+   <div class="example" id="example-4207">
     <p><strong>例1 定数の定義</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />define</span><span style="color: #007700">(</span><span style="color: #DD0000">"CONSTANT"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;world."</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;"Hello&nbsp;world."&nbsp;を出力します<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">Constant</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;"Constant"&nbsp;を出力し、警告が発生します<br /><br /></span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">"GREETING"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;you."</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">GREETING</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;"Hello&nbsp;you."&nbsp;を出力します<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">Greeting</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;"Hello&nbsp;you."&nbsp;を出力します<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />define</span><span style="color: #007700">(</span><span style="color: #DD0000">"CONSTANT"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;world."</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;"Hello&nbsp;world."&nbsp;を出力します<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">Constant</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;"Constant"&nbsp;を出力し、警告が発生します<br /><br /></span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">"GREETING"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;you."</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">GREETING</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;"Hello&nbsp;you."&nbsp;を出力します<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">Greeting</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;"Hello&nbsp;you."&nbsp;を出力します<br /><br />//&nbsp;PHP&nbsp;7&nbsp;以降で動作します<br /></span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'ANIMALS'</span><span style="color: #007700">,&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'dog'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'cat'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'bird'<br /></span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #0000BB">ANIMALS</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;"cat"&nbsp;を出力します<br /><br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -120,8 +150,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.defined.html" class="function" rel="rdfs-seeAlso">defined()</a> - 指定した名前の定数が存在するかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.constant.html" class="function" rel="rdfs-seeAlso">constant()</a> - 定数の値を返す</span></li>
+    <li class="member"><span class="function"><a href="function.defined.html" class="function" rel="rdfs-seeAlso">defined()</a> - 指定した名前の定数が存在するかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.constant.html" class="function" rel="rdfs-seeAlso">constant()</a> - 定数の値を返す</span></li>
     <li class="member"><a href="language.constants.html" class="link">定数</a>の節</li>
    </ul>
   </p>

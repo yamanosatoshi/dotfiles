@@ -27,8 +27,8 @@
 
   <p class="para rdfs-comment">
    ディレクトリハンドルをオープンします。このハンドルは、この後
-    <span class="function"><a href="function.closedir.html" class="function">closedir()</a></span>,  <span class="function"><a href="function.readdir.html" class="function">readdir()</a></span>, 
-    <span class="function"><a href="function.rewinddir.html" class="function">rewinddir()</a></span> 関数コールで使用されます。
+   <span class="function"><a href="function.closedir.html" class="function">closedir()</a></span>, <span class="function"><a href="function.readdir.html" class="function">readdir()</a></span>, 
+   <span class="function"><a href="function.rewinddir.html" class="function">rewinddir()</a></span> 関数コールで使用されます。
   </p>
  </div>
 
@@ -38,9 +38,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">path</code></dt>
 
-     <span class="term"><em><code class="parameter">path</code></em></span>
      <dd>
 
       <p class="para">
@@ -48,22 +49,21 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">context</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">context</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">context</code></em> パラメータの詳細については
+       <code class="parameter">context</code> パラメータの詳細については
        マニュアルの<a href="ref.stream.html" class="link">ストリーム</a>
        を参照ください。
       </p> 
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -77,11 +77,11 @@
    失敗した場合に <strong><code>FALSE</code></strong> を返します。
   </p> 
   <p class="para">
-   <em><code class="parameter">path</code></em> が有効なディレクトリでないかまたは権限が
+   <code class="parameter">path</code> が有効なディレクトリでないかまたは権限が
    制限されているかファイルシステムのエラーによりディレクトリが
-   オープンできない場合、 <span class="function"><strong>opendir()</strong></span> は <strong><code>FALSE</code></strong> を返し、
+   オープンできない場合、<span class="function"><strong>opendir()</strong></span> は <strong><code>FALSE</code></strong> を返し、
    <a href="errorfunc.constants.html" class="link">E_WARNING</a> エラーが発行されます。
-    <span class="function"><strong>opendir()</strong></span> のこのエラー出力は、
+   <span class="function"><strong>opendir()</strong></span> のこのエラー出力は、
    関数名の前に &#039;<a href="language.operators.errorcontrol.html" class="link">@</a>&#039;
    を付けることにより抑制できます。
   </p>
@@ -105,7 +105,7 @@
       <tr>
        <td>5.0.0</td>
        <td>
-        <em><code class="parameter">path</code></em> が <em>ftp://</em> 
+        <code class="parameter">path</code> が <em>ftp://</em> 
         URL ラッパーをサポートします。
        </td>
       </tr>
@@ -113,7 +113,7 @@
       <tr>
        <td>4.3.0</td>
        <td>
-        <em><code class="parameter">path</code></em> に、ディレクトリの一覧表示をサポートする
+        <code class="parameter">path</code> に、ディレクトリの一覧表示をサポートする
         URL を指定することが可能です。しかし、PHP 4 では <em>file://</em>
         URL ラッパーのみをサポートしています。
        </td>
@@ -130,8 +130,8 @@
  <div class="refsect1 examples" id="refsect1-function.opendir-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2329">
-    <p><strong>例1  <span class="function"><strong>opendir()</strong></span> の例</strong></p>
+   <div class="example" id="example-2528">
+    <p><strong>例1 <span class="function"><strong>opendir()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$dir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/etc/php5/"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;既知のディレクトリをオープンし、その内容を読み込みます。<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_dir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$dh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">opendir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;((</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">readdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dh</span><span style="color: #007700">))&nbsp;!==&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"filename:&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">&nbsp;:&nbsp;filetype:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">filetype</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">closedir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dh</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -159,9 +159,9 @@ filename: cli : filetype: dir
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.is-dir.html" class="function" rel="rdfs-seeAlso">is_dir()</a> - ファイルがディレクトリかどうかを調べる</span></li>
-    <li class="member"> <span class="function"><a href="function.readdir.html" class="function" rel="rdfs-seeAlso">readdir()</a> - ディレクトリハンドルからエントリを読み込む</span></li>
-    <li class="member"> <span class="function"><a href="function.dir.html" class="function" rel="rdfs-seeAlso">dir()</a> - ディレクトリクラスのインスタンスを返す</span></li>
+    <li class="member"><span class="function"><a href="function.is-dir.html" class="function" rel="rdfs-seeAlso">is_dir()</a> - ファイルがディレクトリかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.readdir.html" class="function" rel="rdfs-seeAlso">readdir()</a> - ディレクトリハンドルからエントリを読み込む</span></li>
+    <li class="member"><span class="function"><a href="function.dir.html" class="function" rel="rdfs-seeAlso">dir()</a> - ディレクトリクラスのインスタンスを返す</span></li>
    </ul>
   </p>
  </div>

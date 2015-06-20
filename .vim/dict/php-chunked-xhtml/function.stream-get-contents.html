@@ -26,11 +26,11 @@
   ]] )</div>
 
   <p class="para rdfs-comment"> 
-    <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span> と似ていますが、
-    <span class="function"><strong>stream_get_contents()</strong></span> は既にオープンしている
+   <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span> と似ていますが、
+   <span class="function"><strong>stream_get_contents()</strong></span> は既にオープンしている
    ストリームリソースに対して操作を行います。そして、指定した
-   <em><code class="parameter">offset</code></em> から始まる最大
-   <em><code class="parameter">maxlength</code></em> バイトのデータを取得して文字列に
+   <code class="parameter">offset</code> から始まる最大
+   <code class="parameter">maxlength</code> バイトのデータを取得して文字列に
    保存します。
   </p>
  </div>
@@ -41,21 +41,22 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">handle</code> (<span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>)</dt>
 
-     <span class="term"><em><code class="parameter">handle</code></em> (<span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>)</span>
      <dd>
 
       <p class="para">
-       ストリームリソース（例:  <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> の返す値）。
+       ストリームリソース（例: <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> の返す値）。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">maxlength</code> (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)</dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">maxlength</code></em> (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)</span>
      <dd>
 
       <p class="para">
@@ -64,11 +65,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">offset</code> (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)</dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">offset</code></em> (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)</span>
      <dd>
 
       <p class="para">
@@ -77,8 +78,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -110,7 +110,7 @@
       <tr>
        <td>5.1.0</td>
        <td>
-        <em><code class="parameter">offset</code></em> が追加されました。
+        <code class="parameter">offset</code> が追加されました。
        </td>
       </tr>
 
@@ -125,8 +125,8 @@
  <div class="refsect1 examples" id="refsect1-function.stream-get-contents-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4001">
-    <p><strong>例1  <span class="function"><strong>stream_get_contents()</strong></span> の例</strong></p>
+   <div class="example" id="example-4457">
+    <p><strong>例1 <span class="function"><strong>stream_get_contents()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$stream&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;オフセット&nbsp;10&nbsp;から開始して、残りのすべてのページを表示します<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">stream_get_contents</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">);<br />}<br /><br /><br />if&nbsp;(</span><span style="color: #0000BB">$stream&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.net'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;最初の&nbsp;5&nbsp;バイトを表示します<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">stream_get_contents</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -150,9 +150,9 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - ファイルポインタから 1 行取得する</span></li>
-    <li class="member"> <span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - バイナリセーフなファイルの読み込み</span></li>
-    <li class="member"> <span class="function"><a href="function.fpassthru.html" class="function" rel="rdfs-seeAlso">fpassthru()</a> - ファイルポインタ上に残っているすべてのデータを出力する</span></li>
+    <li class="member"><span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - ファイルポインタから 1 行取得する</span></li>
+    <li class="member"><span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - バイナリセーフなファイルの読み込み</span></li>
+    <li class="member"><span class="function"><a href="function.fpassthru.html" class="function" rel="rdfs-seeAlso">fpassthru()</a> - ファイルポインタ上に残っているすべてのデータを出力する</span></li>
    </ul>
   </p>
  </div>

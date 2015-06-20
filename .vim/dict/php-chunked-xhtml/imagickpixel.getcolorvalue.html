@@ -6,8 +6,8 @@
 
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="imagickpixel.getcolorcount.html">ImagickPixel::getColorCount</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="imagickpixel.gethsl.html">ImagickPixel::getHSL</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="imagickpixel.getcolorquantum.html">ImagickPixel::getColorQuantum</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imagickpixel.getcolorvaluequantum.html">ImagickPixel::getColorValueQuantum</a></div>
  <div class="up"><a href="class.imagickpixel.html">ImagickPixel</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="imagickpixel.getcolorvalue" class="refentry">
@@ -24,10 +24,7 @@
     ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$color</code></span>
    )</div>
 
-  <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は、
-現在のところ詳細な情報はありません。引数のリストのみが
-記述されています。</p></div>
-  <p class="para">
+  <p class="para rdfs-comment">
    指定した色チャネルの値を取得します。
    これは、0 から 1 までの間の浮動小数点数値となります。
   </p>
@@ -39,23 +36,24 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">color</code></dt>
 
-     <span class="term"><em><code class="parameter">color</code></em></span>
      <dd>
 
       <p class="para">
-       調べたいチャネル。Imagick のチャネル定数で指定します。
+       調べたい色。Imagick の色定数で指定します。
+       RGB カラー、CMYK カラー、アルファ値、透明度を指定できます (Imagick::COLOR_BLUE や Imagick::COLOR_MAGENTA など)。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
-
  </div>
+
 
  <div class="refsect1 returnvalues" id="refsect1-imagickpixel.getcolorvalue-returnvalues">
   <h3 class="title">返り値</h3>
@@ -66,9 +64,41 @@
  </div>
 
 
+ <div class="refsect1 examples" id="refsect1-imagickpixel.getcolorvalue-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-3737">
+    <p><strong>例1 基本的な <span class="function"><strong>Imagick::getColorValue()</strong></span> の使用例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />$color&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ImagickPixel</span><span style="color: #007700">(</span><span style="color: #DD0000">'rgba(90%,&nbsp;20%,&nbsp;20%,&nbsp;0.75)'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Alpha&nbsp;value&nbsp;is&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$color</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getColorValue</span><span style="color: #007700">(</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">::</span><span style="color: #0000BB">COLOR_ALPHA</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Red&nbsp;value&nbsp;is&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$color</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getColorValue</span><span style="color: #007700">(</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">::</span><span style="color: #0000BB">COLOR_RED</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Green&nbsp;value&nbsp;is&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$color</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getColorValue</span><span style="color: #007700">(</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">::</span><span style="color: #0000BB">COLOR_GREEN</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Blue&nbsp;value&nbsp;is&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$color</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getColorValue</span><span style="color: #007700">(</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">::</span><span style="color: #0000BB">COLOR_BLUE</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Cyan&nbsp;value&nbsp;is&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$color</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getColorValue</span><span style="color: #007700">(</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">::</span><span style="color: #0000BB">COLOR_CYAN</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Magenta&nbsp;value&nbsp;is&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$color</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getColorValue</span><span style="color: #007700">(</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">::</span><span style="color: #0000BB">COLOR_MAGENTA</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Yellow&nbsp;value&nbsp;is&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$color</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getColorValue</span><span style="color: #007700">(</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">::</span><span style="color: #0000BB">COLOR_YELLOW</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Black&nbsp;value&nbsp;is&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$color</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getColorValue</span><span style="color: #007700">(</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">::</span><span style="color: #0000BB">COLOR_BLACK</span><span style="color: #007700">).</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Alpha value is 0.74999618524453
+
+Red value is 0.90000762951095
+Green value is 0.2
+Blue value is 0.2
+
+Cyan value is 0.90000762951095
+Magenta value is 0.2
+Yellow value is 0.2
+Black value is 0
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
 </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="imagickpixel.getcolorcount.html">ImagickPixel::getColorCount</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="imagickpixel.gethsl.html">ImagickPixel::getHSL</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="imagickpixel.getcolorquantum.html">ImagickPixel::getColorQuantum</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imagickpixel.getcolorvaluequantum.html">ImagickPixel::getColorValueQuantum</a></div>
  <div class="up"><a href="class.imagickpixel.html">ImagickPixel</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div></body></html>

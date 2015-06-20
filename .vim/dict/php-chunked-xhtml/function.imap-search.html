@@ -47,22 +47,23 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-imap_stream</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
+<code class="parameter">
+imap_stream</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
 が返す IMAP ストリーム。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">criteria</code></dt>
 
-     <span class="term"><em><code class="parameter">criteria</code></em></span>
      <dd>
 
       <p class="para">
        空白で区切られた文字列で、以下のキーワードが使用可能です。
        複数の単語からなるキーワード（例 <em>FROM &quot;joey smith&quot;</em>）
        は全て引用符で括る必要があります。
-       結果は、すべての <em><code class="parameter">criteria</code></em> エントリにマッチすることになります。
+       結果は、すべての <code class="parameter">criteria</code> エントリにマッチすることになります。
        <ul class="itemizedlist">
         <li class="listitem">
          <span class="simpara">
@@ -189,33 +190,32 @@ imap_stream</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">options</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">options</code></em> に指定できる値は
+       <code class="parameter">options</code> に指定できる値は
        <strong><code>SE_UID</code></strong> です。これを指定すると、
        メッセージ番号ではなく UID を含む配列を返します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">charset</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">charset</code></em></span>
      <dd>
 
       <p class="para">
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -227,36 +227,8 @@ imap_stream</code></em></span><dd>
    メッセージ番号あるいは UID の配列を返します。
   </p>
   <p class="para">
-   検索条件 <em><code class="parameter">criteria</code></em> を処理できなかった場合や
+   検索条件 <code class="parameter">criteria</code> を処理できなかった場合や
    結果が見つからなかった場合は、<strong><code>FALSE</code></strong> を返します。
-  </p>
- </div>
-
- <div class="refsect1 changelog" id="refsect1-function.imap-search-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.3.3</td>
-       <td>
-        パラメータ <em><code class="parameter">charset</code></em> が追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
   </p>
  </div>
 
@@ -264,7 +236,7 @@ imap_stream</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imap-search-examples">
   <h3 class="title">例</h3>
   <div class="example" id="imap-search.examples">
-   <p><strong>例1  <span class="function"><strong>imap_search()</strong></span> の例</strong></p>
+   <p><strong>例1 <span class="function"><strong>imap_search()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$conn&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_open</span><span style="color: #007700">(</span><span style="color: #DD0000">'{imap.example.com:993/imap/ssl}INBOX'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'foo@example.com'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pass123'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OP_READONLY</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$some&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_search</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'SUBJECT&nbsp;"HOWTO&nbsp;be&nbsp;Awesome"&nbsp;SINCE&nbsp;"8&nbsp;August&nbsp;2008"'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SE_UID</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$msgnos&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_search</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ALL'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$uids&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_search</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ALL'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SE_UID</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$some</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$msgnos</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$uids</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -310,7 +282,7 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imap-listscan.html" class="function" rel="rdfs-seeAlso">imap_listscan()</a> - 指定したテキストにマッチするメールボックスの一覧を返す</span></li>
+    <li class="member"><span class="function"><a href="function.imap-listscan.html" class="function" rel="rdfs-seeAlso">imap_listscan()</a> - 指定したテキストにマッチするメールボックスの一覧を返す</span></li>
    </ul>
   </p>
  </div>

@@ -29,7 +29,7 @@
 
   <p class="para rdfs-comment">
    リモート <acronym title="Simple Network Management Protocol">SNMP</acronym> エージェントに対して、
-   <em><code class="parameter">object_id</code></em> で指定した SNMP オブジェクトの値を設定させます。
+   <code class="parameter">object_id</code> で指定した SNMP オブジェクトの値を設定させます。
   </p>
  </div>
 
@@ -39,20 +39,21 @@
   <dl>
 
    <p class="para">
-    <em><code class="parameter">object_id</code></em> が文字列のときは、
-    <em><code class="parameter">type</code></em> と <em><code class="parameter">value</code></em>
+    <code class="parameter">object_id</code> が文字列のときは、
+    <code class="parameter">type</code> と <code class="parameter">value</code>
     も文字列にしなければなりません。
-    <em><code class="parameter">object_id</code></em> が配列のときは、
-    <em><code class="parameter">value</code></em> も同じサイズの配列にして、対応する値を含めなければなりません。
-    <em><code class="parameter">type</code></em> は、文字列でもいいし
-    (この値を、すべての <em><code class="parameter">object_id</code></em>-<em><code class="parameter">value</code></em> ペアに適用する)、
+    <code class="parameter">object_id</code> が配列のときは、
+    <code class="parameter">value</code> も同じサイズの配列にして、対応する値を含めなければなりません。
+    <code class="parameter">type</code> は、文字列でもいいし
+    (この値を、すべての <code class="parameter">object_id</code>-<code class="parameter">value</code> ペアに適用する)、
     同じサイズの配列 (OID ごとに設定する) でもかまいません。
     その他の組み合わせで指定すると、E_WARNING
     メッセージが表示されます。
    </p>
-   <dt>
+   
+    <dt>
+<code class="parameter">object_id</code></dt>
 
-    <span class="term"><em><code class="parameter">object_id</code></em></span>
     <dd>
 
      <p class="para">
@@ -68,11 +69,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">type</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">type</code></em></span>
     <dd>
 
      <p class="para">
@@ -135,7 +136,7 @@
 
      <p class="para">
  MIB ファイルが &quot;snmp_read_mib&quot; や libsnmp の設定で MIB ツリーに読み込まれている場合は、
- <em><code class="parameter">type</code></em> に &#039;=&#039; を使うことができます。
+ <code class="parameter">type</code> に &#039;=&#039; を使うことができます。
  これはすべてのオブジェクト ID を表し、型は自動的に MIB から読み込みます。
 </p>
 
@@ -163,11 +164,11 @@
 
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">value</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">value</code></em></span>
     <dd>
 
      <p class="para">
@@ -175,8 +176,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -195,9 +195,9 @@
 <p class="para">
  このメソッドは、デフォルトでは一切例外をスローしません。ライブラリでエラーが発生したときに
  SNMPException をスローさせるには SNMP クラスパラメータ
- <em><code class="parameter">exceptions_enabled</code></em> に値を設定しなければなりません。
+ <code class="parameter">exceptions_enabled</code> に値を設定しなければなりません。
  詳細は <a href="class.snmp.html#snmp.props.exceptions-enabled" class="link">
- <em><code class="parameter">SNMP::$exceptions_enabled</code></em> の説明</a>を参照ください。
+ <code class="parameter">SNMP::$exceptions_enabled</code> の説明</a>を参照ください。
 </p>
 </div>
 
@@ -216,7 +216,7 @@
 
   </div>
   <div class="example" id="snmp.set.example.multiple">
-   <p><strong>例2 単一の  <span class="methodname"><strong>SNMP::set()</strong></span> コールによる複数の値の設定</strong></p>
+   <p><strong>例2 単一の <span class="methodname"><strong>SNMP::set()</strong></span> コールによる複数の値の設定</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$session&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SNMP</span><span style="color: #007700">(</span><span style="color: #0000BB">SNMP</span><span style="color: #007700">::</span><span style="color: #0000BB">VERSION_2C</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"127.0.0.1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"private"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$session</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'SNMPv2-MIB::sysContact.0'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'SNMPv2-MIB::sysLocation.0'</span><span style="color: #007700">),&nbsp;array(</span><span style="color: #DD0000">'s'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'s'</span><span style="color: #007700">),&nbsp;array(</span><span style="color: #DD0000">"Nobody"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Nowhere"</span><span style="color: #007700">));<br /></span><span style="color: #FF8000">//&nbsp;あるいは<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$session</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'SNMPv2-MIB::sysContact.0'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'SNMPv2-MIB::sysLocation.0'</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'s'</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"Nobody"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Nowhere"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -226,7 +226,7 @@
 
   </div>
    <div class="example" id="snmp.set.example.bits">
-    <p><strong>例3 BITS <acronym title="Simple Network Management Protocol">SNMP</acronym> オブジェクト ID の設定による  <span class="methodname"><strong>SNMP::set()</strong></span> の使用法</strong></p>
+    <p><strong>例3 BITS <acronym title="Simple Network Management Protocol">SNMP</acronym> オブジェクト ID の設定による <span class="methodname"><strong>SNMP::set()</strong></span> の使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$session&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SNMP</span><span style="color: #007700">(</span><span style="color: #0000BB">SNMP</span><span style="color: #007700">::</span><span style="color: #0000BB">VERSION_2C</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"127.0.0.1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"private"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$session</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #DD0000">'FOO-MIB::bar.42'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'b'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'0&nbsp;1&nbsp;2&nbsp;3&nbsp;4'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;あるいは<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$session</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #DD0000">'FOO-MIB::bar.42'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'x'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'F0'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -242,7 +242,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="snmp.get.html" class="methodname" rel="rdfs-seeAlso">SNMP::get()</a> - SNMP オブジェクトを取得する</span></li>
+    <li class="member"><span class="methodname"><a href="snmp.get.html" class="methodname" rel="rdfs-seeAlso">SNMP::get()</a> - SNMP オブジェクトを取得する</span></li>
    </ul>
   </p>
  </div>

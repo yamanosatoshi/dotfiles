@@ -46,9 +46,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">array1</code></dt>
 
-     <span class="term"><em><code class="parameter">array1</code></em></span>
      <dd>
 
       <p class="para">
@@ -56,11 +57,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">array2</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">array2</code></em></span>
      <dd>
 
       <p class="para">
@@ -68,11 +69,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">value_compare_func</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">value_compare_func</code></em></span>
      <dd>
 
       <p class="para">
@@ -82,8 +83,7 @@
 
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -92,13 +92,13 @@
  <div class="refsect1 returnvalues" id="refsect1-function.array-udiff-assoc-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    <span class="function"><strong>array_udiff_assoc()</strong></span> は、
-   <em><code class="parameter">array1</code></em> から他の引数の配列の中に現れない全ての値を含む
+   <span class="function"><strong>array_udiff_assoc()</strong></span> は、
+   <code class="parameter">array1</code> から他の引数の配列の中に現れない全ての値を含む
    <span class="type"><a href="language.types.array.html" class="type array">array</a></span> を返します。
-    <span class="function"><a href="function.array-diff.html" class="function">array_diff()</a></span> や  <span class="function"><a href="function.array-udiff.html" class="function">array_udiff()</a></span>
+   <span class="function"><a href="function.array-diff.html" class="function">array_diff()</a></span> や <span class="function"><a href="function.array-udiff.html" class="function">array_udiff()</a></span>
    と異なり、キーが比較に使用されることに注意してください。
    配列のデータの比較は、ユーザーが指定したコールバックを用いて行われます。
-   この点で、 <span class="function"><a href="function.array-diff-assoc.html" class="function">array_diff_assoc()</a></span> は反対の動作、つまり
+   この点で、<span class="function"><a href="function.array-diff-assoc.html" class="function">array_diff_assoc()</a></span> は反対の動作、つまり
    内部関数を利用した比較を行います。
   </p>
  </div>
@@ -106,8 +106,8 @@
  <div class="refsect1 examples" id="refsect1-function.array-udiff-assoc-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4965">
-    <p><strong>例1  <span class="function"><strong>array_udiff_assoc()</strong></span> の例</strong></p>
+   <div class="example" id="example-5447">
+    <p><strong>例1 <span class="function"><strong>array_udiff_assoc()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">cr&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$priv_member</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">priv_member&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">comp_func_cr</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">priv_member&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">priv_member</span><span style="color: #007700">)&nbsp;return&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(</span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">priv_member&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">priv_member</span><span style="color: #007700">)?&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">:-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"0.1"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">9</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"0.5"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">12</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">23</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">4</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">2&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(-</span><span style="color: #0000BB">15</span><span style="color: #007700">),);<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"0.2"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">9</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"0.5"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">22</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">4</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">2&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(-</span><span style="color: #0000BB">15</span><span style="color: #007700">),);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_udiff_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"cr"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"comp_func_cr"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -149,19 +149,19 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.array-diff.html" class="function" rel="rdfs-seeAlso">array_diff()</a> - 配列の差を計算する</span></li>
-    <li class="member"> <span class="function"><a href="function.array-diff-assoc.html" class="function" rel="rdfs-seeAlso">array_diff_assoc()</a> - 追加された添字の確認を含めて配列の差を計算する</span></li>
-    <li class="member"> <span class="function"><a href="function.array-diff-uassoc.html" class="function" rel="rdfs-seeAlso">array_diff_uassoc()</a> - ユーザーが指定したコールバック関数を利用し、
+    <li class="member"><span class="function"><a href="function.array-diff.html" class="function" rel="rdfs-seeAlso">array_diff()</a> - 配列の差を計算する</span></li>
+    <li class="member"><span class="function"><a href="function.array-diff-assoc.html" class="function" rel="rdfs-seeAlso">array_diff_assoc()</a> - 追加された添字の確認を含めて配列の差を計算する</span></li>
+    <li class="member"><span class="function"><a href="function.array-diff-uassoc.html" class="function" rel="rdfs-seeAlso">array_diff_uassoc()</a> - ユーザーが指定したコールバック関数を利用し、
    追加された添字の確認を含めて配列の差を計算する</span></li>
-    <li class="member"> <span class="function"><a href="function.array-udiff.html" class="function" rel="rdfs-seeAlso">array_udiff()</a> - データの比較にコールバック関数を用い、配列の差を計算する</span></li>
-    <li class="member"> <span class="function"><a href="function.array-udiff-uassoc.html" class="function" rel="rdfs-seeAlso">array_udiff_uassoc()</a> - データと添字の比較にコールバック関数を用い、
+    <li class="member"><span class="function"><a href="function.array-udiff.html" class="function" rel="rdfs-seeAlso">array_udiff()</a> - データの比較にコールバック関数を用い、配列の差を計算する</span></li>
+    <li class="member"><span class="function"><a href="function.array-udiff-uassoc.html" class="function" rel="rdfs-seeAlso">array_udiff_uassoc()</a> - データと添字の比較にコールバック関数を用い、
   追加された添字の確認を含めて配列の差を計算する</span></li>
-    <li class="member"> <span class="function"><a href="function.array-intersect.html" class="function" rel="rdfs-seeAlso">array_intersect()</a> - 配列の共通項を計算する</span></li>
-    <li class="member"> <span class="function"><a href="function.array-intersect-assoc.html" class="function" rel="rdfs-seeAlso">array_intersect_assoc()</a> - 追加された添字の確認も含めて配列の共通項を確認する</span></li>
-    <li class="member"> <span class="function"><a href="function.array-uintersect.html" class="function" rel="rdfs-seeAlso">array_uintersect()</a> - データの比較にコールバック関数を用い、配列の共通項を計算する</span></li>
-    <li class="member"> <span class="function"><a href="function.array-uintersect-assoc.html" class="function" rel="rdfs-seeAlso">array_uintersect_assoc()</a> - データの比較にコールバック関数を用い、
+    <li class="member"><span class="function"><a href="function.array-intersect.html" class="function" rel="rdfs-seeAlso">array_intersect()</a> - 配列の共通項を計算する</span></li>
+    <li class="member"><span class="function"><a href="function.array-intersect-assoc.html" class="function" rel="rdfs-seeAlso">array_intersect_assoc()</a> - 追加された添字の確認も含めて配列の共通項を確認する</span></li>
+    <li class="member"><span class="function"><a href="function.array-uintersect.html" class="function" rel="rdfs-seeAlso">array_uintersect()</a> - データの比較にコールバック関数を用い、配列の共通項を計算する</span></li>
+    <li class="member"><span class="function"><a href="function.array-uintersect-assoc.html" class="function" rel="rdfs-seeAlso">array_uintersect_assoc()</a> - データの比較にコールバック関数を用い、
   追加された添字の確認も含めて配列の共通項を計算する</span></li>
-    <li class="member"> <span class="function"><a href="function.array-uintersect-uassoc.html" class="function" rel="rdfs-seeAlso">array_uintersect_uassoc()</a> - データと添字の比較にコールバック関数を用い、
+    <li class="member"><span class="function"><a href="function.array-uintersect-uassoc.html" class="function" rel="rdfs-seeAlso">array_uintersect_uassoc()</a> - データと添字の比較に個別のコールバック関数を用い、
   追加された添字の確認も含めて配列の共通項を計算する</span></li>
    </ul>
   </p>

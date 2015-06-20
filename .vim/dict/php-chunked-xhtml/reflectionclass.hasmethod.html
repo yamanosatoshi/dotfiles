@@ -35,9 +35,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">name</code></dt>
 
-     <span class="term"><em><code class="parameter">name</code></em></span>
      <dd>
 
       <p class="para">
@@ -45,8 +46,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -64,8 +64,8 @@
  <div class="refsect1 examples" id="refsect1-reflectionclass.hasmethod-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5179">
-    <p><strong>例1  <span class="methodname"><strong>ReflectionClass::hasMethod()</strong></span> の例</strong></p>
+   <div class="example" id="example-5656">
+    <p><strong>例1 <span class="methodname"><strong>ReflectionClass::hasMethod()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">Class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">publicFoo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;function&nbsp;</span><span style="color: #0000BB">protectedFoo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;function&nbsp;</span><span style="color: #0000BB">privateFoo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">staticFoo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$rc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #DD0000">"C"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$rc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasMethod</span><span style="color: #007700">(</span><span style="color: #DD0000">'publicFoo'</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$rc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasMethod</span><span style="color: #007700">(</span><span style="color: #DD0000">'protectedFoo'</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$rc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasMethod</span><span style="color: #007700">(</span><span style="color: #DD0000">'privateFoo'</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$rc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasMethod</span><span style="color: #007700">(</span><span style="color: #DD0000">'staticFoo'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;C&nbsp;には&nbsp;bar&nbsp;メソッドがありません&nbsp;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$rc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasMethod</span><span style="color: #007700">(</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;メソッド名は大文字小文字を区別しません<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$rc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasMethod</span><span style="color: #007700">(</span><span style="color: #DD0000">'PUBLICfOO'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -93,8 +93,8 @@ bool(true)
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="reflectionclass.hasconstant.html" class="methodname" rel="rdfs-seeAlso">ReflectionClass::hasConstant()</a> - 定数が定義されているかどうかを調べる</span></li>
-    <li class="member"> <span class="methodname"><a href="reflectionclass.hasproperty.html" class="methodname" rel="rdfs-seeAlso">ReflectionClass::hasProperty()</a> - プロパティが定義されているかどうかを調べる</span></li>
+    <li class="member"><span class="methodname"><a href="reflectionclass.hasconstant.html" class="methodname" rel="rdfs-seeAlso">ReflectionClass::hasConstant()</a> - 定数が定義されているかどうかを調べる</span></li>
+    <li class="member"><span class="methodname"><a href="reflectionclass.hasproperty.html" class="methodname" rel="rdfs-seeAlso">ReflectionClass::hasProperty()</a> - プロパティが定義されているかどうかを調べる</span></li>
    </ul>
   </p>
  </div>

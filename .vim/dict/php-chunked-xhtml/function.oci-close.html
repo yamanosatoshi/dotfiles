@@ -25,9 +25,9 @@
    )</div>
 
   <p class="para rdfs-comment">
-   接続 <em><code class="parameter">connection</code></em> を閉じます。
-   他のいかなるリソースも利用しない、なおかつ  <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>
-   または  <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span> で作成された場合、
+   接続 <code class="parameter">connection</code> を閉じます。
+   他のいかなるリソースも利用しない、なおかつ <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>
+   または <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span> で作成された場合、
    基礎となるデータベース接続が閉じられます。
   </p>
   <p class="para">
@@ -42,19 +42,19 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">connection</code></dt>
 
-     <span class="term"><em><code class="parameter">connection</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>、 <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
-       あるいは  <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span> が返す Oracle 接続 ID。
+       <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>、<span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
+       あるいは <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span> が返す Oracle 接続 ID。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -71,7 +71,7 @@
 
  <div class="refsect1 examples" id="refsect1-function.oci-close-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1954">
+  <div class="example" id="example-2148">
    <p><strong>例1 接続を閉じる</strong></p>
    <div class="example-contents"><p>
     基礎となるデータベース接続がきちんと終了され、データベースリソースが解放されることを確実にするために、
@@ -86,7 +86,7 @@
 
   </div>
 
-  <div class="example" id="example-1955">
+  <div class="example" id="example-2149">
    <p><strong>例2 参照の全てが閉じられるまでデータベース接続は閉じられません</strong></p>
    <div class="example-contents"><p>
     基礎となるデータベースへの接続が閉じられる前に
@@ -101,7 +101,7 @@
 
   </div>
 
-  <div class="example" id="example-1956">
+  <div class="example" id="example-2150">
    <p><strong>例3 一回以上開かれた接続を閉じる</strong></p>
    <div class="example-contents"><p>
      データベースクレデンシャルが再利用されるときは、基礎となるデータベース接続が閉じられる前に、
@@ -116,7 +116,7 @@
 
   </div>
 
-  <div class="example" id="example-1957">
+  <div class="example" id="example-2151">
    <p><strong>例4 変数がスコープから外れると接続が閉じられます</strong></p>
    <div class="example-contents"><p>
     接続を参照する変数の全てがスコープを外れてPHPにより解放されると、
@@ -138,14 +138,14 @@
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    接続識別子に依存する変数、たとえば  <span class="function"><a href="function.oci-parse.html" class="function">oci_parse()</a></span> により返される
+    接続識別子に依存する変数、たとえば <span class="function"><a href="function.oci-parse.html" class="function">oci_parse()</a></span> により返される
     ステートメント識別子のような変数は、基礎となるデータベース接続が閉じられる前に
     解放されなければいけません。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    PHP 5.1.2 (PECL OCI8 1.1) より前のバージョンでは、 <span class="function"><strong>oci_close()</strong></span>
+    PHP 5.1.2 (PECL OCI8 1.1) より前のバージョンでは、<span class="function"><strong>oci_close()</strong></span>
     は実際には何もしませんでした。最近のバージョンでは、きちんと Oracle 接続を閉じます。
     この関数の古い動作をさせる場合は <a href="oci8.configuration.html#ini.oci8.old-oci-close-semantics" class="link">oci8.old_oci_close_semantics</a>
     オプションを使用してください。
@@ -153,8 +153,8 @@
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-     <span class="function"><strong>oci_close()</strong></span> 関数は
-     <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span> で作成された基礎となるデータベース接続を
+    <span class="function"><strong>oci_close()</strong></span> 関数は
+    <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span> で作成された基礎となるデータベース接続を
     閉じません。
    </p>
   </p></blockquote>
@@ -165,8 +165,8 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.oci-connect.html" class="function" rel="rdfs-seeAlso">oci_connect()</a> - Oracle データベースに接続する</span></li>
-    <li class="member"> <span class="function"><a href="function.oci-free-statement.html" class="function" rel="rdfs-seeAlso">oci_free_statement()</a> - 文やカーソルに関連付けられた全てのリソースを解放する</span></li>
+    <li class="member"><span class="function"><a href="function.oci-connect.html" class="function" rel="rdfs-seeAlso">oci_connect()</a> - Oracle データベースに接続する</span></li>
+    <li class="member"><span class="function"><a href="function.oci-free-statement.html" class="function" rel="rdfs-seeAlso">oci_free_statement()</a> - 文やカーソルに関連付けられた全てのリソースを解放する</span></li>
    </ul>
   </p>
  </div>

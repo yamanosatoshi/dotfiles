@@ -36,20 +36,20 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-   データベースに対してクエリ <em><code class="parameter">query</code></em>
+   データベースに対してクエリ <code class="parameter">query</code>
    を実行します。
   </p>
   <p class="para">
    DML (INSERT、UPDATE あるいは DELETE)
    以外のクエリについては、
-   この関数は  <span class="function"><a href="mysqli.real-query.html" class="function">mysqli_real_query()</a></span>
-   に続けて  <span class="function"><a href="mysqli.use-result.html" class="function">mysqli_use_result()</a></span> あるいは
-    <span class="function"><a href="mysqli.store-result.html" class="function">mysqli_store_result()</a></span> をコールすることと同等です。
+   この関数は <span class="function"><a href="mysqli.real-query.html" class="function">mysqli_real_query()</a></span>
+   に続けて <span class="function"><a href="mysqli.use-result.html" class="function">mysqli_use_result()</a></span> あるいは
+   <span class="function"><a href="mysqli.store-result.html" class="function">mysqli_store_result()</a></span> をコールすることと同等です。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     サーバーの <em>max_allowed_packet</em> よりも長いステートメントを
-     <span class="function"><strong>mysqli_query()</strong></span> に渡した場合、
+    <span class="function"><strong>mysqli_query()</strong></span> に渡した場合、
     返ってくるエラーコードは MySQL Native Driver (<em>mysqlnd</em>)
     を使っているか MySQL Client Library
     (<em>libmysqlclient</em>) を使っているかで異なります。
@@ -87,16 +87,17 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-link</code></em></span><dd>
+<code class="parameter">
+link</code></dt>
+<dd>
 <p class="para">手続き型のみ:
- <span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> あるいは  <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> が返すリンク ID。
+<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> あるいは <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> が返すリンク ID。
 </p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">query</code></dt>
 
-     <span class="term"><em><code class="parameter">query</code></em></span>
      <dd>
 
       <p class="para">
@@ -108,11 +109,11 @@ link</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">resultmode</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">resultmode</code></em></span>
      <dd>
 
       <p class="para">
@@ -123,7 +124,7 @@ link</code></em></span><dd>
       </p>
       <p class="para">
        <em>MYSQLI_USE_RESULT</em> を使用すると、
-        <span class="function"><a href="mysqli-result.free.html" class="function">mysqli_free_result()</a></span> をコールするまでは
+       <span class="function"><a href="mysqli-result.free.html" class="function">mysqli_free_result()</a></span> をコールするまでは
        それ以降のコールはすべて <em>Commands out of sync</em>
        エラーを返します。
       </p>
@@ -131,12 +132,11 @@ link</code></em></span><dd>
        <strong><code>MYSQLI_ASYNC</code></strong> (mysqlnd で使用可能)
        を使用すると、クエリを非同期実行できるようになります。
        このクエリの結果を取得するには
-        <span class="function"><a href="mysqli.poll.html" class="function">mysqli_poll()</a></span> を使用します。
+       <span class="function"><a href="mysqli.poll.html" class="function">mysqli_poll()</a></span> を使用します。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -148,9 +148,9 @@ link</code></em></span><dd>
   <p class="para">
    失敗した場合に <strong><code>FALSE</code></strong> を返します。
    <em>SELECT, SHOW, DESCRIBE</em> あるいは
-   <em>EXPLAIN</em> が成功した場合は、 <span class="function"><strong>mysqli_query()</strong></span>
+   <em>EXPLAIN</em> が成功した場合は、<span class="function"><strong>mysqli_query()</strong></span>
    は <a href="class.mysqli-result.html" class="classname">mysqli_result</a> オブジェクトを返します。それ以外のクエリが成功した場合は、
-    <span class="function"><strong>mysqli_query()</strong></span> は <strong><code>TRUE</code></strong> を返します。
+   <span class="function"><strong>mysqli_query()</strong></span> は <strong><code>TRUE</code></strong> を返します。
   </p>
  </div>
 
@@ -186,8 +186,8 @@ link</code></em></span><dd>
 
  <div class="refsect1 examples" id="refsect1-mysqli.query-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1675">
-   <p><strong>例1  <span class="methodname"><strong>mysqli::query()</strong></span> の例</strong></p>
+  <div class="example" id="example-1854">
+   <p><strong>例1 <span class="methodname"><strong>mysqli::query()</strong></span> の例</strong></p>
    <div class="example-contents"><p>オブジェクト指向型</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -220,9 +220,9 @@ Error: Commands out of sync;  You can&#039;t run this command now
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="mysqli.real-query.html" class="function" rel="rdfs-seeAlso">mysqli_real_query()</a> - SQL クエリを実行する</span></li>
-    <li class="member"> <span class="function"><a href="mysqli.multi-query.html" class="function" rel="rdfs-seeAlso">mysqli_multi_query()</a> - データベース上でクエリを実行する</span></li>
-    <li class="member"> <span class="function"><a href="mysqli-result.free.html" class="function" rel="rdfs-seeAlso">mysqli_free_result()</a> - 結果に関連付けられたメモリを開放する</span></li>
+    <li class="member"><span class="function"><a href="mysqli.real-query.html" class="function" rel="rdfs-seeAlso">mysqli_real_query()</a> - SQL クエリを実行する</span></li>
+    <li class="member"><span class="function"><a href="mysqli.multi-query.html" class="function" rel="rdfs-seeAlso">mysqli_multi_query()</a> - データベース上でクエリを実行する</span></li>
+    <li class="member"><span class="function"><a href="mysqli-result.free.html" class="function" rel="rdfs-seeAlso">mysqli_free_result()</a> - 結果に関連付けられたメモリを開放する</span></li>
    </ul>
   </p>
  </div>

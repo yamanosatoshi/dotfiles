@@ -25,12 +25,12 @@
    )</div>
 
   <p class="para rdfs-comment">
-   指定した <em><code class="parameter">code</code></em>
+   指定した <code class="parameter">code</code>
    を PHP コードとして評価します。
   </p>
   <div class="caution"><strong class="caution">警告</strong>
    <p class="para">
-     <span class="function"><strong>eval()</strong></span> は<em class="emphasis">非常に危険な</em>言語構造です。
+    <span class="function"><strong>eval()</strong></span> は<em class="emphasis">非常に危険な</em>言語構造です。
     というのも、任意の PHP コードを実行できてしまうからです。
     <em class="emphasis">これを使うことはおすすめしません。</em>
     いろいろ検討した結果どうしても使わざるを得なくなった場合は、細心の注意を払って使いましょう。
@@ -46,9 +46,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">code</code></dt>
 
-     <span class="term"><em><code class="parameter">code</code></em></span>
      <dd>
 
       <p class="para">
@@ -73,14 +74,13 @@
        <em>return</em> 文は、コードの評価をただちに終了します。
       </p>
       <p class="para">
-       コードの実行は、 <span class="function"><strong>eval()</strong></span> を呼び出したスコープ内で行われます。
-       したがって、 <span class="function"><strong>eval()</strong></span> の中で定義したり変更したりした変数は
-        <span class="function"><strong>eval()</strong></span> を抜けた後でも参照可能です。
+       コードの実行は、<span class="function"><strong>eval()</strong></span> を呼び出したスコープ内で行われます。
+       したがって、<span class="function"><strong>eval()</strong></span> の中で定義したり変更したりした変数は
+       <span class="function"><strong>eval()</strong></span> を抜けた後でも参照可能です。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -91,13 +91,13 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    評価されるコードの中で <em>return</em> が
-   コールされない限り、 <span class="function"><strong>eval()</strong></span> は <strong><code>NULL</code></strong> を返します。
+   コールされない限り、<span class="function"><strong>eval()</strong></span> は <strong><code>NULL</code></strong> を返します。
    <em>return</em> がコールされた場合は、その値を返します。
    評価されるコードの中でパースエラーが発生した場合は、
-    <span class="function"><strong>eval()</strong></span> は <strong><code>FALSE</code></strong> を返します。
+   <span class="function"><strong>eval()</strong></span> は <strong><code>FALSE</code></strong> を返します。
    それ以降のコードは通常通り実行されます。
-    <span class="function"><strong>eval()</strong></span> の中でのパースエラーを
-    <span class="function"><a href="function.set-error-handler.html" class="function">set_error_handler()</a></span>
+   <span class="function"><strong>eval()</strong></span> の中でのパースエラーを
+   <span class="function"><a href="function.set-error-handler.html" class="function">set_error_handler()</a></span>
    で捕捉することはできません。
   </p>
  </div>
@@ -106,8 +106,8 @@
  <div class="refsect1 examples" id="refsect1-function.eval-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3755">
-    <p><strong>例1  <span class="function"><strong>eval()</strong></span> の例 - 簡単なテキストのマージ</strong></p>
+   <div class="example" id="example-4209">
+    <p><strong>例1 <span class="function"><strong>eval()</strong></span> の例 - 簡単なテキストのマージ</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'cup'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'coffee'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;$string&nbsp;with&nbsp;my&nbsp;$name&nbsp;in&nbsp;it.'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />eval(</span><span style="color: #DD0000">"\$str&nbsp;=&nbsp;\"</span><span style="color: #0000BB">$str</span><span style="color: #DD0000">\";"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -151,7 +151,7 @@ This is a cup with my coffee in it.
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.call-user-func.html" class="function" rel="rdfs-seeAlso">call_user_func()</a> - 最初の引数で指定したコールバック関数をコールする</span></li>
+    <li class="member"><span class="function"><a href="function.call-user-func.html" class="function" rel="rdfs-seeAlso">call_user_func()</a> - 最初の引数で指定したコールバック関数をコールする</span></li>
    </ul>
   </p>
  </div>

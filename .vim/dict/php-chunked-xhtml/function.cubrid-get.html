@@ -27,11 +27,11 @@
   ] )</div>
 
   <p class="para rdfs-comment">
-    The  <span class="function"><strong>cubrid_get()</strong></span> function is used to get the attribute
-    of the instance of the given <em><code class="parameter">oid</code></em>.  You can get
+    The <span class="function"><strong>cubrid_get()</strong></span> function is used to get the attribute
+    of the instance of the given <code class="parameter">oid</code>.  You can get
     single attribute by using string data type for the
-    <em><code class="parameter">attr</code></em> argument, or many attributes by using array
-    data type for the <em><code class="parameter">attr</code></em> argument.
+    <code class="parameter">attr</code> argument, or many attributes by using array
+    data type for the <code class="parameter">attr</code> argument.
   </p>
  </div>
 
@@ -41,30 +41,30 @@
   <p class="para">
   <dl>
 
-    <dt>
+    
+  <dt>
+<code class="parameter">conn_identifier</code></dt>
 
-  <span class="term"><em><code class="parameter">conn_identifier</code></em></span>
   <dd>
 <p class="para">Connection identifier.</p></dd>
 
-   </dt>
+   
+   
+  <dt>
+<code class="parameter">oid</code></dt>
 
-   <dt>
-
-  <span class="term"><em><code class="parameter">oid</code></em></span>
   <dd>
 <p class="para">OID of the instance that you want to read.</p></dd>
 
-   </dt>
+   
+   
+  <dt>
+<code class="parameter">attr</code></dt>
 
-   <dt>
-
-  <span class="term"><em><code class="parameter">attr</code></em></span>
   <dd>
 <p class="para">Name of the attribute that you want to read.</p></dd>
 
-   </dt>
-
+   
   </dl>
 
   </p>
@@ -76,24 +76,24 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    Content of the requested attribute, when process is successful; When
-   <em><code class="parameter">attr</code></em> is set with string data type, the result is
-   returned as a string; when <em><code class="parameter">attr</code></em> is set with array
+   <code class="parameter">attr</code> is set with string data type, the result is
+   returned as a string; when <code class="parameter">attr</code> is set with array
    data type (0-based numerical array), then the result is returned in
-   associative array. When <em><code class="parameter">attr</code></em> is omitted, then all
+   associative array. When <code class="parameter">attr</code> is omitted, then all
    attributes are received in array form.
   </p>
   <p class="para">
    <strong><code>FALSE</code></strong> when process is unsuccessful or result is NULL (If error occurs to
    distinguish empty string from NULL, then it prints the warning message.
-   You can check the error by using  <span class="function"><a href="function.cubrid-error-code.html" class="function">cubrid_error_code()</a></span>)
+   You can check the error by using <span class="function"><a href="function.cubrid-error-code.html" class="function">cubrid_error_code()</a></span>)
   </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.cubrid-get-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1023">
-   <p><strong>例1  <span class="function"><strong>cubrid_get()</strong></span> example</strong></p>
+  <div class="example" id="example-1081">
+   <p><strong>例1 <span class="function"><strong>cubrid_get()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">);<br /><br />@</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"DROP&nbsp;TABLE&nbsp;foo"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;foo(a&nbsp;int&nbsp;AUTO_INCREMENT,&nbsp;b&nbsp;set(int),&nbsp;c&nbsp;list(int),&nbsp;d&nbsp;char(10))"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;foo(a,&nbsp;b,&nbsp;c,&nbsp;d)&nbsp;VALUES(1,&nbsp;{1,2,3},&nbsp;{11,22,33,333},&nbsp;'a')"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;foo(a,&nbsp;b,&nbsp;c,&nbsp;d)&nbsp;VALUES(2,&nbsp;{4,5,7},&nbsp;{44,55,66,666},&nbsp;'b')"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;foo"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_INCLUDE_OID</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_move_cursor</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_CURSOR_FIRST</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$oid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_current_oid</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$attr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$oid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$attr</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$attr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$oid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$attr</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_close_request</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -141,7 +141,7 @@ array(4) {
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-   <li class="member"> <span class="function"><a href="function.cubrid-put.html" class="function" rel="rdfs-seeAlso">cubrid_put()</a> - Update a column using OID</span></li>
+   <li class="member"><span class="function"><a href="function.cubrid-put.html" class="function" rel="rdfs-seeAlso">cubrid_put()</a> - Update a column using OID</span></li>
    </ul>
   </p>
   </div>

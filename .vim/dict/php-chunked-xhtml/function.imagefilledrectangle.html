@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagefilledrectangle" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagefilledrectangle</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">imagefilledrectangle</span> &mdash; <span class="dc-title">塗りつぶした矩形を描画する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagefilledrectangle</span> &mdash; <span class="dc-title">塗りつぶした矩形を描画する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagefilledrectangle-description">
@@ -29,8 +29,8 @@
    )</div>
 
   <p class="para rdfs-comment">
-   色 <em><code class="parameter">color</code></em> で塗りつぶした矩形を、
-   指定した <em><code class="parameter">image</code></em> 上に作成します。
+   色 <code class="parameter">color</code> で塗りつぶした矩形を、
+   指定した <code class="parameter">image</code> 上に作成します。
    開始位置と終了位置を指定します。0, 0
    が画像の左上角を表します。
   </p>
@@ -42,15 +42,16 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">x1</code></dt>
 
-     <span class="term"><em><code class="parameter">x1</code></em></span>
      <dd>
 
       <p class="para">
@@ -58,11 +59,11 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">y1</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">y1</code></em></span>
      <dd>
 
       <p class="para">
@@ -70,11 +71,11 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">x2</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">x2</code></em></span>
      <dd>
 
       <p class="para">
@@ -82,11 +83,11 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">y2</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">y2</code></em></span>
      <dd>
 
       <p class="para">
@@ -94,22 +95,21 @@ image</code></em></span><dd>
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">color</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">color</code></em></span>
      <dd>
 
       <p class="para">
        塗りつぶし色。
-        <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span>
+       <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span>
        で作成した色 ID です。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -125,8 +125,8 @@ image</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imagefilledrectangle-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3220">
-    <p><strong>例1  <span class="function"><strong>imagefilledrectangle()</strong></span> の例</strong></p>
+   <div class="example" id="example-3419">
+    <p><strong>例1 <span class="function"><strong>imagefilledrectangle()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;55x30&nbsp;の画像を作成します<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">55</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">30</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$white&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;白の矩形を描画します<br /></span><span style="color: #0000BB">imagefilledrectangle</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">25</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$white</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;画像を保存します<br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'./imagefilledrectangle.png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -33,9 +33,9 @@
 
 
   <p class="para rdfs-comment">
-    <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> が返したステートメントリソース内の
+   <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> が返したステートメントリソース内の
    SQL 文のパラメータに PHP 変数をバインドします。
-    <span class="function"><a href="function.db2-execute.html" class="function">db2_execute()</a></span> へのオプション配列の一部として
+   <span class="function"><a href="function.db2-execute.html" class="function">db2_execute()</a></span> へのオプション配列の一部として
    変数を渡すのに比べ、この関数を使用すると
    パラメータの型、データの型、精度、位取りなどの詳細を制御できるようになります。
   </p>
@@ -47,21 +47,22 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">stmt</code></dt>
 
-     <span class="term"><em><code class="parameter">stmt</code></em></span>
      <dd>
 
       <p class="para">
-        <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> が返すプリペアドステートメント。
+       <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> が返すプリペアドステートメント。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">parameter-number</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">parameter-number</code></em></span>
      <dd>
 
       <p class="para">
@@ -70,24 +71,24 @@
       </p>
      </dd>
 
-    </dt>
-
+    
+    
     <dt>
+<code class="parameter">variable-name</code></dt>
 
-    <span class="term"><em><code class="parameter">variable-name</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">parameter-number</code></em> で指定したパラメータに
+       <code class="parameter">parameter-number</code> で指定したパラメータに
        バインドする PHP 変数の名前を表す文字列。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">parameter-type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">parameter-type</code></em></span>
      <dd>
 
       <p class="para">
@@ -103,11 +104,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">data-type</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">data-type</code></em></span>
      <dd>
 
       <p class="para">
@@ -118,11 +119,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">precision</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">precision</code></em></span>
      <dd>
 
       <p class="para">
@@ -137,11 +138,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">scale</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">scale</code></em></span>
      <dd>
 
       <p class="para">
@@ -149,8 +150,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -167,19 +167,19 @@
  <div class="refsect1 examples" id="refsect1-function.db2-bind-param-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1137">
+   <div class="example" id="example-1195">
     <p><strong>例1 PHP 変数をプリペアドステートメントにバインドする</strong></p>
     <div class="example-contents"><p>
      以下の例の SQL 文では、WHERE 句の中で 2 つの入力パラメータを使用しています。
      この 2 つのパラメータに PHP 変数をバインドするために
-      <span class="function"><strong>db2_bind_param()</strong></span> をコールします。
-      <span class="function"><strong>db2_bind_param()</strong></span> をコールする前に
+     <span class="function"><strong>db2_bind_param()</strong></span> をコールします。
+     <span class="function"><strong>db2_bind_param()</strong></span> をコールする前に
      PHP 変数を宣言したり代入したりする必要がないことに注意しましょう。
      この例では、<em>$lower_limit</em> については
-      <span class="function"><strong>db2_bind_param()</strong></span> がコールされる前に
+     <span class="function"><strong>db2_bind_param()</strong></span> がコールされる前に
      値が代入されていますが、<em>$upper_limit</em> については
-      <span class="function"><strong>db2_bind_param()</strong></span> をコールした後で代入されています。
-      <span class="function"><a href="function.db2-execute.html" class="function">db2_execute()</a></span> をコールする前には、
+     <span class="function"><strong>db2_bind_param()</strong></span> をコールした後で代入されています。
+     <span class="function"><a href="function.db2-execute.html" class="function">db2_execute()</a></span> をコールする前には、
      必ず変数をバインドしなければなりません。また、入力パラメータについては
      何らかの値を代入しておく必要があります。
     </p></div>
@@ -199,7 +199,7 @@ Peaches, dog, 12.3
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-1138">
+   <div class="example" id="example-1196">
     <p><strong>例2 IN および OUT パラメータを使用したストアドプロシージャのコール</strong></p>
     <div class="example-contents"><p>
      以下の例のストアドプロシージャ match_animal は、
@@ -251,7 +251,7 @@ Peaches, dog, 12.3
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-1139">
+   <div class="example" id="example-1197">
     <p><strong>例3 バイナリラージオブジェクト (BLOB) をファイルから直接挿入する</strong></p>
     <div class="example-contents"><p>
      ラージオブジェクトのデータは、通常は XML ドキュメントあるいは
@@ -278,8 +278,8 @@ Peaches, dog, 12.3
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.db2-execute.html" class="function" rel="rdfs-seeAlso">db2_execute()</a> - プリペアドステートメントを実行する</span></li>
-    <li class="member"> <span class="function"><a href="function.db2-prepare.html" class="function" rel="rdfs-seeAlso">db2_prepare()</a> - 実行する SQL 文を準備する</span></li>
+    <li class="member"><span class="function"><a href="function.db2-execute.html" class="function" rel="rdfs-seeAlso">db2_execute()</a> - プリペアドステートメントを実行する</span></li>
+    <li class="member"><span class="function"><a href="function.db2-prepare.html" class="function" rel="rdfs-seeAlso">db2_prepare()</a> - 実行する SQL 文を準備する</span></li>
    </ul>
   </p>
  </div>

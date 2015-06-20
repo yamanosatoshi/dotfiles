@@ -207,7 +207,8 @@
         <li class="listitem">
          <p class="para">
           セッション整合性を要求される読み込みでの、
-          トランザクション ID を使った最新の非同期スレーブの識別に対応
+          トランザクション ID を使った最新の非同期スレーブの識別に対応。
+          マニュアルに書かれている制約に注意すること。
          </p>
         </li>
         <li class="listitem">
@@ -267,6 +268,23 @@
        </ul>
       </p>
      </li>
+
+      <li class="listitem">
+      <p class="para">
+       MySQL Fabric
+      </p>
+      <p class="para">
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <p class="para">
+          MySQL Fabric を
+          <a href="mysqlnd-ms.quickstart.mysql_fabric.html" class="link">実験的にサポート</a>
+          するようになりました。
+         </p>
+        </li>
+       </ul>
+      </p>
+     </li>
     </ul>
    </p>
   </div>
@@ -288,7 +306,7 @@
     読み込み/書き込みの分離機能は、複数ステートメントの場合を考慮しません。
     複数のステートメントも単一のステートメントとみなします。
     そして、その先頭の文字を見て、どこで実行させるのかを判断します。たとえば
-     <span class="function"><a href="mysqli.multi-query.html" class="function">mysqli_multi_query()</a></span> を使って
+    <span class="function"><a href="mysqli.multi-query.html" class="function">mysqli_multi_query()</a></span> を使って
     <em>SELECT id FROM test ; INSERT INTO test(id) VALUES (1)</em>
     を実行したとすると、この処理はスレーブサーバーに送られます。先頭が
     <em>SELECT</em> で始まるからです。後半には

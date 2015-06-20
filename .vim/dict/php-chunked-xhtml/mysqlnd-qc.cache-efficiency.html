@@ -15,20 +15,20 @@
   <p class="para">
    PECL/mysqlnd_qc offers three ways to measure the cache efficiency.
    The function
-    <span class="function"><a href="function.mysqlnd-qc-get-normalized-query-trace-log.html" class="function">mysqlnd_qc_get_normalized_query_trace_log()</a></span>
+   <span class="function"><a href="function.mysqlnd-qc-get-normalized-query-trace-log.html" class="function">mysqlnd_qc_get_normalized_query_trace_log()</a></span>
    returns statistics aggregated by the normalized query string,
-    <span class="function"><a href="function.mysqlnd-qc-get-cache-info.html" class="function">mysqlnd_qc_get_cache_info()</a></span>
+   <span class="function"><a href="function.mysqlnd-qc-get-cache-info.html" class="function">mysqlnd_qc_get_cache_info()</a></span>
    gives storage handler specific information which includes a list
    of all cached items, depending on the storage handler. Additionally, the
    core of PECL/mysqlnd_qc collects high-level summary statistics aggregated
    per PHP process. The high-level statistics are returned by
-    <span class="function"><a href="function.mysqlnd-qc-get-core-stats.html" class="function">mysqlnd_qc_get_core_stats()</a></span>.
+   <span class="function"><a href="function.mysqlnd-qc-get-core-stats.html" class="function">mysqlnd_qc_get_core_stats()</a></span>.
   </p>
   <p class="para">
    The functions
-    <span class="function"><a href="function.mysqlnd-qc-get-normalized-query-trace-log.html" class="function">mysqlnd_qc_get_normalized_query_trace_log()</a></span>
+   <span class="function"><a href="function.mysqlnd-qc-get-normalized-query-trace-log.html" class="function">mysqlnd_qc_get_normalized_query_trace_log()</a></span>
    and
-    <span class="function"><a href="function.mysqlnd-qc-get-core-stats.html" class="function">mysqlnd_qc_get_core_stats()</a></span>
+   <span class="function"><a href="function.mysqlnd-qc-get-core-stats.html" class="function">mysqlnd_qc_get_core_stats()</a></span>
    will not collect data unless data collection has been
    enabled through their corresponding PHP configuration directives. Data collection
    is disabled by default for performance considerations. It is configurable with the
@@ -41,7 +41,7 @@
    the additional system calls.
   </p>
   <p class="para">
-   <div class="example" id="example-1853">
+   <div class="example" id="example-2045">
     <p><strong>例1 Collecting statistics data with the <em>mysqlnd_qc.time_statistics</em> ini setting</strong></p>
     <div class="example-contents">
 <div class="inicode"><pre class="inicode">mysqlnd_qc.enable_qc=1
@@ -120,20 +120,20 @@ array(26) {
   </p>
   <p class="para">
    For a quick overview, call
-    <span class="function"><a href="function.mysqlnd-qc-get-core-stats.html" class="function">mysqlnd_qc_get_core_stats()</a></span>. It delivers
+   <span class="function"><a href="function.mysqlnd-qc-get-core-stats.html" class="function">mysqlnd_qc_get_core_stats()</a></span>. It delivers
    cache usage, cache timing and traffic related statistics. Values are aggregated
    on a per process basis for all queries issued by any PHP MySQL API call.
   </p>
   <p class="para">
    Some storage handler, such as the default handler, can report cache entries,
    statistics related to the entries and meta data for the underlying query through the
-    <span class="function"><a href="function.mysqlnd-qc-get-cache-info.html" class="function">mysqlnd_qc_get_cache_info()</a></span>
+   <span class="function"><a href="function.mysqlnd-qc-get-cache-info.html" class="function">mysqlnd_qc_get_cache_info()</a></span>
    function.  Please note, that the information returned depends
    on the storage handler. Values are aggregated on a per process basis.
   </p>
   <p class="para">
-   <div class="example" id="example-1854">
-    <p><strong>例2 Example  <span class="function"><a href="function.mysqlnd-qc-get-cache-info.html" class="function">mysqlnd_qc_get_cache_info()</a></span> usage</strong></p>
+   <div class="example" id="example-2046">
+    <p><strong>例2 Example <span class="function"><a href="function.mysqlnd-qc-get-cache-info.html" class="function">mysqlnd_qc_get_cache_info()</a></span> usage</strong></p>
     <div class="example-contents">
 <div class="inicode"><pre class="inicode">mysqlnd_qc.enable_qc=1</pre>
 </div>
@@ -283,8 +283,8 @@ test|/*qc=on*/SELECT id FROM test WHERE id = 0&quot;]=&gt;
    <em>SELECT id FROM test WHERE id = ?</em>.
   </p>
   <p class="para">
-   <div class="example" id="example-1855">
-    <p><strong>例3 Example  <span class="function"><a href="function.mysqlnd-qc-get-normalized-query-trace-log.html" class="function">mysqlnd_qc_get_normalized_query_trace_log()</a></span> usage</strong></p>
+   <div class="example" id="example-2047">
+    <p><strong>例3 Example <span class="function"><a href="function.mysqlnd-qc-get-normalized-query-trace-log.html" class="function">mysqlnd_qc_get_normalized_query_trace_log()</a></span> usage</strong></p>
     <div class="example-contents">
 <div class="inicode"><pre class="inicode">mysqlnd_qc.enable_qc=1
 mysqlnd_qc.collect_normalized_query_trace=1</pre>

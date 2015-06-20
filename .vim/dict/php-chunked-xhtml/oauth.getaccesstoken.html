@@ -23,7 +23,8 @@
    <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><strong>OAuth::getAccessToken</strong></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$access_token_url</code></span>
    [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$verifier_token</code></span>
-  ] )</div>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$http_method</code></span>
+  ]] )</div>
 
   <p class="para rdfs-comment">
    アクセストークン、secret そして追加のレスポンスパラメータをサービスプロバイダから取得します。
@@ -36,9 +37,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">access_token_url</code></dt>
 
-     <span class="term"><em><code class="parameter">access_token_url</code></em></span>
      <dd>
 
       <p class="para">
@@ -46,11 +48,11 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">auth_session_handle</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">auth_session_handle</code></em></span>
      <dd>
 
       <p class="para">
@@ -62,19 +64,19 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">verifier_token</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">verifier_token</code></em></span>
      <dd>
 
       <p class="para">
        1.0a をサポートするサービスプロバイダでは、リクエストトークンとアクセストークンを交換する際に
-       <em><code class="parameter">verifier_token</code></em> を渡す必要があります。
-       <em><code class="parameter">verifier_token</code></em> が <em><code class="parameter">$_GET</code></em>
-       あるいは <em><code class="parameter">$_POST</code></em> に存在する場合は自動的にそれが渡され、
-       呼び出し側が <em><code class="parameter">verifier_token</code></em> を指定する必要はありません
+       <code class="parameter">verifier_token</code> を渡す必要があります。
+       <code class="parameter">verifier_token</code> が <code class="parameter">$_GET</code>
+       あるいは <code class="parameter">$_POST</code> に存在する場合は自動的にそれが渡され、
+       呼び出し側が <code class="parameter">verifier_token</code> を指定する必要はありません
        (通常、アクセストークンを oauth_callback URL で交換する場合はこのようになります)。
        詳細な情報は
        <a href="http://oauth.pbwiki.com/ScalableOAuth/" class="link external">&raquo;&nbsp;ScalableOAuth</a>
@@ -82,8 +84,19 @@
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">http_method</code></dt>
 
+     <dd>
+
+      <p class="para">
+       利用する HTTP メソッド。<em>GET</em> や <em>POST</em> など。
+      </p>
+     </dd>
+
+    
    </dl>
 
   </p>
@@ -122,7 +135,7 @@
       <tr>
        <td>0.99.9</td>
        <td>
-        <em><code class="parameter">verifier_token</code></em> パラメータが追加されました。
+        <code class="parameter">verifier_token</code> パラメータが追加されました。
        </td>
       </tr>
 
@@ -137,8 +150,8 @@
  <div class="refsect1 examples" id="refsect1-oauth.getaccesstoken-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5261">
-    <p><strong>例1  <span class="function"><strong>OAuth::getAccessToken()</strong></span> の例</strong></p>
+   <div class="example" id="example-5741">
+    <p><strong>例1 <span class="function"><strong>OAuth::getAccessToken()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$oauth&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">OAuth</span><span style="color: #007700">(</span><span style="color: #0000BB">OAUTH_CONSUMER_KEY</span><span style="color: #007700">,</span><span style="color: #0000BB">OAUTH_CONSUMER_SECRET</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$oauth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setToken</span><span style="color: #007700">(</span><span style="color: #0000BB">$request_token</span><span style="color: #007700">,</span><span style="color: #0000BB">$request_token_secret</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$access_token_info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$oauth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAccessToken</span><span style="color: #007700">(</span><span style="color: #DD0000">"https://example.com/oauth/access_token"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if(!empty(</span><span style="color: #0000BB">$access_token_info</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$access_token_info</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Failed&nbsp;fetching&nbsp;access&nbsp;token,&nbsp;response&nbsp;was:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$oauth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLastResponse</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}&nbsp;catch(</span><span style="color: #0000BB">OAuthException&nbsp;$E</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Response:&nbsp;"</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$E</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">lastResponse&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -166,9 +179,9 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="oauth.getlastresponse.html" class="methodname" rel="rdfs-seeAlso">OAuth::getLastResponse()</a> - 直近のレスポンスを取得する</span></li>
-    <li class="member"> <span class="methodname"><a href="oauth.getlastresponseinfo.html" class="methodname" rel="rdfs-seeAlso">OAuth::getLastResponseInfo()</a> - 直近のレスポンスの HTTP 情報を取得する</span></li>
-    <li class="member"> <span class="methodname"><a href="oauth.settoken.html" class="methodname" rel="rdfs-seeAlso">OAuth::setToken()</a> - トークンと secret を設定する</span></li>
+    <li class="member"><span class="methodname"><a href="oauth.getlastresponse.html" class="methodname" rel="rdfs-seeAlso">OAuth::getLastResponse()</a> - 直近のレスポンスを取得する</span></li>
+    <li class="member"><span class="methodname"><a href="oauth.getlastresponseinfo.html" class="methodname" rel="rdfs-seeAlso">OAuth::getLastResponseInfo()</a> - 直近のレスポンスの HTTP 情報を取得する</span></li>
+    <li class="member"><span class="methodname"><a href="oauth.settoken.html" class="methodname" rel="rdfs-seeAlso">OAuth::setToken()</a> - トークンと secret を設定する</span></li>
    </ul>
   </p>
  </div>

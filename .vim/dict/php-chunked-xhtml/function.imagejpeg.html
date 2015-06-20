@@ -13,7 +13,7 @@
 </div><hr /><div id="function.imagejpeg" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagejpeg</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">imagejpeg</span> &mdash; <span class="dc-title">画像をブラウザあるいはファイルに出力する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagejpeg</span> &mdash; <span class="dc-title">画像をブラウザあるいはファイルに出力する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagejpeg-description">
@@ -26,7 +26,7 @@
   ]] )</div>
 
   <p class="para rdfs-comment">
-    <span class="function"><strong>imagejpeg()</strong></span> は、画像 <em><code class="parameter">image</code></em> から
+   <span class="function"><strong>imagejpeg()</strong></span> は、画像 <code class="parameter">image</code> から
    <acronym title="Joint Photographic Experts Group">JPEG</acronym> ファイルを作成します。
   </p>
  </div>
@@ -37,41 +37,41 @@
    <dl>
 
     <dt>
-<span class="term"><em><code class="parameter">
-image</code></em></span><dd>
-<p class="para"> <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
 のような画像作成関数が返す画像リソース。</p></dd>
-</dt>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">filename</code></dt>
 
-     <span class="term"><em><code class="parameter">filename</code></em></span>
      <dd>
 
       <p class="para">ファイルの保存先のパス。省略したり <strong><code>NULL</code></strong> を設定したりした場合は、画像ストリームを直接出力します。</p>
       <p class="para">
-       <em><code class="parameter">quality</code></em>
+       <code class="parameter">quality</code>
        パラメータを指定するためにこの引数をスキップするには、
        <strong><code>NULL</code></strong> を指定します。
       </p>
      </dd>
 
-    </dt>
+    
+    
+     <dt>
+<code class="parameter">quality</code></dt>
 
-    <dt>
-
-     <span class="term"><em><code class="parameter">quality</code></em></span>
      <dd>
 
       <p class="para">
-       <em><code class="parameter">quality</code></em> はオプションであり、0(品質は最低
+       <code class="parameter">quality</code> はオプションであり、0(品質は最低
        ですが、ファイルはより小さい)から100(品質は最高ですが、ファイルは
        最大)の範囲で指定します。デフォルトは IJG 品質値(75)です。
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -87,7 +87,7 @@ image</code></em></span><dd>
  <div class="refsect1 examples" id="refsect1-function.imagejpeg-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3246">
+   <div class="example" id="example-3445">
     <p><strong>例1 JPEG 画像の出力</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -107,7 +107,7 @@ image</code></em></span><dd>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3247">
+   <div class="example" id="example-3446">
     <p><strong>例2 JPEG 画像の保存</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -119,7 +119,7 @@ image</code></em></span><dd>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3248">
+   <div class="example" id="example-3447">
     <p><strong>例3 75% 品質での画像の出力</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -139,7 +139,7 @@ PHP が GD-1.8 か、それ以降に対して、コンパイルされている�
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     プログレッシブ JPEG を出力したい場合には、
-     <span class="function"><a href="function.imageinterlace.html" class="function">imageinterlace()</a></span> でインターレースをセットする必要があります。
+    <span class="function"><a href="function.imageinterlace.html" class="function">imageinterlace()</a></span> でインターレースをセットする必要があります。
    </p>
   </p></blockquote>
  </div>
@@ -148,11 +148,11 @@ PHP が GD-1.8 か、それ以降に対して、コンパイルされている�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="function.imagepng.html" class="function" rel="rdfs-seeAlso">imagepng()</a> - PNG イメージをブラウザまたはファイルに出力する</span></li>
-    <li class="member"> <span class="function"><a href="function.imagegif.html" class="function" rel="rdfs-seeAlso">imagegif()</a> - 画像をブラウザあるいはファイルに出力する</span></li>
-    <li class="member"> <span class="function"><a href="function.imagewbmp.html" class="function" rel="rdfs-seeAlso">imagewbmp()</a> - 画像をブラウザあるいはファイルに出力する</span></li>
-    <li class="member"> <span class="function"><a href="function.imageinterlace.html" class="function" rel="rdfs-seeAlso">imageinterlace()</a> - インターレースを有効もしくは無効にする</span></li>
-    <li class="member"> <span class="function"><a href="function.imagetypes.html" class="function" rel="rdfs-seeAlso">imagetypes()</a> - この PHP がサポートしている画像形式を返す</span></li>
+    <li class="member"><span class="function"><a href="function.imagepng.html" class="function" rel="rdfs-seeAlso">imagepng()</a> - PNG イメージをブラウザまたはファイルに出力する</span></li>
+    <li class="member"><span class="function"><a href="function.imagegif.html" class="function" rel="rdfs-seeAlso">imagegif()</a> - 画像をブラウザあるいはファイルに出力する</span></li>
+    <li class="member"><span class="function"><a href="function.imagewbmp.html" class="function" rel="rdfs-seeAlso">imagewbmp()</a> - 画像をブラウザあるいはファイルに出力する</span></li>
+    <li class="member"><span class="function"><a href="function.imageinterlace.html" class="function" rel="rdfs-seeAlso">imageinterlace()</a> - インターレースを有効もしくは無効にする</span></li>
+    <li class="member"><span class="function"><a href="function.imagetypes.html" class="function" rel="rdfs-seeAlso">imagetypes()</a> - この PHP がサポートしている画像形式を返す</span></li>
    </ul>
   </p>
  </div>

@@ -38,11 +38,11 @@
  <div class="refsect1 examples" id="refsect1-xmlreader.isvalid-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5497">
+   <div class="example" id="example-5966">
     <p><strong>例1 XML の妥当性の検証</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$xml&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">XMLReader</span><span style="color: #007700">::</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">'test.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;これを使用しなければなりません<br /></span><span style="color: #0000BB">$xml</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setParserProperty</span><span style="color: #007700">(</span><span style="color: #0000BB">XMLReader</span><span style="color: #007700">::</span><span style="color: #0000BB">VALIDATE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$xml</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isValid</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$xml&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">XMLReader</span><span style="color: #007700">::</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">'test.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;validate&nbsp;オプションを有効にしておかないと、<br />//&nbsp;このメソッドは正しく動作しません<br /></span><span style="color: #0000BB">$xml</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setParserProperty</span><span style="color: #007700">(</span><span style="color: #0000BB">XMLReader</span><span style="color: #007700">::</span><span style="color: #0000BB">VALIDATE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$xml</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isValid</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -51,14 +51,23 @@
   </p>
  </div>
 
+ <div class="refsect1 notes" id="refsect1-xmlreader.isvalid-notes">
+  <h3 class="title">注意</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    このメソッドは、現在のノードだけをチェックします。ドキュメント全体をチェックするわけではありません。
+   </span>
+  </p></blockquote>
+ </div>
+
  <div class="refsect1 seealso" id="refsect1-xmlreader.isvalid-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"> <span class="methodname"><a href="xmlreader.setparserproperty.html" class="methodname" rel="rdfs-seeAlso">XMLReader::setParserProperty()</a> - パーサのオプションを設定する</span></li>
-    <li class="member"> <span class="methodname"><a href="xmlreader.setrelaxngschema.html" class="methodname" rel="rdfs-seeAlso">XMLReader::setRelaxNGSchema()</a> - RelaxNG スキーマのファイル名あるいは URI を設定する</span></li>
-    <li class="member"> <span class="methodname"><a href="xmlreader.setrelaxngschemasource.html" class="methodname" rel="rdfs-seeAlso">XMLReader::setRelaxNGSchemaSource()</a> - RelaxNG スキーマを含むデータを設定する</span></li>
-    <li class="member"> <span class="methodname"><a href="xmlreader.setschema.html" class="methodname" rel="rdfs-seeAlso">XMLReader::setSchema()</a> - ドキュメントを XSD で検証する</span></li>
+    <li class="member"><span class="methodname"><a href="xmlreader.setparserproperty.html" class="methodname" rel="rdfs-seeAlso">XMLReader::setParserProperty()</a> - パーサのオプションを設定する</span></li>
+    <li class="member"><span class="methodname"><a href="xmlreader.setrelaxngschema.html" class="methodname" rel="rdfs-seeAlso">XMLReader::setRelaxNGSchema()</a> - RelaxNG スキーマのファイル名あるいは URI を設定する</span></li>
+    <li class="member"><span class="methodname"><a href="xmlreader.setrelaxngschemasource.html" class="methodname" rel="rdfs-seeAlso">XMLReader::setRelaxNGSchemaSource()</a> - RelaxNG スキーマを含むデータを設定する</span></li>
+    <li class="member"><span class="methodname"><a href="xmlreader.setschema.html" class="methodname" rel="rdfs-seeAlso">XMLReader::setSchema()</a> - ドキュメントを XSD で検証する</span></li>
    </ul>
   </p>
  </div>

@@ -7,7 +7,7 @@
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="closure.bind.html">Closure::bind</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="class.generator.html">Generator</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="closure.call.html">Closure::call</a></div>
  <div class="up"><a href="class.closure.html">Closure</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="closure.bindto" class="refentry">
@@ -25,7 +25,7 @@
    <span class="modifier">public</span> <span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span> <span class="methodname"><strong>Closure::bindTo</strong></span>
     ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$newthis</code></span>
    [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$newscope</code>
-   <span class="initializer"> = &#039;static&#039;</span></span>
+   <span class="initializer"> = &quot;static&quot;</span></span>
   ] )</div>
 
   <p class="para rdfs-comment">
@@ -38,13 +38,13 @@
    が関数本体で持つ値が決まり、“クラスのスコープ”
    は、無名関数からどのクラスの private メンバーや protected メンバーにアクセスできるのかが決まります。
    すなわち、無名関数から見えるメンバーは、
-   その無名関数が <em><code class="parameter">newscope</code></em>
+   その無名関数が <code class="parameter">newscope</code>
    クラスのメソッドであった場合と同じものになります。
   </p>
 
   <p class="para">
    静的なクロージャは何もオブジェクトをバインドできません
-   (<em><code class="parameter">newthis</code></em> の値は <strong><code>NULL</code></strong> でなければなりません) が、
+   (<code class="parameter">newthis</code> の値は <strong><code>NULL</code></strong> でなければなりません) が、
    それでもこの関数を使ってクラスのスコープを変えることができます。
   </p>
 
@@ -70,9 +70,10 @@
   <h3 class="title">パラメータ</h3>
   <dl>
 
-   <dt>
+   
+    <dt>
+<code class="parameter">newthis</code></dt>
 
-    <span class="term"><em><code class="parameter">newthis</code></em></span>
     <dd>
 
      <p class="para">
@@ -81,11 +82,11 @@
      </p>
     </dd>
 
-   </dt>
+   
+   
+    <dt>
+<code class="parameter">newscope</code></dt>
 
-   <dt>
-
-    <span class="term"><em><code class="parameter">newscope</code></em></span>
     <dd>
 
      <p class="para">
@@ -96,8 +97,7 @@
      </p>
     </dd>
 
-   </dt>
-
+   
   </dl>
 
  </div>
@@ -114,8 +114,8 @@
 
  <div class="refsect1 examples" id="refsect1-closure.bindto-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-306">
-   <p><strong>例1  <span class="function"><strong>Closure::bindTo()</strong></span> の例</strong></p>
+  <div class="example" id="example-329">
+   <p><strong>例1 <span class="function"><strong>Closure::bindTo()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">val&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">getClosure</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;このオブジェクトとスコープにバインドしたクロージャを返します。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;function()&nbsp;{&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">val</span><span style="color: #007700">;&nbsp;};<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$ob1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$ob2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cl&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$ob1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getClosure</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">$cl</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$cl&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$cl</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindTo</span><span style="color: #007700">(</span><span style="color: #0000BB">$ob2</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$cl</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -140,14 +140,14 @@
   <h3 class="title">参考</h3>
   <ul class="simplelist">
    <li class="member"><a href="functions.anonymous.html" class="link">無名関数</a></li>
-   <li class="member"> <span class="methodname"><a href="closure.bind.html" class="methodname" rel="rdfs-seeAlso">Closure::bind()</a> - バインドされたオブジェクトとクラスのスコープでクロージャを複製する</span></li>
+   <li class="member"><span class="methodname"><a href="closure.bind.html" class="methodname" rel="rdfs-seeAlso">Closure::bind()</a> - バインドされたオブジェクトとクラスのスコープでクロージャを複製する</span></li>
   </ul>
  </div>
 
 
 </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="closure.bind.html">Closure::bind</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="class.generator.html">Generator</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="closure.call.html">Closure::call</a></div>
  <div class="up"><a href="class.closure.html">Closure</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div></body></html>

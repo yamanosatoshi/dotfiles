@@ -47,9 +47,10 @@
   <p class="para">
    <dl>
 
-    <dt>
+    
+     <dt>
+<code class="parameter">fmt</code></dt>
 
-     <span class="term"><em><code class="parameter">fmt</code></em></span>
      <dd>
 
       <p class="para">
@@ -57,8 +58,7 @@
       </p>
      </dd>
 
-    </dt>
-
+    
    </dl>
 
   </p>
@@ -77,8 +77,8 @@
  
  <div class="refsect1 examples" id="refsect1-intldateformatter.islenient-examples">
   <h3 class="title">例</h3>
-   <div class="example" id="example-2640">
-    <p><strong>例1  <span class="function"><strong>datefmt_is_lenient()</strong></span> の例</strong></p>
+   <div class="example" id="example-2839">
+    <p><strong>例1 <span class="function"><strong>datefmt_is_lenient()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$fmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">datefmt_create</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'en_US'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'America/Los_Angeles'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">GREGORIAN</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'dd/mm/yyyy'<br /></span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">'lenient&nbsp;of&nbsp;the&nbsp;formatter&nbsp;is&nbsp;:&nbsp;'</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isLenient</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'TRUE'</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'FALSE'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">datefmt_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'35/13/1971'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"\n&nbsp;Trying&nbsp;to&nbsp;do&nbsp;parse('35/13/1971').\nResult&nbsp;is&nbsp;:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">datefmt_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'35/13/1971'</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">intl_get_error_code</span><span style="color: #007700">()&nbsp;!=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\nError_msg&nbsp;is&nbsp;:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">intl_get_error_message</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\nError_code&nbsp;is&nbsp;:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">intl_get_error_code</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">datefmt_set_lenient</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">'Now&nbsp;lenient&nbsp;of&nbsp;the&nbsp;formatter&nbsp;is&nbsp;:&nbsp;'</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isLenient</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'TRUE'</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'FALSE'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">datefmt_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'35/13/1971'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"\n&nbsp;Trying&nbsp;to&nbsp;do&nbsp;parse('35/13/1971').Result&nbsp;is&nbsp;:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">datefmt_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'35/13/1971'</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">intl_get_error_code</span><span style="color: #007700">()&nbsp;!=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\nError_msg&nbsp;is&nbsp;:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">intl_get_error_message</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\nError_code&nbsp;is&nbsp;:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">intl_get_error_code</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -87,7 +87,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-2641">
+   <div class="example" id="example-2840">
     <p><strong>例2 オブジェクト指向の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -117,8 +117,8 @@ Error_code is : 9
   <h3 class="title">参考</h3>
   <p class="para">
     <ul class="simplelist">
-    <li class="member"> <span class="function"><a href="intldateformatter.setlenient.html" class="function" rel="rdfs-seeAlso">datefmt_set_lenient()</a> - パーサの寛大さを設定する</span></li>
-    <li class="member"> <span class="function"><a href="intldateformatter.create.html" class="function" rel="rdfs-seeAlso">datefmt_create()</a> - Date Formatter を作成する</span></li>
+    <li class="member"><span class="function"><a href="intldateformatter.setlenient.html" class="function" rel="rdfs-seeAlso">datefmt_set_lenient()</a> - パーサの寛大さを設定する</span></li>
+    <li class="member"><span class="function"><a href="intldateformatter.create.html" class="function" rel="rdfs-seeAlso">datefmt_create()</a> - Date Formatter を作成する</span></li>
     </ul>
   </p>
  </div>
