@@ -206,7 +206,7 @@ set nrformats=
 set nobackup
 syn on
 
-if has('gui')
+if has('gui' && IsWindows())
   gui
   set guioptions-=T "ツールバーなし
   set guioptions-=m "メニューバーなし
@@ -259,7 +259,7 @@ set cindent
 set whichwrap=b,s,h,l,<,> ",[,] 行末はやめとく
 
 " display
-if has('gui')
+if has('gui' && IsWindows())
 	set columns=180
 	set lines=90
 	set linespace=1
@@ -676,4 +676,4 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "a'", 
 "}}}
 
 
-colorscheme railscasts
+colorscheme wombat256
