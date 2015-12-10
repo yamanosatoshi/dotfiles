@@ -441,12 +441,12 @@ set makeprg=php\ -l\ %
 set errorformat=%m\ in\ %f\ on\ line\ %l
 "}}}
 
-" PHPLint"{{{
+" FileTypeLint"{{{
 "
 " @author halt feits <halt.feits at gmail.com>
 "
 function! FTLint(option)
-  if $ft == 'html'
+  if &ft == 'html'
     let result = system( 'php -l '.a:option.' ' . bufname(""))
   else
 	let result = system( &ft . ' -l '.a:option.' ' . bufname(""))
