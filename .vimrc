@@ -134,8 +134,8 @@ endif
 " 封印"{{{
 
 "" カラースキーム一覧表示に Unite.vim を使う
-"NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
 "
 "" solarized カラースキーム
 "NeoBundle 'altercation/vim-colors-solarized'
@@ -207,7 +207,7 @@ set nrformats=
 set nobackup
 syn on
 
-if has('gui')
+if has('gui' && IsWindows())
   gui
   set guioptions-=T "ツールバーなし
   set guioptions-=m "メニューバーなし
@@ -260,7 +260,7 @@ set cindent
 set whichwrap=b,s,h,l,<,> ",[,] 行末はやめとく
 
 " display
-if has('gui')
+if has('gui' && IsWindows())
 	set columns=180
 	set lines=90
 	set linespace=1
@@ -415,7 +415,7 @@ endif
 
 " statusline settings"{{{
 set laststatus=2
-if has('gui')
+if has('gui' && IsWindows())
 	set showtabline=2
 endif
 
@@ -682,4 +682,8 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "a'", 
 "}}}
 
 
-colorscheme railscasts
+if has('gui' && IsWindows())
+	colorscheme railscasts
+else
+	colorscheme wombat256
+endif
