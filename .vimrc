@@ -207,7 +207,7 @@ set nrformats=
 set nobackup
 syn on
 
-if has('gui' && IsWindows())
+if has('gui') && IsWindows()
   gui
   set guioptions-=T "ツールバーなし
   set guioptions-=m "メニューバーなし
@@ -260,7 +260,7 @@ set cindent
 set whichwrap=b,s,h,l,<,> ",[,] 行末はやめとく
 
 " display
-if has('gui' && IsWindows())
+if has('gui') && IsWindows()
 	set columns=180
 	set lines=90
 	set linespace=1
@@ -415,7 +415,7 @@ endif
 
 " statusline settings"{{{
 set laststatus=2
-if has('gui' && IsWindows())
+if has('gui') && IsWindows()
 	set showtabline=2
 endif
 
@@ -682,7 +682,7 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "a'", 
 "}}}
 
 
-if has('gui' && IsWindows())
+if has('gui') && IsWindows()
 	colorscheme railscasts
 else
 	colorscheme wombat256
