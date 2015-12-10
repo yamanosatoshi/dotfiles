@@ -115,6 +115,7 @@ NeoBundle 'gcmt/wildfire.vim'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'haya14busa/vim-migemo'
+NeoBundle 'wakatime/vim-wakatime'
 
 " neocon
 function! s:meet_neocomplete_requirements()
@@ -444,12 +445,17 @@ set errorformat=%m\ in\ %f\ on\ line\ %l
 "
 " @author halt feits <halt.feits at gmail.com>
 "
-function! PHPLint()
-  let result = system( &ft . ' -l ' . bufname(""))
+function! FTLint(option)
+  if $ft == 'html'
+    let result = system( 'php -l '.a:option.' ' . bufname(""))
+  else
+	let result = system( &ft . ' -l '.a:option.' ' . bufname(""))
+  endif
   echo result
 endfunction
 
-nmap ,l :call PHPLint()<CR>
+nmap ,l :call FTLint('')<CR>
+nmap ,,l :call FTLint('-d short_open_tag=0')<CR>
 "}}}
 
 " mappings "{{{
