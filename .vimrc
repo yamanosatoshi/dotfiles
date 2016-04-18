@@ -274,7 +274,7 @@ endif
 "set gfn=Migu_1M:h8:cDEFAULT
 "set gfn=Ricty:h8:cDEFAULT
 "set gfw=Migu_1M:h8:cDEFAULT
-set gfn=Inconsolata:h9:cDEFAULT
+"set gfn=Inconsolata:h9:cDEFAULT
 
 "半角文字の表示
 "set guifont=Migu_1M:h8:cDEFAULT
@@ -342,7 +342,7 @@ augroup END
 "}}}
 
 " GUI時複数起動禁止"{{{
-if v:servername == 'GVIM1'
+if v:servername == 'GVIM1' || v:servername == 'GVIM2'
     let file = expand('%:p')
 	bwipeout
     call remote_send('GVIM', '<ESC>:tabnew ' .escape(file, "%") .'<CR>')
