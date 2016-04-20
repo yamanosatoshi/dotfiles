@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Get or set flags on function or class</title>
+  <title>関数またはクラスのフラグを取得または設定</title>
 
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
@@ -13,7 +13,7 @@
 </div><hr /><div id="function.uopz-flags" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">uopz_flags</h1>
-  <p class="verinfo">(PECL uopz &gt;= 2.0.2)</p><p class="refpurpose"><span class="refname">uopz_flags</span> &mdash; <span class="dc-title">Get or set flags on function or class</span></p>
+  <p class="verinfo">(PECL uopz &gt;= 2.0.2)</p><p class="refpurpose"><span class="refname">uopz_flags</span> &mdash; <span class="dc-title">関数またはクラスのフラグを取得または設定</span></p>
 
  </div>
 
@@ -33,7 +33,7 @@
    )</div>
 
   <p class="para rdfs-comment">
- Get or set the flags on a class or function entry at runtime
+ 実行時にクラスまたは関数エントリのフラグを取得または設定します。
   </p>
 
  </div>
@@ -50,7 +50,7 @@
     <dd>
 
      <p class="para">
- The name of a class
+ クラス名
      </p>
     </dd>
 
@@ -62,7 +62,7 @@
     <dd>
 
      <p class="para">
- The name of the function
+ 関数名
      </p>
     </dd>
 
@@ -74,7 +74,7 @@
     <dd>
 
      <p class="para">
- A valid set of ZEND_ACC_ flags, ZEND_ACC_FETCH to read flags
+ ZEND_ACC_ フラグの有効なセット、フラグを読み取る ZEND_ACC_FETCH
      </p>
     </dd>
 
@@ -87,15 +87,15 @@
  <div class="refsect1 returnvalues" id="refsect1-function.uopz-flags-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
- If setting, returns old flags, else returns flags
+ 設定の場合、古いフラグを返します。それ以外の場合、フラグを返します。
   </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.uopz-flags-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-575">
-   <p><strong>例1 <span class="function"><strong>uopz_flags()</strong></span> example</strong></p>
+  <div class="example" id="example-619">
+   <p><strong>例1 <span class="function"><strong>uopz_flags()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Test&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">method</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$flags&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">uopz_flags</span><span style="color: #007700">(</span><span style="color: #DD0000">"Test"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"method"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZEND_ACC_FETCH</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">((bool)&nbsp;(</span><span style="color: #0000BB">uopz_flags</span><span style="color: #007700">(</span><span style="color: #DD0000">"Test"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"method"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZEND_ACC_FETCH</span><span style="color: #007700">)&nbsp;&amp;&nbsp;</span><span style="color: #0000BB">ZEND_ACC_PRIVATE</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">((bool)&nbsp;(</span><span style="color: #0000BB">uopz_flags</span><span style="color: #007700">(</span><span style="color: #DD0000">"Test"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"method"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZEND_ACC_FETCH</span><span style="color: #007700">)&nbsp;&amp;&nbsp;</span><span style="color: #0000BB">ZEND_ACC_STATIC</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">uopz_flags</span><span style="color: #007700">(</span><span style="color: #DD0000">"Test"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"method"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$flags</span><span style="color: #007700">|</span><span style="color: #0000BB">ZEND_ACC_STATIC</span><span style="color: #007700">|</span><span style="color: #0000BB">ZEND_ACC_PRIVATE</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">((bool)&nbsp;(</span><span style="color: #0000BB">uopz_flags</span><span style="color: #007700">(</span><span style="color: #DD0000">"Test"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"method"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZEND_ACC_FETCH</span><span style="color: #007700">)&nbsp;&amp;&nbsp;</span><span style="color: #0000BB">ZEND_ACC_PRIVATE</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">((bool)&nbsp;(</span><span style="color: #0000BB">uopz_flags</span><span style="color: #007700">(</span><span style="color: #DD0000">"Test"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"method"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZEND_ACC_FETCH</span><span style="color: #007700">)&nbsp;&amp;&nbsp;</span><span style="color: #0000BB">ZEND_ACC_STATIC</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>

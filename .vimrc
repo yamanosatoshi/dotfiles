@@ -76,6 +76,10 @@ set runtimepath+=$HOME/.vim/bundle/vital.vim
 "}}}
 
 " neoBundle {{{
+
+"デバッグよう
+"let g:neobundle#log_filename = $HOME . "/neobundle.log"
+
 set nocompatible
 filetype off
 if has('vim_starting')
@@ -115,7 +119,7 @@ NeoBundle 'gcmt/wildfire.vim'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'haya14busa/vim-migemo'
-NeoBundle 'wakatime/vim-wakatime'
+"NeoBundle 'wakatime/vim-wakatime'
 
 " neocon
 function! s:meet_neocomplete_requirements()
@@ -275,6 +279,7 @@ endif
 "set gfn=Ricty:h8:cDEFAULT
 "set gfw=Migu_1M:h8:cDEFAULT
 "set gfn=Inconsolata:h9:cDEFAULT
+set gfn=MS_Gothic:h10:cDEFAULT
 
 "半角文字の表示
 "set guifont=Migu_1M:h8:cDEFAULT

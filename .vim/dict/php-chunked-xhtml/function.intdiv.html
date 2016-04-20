@@ -19,13 +19,13 @@
  <div class="refsect1 description" id="refsect1-function.intdiv-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-    <span class="type">integer</span> <span class="methodname"><strong>intdiv</strong></span>
-     ( <span class="methodparam"><span class="type">integer</span> <code class="parameter">$numerator</code></span>
-    , <span class="methodparam"><span class="type">integer</span> <code class="parameter">$divisor</code></span>
+    <span class="type">int</span> <span class="methodname"><strong>intdiv</strong></span>
+     ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$dividend</code></span>
+    , <span class="methodparam"><span class="type">int</span> <code class="parameter">$divisor</code></span>
     )</div>
 
   <p class="para rdfs-comment">
-   Returns the integer division of <code class="parameter">numerator</code> by <code class="parameter">divisor</code>.
+   Returns the integer quotient of the division of <code class="parameter">dividend</code> by <code class="parameter">divisor</code>.
   </p>
  </div>
 
@@ -35,12 +35,12 @@
 
    
     <dt>
-<code class="parameter">numerator</code></dt>
+<code class="parameter">dividend</code></dt>
 
     <dd>
 
      <p class="para">
-      Number to be divide.
+      Number to be divided.
      </p>
     </dd>
 
@@ -52,7 +52,7 @@
     <dd>
 
      <p class="para">
-      Number which divides the <code class="parameter">numerator</code>
+      Number which divides the <code class="parameter">dividend</code>.
      </p>
     </dd>
 
@@ -64,21 +64,28 @@
  <div class="refsect1 returnvalues" id="refsect1-function.intdiv-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   The integer division of <code class="parameter">numerator</code> by <code class="parameter">divisor</code>.
-   If <code class="parameter">divisor</code> is zero, it throws an <strong><code>E_WARNING</code></strong> and returns <strong><code>FALSE</code></strong>.
-   If the <code class="parameter">numerator</code> is LONG_MIN (-<strong><code>PHP_INT_MAX</code></strong> - 1) and the 
-   <code class="parameter">divisor</code> is -1, it returns zero.
+   The integer quotient of the division of <code class="parameter">dividend</code> by <code class="parameter">divisor</code>.
+  </p>
+ </div>
+
+ <div class="refsect1 errors" id="refsect1-function.intdiv-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+    If <code class="parameter">divisor</code> is <em>0</em>, a <a href="class.divisionbyzeroerror.html" class="classname">DivisionByZeroError</a>
+    exception is thrown. If the <code class="parameter">dividend</code> is <strong><code>PHP_INT_MIN</code></strong>
+    and the <code class="parameter">divisor</code> is <em>-1</em>, then an
+    <a href="class.arithmeticerror.html" class="classname">ArithmeticError</a> exception is thrown.
   </p>
  </div>
 
  <div class="refsect1 examples" id="refsect1-function.intdiv-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3872">
+   <div class="example" id="example-3984">
     <p><strong>例1 <span class="function"><strong>intdiv()</strong></span> example</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(-</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(-</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_INT_MAX</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_INT_MAX</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(-</span><span style="color: #0000BB">PHP_INT_MAX&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">PHP_INT_MAX&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(-</span><span style="color: #0000BB">PHP_INT_MAX&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(-</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(-</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_INT_MAX</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_INT_MAX</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_INT_MIN</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_INT_MIN</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_INT_MIN</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intdiv</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -91,10 +98,9 @@ int(-1)
 int(1)
 int(1)
 int(1)
-int(0)
 
-Warning: intdiv(): Division by zero in %s on line 9
-bool(false)
+Fatal error: Uncaught ArithmeticError: Division of PHP_INT_MIN by -1 is not an integer in %s on line 8
+Fatal error: Uncaught DivisionByZeroError: Division by zero in %s on line 9
 </pre></div>
     </div>
    </div>

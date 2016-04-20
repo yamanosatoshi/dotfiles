@@ -12,6 +12,12 @@
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="mongo.installation" class="section">
  <h2 class="title">インストール手順</h2>
+
+ <div class="warning"><strong class="warning">警告</strong>
+  <p class="para">この拡張モジュールは非推奨です。
+かわりに <a href="set.mongodb.html" class="link">MongoDB</a> 拡張モジュールを使うべきです。</p>
+ </div>
+
  <p class="para">
   MongoDB PHP ドライバは、ほぼすべてのシステムで動作します。
   Windows、Mac OS X、Unix そして Linux。リトルエンディアンマシンおよびビッグエンディアンマシン。
@@ -51,7 +57,7 @@
 
   <p class="para">
    ドライバの開発者や最新のバグフィックス版に興味のあるかたは、
-   <a href="http://github.com/mongodb/mongo-php-driver" class="link external">&raquo;&nbsp;Github</a>
+   <a href="http://github.com/mongodb/mongo-php-driver-legacy" class="link external">&raquo;&nbsp;Github</a>
    にある最新のソースコードからドライバをコンパイルすることもできます。
    Github に行き、&quot;download&quot; ボタンをクリックしましょう。そして以下のようにします。
 
@@ -109,6 +115,7 @@ $ sudo make install</pre>
     </p>
    </li>
   </ul>
+ </div>
 
  <div class="section" id="mongo.installation.nix">
   <h2 class="title">*NIX へのインストール</h2>
@@ -148,7 +155,7 @@ $ sudo make install</pre>
 
   <p class="para">
    リリースごとのコンパイル済みバイナリが
-   <a href="https://s3.amazonaws.com/drivers.mongodb.org/php/index.html" class="link external">&raquo;&nbsp;S3</a> にあります。
+   <a href="http://pecl.php.net/package/mongo" class="link external">&raquo;&nbsp;PECL</a> にあります。
    バージョン、スレッドセーフ/非スレッドセーフ、VCのライブラリのさまざまな組み合わせに対応しています。
    アーカイブを Unzip して、php_mongo.dll を PHP 拡張モジュールのディレクトリ
    (デフォルトは &quot;ext&quot;) に置きましょう。
@@ -181,37 +188,41 @@ DLL ファイルを PHP のフォルダから Windows のシステムディレ�
   </p></blockquote>
  </div>
 
-  <div class="section" id="mongo.installation.osx">
-   <h2 class="title">OS X</h2>
-   <p class="para">
-    たいていの場合は、pecl でインストールするのがいちばん簡単です。
-    <div class="example-contents">
+ <div class="section" id="mongo.installation.osx">
+  <h2 class="title">OS X</h2>
+
+  <p class="para">
+   たいていの場合は、pecl でインストールするのがいちばん簡単です。
+   <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ sudo pecl install mongo</pre>
 </div>
-    </div>
+   </div>
 
-   </p>
-   <p class="para">
-    <a href="https://github.com/Homebrew/homebrew-php" class="link external">&raquo;&nbsp;Homebrew</a> を使う場合は、
-    PHP tap の中にこのドライバ用のフォーミュラが含まれています。たとえば PHP 5.6 用のドライバをインストールするには、
-    次のコマンドを利用します。
-    <div class="example-contents">
+  </p>
+
+  <p class="para">
+   <a href="https://github.com/Homebrew/homebrew-php" class="link external">&raquo;&nbsp;Homebrew</a> を使う場合は、
+   PHP tap の中にこのドライバ用のフォーミュラが含まれています。たとえば PHP 5.6 用のドライバをインストールするには、
+   次のコマンドを利用します。
+   <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ brew install php56-mongo</pre>
 </div>
-    </div>
+   </div>
 
-   </p>
-   <p class="para">
-    <a href="https://www.apachefriends.org/" class="link external">&raquo;&nbsp;XAMPP</a> を使う場合は、
-    専用の pecl ライブラリと php.ini 設定があることに注意しましょう。
-    ドライバをインストールするには、次のコマンドを利用します。
-    <div class="example-contents">
+  </p>
+  
+  <p class="para">
+   <a href="https://www.apachefriends.org/" class="link external">&raquo;&nbsp;XAMPP</a> を使う場合は、
+   専用の pecl ライブラリと php.ini 設定があることに注意しましょう。
+   ドライバをインストールするには、次のコマンドを利用します。
+   <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ sudo /Applications/XAMPP/xamppfiles/bin/pecl install mongo</pre>
 </div>
-    </div>
+   </div>
 
-   </p>
-   <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
    <strong>OS X 上でコンパイルするための Xcode の依存関係</strong><br />
    <p class="para">
     OS X 上でドライバをコンパイルするためには Xcode developer tools が必要です。
@@ -220,25 +231,28 @@ DLL ファイルを PHP のフォルダから Windows のシステムディレ�
     <a href="https://developer.apple.com/downloads/index.action?name=Command%20Line%20Tools" class="link external">&raquo;&nbsp;Command Line Tools</a> パッケージをインストールする必要があります。
    </p>
   </p></blockquote>
-  </div>
+ </div>
 
-  <div class="section" id="mongo.installation.gentoo">
-   <h2 class="title">Gentoo</h2>
-   <p class="para">
-    Gentoo には PHP PECL ドライバのパッケージ dev-php/pecl-mongo があり、
-    次のようにすればインストールできます。
-   </p>
-   <div class="example-contents">
+ <div class="section" id="mongo.installation.gentoo">
+  <h2 class="title">Gentoo</h2>
+
+  <p class="para">
+   Gentoo には PHP PECL ドライバのパッケージ dev-php/pecl-mongo があり、
+   次のようにすればインストールできます。
+  </p>
+
+  <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ sudo emerge -va dev-php/pecl-mongo</pre>
 </div>
-   </div>
+  </div>
 
 
-   <p class="para">
-    PECL を使う場合は、libtool のバージョンが違うというエラーが出るかもしれません。
-    ソースからコンパイルするには、aclocal と autoconf を実行しなければなりません。
-   </p>
-   <div class="example-contents">
+  <p class="para">
+   PECL を使う場合は、libtool のバージョンが違うというエラーが出るかもしれません。
+   ソースからコンパイルするには、aclocal と autoconf を実行しなければなりません。
+  </p>
+
+  <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ phpize
 $ aclocal 
 $ autoconf 
@@ -246,27 +260,29 @@ $ ./configure
 $ make
 $ sudo make install</pre>
 </div>
-   </div>
-
   </div>
-  <div class="section" id="mongo.installation.fedora">
-   <h2 class="title">Red Hat</h2>
-   <p class="para">
-    Fedora や CentOS も含みます。
-   </p>
-   <p class="para">
-    これらのシステム上の Apache のデフォルト設定では
-    リクエストがネットワーク接続できないようにしており、
-    データベースに接続しようとすると &quot;Permission denied&quot;
-    というエラーが発生します。もしこの現象に遭遇したら、次のコマンドを実行しましょう。
-    <div class="example-contents">
+
+ </div>
+
+ <div class="section" id="mongo.installation.fedora">
+  <h2 class="title">Red Hat</h2>
+
+  <p class="para">
+   Fedora や CentOS も含みます。
+  </p>
+
+  <p class="para">
+   これらのシステム上の Apache のデフォルト設定では
+   リクエストがネットワーク接続できないようにしており、
+   データベースに接続しようとすると &quot;Permission denied&quot;
+   というエラーが発生します。もしこの現象に遭遇したら、次のコマンドを実行しましょう。
+   <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ /usr/sbin/setsebool -P httpd_can_network_connect 1</pre>
 </div>
-    </div>
+   </div>
 
-    そして Apache を再起動します (この問題は、SELinux の環境で発生します)。
-   </p>
-  </div>
+   そして Apache を再起動します (この問題は、SELinux の環境で発生します)。
+  </p>
  </div>
 
  <div class="section" id="mongo.installation.thirdparty">
@@ -296,7 +312,7 @@ $ sudo make install</pre>
      </a>
     </p>
     <p class="para">
-     Jon Adams によるスクリーンキャストで、PHP 5.3.1 や Xdebug と MongoDB を Ubuntu 9.10 と Apache 環境で立ち上げて動かす様子を示します。
+      Jon Adams によるスクリーンキャストで、PHP 5.3.1 や Xdebug と MongoDB を Ubuntu 9.10 と Apache 環境で立ち上げて動かす様子を示します。
     </p>
    </li>
   </ul>

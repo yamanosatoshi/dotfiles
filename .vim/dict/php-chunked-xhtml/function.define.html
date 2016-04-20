@@ -13,7 +13,7 @@
 </div><hr /><div id="function.define" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">define</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">define</span> &mdash; <span class="dc-title">名前を指定して定数を定義する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">define</span> &mdash; <span class="dc-title">名前を指定して定数を定義する</span></p>
 
  </div>
  
@@ -56,13 +56,17 @@
      <dd>
 
       <p class="para">
-       定数の値。スカラー値あるいは <span class="type"><a href="language.types.null.html" class="type null">null</a></span> 値のみを指定できます。
-       PHP 7 以降では、<span class="type"><a href="language.types.array.html" class="type array">array</a></span> を指定することもできます。
-       スカラー値とは <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> か
-       <span class="type"><a href="language.types.float.html" class="type float">float</a></span>、<span class="type"><a href="language.types.string.html" class="type string">string</a></span>、<span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-       のいずれかのことです。リソース定数を定義することもできますが、
-       推奨できません。予期せぬ振る舞いをする可能性があります。
+       定数の値。PHP 5 では、<code class="parameter">value</code> は
+       スカラー値 (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>、
+       <span class="type"><a href="language.types.float.html" class="type float">float</a></span>、<span class="type"><a href="language.types.string.html" class="type string">string</a></span>、<span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span> あるいは
+       <strong><code>NULL</code></strong>) でなければいけません。PHP 7 では配列を使うこともできます。
       </p>
+      <div class="warning"><strong class="warning">警告</strong>
+       <p class="para">
+        リソース型の定数を定義することもできますが、
+        推奨できません。予期せぬ振る舞いをする可能性があります。
+       </p>
+      </div>
      </dd>
 
     
@@ -132,7 +136,7 @@
  <div class="refsect1 examples" id="refsect1-function.define-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4207">
+   <div class="example" id="example-4320">
     <p><strong>例1 定数の定義</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">

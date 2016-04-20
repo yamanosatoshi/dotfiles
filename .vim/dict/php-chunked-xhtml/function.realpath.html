@@ -66,6 +66,7 @@
   <p class="para">
    成功した場合は正規化した絶対パス名を返します。
    返されるパスはシンボリックリンクや「/./」「/../」要素を含みません。
+   パスの末尾の区切り文字 (\ や / など) は削除されます。
   </p>
   <p class="para">
    <span class="function"><strong>realpath()</strong></span> は、
@@ -76,6 +77,12 @@
     指定した階層にあるすべてのディレクトリに対して、
     実行中のスクリプトからの実行権限が必要です。もし権限がなければ
     <span class="function"><strong>realpath()</strong></span> は <strong><code>FALSE</code></strong> を返します。
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    大文字小文字を区別しないファイルシステムの場合は、<span class="function"><strong>realpath()</strong></span>
+    が大文字小文字をどちらかにそろえるかもしれないし、そろえないかもしれません。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">
@@ -131,11 +138,11 @@
  <div class="refsect1 examples" id="refsect1-function.realpath-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2616">
+   <div class="example" id="example-2666">
     <p><strong>例1 <span class="function"><strong>realpath()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />chdir</span><span style="color: #007700">(</span><span style="color: #DD0000">'/var/www/'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'./../../etc/passwd'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />chdir</span><span style="color: #007700">(</span><span style="color: #DD0000">'/var/www/'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'./../../etc/passwd'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'/tmp/'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -144,10 +151,11 @@
     <div class="example-contents screen">
 <div class="cdata"><pre>
 /etc/passwd
+/tmp
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-2617">
+   <div class="example" id="example-2667">
     <p><strong>例2 Windows 上での <span class="function"><strong>realpath()</strong></span></strong></p>
     <div class="example-contents"><p>
      Windows 上で <span class="function"><strong>realpath()</strong></span>
@@ -155,7 +163,7 @@
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'/windows/system32'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'/windows/system32'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'C:\Program&nbsp;Files\\'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -164,6 +172,7 @@
     <div class="example-contents screen">
 <div class="cdata"><pre>
 C:\WINDOWS\System32
+C:\Program Files
 </pre></div>
     </div>
    </div>

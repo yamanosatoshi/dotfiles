@@ -200,7 +200,21 @@ cp php.ini-development /usr/local/lib/php.ini
 </p>
 
       <div class="example" id="example-19">
-        <div class="example-contents">
+       <div class="example-contents"><p>
+        PHP 7:
+       </p></div>
+       <div class="example-contents">
+<div class="apache-confcode"><pre class="apache-confcode">LoadModule php7_module modules/libphp7.so</pre>
+</div>
+       </div>
+
+     </div>
+
+      <div class="example" id="example-20">
+       <div class="example-contents"><p>
+        PHP 5:
+       </p></div>
+       <div class="example-contents">
 <div class="apache-confcode"><pre class="apache-confcode">LoadModule php5_module modules/libphp5.so</pre>
 </div>
        </div>
@@ -222,7 +236,7 @@ cp php.ini-development /usr/local/lib/php.ini
     </p>
 
 
-      <div class="example" id="example-20">
+      <div class="example" id="example-21">
         <div class="example-contents">
 <div class="apache-confcode"><pre class="apache-confcode">&lt;FilesMatch \.php$&gt;
     SetHandler application/x-httpd-php
@@ -237,7 +251,7 @@ cp php.ini-development /usr/local/lib/php.ini
     .phtml のファイルだけを PHP として実行したいは、このようにします。
     </p>
 
-      <div class="example" id="example-21">
+      <div class="example" id="example-22">
         <div class="example-contents">
 <div class="apache-confcode"><pre class="apache-confcode">&lt;FilesMatch &quot;\.ph(p[2-6]?|tml)$&quot;&gt;
     SetHandler application/x-httpd-php
@@ -252,7 +266,7 @@ cp php.ini-development /usr/local/lib/php.ini
     構文ハイライトつきのソースコードとして表示させるには、このようにします。
     </p>
 
-      <div class="example" id="example-22">
+      <div class="example" id="example-23">
         <div class="example-contents">
 <div class="apache-confcode"><pre class="apache-confcode">&lt;FilesMatch &quot;\.phps$&quot;&gt;
     SetHandler application/x-httpd-php-source
@@ -267,7 +281,7 @@ cp php.ini-development /usr/local/lib/php.ini
     任意の .php ファイルを構文ハイライトつきのソースコードとして表示させることができます。
    </p>
 
-      <div class="example" id="example-23">
+      <div class="example" id="example-24">
         <div class="example-contents">
 <div class="apache-confcode"><pre class="apache-confcode">RewriteEngine On
 RewriteRule (.*\.php)s$ $1 [H=application/x-httpd-php-source]</pre>
@@ -288,7 +302,7 @@ RewriteRule (.*\.php)s$ $1 [H=application/x-httpd-php-source]</pre>
     Apache サーバーを、通常の手順通り、起動させます。
    </p>
   
-   <div class="example" id="example-24">
+   <div class="example" id="example-25">
    <div class="example-contents screen">
 <div class="cdata"><pre>
 /usr/local/apache2/bin/apachectl start
@@ -298,7 +312,7 @@ RewriteRule (.*\.php)s$ $1 [H=application/x-httpd-php-source]</pre>
 
           <p class="para">OR</p>
 
-   <div class="example" id="example-25">
+   <div class="example" id="example-26">
    <div class="example-contents screen">
 <div class="cdata"><pre>
 service httpd restart
@@ -321,7 +335,7 @@ service httpd restart
      <var class="filename">prefork</var> MPM ではなく <var class="filename">worker</var> MPM を選択します。
      そのためには、先ほどの手順 3 のところで ./configure の引数に次のオプションを追加します。
     </p>
-    <div class="example" id="example-26">
+    <div class="example" id="example-27">
     <div class="example-contents screen">
 <div class="cdata"><pre>
 --with-mpm=worker

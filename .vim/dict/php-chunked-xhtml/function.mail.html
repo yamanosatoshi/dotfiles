@@ -13,7 +13,7 @@
 </div><hr /><div id="function.mail" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mail</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mail</span> &mdash; <span class="dc-title">メールを送信する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mail</span> &mdash; <span class="dc-title">メールを送信する</span></p>
 
  </div>
 
@@ -121,9 +121,15 @@
       <p class="para">
        通常、これは追加のヘッダ（From、Cc、Bcc）のために用いられます。
        複数のヘッダを追加する場合は CRLF（\r\n）で区切ります。
-       If outside data are used to compose this header, the data should be sanitized
-       so that no unwanted headers could be injected. 
+       外部からのデータを用いてヘッダを組み立てる際には、想定外のヘッダが注入されることを防ぐための処理が必要です。
       </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <p class="para">
+        <code class="parameter">additional_headers</code> は、メールヘッダインジェクション対策を行っていません。
+        したがって、指定したヘッダが安全なものであり、ヘッダ以外のものを含まないようにするのはユーザー側の役目となります。
+        複数の改行文字を置くことでメール本文を始めたりしてはいけません。
+       </p>
+      </p></blockquote>      
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
         メールを送信する際には、<em class="emphasis">必ず</em> 
@@ -244,7 +250,7 @@
  <div class="refsect1 examples" id="refsect1-function.mail-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3786">
+   <div class="example" id="example-3897">
     <p><strong>例1 メールを送信する</strong></p>
     <div class="example-contents"><p>
      <span class="function"><strong>mail()</strong></span> を用いて単純なメールを送信する。
@@ -257,7 +263,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-3787">
+   <div class="example" id="example-3898">
     <p><strong>例2 追加ヘッダを付加してメールを送信する</strong></p>
     <div class="example-contents"><p>
      基本ヘッダに加え、MUA に From および Reply-To アドレスを通知する。
@@ -270,7 +276,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-3788">
+   <div class="example" id="example-3899">
     <p><strong>例3 追加ヘッダ及び追加コマンドラインパラメータを指定してメールを送信する</strong></p>
     <div class="example-contents"><p>
      <em>sendmail_path</em> を用いてメールを送信する際に利用する
@@ -285,7 +291,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-3789">
+   <div class="example" id="example-3900">
     <p><strong>例4 HTML メールを送信する</strong></p>
     <div class="example-contents"><p>
      <span class="function"><strong>mail()</strong></span> を用いて HTML メールを送信することも可能です。

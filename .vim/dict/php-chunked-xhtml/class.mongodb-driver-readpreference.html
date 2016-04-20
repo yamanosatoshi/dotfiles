@@ -6,7 +6,7 @@
 
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mongodb-driver-writeconcern.construct.html">MongoDB\Driver\WriteConcern::__construct</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="mongodb-driver-writeconcern.getwtimeout.html">MongoDB\Driver\WriteConcern::getWtimeout</a></div>
  <div class="next" style="text-align: right; float: right;"><a href="mongodb-driver-readpreference.construct.html">MongoDB\Driver\ReadPreference::__construct</a></div>
  <div class="up"><a href="book.mongodb.html">MongoDB\Driver</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>
@@ -15,7 +15,7 @@
  <h1 class="title">The MongoDB\Driver\ReadPreference class</h1>
  
 
- <div class="partintro"><p class="verinfo">(mongodb &gt;=0.2.0)</p>
+ <div class="partintro"><p class="verinfo">(mongodb &gt;=1.0.0)</p>
 
 
   <div class="section" id="mongodb-driver-readpreference.intro">
@@ -81,9 +81,17 @@
     <div class="classsynopsisinfo classsynopsisinfo_comment">/* メソッド */</div>
     <div class="methodsynopsis dc-description">
    <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readpreference.construct.html" class="methodname">__construct</a></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$readPreference</code></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$mode</code></span>
    [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$tagSets</code></span>
   ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">integer</span> <span class="methodname"><a href="mongodb-driver-readpreference.getmode.html" class="methodname">getMode</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><a href="mongodb-driver-readpreference.gettagsets.html" class="methodname">getTagSets</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
 
    }</div>
 
@@ -101,7 +109,10 @@
 
      <dd>
 
-      <p class="para"/>
+      <p class="para">
+       All operations read from the current replica set primary. This is the
+       default read preference for MongoDB.
+      </p>
      </dd>
 
     
@@ -111,7 +122,10 @@
 
      <dd>
 
-      <p class="para"/>
+      <p class="para">
+       In most situations, operations read from the primary but if it is
+       unavailable, operations read from secondary members.
+      </p>
      </dd>
 
     
@@ -121,7 +135,9 @@
 
      <dd>
 
-      <p class="para"/>
+      <p class="para">
+       All operations read from the secondary members of the replica set.
+      </p>
      </dd>
 
     
@@ -131,7 +147,10 @@
 
      <dd>
 
-      <p class="para"/>
+      <p class="para">
+       In most situations, operations read from secondary members but if no
+       secondary members are available, operations read from the primary.
+      </p>
      </dd>
 
     
@@ -141,7 +160,10 @@
 
      <dd>
 
-      <p class="para"/>
+      <p class="para">
+       Operations read from member of the replica set with the least network
+       latency, irrespective of the member&#039;s type.
+      </p>
      </dd>
 
     
@@ -163,10 +185,24 @@
 
 
 
-<h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="mongodb-driver-readpreference.construct.html">MongoDB\Driver\ReadPreference::__construct</a> — Description</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="mongodb-driver-readpreference.construct.html">MongoDB\Driver\ReadPreference::__construct</a> — Construct immutable ReadPreference</li><li><a href="mongodb-driver-readpreference.getmode.html">MongoDB\Driver\ReadPreference::getMode</a> — Returns the ReadPreference's &quot;mode&quot; option</li><li><a href="mongodb-driver-readpreference.gettagsets.html">MongoDB\Driver\ReadPreference::getTagSets</a> — Returns the ReadPreference's &quot;tagSets&quot; option</li></ul>
 </div>
 <hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mongodb-driver-writeconcern.construct.html">MongoDB\Driver\WriteConcern::__construct</a></div>
+ <div class="prev" style="text-align: left; float: left;"><a href="mongodb-driver-writeconcern.getwtimeout.html">MongoDB\Driver\WriteConcern::getWtimeout</a></div>
  <div class="next" style="text-align: right; float: right;"><a href="mongodb-driver-readpreference.construct.html">MongoDB\Driver\ReadPreference::__construct</a></div>
  <div class="up"><a href="book.mongodb.html">MongoDB\Driver</a></div>
  <div class="home"><a href="index.html">PHP Manual</a></div>

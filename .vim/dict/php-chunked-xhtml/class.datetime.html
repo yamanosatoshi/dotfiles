@@ -15,7 +15,7 @@
  <h1 class="title">DateTime クラス</h1>
  
 
- <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.2.0)</p>
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7)</p>
 
 
   <div class="section" id="datetime.intro">
@@ -138,7 +138,7 @@
    <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">DateTime</span> <span class="methodname"><a href="datetime.createfromformat.html" class="methodname">createFromFormat</a></span>
     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
    , <span class="methodparam"><span class="type">string</span> <code class="parameter">$time</code></span>
-   [, <span class="methodparam"><span class="type"><a href="class.datetimezone.html" class="type DateTimeZone">DateTimeZone</a></span> <code class="parameter">$timezone</code></span>
+   [, <span class="methodparam"><span class="type"><a href="class.datetimezone.html" class="type DateTimeZone">DateTimeZone</a></span> <code class="parameter">$timezone</code><span class="initializer"> = date_default_timezone_get()</span></span>
   ] )</div>
 <div class="methodsynopsis dc-description">
    <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname"><a href="datetime.getlasterrors.html" class="methodname">getLastErrors</a></span>
@@ -262,6 +262,14 @@
       <span class="simpara">
        ISO-8601 (例: 2005-08-15T15:52:01+0000)
       </span>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <span class="simpara">
+        この書式は ISO-8601 との互換性がありませんが、敢えてそのまま残しています。
+        下位互換性を保つためです。ISO-8601 互換の書式を使いたい場合は、
+        <strong><code>DateTime::ATOM</code></strong> あるいは
+        <strong><code>DATE_ATOM</code></strong> を使いましょう。
+       </span>
+      </p></blockquote>
      </dd>
 
     

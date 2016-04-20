@@ -50,7 +50,7 @@
     ジェネレータ関数の実行を一時停止します。
    </p>
 
-   <div class="example" id="example-296">
+   <div class="example" id="example-308">
     <p><strong>例1 値を yield する単純な例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -80,7 +80,7 @@
     <p class="para">
      yield を式のコンテキスト (代入文の右辺など)
      で使うときは、yield 文を括弧で囲む必要があります。
-     たとえば次のようになります。
+     たとえば、PHP 5 では次のようになります。
     </p>
 
     <div class="informalexample">
@@ -93,7 +93,7 @@ $data&nbsp;=&nbsp;(yield&nbsp;$value);</span>
     </div>
 
     <p class="para">
-     次のように書くと、パースエラーになります。
+     次のように書くと、PHP 5 ではパースエラーになります。
     </p>
 
     <div class="informalexample">
@@ -104,6 +104,10 @@ $data&nbsp;=&nbsp;yield&nbsp;$value;</span>
      </div>
 
     </div>
+
+    <p class="para">
+     PHP 7 では、この制限はありません。
+    </p>
 
     <p class="para">
      この構文は、
@@ -125,7 +129,7 @@ $data&nbsp;=&nbsp;yield&nbsp;$value;</span>
      キーと値のペアを yield する構文は連想配列の定義とよく似ており、次のようになります。
     </p>
 
-    <div class="example" id="example-297">
+    <div class="example" id="example-309">
      <p><strong>例2 キー/値 のペアの yield</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -175,7 +179,7 @@ $data&nbsp;=&nbsp;(yield&nbsp;$key&nbsp;=&gt;&nbsp;$value);</span>
      何も引数を渡さずに yield を呼ぶと、<strong><code>NULL</code></strong> 値を yield します。キーは自動的に割り振られます。
     </p>
 
-    <div class="example" id="example-298">
+    <div class="example" id="example-310">
      <p><strong>例3 <strong><code>NULL</code></strong> の yield</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -209,7 +213,7 @@ array(3) {
      ときと同じように、関数名の前にアンパサンドを付けます。
     </p>
 
-    <div class="example" id="example-299">
+    <div class="example" id="example-311">
      <p><strong>例4 参照による値の yield</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -226,18 +230,58 @@ array(3) {
      </div>
     </div>
    </div>
-  </div>
 
-  <div class="sect2" id="language.generators.object">
-   <h3 class="title"><a href="class.generator.html" class="classname">Generator</a> オブジェクト</h3>
-   <p class="para">
-    ジェネレータ関数を最初に呼んだときには、内部クラス
-    <a href="class.generator.html" class="classname">Generator</a> のオブジェクトを返します。
-    このオブジェクトは <a href="class.iterator.html" class="classname">Iterator</a> インターフェイスを実装しており、
-    前進しかできないイテレータオブジェクトと同じように振る舞います。
-   </p>
+   <div class="sect3" id="control-structures.yield.from">
+    <h4 class="title"><strong class="command">yield from</strong> によるジェネレータの委譲</h4>
+
+    <p class="para">
+     PHP 7 では、ジェネレータの委譲ができるようになりました。
+     別のジェネレータや <a href="class.traversable.html" class="classname">Traversable</a> オブジェクトあるいは配列から、
+     <span class="type"><a href="language.types.array.html" class="type array">array</a></span> by using the <strong class="command">yield from</strong> キーワードを使って値を yield できます。
+     外側のジェネレータは、内側のジェネレータ (あるいはオブジェクトや配列) から受け取れるすべての値を yield し、
+     何も取得できなくなったら外側のジェネレータの処理を続行します。
+    </p>
+
+    <p class="para">
+     ジェネレータに対して <strong class="command">yield from</strong> を使った場合は、
+     <strong class="command">yield from</strong> 式は内側のジェネレータが返す任意の値を返します。
+    </p>
+
+    <div class="example" id="example-312">
+     <p><strong>例5 <strong class="command">yield from</strong> の基本的な使いかた</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">count_to_ten</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;2</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;from&nbsp;</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;from&nbsp;</span><span style="color: #007700">new&nbsp;</span><span style="color: #0000BB">ArrayIterator</span><span style="color: #007700">([</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;from&nbsp;seven_eight</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;9</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;10</span><span style="color: #007700">;<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">seven_eight</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;7</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;from&nbsp;eight</span><span style="color: #007700">();<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">eight</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;8</span><span style="color: #007700">;<br />}<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">count_to_ten</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$num</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$num</span><span style="color: #DD0000">&nbsp;"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+1 2 3 4 5 6 7 8 9 10 
+</pre></div>
+     </div>
+    </div>
+
+    <div class="example" id="example-313">
+     <p><strong>例6 <strong class="command">yield from</strong> の返す値</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">count_to_ten</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;2</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;from&nbsp;</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;from&nbsp;</span><span style="color: #007700">new&nbsp;</span><span style="color: #0000BB">ArrayIterator</span><span style="color: #007700">([</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;from&nbsp;seven_eight</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">yield&nbsp;from&nbsp;nine_ten</span><span style="color: #007700">();<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">seven_eight</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;7</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;from&nbsp;eight</span><span style="color: #007700">();<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">eight</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;8</span><span style="color: #007700">;<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">nine_ten</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;9</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$gen&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">count_to_ten</span><span style="color: #007700">();<br />foreach&nbsp;(</span><span style="color: #0000BB">$gen&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$num</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$num</span><span style="color: #DD0000">&nbsp;"</span><span style="color: #007700">;<br />}<br />echo&nbsp;</span><span style="color: #0000BB">$gen</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getReturn</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+1 2 3 4 5 6 7 8 9 10
+</pre></div>
+     </div>
+    </div>
+   </div>
   </div>
-   
  </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="language.generators.overview.html">ジェネレータとは</a></div>
  <div class="next" style="text-align: right; float: right;"><a href="language.generators.comparison.html">ジェネレータと Iterator オブジェクトとの比較</a></div>

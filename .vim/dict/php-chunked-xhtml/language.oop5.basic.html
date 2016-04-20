@@ -36,7 +36,7 @@
     (&quot;プロパティ&quot; といいます) そして関数 (&quot;メソッド&quot; といいます)
     を含めることができます。
    </p>
-   <div class="example" id="example-188">
+   <div class="example" id="example-199">
     <p><strong>例1 簡単なクラス定義</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -95,7 +95,7 @@ $this is not defined.
     そのクラスのインスタンスを作成します。クラスが名前空間に属している場合は、
     完全修飾名を指定しなければなりません。
    </p>
-  <div class="example" id="example-190">
+  <div class="example" id="example-201">
    <p><strong>例3 インスタンスを作成する</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -118,7 +118,7 @@ $this is not defined.
    <a href="language.oop5.cloning.html" class="link">クローンを作成</a>
    することにより作成可能です。
   </p>
-  <div class="example" id="example-191">
+  <div class="example" id="example-202">
    <p><strong>例4 オブジェクトの代入</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -142,7 +142,7 @@ object(SimpleClass)#1 (1) {
    <p class="para">
     PHP 5.3.0 以降では、オブジェクトのインスタンスを作成する別の方法が新たに導入されました。
    </p>
-   <div class="example" id="example-192">
+   <div class="example" id="example-203">
     <p><strong>例5 新しいオブジェクトの作成</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -161,6 +161,53 @@ bool(true)
    </div>
   </div>
  </div>
+  
+  <div class="sect2" id="language.oop5.basic.properties-methods">
+   <h3 class="title">プロパティとメソッド</h3>
+   <p class="para">
+    クラスのプロパティとメソッドは、それぞれ別の &quot;名前空間&quot; に存在するので、
+    同じ名前のプロパティとメソッドを共存させることもできます。
+    プロパティを参照する場合もメソッドを参照する場合も書きかたは同じです。
+    それがプロパティへのアクセスなのかメソッドの呼び出しなのかは、そのコンテキストによって決まります。
+    つまり、変数にアクセスしようとしているのか関数を呼び出そうとしているのかの違いです。
+   </p>
+   <div class="example" id="example-204">
+    <p><strong>例6 プロパティへのアクセスとメソッドの呼び出し</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+class&nbsp;Foo<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;$bar&nbsp;=&nbsp;'property';<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;bar()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;'method';<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />$obj&nbsp;=&nbsp;new&nbsp;Foo();<br />echo&nbsp;$obj-&gt;bar,&nbsp;PHP_EOL,&nbsp;$obj-&gt;bar(),&nbsp;PHP_EOL;</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+property
+method
+</pre></div>
+    </div>
+   </div>
+   <p class="para">
+    これはつまり、プロパティに <a href="functions.anonymous.html" class="link">無名関数</a>
+    を代入した場合に、その関数は直接呼び出せないということです。
+    その場合は、たとえば事前にプロパティを変数に代入しておく必要があります。
+   </p>
+   <div class="example" id="example-205">
+    <p><strong>例7 プロパティに格納した無名関数の呼び出し</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+class&nbsp;Foo<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;$bar;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;__construct()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;bar&nbsp;=&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;42;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />$obj&nbsp;=&nbsp;new&nbsp;Foo();<br />$func&nbsp;=&nbsp;$obj-&gt;bar;<br />echo&nbsp;$func(),&nbsp;PHP_EOL;</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+42
+</pre></div>
+    </div>
+   </div>
+  </div>
 
  <div class="sect2" id="language.oop5.basic.extends">
   <h3 class="title">extends</h3>
@@ -185,8 +232,8 @@ bool(true)
     レベルのエラーとなります。ただしコンストラクタは例外で、
     異なるパラメータでオーバーライドすることができます。
    </p>
-  <div class="example" id="example-193">
-   <p><strong>例6 簡単なクラスの継承</strong></p>
+  <div class="example" id="example-206">
+   <p><strong>例8 簡単なクラスの継承</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">ExtendClass&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">SimpleClass<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;親クラスのメソッドを再定義<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">displayVar</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Extending&nbsp;class\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">displayVar</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$extended&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ExtendClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$extended</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">displayVar</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -216,7 +263,7 @@ a default value
    </p>
    <p class="para">
     <div class="example" id="language.oop5.basic.class.class.name">
-     <p><strong>例7 クラス名の解決</strong></p>
+     <p><strong>例9 クラス名の解決</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">NS&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;</span><span style="color: #0000BB">ClassName&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">ClassName</span><span style="color: #007700">::class;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -232,6 +279,14 @@ NS\ClassName
      </div>
     </div>
    </p>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <p class="para">
+     <em>::class</em> によるクラス名の解決は、コンパイル時の変換です。
+     つまり、クラス名を作るタイミングでは、まだオートロードが行われていないということです。
+     結果的に、クラスがまだ存在しない時点でクラス名が展開されることになります。
+     この場合にはエラーは発生しません。
+    </p>
+   </p></blockquote>
   </div>
  </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="oop5.intro.html">はじめに</a></div>

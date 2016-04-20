@@ -28,6 +28,20 @@
  オプションつきで PHP を configure した場合でないと使えないからです)。
    </p>
    <p class="para">
+    ファイル全体が純粋な PHP コードである場合は、ファイルの最後の終了タグは省略するのがおすすめです。
+    終了タグの後に余分な空白や改行があると、予期せぬ挙動を引き起こす場合があるからです。
+    余分な空白や改行のせいで PHP が出力バッファリングを開始し、その時点の内容を意図せず出力してしまうことになります。
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"みなさん、こんにちは"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;...&nbsp;いろんなコードたち<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"最後のごあいさつ"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;終了タグを書かずに、ここでスクリプトを終わります。</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
     <table class="doctable table">
      <caption><strong>変更履歴</strong></caption>
      
@@ -43,7 +57,9 @@
        <tr>
         <td>7.0.0</td>
          <td>
-          ASP タグ (&lt;% , %&gt; , &lt;%=) や script タグ (&lt;script language=php&gt;)
+          ASP タグ (<code class="code">&lt;%</code>, <code class="code">%&gt;</code>,
+          <code class="code">&lt;%=</code>) や script タグ
+          (<code class="code">&lt;script language=&quot;php&quot;&gt;</code>)
           が PHP から削除されました。
          </td>
        </tr>
@@ -59,20 +75,6 @@
      
     </table>
 
-   </p>
-   <p class="para">
-    ファイル全体が純粋な PHP コードである場合は、ファイルの最後の終了タグは省略するのがおすすめです。
-    終了タグの後に余分な空白や改行があると、予期せぬ挙動を引き起こす場合があるからです。
-    余分な空白や改行のせいで PHP が出力バッファリングを開始し、その時点の内容を意図せず出力してしまうことになります。
-    <div class="informalexample">
-     <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"みなさん、こんにちは"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;...&nbsp;いろんなコードたち<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"最後のごあいさつ"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;終了タグを書かずに、ここでスクリプトを終わります。</span>
-</span>
-</code></div>
-     </div>
-
-    </div>
    </p>
   </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="language.basic-syntax.html">基本的な構文</a></div>

@@ -178,6 +178,14 @@
        </td>
       </tr>
 
+      <tr>
+       <td><em>\u{[0-9A-Fa-f]+}</em></td>
+       <td>
+        正規表現にマッチする文字シーケンスは、Unicode のコードポイントです。
+        そのコードポイントの UTF-8 表現を文字列として出力します (PHP 7.0.0 で追加されました)。
+       </td>
+      </tr>
+
      </tbody>
     
    </table>
@@ -367,13 +375,6 @@ This should not print a capital &#039;A&#039;: \x41</pre></div>
     </div>
    </div>
    
-   <blockquote class="note"><p><strong class="note">注意</strong>: 
-    <p class="para">
-     ヒアドキュメントと異なり、Nowdoc は任意の静的データコンテキストで使用できます。
-     典型的な使用例は、クラスのプロパティや定数の初期化です。
-    </p>
-   </p></blockquote>
-    
    <div class="example" id="example-92">
     <p><strong>例7 静的データの例</strong></p>
     <div class="example-contents">
@@ -508,7 +509,7 @@ Robert Paulsen greeted the two .
    <div class="informalexample">
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;</span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'I&nbsp;am&nbsp;bar.'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$baz&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'baz'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'quux'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #007700">{</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #007700">{</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$baz</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;</span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'I&nbsp;am&nbsp;bar.'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$baz&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'baz'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'quux'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #007700">{</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #007700">{</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">$baz</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]}}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>

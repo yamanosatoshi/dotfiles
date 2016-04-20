@@ -12,7 +12,7 @@
  <div class="home"><a href="index.html">PHP Manual</a></div>
 </div><hr /><div id="language.namespaces.importing" class="sect1">
   <h2 class="title">名前空間の使用法: エイリアス/インポート</h2>
-  <p class="verinfo">(PHP 5 &gt;= 5.3.0)</p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p>
   <p class="para">
    外部の完全修飾名をエイリアスで参照したりインポートしたりする機能は、
    名前空間において非常に重要なものです。
@@ -27,7 +27,7 @@
   <p class="para">
    PHP でのエイリアス作成には <em>use</em> 演算子を使用します。
    ここに、5 種類すべてのインポート方法の例を示します。
-   <div class="example" id="example-270">
+   <div class="example" id="example-282">
     <p><strong>例1 use 演算子によるインポート/エイリアス</strong></p>
     <div class="example-contents">
      <div class="phpcode"><code><span style="color: #000000">
@@ -46,7 +46,7 @@
   </p>
   <p class="para">
    PHP では、複数の use 文を同一行に置くための便利なショートカットもサポートしています。
-   <div class="example" id="example-271">
+   <div class="example" id="example-283">
     <p><strong>例2 use 演算子によるインポート/エイリアスで、複数の use 文を組み合わせる例</strong></p>
     <div class="example-contents">
      <div class="phpcode"><code><span style="color: #000000">
@@ -59,7 +59,7 @@
   </p>
   <p class="para">
    インポートはコンパイル時に行われるので、動的なクラス名、関数名や定数名には影響を及ぼしません。
-   <div class="example" id="example-272">
+   <div class="example" id="example-284">
     <p><strong>例3 インポートと動的名</strong></p>
     <div class="example-contents">
      <div class="phpcode"><code><span style="color: #000000">
@@ -73,7 +73,7 @@
   <p class="para">
    さらにインポートの影響が及ぶのは非修飾名および修飾名のみです。
    完全修飾名は絶対的なものであり、インポートの影響を受けることはありません。
-   <div class="example" id="example-273">
+   <div class="example" id="example-285">
     <p><strong>例4 インポートと完全修飾名</strong></p>
     <div class="example-contents">
      <div class="phpcode"><code><span style="color: #000000">
@@ -94,7 +94,7 @@
     次の例は、<em>use</em> キーワードの間違った使い方を示すものです。
    </p>
    <p class="para">
-    <div class="example" id="example-274">
+    <div class="example" id="example-286">
      <p><strong>例5 間違ったインポートの例</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -111,6 +111,22 @@
      インクロード元の親ファイルのインポート規則を <em class="emphasis">引き継ぎません</em>。
     </p>
    </p></blockquote>
+  </div>
+  <div class="sect2" id="language.namespaces.importing.group">
+   <h3 class="title"><em>use</em> 宣言のグループ化</h3>
+   <p class="para">
+    PHP 7.0 以降では、同じ <a href="language.namespaces.definition.html" class="link"><em>namespace</em></a> から複数のクラスや関数そして定数をインポートする際に、
+    それらをひとつの <a href="language.namespaces.importing.html" class="link"><em>use</em></a> にまとめられるようになりました。
+   </p>
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;以前のバージョンのコード<br /></span><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">some</span><span style="color: #007700">\namespace\</span><span style="color: #0000BB">ClassA</span><span style="color: #007700">;<br />use&nbsp;</span><span style="color: #0000BB">some</span><span style="color: #007700">\namespace\</span><span style="color: #0000BB">ClassB</span><span style="color: #007700">;<br />use&nbsp;</span><span style="color: #0000BB">some</span><span style="color: #007700">\namespace\</span><span style="color: #0000BB">ClassC&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">C</span><span style="color: #007700">;<br /><br />use&nbsp;function&nbsp;</span><span style="color: #0000BB">some</span><span style="color: #007700">\namespace\</span><span style="color: #0000BB">fn_a</span><span style="color: #007700">;<br />use&nbsp;function&nbsp;</span><span style="color: #0000BB">some</span><span style="color: #007700">\namespace\</span><span style="color: #0000BB">fn_b</span><span style="color: #007700">;<br />use&nbsp;function&nbsp;</span><span style="color: #0000BB">some</span><span style="color: #007700">\namespace\</span><span style="color: #0000BB">fn_c</span><span style="color: #007700">;<br /><br />use&nbsp;const&nbsp;</span><span style="color: #0000BB">some</span><span style="color: #007700">\namespace\</span><span style="color: #0000BB">ConstA</span><span style="color: #007700">;<br />use&nbsp;const&nbsp;</span><span style="color: #0000BB">some</span><span style="color: #007700">\namespace\</span><span style="color: #0000BB">ConstB</span><span style="color: #007700">;<br />use&nbsp;const&nbsp;</span><span style="color: #0000BB">some</span><span style="color: #007700">\namespace\</span><span style="color: #0000BB">ConstC</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;7&nbsp;以降のコード<br /></span><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">some</span><span style="color: #007700">\namespace\{</span><span style="color: #0000BB">ClassA</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ClassB</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ClassC&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">C</span><span style="color: #007700">};<br />use&nbsp;function&nbsp;</span><span style="color: #0000BB">some</span><span style="color: #007700">\namespace\{</span><span style="color: #0000BB">fn_a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">fn_b</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">fn_c</span><span style="color: #007700">};<br />use&nbsp;const&nbsp;</span><span style="color: #0000BB">some</span><span style="color: #007700">\namespace\{</span><span style="color: #0000BB">ConstA</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ConstB</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ConstC</span><span style="color: #007700">};</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
   </div>
  </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.nsconstants.html">namespace キーワードおよび __NAMESPACE__ 定数</a></div>

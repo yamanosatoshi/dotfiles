@@ -27,6 +27,7 @@
   </p>
 
   <p class="para">
+   このウェブサーバーは単一のシングルスレッドプロセスしか実行しないので、
    リクエストがブロックされると、PHP アプリケーションはストールします。
   </p>
 
@@ -34,8 +35,12 @@
     URI リクエストの処理は、PHP を開始した時点の作業ディレクトリから行われます。
     -t オプションを使えば、ドキュメントルートを明示的に指定することができます。
     URI リクエストにファイルが含まれない場合は、指定したディレクトリにある index.php
-    あるいは index.html を返します。どちらも存在しない場合はレスポンスコード
-    404 を返します。
+    あるいは index.html を返します。どちらも存在しない場合は、
+    親ディレクトリにさかのぼって index.php と index.html を探します。
+    どちらか一方が見つかるか、あるいはドキュメントルートに達するまでこれが続きます。
+    index.php あるいは index.html が見つかるとそれを返し、
+    $_SERVER[&#039;PATH_INFO&#039;] が URI の末尾にセットされます。
+    見つからなかった場合はレスポンスコード 404 を返します。
   </p>
 
   <p class="para">
@@ -112,7 +117,7 @@
   </table>
 
 
-  <div class="example" id="example-403">
+  <div class="example" id="example-428">
    <p><strong>例1 ウェブサーバーの起動</strong></p> 
    <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ cd ~/public_html
@@ -151,7 +156,7 @@ Press Ctrl-C to quit.
    </div>
   </div>
 
-  <div class="example" id="example-404">
+  <div class="example" id="example-429">
    <p><strong>例2 ドキュメントルートディレクトリを指定した起動</strong></p> 
    <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ cd ~/public_html
@@ -172,7 +177,7 @@ Press Ctrl-C to quit
    </div>
   </div>
 
-  <div class="example" id="example-405">
+  <div class="example" id="example-430">
    <p><strong>例3 ルータースクリプトの使用</strong></p> 
 <div class="example-contents"><p>
   この例では、画像ファイルをリクエストすればそのまま表示し、HTML ファイルをリクエストすると &quot;Welcome to PHP&quot; と表示します。
@@ -191,7 +196,7 @@ Press Ctrl-C to quit
 
   </div>
 
-  <div class="example" id="example-406">
+  <div class="example" id="example-431">
    <p><strong>例4 CLI ウェブサーバーを使っているかどうかのチェック</strong></p> 
 <div class="example-contents"><p>
   フレームワークのルータースクリプトを、開発中は CLI ウェブサーバーで使って
@@ -211,7 +216,7 @@ Press Ctrl-C to quit
 
   </div>
 
-  <div class="example" id="example-407">
+  <div class="example" id="example-432">
    <p><strong>例5 未サポートのファイル形式の処理</strong></p> 
 <div class="example-contents"><p>
   CLI ウェブサーバーで対応していない MIME タイプの静的リソースを扱うには、このようにします。
@@ -230,7 +235,7 @@ Press Ctrl-C to quit
 
   </div>
 
-  <div class="example" id="example-408">
+  <div class="example" id="example-433">
    <p><strong>例6 CLI ウェブサーバーへのリモートマシンからのアクセス</strong></p> 
 <div class="example-contents"><p>
   ウェブサーバーを、任意のインターフェイスからポート 8000 でアクセスできるようにするには、このようにします。

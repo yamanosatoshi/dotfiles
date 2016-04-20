@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Compose a class</title>
+  <title>クラスを構成</title>
 
  </head>
  <body><div class="manualnavbar" style="text-align: center;">
@@ -13,7 +13,7 @@
 </div><hr /><div id="function.uopz-compose" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">uopz_compose</h1>
-  <p class="verinfo">(PECL uopz &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">uopz_compose</span> &mdash; <span class="dc-title">Compose a class</span></p>
+  <p class="verinfo">(PECL uopz &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">uopz_compose</span> &mdash; <span class="dc-title">クラスを構成</span></p>
 
  </div>
 
@@ -29,7 +29,7 @@
   ]]] )</div>
 
   <p class="para rdfs-comment">
- Creates a new class of the given name that implements, extends, or uses all of the provided classes
+ 指定された classes のすべてを実装、拡張または使用して、指定された名前のクラスを新規作成します。
   </p>
  </div>
 
@@ -45,7 +45,7 @@
     <dd>
 
      <p class="para">
- A legal class name
+ 合法なクラス名
      </p>
     </dd>
 
@@ -57,7 +57,7 @@
     <dd>
 
      <p class="para">
- An array of class, interface and trait names     
+ クラス、インターフェースおよびトレイトの名前の配列
      </p>
     </dd>
 
@@ -69,20 +69,20 @@
     <dd>
 
      <p class="para">
- An associative array of methods, values are either closures or [modifiers =&gt; closure]
-     </p>   
+ メソッドの連想配列。値は、クロージャまたは連想配列 [修飾子 =&gt; クロージャ] です。
+     </p>
     </dd>
- 
+
    
-    
+   
     <dt>
 <code class="parameter">properties</code></dt>
 
     <dd>
 
      <p class="para">
- An associative array of properties, keys are names, values are modifiers
-     </p>    
+ プロパティーの連想配列。キーは名前、値は修飾子です。
+     </p>
     </dd>
 
    
@@ -93,7 +93,7 @@
     <dd>
 
      <p class="para">
- Entry type, by default ZEND_ACC_CLASS
+ エントリ・タイプ。デフォルトは ZEND_ACC_CLASS です。
      </p>
     </dd>
 
@@ -113,8 +113,8 @@
 
  <div class="refsect1 examples" id="refsect1-function.uopz-compose-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-570">
-   <p><strong>例1 <span class="function"><strong>uopz_compose()</strong></span> example</strong></p>
+  <div class="example" id="example-614">
+   <p><strong>例1 <span class="function"><strong>uopz_compose()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">myClass&nbsp;</span><span style="color: #007700">{}<br />trait&nbsp;</span><span style="color: #0000BB">myTrait&nbsp;</span><span style="color: #007700">{}<br />interface&nbsp;</span><span style="color: #0000BB">myInterface&nbsp;</span><span style="color: #007700">{}<br /><br /></span><span style="color: #0000BB">uopz_compose</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Composed</span><span style="color: #007700">::class,&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">myClass</span><span style="color: #007700">::class,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">myTrait</span><span style="color: #007700">::class,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">myInterface</span><span style="color: #007700">::class<br />&nbsp;&nbsp;&nbsp;&nbsp;],&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"__construct"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />]);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br />&nbsp;</span><span style="color: #0000BB">class_uses</span><span style="color: #007700">(</span><span style="color: #0000BB">Composed</span><span style="color: #007700">::class),<br />&nbsp;</span><span style="color: #0000BB">class_parents</span><span style="color: #007700">(</span><span style="color: #0000BB">Composed</span><span style="color: #007700">::class),<br />&nbsp;</span><span style="color: #0000BB">class_implements</span><span style="color: #007700">(</span><span style="color: #0000BB">Composed</span><span style="color: #007700">::class));<br /></span><span style="color: #0000BB">?&gt;</span>

@@ -13,7 +13,7 @@
 </div><hr /><div id="function.list" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">list</h1>
-  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">list</span> &mdash; <span class="dc-title">配列と同様の形式で、複数の変数への代入を行う</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">list</span> &mdash; <span class="dc-title">配列と同様の形式で、複数の変数への代入を行う</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.list-description">
@@ -61,10 +61,58 @@
   </p>
  </div>
 
+ <div class="refsect1 changelog" id="refsect1-function.list-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.0.0</td>
+       <td>
+        <a href="migration70.incompatible.html#migration70.incompatible.variable-handling.list.order" class="link">
+         代入操作が行われる順倍が変わりました
+        </a>。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.0.0</td>
+       <td>
+        <a href="migration70.incompatible.html#migration70.incompatible.variable-handling.list.empty" class="link">
+         <span class="function"><strong>list()</strong></span> の式をまったくの空にすることはできなくなりました
+        </a>。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.0.0</td>
+       <td>
+        <a href="migration70.incompatible.html#migration70.incompatible.variable-handling.list.string" class="link">
+         文字列は扱えなくなりました
+        </a>。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
  <div class="refsect1 examples" id="refsect1-function.list-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5480">
+   <div class="example" id="example-5585">
     <p><strong>例1 <span class="function"><strong>list()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -76,7 +124,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5481">
+   <div class="example" id="example-5586">
     <p><strong>例2 <span class="function"><strong>list()</strong></span> の使用法の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -87,7 +135,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5482">
+   <div class="example" id="example-5587">
     <p><strong>例3 ネストした <span class="function"><strong>list()</strong></span> の使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -106,7 +154,7 @@ int(3)
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5483">
+   <div class="example" id="example-5588">
     <p><strong>例4 配列の添字を使用した <span class="function"><strong>list()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -139,12 +187,19 @@ array(3) {
   <h3 class="title">注意</h3>
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
-    <span class="function"><strong>list()</strong></span>は、最も右のパラメータから値を代入します。
+    PHP 5 では、<span class="function"><strong>list()</strong></span>は、最も右のパラメータから値を代入します。
+    PHP 7 では、<span class="function"><strong>list()</strong></span>は、最も左のパラメータから値を代入します。
+   </p>
+   <p class="para">
     プレーンな変数を使用している場合には、このことを気にする必要はありません。
     しかし、添字配列を使用している場合には、配列の添字の順番が
     <span class="function"><strong>list()</strong></span>
     に書いたものと同じく左から右となることを通常は期待しますが、
-    そうはなりません。この配列の添字は逆の順番となります。
+    PHP 5 ではそうはなりません。この配列の添字は逆の順番となります。
+   </p>
+   <p class="para">
+    一般論として、特定の操作順に依存することは避けたほうがいいでしょう。
+    将来的に、その順番が変更される可能性があるからです。
    </p>
   </div>
   <div class="warning"><strong class="warning">警告</strong>
