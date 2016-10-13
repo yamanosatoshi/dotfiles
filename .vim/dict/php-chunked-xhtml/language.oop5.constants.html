@@ -16,6 +16,7 @@
    値が変更できない定数をクラス内に定義することができます。
    定数は、通常の変数とは異なり、定義または使用する際に
    <var class="varname"><var class="varname">$</var></var> 記号を付けません。
+   クラス定数のデフォルトのアクセス範囲は <em>public</em> です。
   </p>
   <p class="para">
    定義する値は定数表現である必要があり、(例えば)変数・プロパティ
@@ -32,7 +33,10 @@
    <em>static</em> といった)
    キーワードを指定することはできません。
   </p>
-  <div class="example" id="example-210">
+ <p class="para">
+  クラス定数はクラス単位で割り当てられるものです。インスタンス単位ではないことに注意しましょう。
+ </p>
+  <div class="example" id="example-219">
    <p><strong>例1 定数の定義と使用</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -43,7 +47,7 @@
 
  </div>
   
-  <div class="example" id="example-211">
+  <div class="example" id="example-220">
    <p><strong>例2 静的なデータの例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -58,7 +62,7 @@
     ヒアドキュメントや Nowdoc を用いた定数の初期化は PHP 5.3.0 以降で使えるようになりました。
    </p>
  </p></blockquote>
- <div class="example" id="example-212">
+ <div class="example" id="example-221">
   <p><strong>例3 定数式の例</strong></p>
   <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -73,7 +77,31 @@
  </div>
  <blockquote class="note"><p><strong class="note">注意</strong>: 
   <p class="para">
-   Constant expression support was added in PHP 5.6.0.
+   定数における式のサポートは PHP 5.6.0 で追加されました。
+  </p>
+ </p></blockquote>
+
+ <div class="example" id="example-222">
+  <p><strong>例4 クラス定数のアクセス範囲</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;PHP&nbsp;7.1.0&nbsp;以降<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;const&nbsp;</span><span style="color: #0000BB">BAR&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;const&nbsp;</span><span style="color: #0000BB">BAZ&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'baz'</span><span style="color: #007700">;<br />}<br />echo&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::</span><span style="color: #0000BB">BAR</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::</span><span style="color: #0000BB">BAZ</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+   <div class="example-contents"><p>上の例の PHP 7.1 での出力は、このようになります。</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+bar
+
+Fatal error: Uncaught Error: Cannot access private const Foo::BAZ in …
+</pre></div>
+   </div>
+ </div>
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  <p class="para">
+   PHP 7.1.0 以降は、クラス定数のアクセス範囲を指定できるようになりました。
   </p>
  </p></blockquote>
 </div><hr /><div class="manualnavbar" style="text-align: center;">

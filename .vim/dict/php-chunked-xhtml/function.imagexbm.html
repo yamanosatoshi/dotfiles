@@ -34,6 +34,7 @@
    <span class="simpara">
     <span class="function"><strong>imagexbm()</strong></span> はパディングを一切行わないので、
     画像の幅は 8 の倍数でなければいけません。
+    PHP 5.6.24 および PHP 7.0.9 以降では、この制約がなくなりました。
    </span>
   </p></blockquote>
  </div>
@@ -56,7 +57,14 @@ image</code></dt>
 
      <dd>
 
-      <p class="para">ファイルの保存先のパス。省略したり <strong><code>NULL</code></strong> を設定したりした場合は、画像ストリームを直接出力します。</p>
+      <p class="para">画像の保存先のパス。省略したり <strong><code>NULL</code></strong> を設定したりした場合は、画像ストリームを直接出力します。</p>
+      <p class="para">
+       <code class="parameter">filename</code> (拡張子 .xbm を除いた部分)
+       は、<acronym title="X Bitmap">XBM</acronym> の C 識別子としても用いられます。
+       そのため、現在のロケールで扱える英数字以外の文字は、アンダースコアに置き換えられます。
+       <code class="parameter">filename</code> を <strong><code>NULL</code></strong> にすると、
+       <em>image</em> を使って C 識別子を作ります。
+      </p>
      </dd>
 
     
@@ -90,7 +98,7 @@ image</code></dt>
  <div class="refsect1 examples" id="refsect1-function.imagexbm-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3592">
+   <div class="example" id="example-3621">
     <p><strong>例1 XBM ファイルの保存</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -102,7 +110,7 @@ image</code></dt>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3593">
+   <div class="example" id="example-3622">
     <p><strong>例2 別の前景色による XBM ファイルの保存</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">

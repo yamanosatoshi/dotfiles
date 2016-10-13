@@ -130,6 +130,33 @@ example: , this is a test
             </p>
            </div>
           </p>
+          <p class="para">
+           パターンに名前付きサブパターンが含まれる場合は、<var class="varname"><var class="varname">$matches</var></var>
+           にはサブパターン名のキーも含まれるようになります。
+          </p>
+          <p class="para">
+           サブパターンの名前が重複している場合は、いちばん右側のサブパターンだけが
+           <var class="varname"><var class="varname">$matches[NAME]</var></var> に格納されます。
+           <div class="informalexample">
+            <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />preg_match_all</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'/(?J)(?&lt;match&gt;foo)|(?&lt;match&gt;bar)/'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'foo&nbsp;bar'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">PREG_PATTERN_ORDER<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #DD0000">'match'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+            </div>
+
+            <p class="para">上の例の出力は以下となります。</p>
+            <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; 
+    [1] =&gt; bar
+)
+</pre></div>
+            </div>
+           </div>
+          </p>
          </dd>
 
         
@@ -282,7 +309,7 @@ example: , this is a test
  <div class="refsect1 examples" id="refsect1-function.preg-match-all-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5343">
+   <div class="example" id="example-5378">
     <p><strong>例1 テキストからすべての電話番号を得る</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -294,7 +321,7 @@ example: , this is a test
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5344">
+   <div class="example" id="example-5379">
     <p><strong>例2 HTML タグにマッチするものを見付ける（貪欲）</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -322,7 +349,7 @@ part 4: &lt;/a&gt;
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5345">
+   <div class="example" id="example-5380">
     <p><strong>例3 名前つきサブパターンの使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">

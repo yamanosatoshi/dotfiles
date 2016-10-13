@@ -846,7 +846,7 @@ ZEND_FUNCTION(first_module);
 zend_function_entry firstmod_functions[] =
 {
     ZEND_FE(first_module, NULL)
-    {NULL, NULL, NULL}
+    ZEND_FE_END
 };
 
 /* モジュールについての情報 */
@@ -1383,23 +1383,16 @@ ZEND_FUNCTION(first_module)
 <div class="ccode"><pre class="ccode">zend_function_entry firstmod_functions[] =
 {
     ZEND_FE(first_module, NULL)
-    {NULL, NULL, NULL}
+    ZEND_FE_END
 };</pre>
 </div>
     </div>
 
     リストの最後のエントリは、必ず
-    <em>{NULL, NULL, NULL}</em> でなければなりません。
+    <em>ZEND_FE_END</em> でなければなりません。
     エクスポートされる関数の一覧が終わることを Zend が知るために、
     このエントリが必要となります。
    </p>
-   <blockquote class="note"><p><strong class="note">注意</strong>: 
-    <p class="para">
-     最後を表す印として、定義済みマクロを使用することは
-     <em class="emphasis">できません</em>。そうすると、
-     &quot;NULL&quot; という名前の関数を探しにいってしまいます!
-    </p>
-   </p></blockquote>
    <p class="para">
     マクロ <em>ZEND_FE</em> (&#039;Zend Function
     Entry&#039; を省略したものです) は、構造体のエントリを単純に

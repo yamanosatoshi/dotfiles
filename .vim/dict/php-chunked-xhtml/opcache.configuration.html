@@ -219,6 +219,34 @@
       <td class="empty">&nbsp;</td>
      </tr>
 
+     <tr>
+      <td><a href="opcache.configuration.html#ini.opcache.file-cache" class="link">opcache.file_cache</a></td>
+      <td>NULL</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>PHP 7.0.0 以降で利用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="opcache.configuration.html#ini.opcache.file-cache-only" class="link">opcache.file_cache_only</a></td>
+      <td>&quot;0&quot;</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>PHP 7.0.0 以降で利用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="opcache.configuration.html#ini.opcache.file-cache-consistency-checks" class="link">opcache.file_cache_consistency_checks</a></td>
+      <td>&quot;1&quot;</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>PHP 7.0.0 以降で利用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="opcache.configuration.html#ini.opcache.file-cache-fallback" class="link">opcache.file_cache_fallback</a></td>
+      <td>&quot;1&quot;</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>PHP 7.0.0 以降で利用可能</td>
+     </tr>
+
     </tbody>
    
   </table>
@@ -691,6 +719,67 @@
      <p class="para">
       OPcache API 関数の呼び出しを、指定した文字列から始まるパス上の PHP スクリプトからだけに制限します。
       デフォルトは &quot;&quot; で、これは、何も制限しないことを意味します。
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.opcache.file-cache">
+     <code class="parameter">opcache.file_cache</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      第二レベルのキャッシュディレクトリを有効にして設定します。
+      これは、SHM メモリがいっぱいになった場合やサーバーを再起動した場合、
+      そして SHM をリセットした場合のパフォーマンスを向上させます。
+      デフォルトは &quot;&quot; で、これはファイルベースのキャッシュを無効にします。
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.opcache.file-cache-only">
+     <code class="parameter">opcache.file_cache_only</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      共有メモリ内でのオペコード・キャッシュを有効あるいは無効にします。
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.opcache.file-cache-consistency-checks">
+     <code class="parameter">opcache.file_cache_consistency_checks</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      ファイルキャッシュから読み込んだスクリプトのチェックサムの検証を有効あるいは無効にします。
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.opcache.file-cache-fallback">
+     <code class="parameter">opcache.file_cache_fallback</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      共有メモリへの再アタッチに失敗するプロセスについて、
+      opcache.file_cache_only=1 であるものとみなします (Windows のみ)。
+      ファイルキャッシュを明示的に有効にする必要があります。
      </p>
     </dd>
 

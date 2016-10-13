@@ -39,7 +39,8 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    Returns the <a href="class.datetime.html" class="classname">DateTime</a> representation of this
-   UTCDateTime.
+   UTCDateTime. The returned <a href="class.datetime.html" class="classname">DateTime</a> will use the UTC
+   time zone.
   </p>
  </div>
 
@@ -55,11 +56,11 @@
 
  <div class="refsect1 examples" id="refsect1-mongodb-bson-utcdatetime.todatetime-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1731">
+  <div class="example" id="example-1745">
    <p><strong>例1 <span class="function"><strong>MongoDB\BSON\UTCDatetime::toDateTime()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br />$utcdatetime&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">UTCDateTime</span><span style="color: #007700">(</span><span style="color: #0000BB">1416445411987</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$datetime&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$utcdatetime</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">toDateTime</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$datetime</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #0000BB">DATE_RSS</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />$utcdatetime&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">UTCDateTime</span><span style="color: #007700">(</span><span style="color: #0000BB">1416445411987</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$datetime&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$utcdatetime</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">toDateTime</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$datetime</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'r'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$datetime</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'U.u'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$datetime</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getTimezone</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
    </div>
@@ -69,6 +70,13 @@
    <div class="example-contents screen">
 <div class="cdata"><pre>
 string(31) &quot;Thu, 20 Nov 2014 01:03:31 +0000&quot;
+string(17) &quot;1416445411.987000&quot;
+object(DateTimeZone)#3 (2) {
+  [&quot;timezone_type&quot;]=&gt;
+  int(1)
+  [&quot;timezone&quot;]=&gt;
+  string(6) &quot;+00:00&quot;
+}
 </pre></div>
    </div>
   </div>

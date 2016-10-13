@@ -19,8 +19,12 @@
     <a href="language.pseudo-types.html#language.types.callback" class="link">コールバック</a>
     パラメータとして使う際に便利ですが、用途はそれにとどまりません。
    </p>
+   <p class="simpara">
+    無名関数の実装には <a href="class.closure.html" class="link">
+    <a href="class.closure.html" class="classname">Closure</a></a> クラスを使っています。
+   </p>
 
-   <div class="example" id="example-195">
+   <div class="example" id="example-201">
     <p><strong>例1 無名関数の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -39,7 +43,7 @@
     同じく最後にセミコロンをつけます。
    </p>
 
-   <div class="example" id="example-196">
+   <div class="example" id="example-202">
     <p><strong>例2 変数への無名関数の代入</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -55,7 +59,7 @@
     引き継ぐ変数は、<em>use</em> で渡さなければなりません。
    </p>
 
-   <div class="example" id="example-197">
+   <div class="example" id="example-203">
     <p><strong>例3 親のスコープからの変数の引き継ぎ</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -88,7 +92,7 @@ string(11) &quot;hello world&quot;
     次の例を参照ください。
    </p>
 
-   <div class="example" id="example-198">
+   <div class="example" id="example-204">
     <p><strong>例4 クロージャのスコープ</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -98,11 +102,85 @@ string(11) &quot;hello world&quot;
     </div>
 
    </div>
-   
-   <p class="simpara">
-    無名関数の実装には <a href="class.closure.html" class="link">
-    <a href="class.closure.html" class="classname">Closure</a></a> クラスを使っています。
+
+   <div class="example" id="example-205">
+    <p><strong>例5 <em>$this</em> の自動バインド</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Test<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">testing</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$object&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Test</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$function&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$object</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">testing</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$function</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+object(Test)#1 (0) {
+}
+</pre></div>
+    </div>
+    <div class="example-contents"><p>上の例の PHP 5.3 での出力は、このようになります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Notice: Undefined variable: this in script.php on line 8
+NULL</pre></div>
+    </div>
+   </div>
+
+   <p class="para">
+    PHP 5.4.0 以降では、クラスのコンテキストで宣言した場合は現在のクラスが自動的にバインドされて、
+    関数のスコープで <em>$this</em> が使えるようになります。
+    現在のクラスへの自動バインドを望まない場合は、
+    <a href="functions.anonymous.html#functions.anonymous-functions.static" class="link">静的無名関数</a>
+    を使いましょう。
    </p>
+
+   <div class="sect2" id="functions.anonymous-functions.static">
+    <h3 class="title">静的無名関数</h3>
+    <p class="para">
+     PHP 5.4 以降では、静的な無名関数を宣言できるようになりました。
+     こうすれば、現在のクラスが無名関数を自動的にバインドすることがなくなります。
+     オブジェクトも、実行時にはバインドされなくなります。
+    </p>
+    <p class="para">
+     <div class="example" id="example-206">
+      <p><strong>例6 静的無名関数内での <em>$this</em> の使用例</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">new&nbsp;class&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(static&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />};<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+Notice: Undefined variable: this in %s on line %d
+NULL
+</pre></div>
+      </div>
+     </div>
+    </p>
+
+    <p class="para">
+     <div class="example" id="example-207">
+      <p><strong>例7 静的無名関数へのオブジェクトのバインド</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">(static&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;関数の本体<br /></span><span style="color: #007700">})-&gt;</span><span style="color: #0000BB">call</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">StdClass</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: Cannot bind an instance to a static closure in /in/sLLS9 on line 5
+</pre></div>
+      </div>
+     </div>
+    </p>
+   </div>
    
    <div class="sect2">
     <h3 class="title">変更履歴</h3>
@@ -121,7 +199,7 @@ string(11) &quot;hello world&quot;
         <tr>
          <td>5.4.0</td>
          <td>
-          無名関数で
+          無名関数で、静的に宣言したときのように
           <var class="varname"><var class="varname">$this</var></var> を使えるようになりました。
          </td>
         </tr>

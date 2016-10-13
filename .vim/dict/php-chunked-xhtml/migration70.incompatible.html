@@ -634,6 +634,7 @@ Stack trace:
    <strong><code>false</code></strong> となっていました。
    PHP 7 では、除算演算子の返す結果は float で、
    +INF、-INF あるいは NAN のいずれかとなります。
+   これは、IEEE 754 で指定された挙動です。
    剰余演算子については E_WARNING が発生しなくなり、
    <a href="class.divisionbyzeroerror.html" class="classname">DivisionByZeroError</a>
    例外をスローするようになりました。
@@ -778,6 +779,16 @@ string(3) &quot;foo&quot;
   </p>
  </div>
 
+ <div class="sect3" id="migration70.incompatible.removed-functions.ereg">
+  <h4 class="title">
+   ereg* 系のすべての関数
+  </h4>
+  <p class="para">
+   <a href="book.regex.html" class="link">ereg</a> 関数はすべて削除されました。かわりに
+   <a href="book.pcre.html" class="link">PCRE</a> を使うことを推奨します。
+  </p>
+ </div>
+
  <div class="sect3" id="migration70.incompatible.removed-functions.mcrypt">
   <h4 class="title"><a href="book.mcrypt.html" class="link">mcrypt</a> のエイリアス</h4>
 
@@ -792,6 +803,29 @@ string(3) &quot;foo&quot;
    <span class="function"><a href="function.mcrypt-ofb.html" class="function">mcrypt_ofb()</a></span> も削除されました。
    <span class="function"><a href="function.mcrypt-decrypt.html" class="function">mcrypt_decrypt()</a></span> に、適切な
    <strong><code>MCRYPT_MODE_*</code></strong> 定数を組み合わせて使いましょう。
+  </p>
+ </div>
+
+ <div class="sect3" id="migration70.incompatible.removed-functions.mysql">
+  <h4 class="title">
+   すべての ext/mysql 関数
+  </h4>
+  <p class="para">
+   <a href="book.mysql.html" class="link">ext/mysql</a> のすべての関数が削除されました。
+   その他の MySQL API の選択肢については
+   <a href="mysqlinfo.api.choosing.html" class="link">MySQL API の選択</a>
+   を参照ください。
+  </p>
+ </div>
+
+ <div class="sect3" id="migration70.incompatible.removed-functions.mssql">
+  <h4 class="title">
+   すべての ext/mssql 関数
+  </h4>
+  <p class="para">
+   <a href="book.mssql.html" class="link">ext/mssql</a> のすべての関数が削除されました。
+   代替となる選択肢については、
+   <a href="intro.mssql.html" class="link">MSSQL の導入ページ</a> を参照ください。
   </p>
  </div>
 
@@ -1080,7 +1114,7 @@ Parse error: syntax error, unexpected &#039;new&#039; (T_NEW) in /tmp/test.php o
 </code></div>
    </div>
 
-   <p class="para">上の例の PHP 5 での出力は、このようになります。</p>
+   <p class="para">上の例の PHP 5.6 での出力は、このようになります。</p>
    <div class="example-contents screen">
 <div class="cdata"><pre>
 Deprecated: Non-static method A::test() should not be called statically, assuming $this from incompatible context in /tmp/test.php on line 8
@@ -1142,6 +1176,39 @@ NULL
 </code></div>
    </div>
 
+  </div>
+ </div>
+
+ <div class="sect3" id="migration70.incompatible.other.func-parameter-modified">
+  <h4 class="title">引数を調べる関数は、パラメータの <em class="emphasis">その時点での</em> 値を報告する</h4>
+
+  <p class="para">
+   <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span>, <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span>,
+   <span class="function"><a href="function.debug-backtrace.html" class="function">debug_backtrace()</a></span> といった関数や例外時のバックトレースで得られる値が、
+   パラメータとして渡されたときの値ではなくなりました。
+   その時点での値が得られるようになります (つまり、パラメータとして渡された値から変更されている可能性があります)。
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">++;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">func_get_arg</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">));<br />}<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">上の例の PHP 5 での出力は、このようになります。</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+1
+</pre></div>
+   </div>
+   <p class="para">上の例の PHP 7 での出力は、このようになります。</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+2
+</pre></div>
+   </div>
   </div>
  </div>
 

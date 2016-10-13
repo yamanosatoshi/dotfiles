@@ -22,7 +22,7 @@
   <div class="methodsynopsis dc-description">
    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>curl_getinfo</strong></span>
     ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$ch</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$opt</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$opt</code></span>
   ] )</div>
 
   <p class="para rdfs-comment">
@@ -65,6 +65,7 @@
         <li class="listitem">
          <span class="simpara">
           <strong><code>CURLINFO_FILETIME</code></strong> - ドキュメントを取得するのにかかった時間。
+          <strong><code>CURLOPT_FILETIME</code></strong> が有効な状態で用いる。
           取得できなかった場合は -1
          </span>
         </li>
@@ -197,6 +198,86 @@
          <span class="simpara">
           <strong><code>CURLINFO_PRIVATE</code></strong> - この cURL ハンドルに関連づけられたプライベートデータ。
           事前に <span class="function"><a href="function.curl-setopt.html" class="function">curl_setopt()</a></span> の <strong><code>CURLOPT_PRIVATE</code></strong> オプションで設定したもの。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_RESPONSE_CODE</code></strong> - 直近のレスポンスコード。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_HTTP_CONNECTCODE</code></strong> - CONNECT のレスポンスコード。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_HTTPAUTH_AVAIL</code></strong> - 直前のレスポンスから判断する、利用可能な認証方式のビットマスク。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_PROXYAUTH_AVAIL</code></strong> - 直前のレスポンスから判断する、プロキシ認証方式のビットマスク。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_OS_ERRNO</code></strong> - 接続に失敗したときのエラー番号。OS やシステムによって異なります。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_NUM_CONNECTS</code></strong> - curl が直前の転送を実行するために要した接続数。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_SSL_ENGINES</code></strong> - サポートする OpenSSL 暗号エンジン。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_COOKIELIST</code></strong> - すべての既知のクッキー。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_FTP_ENTRY_PATH</code></strong> - FTP サーバーのエントリパス。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_APPCONNECT_TIME</code></strong> - リモートホストとの SSL/SSH 接続／ハンドシェイク が完了するまでに要した秒数。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_CERTINFO</code></strong> - TLS 証明書チェイン。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_CONDITION_UNMET</code></strong> - 時間の条件が満たされなかったことに関する情報。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_RTSP_CLIENT_CSEQ</code></strong> - 次の RTSP クライアントの CSeq。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_RTSP_CSEQ_RECV</code></strong> - 直前に受け取った CSeq。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_RTSP_SERVER_CSEQ</code></strong> - 次の RTSP サーバーの CSeq。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>CURLINFO_RTSP_SESSION_ID</code></strong> - RTSP セッション ID。
          </span>
         </li>
        </ul>
@@ -375,6 +456,27 @@
 
      <tbody class="tbody">
       <tr>
+       <td>5.5.0</td>
+       <td>
+        <strong><code>CURLINFO_RESPONSE_CODE</code></strong>、
+        <strong><code>CURLINFO_HTTP_CONNECTCODE</code></strong>、
+        <strong><code>CURLINFO_HTTPAUTH_AVAIL</code></strong>、
+        <strong><code>CURLINFO_PROXYAUTH_AVAIL</code></strong>、
+        <strong><code>CURLINFO_OS_ERRNO</code></strong>、
+        <strong><code>CURLINFO_NUM_CONNECTS</code></strong>、
+        <strong><code>CURLINFO_SSL_ENGINES</code></strong>、
+        <strong><code>CURLINFO_COOKIELIST</code></strong>、
+        <strong><code>CURLINFO_FTP_ENTRY_PATH</code></strong>、
+        <strong><code>CURLINFO_APPCONNECT_TIME</code></strong>、
+        <strong><code>CURLINFO_CONDITION_UNMET</code></strong>、
+        <strong><code>CURLINFO_RTSP_CLIENT_CSEQ</code></strong>、
+        <strong><code>CURLINFO_RTSP_CSEQ_RECV</code></strong>、
+        <strong><code>CURLINFO_RTSP_SERVER_CSEQ</code></strong> および
+        <strong><code>CURLINFO_RTSP_SESSION_ID</code></strong> が追加されました。
+       </td>
+      </tr>
+
+      <tr>
        <td>5.4.7</td>
        <td>
         <strong><code>CURLINFO_PRIMARY_IP</code></strong>、
@@ -388,6 +490,13 @@
        <td>5.3.7</td>
        <td>
         <strong><code>CURLINFO_REDIRECT_URL</code></strong> が追加されました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.3.0</td>
+       <td>
+        <strong><code>CURLINFO_CERTINFO</code></strong> が追加されました。
        </td>
       </tr>
 
@@ -416,11 +525,23 @@
  <div class="refsect1 examples" id="refsect1-function.curl-getinfo-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4756">
+   <div class="example" id="example-4787">
     <p><strong>例1 <span class="function"><strong>curl_getinfo()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;curl&nbsp;ハンドルを作成します<br /></span><span style="color: #0000BB">$ch&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_init</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.yahoo.com/'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;実行します<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;エラーが発生したかどうかを確認します<br /></span><span style="color: #007700">if(!</span><span style="color: #0000BB">curl_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">))<br />{<br />&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_getinfo</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Took&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">'total_time'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">'&nbsp;seconds&nbsp;to&nbsp;send&nbsp;a&nbsp;request&nbsp;to&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">'url'</span><span style="color: #007700">];<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;ハンドルを閉じます<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;cURL&nbsp;ハンドルを作成します<br /></span><span style="color: #0000BB">$ch&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_init</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;実行します<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;エラーが発生したかどうかを確認します<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">curl_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_getinfo</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Took&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">'total_time'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">'&nbsp;seconds&nbsp;to&nbsp;send&nbsp;a&nbsp;request&nbsp;to&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">'url'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;ハンドルを閉じます<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4788">
+    <p><strong>例2 <span class="function"><strong>curl_getinfo()</strong></span> で <code class="parameter">opt</code> パラメータを使う例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;cURL&nbsp;ハンドルを作成します<br /></span><span style="color: #0000BB">$ch&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_init</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;実行します<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;HTTP&nbsp;ステータスコードを調べます<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">curl_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;switch&nbsp;(</span><span style="color: #0000BB">$http_code&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_getinfo</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CURLINFO_HTTP_CODE</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">200</span><span style="color: #007700">:&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;OK<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">break;<br />&nbsp;&nbsp;&nbsp;&nbsp;default:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Unexpected&nbsp;HTTP&nbsp;code:&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$http_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;ハンドルを閉じます<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>

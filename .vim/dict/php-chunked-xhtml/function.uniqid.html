@@ -28,13 +28,7 @@
   <p class="para rdfs-comment">
    マイクロ秒単位の現在時刻にもとづいた、接頭辞つきの一意な ID を取得します。
   </p>
-  <div class="warning"><strong class="warning">警告</strong>
-   <p class="para">
-    この関数は、ランダムな値を作るわけでもなければ予測不能な文字列を作るわけでもありません。
-    セキュリティを確保するためにこの関数を使ってはいけません。
-    予測不能でセキュアな ID を作りたい場合は、暗号学的にセキュアな乱数やハッシュを作る関数を利用しましょう。
-   </p>
-  </div>
+  <div class="caution"><strong class="caution">警告</strong><p class="para">この関数が生成する値は、暗号学的に安全ではありません。そのため、これを暗号として使ってはいけません。暗号学的に安全な値が必要な場合は、<span class="function"><a href="function.random-int.html" class="function">random_int()</a></span> か <span class="function"><a href="function.random-bytes.html" class="function">random_bytes()</a></span> あるいは <span class="function"><a href="function.openssl-random-pseudo-bytes.html" class="function">openssl_random_pseudo_bytes()</a></span> を使いましょう。</p></div>
  </div>
 
 
@@ -94,7 +88,7 @@
  <div class="refsect1 examples" id="refsect1-function.uniqid-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4336">
+   <div class="example" id="example-4366">
     <p><strong>例1 <span class="function"><strong>uniqid()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -110,14 +104,6 @@
 
  <div class="refsect1 notes" id="refsect1-function.uniqid-notes">
   <h3 class="title">注意</h3>
-  <div class="caution"><strong class="caution">警告</strong>
-   <p class="para">
-    この関数は、暗号学的にセキュアなトークンを返すわけではありません。
-    実際、追加のパラメータを何も渡さなければその返り値は <span class="function"><a href="function.microtime.html" class="function">microtime()</a></span>
-    とほとんど変わりません。暗号学的にセキュアなトークンを生成したければ
-    <span class="function"><a href="function.openssl-random-pseudo-bytes.html" class="function">openssl_random_pseudo_bytes()</a></span> を使いましょう。
-   </p>
-  </div>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     Cygwin でこの関数を動作させるには、

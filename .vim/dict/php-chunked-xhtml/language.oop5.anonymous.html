@@ -76,6 +76,49 @@ object(class@anonymous)#1 (1) {
 </pre></div>
   </div>
  </div>
+
+ <p class="para">
+  同じ無名クラス宣言から作ったすべてのオブジェクトは、その同じクラスのインスタンスとなります。
+ </p>
+
+ <div class="informalexample">
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">anonymous_class</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;class&nbsp;{};<br />}<br /><br />if&nbsp;(</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">anonymous_class</span><span style="color: #007700">())&nbsp;===&nbsp;</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">anonymous_class</span><span style="color: #007700">()))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'同じクラス'</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'違うクラス'</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+ </div>
+
+ <p class="para">上の例の出力は以下となります。</p>
+ <div class="example-contents screen">
+<div class="cdata"><pre>
+同じクラス
+</pre></div>
+  </div>
+ </div>
+
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  <p class="para">
+   無名クラスには内部的な名前が付けられていることに注意しましょう。これは次の例で確認できます。
+   ただこれは細部の実装上の話なので、この名前に依存するコードを書いてはいけません。
+  </p>
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(new&nbsp;class&nbsp;{});</span>
+</span>
+</code></div>
+  </div>
+
+  <p class="para">上の例の出力は、
+たとえば以下のようになります。</p>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+class@anonymous/in/oNi1A0x7f8636ad2021
+</pre></div>
+   </div>
+  </div>
+ </p></blockquote>
 </div><hr /><div class="manualnavbar" style="text-align: center;">
  <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.traits.html">トレイト</a></div>
  <div class="next" style="text-align: right; float: right;"><a href="language.oop5.overloading.html">オーバーロード</a></div>

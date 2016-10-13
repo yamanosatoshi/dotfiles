@@ -21,7 +21,7 @@
   <div class="methodsynopsis dc-description">
    <span class="type">bool</span> <span class="methodname"><strong>imagejpeg</strong></span>
     ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$image</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$to</code></span>
    [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$quality</code></span>
   ]] )</div>
 
@@ -45,11 +45,11 @@ image</code></dt>
 
     
      <dt>
-<code class="parameter">filename</code></dt>
+<code class="parameter">to</code></dt>
 
      <dd>
 
-      <p class="para">ファイルの保存先のパス。省略したり <strong><code>NULL</code></strong> を設定したりした場合は、画像ストリームを直接出力します。</p>
+      <p class="para">ファイル保存先のパスあるいはオープン中のリソース (この関数が値を戻した後で自動的にクローズされます)。省略したり <strong><code>NULL</code></strong> を設定したりした場合は、画像ストリームを直接出力します。</p>
       <p class="para">
        <code class="parameter">quality</code>
        パラメータを指定するためにこの引数をスキップするには、
@@ -87,7 +87,7 @@ image</code></dt>
  <div class="refsect1 examples" id="refsect1-function.imagejpeg-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3555">
+   <div class="example" id="example-3584">
     <p><strong>例1 JPEG 画像の出力</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -107,7 +107,7 @@ image</code></dt>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3556">
+   <div class="example" id="example-3585">
     <p><strong>例2 JPEG 画像の保存</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -119,11 +119,11 @@ image</code></dt>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3557">
+   <div class="example" id="example-3586">
     <p><strong>例3 75% 品質での画像の出力</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;空の画像を作成し、テキストを追加します<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">120</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$text_color&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">233</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">14</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">91</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagestring</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #DD0000">'A&nbsp;Simple&nbsp;Text&nbsp;String'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text_color</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;content&nbsp;type&nbsp;ヘッダを、ここでは&nbsp;image/jpeg&nbsp;と設定します<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;image/jpeg'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;filename&nbsp;パラメータを&nbsp;NULL&nbsp;でスキップし、品質を&nbsp;75%&nbsp;に設定します<br /></span><span style="color: #0000BB">imagejpeg</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">75</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;メモリを開放します<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;空の画像を作成し、テキストを追加します<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">120</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$text_color&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">233</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">14</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">91</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagestring</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #DD0000">'A&nbsp;Simple&nbsp;Text&nbsp;String'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$text_color</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;content&nbsp;type&nbsp;ヘッダを、ここでは&nbsp;image/jpeg&nbsp;と設定します<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;image/jpeg'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;to&nbsp;パラメータを&nbsp;NULL&nbsp;でスキップし、品質を&nbsp;75%&nbsp;に設定します<br /></span><span style="color: #0000BB">imagejpeg</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">75</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;メモリを開放します<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -134,8 +134,6 @@ image</code></dt>
 
  <div class="refsect1 notes" id="refsect1-function.imagejpeg-notes">
   <h3 class="title">注意</h3>
-  <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">JPEG サポートは、
-PHP が GD-1.8 か、それ以降に対して、コンパイルされている場合のみ使用可能です。</span></p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     プログレッシブ JPEG を出力したい場合には、
@@ -162,7 +160,15 @@ PHP が GD-1.8 か、それ以降に対して、コンパイルされている�
       <tr>
        <td>5.4.0</td>
        <td>
-        <code class="parameter">filename</code> に空文字列を渡してこの引数をスキップすることはできなくなりました。
+        ストリームリソースを
+        <code class="parameter">to</code> に渡せるようになりました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.4.0</td>
+       <td>
+        <code class="parameter">to</code> に空文字列を渡してこの引数をスキップすることはできなくなりました。
        </td>
       </tr>
 

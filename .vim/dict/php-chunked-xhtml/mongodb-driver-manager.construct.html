@@ -50,6 +50,15 @@
       </div>
 
      </p>
+     <p class="para">
+      The <code class="parameter">uri</code> is a URL, hence any special characters in
+      its components need to be URL encoded according to
+      <a href="http://www.faqs.org/rfcs/rfc3986" class="link external">&raquo;&nbsp;RFC 3986</a>. This is particularly
+      relevant to the username and password, which can often include special
+      characters such as <em>@</em>, <em>:</em>, or
+      <em>%</em>. The <span class="function"><a href="function.rawurlencode.html" class="function">rawurlencode()</a></span> function may
+      be used to encode constituent parts of the URI.
+     </p>
     </dd>
 
    
@@ -99,12 +108,12 @@
 
  <div class="refsect1 examples" id="refsect1-mongodb-driver-manager.construct-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1661">
+  <div class="example" id="example-1676">
    <p><strong>例1 <span class="function"><strong>MongoDB\Driver\Manager::__construct()</strong></span> basic examples</strong></p>
    <div class="example-contents"><p>Connecting to standalone MongoDB node:</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br />$manager&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://localhost:27017"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />$manager&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://example.com:27017"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
    </div>
@@ -128,7 +137,33 @@
    <div class="example-contents"><p>Connecting to MongoDB with authentication credentials for a particular user and database:</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br />$manager&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://myusername:mypassword@localhost:27017/mydatabase"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />$manager&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://myusername:mypassword@example.com:27017/mydatabase"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+
+   <div class="example-contents"><p>
+    Connecting to MongoDB with authentication credentials for a particular
+    user and database, where the username or password includes special
+    characters (e.g. <em>@</em>, <em>:</em>,
+    <em>%</em>). In the following example,
+    <em>myp@ss:w%rd</em> is being used as the password:
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$manager&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://myusername:myp%40ss%3Aw%25rd@example.com:27017/mydatabase"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+
+   <div class="example-contents"><p>
+    Connecting to MongoDB with SSL and a client certificate:
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$manager&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"mongodb://username:password@example.com:28071/admin?ssl=true"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"local_cert"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"/path/to/client.pem"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"passphrase"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"Very&nbsp;secretive&nbsp;client.pem&nbsp;passphrase"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;]<br />);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
    </div>

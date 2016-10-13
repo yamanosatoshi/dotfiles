@@ -173,18 +173,17 @@
        エンベロープの sender アドレスを設定する際に使用できます。
       </p>
       <p class="para">
-       This parameter is escaped by <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span> internally
-       to prevent command execution. <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span> prevents
-       command execution, but allows to add addtional parameters. For security reasons,
-       it is recommended for the user to sanitize this parameter to avoid adding unwanted
-       parameters to the shell command.
+       このパラメータはコマンドの実行を防止するために内部的に <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span>
+       によってエスケープされます。 <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span> はコマンドの実行を防止しますが、
+       別のパラメータを追加することは許してしまいます。セキュリティ上の理由から、
+       シェルコマンドへの望ましくないパラメータの追加を避けるために、
+       ユーザーはこのパラメータを適切に処理することが推奨されます。
       </p>
       <p class="para">
-       Since <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span> is applied automatically, some characters
-       that are allowed as email addresses by internet RFCs cannot be used. 
-       <span class="function"><strong>mail()</strong></span> can not allow such characters, so in programs where the use of
-       such characters is required, alternative means of sending emails (such as using a framework
-       or a library) is recommended. 
+       <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span> が自動的に適用されるため、
+       インターネット RFC でメールアドレスとして許可さているいくつかの文字を使用することができません。
+       <span class="function"><strong>mail()</strong></span> はそうした文字を許可しないため、プログラム中でそうした文字の使用が必須である場合、
+       メール送信の代替手段（フレームワークやライブラリの使用など）が推奨されます。
       </p>
       <p class="para">
        この方法でエンベロープの sender ヘッダ（-f）を設定する際は、
@@ -250,7 +249,7 @@
  <div class="refsect1 examples" id="refsect1-function.mail-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3897">
+   <div class="example" id="example-3927">
     <p><strong>例1 メールを送信する</strong></p>
     <div class="example-contents"><p>
      <span class="function"><strong>mail()</strong></span> を用いて単純なメールを送信する。
@@ -263,7 +262,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-3898">
+   <div class="example" id="example-3928">
     <p><strong>例2 追加ヘッダを付加してメールを送信する</strong></p>
     <div class="example-contents"><p>
      基本ヘッダに加え、MUA に From および Reply-To アドレスを通知する。
@@ -276,7 +275,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-3899">
+   <div class="example" id="example-3929">
     <p><strong>例3 追加ヘッダ及び追加コマンドラインパラメータを指定してメールを送信する</strong></p>
     <div class="example-contents"><p>
      <em>sendmail_path</em> を用いてメールを送信する際に利用する
@@ -291,7 +290,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-3900">
+   <div class="example" id="example-3930">
     <p><strong>例4 HTML メールを送信する</strong></p>
     <div class="example-contents"><p>
      <span class="function"><strong>mail()</strong></span> を用いて HTML メールを送信することも可能です。

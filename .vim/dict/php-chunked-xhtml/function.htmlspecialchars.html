@@ -48,36 +48,52 @@
    <span class="function"><a href="function.mb-encode-numericentity.html" class="function">mb_encode_numericentity()</a></span> を使う必要があります。
   </p>
   <p class="para">
-   変換対象となる文字は以下の通りです。
-   <ul class="itemizedlist">
-    <li class="listitem">
-     <span class="simpara">
-      &#039;&amp;&#039; (アンパサンド) は &#039;&amp;amp;&#039; になります。
-     </span>
-    </li>
-    <li class="listitem">
-     <span class="simpara">
-      <strong><code>ENT_NOQUOTES</code></strong> が設定されていない場合、
-      &#039;&quot;&#039; (ダブルクォート) は &#039;&amp;quot;&#039;になります。
-     </span>
-    </li>
-    <li class="listitem">
-     <span class="simpara">
-      <strong><code>ENT_QUOTES</code></strong> が設定されている場合のみ、
-      &quot;&#039;&quot; (シングルクオート) は &#039;&amp;#039;&#039; (あるいは &amp;apos;) になります。
-     </span>
-    </li>
-    <li class="listitem">
-     <span class="simpara">
-      &#039;&lt;&#039; (小なり) は &#039;&amp;lt;&#039; になります。
-     </span>
-    </li>
-    <li class="listitem">
-     <span class="simpara">
-      &#039;&gt;&#039; (大なり) は &#039;&amp;gt;&#039; になります。
-     </span>
-    </li>
-   </ul>
+   <table class="doctable table">
+    <caption><strong>変換対象となる文字</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>変換前</th>
+       <th>変換語</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><em>&amp;</em> (アンパサンド)</td>
+       <td><em>&amp;amp;</em></td>
+      </tr>
+
+      <tr>
+       <td><em>&quot;</em> (ダブルクォート)</td>
+       <td><strong><code>ENT_NOQUOTES</code></strong> が指定されていない場合、<em>&amp;quot;</em></td>
+      </tr>
+
+      <tr>
+       <td><em>&#039;</em> (シングルクォート)</td>
+       <td>
+        <em>&amp;#039;</em> (<strong><code>ENT_HTML401</code></strong> の場合) あるいは <em>&amp;apos;</em> (
+        <strong><code>ENT_XML1</code></strong>、<strong><code>ENT_XHTML</code></strong>、
+        <strong><code>ENT_HTML5</code></strong> の場合)。ただし
+        <strong><code>ENT_QUOTES</code></strong> が指定されている場合に限る
+       </td>
+      </tr>
+
+      <tr>
+       <td><em>&lt;</em> (小なり)</td>
+       <td><em>&amp;lt;</em></td>
+      </tr>
+
+      <tr>
+       <td><em>&gt;</em> (大なり)</td>
+       <td><em>&amp;gt;</em></td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
   </p>
  </div>
 
@@ -151,7 +167,7 @@
            <td>
             無効な符号単位シーケンスを含む文字列を渡したときに、
             空の文字列を返すのではなく Unicode の置換文字に置き換えます。
-            UTF-8 の場合は U+FFFD、それ以外の場合は &amp;#FFFD; となります。
+            UTF-8 の場合は U+FFFD、それ以外の場合は &amp;#xFFFD; となります。
            </td>
           </tr>
 
@@ -159,7 +175,7 @@
            <td><strong><code>ENT_DISALLOWED</code></strong></td>
            <td>
             指定した文書型において無効な符号位置を、Unicode の代替文字である
-            U+FFFD (UTF-8) あるいは &amp;#FFFD; で置き換えます。
+            U+FFFD (UTF-8) あるいは &amp;#xFFFD; で置き換えます。
             これを設定しなければ、無効な符号位置をそのまま残します。
             これは、外部コンテンツを埋め込んだ XML 文書を整形式に保つために有用です。
            </td>
@@ -499,7 +515,7 @@
  <div class="refsect1 examples" id="refsect1-function.htmlspecialchars-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5398">
+   <div class="example" id="example-5434">
     <p><strong>例1 <span class="function"><strong>htmlspecialchars()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
