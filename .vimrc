@@ -189,7 +189,7 @@ let g:V = vital#of('vital').load(
 "保存しなくても別ファイルをオープン出来るようにする
 set hidden
 
-set noexpandtab
+set expandtab
 set t_Co=256
 set ts=4 sw=4 sts=4
 set fo+=r
