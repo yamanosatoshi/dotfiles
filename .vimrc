@@ -135,45 +135,37 @@ else
 endif
 
 
-" 封印"{{{
+" Color Schemes
+"{{{
 
 "" カラースキーム一覧表示に Unite.vim を使う
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
-"
-"" solarized カラースキーム
+
+"NeoBundle 'freeo/vim-kalisi'
 "NeoBundle 'altercation/vim-colors-solarized'
-"" mustang カラースキーム
 "NeoBundle 'croaker/mustang-vim'
-"" wombat カラースキーム
-"NeoBundle 'jeffreyiacono/vim-colors-wombat'
-"" jellybeans カラースキーム
 "NeoBundle 'nanotech/jellybeans.vim'
-"" lucius カラースキーム
 "NeoBundle 'vim-scripts/Lucius'
-"" zenburn カラースキーム
 "NeoBundle 'vim-scripts/Zenburn'
-"" mrkn256 カラースキーム
 "NeoBundle 'mrkn/mrkn256.vim'
 "NeoBundle 'sickill/vim-monokai'
+"NeoBundle 'tomasr/molokai'
 "NeoBundle 'daylerees/colour-schemes'
-
-"NeoBundle 'w0ng/vim-hybrid'
 "NeoBundle 'chriskempson/vim-tomorrow-theme'
-
-"" railscasts カラースキーム
-"" NeoBundle 'jpo/vim-railscasts-theme' // ruby 以外が見難くなった。。
-"NeoBundle 'jgdavey/vim-railscasts'
-"
-"" pyte カラースキーム
 "NeoBundle 'therubymug/vim-pyte'
-"" molokai カラースキーム
-"NeoBundle 'tomasr/molokai'"}}}
+"
+NeoBundle 'w0ng/vim-hybrid'
+"NeoBundle 'jgdavey/vim-railscasts'
+"NeoBundle 'Haron-Prime/Antares'
+"NeoBundle 'cocopon/iceberg.vim'
+"NeoBundle 'jeffreyiacono/vim-colors-wombat'
 
+""}}}
 
 call neobundle#end()
 
-" }}} neoBundle
+"}}} neoBundle
 
 " vital.vim"{{{
 let g:V = vital#of('vital').load(
@@ -210,6 +202,8 @@ set shortmess+=I
 set nrformats=
 set nobackup
 syn on
+set visualbell
+set noerrorbells
 
 if has('gui') && IsWindows()
   gui
@@ -688,7 +682,8 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "a'", 
 
 
 if has('gui') && IsWindows()
-	colorscheme railscasts
+	colorscheme hybrid
+    set bg=dark
 else
 	colorscheme wombat256
 endif
