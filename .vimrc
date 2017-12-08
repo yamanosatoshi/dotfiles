@@ -75,7 +75,7 @@ set runtimepath+=$HOME/.vim/after
 set runtimepath+=$HOME/.vim/bundle/vital.vim
 "}}}
 
-" neoBundle {{{
+" NeoBundle {{{
 
 "デバッグよう
 "let g:neobundle#log_filename = $HOME . "/neobundle.log"
@@ -119,6 +119,7 @@ NeoBundle 'gcmt/wildfire.vim'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'haya14busa/vim-migemo'
+NeoBundle 'editorconfig/editorconfig-vim'
 "NeoBundle 'wakatime/vim-wakatime'
 
 " neocon
@@ -135,8 +136,7 @@ else
 endif
 
 
-" Color Schemes
-"{{{
+" Color Schemes "{{{
 
 "" カラースキーム一覧表示に Unite.vim を使う
 NeoBundle 'Shougo/unite.vim'
@@ -149,17 +149,21 @@ NeoBundle 'ujihisa/unite-colorscheme'
 "NeoBundle 'vim-scripts/Lucius'
 "NeoBundle 'vim-scripts/Zenburn'
 "NeoBundle 'mrkn/mrkn256.vim'
-"NeoBundle 'sickill/vim-monokai'
 "NeoBundle 'tomasr/molokai'
 "NeoBundle 'daylerees/colour-schemes'
 "NeoBundle 'chriskempson/vim-tomorrow-theme'
 "NeoBundle 'therubymug/vim-pyte'
-"
+NeoBundle 'Haron-Prime/Antares'
+NeoBundle 'jeffreyiacono/vim-colors-wombat'
+NeoBundle 'sickill/vim-monokai'
+NeoBundle 'google/vim-colorscheme-primary'
+NeoBundle 'sjl/badwolf'
+NeoBundle 'cocopon/iceberg.vim'
+NeoBundle 'jgdavey/vim-railscasts'
+NeoBundle 'pasela/edark.vim'
 NeoBundle 'w0ng/vim-hybrid'
-"NeoBundle 'jgdavey/vim-railscasts'
-"NeoBundle 'Haron-Prime/Antares'
-"NeoBundle 'cocopon/iceberg.vim'
-"NeoBundle 'jeffreyiacono/vim-colors-wombat'
+
+
 
 ""}}}
 
