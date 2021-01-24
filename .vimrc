@@ -136,7 +136,7 @@ endif
 
 "}}}
 
-" NeoBundle {{{
+" NeoBundle (やがて消す) {{{
 
 "デバッグよう
 "let g:neobundle#log_filename = $HOME . "/neobundle.log"
@@ -311,11 +311,11 @@ set whichwrap=b,s,h,l,<,> ",[,] 行末はやめとく
 
 " display
 if has('gui') && IsWindows()
-	set columns=180
-	set lines=90
-	set linespace=1
-	winpos 100 100
-	set display=lastline
+    set columns=180
+    set lines=90
+    set linespace=1
+    winpos 100 100
+    set display=lastline
 endif
 
 
@@ -379,9 +379,9 @@ endif
 " カーソル行をハイライト
 set cursorline
 augroup cch
-	autocmd! cch
-	autocmd WinLeave * set nocursorline
-	autocmd WinEnter,BufRead * set cursorline
+    autocmd! cch
+    autocmd WinLeave * set nocursorline
+    autocmd WinEnter,BufRead * set cursorline
 augroup END
 
 
@@ -396,7 +396,7 @@ augroup END
 " GUI時複数起動禁止"{{{
 if v:servername == 'GVIM1' || v:servername == 'GVIM2'
     let file = expand('%:p')
-	bwipeout
+    bwipeout
     call remote_send('GVIM', '<ESC>:tabnew ' .escape(file, "%") .'<CR>')
     call remote_foreground('GVIM')
     quit
@@ -468,7 +468,7 @@ endif
 " statusline settings"{{{
 set laststatus=2
 if has('gui') && IsWindows()
-	set showtabline=2
+    set showtabline=2
 endif
 
 set statusline=%<%f\ %m%r%h%w\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%l,%c][%p%%]\ [LEN=%L]\ %{'['.(&fenc!=''?&fenc:&enc)}:%{&ff}]\ [%Y]%=%V%8P
@@ -477,14 +477,14 @@ set statusline=%<%f\ %m%r%h%w\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%l,%c][%p%%]
 set dir=~/
 
 if has("autocmd")
-	autocmd BufNewFile,Bufread *.php,*.php3,*.php4 set keywordprg="help"
+    autocmd BufNewFile,Bufread *.php,*.php3,*.php4 set keywordprg="help"
 endif
 
 
 " VDsplit windowsの%入りパス対応版
 command! -nargs=1 -complete=file VDS call <SID>EscVDsplit('<args>')
 function! s:EscVDsplit(file)
-	execute "vertical diffsplit " . escape(a:file, "%")
+    execute "vertical diffsplit " . escape(a:file, "%")
 endfunction
 
 "php checker"{{{
@@ -500,7 +500,7 @@ function! FTLint(option)
   if &ft == 'html'
     let result = system( 'php -l '.a:option.' ' . bufname(""))
   else
-	let result = system( &ft . ' -l '.a:option.' ' . bufname(""))
+    let result = system( &ft . ' -l '.a:option.' ' . bufname(""))
   endif
   echo result
 endfunction
@@ -611,37 +611,37 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 "neocomplcache"{{{
 
 if s:has_lua()
-	let g:neocomplete#enable_at_startup = 1
-	let g:neocomplete#max_list = 20
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#max_list = 20
 
-	" Use smartcase.
-	let g:neocomplete#enable_smart_case = 1
-	" Use camel case completion.
-	let g:neocomplete#enable_camel_case_completion = 0
-	" Use underbar completion.
-	let g:neocomplete#enable_underbar_completion = 0
-	" Set minimum syntax keyword length.
-	let g:neocomplete#min_syntax_length = 3
-	" Set manual completion length.
-	let g:neocomplete#auto_completion_start_length = 2
+    " Use smartcase.
+    let g:neocomplete#enable_smart_case = 1
+    " Use camel case completion.
+    let g:neocomplete#enable_camel_case_completion = 0
+    " Use underbar completion.
+    let g:neocomplete#enable_underbar_completion = 0
+    " Set minimum syntax keyword length.
+    let g:neocomplete#min_syntax_length = 3
+    " Set manual completion length.
+    let g:neocomplete#auto_completion_start_length = 2
 
-	let g:neocomplete#snippets_dir = $HOME.'/.vim/dict/funclist.txt'
+    let g:neocomplete#snippets_dir = $HOME.'/.vim/dict/funclist.txt'
 else
-	let g:neocomplcache_enable_at_startup = 1
-	let g:neocomplcache_max_list = 20
+    let g:neocomplcache_enable_at_startup = 1
+    let g:neocomplcache_max_list = 20
 
-	" Use smartcase.
-	let g:neocomplcache_enable_smart_case = 1
-	" Use camel case completion.
-	let g:neocomplcache_enable_camel_case_completion = 0
-	" Use underbar completion.
-	let g:neocomplcache_enable_underbar_completion = 0
-	" Set minimum syntax keyword length.
-	let g:neocomplcache_min_syntax_length = 3
-	" Set manual completion length.
-	let g:neocomplcache_auto_completion_start_length = 2
+    " Use smartcase.
+    let g:neocomplcache_enable_smart_case = 1
+    " Use camel case completion.
+    let g:neocomplcache_enable_camel_case_completion = 0
+    " Use underbar completion.
+    let g:neocomplcache_enable_underbar_completion = 0
+    " Set minimum syntax keyword length.
+    let g:neocomplcache_min_syntax_length = 3
+    " Set manual completion length.
+    let g:neocomplcache_auto_completion_start_length = 2
 
-	let g:neocomplcache_snippets_dir = $HOME.'/.vim/dict/funclist.txt'
+    let g:neocomplcache_snippets_dir = $HOME.'/.vim/dict/funclist.txt'
 endif
 
 "}}}
@@ -732,11 +732,24 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "a'", 
 "}}}
 
 
+" Color scheme{{{
 
 if has('gui') && IsWindows()
-	colorscheme hybrid
+    colorscheme hybrid
     set bg=dark
 else
-	colorscheme hybrid
+    colorscheme hybrid
     set bg=dark
 endif
+
+augroup TransparentBG
+    autocmd!
+    autocmd Colorscheme * highlight Normal ctermbg=none
+    autocmd Colorscheme * highlight NonText ctermbg=none
+    autocmd Colorscheme * highlight LineNr ctermbg=none
+    autocmd Colorscheme * highlight Folded ctermbg=none
+    autocmd Colorscheme * highlight EndOfBuffer ctermbg=none 
+augroup END
+"}}}
+
+
