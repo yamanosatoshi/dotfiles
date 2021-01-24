@@ -75,144 +75,148 @@ set runtimepath+=$HOME/.vim/after
 set runtimepath+=$HOME/.vim/bundle/vital.vim
 "}}}
 
-if isdirectory( expand('~/.cache/dein')  )
 
-    " dein{{{
+" dein{{{
 
-    if &compatible
-        set nocompatible               " Be iMproved
-    endif
-    set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-   " Required:
-    if dein#load_state('~/.cache/dein')
-        call dein#begin('~/.cache/dein')
+"dein.vim dark power
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-       " Let dein manage dein
-       " Required:
-        call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-
-       " Add or remove your plugins here:
-                call dein#load_toml(expand('~/.vim/dein.plugins.toml'),       {'lazy': 0} ) "  main 
-       " call dein#load_toml(expand('~/.vim/dein.plugins.colors.toml'),{'lazy': 0} ) " colorscheme
-       " call dein#load_toml(expand('~/.vim/dein.plugins-lazy.toml'),  {'lazy': 1} ) " others for lazy 
-
-       " You can specify revision/branch/tag.
-        call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-
-       " Required:
-        call dein#end()
-        call dein#save_state()
-    endif
-
-   " Required:
-    filetype plugin indent on
-    syntax enable
-
-   " If you want to install not installed plugins on startup.
-    if dein#check_install()
-      call dein#install()
-    endif"}}}
-
-else
-
-    " NeoBundle {{{
-    
-    "デバッグよう
-    "let g:neobundle#log_filename = $HOME . "/neobundle.log"
-    
-    set nocompatible
-    filetype off
-    if has('vim_starting')
-      set runtimepath+=~/.vim/bundle/neobundle.vim/
-    endif
-    call neobundle#begin(expand('~/.vim/bundle/'))
-    
-    filetype plugin indent on
-    
-    " Installation check.
-    if neobundle#exists_not_installed_bundles()
-      echomsg 'Not installed bundles : ' .
-            \ string(neobundle#get_not_installed_bundle_names())
-      echomsg 'Please execute ":NeoBundleInstall" command.'
-      "finish
-    endif
-    
-    "
-    "プラグインをNeoBundle
-    "
-    NeoBundle 'vim-jp/vital.vim'
-    NeoBundle 'gmarik/vundle'
-    NeoBundle 'scrooloose/nerdcommenter'
-    "NeoBundle 'thinca/vim-quickrun'
-    NeoBundle 'thinca/vim-ref'
-    "NeoBundle 'kana/vim-fakeclip'
-    NeoBundle 'mattn/emmet-vim'
-    NeoBundle 'scrooloose/nerdtree'
-    "NeoBundle 'vim-scripts/The-NERD-tree'
-    "NeoBundle 'yanktmp.vim'
-    NeoBundle 'vim-scripts/YankRing.vim'
-    NeoBundle 'mbbill/undotree'
-    NeoBundle 'kana/vim-textobj-user'
-    NeoBundle 'h1mesuke/textobj-wiw'
-    NeoBundle 'tpope/vim-surround'
-    NeoBundle 'gcmt/wildfire.vim'
-    NeoBundle 'chriskempson/base16-vim'
-    NeoBundle 'othree/html5.vim'
-    NeoBundle 'haya14busa/vim-migemo'
-    NeoBundle 'editorconfig/editorconfig-vim'
-    "NeoBundle 'wakatime/vim-wakatime'
-    
-    " neocon
-    function! s:meet_neocomplete_requirements()
-    	return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-    endfunction
-    
-    if s:meet_neocomplete_requirements()
-    	NeoBundle 'Shougo/neocomplete.vim'
-    	NeoBundleFetch 'Shougo/neocomplcache.vim'
-    else
-    	NeoBundleFetch 'Shougo/neocomplete.vim'
-    	NeoBundle 'Shougo/neocomplcache.vim'
-    endif
-    
-    
-    " Color Schemes "{{{
-    
-    "" カラースキーム一覧表示に Unite.vim を使う
-    NeoBundle 'Shougo/unite.vim'
-    NeoBundle 'ujihisa/unite-colorscheme'
-    
-    "NeoBundle 'freeo/vim-kalisi'
-    "NeoBundle 'altercation/vim-colors-solarized'
-    "NeoBundle 'croaker/mustang-vim'
-    "NeoBundle 'nanotech/jellybeans.vim'
-    "NeoBundle 'vim-scripts/Lucius'
-    "NeoBundle 'vim-scripts/Zenburn'
-    "NeoBundle 'mrkn/mrkn256.vim'
-    "NeoBundle 'tomasr/molokai'
-    "NeoBundle 'daylerees/colour-schemes'
-    "NeoBundle 'chriskempson/vim-tomorrow-theme'
-    "NeoBundle 'therubymug/vim-pyte'
-    NeoBundle 'Haron-Prime/Antares'
-    NeoBundle 'jeffreyiacono/vim-colors-wombat'
-    NeoBundle 'sickill/vim-monokai'
-    NeoBundle 'google/vim-colorscheme-primary'
-    NeoBundle 'sjl/badwolf'
-    NeoBundle 'cocopon/iceberg.vim'
-    NeoBundle 'jgdavey/vim-railscasts'
-    NeoBundle 'pasela/edark.vim'
-    NeoBundle 'w0ng/vim-hybrid'
-    
-    
-    
-    ""}}}
-    
-    call neobundle#end()
-    
-    "}}} neoBundle
-
+if &compatible
+    set nocompatible               " Be iMproved
 endif
+" dein.vim をインストールしていない場合は自動インストール
+if !isdirectory(s:dein_repo_dir)
+  echo "install dein.vim..."
+  execute '!git clone git://github.com/Shougo/dein.vim' s:dein_repo_dir
+endif
+execute 'set runtimepath^=' . s:dein_repo_dir
+
+"---------------------------
+" Start dein.vim Settings.
+"---------------------------
+
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+    let g:rc_dir    = expand('~/.cache/dein')
+
+
+    " TOMLファイルにpluginを記述
+    call dein#load_toml(expand('~/.vim/dein.plugins.toml'),       {'lazy': 0} ) "  main 
+    call dein#load_toml(expand('~/.vim/dein.plugins.colors.toml'),{'lazy': 0} ) " colorscheme
+    call dein#load_toml(expand('~/.vim/dein.plugins-lazy.toml'),  {'lazy': 1} ) " others for lazy 
+
+   " You can specify revision/branch/tag.
+    call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+    call dein#end()
+    call dein#save_state()
+endif
+
+" 未インストールを確認
+if dein#check_install()
+  call dein#install()
+endif
+
+"}}}
+
+" NeoBundle {{{
+
+"デバッグよう
+"let g:neobundle#log_filename = $HOME . "/neobundle.log"
+
+"set nocompatible
+"filetype off
+"if has('vim_starting')
+"  set runtimepath+=~/.vim/bundle/neobundle.vim/
+"endif
+"call neobundle#begin(expand('~/.vim/bundle/'))
+"
+"
+"" Installation check.
+"if neobundle#exists_not_installed_bundles()
+"  echomsg 'Not installed bundles : ' .
+"        \ string(neobundle#get_not_installed_bundle_names())
+"  echomsg 'Please execute ":NeoBundleInstall" command.'
+"  "finish
+"endif
+
+"
+"プラグインをNeoBundle
+"
+"NeoBundle 'vim-jp/vital.vim'
+"NeoBundle 'gmarik/vundle'
+"NeoBundle 'scrooloose/nerdcommenter'
+""NeoBundle 'thinca/vim-quickrun'
+"NeoBundle 'thinca/vim-ref'
+""NeoBundle 'kana/vim-fakeclip'
+"NeoBundle 'mattn/emmet-vim'
+""NeoBundle 'scrooloose/nerdtree' " from dein
+""NeoBundle 'vim-scripts/The-NERD-tree'
+""NeoBundle 'yanktmp.vim'
+"NeoBundle 'vim-scripts/YankRing.vim'
+"NeoBundle 'mbbill/undotree'
+"NeoBundle 'kana/vim-textobj-user'
+"NeoBundle 'h1mesuke/textobj-wiw'
+"NeoBundle 'tpope/vim-surround'
+"NeoBundle 'gcmt/wildfire.vim'
+"NeoBundle 'chriskempson/base16-vim'
+"NeoBundle 'othree/html5.vim'
+"NeoBundle 'haya14busa/vim-migemo'
+"NeoBundle 'editorconfig/editorconfig-vim'
+""NeoBundle 'wakatime/vim-wakatime'
+
+" neocon
+function! s:meet_neocomplete_requirements()
+    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+endfunction
+
+"if s:meet_neocomplete_requirements()
+    "NeoBundle 'Shougo/neocomplete.vim'
+    "NeoBundleFetch 'Shougo/neocomplcache.vim'
+"else
+    "NeoBundleFetch 'Shougo/neocomplete.vim'
+    "NeoBundle 'Shougo/neocomplcache.vim'
+"endif
+
+
+" Color Schemes "{{{
+
+"" カラースキーム一覧表示に Unite.vim を使う
+"NeoBundle 'Shougo/unite.vim'
+"NeoBundle 'ujihisa/unite-colorscheme'
+"
+""NeoBundle 'freeo/vim-kalisi'
+""NeoBundle 'altercation/vim-colors-solarized'
+""NeoBundle 'croaker/mustang-vim'
+""NeoBundle 'nanotech/jellybeans.vim'
+""NeoBundle 'vim-scripts/Lucius'
+""NeoBundle 'vim-scripts/Zenburn'
+""NeoBundle 'mrkn/mrkn256.vim'
+""NeoBundle 'tomasr/molokai'
+""NeoBundle 'daylerees/colour-schemes'
+""NeoBundle 'chriskempson/vim-tomorrow-theme'
+""NeoBundle 'therubymug/vim-pyte'
+"NeoBundle 'Haron-Prime/Antares'
+"NeoBundle 'jeffreyiacono/vim-colors-wombat'
+"NeoBundle 'sickill/vim-monokai'
+"NeoBundle 'google/vim-colorscheme-primary'
+"NeoBundle 'sjl/badwolf'
+"NeoBundle 'cocopon/iceberg.vim'
+"NeoBundle 'jgdavey/vim-railscasts'
+"NeoBundle 'pasela/edark.vim'
+"NeoBundle 'w0ng/vim-hybrid'
+
+
+
+""}}}
+
+"call neobundle#end()
+
+"}}} neoBundle
+
 
 " vital.vim"{{{
 let g:V = vital#of('vital').load(
@@ -362,8 +366,9 @@ function! JISX0208SpaceHilight()
 endf
 " syntaxの有無をチェックし、新規バッファと新規読み込み時にハイライトさせる
 if has("syntax")
-    syntax on
-        augroup invisible
+    filetype plugin indent on
+    syntax enable
+    augroup invisible
         autocmd! invisible
         autocmd BufNew,BufRead * call SOLSpaceHilight()
         autocmd BufNew,BufRead * call JISX0208SpaceHilight()
@@ -599,7 +604,6 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 " }}} Autocompletion using the TAB key
 
-if ! isdirectory( expand('~/.cache/dein')  )
 
 " Plugin Settings"{{{
 
@@ -728,12 +732,12 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "a'", 
 
 "}}}
 
-endif
 
 
 if has('gui') && IsWindows()
 	colorscheme hybrid
     set bg=dark
 else
-	colorscheme wombat256
+	colorscheme hybrid
+    set bg=dark
 endif
