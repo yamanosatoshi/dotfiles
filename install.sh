@@ -6,7 +6,7 @@ rm -rf ~/.vim/
 
 #link new setting
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
-ln -sf ~/dotfiles/.vim/ ~/.vim/
+ln -sf ~/dotfiles/.vim ~/.vim
 
 #install basic plubins
 mkdir -p ~/.vim/bundle

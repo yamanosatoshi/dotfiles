@@ -97,6 +97,12 @@ execute 'set runtimepath^=' . s:dein_repo_dir
 " Start dein.vim Settings.
 "---------------------------
 
+
+" neocon
+function! s:has_lua()
+    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+endfunction
+
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
@@ -104,16 +110,24 @@ if dein#load_state(s:dein_dir)
 
 
     " TOMLファイルにpluginを記述
-    call dein#load_toml(expand('~/.vim/dein.plugins.toml'),       {'lazy': 0} ) "  main 
+    call dein#load_toml(expand('~/.vim/dein.plugins.toml'),       {'lazy': 0} ) " main
     call dein#load_toml(expand('~/.vim/dein.plugins.colors.toml'),{'lazy': 0} ) " colorscheme
-    call dein#load_toml(expand('~/.vim/dein.plugins-lazy.toml'),  {'lazy': 1} ) " others for lazy 
+    call dein#load_toml(expand('~/.vim/dein.plugins-lazy.toml'),  {'lazy': 1} ) " others for lazy
 
    " You can specify revision/branch/tag.
     call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
+    if s:has_lua()
+        call dein#add('Shougo/neocomplete', {'lazy': 0})
+    else
+        call dein#add('Shougo/neocomplcache.vim', {'lazy': 0})
+    endif
+
     call dein#end()
     call dein#save_state()
 endif
+
+
 
 " 未インストールを確認
 if dein#check_install()
@@ -168,18 +182,6 @@ endif
 "NeoBundle 'editorconfig/editorconfig-vim'
 ""NeoBundle 'wakatime/vim-wakatime'
 
-" neocon
-function! s:meet_neocomplete_requirements()
-    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-endfunction
-
-"if s:meet_neocomplete_requirements()
-    "NeoBundle 'Shougo/neocomplete.vim'
-    "NeoBundleFetch 'Shougo/neocomplcache.vim'
-"else
-    "NeoBundleFetch 'Shougo/neocomplete.vim'
-    "NeoBundle 'Shougo/neocomplcache.vim'
-"endif
 
 
 " Color Schemes "{{{
@@ -216,7 +218,6 @@ endfunction
 "call neobundle#end()
 
 "}}} neoBundle
-
 
 " vital.vim"{{{
 let g:V = vital#of('vital').load(
@@ -486,7 +487,6 @@ function! s:EscVDsplit(file)
 	execute "vertical diffsplit " . escape(a:file, "%")
 endfunction
 
-
 "php checker"{{{
 set makeprg=php\ -l\ %
 set errorformat=%m\ in\ %f\ on\ line\ %l
@@ -610,7 +610,7 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 "neocomplcache"{{{
 
-if s:meet_neocomplete_requirements()
+if s:has_lua()
 	let g:neocomplete#enable_at_startup = 1
 	let g:neocomplete#max_list = 20
 
@@ -649,7 +649,6 @@ endif
 "emmet-vim"{{{
 let g:user_emmet_leader_key = '<C-E>'
 "}}}
-
 
 "NERDTree"{{{
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
