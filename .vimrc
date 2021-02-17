@@ -295,6 +295,8 @@ set foldmarker={{{,}}}
 " コマンド実行中は再描画しない
 set lazyredraw
 
+set redrawtime=4000
+
 " 高速ターミナル接続を行う
 set ttyfast
 
