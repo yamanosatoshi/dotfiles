@@ -395,6 +395,14 @@ augroup END
 
 "}}}
 
+" WSLクリップボード共有{{{
+if system('uname -a | grep Microsoft') != ''
+    augroup myYank
+        autocmd!
+        autocmd TextYankPost * :call system('clip.exe', @")
+    augroup END
+endif"}}}
+
 " GUI時複数起動禁止"{{{
 if v:servername == 'GVIM1' || v:servername == 'GVIM2'
     let file = expand('%:p')
@@ -465,7 +473,6 @@ if has('migemo')
   nnoremap / g/
 endif
 "}}}
-
 
 " statusline settings"{{{
 set laststatus=2
@@ -732,7 +739,6 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "a'", 
 "}}}
 
 "}}}
-
 
 " Color scheme{{{
 
