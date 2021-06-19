@@ -344,6 +344,7 @@ else
 endif
 
 set undodir=$HOME/.vim/undo
+set undofile
 
 set helplang=ja,en
 
