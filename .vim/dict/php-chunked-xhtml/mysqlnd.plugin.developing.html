@@ -3,20 +3,33 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>mysqlndプラグインの開発をはじめよう</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqlnd.plugin.api.html">mysqlnd のプラグインAPI</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="book.mysqlnd-ms.html">mysqlnd_ms</a></div>
- <div class="up"><a href="mysqlnd.plugin.html">MySQL Native Driver プラグインAPI</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqlnd.plugin.developing" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd.plugin.api.html">« mysqlnd のプラグインAPI</a></li>
+      <li style="float: right;"><a href="book.oci8.html">OCI8 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mysqlnd.plugin.html">MySQL Native Driver プラグインAPI</a></li>
+    <li>mysqlndプラグインの開発をはじめよう</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd.plugin.developing" class="section">
   <h2 class="title">mysqlndプラグインの開発をはじめよう</h2>
   <p class="para">
-   <em>mysqlnd</em>プラグイン それ自体が PHPエクステンション であることを覚えておくことが重要です。
+   <code class="literal">mysqlnd</code>プラグイン それ自体が PHPエクステンション であることを覚えておくことが重要です。
   </p>
   <p class="para">
-   次のコードは、典型的な <em>mysqlnd</em> プラグインで使われる MINIT 関数の基本構造を示します。
+   次のコードは、典型的な <code class="literal">mysqlnd</code> プラグインで使われる MINIT 関数の基本構造を示します。
   </p>
 <div class="example-contents">
 <div class="cdata"><pre>
@@ -98,7 +111,7 @@ mysqlnd_plugin_set_conn_proxy(new proxy());
       </li>
       <li class="listitem">
        <p class="para">
-        また、ユーザースペースのコールバックが登録されていない場合は、<em>mysqlnd</em> のメソッドを呼び出す。
+        また、ユーザースペースのコールバックが登録されていない場合は、<code class="literal">mysqlnd</code> のメソッドを呼び出す。
        </p>
       </li>
      </ol>
@@ -126,13 +139,13 @@ mysqlnd_plugin_set_conn_proxy(new proxy());
    </li>
   </ol>
   <p class="para">
-   ユーザースペースのオブジェクトメソッドは、<em>call_user_function()</em> を使うか、<em>zend_call_method()</em> を使って Zend Engine に近いレベルで操作を行うことができます。
+   ユーザースペースのオブジェクトメソッドは、<code class="literal">call_user_function()</code> を使うか、<code class="literal">zend_call_method()</code> を使って Zend Engine に近いレベルで操作を行うことができます。
   </p>
   <p class="para">
    <em class="emphasis"> 最適化: C言語から zend_call_method を使ってメソッドを呼び出す</em>
   </p>
   <p class="para">
-   次に示すコードの断片は、<em>zend_call_method</em> のプロトタイプを示しています。これは <var class="filename">zend_interface.h</var> からとってきたものです。
+   次に示すコードの断片は、<code class="literal">zend_call_method</code> のプロトタイプを示しています。これは <var class="filename">zend_interface.h</var> からとってきたものです。
   </p>
 <div class="example-contents">
 <div class="cdata"><pre>
@@ -161,7 +174,7 @@ mysqlnd_plugin_set_conn_proxy(new proxy());
 </div>
 
   <p class="para">
-   この問題に対処するには、<em>zend_call_method()</em> のコピーを作り、追加の引数の入れ物を追加する必要があるでしょう。これは、<em>MY_ZEND_CALL_METHOD_WRAPPER</em> マクロの組を作ることで実現できます。
+   この問題に対処するには、<code class="literal">zend_call_method()</code> のコピーを作り、追加の引数の入れ物を追加する必要があるでしょう。これは、<code class="literal">MY_ZEND_CALL_METHOD_WRAPPER</code> マクロの組を作ることで実現できます。
   </p>
   <p class="para">
    <em class="emphasis">PHP のユーザースペースを呼び出す</em>
@@ -241,10 +254,10 @@ MYSQLND_METHOD(my_conn_class, connect)(
 </div>
 
   <p class="para">
-   多くの <em>mysqlnd</em> のメソッドがはじめに引数としてとるのが C の &quot;object&quot; です。たとえば、 connect() メソッドのはじめの引数は <em>MYSQLND</em>構造体 へのポインタです。MYSQNND構造体 は、<em>mysqlnd</em> 接続オブジェクトを表現します。
+   多くの <code class="literal">mysqlnd</code> のメソッドがはじめに引数としてとるのが C の &quot;object&quot; です。たとえば、 connect() メソッドのはじめの引数は <code class="literal">MYSQLND</code>構造体 へのポインタです。MYSQNND構造体 は、<code class="literal">mysqlnd</code> 接続オブジェクトを表現します。
   </p>
   <p class="para">
-   <em>mysqlnd</em>接続オブジェクトへのポインタは、標準のI/Oファイルハンドルと比較できます。標準の I/Oファイルハンドルのように <em>mysqlnd</em>接続オブジェクトは PHP のリソース変数タイプを使ってユーザースペースに結びついていなければならないのです。
+   <code class="literal">mysqlnd</code>接続オブジェクトへのポインタは、標準のI/Oファイルハンドルと比較できます。標準の I/Oファイルハンドルのように <code class="literal">mysqlnd</code>接続オブジェクトは PHP のリソース変数タイプを使ってユーザースペースに結びついていなければならないのです。
   </p>
   <p class="para">
    <em class="emphasis">C言語とユーザースペースを行き来する</em>
@@ -303,9 +316,4 @@ mysqlnd_plugin_set_conn_proxy(new proxy());
 </pre></div>
 </div>
 
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqlnd.plugin.api.html">mysqlnd のプラグインAPI</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="book.mysqlnd-ms.html">mysqlnd_ms</a></div>
- <div class="up"><a href="mysqlnd.plugin.html">MySQL Native Driver プラグインAPI</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

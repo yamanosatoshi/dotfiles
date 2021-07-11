@@ -3,44 +3,51 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>SOAP 関数をコールする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="soapclient.setsoapheaders.html">SoapClient::__setSoapHeaders</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="soapclient.soapclient.html">SoapClient::SoapClient</a></div>
- <div class="up"><a href="class.soapclient.html">SoapClient</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="soapclient.soapcall" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="soapclient.setsoapheaders.html">« SoapClient::__setSoapHeaders</a></li>
+      <li style="float: right;"><a href="class.soapserver.html">SoapServer »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.soapclient.html">SoapClient</a></li>
+    <li>SOAP 関数をコールする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="soapclient.soapcall" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">SoapClient::__soapCall</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.0.1, PHP 7)</p><p class="refpurpose"><span class="refname">SoapClient::__soapCall</span> &mdash; <span class="dc-title">SOAP 関数をコールする</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SoapClient::__soapCall</span> &mdash; <span class="dc-title">SOAP 関数をコールする</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-soapclient.soapcall-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>SoapClient::__soapCall</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
-   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$arguments</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code></span>
-   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$input_headers</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$output_headers</code></span>
-  ]]] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>SoapClient::__soapCall</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$args</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">null</span></span> <code class="parameter">$options</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type"><a href="class.soapheader.html" class="type SoapHeader">SoapHeader</a></span>|<span class="type">array</span>|<span class="type">null</span></span> <code class="parameter">$inputHeaders</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$outputHeaders</code><span class="initializer"> = <strong><code>null</code></strong></span></span><br>): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
 
   <p class="para rdfs-comment">
    本メソッドは、SOAP コールを行う低レベル API 関数です。
    通常、WSDL モードでは、SOAP 関数を <a href="class.soapclient.html" class="classname">SoapClient</a>
    のメソッドとして簡単にコールすることができます。
-   本メソッドは、<em>soapaction</em> が不明な場合や、
-   <em>uri</em> がデフォルトと異なっていたり、
+   本メソッドは、<code class="literal">soapaction</code> が不明な場合や、
+   <code class="literal">uri</code> がデフォルトと異なっていたり、
    SOAP ヘッダを送受信したい場合に、非 WSDL モードを使用する際に有用です。
   </p>
   <p class="para">
-   エラーの場合、SOAP 関数のコールは、PHP 例外または、例外が無効な場合に
+   エラーの場合に SOAP 関数を呼び出すと、PHP の例外が発生するか、例外が無効な場合には
    <a href="class.soapfault.html" class="classname">SoapFault</a> オブジェクトが返されます。
    この関数コールが失敗したかどうかを調べるには、 SoapFault
-   例外をキャッチするか、
+   例外をキャッチするか、<span class="function"><a href="function.is-soap-fault.html" class="function">is_soap_fault()</a></span> の結果を調べてください。
   </p>
  </div>
 
@@ -52,7 +59,7 @@
 
     
      <dt>
-<code class="parameter">function_name</code></dt>
+<code class="parameter">name</code></dt>
 
      <dd>
 
@@ -64,7 +71,7 @@
     
     
      <dt>
-<code class="parameter">arguments</code></dt>
+<code class="parameter">args</code></dt>
 
      <dd>
 
@@ -86,20 +93,20 @@
        クライアントに渡すオプションの連想配列。
       </p>
       <p class="para">
-       <em>location</em> はリモートウェブサービスの URL です。
+       <code class="literal">location</code> はリモートウェブサービスの URL です。
       </p>
       <p class="para">
-       <em>uri</em> は SOAP サービスのターゲット名前空間です。
+       <code class="literal">uri</code> は SOAP サービスのターゲット名前空間です。
       </p>
       <p class="para">
-        <em>soapaction</em> はコールしたいアクションです。
+        <code class="literal">soapaction</code> はコールしたいアクションです。
       </p>
     </dd>
 
     
     
      <dt>
-<code class="parameter">input_headers</code></dt>
+<code class="parameter">inputHeaders</code></dt>
 
      <dd>
 
@@ -111,7 +118,7 @@
     
     
      <dt>
-<code class="parameter">output_headers</code></dt>
+<code class="parameter">outputHeaders</code></dt>
 
      <dd>
 
@@ -131,14 +138,14 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    SOAP 関数は、一つまたは複数の値を返す可能性があります。
-   SOAP 関数によって返される値が 1 つだけの場合、<em>__soapCall</em>
+   SOAP 関数によって返される値が 1 つだけの場合、<code class="literal">__soapCall</code>
    の返す値は単純な値 (例えば、整数型、文字列など) になります。
-   複数の値が返される場合、<em>__soapCall</em>
+   複数の値が返される場合、<code class="literal">__soapCall</code>
    は出力パラメータの名前を連想配列として返します。
   </p>
   <p class="para">
-   エラーの場合は、SoapClient オブジェクトの作成時に <em>exceptions</em>
-   オプションが <strong><code>FALSE</code></strong> となっていれば SoapFault オブジェクトを返します。
+   エラーの場合は、SoapClient オブジェクトの作成時に <code class="literal">exceptions</code>
+   オプションが <strong><code>false</code></strong> となっていれば SoapFault オブジェクトを返します。
   </p>
  </div>
 
@@ -146,7 +153,7 @@
  <div class="refsect1 examples" id="refsect1-soapclient.soapcall-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-6176">
+   <div class="example" id="example-5238">
     <p><strong>例1 <span class="function"><strong>SoapClient::__soapCall()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -164,20 +171,15 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><span class="methodname"><a href="soapclient.soapclient.html" class="methodname" rel="rdfs-seeAlso">SoapClient::SoapClient()</a> - SoapClient コンストラクタ</span></li>
-    <li class="member"><span class="methodname"><a href="soapparam.soapparam.html" class="methodname" rel="rdfs-seeAlso">SoapParam::SoapParam()</a> - SoapParam コンストラクタ</span></li>
-    <li class="member"><span class="methodname"><a href="soapvar.soapvar.html" class="methodname" rel="rdfs-seeAlso">SoapVar::SoapVar()</a> - SoapVar コンストラクタ</span></li>
-    <li class="member"><span class="methodname"><a href="soapheader.soapheader.html" class="methodname" rel="rdfs-seeAlso">SoapHeader::SoapHeader()</a> - SoapHeader コンストラクタ</span></li>
-    <li class="member"><span class="methodname"><a href="soapfault.soapfault.html" class="methodname" rel="rdfs-seeAlso">SoapFault::SoapFault()</a> - SoapFault コンストラクタ</span></li>
+    <li class="member"><span class="methodname"><a href="soapclient.construct.html" class="methodname" rel="rdfs-seeAlso">SoapClient::__construct()</a> - SoapClient のコンストラクタ</span></li>
+    <li class="member"><span class="methodname"><a href="soapparam.construct.html" class="methodname" rel="rdfs-seeAlso">SoapParam::__construct()</a> - SoapParam コンストラクタ</span></li>
+    <li class="member"><span class="methodname"><a href="soapvar.construct.html" class="methodname" rel="rdfs-seeAlso">SoapVar::__construct()</a> - SoapVar コンストラクタ</span></li>
+    <li class="member"><span class="methodname"><a href="soapheader.construct.html" class="methodname" rel="rdfs-seeAlso">SoapHeader::__construct()</a> - SoapHeader コンストラクタ</span></li>
+    <li class="member"><span class="methodname"><a href="soapfault.construct.html" class="methodname" rel="rdfs-seeAlso">SoapFault::__construct()</a> - SoapFault コンストラクタ</span></li>
     <li class="member"><span class="function"><a href="function.is-soap-fault.html" class="function" rel="rdfs-seeAlso">is_soap_fault()</a> - SOAP コールが失敗したかどうかを調べる</span></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="soapclient.setsoapheaders.html">SoapClient::__setSoapHeaders</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="soapclient.soapclient.html">SoapClient::SoapClient</a></div>
- <div class="up"><a href="class.soapclient.html">SoapClient</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

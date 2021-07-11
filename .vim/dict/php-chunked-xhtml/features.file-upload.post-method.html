@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>POST メソッドによるアップロード</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.file-upload.html">ファイルアップロードの処理</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.file-upload.errors.html">エラーメッセージの説明</a></div>
- <div class="up"><a href="features.file-upload.html">ファイルアップロードの処理</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="features.file-upload.post-method" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.file-upload.html">« ファイルアップロードの処理</a></li>
+      <li style="float: right;"><a href="features.file-upload.errors.html">エラーメッセージの説明 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.file-upload.html">ファイルアップロードの処理</a></li>
+    <li>POST メソッドによるアップロード</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.file-upload.post-method" class="sect1">
    <h2 class="title">POST メソッドによるアップロード</h2>
    <p class="simpara">
     この機能により、テキスト、バイナリファイルの両方をアップロードできるように
@@ -45,7 +58,7 @@
    </p>
 
    <p class="para">
-    <div class="example" id="example-415">
+    <div class="example" id="example-399">
      <p><strong>例1 ファイルアップロード用のフォーム</strong></p>
      <div class="example-contents"><p>
       ファイルアップロード画面は、次のような特別なフォームを作成すること
@@ -64,14 +77,14 @@
      </div>
 
      <div class="example-contents"><p>
-      上の例の <em>__URL__</em> は、PHP ファイルを指すよう置換される
+      上の例の <code class="literal">__URL__</code> は、PHP ファイルを指すよう置換される
       必要があります。
      </p></div>
      <div class="example-contents"><p>
-      &quot;<em>MAX_FILE_SIZE</em>&quot; hidden フィールドは、
+      &quot;<code class="literal">MAX_FILE_SIZE</code>&quot; hidden フィールドは、
       &quot;file&quot; input フィールドの前に置く必要があります。
       この値は、PHP で取得可能なファイルの最大サイズを規定します。この値はバイト数で指定します。
-      <em>MAX_FILE_SIZE</em> は常に指定しておくべきです。
+      <code class="literal">MAX_FILE_SIZE</code> は常に指定しておくべきです。
       巨大なファイルを転送しようとして長時間待ち続け、
       結局ファイルが大きすぎて転送できなかったなどといった羽目に陥るのを防げるからです。
       注意: ブラウザ側でこの最大値を出し抜くのは簡単なことなので、この機能を信頼して、
@@ -84,13 +97,13 @@
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <p class="para">
       アップロード用のフォームが
-      <em>enctype=&quot;multipart/form-data&quot;</em> 属性を有しているかを
+      <code class="literal">enctype=&quot;multipart/form-data&quot;</code> 属性を有しているかを
       確認してください。さもないと、ファイルのアップロードは動作しません。
     </p>
    </p></blockquote>
 
    <p class="para">
-    グローバルの <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var></var> には、アップロードされたファイルの情報が含まれます。
+    グローバルの <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var> には、アップロードされたファイルの情報が含まれます。
     サンプルのフォームからの内容は次のようになります。ここでは、上の例のスクリプトで使われたように、
     アップロードファイルの名前として <em class="emphasis">userfile</em> を
     使用することを仮定していることに注意してください。
@@ -99,7 +112,7 @@
 
      
       <dt>
-<var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['name']</a></var></var></dt>
+<var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['name']</a></var></dt>
 
       <dd>
 
@@ -111,13 +124,13 @@
      
      
       <dt>
-<var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['type']</a></var></var></dt>
+<var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['type']</a></var></dt>
 
       <dd>
 
        <p class="para">
         ファイルの MIME 型。ただし、ブラウザがこの情報を提供する場合。
-        例えば、<em>&quot;image/gif&quot;</em> のようになります。
+        例えば、<code class="literal">&quot;image/gif&quot;</code> のようになります。
         この MIME 型は PHP 側ではチェックされません。そのため、
         この値は信用できません。
        </p>
@@ -126,7 +139,7 @@
      
      
       <dt>
-<var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['size']</a></var></var></dt>
+<var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['size']</a></var></dt>
 
       <dd>
 
@@ -138,7 +151,7 @@
      
      
       <dt>
-<var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['tmp_name']</a></var></var></dt>
+<var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['tmp_name']</a></var></dt>
 
       <dd>
 
@@ -151,7 +164,7 @@
      
      
       <dt>
-<var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['error']</a></var></var></dt>
+<var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['error']</a></var></dt>
 
       <dd>
 
@@ -170,12 +183,12 @@
     <var class="filename">php.ini</var> の <a href="ini.core.html#ini.upload-tmp-dir" class="link">upload_tmp_dir</a> ディレクティブで
     他の場所を指定しない限り、ファイルはサーバーにおけるデフォルトの
     テンポラリディレクトリに保存されます。サーバーのデフォルトディレクトリは、
-    PHP を実行する環境において環境変数 <span class="envar">TMPDIR</span> を設定する
+    PHP を実行する環境において環境変数 <var class="envar">TMPDIR</var> を設定する
     ことにより変更することができます。しかし、PHP スクリプトの内部から
     <span class="function"><a href="function.putenv.html" class="function">putenv()</a></span> 関数により設定しても上手くいきません。
     この環境変数は、アップロードされたファイルに他の処理を行う際にも
     同様に使用することが可能です。
-    <div class="example" id="example-416">
+    <div class="example" id="example-400">
      <p><strong>例2 ファイルのアップロードを検証する</strong></p>
      <div class="example-contents"><p>
       詳細については、<span class="function"><a href="function.is-uploaded-file.html" class="function">is_uploaded_file()</a></span>
@@ -184,7 +197,7 @@
      </p></div>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;4.1.0より前のPHPでは$FILESの代わりに$HTTP_POST_FILESを使用する必要<br />//&nbsp;があります。<br /><br /></span><span style="color: #0000BB">$uploaddir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/var/www/uploads/'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$uploadfile&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$uploaddir&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">basename</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'name'</span><span style="color: #007700">]);<br /><br />echo&nbsp;</span><span style="color: #DD0000">'&lt;pre&gt;'</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">move_uploaded_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'tmp_name'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$uploadfile</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"File&nbsp;is&nbsp;valid,&nbsp;and&nbsp;was&nbsp;successfully&nbsp;uploaded.\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Possible&nbsp;file&nbsp;upload&nbsp;attack!\n"</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">'Here&nbsp;is&nbsp;some&nbsp;more&nbsp;debugging&nbsp;info:'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">);<br /><br />print&nbsp;</span><span style="color: #DD0000">"&lt;/pre&gt;"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$uploaddir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/var/www/uploads/'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$uploadfile&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$uploaddir&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">basename</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'name'</span><span style="color: #007700">]);<br /><br />echo&nbsp;</span><span style="color: #DD0000">'&lt;pre&gt;'</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">move_uploaded_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'tmp_name'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$uploadfile</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"File&nbsp;is&nbsp;valid,&nbsp;and&nbsp;was&nbsp;successfully&nbsp;uploaded.\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Possible&nbsp;file&nbsp;upload&nbsp;attack!\n"</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">'Here&nbsp;is&nbsp;some&nbsp;more&nbsp;debugging&nbsp;info:'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">);<br /><br />print&nbsp;</span><span style="color: #DD0000">"&lt;/pre&gt;"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -195,15 +208,15 @@
     アップロードされたファイルを受け取る PHP スクリプトは、アップロード
     されたファイルを用いて何をするべきかを決めるために必要なロジックを
     全て実装する必要があります。例えば、変数
-    <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['size']</a></var></var> を使用して、小さすぎたり
+    <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['size']</a></var> を使用して、小さすぎたり
     大きすぎたりするファイルを捨てることができます。指定した型以外の
     ファイルを全て捨てるために変数
-    <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['type']</a></var></var> を用いることができますが、
+    <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['type']</a></var> を用いることができますが、
     これはあくまでいくつかのチェックの中のひとつとしてのみ実行するように
     してください。なぜなら、この値を設定するのはあくまでもクライアントであり、
     PHP 側では何もチェックしていないからです。
     また、
-    <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['error']</a></var></var> を使用することができ、
+    <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['error']</a></var> を使用することができ、
     <a href="features.file-upload.errors.html" class="link">エラーコード</a>
     に基づき、ロジックを構成することができます。
     何らかの方法により、テンポラリディレクトリからファイルを削除したり
@@ -211,15 +224,15 @@
    </p>
    <p class="simpara">
     フォームでアップロードされるファイルが選択されていない場合、PHP は
-    <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['size']</a></var></var> として 0 を返し、
-    <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['tmp_name']</a></var></var> には値を
+    <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['size']</a></var> として 0 を返し、
+    <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['userfile']['tmp_name']</a></var> には値を
     設定しません。
    </p>
    <p class="simpara">
     移動または名前の変更が行われていない場合、リクエストの終了時に
     そのファイルはテンポラリディレクトリから削除されます。
    </p>
-    <div class="example" id="example-417">
+    <div class="example" id="example-401">
      <p><strong>例3 ファイルの配列をアップロードする</strong></p>
      <div class="example-contents"><p>
       PHP はファイルについても
@@ -250,9 +263,4 @@
     ファイルアップロードのプログレスバーは、<a href="session.upload-progress.html" class="link">セッションのアップロードの進捗</a>
     で実装することができます。
    </p>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.file-upload.html">ファイルアップロードの処理</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.file-upload.errors.html">エラーメッセージの説明</a></div>
- <div class="up"><a href="features.file-upload.html">ファイルアップロードの処理</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

@@ -3,33 +3,43 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>接続を受けつけるためにポートにソケットをオープンする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.socket-connect.html">socket_connect</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.socket-create-pair.html">socket_create_pair</a></div>
- <div class="up"><a href="ref.sockets.html">ソケット 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.socket-create-listen" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.socket-connect.html">« socket_connect</a></li>
+      <li style="float: right;"><a href="function.socket-create-pair.html">socket_create_pair »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.sockets.html">ソケット 関数</a></li>
+    <li>接続を受けつけるためにポートにソケットをオープンする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.socket-create-listen" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">socket_create_listen</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">socket_create_listen</span> &mdash; <span class="dc-title">接続を受けつけるためにポートにソケットをオープンする</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">socket_create_listen</span> &mdash; <span class="dc-title">接続を受けつけるためにポートにソケットをオープンする</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.socket-create-listen-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">resource</span> <span class="methodname"><strong>socket_create_listen</strong></span>
-    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$backlog</code><span class="initializer"> = 128</span></span>
-  ] )</div>
+   <span class="methodname"><strong>socket_create_listen</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$backlog</code><span class="initializer"> = 128</span></span>): <span class="type"><span class="type"><a href="class.socket.html" class="type Socket">Socket</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>socket_create_listen()</strong></span> は、
    <strong><code>AF_INET</code></strong> 型で <em class="emphasis">すべての</em>
    ローカルインターフェイスの指定したポート上で新規接続を待ち受ける
-   新規ソケットリソースを作成します。
+   新しい <a href="class.socket.html" class="classname">Socket</a> クラスのインスタンスを作成します。
   </p>
   <p class="para">
    この関数は、新規接続のみを受け入れるソケットを作成しやすくするためのものです。
@@ -80,10 +90,40 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    <span class="function"><strong>socket_create_listen()</strong></span> は、
-   成功した場合に新規ソケットリソースを、エラー時に <strong><code>FALSE</code></strong> を返します。エラーコードは
+   成功した場合に新しい <a href="class.socket.html" class="classname">Socket</a> クラスのインスタンスを、
+   エラー時に <strong><code>false</code></strong> を返します。エラーコードは
    <span class="function"><a href="function.socket-last-error.html" class="function">socket_last_error()</a></span> で取得可能です。このコードを
    <span class="function"><a href="function.socket-strerror.html" class="function">socket_strerror()</a></span> に渡すと、エラーの詳細が文字列で取得可能です。
   </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.socket-create-listen-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       成功した場合に、この関数は
+       <a href="class.socket.html" class="classname">Socket</a> クラスのインスタンスを返すようになりました。
+       これより前のバージョンでは、リソースを返していました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
  </div>
 
 
@@ -114,9 +154,4 @@
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.socket-connect.html">socket_connect</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.socket-create-pair.html">socket_create_pair</a></div>
- <div class="up"><a href="ref.sockets.html">ソケット 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

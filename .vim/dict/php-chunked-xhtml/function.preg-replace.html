@@ -3,30 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>正規表現検索および置換を行う</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.preg-replace-callback.html">preg_replace_callback</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.preg-split.html">preg_split</a></div>
- <div class="up"><a href="ref.pcre.html">PCRE 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.preg-replace" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.preg-replace-callback.html">« preg_replace_callback</a></li>
+      <li style="float: right;"><a href="function.preg-split.html">preg_split »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pcre.html">PCRE 関数</a></li>
+    <li>正規表現検索および置換を行う</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.preg-replace" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">preg_replace</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">preg_replace</span> &mdash; <span class="dc-title">正規表現検索および置換を行う</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">preg_replace</span> &mdash; <span class="dc-title">正規表現検索および置換を行う</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.preg-replace-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>preg_replace</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$pattern</code></span>
-   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$replacement</code></span>
-   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$subject</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code><span class="initializer"> = -1</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$count</code></span>
-  ]] )</div>
+   <span class="methodname"><strong>preg_replace</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">array</span></span> <code class="parameter">$pattern</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">array</span></span> <code class="parameter">$replacement</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">array</span></span> <code class="parameter">$subject</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code><span class="initializer"> = -1</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$count</code><span class="initializer"> = <strong><code>null</code></strong></span></span><br>): <span class="type"><span class="type">string</span>|<span class="type">array</span>|<span class="type">null</span></span></div>
 
   <p class="para rdfs-comment">
    <code class="parameter">subject</code> に関して
@@ -76,38 +83,37 @@
       </p>
       <p class="para">
        <code class="parameter">replacement</code> では、
-       <em>\\<span class="replaceable">n</span></em> 形式または
-       <em>$<span class="replaceable">n</span></em>
-       形式（PHP 4.0.4 以降）で参照を指定することができます。
+       <code class="literal">\<span class="replaceable">n</span></code> 形式または
+       <code class="literal">$<span class="replaceable">n</span></code>
+       形式で参照を指定することができます。
        後者の形式の方が好ましい形式です。各参照は、<span class="replaceable">n</span>
        番目のキャプチャ用サブパターンにマッチしたテキストにより置換されます。
        <span class="replaceable">n</span> は 0 から 99 までとすることができ、
-       <em>\\0</em> または <em>$0</em> は
+       <code class="literal">\0</code> または <code class="literal">$0</code> は
        パターン全体にマッチするテキストを参照します。キャプチャ用サブパターンの番号
        については、その左括弧が左から右に（1から）カウントされます。
-       置換文字でバックスラッシュを使用する場合は、二重化する必要があります
-       (PHP の文字列 <em>&quot;\\\\&quot;</em> となります)。
+       <span class="type">string</span> に含まれるバックスラッシュリテラルは、エスケープが必須であることに注意して下さい。
       </p>
       <p class="para">
        後方参照の直後に他の数字が続くような置換 (replacement) パターンを
        使用する場合（すなわち、マッチしたパターンの直後に数字リテラルを置く
-       場合）、後方参照を行うために通常の <em>\\1</em> 表記を
-       使用することができません。例えば、<em>\\11</em>　は、
-       後方参照 <em>\\1</em> の後にリテラル
-       <em>1</em> が続くのか、後方参照 <em>\\11</em> で
+       場合）、後方参照を行うために通常の <code class="literal">\1</code> 表記を
+       使用することができません。例えば、<code class="literal">\11</code>　は、
+       後方参照 <code class="literal">\1</code> の後にリテラル
+       <code class="literal">1</code> が続くのか、後方参照 <code class="literal">\11</code> で
        その後には何も続かないのかが不明のため、
        <span class="function"><strong>preg_replace()</strong></span> を混乱させる可能性があります。
-       この場合、解決策は、<em>${1}1</em> を使用することです。
-       こうすることで、<em>1</em> はリテラルとなり、後方参照
-       <em>$1</em> を明確に作成できます。
+       この場合、解決策は、<code class="literal">${1}1</code> を使用することです。
+       こうすることで、<code class="literal">1</code> はリテラルとなり、後方参照
+       <code class="literal">$1</code> を明確に作成できます。
       </p>
       <p class="para">
-       非推奨の <em>e</em> 修飾子を使用する際に、
+       非推奨の <code class="literal">e</code> 修飾子を使用する際に、
        この関数は後方参照を置換する文字列のうちの特定の文字
-       (具体的には <em>&#039;</em>、<em>&quot;</em>、
-       <em>\</em> および NULL) をエスケープします。
+       (具体的には <code class="literal">&#039;</code>、<code class="literal">&quot;</code>、
+       <code class="literal">\</code> および NULL) をエスケープします。
        これは、後方参照をシングルクォートやダブルクォートを共用した場合
-       (たとえば <em>&#039;strlen(\&#039;$1\&#039;)+strlen(&quot;$2&quot;)&#039;</em>)
+       (たとえば <code class="literal">&#039;strlen(\&#039;$1\&#039;)+strlen(&quot;$2&quot;)&#039;</code>)
        に構文エラーが発生しないようにするためのものです。
        PHP の <a href="language.types.string.html" class="link">文字列構文</a> を意識し、
        文字列がどのように解釈されるのかを正確に知っておくようにしましょう。
@@ -141,7 +147,7 @@
       <p class="para">
        <code class="parameter">subject</code> 文字列において、各パターンによる
        置換を行う最大回数。デフォルトは
-       <em>-1</em> (制限無し)。
+       <code class="literal">-1</code> (制限無し)。
       </p>
      </dd>
 
@@ -174,7 +180,7 @@
   <p class="para">
    パターンがマッチした場合、〔置換が行われた〕新しい <code class="parameter">subject</code>
    を返します。マッチしなかった場合、<code class="parameter">subject</code>
-   をそのまま返します。エラーが発生した場合、<strong><code>NULL</code></strong> を返します。
+   をそのまま返します。エラーが発生した場合、<strong><code>null</code></strong> を返します。
   </p>
  </div>
 
@@ -182,58 +188,8 @@
  <div class="refsect1 errors" id="refsect1-function.preg-replace-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
-   PHP 5.5.0 以降で &quot;\e&quot; 修飾子を使うと、
-   <strong><code>E_DEPRECATED</code></strong> レベルのエラーが発生します。
-   PHP 7.0.0 以降では
-   <strong><code>E_WARNING</code></strong> レベルのエラーが発生し、 &quot;\e&quot; 修飾子は何の効力も持たなくなります。
-  </p>
- </div>
-
-
- <div class="refsect1 changelog" id="refsect1-function.preg-replace-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>7.0.0</td>
-       <td>
-        <em>/e</em> 修飾子をサポートしなくなりました。かわりに
-        <span class="function"><a href="function.preg-replace-callback.html" class="function">preg_replace_callback()</a></span> を使いましょう。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.5.0</td>
-       <td>
-        <em>/e</em> 修飾子が非推奨になりました。かわりに
-        <span class="function"><a href="function.preg-replace-callback.html" class="function">preg_replace_callback()</a></span> を使いましょう。
-        セキュリティ上のリスクの関する詳細は
-        <a href="reference.pcre.pattern.modifiers.html#reference.pcre.pattern.modifiers.eval" class="link">PREG_REPLACE_EVAL</a>
-        のドキュメントを参照ください。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.1.0</td>
-       <td>
-        <code class="parameter">count</code> 引数が追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
+   &quot;\e&quot; 修飾子を使うと、
+   <strong><code>E_WARNING</code></strong> レベルのエラーが発生します。
   </p>
  </div>
 
@@ -241,7 +197,7 @@
  <div class="refsect1 examples" id="refsect1-function.preg-replace-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5391">
+   <div class="example" id="example-4734">
     <p><strong>例1 数字リテラルが後に続く後方参照</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -259,7 +215,7 @@ April1,2003
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5392">
+   <div class="example" id="example-4735">
     <p><strong>例2 添字配列の使用</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -293,7 +249,7 @@ The slow black bear jumps over the lazy dog.
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5393">
+   <div class="example" id="example-4736">
     <p><strong>例3 複数値の置換</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -311,7 +267,7 @@ $startDate = 5/27/1999
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5394">
+   <div class="example" id="example-4737">
     <p><strong>例4 空白の削除</strong></p>
     <div class="example-contents"><p>
      この例は、文字列から余分な空白を取り除きます。
@@ -326,7 +282,7 @@ $startDate = 5/27/1999
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5395">
+   <div class="example" id="example-4738">
     <p><strong>例5 <code class="parameter">count</code> 引数の使用</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -378,9 +334,4 @@ xp***to
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.preg-replace-callback.html">preg_replace_callback</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.preg-split.html">preg_split</a></div>
- <div class="up"><a href="ref.pcre.html">PCRE 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>他の SAPI との違い</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.introduction.html">導入</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.commandline.options.html">オプション</a></div>
- <div class="up"><a href="features.commandline.html">コマンドラインの使用法</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="features.commandline.differences" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.commandline.introduction.html">« はじめに</a></li>
+      <li style="float: right;"><a href="features.commandline.options.html">オプション »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.commandline.html">コマンドラインの使用法</a></li>
+    <li>他の SAPI との違い</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.commandline.differences" class="section">
   <h2 class="title">他の <acronym title="Server Application Programming Interface">SAPI</acronym> との違い</h2>
   
   <p class="para">
@@ -27,15 +40,11 @@
      </p>
      <p class="para">
       デフォルトでは <acronym title="Command Line Interpreter/Interface">CLI</acronym> は静寂モードで起動されます。古い <acronym title="Common Gateway Interface">CGI</acronym> スクリプトと互換性を
-      保って使えるように <strong class="option unknown">-q</strong>
- および <strong class="option unknown">--no-header</strong>
- スイッチが残されています。
+      保って使えるように <strong class="option unknown">-q</strong> および <strong class="option unknown">--no-header</strong> スイッチが残されています。
      </p>
      <p class="para">
       作業ディレクトリをスクリプトの場所に変更しません
-      (<strong class="option unknown">-C</strong>
- および <strong class="option unknown">--no-chdir</strong>
- スイッチは
+      (<strong class="option unknown">-C</strong> および <strong class="option unknown">--no-chdir</strong> スイッチは
       互換性のために残されています)。
      </p>
      <p class="para">
@@ -65,17 +74,17 @@
         <tbody class="tbody">
          <tr>
           <td><a href="errorfunc.configuration.html#ini.html-errors" class="link">html_errors</a></td>
-          <td><strong><code>FALSE</code></strong></td>
+          <td><strong><code>false</code></strong></td>
           <td>
            エラーメッセージに含まれる <acronym title="Hyper Text Markup Language">HTML</acronym> タグは
            シェル上では意味がなく、可読性をかなり低下させるため、この
-           ディレクティブはデフォルトで <strong><code>FALSE</code></strong> となっています。
+           ディレクティブはデフォルトで <strong><code>false</code></strong> となっています。
           </td>
          </tr>
 
          <tr>
           <td><a href="outcontrol.configuration.html#ini.implicit-flush" class="link">implicit_flush</a></td>
-          <td><strong><code>TRUE</code></strong></td>
+          <td><strong><code>true</code></strong></td>
           <td>
            <span class="function"><a href="function.print.html" class="function">print</a></span>, <span class="function"><a href="function.echo.html" class="function">echo</a></span> および
            関連するものによる全ての出力は、直ちに出力され、バッファに
@@ -100,30 +109,30 @@
 
          <tr>
           <td><a href="ini.core.html#ini.register-argc-argv" class="link">register_argc_argv</a></td>
-          <td><strong><code>TRUE</code></strong></td>
+          <td><strong><code>true</code></strong></td>
           <td>
           <p class="para">
-           この設定が <strong><code>TRUE</code></strong> なので、<acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> では常に
+           この設定が <strong><code>true</code></strong> なので、<acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> では常に
            <em class="emphasis">argc</em> (アプリケーションに渡した引数の数)
            および <em class="emphasis">argv</em> (実際の引数の配列)
            を使うことができます。
           </p>
           <p class="para">
            <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> を使用するときに
-           PHP の <var class="varname"><var class="varname"><a href="reserved.variables.argc.html" class="classname">$argc</a></var></var> 変数と
-           <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var></var> 変数が登録され、適切な値がセットされます。
-           あるいは <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var> や
-           <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['argv']</a></var></var> を使うこともできます。
+           PHP の <var class="varname"><a href="reserved.variables.argc.html" class="classname">$argc</a></var> 変数と
+           <var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var> 変数が登録され、適切な値がセットされます。
+           あるいは <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var> や
+           <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['argv']</a></var> を使うこともできます。
           </p>
           </td>
          </tr>
 
          <tr>
           <td><a href="outcontrol.configuration.html#ini.output-buffering" class="link">output_buffering</a></td>
-          <td><strong><code>FALSE</code></strong></td>
+          <td><strong><code>false</code></strong></td>
           <td>
            <p class="para">
-            <var class="filename">php.ini</var> で <strong><code>FALSE</code></strong> とハードコードされていても、
+            <var class="filename">php.ini</var> で <strong><code>false</code></strong> とハードコードされていても、
             <a href="book.outcontrol.html" class="link">出力バッファリング</a>
             関数は使用可能です。
            </p>
@@ -132,7 +141,7 @@
 
          <tr>
           <td><a href="info.configuration.html#ini.max-input-time" class="link">max_input_time</a></td>
-          <td><strong><code>FALSE</code></strong></td>
+          <td><strong><code>false</code></strong></td>
           <td>
            <p class="para">
             PHP <acronym title="Command Line Interpreter/Interface">CLI</acronym> は GET、POST あるいはファイルのアップロードをサポートしません。
@@ -179,7 +188,7 @@
       <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> は、カレントディレクトリをスクリプトのディレクトリに変更
       <em class="emphasis">しません</em>!
      </p>
-     <div class="example" id="example-422">
+     <div class="example" id="example-406">
       <p><strong>例1 
        <acronym title="Common Gateway Interface">CGI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> との違いを示す例
       </strong></p>
@@ -225,16 +234,11 @@ $ php -f another_directory/test.php
      <blockquote class="note"><p><strong class="note">注意</strong>: 
       <p class="para">
        <acronym title="Common Gateway Interface">CGI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> は、この <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym>
-       の動作をコマンドライン実行時のスイッチ <em>-C</em>
+       の動作をコマンドライン実行時のスイッチ <code class="literal">-C</code>
        によりサポートしています。
       </p>
      </p></blockquote>
     </li>
    </ul>
   </p>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.introduction.html">導入</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.commandline.options.html">オプション</a></div>
- <div class="up"><a href="features.commandline.html">コマンドラインの使用法</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

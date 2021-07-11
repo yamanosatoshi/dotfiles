@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ビット演算子</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.operators.assignment.html">代入演算子</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.operators.comparison.html">比較演算子</a></div>
- <div class="up"><a href="language.operators.html">演算子</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.operators.bitwise" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.operators.assignment.html">« 代入演算子</a></li>
+      <li style="float: right;"><a href="language.operators.comparison.html">比較演算子 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.operators.html">演算子</a></li>
+    <li>ビット演算子</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.operators.bitwise" class="sect1">
    <h2 class="title">ビット演算子</h2>
    <p class="simpara">
     ビット演算子は、整数値の特定のビットの評価や操作を行います。
@@ -31,31 +44,31 @@
       <tr>
        <td><strong class="userinput"><code>$a &amp; $b</code></strong></td>
        <td>ビット積</td>
-       <td><var class="varname"><var class="varname">$a</var></var> および <var class="varname"><var class="varname">$b</var></var> の両方にセットされているビットがセットされます</td>
+       <td><var class="varname">$a</var> および <var class="varname">$b</var> の両方にセットされているビットがセットされます</td>
       </tr>
 
       <tr>
        <td><strong class="userinput"><code>$a | $b</code></strong></td>
        <td>ビット和</td>
-       <td><var class="varname"><var class="varname">$a</var></var> または <var class="varname"><var class="varname">$b</var></var> のどちらかにセットされているビットがセットされます</td>
+       <td><var class="varname">$a</var> または <var class="varname">$b</var> のどちらかにセットされているビットがセットされます</td>
       </tr>
 
       <tr>
        <td><strong class="userinput"><code>$a ^ $b</code></strong></td>
        <td>排他的論理和</td>
-       <td><var class="varname"><var class="varname">$a</var></var> または <var class="varname"><var class="varname">$b</var></var> のどちらか一方にセットされており、両方にセットされていないビットがセットされます</td>
+       <td><var class="varname">$a</var> または <var class="varname">$b</var> のどちらか一方にセットされており、両方にセットされていないビットがセットされます</td>
       </tr>
 
       <tr>
        <td><strong class="userinput"><code>~ $a</code></strong></td>
        <td>否定</td>
-       <td><var class="varname"><var class="varname">$a</var></var> にセットされているビットはセットせず、そうでないものは逆にします</td>
+       <td><var class="varname">$a</var> にセットされているビットはセットせず、そうでないものは逆にします</td>
       </tr>
 
       <tr>
        <td><strong class="userinput"><code>$a &lt;&lt; $b</code></strong></td>
        <td>左シフト</td>
-       <td><var class="varname"><var class="varname">$a</var></var> のビットを左に <var class="varname"><var class="varname">$b</var></var> ビットシフトする (各シフトは &quot;2をかける&quot;
+       <td><var class="varname">$a</var> のビットを左に <var class="varname">$b</var> ビットシフトする (各シフトは &quot;2をかける&quot;
     ことを意味します)
        </td>
       </tr>
@@ -63,7 +76,7 @@
       <tr>
        <td><strong class="userinput"><code>$a &gt;&gt; $b</code></strong></td>
        <td>右シフト</td>
-       <td><var class="varname"><var class="varname">$a</var></var> のビットを右に <var class="varname"><var class="varname">$b</var></var> ビットシフトします (各シフトは &quot;2で割る&quot;
+       <td><var class="varname">$a</var> のビットを右に <var class="varname">$b</var> ビットシフトします (各シフトは &quot;2で割る&quot;
     ことを意味します)
        </td>
       </tr>
@@ -83,27 +96,27 @@
    <p class="para">
     括弧を使うことで、望みどおりの
     <a href="language.operators.precedence.html" class="link">優先順位</a>
-    で処理させることができます。たとえば、<em>$a &amp; $b == true</em>
+    で処理させることができます。たとえば、<code class="literal">$a &amp; $b == true</code>
     はまず等価かどうかを評価してからビット演算を行いますが
-    <em>($a &amp; $b) == true</em>
+    <code class="literal">($a &amp; $b) == true</code>
     はまずビット演算を行ってから等価かどうかを評価します。
    </p>
    <p class="para">
-    <em>&amp;</em>、<em>|</em> そして
-    <em>^</em> 演算子の左右のオペランドが文字列の場合、その演算は、
+    <code class="literal">&amp;</code>、<code class="literal">|</code> そして
+    <code class="literal">^</code> 演算子の左右のオペランドが文字列の場合、その演算は、
     文字列を構成する文字の ASCII 値を使って行います。その結果は文字列になります。
     それ以外の場合は、左右のオペランドを
     <a href="language.types.integer.html#language.types.integer.casting" class="link">integer に変換</a>
     し、結果も integer になります。
    </p>
    <p class="para">
-    <em>~</em> 演算子のオペランドが文字列の場合、その演算は、
+    <code class="literal">~</code> 演算子のオペランドが文字列の場合、その演算は、
     文字列を構成する文字の ASCII 値を使って行います。その結果は文字列になります。
     それ以外の場合は、オペランドや演算結果を integer として扱います。
    </p>
    <p class="para">
-    <em>&lt;&lt;</em> および
-    <em>&gt;&gt;</em> 演算子のオペランドとその結果は、常に integer として扱います。
+    <code class="literal">&lt;&lt;</code> および
+    <code class="literal">&gt;&gt;</code> 演算子のオペランドとその結果は、常に integer として扱います。
    </p>
    <p class="para">
     <div class="informalexample">
@@ -123,7 +136,7 @@ php.ini ファイルで
 <span class="computeroutput">00000000000000000111011111111111</span>
 そして E_NOTICE...。
 <span class="computeroutput">00000000000000000000000000001000</span>
-... これを <em>~</em> で逆転させます。
+... これを <code class="literal">~</code> で逆転させます。
 <span class="computeroutput">11111111111111111111111111110111</span>
 最後に AND (&amp;) を使い、両方ともビットが立っているところをみつけます。
 <span class="computeroutput">00000000000000000111011111110111</span>
@@ -131,7 +144,7 @@ php.ini ファイルで
      </p>
      <p class="para">
       <pre class="literallayout">
-同じ結果を得るもうひとつの方法として、 XOR (<em>^</em>)
+同じ結果を得るもうひとつの方法として、 XOR (<code class="literal">^</code>)
 を使ってどちらか一方だけ立っているビットを探すという方法もあります。
 <strong class="userinput"><code>E_ALL ^ E_NOTICE</code></strong>
       </pre>
@@ -153,7 +166,7 @@ error_reporting を使って、特定のビットを立てる処理の例を見�
 <span class="computeroutput">00000000000000000000000000000001</span>
 と
 <span class="computeroutput">00000000000000000001000000000000</span>
-を OR (<em>|</em>) 演算子でつないで、
+を OR (<code class="literal">|</code>) 演算子でつないで、
 少なくともどちらかのビットが立っているところを取得します。
 <span class="computeroutput">00000000000000000001000000000001</span>
       </pre>
@@ -161,7 +174,7 @@ error_reporting を使って、特定のビットを立てる処理の例を見�
     </div>
    </p>
    <p class="para">
-    <div class="example" id="example-136">
+    <div class="example" id="example-92">
      <p><strong>例1 整数値におけるビット AND、OR および XOR 演算</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -201,7 +214,7 @@ error_reporting を使って、特定のビットを立てる処理の例を見�
     </div>
    </p>
    <p class="para">
-    <div class="example" id="example-137">
+    <div class="example" id="example-93">
      <p><strong>例2 文字列でのビット XOR 演算</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -213,7 +226,7 @@ error_reporting を使って、特定のビットを立てる処理の例を見�
     </div>
    </p>
    <p class="para">
-    <div class="example" id="example-138">
+    <div class="example" id="example-94">
      <p><strong>例3 整数値のビットシフト</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -496,28 +509,24 @@ Expression: 0 = -4 &lt;&lt; 62
    </p>
    <div class="warning"><strong class="warning">警告</strong>
     <p class="para">
-     システムの long 型で扱える範囲以上の整数値をシフトした場合の結果は未定義です。
-     32ビットシステム上では、32ビット以上の値をシフトしないようにしましょう。
-     同様に、64ビットシステム上では、64ビット以上の値をシフトしないようにしましょう。
-    </p>
-    <p class="para">
-     <em>PHP_INT_MAX</em> を超える数のビット演算には、
+     <code class="literal">PHP_INT_MAX</code> を超える数のビット演算には、
      <a href="book.gmp.html" class="link">gmp</a> 拡張モジュールの関数を使いましょう。
     </p>
    </div>
-   <p class="para">
-    <span class="function"><a href="function.pack.html" class="function">pack()</a></span>,
-    <span class="function"><a href="function.unpack.html" class="function">unpack()</a></span>,
-    <span class="function"><a href="function.gmp-and.html" class="function">gmp_and()</a></span>,
-    <span class="function"><a href="function.gmp-or.html" class="function">gmp_or()</a></span>,
-    <span class="function"><a href="function.gmp-xor.html" class="function">gmp_xor()</a></span>,
-    <span class="function"><a href="function.gmp-testbit.html" class="function">gmp_testbit()</a></span>,
-    <span class="function"><a href="function.gmp-clrbit.html" class="function">gmp_clrbit()</a></span>
-    も参照ください。
-   </p>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.operators.assignment.html">代入演算子</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.operators.comparison.html">比較演算子</a></div>
- <div class="up"><a href="language.operators.html">演算子</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+
+   <div class="sect2">
+    <h3 class="title">参考</h3>
+    <p class="para">
+     <ul class="simplelist">
+
+      <li class="member"><span class="function"><a href="function.pack.html" class="function">pack()</a></span></li>
+      <li class="member"><span class="function"><a href="function.unpack.html" class="function">unpack()</a></span></li>
+      <li class="member"><span class="function"><a href="function.gmp-and.html" class="function">gmp_and()</a></span></li>
+      <li class="member"><span class="function"><a href="function.gmp-or.html" class="function">gmp_or()</a></span></li>
+      <li class="member"><span class="function"><a href="function.gmp-xor.html" class="function">gmp_xor()</a></span></li>
+      <li class="member"><span class="function"><a href="function.gmp-testbit.html" class="function">gmp_testbit()</a></span></li>
+      <li class="member"><span class="function"><a href="function.gmp-clrbit.html" class="function">gmp_clrbit()</a></span></li>
+     </ul>
+    </p>
+   </div>
+  </div></div></div></body></html>

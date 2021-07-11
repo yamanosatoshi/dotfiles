@@ -3,36 +3,38 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>SQLite 関数 (PDO_SQLITE)</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pdo.pgsqllobunlink.html">PDO::pgsqlLOBUnlink</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="ref.pdo-sqlite.connection.html">PDO_SQLITE DSN</a></div>
- <div class="up"><a href="pdo.drivers.html">PDO ドライバ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="ref.pdo-sqlite" class="reference">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.pgsqllobunlink.html">« PDO::pgsqlLOBUnlink</a></li>
+      <li style="float: right;"><a href="ref.pdo-sqlite.connection.html">PDO_SQLITE DSN »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="pdo.drivers.html">PDO ドライバ</a></li>
+    <li>SQLite 関数 (PDO_SQLITE)</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ref.pdo-sqlite" class="reference">
   
   <h1 class="title">SQLite 関数 (PDO_SQLITE)</h1>
   
   <div class="partintro">
 
    <div class="section" id="pdo-sqlite.intro">
-   <h2 class="title">導入</h2>
+   <h2 class="title">はじめに</h2>
     <p class="para">
      PDO_SQLITE は、PHP から SQLite 2 や SQLite 3
      データベースへのアクセスを可能にするための <a href="intro.pdo.html" class="link">PHP
      Data Objects (PDO) インターフェイス</a> を実装したドライバです。
-    </p>
-    <p class="para">
-     PHP 5.1 では、<a href="ref.sqlite.html" class="link">SQLite</a>
-     拡張モジュールも SQLite 2 データベースに対するドライバを提供しています。
-     これは厳密には PDO_SQLITE ドライバの一部ではありませんが、
-     同じような動きをするので一緒に説明します。PDO 用 SQLite 2 ドライバは主に
-     レガシーな SQLite 2 データベースファイルをより高速でより効果的な
-     SQLite 3 ドライバを使用するアプリケーションへ
-     簡単にインポートするために提供されています。
-     結果として、SQLite 2 ドライバは SQLite 3
-     ドライバよりも機能豊富ではありません。
     </p>
     <blockquote class="note"><p><strong class="note">注意</strong>: 
      <p class="para">
@@ -45,14 +47,33 @@
    
 
 
+
 <div class="section" id="ref.pdo-sqlite.installation">
  <h2 class="title">インストール手順</h2>
  <p class="para">
   PDO_SQLITE PDO ドライバはデフォルトで有効になります。無効にするには
-  <strong class="option configure">--without-pdo-sqlite[=DIR]</strong>
- を使います。
-  オプションの <em>[=DIR]</em> は sqlite の基底インストールディレクトリです。
+  <strong class="option configure">--without-pdo-sqlite[=DIR]</strong> を使います。
+  オプションの <code class="literal">[=DIR]</code> は sqlite の基底インストールディレクトリです。
+  PHP 7.4.0 以降では、<a href="http://sqlite.org/" class="link external">&raquo;&nbsp;libsqlite</a> ≥ 3.5.0 が必須です。
+  それより前のバージョンでは、<code class="literal">[=DIR]</code> が省略された場合は
+  バンドル済みの libsqlite が代わりに使われていましたし、
+  またそれがデフォルトでした。
  </p>
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  <strong>PHP 7.4.0 以降の、Windows における追加セットアップ</strong><br />
+  <p class="para">
+   この拡張モジュールを動作させるには、
+Windows システムの <var class="envar">PATH</var> が通った場所に
+<acronym title="Dynamic Link Library">DLL</acronym> ファイルが存在する必要があります。
+<acronym title="Frequently Asked Questions">FAQ</acronym> の &quot;<a href="faq.installation.html#faq.installation.addtopath" class="link">Windows で PHP のディレクトリを
+PATH に追加するにはどうすればいいのですか?</a>&quot; で、その方法を説明しています。
+DLL ファイルを PHP のフォルダから Windows のシステムディレクトリにコピーしても動作します
+(システムディレクトリは、デフォルトで <var class="envar">PATH</var>
+に含まれるからです) が、これは推奨しません。
+<em class="emphasis">この拡張モジュールを使用するには、以下のファイルが
+<var class="envar">PATH</var> の通った場所にある必要があります。</em>  <var class="filename">libsqlite3.dll</var>.
+  </p>
+ </p></blockquote>
 </div>
 
 
@@ -84,11 +105,9 @@
 
 
 
- <h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="ref.pdo-sqlite.connection.html">PDO_SQLITE DSN</a> — SQLite データベースに接続する</li><li><a href="pdo.sqlitecreateaggregate.html">PDO::sqliteCreateAggregate</a> — SQL 文で使用する集約ユーザー定義関数 (UDF) を登録する</li><li><a href="pdo.sqlitecreatecollation.html">PDO::sqliteCreateCollation</a> — Registers a User Defined Function for use as a collating function in SQL statements</li><li><a href="pdo.sqlitecreatefunction.html">PDO::sqliteCreateFunction</a> — SQL 文で使用するユーザー定義関数 (UDF) を登録する</li></ul>
+
+
+
+ <h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="ref.pdo-sqlite.connection.html">PDO_SQLITE DSN</a> — SQLite データベースに接続する</li><li><a href="pdo.sqlitecreateaggregate.html">PDO::sqliteCreateAggregate</a> — SQL 文で使用する集約ユーザー定義関数 (UDF) を登録する</li><li><a href="pdo.sqlitecreatecollation.html">PDO::sqliteCreateCollation</a> — SQL文で collate 関数として使うユーザー定義関数を登録する</li><li><a href="pdo.sqlitecreatefunction.html">PDO::sqliteCreateFunction</a> — SQL 文で使用するユーザー定義関数 (UDF) を登録する</li></ul>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pdo.pgsqllobunlink.html">PDO::pgsqlLOBUnlink</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="ref.pdo-sqlite.connection.html">PDO_SQLITE DSN</a></div>
- <div class="up"><a href="pdo.drivers.html">PDO ドライバ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

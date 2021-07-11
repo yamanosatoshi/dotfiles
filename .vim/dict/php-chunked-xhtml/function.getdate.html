@@ -3,30 +3,41 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>日付/時刻情報を取得する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.date.html">date</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.gettimeofday.html">gettimeofday</a></div>
- <div class="up"><a href="ref.datetime.html">日付・時刻 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.getdate" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.date.html">« date</a></li>
+      <li style="float: right;"><a href="function.gettimeofday.html">gettimeofday »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.datetime.html">日付・時刻 関数</a></li>
+    <li>日付/時刻情報を取得する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.getdate" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">getdate</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">getdate</span> &mdash; <span class="dc-title">日付/時刻情報を取得する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">getdate</span> &mdash; <span class="dc-title">日付/時刻情報を取得する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.getdate-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>getdate</strong></span>
-    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$timestamp</code><span class="initializer"> = time()</span></span>
-  ] )</div>
+   <span class="methodname"><strong>getdate</strong></span>(<span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$timestamp</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">array</span></div>
 
   <p class="para rdfs-comment">
    <code class="parameter">timestamp</code> に関する日付情報を有する連想配列を返します。
-   timestamp が指定されない場合は、現在のローカルな時間に関する情報を返します。
+   timestamp が省略されたり、<strong><code>null</code></strong> だった場合、現在のローカルな時間に関する情報を返します。
   </p>
  </div>
 
@@ -43,8 +54,8 @@
 <dd>
 <p class="para">
 オプションのパラメータ <code class="parameter">timestamp</code> は、
-<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 型の Unix タイムスタンプです。
-<code class="parameter">timestamp</code> が指定されなかった場合のデフォルト値は、
+<span class="type">int</span> 型の Unix タイムスタンプです。
+<code class="parameter">timestamp</code> が指定されなかったり、<strong><code>null</code></strong> だった場合のデフォルト値は、
 現在の時刻です。言い換えると、デフォルトは
 <span class="function"><a href="function.time.html" class="function">time()</a></span> の返り値となります。
 </p></dd>
@@ -77,71 +88,100 @@
 
      <tbody class="tbody">
       <tr>
-       <td><em>&quot;seconds&quot;</em></td>
+       <td><code class="literal">&quot;seconds&quot;</code></td>
        <td>秒。数値。</td>
-       <td><em>0</em> から <em>59</em></td>
+       <td><code class="literal">0</code> から <code class="literal">59</code></td>
       </tr>
 
       <tr>
-       <td><em>&quot;minutes&quot;</em></td>
+       <td><code class="literal">&quot;minutes&quot;</code></td>
        <td>分。数値。</td>
-       <td><em>0</em> から <em>59</em></td>
+       <td><code class="literal">0</code> から <code class="literal">59</code></td>
       </tr>
 
       <tr>
-       <td><em>&quot;hours&quot;</em></td>
+       <td><code class="literal">&quot;hours&quot;</code></td>
        <td>時。数値</td>
-       <td><em>0</em> から <em>23</em></td>
+       <td><code class="literal">0</code> から <code class="literal">23</code></td>
       </tr>
 
       <tr>
-       <td><em>&quot;mday&quot;</em></td>
+       <td><code class="literal">&quot;mday&quot;</code></td>
        <td>月単位の日。数値</td>
-       <td><em>1</em> から <em>31</em></td>
+       <td><code class="literal">1</code> から <code class="literal">31</code></td>
       </tr>
 
       <tr>
-       <td><em>&quot;wday&quot;</em></td>
+       <td><code class="literal">&quot;wday&quot;</code></td>
        <td>曜日。数値。</td>
-       <td><em>0</em> (日曜) から <em>6</em> (土曜)</td>
+       <td><code class="literal">0</code> (日曜) から <code class="literal">6</code> (土曜)</td>
       </tr>
 
       <tr>
-       <td><em>&quot;mon&quot;</em></td>
+       <td><code class="literal">&quot;mon&quot;</code></td>
        <td>月。数値。</td>
-       <td><em>1</em> から <em>12</em></td>
+       <td><code class="literal">1</code> から <code class="literal">12</code></td>
       </tr>
 
       <tr>
-       <td><em>&quot;year&quot;</em></td>
+       <td><code class="literal">&quot;year&quot;</code></td>
        <td>年。4桁の数値。</td>
-       <td>例: <em>1999</em> あるいは <em>2003</em></td>
+       <td>例: <code class="literal">1999</code> あるいは <code class="literal">2003</code></td>
       </tr>
 
       <tr>
-       <td><em>&quot;yday&quot;</em></td>
+       <td><code class="literal">&quot;yday&quot;</code></td>
        <td>年単位の日。数値。</td>
-       <td><em>0</em> から <em>365</em></td>
+       <td><code class="literal">0</code> から <code class="literal">365</code></td>
       </tr>
 
       <tr>
-       <td><em>&quot;weekday&quot;</em></td>
+       <td><code class="literal">&quot;weekday&quot;</code></td>
        <td>曜日。フルスペルの文字。</td>
-       <td><em>Sunday</em> から <em>Saturday</em></td>
+       <td><code class="literal">Sunday</code> から <code class="literal">Saturday</code></td>
       </tr>
 
       <tr>
-       <td><em>&quot;month&quot;</em></td>
+       <td><code class="literal">&quot;month&quot;</code></td>
        <td>月。フルスペルの文字。</td>
-       <td><em>January</em> から <em>December</em></td>
+       <td><code class="literal">January</code> から <code class="literal">December</code></td>
       </tr>
 
       <tr>
-       <td><em>0</em></td>
+       <td><code class="literal">0</code></td>
        <td>UNIX時（1970年1月1日）からの秒数。
         <span class="function"><a href="function.time.html" class="function">time()</a></span>の戻り値と同様。 <span class="function"><a href="function.date.html" class="function">date()</a></span>でも使用される。</td>
-       <td>システムによって違うが、通常は<em>-2147483648</em> から
-        <em>2147483647</em>.
+       <td>システムによって違うが、通常は<code class="literal">-2147483648</code> から
+        <code class="literal">2147483647</code>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.getdate-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.0.0</td>
+       <td>
+        <code class="parameter">timestamp</code> は、nullable になりました。
        </td>
       </tr>
 
@@ -156,7 +196,7 @@
  <div class="refsect1 examples" id="refsect1-function.getdate-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2568">
+   <div class="example" id="example-2061">
     <p><strong>例1 
      <span class="function"><strong>getdate()</strong></span> の例
     </strong></p>
@@ -205,9 +245,4 @@ Array
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.date.html">date</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.gettimeofday.html">gettimeofday</a></div>
- <div class="up"><a href="ref.datetime.html">日付・時刻 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

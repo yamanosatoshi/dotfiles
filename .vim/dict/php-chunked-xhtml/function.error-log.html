@@ -3,29 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>定義されたエラー処理ルーチンにエラーメッセージを送信する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.error-get-last.html">error_get_last</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.error-reporting.html">error_reporting</a></div>
- <div class="up"><a href="ref.errorfunc.html">エラー処理関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.error-log" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.error-get-last.html">« error_get_last</a></li>
+      <li style="float: right;"><a href="function.error-reporting.html">error_reporting »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.errorfunc.html">エラー処理関数</a></li>
+    <li>定義されたエラー処理ルーチンにエラーメッセージを送信する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.error-log" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">error_log</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">error_log</span> &mdash; <span class="dc-title">定義されたエラー処理ルーチンにエラーメッセージを送信する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">error_log</span> &mdash; <span class="dc-title">定義されたエラー処理ルーチンにエラーメッセージを送信する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.error-log-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>error_log</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$message_type</code><span class="initializer"> = 0</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$destination</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$extra_headers</code></span>
-  ]]] )</div>
+   <span class="methodname"><strong>error_log</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$message_type</code><span class="initializer"> = 0</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$destination</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$extra_headers</code><span class="initializer"> = ?</span></span><br>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    エラーメッセージを Web サーバーのエラーログあるいはファイルに送ります。
@@ -140,7 +148,7 @@
 
       <p class="para">
        追加のヘッダ。<code class="parameter">message_type</code> パラメータが
-       <em>1</em> に設定される場合に利用されます。
+       <code class="literal">1</code> に設定される場合に利用されます。
        このメッセージタイプは、<span class="function"><a href="function.mail.html" class="function">mail()</a></span> と同様に
        内部関数を利用します。
       </p>
@@ -156,7 +164,26 @@
  <div class="refsect1 returnvalues" id="refsect1-function.error-log-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
+   <code class="parameter">message_type</code> が0の場合、
+   エラーがロギング出来たかそうでないかに関わらず、この関数は常に <strong><code>true</code></strong> を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.error-log-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-464">
+    <p><strong>例1 <span class="function"><strong>error_log()</strong></span> の例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;データベースに接続できない場合、<br />//&nbsp;サーバーログを通してエラーを通知する。<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">Ora_Logon</span><span style="color: #007700">(</span><span style="color: #0000BB">$username</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">error_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"オラクルのデータベースが使用できません!"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;FOO&nbsp;に失敗したら、管理者に&nbsp;email&nbsp;で通知する<br /></span><span style="color: #007700">if&nbsp;(!(</span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">allocate_new_foo</span><span style="color: #007700">()))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">error_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"大変です。FOO&nbsp;に失敗しました!"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"operator@example.com"</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;これ以外の&nbsp;error_log()&nbsp;のコール方法：<br /></span><span style="color: #0000BB">error_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"大変だ!"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"/var/tmp/my-errors.log"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
   </p>
  </div>
 
@@ -180,55 +207,4 @@
  </div>
 
 
- <div class="refsect1 examples" id="refsect1-function.error-log-examples">
-  <h3 class="title">例</h3>
-  <p class="para">
-   <div class="example" id="example-525">
-    <p><strong>例1 <span class="function"><strong>error_log()</strong></span> の例</strong></p>
-    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;データベースに接続できない場合、<br />//&nbsp;サーバーログを通してエラーを通知する。<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">Ora_Logon</span><span style="color: #007700">(</span><span style="color: #0000BB">$username</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">error_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"オラクルのデータベースが使用できません!"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;FOO&nbsp;に失敗したら、管理者に&nbsp;email&nbsp;で通知する<br /></span><span style="color: #007700">if&nbsp;(!(</span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">allocate_new_foo</span><span style="color: #007700">()))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">error_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"大変です。FOO&nbsp;に失敗しました!"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"operator@example.com"</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;これ以外の&nbsp;error_log()&nbsp;のコール方法：<br /></span><span style="color: #0000BB">error_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"大変だ!"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"/var/tmp/my-errors.log"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
-    </div>
-
-   </div>
-  </p>
- </div>
-
-
- <div class="refsect1 changelog" id="refsect1-function.error-log-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-     <tr>
-       <td>5.2.7</td>
-       <td>
-        <code class="parameter">message_type</code> の値として 4 が使用できるようになりました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.error-get-last.html">error_get_last</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.error-reporting.html">error_reporting</a></div>
- <div class="up"><a href="ref.errorfunc.html">エラー処理関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

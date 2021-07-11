@@ -3,30 +3,43 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>インストール手順</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="dba.requirements.html">要件</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="dba.configuration.html">実行時設定</a></div>
- <div class="up"><a href="dba.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="dba.installation" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="dba.requirements.html">« 要件</a></li>
+      <li style="float: right;"><a href="dba.configuration.html">実行時設定 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="dba.setup.html">インストール/設定</a></li>
+    <li>インストール手順</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="dba.installation" class="section">
  <h2 class="title">インストール手順</h2>
  <p class="para">
   設定オプション <strong class="option configure">--enable-dba=shared</strong>
-
   を使用することにより、dbm 形式のデータベースをサポートする動的に
   ロード可能なモジュールを有効にして PHP を構築することができます。
-  また、PHP の configure 行に設定スイッチ <em>--with-XXXX</em>
+  また、PHP の configure 行に設定スイッチ <code class="literal">--with-XXXX</code>
+  または <strong class="option configure">--enable-XXXX</strong> 
   を指定することにより、少なくとも以下のハンドラの一つのサポートを
   追加する必要があります。
  </p>
  <div class="warning"><strong class="warning">警告</strong>
   <p class="para">
    PHP の configuring とコンパイルを済ませたら、コマンドラインから次の
-   テストを実行する必要があります: <em>php run-tests.php ext/dba</em>
+   テストを実行する必要があります: <code class="literal">php run-tests.php ext/dba</code>
    これは、指定したハンドラの組み合わせが動作するかどうかを調べます。
-   いちばん問題のあるのは <em>dbm</em> と <em>ndbm</em>
+   いちばん問題のあるのは <code class="literal">dbm</code> と <code class="literal">ndbm</code>
    の組み合わせで、これらは多くの場合何らかの衝突を引き起こします。
    その原因は、いくつかのシステムではこれらのライブラリが他のライブラリの
    一部となっていることで。configure 時のテストでは個々のハンドラについての
@@ -47,11 +60,10 @@
 
     <tbody class="tbody">
      <tr>
-      <td><em>dbm</em></td>
+      <td><code class="literal">dbm</code></td>
       <td>
        dbm のサポートを有効にするには、
-       <strong class="option configure">--with-dbm[=DIR]</strong>
- を追加します。
+       <strong class="option configure">--with-dbm[=DIR]</strong> を追加します。
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
          dbm は一般的にはラッパーで、しばしば失敗を引き起こします。
@@ -64,11 +76,10 @@
 
 
      <tr>
-      <td><em>ndbm</em></td>
+      <td><code class="literal">ndbm</code></td>
       <td>
        ndbm のサポートを有効にするには、
-       <strong class="option configure">--with-ndbm[=DIR]</strong>
- を追加します。
+       <strong class="option configure">--with-ndbm[=DIR]</strong> を追加します。
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
          ndbm は一般的にはラッパーで、しばしば失敗を引き起こします。
@@ -81,21 +92,19 @@
 
 
      <tr>
-      <td><em>gdbm</em></td>
+      <td><code class="literal">gdbm</code></td>
       <td>
        gdbm のサポートを有効にするには、
-       <strong class="option configure">--with-gdbm[=DIR]</strong>
- を追加します。
+       <strong class="option configure">--with-gdbm[=DIR]</strong> を追加します。
       </td>
      </tr>
 
 
      <tr>
-      <td><em>db2</em></td>
+      <td><code class="literal">db2</code></td>
       <td>
        Oracle Berkeley DB のサポートを有効にするには、
-       <strong class="option configure">--with-db2[=DIR]</strong>
- を追加します。
+       <strong class="option configure">--with-db2[=DIR]</strong> を追加します。
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
          db2 は db3 および db4 とは同時に使えません。
@@ -106,11 +115,10 @@
 
 
      <tr>
-      <td><em>db3</em></td>
+      <td><code class="literal">db3</code></td>
       <td>
        Oracle Berkeley DB 3 のサポートを有効にするには、
-       <strong class="option configure">--with-db3[=DIR]</strong>
- を追加します。
+       <strong class="option configure">--with-db3[=DIR]</strong> を追加します。
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
          db3 は db2 および db4 とは同時に使えません。
@@ -121,11 +129,10 @@
 
 
      <tr>
-      <td><em>db4</em></td>
+      <td><code class="literal">db4</code></td>
       <td>
        Oracle Berkeley DB 4 あるいは 5 のサポートを有効にするには、
-       <strong class="option configure">--with-db4[=DIR]</strong>
- を追加します。
+       <strong class="option configure">--with-db4[=DIR]</strong> を追加します。
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
          db4 は db2 および db3 とは同時に使えません。
@@ -133,12 +140,7 @@
        </p></blockquote>
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
-         この db4 オプションは PHP 4.3.2 で追加されました。これ以前のバージョンでは、
-         <strong class="option configure">--with-db3=DIR</strong>
- を使用し、
-         DIR に db4 ライブラリのパスを指定する必要する必要があります。
-         バージョン 4.3.0 より前の PHP では、4.1 以降のバージョンの db
-         を使用することはできません。また、バージョン 4.1 から 4.1.24
+         バージョン 4.1 から 4.1.24
          までの db ライブラリは、どの PHP のバージョンでも利用できません。
         </p>
         <p class="para">
@@ -150,14 +152,13 @@
 
 
      <tr>
-      <td><em>cdb</em></td>
+      <td><code class="literal">cdb</code></td>
       <td>
        cdb のサポートを有効にするには、
-       <strong class="option configure">--with-cdb[=DIR]</strong>
- を追加します。
+       <strong class="option configure">--with-cdb[=DIR]</strong> を追加します。
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
-         PHP 4.3.0 以降、付属する cdb ライブラリを使用するために DIR
+         付属する cdb ライブラリを使用するために DIR
          を省略することができます。この場合、cdb_make ハンドラが追加されます。
          これにより cdb ファイルを作成したり、PHPのストリームを用いて
          ネットワーク上の cdb ファイルにアクセスできるようになります。
@@ -168,15 +169,16 @@
 
 
      <tr>
-      <td><em>flatfile</em></td>
+      <td><code class="literal">flatfile</code></td>
       <td>
        flatfile のサポートを有効にするには、
-       <strong class="option configure">--with-flatfile</strong>
- を追加します。
+       <strong class="option configure">--enable-flatfile</strong> を追加します。
+       PHP 5.2.1 以前では、
+       <strong class="option configure">--with-flatfile</strong> オプションを使わなければなりませんでした。
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
-         これは、古い <em>dbm</em> 拡張モジュール
-         との互換性のために PHP 4.3.0 で追加されました。
+         これは、古い <code class="literal">dbm</code> 拡張モジュール
+         との互換性のために追加されました。
          このハンドラは、他のハンドラで必要とされるライブラリをひとつも
          インストールすることができない場合、そして、付属する cdb
          ハンドラを使用することができない場合にのみ使用してください。
@@ -187,16 +189,17 @@
 
 
      <tr>
-      <td><em>inifile</em></td>
+      <td><code class="literal">inifile</code></td>
       <td>
-       <em>inifile</em> のサポートを有効にするには、
-       <strong class="option configure">--with-inifile</strong>
- を追加します。
+       <code class="literal">inifile</code> のサポートを有効にするには、
+       <strong class="option configure">--enable-inifile</strong> を追加します。
+       PHP 5.2.1 以前では、
+       <strong class="option configure">--with-inifile</strong> オプションを使わなければなりませんでした。
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
-         これは PHP 5.0.0 で追加されました。これにより Microsoft 形式の
+         これは Microsoft 形式の
          <var class="filename">.ini</var> ファイル（<var class="filename">php.ini</var> のような）を
-         読み書きできるようになります。
+         読み書きできるようにするために追加されました。
         </p>
        </p></blockquote>
       </td>
@@ -204,11 +207,10 @@
 
 
      <tr>
-      <td><em>qdbm</em></td>
+      <td><code class="literal">qdbm</code></td>
       <td>
        qdbm のサポートを有効にするには、
-       <strong class="option configure">--with-qdbm[=DIR]</strong>
- を追加します。
+       <strong class="option configure">--with-qdbm[=DIR]</strong> を追加します。
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
          qdbm は dbm および gdbm とは同時に使えません。
@@ -216,9 +218,9 @@
        </p></blockquote>
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
-         これは PHP 5.0.0 で追加されました。qdbm ライブラリは
+         qdbm ライブラリは
          <a href="http://fallabs.com/qdbm/index.html" class="link external">&raquo;&nbsp;http://fallabs.com/qdbm/index.html</a>
-         にあります。
+         からダウンロードできます。
         </p>
        </p></blockquote>
       </td>
@@ -226,17 +228,33 @@
 
 
      <tr>
-      <td><em>tcadb</em></td>
+      <td><code class="literal">tcadb</code></td>
       <td>
        <p class="para">
        Tokyo Cabinet のサポートを有効にするには、
-       <strong class="option configure">--with-tcadb[=DIR]</strong>
- を追加します。
+       <strong class="option configure">--with-tcadb[=DIR]</strong> を追加します。
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <p class="para">
-         これは PHP 5.4.0 で追加されました。Tokyo Cabinet ライブラリは
-         <a href="http://fallabs.com/tokyocabinet/" class="link external">&raquo;&nbsp;http://fallabs.com/tokyocabinet/</a>
-         にあります。
+         Tokyo Cabinet ライブラリは
+         <a href="http://fallabs.com/tokyocabinet/" class="link external">&raquo;&nbsp;http://fallabs.com/tokyocabinet/</a> からダウンロードできます。
+        </p>
+       </p></blockquote>
+       </p>
+      </td>
+     </tr>
+
+
+     <tr>
+      <td><code class="literal">lmdb</code></td>
+      <td>
+       <p class="para">
+       Lightning Memory-Mapped Database のサポートを有効にするには、
+       <strong class="option configure">--with-lmdb[=DIR]</strong> を追加します。
+       <blockquote class="note"><p><strong class="note">注意</strong>: 
+        <p class="para">
+         これは PHP 7.2.0 で追加されました。
+         Lightning Memory-Mapped Database は
+         <a href="https://symas.com/lmdb/" class="link external">&raquo;&nbsp;https://symas.com/lmdb/</a> からダウンロードできます。
         </p>
        </p></blockquote>
        </p>
@@ -248,18 +266,5 @@
    
   </table>
 
-  <blockquote class="note"><p><strong class="note">注意</strong>: 
-   <p class="para">
-    PHP 4.3.0 までは、db2 および db3 ハンドラの両方を追加することが
-    できましたが、内部的に使用できるのは片方だけでした。
-    これは、両方のファイル形式を使用することができないことを意味します。
-    PHP 5.0.0 以降、このような設定ミスを回避するよう設定の確認が行われます。
-   </p>
-  </p></blockquote>
  </p>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="dba.requirements.html">要件</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="dba.configuration.html">実行時設定</a></div>
- <div class="up"><a href="dba.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

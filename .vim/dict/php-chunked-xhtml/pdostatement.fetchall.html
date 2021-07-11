@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>全ての結果行を含む配列を返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pdostatement.fetch.html">PDOStatement::fetch</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pdostatement.fetchcolumn.html">PDOStatement::fetchColumn</a></div>
- <div class="up"><a href="class.pdostatement.html">PDOStatement</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="pdostatement.fetchall" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdostatement.fetch.html">« PDOStatement::fetch</a></li>
+      <li style="float: right;"><a href="pdostatement.fetchcolumn.html">PDOStatement::fetchColumn »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pdostatement.html">PDOStatement</a></li>
+    <li>全ての結果行を含む配列を返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdostatement.fetchall" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">PDOStatement::fetchAll</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">PDOStatement::fetchAll</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">PDOStatement::fetchAll</span> &mdash; <span class="dc-title">
    全ての結果行を含む配列を返す
   </span></p>
 
@@ -21,12 +34,16 @@
  <div class="refsect1 description" id="refsect1-pdostatement.fetchall-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><strong>PDOStatement::fetchAll</strong></span>
-    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$fetch_style</code></span>
-   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$fetch_argument</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ctor_args</code><span class="initializer"> = array()</span></span>
-  ]]] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>PDOStatement::fetchAll</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = PDO::FETCH_DEFAULT</span></span>): <span class="type">array</span></div>
 
+
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>PDOStatement::fetchAll</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = PDO::FETCH_COLUMN</span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$colno</code></span>): <span class="type">array</span></div>
+
+
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>PDOStatement::fetchAll</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = PDO::FETCH_CLASS</span></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$class</code></span>, <span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">null</span></span> <code class="parameter">$constructorArgs</code></span>): <span class="type">array</span></div>
+
+
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>PDOStatement::fetchAll</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = PDO::FETCH_INTO</span></span>, <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>): <span class="type">array</span></div>
 
  </div>
 
@@ -38,7 +55,7 @@
 
     
      <dt>
-<code class="parameter">fetch_style</code></dt>
+<code class="parameter">mode</code></dt>
 
      <dd>
 
@@ -51,7 +68,7 @@
       <p class="para">
        結果セットから単一カラムの全ての値を含む配列を返す場合、
        <strong><code>PDO::FETCH_COLUMN</code></strong> を指定します。
-       <code class="parameter">fetch_argument</code> パラメータにどのカラムを返すかを
+       <code class="parameter">colno</code> パラメータにどのカラムを返すかを
        指定することができます。
       </p>
       <p class="para">
@@ -69,12 +86,12 @@
     
     
      <dt>
-<code class="parameter">fetch_argument</code></dt>
+<code class="parameter">args</code></dt>
 
      <dd>
 
       <p class="para">
-       この引数は、<code class="parameter">fetch_style</code> の値によって意味が異なります。
+       この引数は、<code class="parameter">mode</code> の値によって意味が異なります。
        <ul class="itemizedlist">
         <li class="listitem">
          <p class="para">
@@ -101,12 +118,12 @@
     
     
      <dt>
-<code class="parameter">ctor_args</code></dt>
+<code class="parameter">constructorArg</code></dt>
 
      <dd>
 
       <p class="para">
-       <code class="parameter">fetch_style</code> が
+       <code class="parameter">mode</code> が
        <strong><code>PDO::FETCH_CLASS</code></strong>
        のときに使う、独自のクラスコンストラクタへの引数。
       </p>
@@ -126,7 +143,7 @@
    結果セットに残っている全ての行を含む配列を返します。
    この配列は、カラム値の配列もしくは各カラム名に対応するプロパティを持つオブジェクトとして各行を表します。
    取得結果がゼロ件だった場合は空の配列を返し、
-   失敗した場合は <strong><code>FALSE</code></strong> を返します。
+   失敗した場合は <strong><code>false</code></strong> を返します。
   </p>
   <p class="para">
    大きな結果セットをフェッチするためにこのメソッドを使用することは、
@@ -141,7 +158,7 @@
  <div class="refsect1 examples" id="refsect1-pdostatement.fetchall-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1069"><p><strong>例1 結果セットに残っている全ての行をフェッチする</strong></p>
+   <div class="example" id="example-1002"><p><strong>例1 結果セットに残っている全ての行をフェッチする</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;name,&nbsp;colour&nbsp;FROM&nbsp;fruit"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/*&nbsp;結果セットに残っている全ての行をフェッチする&nbsp;*/<br /></span><span style="color: #007700">print(</span><span style="color: #DD0000">"Fetch&nbsp;all&nbsp;of&nbsp;the&nbsp;remaining&nbsp;rows&nbsp;in&nbsp;the&nbsp;result&nbsp;set:\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchAll</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -158,13 +175,21 @@ Array
 (
     [0] =&gt; Array
         (
+            [name] =&gt; apple
+            [0] =&gt; apple
+            [colour] =&gt; red
+            [1] =&gt; red
+        )
+
+    [1] =&gt; Array
+        (
             [name] =&gt; pear
             [0] =&gt; pear
             [colour] =&gt; green
             [1] =&gt; green
         )
 
-    [1] =&gt; Array
+    [2] =&gt; Array
         (
             [name] =&gt; watermelon
             [0] =&gt; watermelon
@@ -176,7 +201,7 @@ Array
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-1070"><p><strong>例2 結果セットから単一カラムの全ての値を取得する</strong></p>
+   <div class="example" id="example-1003"><p><strong>例2 結果セットから単一カラムの全ての値を取得する</strong></p>
     <div class="example-contents"><p>
      以下の例は、
      SQL ステートメント自身が行毎に複数のカラムを返す場合において、
@@ -206,14 +231,14 @@ Array(3)
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-1071"><p><strong>例3 単一カラムによる全ての値のグループ化</strong></p>
+   <div class="example" id="example-1004"><p><strong>例3 単一カラムによる全ての値のグループ化</strong></p>
     <div class="example-contents"><p>
      以下の例は、どのように結果セット中の特定のカラムの値によって
      グループ化された連想配列を返すかを例示しています。
-     その配列は 3 つのキーを有します。値 <em>apple</em>、
-     <em>pear</em> は異なる 2
+     その配列は 3 つのキーを有します。値 <code class="literal">apple</code>、
+     <code class="literal">pear</code> は異なる 2
      つの異なる色を有する配列として返され、
-     一方 <em>watermelon</em> は 1
+     一方 <code class="literal">watermelon</code> は 1
      つの色のみ有する配列として返されます。
     </p></div>
     <div class="example-contents">
@@ -245,14 +270,14 @@ array(3) {
   [&quot;watermelon&quot;]=&gt;
   array(1) {
     [0]=&gt;
-    string(5) &quot;green&quot;
+    string(5) &quot;pink&quot;
   }
 }
 
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-1072"><p><strong>例4 各結果用のクラスのインスタンス作成</strong></p>
+   <div class="example" id="example-1005"><p><strong>例4 各結果用のクラスのインスタンス作成</strong></p>
     <div class="example-contents"><p>
      次の例は、
      <strong><code>PDO::FETCH_CLASS</code></strong> の振る舞いを示すものです。
@@ -290,11 +315,25 @@ array(3) {
     [&quot;colour&quot;]=&gt;
     string(4) &quot;pink&quot;
   }
+  [3]=&gt;
+  object(fruit)#4 (2) {
+    [&quot;name&quot;]=&gt;
+    string(5) &quot;apple&quot;
+    [&quot;colour&quot;]=&gt;
+    string(3) &quot;red&quot;
+  }
+  [4]=&gt;
+  object(fruit)#5 (2) {
+    [&quot;name&quot;]=&gt;
+    string(4) &quot;pear&quot;
+    [&quot;colour&quot;]=&gt;
+    string(5) &quot;green&quot;
+  }
 }
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-1073"><p><strong>例5 各結果に対する関数コール</strong></p>
+   <div class="example" id="example-1006"><p><strong>例5 各結果に対する関数コール</strong></p>
     <div class="example-contents"><p>
      次の例は、
      <strong><code>PDO::FETCH_FUNC</code></strong> の振る舞いを示すものです。
@@ -317,6 +356,10 @@ array(3) {
   string(12) &quot;pear: yellow&quot;
   [2]=&gt;
   string(16) &quot;watermelon: pink&quot;
+  [3]=&gt;
+  string(10) &quot;apple: red&quot;
+  [4]=&gt;
+  string(11) &quot;pear: green&quot;
 }
 </pre></div>
     </div>
@@ -339,9 +382,4 @@ array(3) {
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pdostatement.fetch.html">PDOStatement::fetch</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pdostatement.fetchcolumn.html">PDOStatement::fetchColumn</a></div>
- <div class="up"><a href="class.pdostatement.html">PDOStatement</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

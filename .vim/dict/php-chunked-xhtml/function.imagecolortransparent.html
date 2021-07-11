@@ -3,30 +3,40 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>透明色を定義する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagecolorstotal.html">imagecolorstotal</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imageconvolution.html">imageconvolution</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.imagecolortransparent" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagecolorstotal.html">« imagecolorstotal</a></li>
+      <li style="float: right;"><a href="function.imageconvolution.html">imageconvolution »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">GD および Image 関数</a></li>
+    <li>透明色を定義する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagecolortransparent" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagecolortransparent</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagecolortransparent</span> &mdash; <span class="dc-title">透明色を定義する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagecolortransparent</span> &mdash; <span class="dc-title">透明色を定義する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagecolortransparent-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">int</span> <span class="methodname"><strong>imagecolortransparent</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$image</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$color</code></span>
-  ] )</div>
+   <span class="methodname"><strong>imagecolortransparent</strong></span>(<span class="methodparam"><span class="type"><a href="class.gdimage.html" class="type GdImage">GdImage</a></span> <code class="parameter">$image</code></span>, <span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$color</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">int</span></div>
 
   <p class="para rdfs-comment">
    指定した画像 <code class="parameter">image</code>
-   上の透明色を設定します。
+   上の透明色を設定したり、取得したりします。
   </p>
  </div>
 
@@ -40,7 +50,7 @@
 image</code></dt>
 <dd>
 <p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
-のような画像作成関数が返す画像リソース。</p></dd>
+のような画像作成関数が返す <a href="class.gdimage.html" class="classname">GdImage</a> オブジェクト。</p></dd>
 
     
      <dt>
@@ -49,7 +59,7 @@ image</code></dt>
      <dd>
 
       <p class="para">
-       <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span> で指定した色 ID。
+       <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span> で作成された色識別子。
       </p>
      </dd>
 
@@ -63,15 +73,53 @@ image</code></dt>
   <h3 class="title">返り値</h3>
   <p class="para">
    新しい透明色の ID (指定しなかった場合は現在設定されている ID)
-   を返します。<code class="parameter">color</code> を指定せず、
-   さらに現在の透明色も設定されていない場合は -1 を返します。
+   を返します。<code class="parameter">color</code> が <strong><code>null</code></strong> の場合、
+   かつ現在の透明色も設定されていない場合は <code class="literal">-1</code> を返します。
   </p>
  </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.imagecolortransparent-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">image</code> は、
+  <a href="class.gdimage.html" class="classname">GdImage</a>
+  クラスのインスタンスを期待するようになりました。
+  これより前のバージョンでは、<span class="type">resource</span> が期待されていました。
+ </td>
+</tr>
+
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">color</code> は、nullable になりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
 
  <div class="refsect1 examples" id="refsect1-function.imagecolortransparent-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3526">
+   <div class="example" id="imagecolorallocatealpha.example.convert">
     <p><strong>例1 <span class="function"><strong>imagecolortransparent()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -110,9 +158,4 @@ image</code></dt>
   </p></blockquote>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagecolorstotal.html">imagecolorstotal</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imageconvolution.html">imageconvolution</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

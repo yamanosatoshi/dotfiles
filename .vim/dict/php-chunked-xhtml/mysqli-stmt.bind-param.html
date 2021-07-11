@@ -3,18 +3,31 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>プリペアドステートメントのパラメータに変数をバインドする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli-stmt.attr-set.html">mysqli_stmt::attr_set</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli-stmt.bind-result.html">mysqli_stmt::bind_result</a></div>
- <div class="up"><a href="class.mysqli-stmt.html">mysqli_stmt</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqli-stmt.bind-param" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli-stmt.attr-set.html">« mysqli_stmt::attr_set</a></li>
+      <li style="float: right;"><a href="mysqli-stmt.bind-result.html">mysqli_stmt::bind_result »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli-stmt.html">mysqli_stmt</a></li>
+    <li>プリペアドステートメントのパラメータに変数をバインドする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli-stmt.bind-param" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mysqli_stmt::bind_param</h1>
   <h1 class="refname">mysqli_stmt_bind_param</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mysqli_stmt::bind_param</span> -- <span class="refname">mysqli_stmt_bind_param</span> &mdash; <span class="dc-title">プリペアドステートメントのパラメータに変数をバインドする</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli_stmt::bind_param</span> -- <span class="refname">mysqli_stmt_bind_param</span> &mdash; <span class="dc-title">プリペアドステートメントのパラメータに変数をバインドする</span></p>
 
  </div>
 
@@ -22,30 +35,21 @@
   <h3 class="title">説明</h3>
   <p class="para">オブジェクト指向型</p>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>mysqli_stmt::bind_param</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$types</code></span>
-   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&$var1</code></span>
-   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&$...</code></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>mysqli_stmt::bind_param</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$types</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&$var</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&...$vars</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">手続き型</p>
-  <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>mysqli_stmt_bind_param</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="class.mysqli-stmt.html" class="type mysqli_stmt">mysqli_stmt</a></span> <code class="parameter">$stmt</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$types</code></span>
-   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&$var1</code></span>
-   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&$...</code></span>
-  ] )</div>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>mysqli_stmt_bind_param</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.mysqli-stmt.html" class="type mysqli_stmt">mysqli_stmt</a></span> <code class="parameter">$stmt</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$types</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&$var</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&...$vars</code></span><br>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
-   変数を、SQL ステートメントのパラメータマーカにバインドします。
-   この変数は、<span class="function"><a href="mysqli.prepare.html" class="function">mysqli_prepare()</a></span>
-   に渡されたものです。
+   <span class="function"><a href="mysqli.prepare.html" class="function">mysqli_prepare()</a></span>
+   や <span class="function"><a href="mysqli-stmt.prepare.html" class="function">mysqli_stmt_prepare()</a></span>
+   で準備された、
+   SQLステートメントのパラメータマーカに変数をバインドします。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     データのサイズがパケットサイズの最大値（max_allowed_packet）を
-    こえた場合、<code class="parameter">types</code> に <em>b</em> を
+    こえた場合、<code class="parameter">types</code> に <code class="literal">b</code> を
     指定して <span class="function"><a href="mysqli-stmt.send-long-data.html" class="function">mysqli_stmt_send_long_data()</a></span> を使用し、
     データをパケットに分割して送信する必要があります。
    </p>
@@ -72,7 +76,7 @@
 stmt</code></dt>
 <dd>
 <p class="para">手続き型のみ:
-<span class="function"><a href="mysqli.stmt-init.html" class="function">mysqli_stmt_init()</a></span> が返すステートメント ID。</p></dd>
+<span class="function"><a href="mysqli.stmt-init.html" class="function">mysqli_stmt_init()</a></span> が返す <a href="class.mysqli-stmt.html" class="classname">mysqli_stmt</a> オブジェクト。</p></dd>
 
     
      <dt>
@@ -82,7 +86,7 @@ stmt</code></dt>
 
       <p class="para">
        ひとつあるいは複数の文字で、対応するバインド変数の型を表します。
-       <table class="doctable table">
+       <table id="mysqli-stmt.bind-param.parameters" class="doctable table">
         <caption><strong>型指定文字</strong></caption>
         
          <thead>
@@ -124,7 +128,10 @@ stmt</code></dt>
     
     
      <dt>
-<code class="parameter">var1</code></dt>
+<code class="parameter">var</code></dt>
+
+     <dt>
+<code class="parameter">vars</code></dt>
 
      <dd>
 
@@ -145,28 +152,27 @@ stmt</code></dt>
  <div class="refsect1 returnvalues" id="refsect1-mysqli-stmt.bind-param-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-mysqli-stmt.bind-param-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1875">
-   <p><strong>例1 オブジェクト指向型</strong></p>
+  <div class="example" id="example-1436">
+   <p><strong>例1 <span class="methodname"><strong>mysqli_stmt::bind_param()</strong></span> の例</strong></p>
+   <div class="example-contents"><p>オブジェクト指向型</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_password'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'world'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;接続状況をチェックします&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Connect&nbsp;failed:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;exit();<br />}<br /><br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;CountryLanguage&nbsp;VALUES&nbsp;(?,&nbsp;?,&nbsp;?,&nbsp;?)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bind_param</span><span style="color: #007700">(</span><span style="color: #DD0000">'sssd'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$language</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$official</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$percent</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$code&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'DEU'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$language&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Bavarian'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$official&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"F"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$percent&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">11.2</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*&nbsp;プリペアドステートメントを実行します&nbsp;*/<br /></span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;Row&nbsp;inserted.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">affected_rows</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;ステートメントと接続を閉じます&nbsp;*/<br /></span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/*&nbsp;CountryLanguage&nbsp;テーブルをクリアします&nbsp;*/<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DELETE&nbsp;FROM&nbsp;CountryLanguage&nbsp;WHERE&nbsp;Language='Bavarian'"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;Row&nbsp;deleted.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">affected_rows</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;接続を閉じます&nbsp;*/<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />mysqli_report</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLI_REPORT_ERROR&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">MYSQLI_REPORT_STRICT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_password'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'world'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;CountryLanguage&nbsp;VALUES&nbsp;(?,&nbsp;?,&nbsp;?,&nbsp;?)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bind_param</span><span style="color: #007700">(</span><span style="color: #DD0000">'sssd'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$language</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$official</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$percent</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$code&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'DEU'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$language&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Bavarian'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$official&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"F"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$percent&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">11.2</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;row&nbsp;inserted.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">affected_rows</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;CountryLanguage&nbsp;テーブルを削除します&nbsp;*/<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DELETE&nbsp;FROM&nbsp;CountryLanguage&nbsp;WHERE&nbsp;Language='Bavarian'"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;row&nbsp;deleted.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">affected_rows</span><span style="color: #007700">);</span>
 </span>
 </code></div>
    </div>
 
-  </div>
-  <div class="example" id="example-1876">
-   <p><strong>例2 手続き型</strong></p>
+   <div class="example-contents"><p>手続き型</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_password'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'world'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;接続状況をチェックします&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Connect&nbsp;failed:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;exit();<br />}<br /><br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;CountryLanguage&nbsp;VALUES&nbsp;(?,&nbsp;?,&nbsp;?,&nbsp;?)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mysqli_stmt_bind_param</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sssd'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$language</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$official</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$percent</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$code&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'DEU'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$language&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Bavarian'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$official&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"F"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$percent&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">11.2</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*&nbsp;プリペアドステートメントを実行します&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_stmt_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;Row&nbsp;inserted.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_stmt_affected_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;ステートメントと接続を閉じます&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_stmt_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;CountryLanguage&nbsp;テーブルをクリアします&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"DELETE&nbsp;FROM&nbsp;CountryLanguage&nbsp;WHERE&nbsp;Language='Bavarian'"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;Row&nbsp;deleted.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_affected_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;接続を閉じます&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />mysqli_report</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLI_REPORT_ERROR&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">MYSQLI_REPORT_STRICT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_password'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'world'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;CountryLanguage&nbsp;VALUES&nbsp;(?,&nbsp;?,&nbsp;?,&nbsp;?)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mysqli_stmt_bind_param</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sssd'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$language</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$official</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$percent</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$code&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'DEU'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$language&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Bavarian'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$official&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"F"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$percent&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">11.2</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">mysqli_stmt_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;row&nbsp;inserted.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_stmt_affected_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;CountryLanguage&nbsp;テーブルを削除します&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"DELETE&nbsp;FROM&nbsp;CountryLanguage&nbsp;WHERE&nbsp;Language='Bavarian'"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;row&nbsp;deleted.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_affected_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">));</span>
 </span>
 </code></div>
    </div>
@@ -174,8 +180,29 @@ stmt</code></dt>
    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
    <div class="example-contents screen">
 <div class="cdata"><pre>
-1 Row inserted.
-1 Row deleted.
+1 row inserted.
+1 row deleted.
+</pre></div>
+   </div>
+  </div>
+  <div class="example" id="example-1437">
+   <p><strong>例2 引数を渡すために <code class="literal">...</code> を使う</strong></p>
+   <div class="example-contents"><p>
+    可変長の引数を渡すために、
+    <code class="literal">...</code> 演算子を使うことができます。
+    たとえば <code class="literal">WHERE IN</code> 条件で使えます。
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />mysqli_report</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLI_REPORT_ERROR&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">MYSQLI_REPORT_STRICT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_password'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'world'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;Language&nbsp;FROM&nbsp;CountryLanguage&nbsp;WHERE&nbsp;CountryCode&nbsp;IN&nbsp;(?,&nbsp;?)"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;Using&nbsp;...&nbsp;to&nbsp;provide&nbsp;arguments&nbsp;*/<br /></span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bind_param</span><span style="color: #007700">(</span><span style="color: #DD0000">'ss'</span><span style="color: #007700">,&nbsp;...[</span><span style="color: #DD0000">'DEU'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'POL'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">store_result</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;rows&nbsp;found.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">num_rows</span><span style="color: #007700">());</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+10 rows found.
 </pre></div>
    </div>
   </div>
@@ -187,9 +214,9 @@ stmt</code></dt>
   <p class="para">
    <ul class="simplelist">
     <li class="member"><span class="function"><a href="mysqli-stmt.bind-result.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_bind_result()</a> - 結果を保存するため、プリペアドステートメントに変数をバインドする</span></li>
-    <li class="member"><span class="function"><a href="mysqli-stmt.execute.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_execute()</a> - プリペアドクエリを実行する</span></li>
+    <li class="member"><span class="function"><a href="mysqli-stmt.execute.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_execute()</a> - プリペアドステートメントを実行する</span></li>
     <li class="member"><span class="function"><a href="mysqli-stmt.fetch.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_fetch()</a> - プリペアドステートメントから結果を取得し、バインド変数に格納する</span></li>
-    <li class="member"><span class="function"><a href="mysqli.prepare.html" class="function" rel="rdfs-seeAlso">mysqli_prepare()</a> - 実行するための SQL ステートメントを準備する</span></li>
+    <li class="member"><span class="function"><a href="mysqli.prepare.html" class="function" rel="rdfs-seeAlso">mysqli_prepare()</a> - 実行するための SQL文 を準備する</span></li>
     <li class="member"><span class="function"><a href="mysqli-stmt.send-long-data.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_send_long_data()</a> - データをブロックで送信する</span></li>
     <li class="member"><span class="function"><a href="mysqli-stmt.errno.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_errno()</a> - 直近のステートメントのコールに関するエラーコードを返す</span></li>
     <li class="member"><span class="function"><a href="mysqli-stmt.error.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_error()</a> - 直近のステートメントのエラー内容を文字列で返す</span></li>
@@ -198,9 +225,4 @@ stmt</code></dt>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli-stmt.attr-set.html">mysqli_stmt::attr_set</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli-stmt.bind-result.html">mysqli_stmt::bind_result</a></div>
- <div class="up"><a href="class.mysqli-stmt.html">mysqli_stmt</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

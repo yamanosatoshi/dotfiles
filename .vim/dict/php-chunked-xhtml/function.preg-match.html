@@ -3,30 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>正規表現によるマッチングを行う</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.preg-match-all.html">preg_match_all</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.preg-quote.html">preg_quote</a></div>
- <div class="up"><a href="ref.pcre.html">PCRE 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.preg-match" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.preg-match-all.html">« preg_match_all</a></li>
+      <li style="float: right;"><a href="function.preg-quote.html">preg_quote »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pcre.html">PCRE 関数</a></li>
+    <li>正規表現によるマッチングを行う</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.preg-match" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">preg_match</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">preg_match</span> &mdash; <span class="dc-title">正規表現によるマッチングを行う</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">preg_match</span> &mdash; <span class="dc-title">正規表現によるマッチングを行う</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.preg-match-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">int</span> <span class="methodname"><strong>preg_match</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$subject</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$matches</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code><span class="initializer"> = 0</span></span>
-  ]]] )</div>
+   <span class="methodname"><strong>preg_match</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$subject</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$matches</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code><span class="initializer"> = 0</span></span><br>): <span class="type"><span class="type">int</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <code class="parameter">pattern</code> で指定した正規表現により
@@ -72,8 +79,8 @@
 
       <p class="para">
        <code class="parameter">matches</code> を指定した場合、検索結果が代入されます。
-       <var class="varname"><var class="varname">$matches[0]</var></var> にはパターン全体にマッチしたテキストが代入され、
-       <var class="varname"><var class="varname">$matches[1]</var></var> には 1 番目のキャプチャ用サブパターンにマッチした
+       <var class="varname">$matches[0]</var> にはパターン全体にマッチしたテキストが代入され、
+       <var class="varname">$matches[1]</var> には 1 番目のキャプチャ用サブパターンにマッチした
        文字列が代入され、といったようになります。
       </p>
      </dd>
@@ -86,7 +93,7 @@
      <dd>
 
       <p class="para">
-       <code class="parameter">flags</code> には以下のフラグを指定できます。
+       <code class="parameter">flags</code> には以下のフラグの組み合わせを指定できます。
        <dl>
 
         
@@ -95,13 +102,102 @@
 
          <dd>
 
-          <span class="simpara">
-           このフラグを設定した場合、各マッチに対応する文字列のオフセットも返されます。
-           これにより <code class="parameter">matches</code> の値は配列となり、
-           配列の要素 <em>0</em> はマッチした文字列、
-           要素 <em>1</em>は対象文字列中におけるマッチした文字列のオフセット値
-           となることに注意してください。 
-          </span>
+          <p class="para">
+           このフラグを設定した場合、各マッチに対応する文字列のオフセットも(バイト単位で)返されます。
+           これは、<code class="parameter">matches</code> の値を配列に変更することに注意してください。
+           その配列のすべての要素は、
+           オフセット <code class="literal">0</code> で一致した文字列、
+           およびその文字列のオフセット <code class="literal">1</code> での
+           <code class="parameter">subject</code> へのオフセットからなります。
+           <div class="informalexample">
+            <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />preg_match</span><span style="color: #007700">(</span><span style="color: #DD0000">'/(foo)(bar)(baz)/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'foobarbaz'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PREG_OFFSET_CAPTURE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+            </div>
+
+            <p class="para">上の例の出力は以下となります。</p>
+            <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; Array
+        (
+            [0] =&gt; foobarbaz
+            [1] =&gt; 0
+        )
+
+    [1] =&gt; Array
+        (
+            [0] =&gt; foo
+            [1] =&gt; 0
+        )
+
+    [2] =&gt; Array
+        (
+            [0] =&gt; bar
+            [1] =&gt; 3
+        )
+
+    [3] =&gt; Array
+        (
+            [0] =&gt; baz
+            [1] =&gt; 6
+        )
+
+)
+</pre></div>
+            </div>
+           </div>
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<strong><code>PREG_UNMATCHED_AS_NULL</code></strong></dt>
+
+         <dd>
+
+          <p class="para">
+           このフラグが渡されると、マッチしなかったサブパターンは <strong><code>null</code></strong> として通知されます。
+           渡されなかった場合、空の <span class="type">string</span> として通知されます。
+           <div class="informalexample">
+            <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />preg_match</span><span style="color: #007700">(</span><span style="color: #DD0000">'/(a)(b)*(c)/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ac'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #DD0000">'/(a)(b)*(c)/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ac'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PREG_UNMATCHED_AS_NULL</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+            </div>
+
+            <p class="para">上の例の出力は以下となります。</p>
+            <div class="example-contents screen">
+<div class="cdata"><pre>
+array(4) {
+  [0]=&gt;
+  string(2) &quot;ac&quot;
+  [1]=&gt;
+  string(1) &quot;a&quot;
+  [2]=&gt;
+  string(0) &quot;&quot;
+  [3]=&gt;
+  string(1) &quot;c&quot;
+}
+array(4) {
+  [0]=&gt;
+  string(2) &quot;ac&quot;
+  [1]=&gt;
+  string(1) &quot;a&quot;
+  [2]=&gt;
+  NULL
+  [3]=&gt;
+  string(1) &quot;c&quot;
+}
+</pre></div>
+            </div>
+           </div>
+          </p>
          </dd>
 
         
@@ -125,7 +221,7 @@
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
         <code class="parameter">offset</code> を用いるのと、
-        <em>substr($subject, $offset)</em> を
+        <code class="code">substr($subject, $offset)</code> を
         <span class="function"><strong>preg_match()</strong></span>の対象文字列として指定するのとは
         等価ではありません。
         これは、<code class="parameter">pattern</code> には、
@@ -174,6 +270,12 @@ Array
 )
 </pre></div>
          </div>
+         <p class="para">
+          <span class="function"><a href="function.substr.html" class="function">substr()</a></span> 関数を利用しない別の方法として、
+          <code class="literal">^</code> アンカーではなく、 言明 <code class="literal">\G</code> または
+          <code class="literal">A</code> 修正子を使う方法があります。
+          これらは両方とも <code class="parameter">offset</code> パラメータとともに動作します。
+         </p>
         </div>
        </p>
       </p></blockquote>
@@ -191,10 +293,10 @@ Array
   <p class="para">
    <span class="function"><strong>preg_match()</strong></span> は、<code class="parameter">pattern</code>
    が指定した <code class="parameter">subject</code> にマッチした場合に 1 を返します。
-   マッチしなかった場合は 0、エラーが発生した場合は <strong><code>FALSE</code></strong> を返します。
+   マッチしなかった場合は 0、エラーが発生した場合は <strong><code>false</code></strong> を返します。
   </p>
   <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は論理値
-<strong><code>FALSE</code></strong> を返す可能性がありますが、<strong><code>FALSE</code></strong> として評価される値を返す可能性もあります。
+<strong><code>false</code></strong> を返す可能性がありますが、<strong><code>false</code></strong> として評価される値を返す可能性もあります。
 詳細については <a href="language.types.boolean.html" class="link">論理値</a>の
 セクションを参照してください。この関数の返り値を調べるには
 <a href="language.operators.comparison.html" class="link">===演算子</a> を
@@ -217,22 +319,10 @@ Array
 
      <tbody class="tbody">
       <tr>
-       <td>5.3.6</td>
+       <td>7.2.0</td>
        <td>
-        <code class="parameter">offset</code> が
-        <code class="parameter">subject</code> よりも長いときに <strong><code>FALSE</code></strong> を返すようになりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.2.2</td>
-       <td>
-        名前つきサブパターンで、
-        <em>(?&lt;name&gt;)</em> や
-        <em>(?&#039;name&#039;)</em> といった構文が
-        <em>(?P&lt;name&gt;)</em> のほかに使えるようになりました.
-        以前のバージョンでは
-        <em>(?P&lt;name&gt;)</em> しか使えませんでした。
+        <code class="parameter">$flags</code> パラメータが
+        <strong><code>PREG_UNMATCHED_AS_NULL</code></strong> をサポートしました。
        </td>
       </tr>
 
@@ -247,7 +337,7 @@ Array
  <div class="refsect1 examples" id="refsect1-function.preg-match-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5381">
+   <div class="example" id="example-4724">
     <p><strong>例1 文字列 &quot;php&quot; を探す</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -259,7 +349,7 @@ Array
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5382">
+   <div class="example" id="example-4725">
     <p><strong>例2 単語 &quot;web&quot; を探す</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -271,7 +361,7 @@ Array
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5383">
+   <div class="example" id="example-4726">
     <p><strong>例3 URL からドメイン名を得る</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -289,11 +379,11 @@ domain name is: php.net
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5384">
+   <div class="example" id="example-4727">
     <p><strong>例4 名前つきサブパターンの使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'foobar:&nbsp;2008'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #DD0000">'/(?P&lt;name&gt;\w+):&nbsp;(?P&lt;digit&gt;\d+)/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;PHP&nbsp;5.2.2&nbsp;(PCRE&nbsp;7.0)&nbsp;以降ではこの形式でも動作しますが、<br />&nbsp;*&nbsp;過去との互換性を考慮して上の形式のほうを推奨します&nbsp;*/<br />//&nbsp;preg_match('/(?&lt;name&gt;\w+):&nbsp;(?&lt;digit&gt;\d+)/',&nbsp;$str,&nbsp;$matches);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'foobar:&nbsp;2008'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #DD0000">'/(?P&lt;name&gt;\w+):&nbsp;(?P&lt;digit&gt;\d+)/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;別のやり方&nbsp;*/<br />//&nbsp;preg_match('/(?&lt;name&gt;\w+):&nbsp;(?&lt;digit&gt;\d+)/',&nbsp;$str,&nbsp;$matches);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -338,14 +428,10 @@ Array
     <li class="member"><span class="function"><a href="function.preg-replace.html" class="function" rel="rdfs-seeAlso">preg_replace()</a> - 正規表現検索および置換を行う</span></li>
     <li class="member"><span class="function"><a href="function.preg-split.html" class="function" rel="rdfs-seeAlso">preg_split()</a> - 正規表現で文字列を分割する</span></li>
     <li class="member"><span class="function"><a href="function.preg-last-error.html" class="function" rel="rdfs-seeAlso">preg_last_error()</a> - 直近の PCRE 正規表現処理のエラーコードを返す</span></li>
+    <li class="member"><span class="function"><a href="function.preg-last-error-msg.html" class="function" rel="rdfs-seeAlso">preg_last_error_msg()</a> - 最後に実行した PCRE 正規表現に関するエラーメッセージを返す</span></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.preg-match-all.html">preg_match_all</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.preg-quote.html">preg_quote</a></div>
- <div class="up"><a href="ref.pcre.html">PCRE 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

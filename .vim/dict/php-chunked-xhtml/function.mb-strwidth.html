@@ -3,76 +3,88 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>文字列の幅を返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mb-strtoupper.html">mb_strtoupper</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mb-substitute-character.html">mb_substitute_character</a></div>
- <div class="up"><a href="ref.mbstring.html">マルチバイト文字列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.mb-strwidth" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mb-strtoupper.html">« mb_strtoupper</a></li>
+      <li style="float: right;"><a href="function.mb-substitute-character.html">mb_substitute_character »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mbstring.html">マルチバイト文字列 関数</a></li>
+    <li>文字列の幅を返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mb-strwidth" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mb_strwidth</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mb_strwidth</span> &mdash; <span class="dc-title">文字列の幅を返す</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mb_strwidth</span> &mdash; <span class="dc-title">文字列の幅を返す</span></p>
 
  </div>
    
  <div class="refsect1 description" id="refsect1-function.mb-strwidth-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">int</span> <span class="methodname"><strong>mb_strwidth</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code><span class="initializer"> = mb_internal_encoding()</span></span>
-  ] )</div>
+   <span class="methodname"><strong>mb_strwidth</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>, <span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$encoding</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">int</span></div>
 
   <p class="para rdfs-comment">
-   文字列 <code class="parameter">str</code> の幅を返します。
+   文字列 <code class="parameter">string</code> の幅を返します。
+   半角文字は <code class="literal">1</code> として、
+   全角文字は <code class="literal">2</code> として数えます。
+   東アジアの文字の長さに関する詳細は
+   <a href="http://www.unicode.org/reports/tr11/" class="link external">&raquo;&nbsp;http://www.unicode.org/reports/tr11/</a>
+   を参照して下さい。
   </p>
   <p class="para">
-   マルチバイト文字は、通常はシングルバイト文字の倍の幅となります。
-  </p>
-  <p class="para">
-   <table class="doctable table">
-    <caption><strong>文字の幅</strong></caption>
-    
-     <thead>
-      <tr>
-       <th>文字</th>
-       <th>幅</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>U+0000 - U+0019</td>
-       <td>0</td>
-      </tr>
-
-      <tr>
-       <td>U+0020 - U+1FFF</td>
-       <td>1</td>
-      </tr>
-
-      <tr>
-       <td>U+2000 - U+FF60</td>
-       <td>2</td>
-      </tr>
-
-      <tr>
-       <td>U+FF61 - U+FF9F</td>
-       <td>1</td>
-      </tr>
-
-      <tr>
-       <td>U+FFA0 -      </td>
-       <td>2</td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
+   全角文字は次のとおりです。
+   <code class="literal">U+1100</code>-<code class="literal">U+115F</code>、
+   <code class="literal">U+11A3</code>-<code class="literal">U+11A7</code>、
+   <code class="literal">U+11FA</code>-<code class="literal">U+11FF</code>、
+   <code class="literal">U+2329</code>-<code class="literal">U+232A</code>、
+   <code class="literal">U+2E80</code>-<code class="literal">U+2E99</code>、
+   <code class="literal">U+2E9B</code>-<code class="literal">U+2EF3</code>、
+   <code class="literal">U+2F00</code>-<code class="literal">U+2FD5</code>、
+   <code class="literal">U+2FF0</code>-<code class="literal">U+2FFB</code>、
+   <code class="literal">U+3000</code>-<code class="literal">U+303E</code>、
+   <code class="literal">U+3041</code>-<code class="literal">U+3096</code>、
+   <code class="literal">U+3099</code>-<code class="literal">U+30FF</code>、
+   <code class="literal">U+3105</code>-<code class="literal">U+312D</code>、
+   <code class="literal">U+3131</code>-<code class="literal">U+318E</code>、
+   <code class="literal">U+3190</code>-<code class="literal">U+31BA</code>、
+   <code class="literal">U+31C0</code>-<code class="literal">U+31E3</code>、
+   <code class="literal">U+31F0</code>-<code class="literal">U+321E</code>、
+   <code class="literal">U+3220</code>-<code class="literal">U+3247</code>、
+   <code class="literal">U+3250</code>-<code class="literal">U+32FE</code>、
+   <code class="literal">U+3300</code>-<code class="literal">U+4DBF</code>、
+   <code class="literal">U+4E00</code>-<code class="literal">U+A48C</code>、
+   <code class="literal">U+A490</code>-<code class="literal">U+A4C6</code>、
+   <code class="literal">U+A960</code>-<code class="literal">U+A97C</code>、
+   <code class="literal">U+AC00</code>-<code class="literal">U+D7A3</code>、
+   <code class="literal">U+D7B0</code>-<code class="literal">U+D7C6</code>、
+   <code class="literal">U+D7CB</code>-<code class="literal">U+D7FB</code>、
+   <code class="literal">U+F900</code>-<code class="literal">U+FAFF</code>、
+   <code class="literal">U+FE10</code>-<code class="literal">U+FE19</code>、
+   <code class="literal">U+FE30</code>-<code class="literal">U+FE52</code>、
+   <code class="literal">U+FE54</code>-<code class="literal">U+FE66</code>、
+   <code class="literal">U+FE68</code>-<code class="literal">U+FE6B</code>、
+   <code class="literal">U+FF01</code>-<code class="literal">U+FF60</code>、
+   <code class="literal">U+FFE0</code>-<code class="literal">U+FFE6</code>、
+   <code class="literal">U+1B000</code>-<code class="literal">U+1B001</code>、
+   <code class="literal">U+1F200</code>-<code class="literal">U+1F202</code>、
+   <code class="literal">U+1F210</code>-<code class="literal">U+1F23A</code>、
+   <code class="literal">U+1F240</code>-<code class="literal">U+1F248</code>、
+   <code class="literal">U+1F250</code>-<code class="literal">U+1F251</code>、
+   <code class="literal">U+20000</code>-<code class="literal">U+2FFFD</code>、
+   <code class="literal">U+30000</code>-<code class="literal">U+3FFFD</code>。
+   他のすべての文字は半角の文字です。
   </p>
  </div>
 
@@ -84,7 +96,7 @@
 
     
      <dt>
-<code class="parameter">str</code></dt>
+<code class="parameter">string</code></dt>
 
      <dd>
 
@@ -101,7 +113,7 @@
      <dd>
 
       <p class="para"><code class="parameter">encoding</code> 
-パラメータには文字エンコーディングを指定します。省略した場合は、
+パラメータには文字エンコーディングを指定します。省略した場合、もしくは <strong><code>null</code></strong> の場合は、
 内部文字エンコーディングを使用します。</p>
      </dd>
 
@@ -115,8 +127,57 @@
  <div class="refsect1 returnvalues" id="refsect1-function.mb-strwidth-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   文字列 <code class="parameter">str</code> の幅を返します。
+   文字列 <code class="parameter">string</code> の幅を返します。
   </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.mb-strwidth-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">encoding</code> は、nullable になりました。
+ </td>
+</tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mb-strwidth-examples">
+  <h3 class="title">例</h3>
+  <div class="example" id="example-2542">
+   <p><strong>例1 <span class="function"><strong>mb_strwidth()</strong></span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mb_strwidth</span><span style="color: #007700">(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">),&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;LATIN&nbsp;SMALL&nbsp;LETTER&nbsp;A<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mb_strwidth</span><span style="color: #007700">(</span><span style="color: #DD0000">"\u{ff41}"</span><span style="color: #007700">)&nbsp;</span><span style="color: #FF8000">//&nbsp;FULLWIDTH&nbsp;LATIN&nbsp;SMALL&nbsp;LETTER&nbsp;A<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+int(1)
+int(2)
+</pre></div>
+   </div>
+  </div>
  </div>
 
 
@@ -131,9 +192,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mb-strtoupper.html">mb_strtoupper</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mb-substitute-character.html">mb_substitute_character</a></div>
- <div class="up"><a href="ref.mbstring.html">マルチバイト文字列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,18 +3,31 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>非同期クエリから結果を取得する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.real-query.html">mysqli::real_query</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.refresh.html">mysqli::refresh</a></div>
- <div class="up"><a href="class.mysqli.html">mysqli</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqli.reap-async-query" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.real-query.html">« mysqli::real_query</a></li>
+      <li style="float: right;"><a href="mysqli.refresh.html">mysqli::refresh »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli.html">mysqli</a></li>
+    <li>非同期クエリから結果を取得する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.reap-async-query" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mysqli::reap_async_query</h1>
   <h1 class="refname">mysqli_reap_async_query</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p><p class="refpurpose"><span class="refname">mysqli::reap_async_query</span> -- <span class="refname">mysqli_reap_async_query</span> &mdash; <span class="dc-title">非同期クエリから結果を取得する</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli::reap_async_query</span> -- <span class="refname">mysqli_reap_async_query</span> &mdash; <span class="dc-title">非同期クエリから結果を取得する</span></p>
 
  </div>
 
@@ -22,20 +35,19 @@
   <h3 class="title">説明</h3>
   <p class="para">オブジェクト指向型</p>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><a href="class.mysqli-result.html" class="type mysqli_result">mysqli_result</a></span> <span class="methodname"><strong>mysqli::reap_async_query</strong></span>
-    ( <span class="methodparam">void</span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>mysqli::reap_async_query</strong></span>(): <span class="type"><span class="type"><a href="class.mysqli-result.html" class="type mysqli_result">mysqli_result</a></span>|<span class="type">bool</span></span></div>
 
   <p class="para rdfs-comment">手続き型</p>
-  <div class="methodsynopsis dc-description">
-   <span class="type"><a href="class.mysqli-result.html" class="type mysqli_result">mysqli_result</a></span> <span class="methodname"><strong>mysqli_reap_async_query</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter">$link</code></span>
-   )</div>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>mysqli_reap_async_query</strong></span>(<span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter">$mysql</code></span>): <span class="type"><span class="type"><a href="class.mysqli-result.html" class="type mysqli_result">mysqli_result</a></span>|<span class="type">bool</span></span></div>
 
   <p class="para rdfs-comment">
    非同期クエリから結果を取得します。
-   <a href="book.mysqlnd.html" class="link">mysqlnd</a> でのみ使用可能です。
   </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    <a href="book.mysqlnd.html" class="link">mysqlnd</a> でのみ使用可能です。
+   </p>
+  </p></blockquote>
  </div>
 
 
@@ -49,7 +61,7 @@
 link</code></dt>
 <dd>
 <p class="para">手続き型のみ:
-<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> あるいは <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> が返すリンク ID。
+<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> あるいは <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> が返す <a href="class.mysqli.html" class="classname">mysqli</a>オブジェクト。
 </p></dd>
 
    </dl>
@@ -61,7 +73,12 @@ link</code></dt>
  <div class="refsect1 returnvalues" id="refsect1-mysqli.reap-async-query-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <a href="class.mysqli-result.html" class="classname">mysqli_result</a>、それ以外の場合に <strong><code>FALSE</code></strong> を返します。
+   失敗した場合に <strong><code>false</code></strong> を返します。
+   結果セットを生成するクエリ、
+   つまり <code class="literal">SELECT, SHOW, DESCRIBE</code> あるいは
+   <code class="literal">EXPLAIN</code> が成功した場合は、<span class="function"><strong>mysqli_reap_async_query()</strong></span>
+   は <a href="class.mysqli-result.html" class="classname">mysqli_result</a> オブジェクトを返します。それ以外のクエリが成功した場合は、
+   <span class="function"><strong>mysqli_reap_async_query()</strong></span> は <strong><code>true</code></strong> を返します。
   </p>
  </div>
 
@@ -76,9 +93,4 @@ link</code></dt>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.real-query.html">mysqli::real_query</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.refresh.html">mysqli::refresh</a></div>
- <div class="up"><a href="class.mysqli.html">mysqli</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

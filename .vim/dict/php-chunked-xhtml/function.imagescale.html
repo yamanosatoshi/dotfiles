@@ -3,33 +3,49 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>幅と高さを指定して、画像の縮尺を変更する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagesavealpha.html">imagesavealpha</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imagesetbrush.html">imagesetbrush</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.imagescale" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagesavealpha.html">« imagesavealpha</a></li>
+      <li style="float: right;"><a href="function.imagesetbrush.html">imagesetbrush »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">GD および Image 関数</a></li>
+    <li>幅と高さを指定して、画像の縮尺を変更する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagescale" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagescale</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7)</p><p class="refpurpose"><span class="refname">imagescale</span> &mdash; <span class="dc-title">幅と高さを指定して、画像の縮尺を変更する</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagescale</span> &mdash; <span class="dc-title">幅と高さを指定して、画像の縮尺を変更する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.imagescale-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">resource</span> <span class="methodname"><strong>imagescale</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$image</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$new_width</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$new_height</code><span class="initializer"> = -1</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = IMG_BILINEAR_FIXED</span></span>
-  ]] )</div>
+   <span class="methodname"><strong>imagescale</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.gdimage.html" class="type GdImage">GdImage</a></span> <code class="parameter">$image</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code><span class="initializer"> = -1</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = <strong><code>IMG_BILINEAR_FIXED</code></strong></span></span><br>): <span class="type"><span class="type"><a href="class.gdimage.html" class="type GdImage">GdImage</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>imagescale()</strong></span> は、指定した補間アルゴリズムを使って画像の縮尺を変更します。
   </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    他の画像処理関数と異なり、
+    <span class="function"><strong>imagescale()</strong></span> 関数は渡された
+    <code class="parameter">image</code> を変更しません。
+    代わりに <em class="emphasis">新しい</em> 画像が返されます。
+   </p>
+  </p></blockquote>
  </div>
 
 
@@ -42,11 +58,11 @@
 image</code></dt>
 <dd>
 <p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
-のような画像作成関数が返す画像リソース。</p></dd>
+のような画像作成関数が返す <a href="class.gdimage.html" class="classname">GdImage</a> オブジェクト。</p></dd>
 
    
     <dt>
-<code class="parameter">new_width</code></dt>
+<code class="parameter">width</code></dt>
 
     <dd>
 
@@ -58,19 +74,13 @@ image</code></dt>
    
    
     <dt>
-<code class="parameter">new_height</code></dt>
+<code class="parameter">height</code></dt>
 
     <dd>
 
      <p class="para">
       変更後の画像の高さ。省略したり負の数を指定したりした場合は、元の画像のアスペクト比を維持します。
      </p>
-     <div class="caution"><strong class="caution">警告</strong>
-      <p class="para">
-       PHP 5.5.18 以前、あるいは PHP 5.6.2 以前のバージョンでは、常に高さを指定する必要があります。
-       これらのバージョンでは、高さを省略した場合のアスペクト比の計算が、正しく行われません。
-      </p>
-     </div>
     </dd>
 
    
@@ -86,6 +96,11 @@ image</code></dt>
       <strong><code>IMG_BICUBIC</code></strong>、
       <strong><code>IMG_BICUBIC_FIXED</code></strong> あるいはそれ以外 (2 パスで使います)
       のいずれか。
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <span class="simpara">
+        <strong><code>IMG_WEIGHTED4</code></strong> にはまだ対応していません。
+       </span>
+      </p></blockquote>
      </p>
     </dd>
 
@@ -98,43 +113,59 @@ image</code></dt>
  <div class="refsect1 returnvalues" id="refsect1-function.imagescale-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に、縮尺を変更した画像リソースを返します。失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に、縮尺を変更した画像オブジェクトを返します。失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
 
  <div class="refsect1 changelog" id="refsect1-function.imagescale-changelog">
   <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
 
-     </thead>
+    </thead>
 
-     <tbody class="tbody">
-      <tr>
-       <td>5.5.19/5.6.3</td>
-       <td>
-        <code class="parameter">new_height</code> が負の数だったり省略されていたりした場合の、高さの計算の問題が修正されました。
-        これより前のバージョンでは、アスペクト比を正確に保つことができませんでした。
-       </td>
-      </tr>
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       成功時には、
+       この関数は <a href="class.gdimage.html" class="classname">GDImage</a>
+       クラスのインスタンスを返すようになりました。
+       これより前のバージョンでは、
+       <span class="type">resource</span> を返していました。
+      </td>
+     </tr>
 
-     </tbody>
-    
-   </table>
+     <tr>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">image</code> は、
+  <a href="class.gdimage.html" class="classname">GdImage</a>
+  クラスのインスタンスを期待するようになりました。
+  これより前のバージョンでは、<span class="type">resource</span> が期待されていました。
+ </td>
+</tr>
 
-  </p>
+    </tbody>
+   
+  </table>
+
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagesavealpha.html">imagesavealpha</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imagesetbrush.html">imagesetbrush</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+
+ <div class="refsect1 seealso" id="refsect1-function.imagescale-seealso">
+  <h3 class="title">参考</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.imagecopyresized.html" class="function" rel="rdfs-seeAlso">imagecopyresized()</a> - 画像の一部をコピーしサイズを変更する</span></li>
+   <li class="member"><span class="function"><a href="function.imagecopyresampled.html" class="function" rel="rdfs-seeAlso">imagecopyresampled()</a> - 再サンプリングを行いイメージの一部をコピー、伸縮する</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

@@ -2,27 +2,38 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Returns new DateTimeImmutable object encapsulating the given DateTime object</title>
+  <title>与えられた DateTime オブジェクトをカプセル化した、新しいDateTimeImmutable オブジェクトを返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="datetimeimmutable.createfromformat.html">DateTimeImmutable::createFromFormat</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="datetimeimmutable.getlasterrors.html">DateTimeImmutable::getLastErrors</a></div>
- <div class="up"><a href="class.datetimeimmutable.html">DateTimeImmutable</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="datetimeimmutable.createfrommutable" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="datetimeimmutable.createfrominterface.html">« DateTimeImmutable::createFromInterface</a></li>
+      <li style="float: right;"><a href="datetimeimmutable.getlasterrors.html">DateTimeImmutable::getLastErrors »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.datetimeimmutable.html">DateTimeImmutable</a></li>
+    <li>与えられた DateTime オブジェクトをカプセル化した、新しいDateTimeImmutable オブジェクトを返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="datetimeimmutable.createfrommutable" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">DateTimeImmutable::createFromMutable</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.6.0, PHP 7)</p><p class="refpurpose"><span class="refname">DateTimeImmutable::createFromMutable</span> &mdash; <span class="dc-title">Returns new DateTimeImmutable object encapsulating the given DateTime object</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.6.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DateTimeImmutable::createFromMutable</span> &mdash; <span class="dc-title">与えられた DateTime オブジェクトをカプセル化した、新しいDateTimeImmutable オブジェクトを返す</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-datetimeimmutable.createfrommutable-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type"><a href="class.datetimeimmutable.html" class="type DateTimeImmutable">DateTimeImmutable</a></span> <span class="methodname"><strong>DateTimeImmutable::createFromMutable</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="class.datetime.html" class="type DateTime">DateTime</a></span> <code class="parameter">$datetime</code></span>
-   )</div>
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><strong>DateTimeImmutable::createFromMutable</strong></span>(<span class="methodparam"><span class="type"><a href="class.datetime.html" class="type DateTime">DateTime</a></span> <code class="parameter">$object</code></span>): <span class="type"><a href="class.datetimeimmutable.html" class="type DateTimeImmutable">DateTimeImmutable</a></span></div>
 
  </div>
 
@@ -34,15 +45,16 @@
 
     
      <dt>
-<code class="parameter">datetime</code></dt>
+<code class="parameter">object</code></dt>
 
      <dd>
 
       <p class="para">
-       The mutable <a href="class.datetime.html" class="classname">DateTime</a> object that you want to
-       convert to an immutable version. This object is not modified, but
-       instead a new <a href="class.datetimeimmutable.html" class="classname">DateTimeImmutable</a> object is
-       created containing the same date time and timezone information.
+       変更不能なバージョンに変換が必要な、
+       <a href="class.datetime.html" class="classname">DateTime</a> オブジェクト。
+       このオブジェクトは変更されませんが、
+       代わりに同じ日付、時刻、タイムゾーンの情報を含んだ
+       新しい <a href="class.datetimeimmutable.html" class="classname">DateTimeImmutable</a>  オブジェクトが作られます。
       </p>
      </dd>
 
@@ -53,11 +65,19 @@
  </div>
 
 
+ <div class="refsect1 returnvalues" id="refsect1-datetimeimmutable.createfrommutable-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   新しい <a href="class.datetimeimmutable.html" class="classname">DateTimeImmutable</a> インスタンスを返します。
+  </p>
+ </div>
+
+
  <div class="refsect1 examples" id="refsect1-datetimeimmutable.createfrommutable-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2530">
-    <p><strong>例1 Creating an immutable date time object</strong></p>
+   <div class="example" id="example-2019">
+    <p><strong>例1 変更不能な日付オブジェクトを作る</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$date&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">"2014-06-20&nbsp;11:45&nbsp;Europe/London"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$immutable&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">DateTimeImmutable</span><span style="color: #007700">::</span><span style="color: #0000BB">createFromMutable</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$date&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -70,16 +90,4 @@
  </div>
 
 
- <div class="refsect1 returnvalues" id="refsect1-datetimeimmutable.createfrommutable-returnvalues">
-  <h3 class="title">返り値</h3>
-  <p class="para">
-   Returns a new <a href="class.datetimeimmutable.html" class="classname">DateTimeImmutable</a> instance.
-  </p>
- </div>
-
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="datetimeimmutable.createfromformat.html">DateTimeImmutable::createFromFormat</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="datetimeimmutable.getlasterrors.html">DateTimeImmutable::getLastErrors</a></div>
- <div class="up"><a href="class.datetimeimmutable.html">DateTimeImmutable</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

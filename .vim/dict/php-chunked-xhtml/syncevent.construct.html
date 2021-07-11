@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Constructs a new SyncEvent object</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="class.syncevent.html">SyncEvent</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="syncevent.fire.html">SyncEvent::fire</a></div>
- <div class="up"><a href="class.syncevent.html">SyncEvent</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="syncevent.construct" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="class.syncevent.html">« SyncEvent</a></li>
+      <li style="float: right;"><a href="syncevent.fire.html">SyncEvent::fire »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.syncevent.html">SyncEvent</a></li>
+    <li>Constructs a new SyncEvent object</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="syncevent.construct" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">SyncEvent::__construct</h1>
   <p class="verinfo">(PECL sync &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">SyncEvent::__construct</span> &mdash; <span class="dc-title">Constructs a new SyncEvent object</span></p>
@@ -20,13 +33,10 @@
  <div class="refsect1 description" id="refsect1-syncevent.construct-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="methodname"><strong>SyncEvent::__construct</strong></span>
-    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
-   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$manual</code></span>
-  ]] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>SyncEvent::__construct</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$manual</code><span class="initializer"> = <strong><code>false</code></strong></span></span>, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$prefire</code><span class="initializer"> = <strong><code>false</code></strong></span></span>)</div>
 
   <p class="para rdfs-comment">
- Constructs a named or unnamed event object.
+   Constructs a named or unnamed event object.
   </p>
  </div>
 
@@ -42,13 +52,13 @@
     <dd>
 
      <p class="para">
- The name of the event if this is a named event object.
+      The name of the event if this is a named event object.
      </p>
      <blockquote class="note"><p><strong class="note">注意</strong>: 
       <p class="para">
- If the name already exists, it must be able to be opened by the current user
- that the process is running as or an exception will be thrown with a meaningless
- error message.
+       If the name already exists, it must be able to be opened by the current user
+       that the process is running as or an exception will be thrown with a meaningless
+       error message.
       </p>
      </p></blockquote>
     </dd>
@@ -61,12 +71,29 @@
     <dd>
 
      <p class="para">
- Specifies whether or not the event object must be reset manually.
+      Specifies whether or not the event object must be reset manually.
      </p>
      <blockquote class="note"><p><strong class="note">注意</strong>: 
       <p class="para">
- Manual reset event objects allow all waiting processes through until the
- object is reset.
+       Manual reset event objects allow all waiting processes through until the
+       object is reset.
+      </p>
+     </p></blockquote>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">prefire</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Specifies whether or not to prefire (signal) the event object.
+     </p>
+     <blockquote class="note"><p><strong class="note">注意</strong>: 
+      <p class="para">
+       Only has impact if the calling process/thread is the first to create the object.
       </p>
      </p></blockquote>
     </dd>
@@ -80,15 +107,22 @@
  <div class="refsect1 returnvalues" id="refsect1-syncevent.construct-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
- The new SyncEvent object.  An exception is thrown if the event object cannot
- be created or opened.
+   The new <a href="class.syncevent.html" class="classname">SyncEvent</a> object.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-syncevent.construct-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+   An exception is thrown if the event object cannot be created or opened.
   </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-syncevent.construct-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-4291">
+  <div class="example" id="example-3403">
    <p><strong>例1 <span class="function"><strong>SyncEvent::__construct()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -98,6 +132,37 @@
    </div>
 
   </div>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-syncevent.construct-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>PECL sync 1.1.0</td>
+       <td>
+        <p class="para">
+         Added <code class="parameter">prefire</code>.
+        </p>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
  </div>
 
 
@@ -111,9 +176,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="class.syncevent.html">SyncEvent</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="syncevent.fire.html">SyncEvent::fire</a></div>
- <div class="up"><a href="class.syncevent.html">SyncEvent</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

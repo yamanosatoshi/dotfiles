@@ -3,36 +3,46 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>文字列の soundex キーを計算する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.similar-text.html">similar_text</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.sprintf.html">sprintf</a></div>
- <div class="up"><a href="ref.strings.html">String 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.soundex" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.similar-text.html">« similar_text</a></li>
+      <li style="float: right;"><a href="function.sprintf.html">sprintf »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">String 関数</a></li>
+    <li>文字列の soundex キーを計算する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.soundex" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">soundex</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">soundex</span> &mdash; <span class="dc-title">文字列の soundex キーを計算する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">soundex</span> &mdash; <span class="dc-title">文字列の soundex キーを計算する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.soundex-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>soundex</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
-   )</div>
+   <span class="methodname"><strong>soundex</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
-   <code class="parameter">str</code> の soundex キーを計算します。
+   <code class="parameter">string</code> の soundex キーを計算します。
   </p>
   <p class="para">
    soundex キーには、似たような発音の単語に関して同じ
    soundex キーが生成されるという特性があります。
    このため、発音は知っているが、スペルがわからない場合に、
    データベースを検索することを容易にすることができます。
-   soundex 関数は、ある文字から始まる 4 文字の文字列を返します。
   </p>
   <p class="para">
    この soundex 関数についての説明は、Donald Knuth の &quot;The Art Of Computer Programming,
@@ -49,7 +59,7 @@
 
     
      <dt>
-<code class="parameter">str</code></dt>
+<code class="parameter">string</code></dt>
 
      <dd>
 
@@ -68,15 +78,46 @@
  <div class="refsect1 returnvalues" id="refsect1-function.soundex-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   soundex キーを文字列で返します。
+   soundex キーを、4文字からなる文字列で返します。
+   少なくとも1文字が <code class="parameter">string</code> に含まれていた場合、
+   返される文字列はその文字から始まります。
+   そうでない場合、<code class="literal">&quot;0000&quot;</code> を返します。
   </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.soundex-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       これより前のバージョンでは、
+       空文字列をこの関数に渡すと、特別な理由がないのに <strong><code>false</code></strong> を返していました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.soundex-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5457">
+   <div class="example" id="example-4799">
     <p><strong>例1 Soundex の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -102,9 +143,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.similar-text.html">similar_text</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.sprintf.html">sprintf</a></div>
- <div class="up"><a href="ref.strings.html">String 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>文を実行する準備を行い、文オブジェクトを返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pdo.lastinsertid.html">PDO::lastInsertId</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pdo.query.html">PDO::query</a></div>
- <div class="up"><a href="class.pdo.html">PDO</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="pdo.prepare" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.lastinsertid.html">« PDO::lastInsertId</a></li>
+      <li style="float: right;"><a href="pdo.query.html">PDO::query »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pdo.html">PDO</a></li>
+    <li>文を実行する準備を行い、文オブジェクトを返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdo.prepare" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">PDO::prepare</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">PDO::prepare</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PHP 8,PECL pdo &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">PDO::prepare</span> &mdash; <span class="dc-title">
    文を実行する準備を行い、文オブジェクトを返す
   </span></p>
 
@@ -21,20 +34,17 @@
  <div class="refsect1 description" id="refsect1-pdo.prepare-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span> <span class="methodname"><strong>PDO::prepare</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$driver_options</code><span class="initializer"> = array()</span></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>PDO::prepare</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$query</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = []</span></span>): <span class="type"><span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
 
   <p class="para rdfs-comment">
    <span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span>
    メソッドによって実行される SQL ステートメントを準備します。
-   SQL ステートメントは、文が実行されるときに実際の値に置き換えられる 0
+   ステートメントのテンプレートは、文が実行されるときに実際の値に置き換えられる 0
    個もしくはそれ以上の名前 (:name) もしくは疑問符 (?)
    パラメータマークを含むことができます。
-   名前と疑問符パラメータを同一 SQL
-   ステートメント中で使用することはできません。
+   名前と疑問符パラメータを同一の
+   ステートメントのテンプレート中で使用することはできません。
    どちらか一方か、他のパラメータ形式を使用してください。
    ユーザーの入力をバインドする際にはこれらのパラメータを使います。
    ユーザーの入力を直接クエリに含めてはいけません。
@@ -71,6 +81,18 @@
    ドライバの場合、名前もしくは疑問符形式のパラメータを他の適当な値に
    書き換えることも可能です。
   </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    エミュレートされたプリペアドステートメントと、
+    名前パラメータやクエスチョンマークを書き換えるパーサは、[シングル|ダブル]クォート
+    に対して標準とは異なるエスケープをサポートしています。
+    これによって、バックスラッシュのすぐ後にクォートで終了するクエリは
+    そのままの形では認識されず、間違ったパラメータとして認識され、
+    実行されたときにプリペアドステートメントが失敗してしまいます。
+    回避策は、プリペアドステートメントのエミュレートをこの手のSQLクエリでは使わないようにしつつ、
+    ドライバによってサポートされているパラメータの書き換えを避けることです。
+   </span>
+  </p></blockquote>
  </div>
 
  <div class="refsect1 parameters" id="refsect1-pdo.prepare-parameters">
@@ -80,7 +102,7 @@
 
     
      <dt>
-<code class="parameter">statement</code></dt>
+<code class="parameter">query</code></dt>
 
      <dd>
 
@@ -93,7 +115,7 @@
     
     
      <dt>
-<code class="parameter">driver_options</code></dt>
+<code class="parameter">options</code></dt>
 
      <dd>
 
@@ -102,8 +124,8 @@
        オブジェクトに対して 1
        もしくはそれ以上の key=&gt;value の組を含みます。
        通常、スクロール可能なカーソルを要求するために
-       <em>PDO::ATTR_CURSOR</em> に
-       <em>PDO::CURSOR_SCROLL</em>
+       <code class="literal">PDO::ATTR_CURSOR</code> に
+       <code class="literal">PDO::CURSOR_SCROLL</code>
        を設定する場合に使用することになるでしょう。
        いくつかのドライバには、準備する際に利用可能なドライバ固有の
        オプションがあります。
@@ -124,7 +146,7 @@
    <span class="function"><strong>PDO::prepare()</strong></span> は
    <a href="class.pdostatement.html" class="classname">PDOStatement</a> オブジェクトを返します。
    もしデータベースサーバーが文を準備できなかった場合、
-   <span class="function"><strong>PDO::prepare()</strong></span> は <strong><code>FALSE</code></strong> を返すか
+   <span class="function"><strong>PDO::prepare()</strong></span> は <strong><code>false</code></strong> を返すか
    <a href="class.pdoexception.html" class="classname">PDOException</a> を発行します
    (<a href="pdo.error-handling.html" class="link">エラー処理</a> の方法に依存します)。
   </p>
@@ -140,7 +162,7 @@
  <div class="refsect1 examples" id="refsect1-pdo.prepare-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1042"><p><strong>例1 名前付きパラメータを用いて SQL ステートメントを準備する</strong></p>
+   <div class="example" id="example-975"><p><strong>例1 名前付きパラメータを用いて SQL ステートメントのテンプレートを準備する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;値の配列を渡してプリペアドステートメントを実行する&nbsp;*/<br /></span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;colour,&nbsp;calories<br />&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;fruit<br />&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;calories&nbsp;&lt;&nbsp;:calories&nbsp;AND&nbsp;colour&nbsp;=&nbsp;:colour'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_CURSOR&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">CURSOR_FWDONLY</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(array(</span><span style="color: #DD0000">':calories'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">':colour'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$red&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchAll</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(array(</span><span style="color: #DD0000">':calories'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">175</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">':colour'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'yellow'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$yellow&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchAll</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -149,8 +171,8 @@
     </div>
 
    </div>
-   <div class="example" id="example-1043">
-    <p><strong>例2 疑問符パラメータを用いて SQL ステートメントを準備する</strong></p>
+   <div class="example" id="example-976">
+    <p><strong>例2 疑問符パラメータを用いて SQL ステートメントのテンプレートを準備する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;値の配列を渡してプリペアドステートメントを実行する&nbsp;*/<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;colour,&nbsp;calories<br />&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;fruit<br />&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;calories&nbsp;&lt;&nbsp;?&nbsp;AND&nbsp;colour&nbsp;=&nbsp;?'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(array(</span><span style="color: #0000BB">150</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$red&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchAll</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(array(</span><span style="color: #0000BB">175</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'yellow'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$yellow&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchAll</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -174,9 +196,4 @@
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pdo.lastinsertid.html">PDO::lastInsertId</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pdo.query.html">PDO::query</a></div>
- <div class="up"><a href="class.pdo.html">PDO</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

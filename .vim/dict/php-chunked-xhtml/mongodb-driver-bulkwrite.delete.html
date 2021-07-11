@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Add a delete operation to the bulk</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mongodb-driver-bulkwrite.count.html">MongoDB\Driver\BulkWrite::count</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mongodb-driver-bulkwrite.insert.html">MongoDB\Driver\BulkWrite::insert</a></div>
- <div class="up"><a href="class.mongodb-driver-bulkwrite.html">MongoDB\Driver\BulkWrite</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mongodb-driver-bulkwrite.delete" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mongodb-driver-bulkwrite.count.html">« MongoDB\Driver\BulkWrite::count</a></li>
+      <li style="float: right;"><a href="mongodb-driver-bulkwrite.insert.html">MongoDB\Driver\BulkWrite::insert »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mongodb-driver-bulkwrite.html">MongoDB\Driver\BulkWrite</a></li>
+    <li>Add a delete operation to the bulk</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mongodb-driver-bulkwrite.delete" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">MongoDB\Driver\BulkWrite::delete</h1>
   <p class="verinfo">(mongodb &gt;=1.0.0)</p><p class="refpurpose"><span class="refname">MongoDB\Driver\BulkWrite::delete</span> &mdash; <span class="dc-title">Add a delete operation to the bulk</span></p>
@@ -20,10 +33,7 @@
  <div class="refsect1 description" id="refsect1-mongodb-driver-bulkwrite.delete-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>MongoDB\Driver\BulkWrite::delete</strong></span>
-    ( <span class="methodparam"><span class="type"><span class="type array|object">array|object</span></span> <code class="parameter">$filter</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$deleteOptions</code></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>MongoDB\Driver\BulkWrite::delete</strong></span>(<span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">object</span></span> <code class="parameter">$filter</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$deleteOptions</code><span class="initializer"> = ?</span></span>): <span class="type"><span class="type void">void</span></span></div>
 
   <p class="para rdfs-comment">
    Adds a delete operation to the
@@ -40,13 +50,19 @@
    
    
     <dt>
-<code class="parameter">filter</code> (<span class="type"><span class="type array|object">array|object</span></span>)</dt>
+<code class="parameter">filter</code> (<span class="type"><span class="type">array</span>|<span class="type">object</span></span>)</dt>
 
     <dd>
 
      <p class="para">
-      検索フィルタ。
+      <a href="https://docs.mongodb.com/manual/tutorial/query-documents/" class="link external">&raquo;&nbsp;クエリ述語</a>。
+      空の述語を指定すると、コレクション内のすべてのドキュメントにマッチします。
      </p>
+     <blockquote class="note"><p><strong class="note">注意</strong>: 
+      <span class="simpara">
+       When evaluating query criteria, MongoDB compares types and values according to its own <a href="https://docs.mongodb.com/manual/reference/bson-type-comparison-order/" class="link external">&raquo;&nbsp;comparison rules for BSON types</a>, which differs from PHP&#039;s <a href="types.comparisons.html" class="link">comparison</a> and <a href="language.types.type-juggling.html" class="link">type juggling</a> rules. When matching a special BSON type the query criteria should use the respective <a href="book.bson.html" class="link">BSON class</a> (e.g. use <a href="class.mongodb-bson-objectid.html" class="classname">MongoDB\BSON\ObjectId</a> to match an <a href="https://docs.mongodb.com/manual/reference/object-id/" class="link external">&raquo;&nbsp;ObjectId</a>).
+      </span>
+     </p></blockquote>
     </dd>
 
    
@@ -72,11 +88,52 @@
         </thead>
 
         <tbody class="tbody">
+         
+         <tr>
+          <td>collation</td>
+          <td><span class="type"><span class="type">array</span>|<span class="type">object</span></span></td>
+          <td>
+           <p class="para">
+             <a href="https://docs.mongodb.com/master/reference/collation/" class="link external">&raquo;&nbsp;Collation</a>
+             は、文字列比較の際の言語固有のルールを指定するものです。たとえば、大文字小文字やアクセント記号の扱いを指定できます。
+             collation を指定するときには <code class="literal">&quot;locale&quot;</code> フィールドが必須となります。それ以外の collation フィールドはすべて任意指定です。
+             各フィールドについての説明は <a href="https://docs.mongodb.com/master/reference/collation/#collation-document" class="link external">&raquo;&nbsp;Collation のドキュメント</a>
+             を参照ください。
+           </p>
+           <p class="para">
+            collation が未指定で collection のデフォルトの collation が設定されている場合は、コレクションが持っている collation を用いて操作を実行します。
+            コレクションや操作にも collation が指定されていない場合は、MongoDB は単純にバイナリ比較を行います。
+            これは、今までのバージョンでの文字列比較と同じ方法です。
+           </p>
+           <p class="para">
+            このオプションは MongoDB 3.4 以降で使用可能です。それより前のバージョンのサーバー上で指定すると、実行時に例外が発生します。
+           </p>
+          </td>
+         </tr>
+
+
+         <tr>
+          <td>hint</td>
+          <td><span class="type"><span class="type">string</span>|<span class="type">array</span>|<span class="type">object</span></span></td>
+          <td>
+           <p class="para">
+            Index specification. Specify either the index name as a string or
+            the index key pattern. If specified, then the query system will only
+            consider plans using the hinted index.
+           </p>
+           <p class="para">
+            This option is available in MongoDB 4.4+ and will result in an
+            exception at execution time if specified for an older server
+            version.
+           </p>
+          </td>
+         </tr>
+
          <tr>
           <td>limit</td>
-          <td><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></td>
-          <td>Delete all matching documents (limit=0), or only the first matching document (limit=1)</td>
-          <td><strong><code>FALSE</code></strong></td>
+          <td><span class="type">bool</span></td>
+          <td>Delete all matching documents (<strong><code>false</code></strong>), or only the first matching document (<strong><code>true</code></strong>)</td>
+          <td><strong><code>false</code></strong></td>
          </tr>
 
         </tbody>
@@ -108,14 +165,49 @@
  </div>
 
 
+ <div class="refsect1 changelog" id="refsect1-mongodb-driver-bulkwrite.delete-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>PECL mongodb 1.8.0</td>
+       <td>
+        Added the <code class="literal">&quot;hint&quot;</code> option.
+       </td>
+      </tr>
+
+      <tr>
+       <td>PECL mongodb 1.2.0</td>
+       <td>
+        Added the <code class="literal">&quot;collation&quot;</code> option.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
 
  <div class="refsect1 examples" id="refsect1-mongodb-driver-bulkwrite.delete-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1689">
+  <div class="example" id="example-1267">
    <p><strong>例1 <span class="function"><strong>MongoDB\Driver\BulkWrite::delete()</strong></span> example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br />$bulk&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">BulkWrite</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delete</span><span style="color: #007700">([</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">],&nbsp;[</span><span style="color: #DD0000">'limit'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delete</span><span style="color: #007700">([</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">],&nbsp;[</span><span style="color: #DD0000">'limit'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br /><br /></span><span style="color: #0000BB">$manager&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://localhost:27017'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$writeConcern&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">WriteConcern</span><span style="color: #007700">(</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">WriteConcern</span><span style="color: #007700">::</span><span style="color: #0000BB">MAJORITY</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1000</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$manager</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">executeBulkWrite</span><span style="color: #007700">(</span><span style="color: #DD0000">'db.collection'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bulk</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$writeConcern</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />$bulk&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">BulkWrite</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delete</span><span style="color: #007700">([</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">],&nbsp;[</span><span style="color: #DD0000">'limit'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delete</span><span style="color: #007700">([</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">],&nbsp;[</span><span style="color: #DD0000">'limit'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br /><br /></span><span style="color: #0000BB">$manager&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://localhost:27017'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$manager</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">executeBulkWrite</span><span style="color: #007700">(</span><span style="color: #DD0000">'db.collection'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bulk</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
    </div>
@@ -134,9 +226,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mongodb-driver-bulkwrite.count.html">MongoDB\Driver\BulkWrite::count</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mongodb-driver-bulkwrite.insert.html">MongoDB\Driver\BulkWrite::insert</a></div>
- <div class="up"><a href="class.mongodb-driver-bulkwrite.html">MongoDB\Driver\BulkWrite</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -2,35 +2,42 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Set the clipping rectangle</title>
+  <title>切り取る長方形を設定する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagesetbrush.html">imagesetbrush</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imagesetinterpolation.html">imagesetinterpolation</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.imagesetclip" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagesetbrush.html">« imagesetbrush</a></li>
+      <li style="float: right;"><a href="function.imagesetinterpolation.html">imagesetinterpolation »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">GD および Image 関数</a></li>
+    <li>切り取る長方形を設定する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagesetclip" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagesetclip</h1>
-  <p class="verinfo">(PHP 7.2)</p><p class="refpurpose"><span class="refname">imagesetclip</span> &mdash; <span class="dc-title">Set the clipping rectangle</span></p>
+  <p class="verinfo">(PHP 7 &gt;= 7.2.0, PHP 8)</p><p class="refpurpose"><span class="refname">imagesetclip</span> &mdash; <span class="dc-title">切り取る長方形を設定する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.imagesetclip-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>imagesetclip</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$im</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$x1</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$y1</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$x2</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$y2</code></span>
-   )</div>
+   <span class="methodname"><strong>imagesetclip</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.gdimage.html" class="type GdImage">GdImage</a></span> <code class="parameter">$image</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$x1</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$y1</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$x2</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$y2</code></span><br>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
-   <span class="function"><strong>imagesetclip()</strong></span> sets the current clipping rectangle, i.e.
-   the area beyond which no pixels will be drawn.
+   <span class="function"><strong>imagesetclip()</strong></span> は、切り取る長方形を設定します。
+   つまり、ピクセルが存在しない状態でなければ描画されます。
   </p>
  </div>
 
@@ -44,7 +51,7 @@
 image</code></dt>
 <dd>
 <p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
-のような画像作成関数が返す画像リソース。</p></dd>
+のような画像作成関数が返す <a href="class.gdimage.html" class="classname">GdImage</a> オブジェクト。</p></dd>
 
    
     <dt>
@@ -53,7 +60,7 @@ image</code></dt>
     <dd>
 
      <p class="para">
-      The x-coordinate of the upper left corner.
+      左上のx座標
      </p>
     </dd>
 
@@ -65,7 +72,7 @@ image</code></dt>
     <dd>
 
      <p class="para">
-      The y-coordinate of the upper left corner.
+      左上のy座標
      </p>
     </dd>
 
@@ -77,7 +84,7 @@ image</code></dt>
     <dd>
 
      <p class="para">
-      The x-coordinate of the lower right corner.
+      右下のx座標
      </p>
     </dd>
 
@@ -89,7 +96,7 @@ image</code></dt>
     <dd>
 
      <p class="para">
-      The y-coordinate of the lower right corner.
+      右下のy座標
      </p>
     </dd>
 
@@ -102,22 +109,47 @@ image</code></dt>
  <div class="refsect1 returnvalues" id="refsect1-function.imagesetclip-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.imagesetclip-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">image</code> は、
+  <a href="class.gdimage.html" class="classname">GdImage</a>
+  クラスのインスタンスを期待するようになりました。
+  これより前のバージョンでは、<span class="type">resource</span> が期待されていました。
+ </td>
+</tr>
+
+    </tbody>
+   
+  </table>
+
  </div>
 
 
  <div class="refsect1 seealso" id="refsect1-function.imagesetclip-seealso">
   <h3 class="title">参考</h3>
   <ul class="simplelist">
-   <li class="member"><span class="function"><a href="function.imagegetclip.html" class="function" rel="rdfs-seeAlso">imagegetclip()</a> - Get the clipping rectangle</span></li>
+   <li class="member"><span class="function"><a href="function.imagegetclip.html" class="function" rel="rdfs-seeAlso">imagegetclip()</a> - 長方形を切り取り、画像として取得する</span></li>
   </ul>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagesetbrush.html">imagesetbrush</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imagesetinterpolation.html">imagesetinterpolation</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,26 +3,36 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>クオータレベルの設定、メールボックス毎の使用状況を取得する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imap-gc.html">imap_gc</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imap-get-quotaroot.html">imap_get_quotaroot</a></div>
- <div class="up"><a href="ref.imap.html">IMAP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.imap-get-quota" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imap-gc.html">« imap_gc</a></li>
+      <li style="float: right;"><a href="function.imap-get-quotaroot.html">imap_get_quotaroot »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.imap.html">IMAP 関数</a></li>
+    <li>クオータレベルの設定、メールボックス毎の使用状況を取得する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imap-get-quota" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imap_get_quota</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imap_get_quota</span> &mdash; <span class="dc-title">クオータレベルの設定、メールボックス毎の使用状況を取得する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imap_get_quota</span> &mdash; <span class="dc-title">クオータレベルの設定、メールボックス毎の使用状況を取得する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imap-get-quota-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>imap_get_quota</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$imap_stream</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$quota_root</code></span>
-   )</div>
+   <span class="methodname"><strong>imap_get_quota</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$imap</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$quota_root</code></span>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    クオータレベルの設定、メールボックス毎の使用状況を取得します。
@@ -40,7 +50,7 @@
 
     <dt>
 <code class="parameter">
-imap_stream</code></dt>
+imap</code></dt>
 <dd>
 <p class="para"><span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
 が返す IMAP ストリーム。</p></dd>
@@ -53,7 +63,7 @@ imap_stream</code></dt>
 
       <p class="para">
        <code class="parameter">quota_root</code> は、通常
-       <em>user.name</em> という形式にする必要があります。
+       <code class="literal">user.name</code> という形式にする必要があります。
        name は、情報を取得したいメールボックスの名前です。
       </p>
      </dd>
@@ -70,7 +80,7 @@ imap_stream</code></dt>
    指定したメールボックスの limit と usage をキーとした整数値を配列として返します。
    limit の値は、このメールボックスで最大使用可能な大きさを表します。
    usage の値は、このメールボックスの現在の使用状況を示します。
-   失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
   <p class="para">
    PHP 4.3 では、この関数は <a href="http://www.faqs.org/rfcs/rfc2087" class="link external">&raquo;&nbsp;RFC2087</a>
@@ -90,7 +100,7 @@ imap_stream</code></dt>
  <div class="refsect1 examples" id="refsect1-function.imap-get-quota-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3905">
+   <div class="example" id="example-2981">
     <p><strong>例1 <span class="function"><strong>imap_get_quota()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -102,7 +112,7 @@ imap_stream</code></dt>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3906">
+   <div class="example" id="example-2982">
     <p><strong>例2 4.3 以降のバージョンでの <span class="function"><strong>imap_get_quota()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -121,7 +131,7 @@ imap_stream</code></dt>
    この関数は、現在、c-client2000 以降のライブラリを使用しているユーザーのみ使用可能です。
   </p>
   <p class="para">
-   指定する <code class="parameter">imap_stream</code> は、
+   指定する <code class="parameter">imap</code> は、
    メールの管理者としてオープンしたものである必要があります。
    そうでない場合は、この関数は失敗します。
   </p>
@@ -138,9 +148,4 @@ imap_stream</code></dt>
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imap-gc.html">imap_gc</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imap-get-quotaroot.html">imap_get_quotaroot</a></div>
- <div class="up"><a href="ref.imap.html">IMAP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

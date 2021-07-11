@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>SimpleXML 要素に基づき整形式の XML 文字列を返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="simplexmlelement.addchild.html">SimpleXMLElement::addChild</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="simplexmlelement.attributes.html">SimpleXMLElement::attributes</a></div>
- <div class="up"><a href="class.simplexmlelement.html">SimpleXMLElement</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="simplexmlelement.asxml" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="simplexmlelement.addchild.html">« SimpleXMLElement::addChild</a></li>
+      <li style="float: right;"><a href="simplexmlelement.attributes.html">SimpleXMLElement::attributes »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.simplexmlelement.html">SimpleXMLElement</a></li>
+    <li>SimpleXML 要素に基づき整形式の XML 文字列を返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="simplexmlelement.asxml" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">SimpleXMLElement::asXML</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.0.1, PHP 7)</p><p class="refpurpose"><span class="refname">SimpleXMLElement::asXML</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SimpleXMLElement::asXML</span> &mdash; <span class="dc-title">
    SimpleXML 要素に基づき整形式の XML 文字列を返す
   </span></p>
 
@@ -21,12 +34,10 @@
  <div class="refsect1 description" id="refsect1-simplexmlelement.asxml-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>SimpleXMLElement::asXML</strong></span>
-    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>SimpleXMLElement::asXML</strong></span>(<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$filename</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type"><span class="type">string</span>|<span class="type">bool</span></span></div>
 
   <p class="para rdfs-comment">
-   <em>asXML</em> メソッドは、親オブジェクトのデータを
+   <code class="literal">asXML</code> メソッドは、親オブジェクトのデータを
    XML version 1.0 形式にフォーマットします。
   </p>
  </div>
@@ -44,7 +55,7 @@
      <dd>
 
       <p class="para">
-       指定した場合、データを返すかわりにファイルにデータを書き込みます。
+       文字列を指定した場合、データを返すかわりにファイルにデータを書き込みます。
       </p>
      </dd>
 
@@ -59,17 +70,44 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    <code class="parameter">filename</code> が指定されていない場合、この関数は
-   成功時に <span class="type"><a href="language.types.string.html" class="type string">string</a></span> 、エラー時に <strong><code>FALSE</code></strong> を返します。
+   成功時に <span class="type">string</span> 、エラー時に <strong><code>false</code></strong> を返します。
    パラメータが指定されていた場合は、ファイルが正常に書き込めたときに
-   <strong><code>TRUE</code></strong> 、そうでないときに <strong><code>FALSE</code></strong> を返します。
+   <strong><code>true</code></strong> 、そうでないときに <strong><code>false</code></strong> を返します。
   </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-simplexmlelement.asxml-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">filename</code> は、nullable になりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-simplexmlelement.asxml-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-6328">
+   <div class="example" id="example-5349">
     <p><strong>例1 XML を取得する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -96,12 +134,12 @@
    </div>
   </p>
   <p class="para">
-   <em>asXML</em> は Xpath の結果にも適用できます:
-   <div class="example" id="example-6329">
+   <code class="literal">asXML</code> は Xpath の結果にも適用できます:
+   <div class="example" id="example-5350">
     <p><strong>例2 <span class="methodname"><a href="simplexmlelement.xpath.html" class="methodname">SimpleXMLElement::xpath()</a></span> の結果に asXML() を使用する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;上の&nbsp;XML&nbsp;の例から続く<br /><br />/*&nbsp;&lt;a&gt;&lt;b&gt;&lt;c&gt;を探す&nbsp;*/<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$xml</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">xpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'/a/b/c'</span><span style="color: #007700">);<br /><br />while(list(&nbsp;,&nbsp;</span><span style="color: #0000BB">$node</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$node</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">asXML</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;上の&nbsp;XML&nbsp;の例から続く<br /><br />/*&nbsp;&lt;a&gt;&lt;b&gt;&lt;c&gt;を探す&nbsp;*/<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$xml</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">xpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'/a/b/c'</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$node</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$node</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">asXML</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -121,16 +159,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><span class="methodname"><a href="simplexmlelement.tostring.html" class="methodname" rel="rdfs-seeAlso">SimpleXMLElement::__toString()</a> - Returns the string content</span></li>
+    <li class="member"><span class="methodname"><a href="simplexmlelement.tostring.html" class="methodname" rel="rdfs-seeAlso">SimpleXMLElement::__toString()</a> - 文字列で要素の内容を返す</span></li>
     <li class="member"><a href="simplexml.examples-basic.html" class="xref">基本的な SimpleXML の使用法</a></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="simplexmlelement.addchild.html">SimpleXMLElement::addChild</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="simplexmlelement.attributes.html">SimpleXMLElement::attributes</a></div>
- <div class="up"><a href="class.simplexmlelement.html">SimpleXMLElement</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,35 +3,42 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>PKCS#12 互換の証明書保存ファイルをエクスポートする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.openssl-pbkdf2.html">openssl_pbkdf2</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.openssl-pkcs12-export.html">openssl_pkcs12_export</a></div>
- <div class="up"><a href="ref.openssl.html">OpenSSL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.openssl-pkcs12-export-to-file" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.openssl-pbkdf2.html">« openssl_pbkdf2</a></li>
+      <li style="float: right;"><a href="function.openssl-pkcs12-export.html">openssl_pkcs12_export »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.openssl.html">OpenSSL 関数</a></li>
+    <li>PKCS#12 互換の証明書保存ファイルをエクスポートする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.openssl-pkcs12-export-to-file" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">openssl_pkcs12_export_to_file</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.2.2, PHP 7)</p><p class="refpurpose"><span class="refname">openssl_pkcs12_export_to_file</span> &mdash; <span class="dc-title">PKCS#12 互換の証明書保存ファイルをエクスポートする</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.2, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">openssl_pkcs12_export_to_file</span> &mdash; <span class="dc-title">PKCS#12 互換の証明書保存ファイルをエクスポートする</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.openssl-pkcs12-export-to-file-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>openssl_pkcs12_export_to_file</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$x509</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
-   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$priv_key</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$pass</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$args</code></span>
-  ] )</div>
+   <span class="methodname"><strong>openssl_pkcs12_export_to_file</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type"><a href="class.opensslcertificate.html" class="type OpenSSLCertificate">OpenSSLCertificate</a></span>|<span class="type">string</span></span> <code class="parameter">$certificate</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$output_filename</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type"><a href="class.opensslasymmetrickey.html" class="type OpenSSLAsymmetricKey">OpenSSLAsymmetricKey</a></span>|<span class="type"><a href="class.opensslcertificate.html" class="type OpenSSLCertificate">OpenSSLCertificate</a></span>|<span class="type">array</span>|<span class="type">string</span></span> <code class="parameter">$private_key</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$passphrase</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = []</span></span><br>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>openssl_pkcs12_export_to_file()</strong></span> は、
-   <code class="parameter">x509</code> をファイル
-   <code class="parameter">filename</code> に PKCS#12 フォーマットで保存します。
+   <code class="parameter">certificate</code> をファイル
+   <code class="parameter">output_filename</code> に PKCS#12 フォーマットで保存します。
   </p>
  </div>
 
@@ -48,15 +55,14 @@
  <dd>
 
   <p class="para">
-   使用できる値の一覧は
-   <a href="openssl.certparams.html" class="link">キー/証明書パラメータ</a> を参照ください。
+   使用できる値の一覧は <a href="openssl.certparams.html" class="link">キー/証明書パラメータ</a> を参照ください。
   </p>
  </dd>
 
 
     
      <dt>
-<code class="parameter">filename</code></dt>
+<code class="parameter">output_filename</code></dt>
 
      <dd>
 
@@ -68,19 +74,20 @@
     
     
      <dt>
-<code class="parameter">priv_key</code></dt>
+<code class="parameter">private_key</code></dt>
 
      <dd>
 
       <p class="para">
       PKCS#12 ファイルのプライベートキーコンポーネント。
+      正しい値の一覧については、<a href="openssl.certparams.html" class="link">Public/Private Key parameters</a> を参照してください。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">pass</code></dt>
+<code class="parameter">passphrase</code></dt>
 
      <dd>
 
@@ -92,11 +99,37 @@
     
     
      <dt>
-<code class="parameter">args</code></dt>
+<code class="parameter">options</code></dt>
 
      <dd>
 
       <p class="para">
+       オプションの配列。以下に示すキー以外は無視されます。
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>キー</th>
+           <th>説明</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td><code class="literal">&quot;extracerts&quot;</code></td>
+           <td>PKCS#12 ファイルに含まれる単一の証明書、または 外部の証明書の配列</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">&quot;friendlyname&quot;</code></td>
+           <td>与えられた証明書とキーで使われる文字列</td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
       </p>
      </dd>
 
@@ -110,14 +143,50 @@
  <div class="refsect1 returnvalues" id="refsect1-function.openssl-pkcs12-export-to-file-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.openssl-pbkdf2.html">openssl_pbkdf2</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.openssl-pkcs12-export.html">openssl_pkcs12_export</a></div>
- <div class="up"><a href="ref.openssl.html">OpenSSL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ <div class="refsect1 changelog" id="refsect1-function.openssl-pkcs12-export-to-file-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">certificate</code> は、
+       <a href="class.opensslcertificate.html" class="classname">OpenSSLCertificate</a> クラスのインスタンスを受け入れるようになりました。
+       これより前のバージョンでは、
+       <code class="literal">OpenSSL X.509 CSR</code> 型のリソースを受け入れていました。
+      </td>
+     </tr>
+
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">private_key</code> は、
+       <a href="class.opensslasymmetrickey.html" class="classname">OpenSSLAsymmetricKey</a> または
+       <a href="class.opensslcertificate.html" class="classname">OpenSSLCertificate</a> クラスのインスタンスを受け入れるようになりました。
+       これより前のバージョンでは、
+       <code class="literal">OpenSSL key</code> または
+       <code class="literal">OpenSSL X.509</code> 型のリソースを受け入れていました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+</div></div></div></body></html>

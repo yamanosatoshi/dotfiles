@@ -2,57 +2,73 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>直近の接続エラーの内容を文字列で返す</title>
+  <title>直近の接続エラーの説明を返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.connect-errno.html">mysqli::$connect_errno</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.construct.html">mysqli::__construct</a></div>
- <div class="up"><a href="class.mysqli.html">mysqli</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqli.connect-error" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.connect-errno.html">« mysqli::$connect_errno</a></li>
+      <li style="float: right;"><a href="mysqli.construct.html">mysqli::__construct »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli.html">mysqli</a></li>
+    <li>直近の接続エラーの説明を返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.connect-error" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mysqli::$connect_error</h1>
   <h1 class="refname">mysqli_connect_error</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mysqli::$connect_error</span> -- <span class="refname">mysqli_connect_error</span> &mdash; <span class="dc-title">直近の接続エラーの内容を文字列で返す</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli::$connect_error</span> -- <span class="refname">mysqli_connect_error</span> &mdash; <span class="dc-title">直近の接続エラーの説明を返す</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-mysqli.connect-error-description">
   <h3 class="title">説明</h3>
   <p class="para">オブジェクト指向型</p>
-  <div class="fieldsynopsis"><span class="type">string</span> <var class="varname"><a href="mysqli.connect-error.html">$mysqli-&gt;connect_error</a></var>;</div>
+  <div class="fieldsynopsis"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <var class="varname"><a href="mysqli.connect-error.html">$mysqli-&gt;connect_error</a></var>;</div>
 
   <p class="para">手続き型</p>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>mysqli_connect_error</strong></span>
-    ( <span class="methodparam">void</span>
-   )</div>
+   <span class="methodname"><strong>mysqli_connect_error</strong></span>(): <span class="type"><span class="type">string</span>|<span class="type">null</span></span></div>
 
   <p class="para rdfs-comment">
-   <span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> が指すデータベースの
-   直近のエラーについての文字列表現を返します。
+   直近の接続エラーの、エラーメッセージを返します。
   </p>
  </div>
 
  
+ <div class="refsect1 parameters" id="refsect1-mysqli.connect-error-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">この関数にはパラメータはありません。</p>
+ </div>
+
+
  <div class="refsect1 returnvalues" id="refsect1-mysqli.connect-error-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
    エラーの内容を表す文字列を返します。エラーが発生しなかった場合は
-   <strong><code>NULL</code></strong> を返します。
+   <strong><code>null</code></strong> を返します。
   </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-mysqli.connect-error-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1838">
-   <p><strong>例1 <var class="varname"><var class="varname">$mysqli->connect_error</var></var> の例</strong></p>
+  <div class="example" id="example-1401">
+   <p><strong>例1 <var class="varname">$mysqli->connect_error</var> の例</strong></p>
    <div class="example-contents"><p>オブジェクト指向型</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;@new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'fake_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_password'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_db'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;5.2.9&nbsp;および&nbsp;5.3.0&nbsp;以降で動作します<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_error</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Connect&nbsp;Error:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_error</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;デフォルトのエラーメッセージを抑制するには、@&nbsp;を使います。&nbsp;*/<br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;@new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'fake_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_password'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_db'</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_error</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;エラーをロギングする方法はお好きなものをどうぞ&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">error_log</span><span style="color: #007700">(</span><span style="color: #DD0000">'Connection&nbsp;error:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_error</span><span style="color: #007700">);<br />}</span>
 </span>
 </code></div>
    </div>
@@ -60,7 +76,7 @@
    <div class="example-contents"><p>手続き型</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$link&nbsp;</span><span style="color: #007700">=&nbsp;@</span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'fake_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_password'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_db'</span><span style="color: #007700">);<br /><br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'Connect&nbsp;Error:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">());<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;デフォルトのエラーメッセージを抑制するには、@&nbsp;を使います。&nbsp;*/<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;@</span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'fake_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_password'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_db'</span><span style="color: #007700">);<br /><br />if&nbsp;(!</span><span style="color: #0000BB">$link</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;エラーをロギングする方法はお好きなものをどうぞ&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">error_log</span><span style="color: #007700">(</span><span style="color: #DD0000">'Connection&nbsp;error:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">());<br />}</span>
 </span>
 </code></div>
    </div>
@@ -68,22 +84,9 @@
    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
    <div class="example-contents screen">
 <div class="cdata"><pre>
-Connect Error: Access denied for user &#039;fake_user&#039;@&#039;localhost&#039; (using password: YES)
+Connection error: Access denied for user &#039;fake_user&#039;@&#039;localhost&#039; (using password: YES)
 </pre></div>
    </div>
-  </div>
- </div>
-
-
- <div class="refsect1 notes" id="refsect1-mysqli.connect-error-notes">
-  <h3 class="title">注意</h3>
-  <div class="warning"><strong class="warning">警告</strong>
-   <p class="para">
-    mysqli-&gt;connect_error プロパティが正しく動作するのは
-    PHP バージョン 5.2.9 および 5.3.0 以降のみです。
-    それより前のバージョンの PHP との互換性を保つ必要がある場合は
-    <span class="function"><strong>mysqli_connect_error()</strong></span> 関数を使用します。
-   </p>
   </div>
  </div>
 
@@ -102,9 +105,4 @@ Connect Error: Access denied for user &#039;fake_user&#039;@&#039;localhost&#039
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.connect-errno.html">mysqli::$connect_errno</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.construct.html">mysqli::__construct</a></div>
- <div class="up"><a href="class.mysqli.html">mysqli</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

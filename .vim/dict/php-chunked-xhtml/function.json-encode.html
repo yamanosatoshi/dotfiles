@@ -3,31 +3,46 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>値を JSON 形式にして返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.json-decode.html">json_decode</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.json-last-error-msg.html">json_last_error_msg</a></div>
- <div class="up"><a href="ref.json.html">JSON 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.json-encode" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.json-decode.html">« json_decode</a></li>
+      <li style="float: right;"><a href="function.json-last-error-msg.html">json_last_error_msg »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.json.html">JSON 関数</a></li>
+    <li>値を JSON 形式にして返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.json-encode" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">json_encode</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PECL json &gt;= 1.2.0, PHP 7)</p><p class="refpurpose"><span class="refname">json_encode</span> &mdash; <span class="dc-title">値を JSON 形式にして返す</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7, PHP 8, PECL json &gt;= 1.2.0)</p><p class="refpurpose"><span class="refname">json_encode</span> &mdash; <span class="dc-title">値を JSON 形式にして返す</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.json-encode-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>json_encode</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$depth</code><span class="initializer"> = 512</span></span>
-  ]] )</div>
+   <span class="methodname"><strong>json_encode</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$depth</code><span class="initializer"> = 512</span></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
-   <code class="parameter">value</code> を JSON 形式にした文字列を返します。
+   与えられた <code class="parameter">value</code> を JSON 形式にした文字列を返します。
+  </p>
+  <p class="para">
+   エンコーディングは、<code class="parameter">flags</code> の指定によって影響を受けます。
+   さらに、浮動小数点のエンコーディングは、
+   <a href="ini.core.html#ini.serialize-precision" class="link">serialize_precision</a>
+   の値によっても影響を受けます。
   </p>
  </div>
 
@@ -45,26 +60,16 @@
 
       <p class="para">
        エンコードする値。
-       <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> 型以外の任意の型を指定できます。
+       <a href="language.types.resource.html" class="link">リソース</a> 型以外の任意の型を指定できます。
       </p>
       <p class="para">
-       すべての文字列データは、UTF-8 エンコードされたいなければいけません。
+       すべての文字列データは、UTF-8 エンコードされていなければいけません。
       </p>
       
  <blockquote class="note"><p><strong class="note">注意</strong>: 
   <p class="para">
    PHP の実装は、
-   <a href="http://www.faqs.org/rfcs/rfc4627" class="link external">&raquo;&nbsp;RFC 4627</a> の JSON のスーパーセットで、
-   スカラー型や <strong><code>NULL</code></strong> のエンコードやデコードにも対応しています。RFC 4627 では、
-   これらの値は配列やオブジェクトの内部でネストする場合にだけ対応しています。
-  </p>
-  <p class="para">
-   このスーパーセットは、
-   <a href="http://www.faqs.org/rfcs/rfc7159" class="link external">&raquo;&nbsp;RFC 7159</a>
-   (RFC 4627 を置き換えるもの) や
-   <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf" class="link external">&raquo;&nbsp;ECMA-404</a> における &quot;JSON text&quot; の拡張定義との整合性がありますが、
-   RFC 4627 に厳格に従った他の JSON パーサーとの相互運用性には注意しましょう。
-   単一のスカラー値をエンコードする際に、問題が出る可能性があります。
+   <a href="http://www.faqs.org/rfcs/rfc7159" class="link external">&raquo;&nbsp;RFC 7159</a> の JSON のスーパーセットです。
   </p>
  </p></blockquote>
 
@@ -73,22 +78,26 @@
     
     
      <dt>
-<code class="parameter">options</code></dt>
+<code class="parameter">flags</code></dt>
 
      <dd>
 
       <p class="para">
+       <strong><code>JSON_FORCE_OBJECT</code></strong>,
        <strong><code>JSON_HEX_QUOT</code></strong>,
        <strong><code>JSON_HEX_TAG</code></strong>,
        <strong><code>JSON_HEX_AMP</code></strong>,
        <strong><code>JSON_HEX_APOS</code></strong>,
+       <strong><code>JSON_INVALID_UTF8_IGNORE</code></strong>,
+       <strong><code>JSON_INVALID_UTF8_SUBSTITUTE</code></strong>,
        <strong><code>JSON_NUMERIC_CHECK</code></strong>,
-       <strong><code>JSON_PRETTY_PRINT</code></strong>,
-       <strong><code>JSON_UNESCAPED_SLASHES</code></strong>,
-       <strong><code>JSON_FORCE_OBJECT</code></strong>,
+       <strong><code>JSON_PARTIAL_OUTPUT_ON_ERROR</code></strong>,
        <strong><code>JSON_PRESERVE_ZERO_FRACTION</code></strong>,
+       <strong><code>JSON_PRETTY_PRINT</code></strong>,
+       <strong><code>JSON_UNESCAPED_LINE_TERMINATORS</code></strong>,
+       <strong><code>JSON_UNESCAPED_SLASHES</code></strong>,
        <strong><code>JSON_UNESCAPED_UNICODE</code></strong>,
-       <strong><code>JSON_PARTIAL_OUTPUT_ON_ERROR</code></strong>
+       <strong><code>JSON_THROW_ON_ERROR</code></strong>
        からなるビットマスク。
        各定数の意味については
        <a href="json.constants.html" class="link">JSON 定数のページ</a>
@@ -119,7 +128,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    成功した場合に、JSON エンコードされた文字列を返します。
-   失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -139,48 +148,36 @@
 
      <tbody class="tbody">
       <tr>
+       <td>7.3.0</td>
+       <td>
+        <code class="parameter">flags</code> パラメータに 
+        <strong><code>JSON_THROW_ON_ERROR</code></strong> が追加されました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.2.0</td>
+       <td>
+        <code class="parameter">flags</code> パラメータに 
+        <strong><code>JSON_INVALID_UTF8_IGNORE</code></strong> と
+        <strong><code>JSON_INVALID_UTF8_SUBSTITUTE</code></strong> が追加されました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.1.0</td>
+       <td>
+        <code class="parameter">flags</code> パラメータに 
+        <strong><code>JSON_UNESCAPED_LINE_TERMINATORS</code></strong> が追加されました。
+       </td>
+      </tr>
+
+      <tr>
        <td>7.1.0</td>
        <td>
         double 値をエンコードする際に、
         <a href="ini.core.html#ini.precision" class="link">precision</a> ではなく
         <a href="ini.core.html#ini.serialize-precision" class="link">serialize_precision</a> を使うようになりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.6.6</td>
-       <td>
-        <code class="parameter">option</code> パラメータに <strong><code>JSON_PRESERVE_ZERO_FRACTION</code></strong> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.5.0</td>
-       <td>
-        パラメータ <code class="parameter">depth</code> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.4.0</td>
-       <td>
-        <code class="parameter">option</code> に
-        <strong><code>JSON_PRETTY_PRINT</code></strong>、<strong><code>JSON_UNESCAPED_SLASHES</code></strong> および <strong><code>JSON_UNESCAPED_UNICODE</code></strong>
-        が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.3.3</td>
-       <td>
-        <code class="parameter">option</code> に <strong><code>JSON_NUMERIC_CHECK</code></strong> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.3.0</td>
-       <td>
-        <code class="parameter">options</code> パラメータが追加されました。
        </td>
       </tr>
 
@@ -195,7 +192,7 @@
  <div class="refsect1 examples" id="refsect1-function.json-encode-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4336">
+   <div class="example" id="example-3453">
     <p><strong>例1 <span class="function"><strong>json_encode()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -212,9 +209,9 @@
     </div>
    </div>
 
-   <div class="example" id="example-4337">
+   <div class="example" id="example-3454">
     <p><strong>例2 
-     <span class="function"><strong>json_encode()</strong></span> で、利用中のいくつかのオプションを表示する例
+     <span class="function"><strong>json_encode()</strong></span> で、利用中のいくつかのフラグを表示する例
     </strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -231,8 +228,8 @@ Tags: [&quot;\u003Cfoo\u003E&quot;,&quot;&#039;bar&#039;&quot;,&quot;\&quot;baz\
 Apos: [&quot;&lt;foo&gt;&quot;,&quot;\u0027bar\u0027&quot;,&quot;\&quot;baz\&quot;&quot;,&quot;&amp;blong&amp;&quot;,&quot;\u00e9&quot;]
 Quot: [&quot;&lt;foo&gt;&quot;,&quot;&#039;bar&#039;&quot;,&quot;\u0022baz\u0022&quot;,&quot;&amp;blong&amp;&quot;,&quot;\u00e9&quot;]
 Amp: [&quot;&lt;foo&gt;&quot;,&quot;&#039;bar&#039;&quot;,&quot;\&quot;baz\&quot;&quot;,&quot;\u0026blong\u0026&quot;,&quot;\u00e9&quot;]
-Unicode: [&quot;&lt;foo&gt;&quot;,&quot;&#039;bar&#039;&quot;,&quot;\&quot;baz\&quot;&quot;,&quot;&amp;blong&amp;&quot;,&quot;é&quot;]
-All: [&quot;\u003Cfoo\u003E&quot;,&quot;\u0027bar\u0027&quot;,&quot;\u0022baz\u0022&quot;,&quot;\u0026blong\u0026&quot;,&quot;é&quot;]
+Unicode: [&quot;&lt;foo&gt;&quot;,&quot;&#039;bar&#039;&quot;,&quot;\&quot;baz\&quot;&quot;,&quot;&amp;blong&amp;&quot;,&quot;e&quot;]
+All: [&quot;\u003Cfoo\u003E&quot;,&quot;\u0027bar\u0027&quot;,&quot;\u0022baz\u0022&quot;,&quot;\u0026blong\u0026&quot;,&quot;e&quot;]
 
 Empty array output as array: []
 Empty array output as object: {}
@@ -245,8 +242,8 @@ Associative array always output as object: {&quot;foo&quot;:&quot;bar&quot;,&quo
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-4338">
-    <p><strong>例3 JSON_NUMERIC_CHECK オプションの例</strong></p>
+   <div class="example" id="example-3455">
+    <p><strong>例3 JSON_NUMERIC_CHECK の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Strings&nbsp;representing&nbsp;numbers&nbsp;automatically&nbsp;turned&nbsp;into&nbsp;numbers"</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$numbers&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'+123123'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'-123123'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'1.2e3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'0.00001'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br />&nbsp;</span><span style="color: #0000BB">$numbers</span><span style="color: #007700">,<br />&nbsp;</span><span style="color: #0000BB">json_encode</span><span style="color: #007700">(</span><span style="color: #0000BB">$numbers</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">JSON_NUMERIC_CHECK</span><span style="color: #007700">)<br />);<br />echo&nbsp;</span><span style="color: #DD0000">"Strings&nbsp;containing&nbsp;improperly&nbsp;formatted&nbsp;numbers"</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$strings&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'+a33123456789'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'a123'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br />&nbsp;</span><span style="color: #0000BB">$strings</span><span style="color: #007700">,<br />&nbsp;</span><span style="color: #0000BB">json_encode</span><span style="color: #007700">(</span><span style="color: #0000BB">$strings</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">JSON_NUMERIC_CHECK</span><span style="color: #007700">)<br />);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -281,7 +278,7 @@ string(24) &quot;[&quot;+a33123456789&quot;,&quot;a123&quot;]&quot;
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-4339">
+   <div class="example" id="example-3456">
     <p><strong>例4 シーケンシャルな配列とそうでない配列の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -332,8 +329,8 @@ string(33) &quot;{&quot;0&quot;:&quot;foo&quot;,&quot;2&quot;:&quot;baz&quot;,&q
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-4340">
-    <p><strong>例5 <strong><code>JSON_PRESERVE_ZERO_FRACTION</code></strong> オプションの例</strong></p>
+   <div class="example" id="example-3457">
+    <p><strong>例5 <strong><code>JSON_PRESERVE_ZERO_FRACTION</code></strong> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">json_encode</span><span style="color: #007700">(</span><span style="color: #0000BB">12.0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">JSON_PRESERVE_ZERO_FRACTION</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">json_encode</span><span style="color: #007700">(</span><span style="color: #0000BB">12.0</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -371,8 +368,8 @@ string(2) &quot;12&quot;
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     JSON エンコーダーのリファレンス実装と同様、
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span> や <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>、
-    <span class="type"><a href="language.types.float.html" class="type float">float</a></span> そして <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span> を入力として渡したときに
+    <span class="type">string</span> や <span class="type">int</span>、
+    <span class="type">float</span> そして <span class="type">bool</span> を入力として渡したときに
     <span class="function"><strong>json_encode()</strong></span> が生成する JSON
     はシンプルな値 (オブジェクトでもないし配列でもないもの) となります。
     大半のエンコーダーはこういった値を妥当な JSON として扱いますが、中にはそうでないものもあります。
@@ -398,9 +395,4 @@ string(2) &quot;12&quot;
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.json-decode.html">json_decode</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.json-last-error-msg.html">json_last_error_msg</a></div>
- <div class="up"><a href="ref.json.html">JSON 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

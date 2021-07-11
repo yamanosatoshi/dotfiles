@@ -3,26 +3,36 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>基底ノード型を作成する際に使用する拡張クラスを登録する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="domdocument.normalizedocument.html">DOMDocument::normalizeDocument</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="domdocument.relaxngvalidate.html">DOMDocument::relaxNGValidate</a></div>
- <div class="up"><a href="class.domdocument.html">DOMDocument</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="domdocument.registernodeclass" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="domdocument.normalizedocument.html">« DOMDocument::normalizeDocument</a></li>
+      <li style="float: right;"><a href="domdocument.relaxngvalidate.html">DOMDocument::relaxNGValidate »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.domdocument.html">DOMDocument</a></li>
+    <li>基底ノード型を作成する際に使用する拡張クラスを登録する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="domdocument.registernodeclass" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">DOMDocument::registerNodeClass</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7)</p><p class="refpurpose"><span class="refname">DOMDocument::registerNodeClass</span> &mdash; <span class="dc-title">基底ノード型を作成する際に使用する拡張クラスを登録する</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DOMDocument::registerNodeClass</span> &mdash; <span class="dc-title">基底ノード型を作成する際に使用する拡張クラスを登録する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-domdocument.registernodeclass-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><strong>DOMDocument::registerNodeClass</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$baseclass</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$extendedclass</code></span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>DOMDocument::registerNodeClass</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$baseClass</code></span>, <span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$extendedClass</code></span>): <span class="type">bool</span></div>
 
 
   <p class="para rdfs-comment">
@@ -42,7 +52,7 @@
 
     
      <dt>
-<code class="parameter">baseclass</code></dt>
+<code class="parameter">baseClass</code></dt>
 
      <dd>
 
@@ -55,13 +65,13 @@
     
     
      <dt>
-<code class="parameter">extendedclass</code></dt>
+<code class="parameter">extendedClass</code></dt>
 
      <dd>
 
       <p class="para">
-       拡張したクラスの名前。<strong><code>NULL</code></strong> を渡した場合は、
-       それまでに <code class="parameter">baseclass</code>
+       拡張したクラスの名前。<strong><code>null</code></strong> を渡した場合は、
+       それまでに <code class="parameter">baseClass</code>
        を拡張して作成したすべてのクラスが削除されます。
       </p>
      </dd>
@@ -76,39 +86,7 @@
  <div class="refsect1 returnvalues" id="refsect1-domdocument.registernodeclass-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
-  </p>
- </div>
-
-
- <div class="refsect1 changelog" id="refsect1-domdocument.registernodeclass-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>5.2.2</td>
-       <td>
-        5.2.2 より前のバージョンでは、同一の <code class="parameter">baseclass</code>
-        を継承した新しいクラスを登録する際には、以前に登録されていた
-        <code class="parameter">extendedclass</code> の登録を解除する必要がありました。
-       </td>
-      </tr>
-
-
-     </tbody>
-    
-   </table>
-
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -116,7 +94,7 @@
  <div class="refsect1 examples" id="refsect1-domdocument.registernodeclass-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-6241">
+   <div class="example" id="example-5301">
     <p><strong>例1 新しいメソッドを DOMElement に追加し、コードを書きやすくする</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -135,7 +113,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-6242">
+   <div class="example" id="example-5302">
     <p><strong>例2 カスタムクラス形式での要素の取得</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -154,11 +132,11 @@ text in child
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-6243">
+   <div class="example" id="example-5303">
     <p><strong>例3 オーナードキュメントの取得</strong></p>
     <div class="example-contents"><p>
      自作の <a href="class.domdocument.html" class="classname">DOMDocument</a> インスタンスを作成すると、
-     <var class="varname"><var class="varname">ownerDocument</var></var> プロパティが作成元のクラスを指すようになります。
+     <var class="varname">ownerDocument</var> プロパティが作成元のクラスを指すようになります。
      つまり <a href="class.domdocument.html" class="classname">DOMDocument</a> の
      <span class="function"><strong>DOMDocument::registerNodeClass()</strong></span> を使う必要はない
      (実際、使えない) ということです。
@@ -179,12 +157,34 @@ string(18) &quot;myOtherDOMDocument&quot;
     </div>
    </div>
   </p>
+  <p class="para">
+   <div class="example" id="example-5304">
+    <p><strong>例4 カスタムオブジェクトは一時的なもの</strong></p>
+    <div class="caution"><strong class="caution">警告</strong>
+     <p class="simpara">
+      登録されたノードクラスは、一時的なものです。
+      つまり、PHPコードから参照されなくなった時には破棄され、
+      再度取得される際に再生成されます。
+      これは、カスタムプロパティの値は再生成された時に失われるということです。
+     </p>
+    </div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyDOMElement&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">DOMElement<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$myProp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'default&nbsp;value'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$doc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerNodeClass</span><span style="color: #007700">(</span><span style="color: #DD0000">'DOMElement'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'MyDOMElement'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$node&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createElement</span><span style="color: #007700">(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$node</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">myProp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'modified&nbsp;value'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">appendChild</span><span style="color: #007700">(</span><span style="color: #0000BB">$node</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">childNodes</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">myProp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />unset(</span><span style="color: #0000BB">$node</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">childNodes</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">myProp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+modified value
+default value
+</pre></div>
+    </div>
+   </div>
+  </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="domdocument.normalizedocument.html">DOMDocument::normalizeDocument</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="domdocument.relaxngvalidate.html">DOMDocument::relaxNGValidate</a></div>
- <div class="up"><a href="class.domdocument.html">DOMDocument</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

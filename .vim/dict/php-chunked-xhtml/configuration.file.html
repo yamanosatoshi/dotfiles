@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>設定ファイル</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="configuration.html">実行時設定</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="configuration.file.per-user.html">.user.ini ファイル</a></div>
- <div class="up"><a href="configuration.html">実行時設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="configuration.file" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="configuration.html">« 実行時設定</a></li>
+      <li style="float: right;"><a href="configuration.file.per-user.html">.user.ini ファイル »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="configuration.html">実行時設定</a></li>
+    <li>設定ファイル</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="configuration.file" class="sect1">
    <h2 class="title">設定ファイル</h2>
 
    <p class="simpara">
@@ -25,35 +38,50 @@
      <li class="listitem">
       <span class="simpara">
        SAPI モジュール特有の場所 (Apache 2 における
-       <em>PHPIniDir</em> ディレクティブ、
-       CGI/CLI 版における <em>-c</em> コマンドラインオプション、
-       NSAPI における <em>php_ini</em> パラメータ、
-       THTTPD における <em>PHP_INI_PATH</em> 環境変数)
+       <code class="literal">PHPIniDir</code> ディレクティブ、
+       CGI/CLI 版における <code class="literal">-c</code> コマンドラインオプション、
+       NSAPI における <code class="literal">php_ini</code> パラメータ)
       </span>
      </li>
      <li class="listitem">
       <span class="simpara">
-       <var class="varname"><var class="varname">PHPRC</var></var> 環境変数。PHP 5.2.0 より前では、
-       これは、次に挙げるレジストリキーの後にチェックされていました。
+       <var class="varname">PHPRC</var> 環境変数。
       </span>
      </li>
      <li class="listitem">
       <span class="simpara">
-       PHP 5.2.0 以降では、PHP のバージョンごとに別の場所の <em>php.ini</em>
-       を使用することができます。以下のレジストリキーを順に調べて使用します。
-       <em>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y.z]</em>、
-       <em>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y]</em> および
-       <em>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x]</em>。
+       PHP のバージョンごとに別の場所の <code class="literal">php.ini</code>
+       を使用することができます。レジストリキーの root は、
+       インストールされたOS や PHP が 32bit や 64bit どちらのビルドかによって変わります。
+       32bit OS 上の 32bit ビルドの PHP、
+       もしくは 64bit OS 上の 64bit ビルドの PHP は
+       <code class="literal">[(HKEY_LOCAL_MACHINE\SOFTWARE\PHP]</code> を使いますが、
+       64bit OS 上での 32bit ビルドのPHPは、
+       <code class="literal">[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\PHP]</code>] を代わりに使います。
+       ビルドのbit数がOSと同じPHPのインストールの場合、
+       以下のレジストリキーを順に調べて使用します。
+       <code class="literal">[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y.z]</code>、
+       <code class="literal">[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y]</code> および
+       <code class="literal">[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x]</code>。
        x、y および z はそれぞれ PHP のメジャーバージョン、マイナーバージョン、
-       リリース番号を表します。これらのキーに <em>IniFilePath</em>
-       の値が設定されていれば、最初に見つかった場所の <em>php.ini</em>
+       リリース番号を表します。
+       64bit OS の 32bitビルドの PHP では、
+       以下のレジストリキーを順に調べて使用します。
+      <code class="literal">[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6421Node\PHP\x.y.z]</code>,
+      <code class="literal">[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6421Node\PHP\x.y]</code> および
+      <code class="literal">[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6421Node\PHP\x]</code>
+       x、y および z はそれぞれ PHP のメジャーバージョン、マイナーバージョン、
+       リリース番号を表します。
+       これらのキーに <code class="literal">IniFilePath</code>
+       の値が設定されていれば、最初に見つかった場所の <code class="literal">php.ini</code>
        を使用します (Windows のみ)。
       </span>
      </li>
      <li class="listitem">
       <span class="simpara">
-       <em>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP]</em> にある
-       <em>IniFilePath</em> の値 (Windows のみ)。
+        <code class="literal">[HKEY_LOCAL_MACHINE\SOFTWARE\PHP]</code> または
+        <code class="literal">[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\PHP]</code> にある
+        <code class="literal">IniFilePath</code> の値 (Windows のみ)。
       </span>
      </li>
      <li class="listitem">
@@ -72,7 +100,7 @@
        Windows ディレクトリ (<var class="filename">C:\windows</var>
        もしくは <var class="filename">C:\winnt</var>))
        (Windows の場合) 、もしくはコンパイル時のオプション
-       <em>--with-config-file-path</em>
+       <code class="literal">--with-config-file-path</code>
       </span>
      </li>
     </ul>
@@ -95,7 +123,7 @@
    <var class="filename">php.ini</var> の中で環境変数を使うには、次のようにします。
   </p>
   <p class="para">
-   <div class="example" id="example-80">
+   <div class="example" id="install.unix.openbsd.ports.example">
     <p><strong>例1 <var class="filename">php.ini</var> での環境変数</strong></p>
      <div class="example-contents">
 <div class="inicode"><pre class="inicode">; 環境変数 PHP_MEMORY_LIMIT を利用します
@@ -114,11 +142,11 @@ memory_limit = ${PHP_MEMORY_LIMIT}</pre>
     本マニュアル中で解説されている訳ではありません。
     使っているバージョンの PHP で指定可能なすべてのディレクティブについては、
     <var class="filename">php.ini</var> ファイル内に詳細なコメントが記されていますので、参照してください。
-    もしくは、Git から入手可能な <a href="http://git.php.net/?p=php-src.git;a=blob;f=php.ini-production;hb=HEAD" class="link external">&raquo;&nbsp;
+    もしくは、Git から入手可能な <a href="https://github.com/php/php-src/blob/master/php.ini-production" class="link external">&raquo;&nbsp;
     最新の <var class="filename">php.ini</var></a> も有用でしょう。
    </p>
    <p class="para">
-    <div class="example" id="example-81">
+    <div class="example" id="install.unix.debian.apt.example">
      <p><strong>例2 <var class="filename">php.ini</var> の例</strong></p>
      <div class="example-contents">
 <div class="inicode"><pre class="inicode">; 引用符をつけないセミコロン(;)の後のテキストは、すべて無視されます
@@ -141,9 +169,9 @@ include_path = &quot;.;c:\php\lib&quot;</pre>
     </div>
    </p>
    <p class="para">
-    PHP 5.1.0 以降、ini ファイル内で既存の ini 変数を参照することが可能です。
-    例: <em>open_basedir = ${open_basedir}
-    &quot;:/new/dir&quot;</em>
+    ini ファイル内で既存の ini 変数を参照することが可能です。
+    例: <code class="literal">open_basedir = ${open_basedir}
+    &quot;:/new/dir&quot;</code>
    </p>
   <div class="sect2" id="configuration.file.scan">
    <h3 class="title">スキャンディレクトリ</h3>
@@ -151,31 +179,28 @@ include_path = &quot;.;c:\php\lib&quot;</pre>
    <p class="para">
     PHP の設定で、<var class="filename">php.ini</var> を読んだ後に .ini ファイルを探すディレクトリを指定できます。
     これは、コンパイル時のオプション
-    <strong class="option configure">--with-config-file-scan-dir</strong>
- で設定します。
-    PHP 5.2.0 以降では、このスキャンディレクトリを実行時に上書きできるようになりました。
-    環境変数 <var class="varname"><var class="varname">PHP_INI_SCAN_DIR</var></var> で指定します。
+    <strong class="option configure">--with-config-file-scan-dir</strong> で設定します。
+    このスキャンディレクトリは実行時に上書きできます。
+    環境変数 <var class="varname">PHP_INI_SCAN_DIR</var> で指定します。
    </p>
 
    <p class="para">
     複数のディレクトリを指定するには、各プラットフォームのパス区切り文字
-    (Window や NetWare そして RISC OS の場合は <em>;</em>、
-    その他のプラットフォームの場合は <em>:</em>。PHP が用いる値は定数
+    (Window や NetWare そして RISC OS の場合は <code class="literal">;</code>、
+    その他のプラットフォームの場合は <code class="literal">:</code>。PHP が用いる値は定数
     <strong><code>PATH_SEPARATOR</code></strong> で取得できます)
-    を用います。<var class="varname"><var class="varname">PHP_INI_SCAN_DIR</var></var> に空文字列が指定された場合は、
+    を用います。<var class="varname">PHP_INI_SCAN_DIR</var> に空文字列が指定された場合は、
     PHP のコンパイル時に
     <strong class="option configure">--with-config-file-scan-dir</strong>
-
     で指定されたディレクトリもスキャンします。
    </p>
 
    <p class="para">
     指定されたディレクトリの中にあるファイルの中で、ファイル名が
-    <em>.ini</em> で終わるすべてのファイルを、アルファベット順にスキャンします。
+    <code class="literal">.ini</code> で終わるすべてのファイルを、アルファベット順にスキャンします。
     読み込まれたファイルの一覧とその順序を調べるには、
     <span class="function"><a href="function.php-ini-scanned-files.html" class="function">php_ini_scanned_files()</a></span> を呼ぶか、あるいは
-    <strong class="option unknown">--ini</strong>
- オプションつきで PHP を実行します。
+    <strong class="option unknown">--ini</strong> オプションつきで PHP を実行します。
    </p>
 
    <div class="informalexample">
@@ -219,14 +244,14 @@ $ PHP_INI_SCAN_DIR=/usr/local/etc/php.d: php
        <tr>
         <td>7.0.0</td>
         <td>
-         ハッシュ記号 (<em>#</em>) をコメントとみなさないようになりました。
+         ハッシュ記号 (<code class="literal">#</code>) をコメントとみなさないようになりました。
         </td>
        </tr>
 
        <tr>
         <td>5.3.0</td>
         <td>
-         ハッシュ記号 (<em>#</em>) をコメントとして使ってはいけないようになりました。
+         ハッシュ記号 (<code class="literal">#</code>) をコメントとして使ってはいけないようになりました。
          もし使うと、廃止予定だという警告を発します。
         </td>
        </tr>
@@ -234,7 +259,7 @@ $ PHP_INI_SCAN_DIR=/usr/local/etc/php.d: php
        <tr>
         <td>5.2.0</td>
         <td>
-         環境変数 <var class="varname"><var class="varname">PHP_INI_SCAN_DIR</var></var> によって、
+         環境変数 <var class="varname">PHP_INI_SCAN_DIR</var> によって、
          configure 時に指定したスキャンディレクトリを上書きできるようになりました。
         </td>
        </tr>
@@ -252,9 +277,4 @@ $ PHP_INI_SCAN_DIR=/usr/local/etc/php.d: php
 
    </p>
   </div>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="configuration.html">実行時設定</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="configuration.file.per-user.html">.user.ini ファイル</a></div>
- <div class="up"><a href="configuration.html">実行時設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

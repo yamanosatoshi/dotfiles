@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>浮動小数点数</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.types.integer.html">整数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.types.string.html">文字列</a></div>
- <div class="up"><a href="language.types.html">型</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.types.float" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.types.integer.html">« 整数</a></li>
+      <li style="float: right;"><a href="language.types.string.html">文字列 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.types.html">型</a></li>
+    <li>浮動小数点数</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.types.float" class="sect1">
  <h2 class="title">浮動小数点数</h2>
 
  <p class="para">
@@ -20,7 +33,7 @@
  <div class="informalexample">
   <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1.234</span><span style="color: #007700">;&nbsp;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1.2e3</span><span style="color: #007700">;&nbsp;<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">7E-10</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1.234</span><span style="color: #007700">;&nbsp;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1.2e3</span><span style="color: #007700">;&nbsp;<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">7E-10</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1_234.567</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;PHP&nbsp;7.4.0&nbsp;以降<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
   </div>
@@ -28,15 +41,15 @@
  </div>
 
  <p class="para">
-  規約:
+  PHP 7.4.0 以降の規約(これより前のバージョンでは、アンダースコアは許されませんでした):
  </p>
 
  <div class="informalexample">
   <div class="example-contents">
 <div class="cdata"><pre>
-LNUM          [0-9]+
-DNUM          ([0-9]*[\.]{LNUM}) | ({LNUM}[\.][0-9]*)
-EXPONENT_DNUM [+-]?(({LNUM} | {DNUM}) [eE][+-]? {LNUM})
+LNUM          [0-9]+(_[0-9]+)*
+DNUM          ([0-9]*(_[0-9]+)*[\.]{LNUM}) | ({LNUM}[\.][0-9]*(_[0-9]+)*)
+EXPONENT_DNUM (({LNUM} | {DNUM}) [eE][+-]? {LNUM})
 </pre></div>
   </div>
 
@@ -44,7 +57,7 @@ EXPONENT_DNUM [+-]?(({LNUM} | {DNUM}) [eE][+-]? {LNUM})
 
  <p class="para">
   float の大きさはプラットフォーム依存です。ただし、通常はおよそ 10
-  進数で 14 桁の精度があり、最大値は ~1.8e308 (これは 64ビット IEEE
+  進数で 14 桁の精度があり、最大値は およそ 1.8e308 (これは 64ビット IEEE
   フォーマットです) となります。
  </p>
 
@@ -61,16 +74,16 @@ EXPONENT_DNUM [+-]?(({LNUM} | {DNUM}) [eE][+-]? {LNUM})
   
   <p class="para">
    さらに、十進数では正確な小数で表せる有理数、たとえば
-   <em>0.1</em> や <em>0.7</em> は、
+   <code class="literal">0.1</code> や <code class="literal">0.7</code> は、
    二進数の浮動小数点数としては正確に表現できません。
    これは、仮数部をいくら大きくしても同じです。
    したがって、それを内部的な二進数表現に変換する際には、どうしても多少精度が落ちてしまいます。
    その結果、不思議な結果を引き起こすことがあります。たとえば、
-   <em>floor((0.1+0.7)*10)</em> の結果はたいてい
-   <em>7</em> となるでしょう。おそらくは
-   <em>8</em> を想定していらっしゃるでしょうが、そのようにはなりません。
+   <code class="literal">floor((0.1+0.7)*10)</code> の結果はたいてい
+   <code class="literal">7</code> となるでしょう。おそらくは
+   <code class="literal">8</code> を想定していらっしゃるでしょうが、そのようにはなりません。
    これは、(この計算結果の) 内部的な値が
-   <em>7.9999999999999991118...</em> のようになっているからです。
+   <code class="literal">7.9999999999999991118...</code> のようになっているからです。
   </p>
 
   <p class="para">
@@ -88,17 +101,37 @@ EXPONENT_DNUM [+-]?(({LNUM} | {DNUM}) [eE][+-]? {LNUM})
 
  <div class="sect2" id="language.types.float.casting">
   <h3 class="title">float への変換</h3>
-  
-  <p class="para">
-   文字列型がどのようにして浮動小数点数に変換されるかに関する詳細な情報は、
-   <a href="language.types.string.html#language.types.string.conversion" class="link">文字列の数値型への変換</a>
-   のセクションをご覧ください。
-   そのほかの型の浮動小数点数への変換については、整数型への変換と同様です。
-   詳細は<a href="language.types.integer.html#language.types.integer.casting" class="link">整数型への変換</a>
-   のセクションをご覧ください。
-   PHP 5 以降、オブジェクトを浮動小数点数に変換しようとした場合には、
-   通知がスローされます。
-  </p>
+
+  <div class="sect3" id="language.types.float.casting.from-string">
+   <h4 class="title">文字列から float への変換</h4>
+
+   <p class="simpara">
+    文字列が
+    <a href="language.types.numeric-strings.html" class="link">数値形式の文字列</a>
+    の場合、対応する float の値に解決されます。
+    そうでない場合、ゼロ(<code class="literal">0</code>)に変換されます。
+   </p>
+  </div>
+
+  <div class="sect3" id="language.types.float.casting.from-other">
+   <h4 class="title">他の型から float への変換</h4>
+
+   <p class="para">
+    文字列以外の値については、
+    まず最初に <span class="type">int</span> に変換された後、
+    <span class="type">float</span> に変換されます。
+    詳細は
+    <a href="language.types.integer.html#language.types.integer.casting" class="link">整数への変換</a>
+    を参照下さい。
+   </p>
+
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <p class="para">
+     型によっては、<span class="type">int</span> に変換したときの動作が未定義のものがあります。
+     この場合、<span class="type">float</span> に変換する場合の動作も未定義です。
+    </p>
+   </p></blockquote>
+  </div>
 
  </div>
 
@@ -119,7 +152,7 @@ EXPONENT_DNUM [+-]?(({LNUM} | {DNUM}) [eE][+-]? {LNUM})
   
   <div class="informalexample">
    <p class="simpara">
-    <var class="varname"><var class="varname">$a</var></var> と <var class="varname"><var class="varname">$b</var></var> は、精度 5 桁では等しくなります。
+    <var class="varname">$a</var> と <var class="varname">$b</var> は、精度 5 桁では等しくなります。
    </p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -136,8 +169,8 @@ EXPONENT_DNUM [+-]?(({LNUM} | {DNUM}) [eE][+-]? {LNUM})
   <p class="para">
    数値演算の結果が、定数 <strong><code>NAN</code></strong> で表される値になることがあります。
    この定数は、浮動小数点演算における未定義の値あるいは表現不能な値を表します。
-   この値を他の値と比較した場合、たとえ自分自身との比較であっても結果は <strong><code>FALSE</code></strong> になります。
-   緩やかな比較の場合も厳格な比較の場合の同様です。
+   この値を他の値と比較すると、緩やかな比較および厳密な比較のいずれでも結果は <strong><code>false</code></strong> になります。
+   自分自身と比較した場合も含みますが、<strong><code>true</code></strong> と比較した場合は除きます。
   </p>
   <p class="para">
    <strong><code>NAN</code></strong> はさまざまな値の数を表すものなので、
@@ -145,9 +178,4 @@ EXPONENT_DNUM [+-]?(({LNUM} | {DNUM}) [eE][+-]? {LNUM})
    チェックをする場合には、かわりに <span class="function"><a href="function.is-nan.html" class="function">is_nan()</a></span> を使います。
   </p>
  </div>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.types.integer.html">整数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.types.string.html">文字列</a></div>
- <div class="up"><a href="language.types.html">型</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

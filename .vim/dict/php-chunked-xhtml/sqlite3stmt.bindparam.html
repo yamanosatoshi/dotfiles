@@ -3,32 +3,54 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>パラメータを変数にバインドする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="class.sqlite3stmt.html">SQLite3Stmt</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="sqlite3stmt.bindvalue.html">SQLite3Stmt::bindValue</a></div>
- <div class="up"><a href="class.sqlite3stmt.html">SQLite3Stmt</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="sqlite3stmt.bindparam" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="class.sqlite3stmt.html">« SQLite3Stmt</a></li>
+      <li style="float: right;"><a href="sqlite3stmt.bindvalue.html">SQLite3Stmt::bindValue »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.sqlite3stmt.html">SQLite3Stmt</a></li>
+    <li>パラメータを変数にバインドする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="sqlite3stmt.bindparam" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">SQLite3Stmt::bindParam</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p><p class="refpurpose"><span class="refname">SQLite3Stmt::bindParam</span> &mdash; <span class="dc-title">パラメータを変数にバインドする</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SQLite3Stmt::bindParam</span> &mdash; <span class="dc-title">パラメータを変数にバインドする</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-sqlite3stmt.bindparam-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><strong>SQLite3Stmt::bindParam</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$sql_param</code></span>
-   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&$param</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>SQLite3Stmt::bindParam</strong></span>(<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">int</span></span> <code class="parameter">$param</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&$var</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code><span class="initializer"> = <strong><code>SQLITE3_TEXT</code></strong></span></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    パラメータを変数にバインドします。
   </p>
+  <div class="caution"><strong class="caution">警告</strong>
+   <p class="para">
+    PHP 7.2.14 と 7.3.0 より前のバージョンでは、
+    バインドされた値が適切に後の <span class="methodname"><a href="sqlite3stmt.execute.html" class="methodname">SQLite3Stmt::execute()</a></span> 
+    の呼び出しで更新されるべき場合、
+    <span class="methodname"><a href="sqlite3stmt.execute.html" class="methodname">SQLite3Stmt::execute()</a></span> をはじめて呼んだ後に
+    <span class="methodname"><a href="sqlite3stmt.reset.html" class="methodname">SQLite3Stmt::reset()</a></span> を呼び出さなければなりませんでした。
+    <span class="methodname"><a href="sqlite3stmt.reset.html" class="methodname">SQLite3Stmt::reset()</a></span> が呼び出されなかった場合、
+    <span class="methodname"><strong>SQLite3Stmt::bindParam()</strong></span> に渡された変数に代入された値が変化したり、
+    <span class="methodname"><strong>SQLite3Stmt::bindParam()</strong></span> を再度呼び出したりしても、
+    バインドされた値は決して変わりませんでした。
+   </p>
+  </div>
  </div>
 
 
@@ -39,19 +61,25 @@
 
     
      <dt>
-<code class="parameter">sql_param</code></dt>
+<code class="parameter">param</code></dt>
 
      <dd>
 
       <p class="para">
-       パラメータをどの変数にバインドするかを表す文字列あるいは整数値。
+       バインドされるべき文中の値を識別する
+       <span class="type">string</span> (名前付きパラメータの場合) または
+       (位置パラメータの場合) <span class="type">int</span>。
+       名前付きパラメータがコロン (<code class="literal">:</code>) や
+       アットマーク (<code class="literal">@</code>) 
+       ではじまっていない場合、コロンが自動的に名前の前に付加されます。
+       位置パラメータは <code class="literal">1</code> から始まります。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">param</code></dt>
+<code class="parameter">var</code></dt>
 
      <dd>
 
@@ -72,36 +100,55 @@
        <ul class="itemizedlist">
         <li class="listitem">
          <p class="para">
-          <em>SQLITE3_INTEGER</em>: 符号付き整数。
+          <strong><code>SQLITE3_INTEGER</code></strong>: 符号付き整数。
           値の大きさに応じて 1, 2, 3, 4, 6, あるいは 8 バイトで格納されます。
          </p>
         </li>
         <li class="listitem">
          <p class="para">
-          <em>SQLITE3_FLOAT</em>: 浮動小数点数値。
+          <strong><code>SQLITE3_FLOAT</code></strong>: 浮動小数点数値。
           8 バイトの IEEE 浮動小数点数値として格納されます。
          </p>
         </li>
         <li class="listitem">
          <p class="para">
-          <em>SQLITE3_TEXT</em>: テキスト文字列。
+          <strong><code>SQLITE3_TEXT</code></strong>: テキスト文字列。
           データベースのエンコーディング (UTF-8, UTF-16BE あるいは UTF-16-LE)
           を用いて格納されます。
          </p>
         </li>
         <li class="listitem">
          <p class="para">
-          <em>SQLITE3_BLOB</em>: blob データ。
+          <strong><code>SQLITE3_BLOB</code></strong>: blob データ。
           入力がそのままの形式で格納されます。
          </p>
         </li>
         <li class="listitem">
          <p class="para">
-          <em>SQLITE3_NULL</em>: NULL 値。
+          <strong><code>SQLITE3_NULL</code></strong>: NULL 値。
          </p>
         </li>
        </ul>
       </p>
+      <p class="para">
+       PHP 7.0.7 以降では、
+       <code class="parameter">type</code> が省略されると、
+       自動的に <code class="parameter">var</code> の型から検出します:
+       <span class="type">bool</span>
+       と <span class="type">int</span> 型は <strong><code>SQLITE3_INTEGER</code></strong> として扱われ、
+       <span class="type">float</span> は <strong><code>SQLITE3_FLOAT</code></strong>、
+       <span class="type">null</span> は <strong><code>SQLITE3_NULL</code></strong>、
+       そして、これら以外は全て <strong><code>SQLITE3_TEXT</code></strong> として扱われます。
+       これより前のバージョンでは、<code class="parameter">type</code> が省略されると、
+       デフォルトの型 <strong><code>SQLITE3_TEXT</code></strong> になっていました。
+      </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <p class="para">
+        <code class="parameter">var</code> が <strong><code>null</code></strong> の場合、
+        与えられた <code class="parameter">type</code> に関わらず、
+        常に <strong><code>SQLITE3_NULL</code></strong> として扱われます。
+       </p>
+      </p></blockquote>
      </dd>
 
     
@@ -115,15 +162,81 @@
  <div class="refsect1 returnvalues" id="refsect1-sqlite3stmt.bindparam-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   パラメータを変数にバインドした場合に <strong><code>TRUE</code></strong>、
-   失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   パラメータを変数にバインドした場合に <strong><code>true</code></strong>、
+   失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="class.sqlite3stmt.html">SQLite3Stmt</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="sqlite3stmt.bindvalue.html">SQLite3Stmt::bindValue</a></div>
- <div class="up"><a href="class.sqlite3stmt.html">SQLite3Stmt</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ <div class="refsect1 changelog" id="refsect1-sqlite3stmt.bindparam-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>7.4.0</td>
+      <td>
+       <code class="parameter">param</code> は、
+       <code class="literal">@param</code> 記法もサポートするようになりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-sqlite3stmt.bindparam-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-1952">
+    <p><strong>例1 <span class="function"><strong>SQLite3Stmt::bindParam()</strong></span> の使い方</strong></p>
+    <div class="example-contents"><p>
+     この例は、バインドするパラメータがひとつだけのプリペアドステートメントを使い、
+     どのようにして異なる値を持つ複数の行を挿入するかを示しています。
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$db&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SQLite3</span><span style="color: #007700">(</span><span style="color: #DD0000">':memory:'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;foo&nbsp;(bar&nbsp;TEXT)"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;foo&nbsp;VALUES&nbsp;(:bar)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #DD0000">':bar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SQLITE3_TEXT</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'baz'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">42</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;foo"</span><span style="color: #007700">);<br />while&nbsp;((</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchArray</span><span style="color: #007700">(</span><span style="color: #0000BB">SQLITE3_ASSOC</span><span style="color: #007700">)))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$row</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [&quot;bar&quot;]=&gt;
+  string(3) &quot;baz&quot;
+}
+array(1) {
+  [&quot;bar&quot;]=&gt;
+  string(2) &quot;42&quot;
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-sqlite3stmt.bindparam-seealso">
+  <h3 class="title">参考</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="methodname"><a href="sqlite3stmt.bindvalue.html" class="methodname" rel="rdfs-seeAlso">SQLite3Stmt::bindValue()</a> - パラメータの値を変数にバインドする</span></li>
+   <li class="member"><span class="methodname"><a href="sqlite3.prepare.html" class="methodname" rel="rdfs-seeAlso">SQLite3::prepare()</a> - 実行する SQL 文を準備する</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

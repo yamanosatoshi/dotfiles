@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>セッションのアップロード状況</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="session.customhandler.html">カスタムセッションハンドラ</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="session.security.html">セッションとセキュリティ</a></div>
- <div class="up"><a href="book.session.html">Sessions</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="session.upload-progress" class="chapter">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="session.customhandler.html">« カスタムセッションハンドラ</a></li>
+      <li style="float: right;"><a href="session.security.html">セッション と セキュリティ »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.session.html">Sessions</a></li>
+    <li>セッションのアップロード状況</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="session.upload-progress" class="chapter">
  <h1>セッションのアップロード状況</h1>
 
 
@@ -23,11 +36,11 @@
   (<acronym>XHR</acronym> などで) 送って状態をチェックできるようになります。
  </p>
  <p class="para">
-  アップロードの状況は、アップロードの処理中にスーパーグローバル <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>
+  アップロードの状況は、アップロードの処理中にスーパーグローバル <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var>
   で取得できます。また、  INI オプション
   <a href="session.configuration.html#ini.session.upload-progress.name" class="link">session.upload_progress.name</a>
   で設定した名前でも POST されます。PHP 側では、この POST リクエストを検出すると
-  <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> 内の配列に値を格納します。配列のインデックスは、INI オプション
+  <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> 内の配列に値を格納します。配列のインデックスは、INI オプション
   <a href="session.configuration.html#ini.session.upload-progress.prefix" class="link">session.upload_progress.prefix</a>
   と
   <a href="session.configuration.html#ini.session.upload-progress.name" class="link">session.upload_progress.name</a>
@@ -44,11 +57,11 @@
  </p>
  <p class="para">
   現在進行中のファイルアップロードを<em class="emphasis">キャンセル</em>することもできます。
-  キャンセルするには、<em>$_SESSION[$key][&quot;cancel_upload&quot;]</em> に
-  <strong><code>TRUE</code></strong> を設定します。複数のファイルをひとつのリクエストでアップロードしている場合は、
+  キャンセルするには、<code class="literal">$_SESSION[$key][&quot;cancel_upload&quot;]</code> に
+  <strong><code>true</code></strong> を設定します。複数のファイルをひとつのリクエストでアップロードしている場合は、
   これでキャンセルできるのは現在進行中のアップロードとそれ以降にアップロードする予定だったファイルだけです。
   既にアップロードが完了したファイルは削除されません。この方法でアップロードをキャンセルした場合、
-  <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var></var> 配列のキー <em>error</em> に
+  <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var> 配列のキー <code class="literal">error</code> に
   <strong><code>UPLOAD_ERR_EXTENSION</code></strong> が設定されます。
  </p>
  <p class="para">
@@ -60,7 +73,7 @@
   これらを適切に設定すれば、進捗状況の取得によるオーバーヘッドはほぼ無視できる程度になります。
  </p>
  <p class="para">
-  <div class="example" id="example-5352">
+  <div class="example" id="example-4694">
    <p><strong>例1 情報の例</strong></p>
    <div class="example-contents"><p>
     アップロード進捗状況の配列の構造を示す例です。
@@ -94,11 +107,14 @@
    たとえば Nginx などのサーバーは、大きなリクエストをバッファリングするようになっています。
   </p>
  </div>
+ <div class="caution"><strong class="caution">警告</strong>
+  <p class="para">
+   アップロード状況の情報は、あらゆるスクリプトを実行する前に、セッションに書き込まれます。
+   よって、セッション名を <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span> 関数や
+   <span class="function"><a href="function.session-name.html" class="function">session_name()</a></span> 関数で変更してしまうと、
+   アップロード状況の情報が欠落したセッションが提供されることになります。
+  </p>
+ </div>
 
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="session.customhandler.html">カスタムセッションハンドラ</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="session.security.html">セッションとセキュリティ</a></div>
- <div class="up"><a href="book.session.html">Sessions</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

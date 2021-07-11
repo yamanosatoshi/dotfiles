@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>パターン修飾子</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pcre.pattern.html">PCRE のパターン</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="reference.pcre.pattern.differences.html">Perl とは異なる点</a></div>
- <div class="up"><a href="pcre.pattern.html">PCRE のパターン</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="reference.pcre.pattern.modifiers" class="article">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pcre.pattern.html">« PCRE のパターン</a></li>
+      <li style="float: right;"><a href="reference.pcre.pattern.differences.html">Perl とは異なる点 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="pcre.pattern.html">PCRE のパターン</a></li>
+    <li>パターン修飾子</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="reference.pcre.pattern.modifiers" class="article">
  <h1>パターン修飾子</h1>
 
  
@@ -25,7 +38,7 @@
 
        
         <dt>
-<em class="emphasis">i</em> (<em>PCRE_CASELESS</em>)</dt>
+<em class="emphasis">i</em> (<code class="literal">PCRE_CASELESS</code>)</dt>
 
         <dd>
 
@@ -38,7 +51,7 @@
        
        
         <dt>
-<em class="emphasis">m</em> (<em>PCRE_MULTILINE</em>)</dt>
+<em class="emphasis">m</em> (<code class="literal">PCRE_MULTILINE</code>)</dt>
 
         <dd>
 
@@ -65,7 +78,7 @@
        
        
         <dt>
-<em class="emphasis">s</em> (<em>PCRE_DOTALL</em>)</dt>
+<em class="emphasis">s</em> (<code class="literal">PCRE_DOTALL</code>)</dt>
 
         <dd>
 
@@ -82,7 +95,7 @@
        
        
         <dt>
-<em class="emphasis">x</em> (<em>PCRE_EXTENDED</em>)</dt>
+<em class="emphasis">x</em> (<code class="literal">PCRE_EXTENDED</code>)</dt>
 
         <dd>
 
@@ -102,85 +115,8 @@
 
        
        
-        <dt id="reference.pcre.pattern.modifiers.eval"><em class="emphasis">e</em> (<em>PREG_REPLACE_EVAL</em>)</dt>
-
-        <dd>
-
-       <div class="warning"><strong class="warning">警告</strong><p class="simpara">この機能は PHP 5.5.0 で <em class="emphasis">非推奨</em> となり、
-PHP 7.0.0 で <em class="emphasis">削除</em> されました。</p></div>
-         <span class="simpara">
-          この非推奨の修飾子を設定すると、<span class="function"><a href="function.preg-replace.html" class="function">preg_replace()</a></span>
-          は、置換文字列において後方参照に関する通常の置換を行った後、
-          PHP コードとして評価し、検索文字列を置換するためにその結果を
-          使用します。
-          置換された後方参照においては、
-          単引用符や二重引用符、バックスラッシュ (<em>\</em>)および NULL 文字は
-          バックスラッシュでエスケープされます。
-         </span>
-       <div class="caution"><strong class="caution">警告</strong>
-        <p class="para">
-         マッチした後方参照ごとに <span class="function"><a href="function.addslashes.html" class="function">addslashes()</a></span> が実行されてから、
-         置換を行います。つまり、クォートした文字列として後方参照を利用した場合、
-         エスケープした文字がリテラルに変換されます。
-         しかし、エスケープされた文字については、通常は変換されず、
-         スラッシュが残ったままになります。
-         そのため、この修飾子はとても複雑なものになってしまいます。
-        </p>
-       </div>
-       <div class="caution"><strong class="caution">警告</strong>
-        <p class="para">
-         <code class="parameter">replacement</code> が PHP のコードとして妥当な文字列であることを確認しましょう。
-         そうでない場合は、
-         <span class="function"><a href="function.preg-replace.html" class="function">preg_replace()</a></span> を含む行で PHP のパースエラーが発生します。
-        </p>
-       </div>
-       <div class="caution"><strong class="caution">警告</strong>
-        <p class="para">
-         この修飾子を使うことは<em class="emphasis">おすすめしません</em>。
-         セキュリティに関する脆弱性を作ってしまいがちだからです。
-        </p>
-        <div class="informalexample">
-         <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$html&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'html'</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;見出しを大文字にします<br /></span><span style="color: #0000BB">$html&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'(&lt;h([1-6])&gt;(.*?)&lt;/h\1&gt;)e'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'"&lt;h$1&gt;"&nbsp;.&nbsp;strtoupper("$2")&nbsp;.&nbsp;"&lt;/h$1&gt;"'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$html<br /></span><span style="color: #007700">);</span>
-</span>
-</code></div>
-         </div>
-
-        </div>
-        <p class="para">
-         このサンプルを攻撃するのは簡単で、
-         <em>&lt;h1&gt;{${eval($_GET[php_code])}}&lt;/h1&gt;</em>
-         のような文字列を渡すだけで攻略できます。
-         攻撃者は任意の PHP コードを実行でき、
-         サーバーに対するほぼ完全なアクセス権を与えることになってしまいます。
-        </p>
-        <p class="para">
-         この種のリモートコード実行脆弱性を回避するには、
-         <span class="function"><a href="function.preg-replace-callback.html" class="function">preg_replace_callback()</a></span> 関数を使うようにしなければなりません。
-        </p>
-        <div class="informalexample">
-         <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$html&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'html'</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;見出しを大文字にします<br /></span><span style="color: #0000BB">$html&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_replace_callback</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'(&lt;h([1-6])&gt;(.*?)&lt;/h\1&gt;)'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;(</span><span style="color: #0000BB">$m</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"&lt;h</span><span style="color: #0000BB">$m</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]</span><span style="color: #DD0000">&gt;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">$m</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;/h</span><span style="color: #0000BB">$m</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]</span><span style="color: #DD0000">&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$html<br /></span><span style="color: #007700">);</span>
-</span>
-</code></div>
-         </div>
-
-        </div>
-       </div>
-       <blockquote class="note"><p><strong class="note">注意</strong>: 
-        <p class="para">
-         この修飾子を使用するのは、<span class="function"><a href="function.preg-replace.html" class="function">preg_replace()</a></span>のみです。
-         他の PCRE 関数では無視されます。
-        </p>
-       </p></blockquote>
-        </dd>
-
-       
-       
         <dt>
-<em class="emphasis">A</em> (<em>PCRE_ANCHORED</em>)</dt>
+<em class="emphasis">A</em> (<code class="literal">PCRE_ANCHORED</code>)</dt>
 
         <dd>
 
@@ -195,7 +131,7 @@ PHP 7.0.0 で <em class="emphasis">削除</em> されました。</p></div>
        
        
         <dt>
-<em class="emphasis">D</em> (<em>PCRE_DOLLAR_ENDONLY</em>)</dt>
+<em class="emphasis">D</em> (<code class="literal">PCRE_DOLLAR_ENDONLY</code>)</dt>
 
         <dd>
 
@@ -227,7 +163,7 @@ PHP 7.0.0 で <em class="emphasis">削除</em> されました。</p></div>
        
        
         <dt>
-<em class="emphasis">U</em> (<em>PCRE_UNGREEDY</em>)</dt>
+<em class="emphasis">U</em> (<code class="literal">PCRE_UNGREEDY</code>)</dt>
 
         <dd>
 
@@ -236,8 +172,8 @@ PHP 7.0.0 で <em class="emphasis">削除</em> されました。</p></div>
           つまり、量指定子は、デフォルトで貪欲でなく、
           疑問符を後ろに付けてはじめて貪欲になるようになります。
           この修飾子は Perl 互換では有りません。
-          同様の設定は、(<em>?U</em>) 修飾子を <a href="regexp.reference.internal-options.html" class="link">パターン内で設定</a>
-          するか、（<em>.*?</em> のように）量指定子の後に疑問符を
+          同様の設定は、(<code class="literal">?U</code>) 修飾子を <a href="regexp.reference.internal-options.html" class="link">パターン内で設定</a>
+          するか、（<code class="literal">.*?</code> のように）量指定子の後に疑問符を
           付けるかすることで行うこともできます。
          </span>
        <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -251,7 +187,7 @@ PHP 7.0.0 で <em class="emphasis">削除</em> されました。</p></div>
        
        
         <dt>
-<em class="emphasis">X</em> (<em>PCRE_EXTRA</em>)</dt>
+<em class="emphasis">X</em> (<code class="literal">PCRE_EXTRA</code>)</dt>
 
         <dd>
 
@@ -268,34 +204,30 @@ PHP 7.0.0 で <em class="emphasis">削除</em> されました。</p></div>
      
      
       <dt>
-<em class="emphasis">J</em> (<em>PCRE_INFO_JCHANGED</em>)</dt>
+<em class="emphasis">J</em> (<code class="literal">PCRE_INFO_JCHANGED</code>)</dt>
 
       <dd>
 
        <span class="simpara">
-        (?J) 内部オプションは、ローカルのオプション <em>PCRE_DUPNAMES</em> の設定を変更します。
+        (?J) 内部オプションは、ローカルのオプション <code class="literal">PCRE_DUPNAMES</code> の設定を変更します。
         サブパターンで重複した名前を使用できるようになります。
+        7.2.0 以降、<code class="literal">J</code> も同様に修飾子としてサポートされます。
          </span>
         </dd>
 
        
        
         <dt>
-<em class="emphasis">u</em> (<em>PCRE_UTF8</em>)</dt>
+<em class="emphasis">u</em> (<code class="literal">PCRE_UTF8</code>)</dt>
 
         <dd>
 
          <span class="simpara">
           この修正子は、Perl 非互換な PCRE の機能を有効にします。パターンと対象文字列は、
           UTF-8 として処理されます。
-          この修正子は、UNIX では PHP 4.1.0 以降、Win32 では PHP 4.2.3 以降で
-          使用可能です。
-          また、PHP 4.3.5 以降では、パターンの UTF-8 としての妥当性も確認されます。
           無効な対象文字列を preg_* 関数に渡しても、何もマッチしません。
           無効なパターンを渡すと、E_WARNING レベルのエラーが発生します。
-          5オクテットおよび6オクテットの UTF-8 シーケンスは、PHP 5.3.4 以降
-          (PCRE 7.3 2007-08-28 以降) では無効とみなされます。
-          以前のバージョンでは、これらも UTF-8 として有効だとみなされていました。
+          5オクテットおよび6オクテットの UTF-8 シーケンスは無効とみなされます。
          </span>
         </dd>
 
@@ -305,9 +237,4 @@ PHP 7.0.0 で <em class="emphasis">削除</em> されました。</p></div>
      </blockquote>
     </p>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pcre.pattern.html">PCRE のパターン</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="reference.pcre.pattern.differences.html">Perl とは異なる点</a></div>
- <div class="up"><a href="pcre.pattern.html">PCRE のパターン</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

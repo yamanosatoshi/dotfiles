@@ -3,28 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>外部プログラムを実行する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.escapeshellcmd.html">escapeshellcmd</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.passthru.html">passthru</a></div>
- <div class="up"><a href="ref.exec.html">プログラム実行関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.exec" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.escapeshellcmd.html">« escapeshellcmd</a></li>
+      <li style="float: right;"><a href="function.passthru.html">passthru »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.exec.html">プログラム実行関数</a></li>
+    <li>外部プログラムを実行する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.exec" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">exec</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">exec</span> &mdash; <span class="dc-title">外部プログラムを実行する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">exec</span> &mdash; <span class="dc-title">外部プログラムを実行する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.exec-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>exec</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$command</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$output</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$return_var</code></span>
-  ]] )</div>
+   <span class="methodname"><strong>exec</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$command</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$output</code><span class="initializer"> = <strong><code>null</code></strong></span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$result_code</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>exec()</strong></span> は指定されたコマンド
@@ -59,7 +68,7 @@
       <p class="para">
        引数 <code class="parameter">output</code> が存在する場合、指定した配列は、
        コマンドからの出力の各行で埋められます。
-       <em>\n</em> のような後に続く空白は、この配列には含まれません。
+       <code class="literal">\n</code> のような後に続く空白は、この配列には含まれません。
        配列に既に何らかの要素が
        含まれる場合は、<span class="function"><strong>exec()</strong></span> は配列の最後に追加される
        ことに注意してください。関数が要素を追加することを望まないのなら、
@@ -71,12 +80,12 @@
     
     
      <dt>
-<code class="parameter">return_var</code></dt>
+<code class="parameter">result_code</code></dt>
 
      <dd>
 
       <p class="para">
-       引数<code class="parameter">return_var</code>が、引数
+       引数<code class="parameter">result_code</code>が、引数
        <code class="parameter">output</code> と共に存在する場合、実行したコマンドの
        ステータスがこの変数に書かれます。
       </p>
@@ -97,6 +106,9 @@
    あるならば、<span class="function"><a href="function.passthru.html" class="function">PassThru()</a></span> 関数を使ってください。
   </p>
   <p class="para">
+   失敗時に <strong><code>false</code></strong> を返します。
+  </p>
+  <p class="para">
    実行されたコマンドの出力を取得するには、必ず <code class="parameter">output</code>
    パラメータを設定・使用してください。
   </p>
@@ -106,15 +118,26 @@
  <div class="refsect1 examples" id="refsect1-function.exec-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4224">
+   <div class="example" id="example-3292">
     <p><strong>例1 <span class="function"><strong>exec()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;("whoami"&nbsp;コマンドをパスに有するシステム上で)<br />//&nbsp;実行中のphp/httpdプロセスを所有するユーザーの名前を出力<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">'whoami'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;("whoami"&nbsp;コマンドをパスに有するシステム上で)<br />//&nbsp;実行中のphp/httpdプロセスを所有するユーザーの名前を出力<br /></span><span style="color: #0000BB">$output</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$retval</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">'whoami'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$retval</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Returned&nbsp;with&nbsp;status&nbsp;</span><span style="color: #0000BB">$retval</span><span style="color: #DD0000">&nbsp;and&nbsp;output:\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$output</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
 
+    <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Returned with status 0 and output:
+Array
+(
+    [0] =&gt; cmb
+)
+</pre></div>
+    </div>
    </div>
   </p>
  </div>
@@ -130,16 +153,7 @@
 バックグラウンドで処理を続けさせるには、
 プログラムの出力をファイルや別の出力ストリームにリダイレクトする必要があります。
 そうしないと、プログラムが実行を終えるまで PHP はハングしてしまいます。</p></p></blockquote>
-  <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara"><a href="features.safe-mode.html" class="link">
-セーフモード</a> が有効な場合、<a href="ini.sect.safe-mode.html#ini.safe-mode-exec-dir" class="link">
-safe_mode_exec_dir</a>の中にある実行プログラムのみ実行可能です。
-実際的な理由により、現在、実行プログラムへのパスに <em>..</em>を
-含めることはできません。</span></p></blockquote>
-  <div class="warning"><strong class="warning">警告</strong><p class="simpara"><a href="features.safe-mode.html" class="link">
-セーフモード</a>が有効な場合、コマンド文字列は
-<span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span> でエスケープされます。
-つまり、<em>echo y | echo x</em> は、<em>echo y \| echo x</em>
-となります。</p></div>
+  <blockquote class="note"><p><strong class="note">注意</strong>: <p class="para">Windowsでは、<span class="function"><strong>exec()</strong></span> 関数はコマンドを起動するために最初に cmd.exe を起動します。cmd.exe を起動せずに外部プログラムを起動したい場合は、<span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span> 関数を <code class="parameter">bypass_shell</code> オプションを指定して使うようにしてください。</p></p></blockquote>
  </div>
 
 
@@ -156,9 +170,4 @@ safe_mode_exec_dir</a>の中にある実行プログラムのみ実行可能で�
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.escapeshellcmd.html">escapeshellcmd</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.passthru.html">passthru</a></div>
- <div class="up"><a href="ref.exec.html">プログラム実行関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

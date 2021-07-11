@@ -3,26 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>新しいセッションを開始、あるいは既存のセッションを再開する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.session-set-save-handler.html">session_set_save_handler</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.session-status.html">session_status</a></div>
- <div class="up"><a href="ref.session.html">セッション関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.session-start" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.session-set-save-handler.html">« session_set_save_handler</a></li>
+      <li style="float: right;"><a href="function.session-status.html">session_status »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.session.html">セッション関数</a></li>
+    <li>新しいセッションを開始、あるいは既存のセッションを再開する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.session-start" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">session_start</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">session_start</span> &mdash; <span class="dc-title">新しいセッションを開始、あるいは既存のセッションを再開する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">session_start</span> &mdash; <span class="dc-title">新しいセッションを開始、あるいは既存のセッションを再開する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.session-start-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>session_start</strong></span>
-    ([ <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = []</span></span>
-  ] )</div>
+   <span class="methodname"><strong>session_start</strong></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = []</span></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>session_start()</strong></span> は、セッションを作成します。
@@ -50,9 +61,9 @@
   </p>
   <p class="para">
    ユーザーが <span class="function"><a href="function.ob-start.html" class="function">ob_start()</a></span> と共に
-   <em>ob_gzhandler</em> または類似のものを使用している場合、
+   <code class="literal">ob_gzhandler</code> または類似のものを使用している場合、
    出力ハンドラの順番は正しく出力を行うために重要です。例えば、
-   セッション開始時にユーザーは <em>ob_gzhandler</em>
+   セッション開始時にユーザーは <code class="literal">ob_gzhandler</code>
    を登録する必要があります。
   </p>
  </div>
@@ -72,12 +83,12 @@
       オプションの連想配列を指定することができます。これは、現在設定されている
       <a href="session.configuration.html" class="link">セッションの設定ディレクティブ</a>
       を上書きします。
-      連想配列のキーにはプレフィックス <em>session.</em> を含めてはいけません。
+      連想配列のキーにはプレフィックス <code class="literal">session.</code> を含めてはいけません。
      </p>
      <p class="para">
       通常の設定ディレクティブ群に加えて、
-      <em>read_and_close</em> オプションを指定することもできます。
-      これを <strong><code>TRUE</code></strong> にすると、セッションを読み込んだらその場ですぐにクローズします。
+      <code class="literal">read_and_close</code> オプションを指定することもできます。
+      これを <strong><code>true</code></strong> にすると、セッションを読み込んだらその場ですぐにクローズします。
       セッションのデータを書き換えるつもりがない場合は、こうしておけば、意図せぬロックを防げます。
      </p>
     </dd>
@@ -91,7 +102,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.session-start-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   この関数は、セッションが正常に開始した場合に <strong><code>TRUE</code></strong>、それ以外の場合に <strong><code>FALSE</code></strong>
+   この関数は、セッションが正常に開始した場合に <strong><code>true</code></strong>、それ以外の場合に <strong><code>false</code></strong>
    を返します。
   </p>
  </div>
@@ -112,27 +123,11 @@
 
      <tbody class="tbody">
       <tr>
-       <td>7.0.0</td>
+       <td>7.1.0</td>
        <td>
-        <code class="parameter">options</code> パラメータが追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.3.0</td>
-       <td>
-        何らかの理由でセッションの開始に失敗した場合に <strong><code>FALSE</code></strong> を返すようになりました。
-        これより前のバージョンでは常に <strong><code>TRUE</code></strong> を返していました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.3.3</td>
-       <td>
-        セッションが既に開始されている状態で
-        <span class="function"><strong>session_start()</strong></span> をコールすると
-        <strong><code>E_NOTICE</code></strong> レベルのエラーを発生させます。
-        またその場合二度目のセッションスタートは単に無視されます。
+        セッションを開始できなかった場合、
+        <span class="function"><strong>session_start()</strong></span> は、<strong><code>false</code></strong> を返し、
+        <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> を初期化しないようになりました。
        </td>
       </tr>
 
@@ -150,7 +145,7 @@
    <h4 class="title">基本的なセッションの例</h4>
 
    <p class="para">
-    <div class="example" id="example-5363">
+    <div class="example" id="example-4705">
      <p><strong>例1 <var class="filename">page1.php</var></strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -169,7 +164,7 @@
     例えば、<strong><code>SID</code></strong> とは何かといったことです。
    </p>
    <p class="para">
-    <div class="example" id="example-5364">
+    <div class="example" id="example-4706">
      <p><strong>例2 <var class="filename">page2.php</var></strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -185,7 +180,7 @@
   <div class="refsect2 unknown-unknown-exampleu" id="refsect2-function.session-start-unknown-unknown-exampleu">
    <h4 class="title"><span class="function"><strong>session_start()</strong></span> のオプションの指定</h4>
 
-   <div class="example" id="example-5365">
+   <div class="example" id="example-4707">
     <p><strong>例3 クッキーの有効期限の上書き</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -196,7 +191,7 @@
 
    </div>
 
-   <div class="example" id="example-5366">
+   <div class="example" id="example-4708">
     <p><strong>例4 セッションの読み込みとクローズ</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -240,7 +235,7 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var></li>
+    <li class="member"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></li>
     <li class="member">
      設定ディレクティブ <a href="session.configuration.html#ini.session.auto-start" class="link">session.auto_start</a>
     </li>
@@ -250,9 +245,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.session-set-save-handler.html">session_set_save_handler</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.session-status.html">session_status</a></div>
- <div class="up"><a href="ref.session.html">セッション関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,33 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>LDAP ツリーを探索する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-sasl-bind.html">ldap_sasl_bind</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.ldap-set-option.html">ldap_set_option</a></div>
- <div class="up"><a href="ref.ldap.html">LDAP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.ldap-search" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ldap-sasl-bind.html">« ldap_sasl_bind</a></li>
+      <li style="float: right;"><a href="function.ldap-set-option.html">ldap_set_option »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ldap.html">LDAP 関数</a></li>
+    <li>LDAP ツリーを探索する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ldap-search" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">ldap_search</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">ldap_search</span> &mdash; <span class="dc-title">LDAP ツリーを探索する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ldap_search</span> &mdash; <span class="dc-title">LDAP ツリーを探索する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.ldap-search-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">resource</span> <span class="methodname"><strong>ldap_search</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$link_identifier</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$base_dn</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$filter</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$attributes</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$attrsonly</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$sizelimit</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timelimit</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$deref</code></span>
-  ]]]]] )</div>
+   <span class="methodname"><strong>ldap_search</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">resource</span>|<span class="type">array</span></span> <code class="parameter">$ldap</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">string</span></span> <code class="parameter">$base</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">string</span></span> <code class="parameter">$filter</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$attributes</code><span class="initializer"> = []</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$attributes_only</code><span class="initializer"> = 0</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$sizelimit</code><span class="initializer"> = -1</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$timelimit</code><span class="initializer"> = -1</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$deref</code><span class="initializer"> = <strong><code>LDAP_DEREF_NEVER</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">null</span></span> <code class="parameter">$controls</code><span class="initializer"> = <strong><code>null</code></strong></span></span><br>): <span class="type"><span class="type">resource</span>|<span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    指定したフィルタを使用し、
@@ -45,10 +49,10 @@
    必要があります。これは、その配列の最初が一回の検索で使用され、2 番目の
    エントリが他の検索で使用されるといったようになるからです。並列検索を
    実行する際、エラーの場合を除き、検索結果 ID の配列が返されます。
-   エラーの場合は対応する検索のエントリは <strong><code>FALSE</code></strong> となります。これは
+   エラーの場合は対応する検索のエントリは <strong><code>false</code></strong> となります。これは
    通常返される値とよく似ていますが、検索が行われた際に結果 ID が常に
    返されます。まれに、並列検索は ID を返すにもかかわらず通常の検索は
-   <strong><code>FALSE</code></strong> を返すということがあります。
+   <strong><code>false</code></strong> を返すということがあります。
   </p>
  </div>
 
@@ -60,19 +64,19 @@
 
     
      <dt>
-<code class="parameter">link_identifier</code></dt>
+<code class="parameter">ldap</code></dt>
 
      <dd>
 
       <p class="para">
-       <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span> が返す LDAP リンク ID。
+       <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span> が返す LDAP リソース。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">base_dn</code></dt>
+<code class="parameter">base</code></dt>
 
      <dd>
 
@@ -107,7 +111,7 @@
 
       <p class="para">
        必要な属性を、
-       <em>array(&quot;mail&quot;, &quot;sn&quot;, &quot;cn&quot;)</em> のような通常の PHP 文字列配列で保持します。
+       <code class="literal">array(&quot;mail&quot;, &quot;sn&quot;, &quot;cn&quot;)</code> のような通常の PHP 文字列配列で保持します。
        &quot;dn&quot; は要求された属性の型によらず常に返されることに注意してください。
       </p>
       <p class="para">
@@ -120,7 +124,7 @@
     
     
      <dt>
-<code class="parameter">attrsonly</code></dt>
+<code class="parameter">attributes_only</code></dt>
 
      <dd>
 
@@ -214,6 +218,18 @@
      </dd>
 
     
+    
+     <dt>
+<code class="parameter">controls</code></dt>
+
+     <dd>
+
+      <p class="para">
+       リクエストと一緒に送信する <a href="ldap.controls.html" class="link">LDAP コントロール</a> の配列
+      </p>
+     </dd>
+
+    
    </dl>
 
   </p>
@@ -223,7 +239,44 @@
  <div class="refsect1 returnvalues" id="refsect1-function.ldap-search-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   検索結果 ID を返します。エラーの場合は、<strong><code>FALSE</code></strong> を返します。
+   検索結果 ID を返します。エラーの場合は、<strong><code>false</code></strong> を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.ldap-search-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">controls</code> は、nullable になりました。
+  これより前のバージョンでは、デフォルト値が <code class="literal">[]</code> でした。
+ </td>
+</tr>
+
+      <tr>
+       <td>7.3</td>
+       <td>
+        <code class="parameter">controls</code> のサポートが追加されました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
   </p>
  </div>
 
@@ -232,10 +285,10 @@
   <h3 class="title">例</h3>
   <p class="para">
    以下の例は、&quot;My Company&quot; の全員について姓または名の一部に文字列
-   <var class="varname"><var class="varname">$person</var></var> を含む人の組織単位、姓、名、電子メールアドレスを取得します。
+   <var class="varname">$person</var> を含む人の組織単位、姓、名、電子メールアドレスを取得します。
    この例は、複数の属性に関する情報についてサーバーに検索をかける論理
    フィルタを使用します。
-   <div class="example" id="example-4948">
+   <div class="example" id="example-4344">
     <p><strong>例1 LDAP 検索</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -249,9 +302,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-sasl-bind.html">ldap_sasl_bind</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.ldap-set-option.html">ldap_set_option</a></div>
- <div class="up"><a href="ref.ldap.html">LDAP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

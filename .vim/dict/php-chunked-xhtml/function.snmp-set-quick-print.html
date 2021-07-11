@@ -2,42 +2,53 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>UCB SNMP ライブラリで quick_print の値を設定する</title>
+  <title>NET-SNMP ライブラリで enable の値を設定する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.snmp-set-oid-output-format.html">snmp_set_oid_output_format</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.snmp-set-valueretrieval.html">snmp_set_valueretrieval</a></div>
- <div class="up"><a href="ref.snmp.html">SNMP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.snmp-set-quick-print" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.snmp-set-oid-output-format.html">« snmp_set_oid_output_format</a></li>
+      <li style="float: right;"><a href="function.snmp-set-valueretrieval.html">snmp_set_valueretrieval »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.snmp.html">SNMP 関数</a></li>
+    <li>NET-SNMP ライブラリで enable の値を設定する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.snmp-set-quick-print" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">snmp_set_quick_print</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">snmp_set_quick_print</span> &mdash; <span class="dc-title">UCB <acronym title="Simple Network Management Protocol">SNMP</acronym> ライブラリで <code class="parameter">quick_print</code> の値を設定する
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">snmp_set_quick_print</span> &mdash; <span class="dc-title">NET-<acronym title="Simple Network Management Protocol">SNMP</acronym> ライブラリで <code class="parameter">enable</code> の値を設定する
   </span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.snmp-set-quick-print-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>snmp_set_quick_print</strong></span>
-    ( <span class="methodparam"><span class="type">bool</span> <code class="parameter">$quick_print</code></span>
-   )</div>
+   <span class="methodname"><strong>snmp_set_quick_print</strong></span>(<span class="methodparam"><span class="type">bool</span> <code class="parameter">$enable</code></span>): <span class="type">bool</span></div>
 
 
   <p class="para rdfs-comment">
-   UCB <acronym title="Simple Network Management Protocol">SNMP</acronym> ライブラリで <code class="parameter">quick_print</code> の値を設定します。この値を
+   NET-<acronym title="Simple Network Management Protocol">SNMP</acronym> ライブラリで <code class="parameter">enable</code> の値を設定します。この値を
    (1) に設定した場合、<acronym title="Simple Network Management Protocol">SNMP</acronym> ライブラリは、&#039;簡潔に表示された
    (quick printed)&#039; 値を返します。
    これは、値のみが出力されることを意味します。
-   <code class="parameter">quick_print</code> が有効でない場合(デフォルト)、UCD <acronym title="Simple Network Management Protocol">SNMP</acronym> ライブラリは、
+   <code class="parameter">enable</code> が有効でない場合(デフォルト)、NET-<acronym title="Simple Network Management Protocol">SNMP</acronym> ライブラリは、
    (IP アドレスまたは OID のような)その値の種類を含む、より詳細な情報を
    出力します。
    加えて、quick_print が有効でない場合、ライブラリは 3 文字以下の全ての
    文字列について 16 進数値も出力します。
   </p>
   <p class="para">
-   デフォルトで、UCD <acronym title="Simple Network Management Protocol">SNMP</acronym> ライブラリは冗長な値を返します。
+   デフォルトで、NET-<acronym title="Simple Network Management Protocol">SNMP</acronym> ライブラリは冗長な値を返します。
    quick_print は、値のみを返すために用いられます。
   </p>
   <p class="para">
@@ -54,7 +65,7 @@
 
     
      <dt>
-<code class="parameter">quick_print</code></dt>
+<code class="parameter">enable</code></dt>
 
      <dd>
 
@@ -83,7 +94,7 @@
    quick_print の設定は、結果を表示するよりもその内容を使いたい場合によく行われます。
   </p>
   <p class="para">  
-   <div class="example" id="example-5100">
+   <div class="example" id="example-4453">
     <p><strong>例1 <span class="function"><strong>snmp_set_quick_print()</strong></span> の使用例</strong></p>
     <div class="example-contents"> 
 <div class="phpcode"><code><span style="color: #000000">
@@ -109,15 +120,10 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><span class="function"><a href="function.snmp-get-quick-print.html" class="function" rel="rdfs-seeAlso">snmp_get_quick_print()</a> - UCD ライブラリの quick_print の現在の設定値を取得する</span></li>
+    <li class="member"><span class="function"><a href="function.snmp-get-quick-print.html" class="function" rel="rdfs-seeAlso">snmp_get_quick_print()</a> - NET-SNMP ライブラリの quick_print の現在の設定値を取得する</span></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.snmp-set-oid-output-format.html">snmp_set_oid_output_format</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.snmp-set-valueretrieval.html">snmp_set_valueretrieval</a></div>
- <div class="up"><a href="ref.snmp.html">SNMP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

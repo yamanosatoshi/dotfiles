@@ -3,34 +3,36 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>画像の一部をコピーしサイズを変更する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagecopyresampled.html">imagecopyresampled</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imagecreate.html">imagecreate</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.imagecopyresized" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagecopyresampled.html">« imagecopyresampled</a></li>
+      <li style="float: right;"><a href="function.imagecreate.html">imagecreate »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">GD および Image 関数</a></li>
+    <li>画像の一部をコピーしサイズを変更する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagecopyresized" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagecopyresized</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagecopyresized</span> &mdash; <span class="dc-title">画像の一部をコピーしサイズを変更する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagecopyresized</span> &mdash; <span class="dc-title">画像の一部をコピーしサイズを変更する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagecopyresized-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>imagecopyresized</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$dst_image</code></span>
-   , <span class="methodparam"><span class="type">resource</span> <code class="parameter">$src_image</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$dst_x</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$dst_y</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$src_x</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$src_y</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$dst_w</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$dst_h</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$src_w</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$src_h</code></span>
-   )</div>
+   <span class="methodname"><strong>imagecopyresized</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.gdimage.html" class="type GdImage">GdImage</a></span> <code class="parameter">$dst_image</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.gdimage.html" class="type GdImage">GdImage</a></span> <code class="parameter">$src_image</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$dst_x</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$dst_y</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$src_x</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$src_y</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$dst_width</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$dst_height</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$src_width</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$src_height</code></span><br>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>imagecopyresized()</strong></span> は指定した画像の矩形部分を
@@ -41,10 +43,12 @@
    言い換えると、<span class="function"><strong>imagecopyresized()</strong></span> は
    <code class="parameter">src_image</code>
    の座標 (<code class="parameter">src_x</code>,<code class="parameter">src_y</code>) にある
-   幅 <code class="parameter">src_w</code>、高さ <code class="parameter">src_h</code>
+   幅 <code class="parameter">src_width</code>、
+   高さ <code class="parameter">src_height</code>
    の矩形領域を受け取って、それを <code class="parameter">dst_image</code>
    の座標 (<code class="parameter">dst_x</code>,<code class="parameter">dst_y</code>)
-   にある幅 <code class="parameter">dst_w</code>、高さ <code class="parameter">dst_h</code>
+   にある幅 <code class="parameter">dst_width</code>、
+   高さ <code class="parameter">dst_height</code>
    の矩形領域に配置します。
   </p>
   <p class="para">
@@ -67,7 +71,7 @@
 
      <dd>
 
-      <p class="para">コピー先の画像リンクリソース。</p>
+      <p class="para">コピー先の画像リソース。</p>
      </dd>
 
     
@@ -77,7 +81,7 @@
 
      <dd>
 
-      <p class="para">コピー元の画像リンクリソース。</p>
+      <p class="para">コピー元の画像リソース。</p>
      </dd>
 
     
@@ -131,7 +135,7 @@
     
     
      <dt>
-<code class="parameter">dst_w</code></dt>
+<code class="parameter">dst_width</code></dt>
 
      <dd>
 
@@ -143,7 +147,7 @@
     
     
      <dt>
-<code class="parameter">dst_h</code></dt>
+<code class="parameter">dst_height</code></dt>
 
      <dd>
 
@@ -155,7 +159,7 @@
     
     
      <dt>
-<code class="parameter">src_w</code></dt>
+<code class="parameter">src_width</code></dt>
 
      <dd>
 
@@ -165,7 +169,7 @@
     
     
      <dt>
-<code class="parameter">src_h</code></dt>
+<code class="parameter">src_height</code></dt>
 
      <dd>
 
@@ -181,14 +185,47 @@
  <div class="refsect1 returnvalues" id="refsect1-function.imagecopyresized-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.imagecopyresized-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">dst_image</code> と
+       <code class="parameter">src_image</code> は、
+       <a href="class.gdimage.html" class="classname">GdImage</a>
+       クラスのインスタンスを期待するようになりました。
+       これより前のバージョンでは、
+       <span class="type">resource</span> を期待していました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
 
  <div class="refsect1 examples" id="refsect1-function.imagecopyresized-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3534">
+   <div class="example" id="example-2612">
     <p><strong>例1 イメージをリサイズする</strong></p>
     <div class="example-contents"><p>
      この例はイメージを半分のサイズで表示します。
@@ -235,16 +272,14 @@
   </p></blockquote>
  </div>
 
+
  <div class="refsect1 seealso" id="refsect1-function.imagecopyresized-seealso">
   <h3 class="title">参考</h3>
-  <p class="para">
-   <span class="function"><a href="function.imagecopyresampled.html" class="function" rel="rdfs-seeAlso">imagecopyresampled()</a> - 再サンプリングを行いイメージの一部をコピー、伸縮する</span>
-  </p>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.imagecopyresampled.html" class="function" rel="rdfs-seeAlso">imagecopyresampled()</a> - 再サンプリングを行いイメージの一部をコピー、伸縮する</span></li>
+   <li class="member"><span class="function"><a href="function.imagescale.html" class="function" rel="rdfs-seeAlso">imagescale()</a> - 幅と高さを指定して、画像の縮尺を変更する</span></li>
+   <li class="member"><span class="function"><a href="function.imagecrop.html" class="function" rel="rdfs-seeAlso">imagecrop()</a> - 指定した矩形に画像をクロップする</span></li>
+  </ul>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagecopyresampled.html">imagecopyresampled</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imagecreate.html">imagecreate</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

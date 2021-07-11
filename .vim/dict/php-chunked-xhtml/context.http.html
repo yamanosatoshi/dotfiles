@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>HTTP コンテキストオプションの一覧</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="context.socket.html">ソケットコンテキストオプション</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="context.ftp.html">FTP コンテキストオプション</a></div>
- <div class="up"><a href="context.html">コンテキストオプションとパラメータ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="context.http" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="context.socket.html">« ソケットコンテキストオプション</a></li>
+      <li style="float: right;"><a href="context.ftp.html">FTP コンテキストオプション »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="context.html">コンテキストオプションとパラメータ</a></li>
+    <li>HTTP コンテキストオプションの一覧</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="context.http" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">HTTP コンテキストオプション</h1>
   <p class="refpurpose"><span class="refname">HTTP コンテキストオプション</span> &mdash; <span class="dc-title">HTTP コンテキストオプションの一覧</span></p>
@@ -20,7 +33,7 @@
  <div class="refsect1 description" id="refsect1-context.http-description">
   <h3 class="title">説明</h3>
   <p class="para">
-   <em>http://</em> および <em>https://</em>
+   <code class="literal">http://</code> および <code class="literal">https://</code>
    トランスポート用のコンテキストオプションです。
   </p>
  </div>
@@ -34,7 +47,7 @@
     
      <dt id="context.http.method">
       <code class="parameter">method</code>
-      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <span class="type">string</span>
      </dt>
 
      <dd>
@@ -52,16 +65,20 @@
     
      <dt id="context.http.header">
       <code class="parameter">header</code>
-      <span class="type"><a href="language.types.array.html" class="type array">array</a></span> あるいは <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <span class="type">array</span> あるいは <span class="type">string</span>
      </dt>
 
      <dd>
 
       <p class="para">
        リクエストに付加されるヘッダ。ここで指定した値が
-       (<em>User-agent:</em>、<em>Host:</em>、
-       および <em>Authentication:</em> などの)
+       (<code class="literal">User-agent:</code>、<code class="literal">Host:</code>、
+       および <code class="literal">Authentication:</code> などの)
        他の値を上書きすることもあります。
+       これは、後に<code class="literal">Location:</code>
+       によってリダイレクトが行われる場合でも同様です。
+       よって、<code class="parameter">follow_location</code> が有効になっている場合、
+       <code class="literal">Host:</code> ヘッダを設定することはお勧めしません。
       </p>
      </dd>
 
@@ -69,14 +86,14 @@
     
      <dt id="context.http.user-agent">
       <code class="parameter">user_agent</code>
-      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <span class="type">string</span>
      </dt>
 
      <dd>
 
       <p class="para">
-       <em>User-Agent:</em> ヘッダとして送信する値。上で説明した
-       <em>header</em> オプションで user-agent が
+       <code class="literal">User-Agent:</code> ヘッダとして送信する値。上で説明した
+       <code class="literal">header</code> オプションで user-agent が
        定義されて<em class="emphasis">いない</em>場合のみ使用されます。
       </p>
       <p class="para">
@@ -90,7 +107,7 @@
     
      <dt id="context.http.content">
       <code class="parameter">content</code>
-      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <span class="type">string</span>
      </dt>
 
      <dd>
@@ -105,14 +122,14 @@
     
      <dt id="context.http.proxy">
       <code class="parameter">proxy</code>
-      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <span class="type">string</span>
      </dt>
 
      <dd>
 
       <p class="para">
        プロキシサーバーを示す URI (例: 
-       <em>tcp://proxy.example.com:5100</em>)。
+       <code class="literal">tcp://proxy.example.com:5100</code>)。
       </p>
      </dd>
 
@@ -120,19 +137,19 @@
     
      <dt id="context.http.request-fulluri">
       <code class="parameter">request_fulluri</code>
-      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      <span class="type">bool</span>
      </dt>
 
      <dd>
 
       <p class="para">
-       <strong><code>TRUE</code></strong> を指定すると、リクエストを生成する際に完全な URI
-       (<em>GET http://www.example.com/path/to/file.html HTTP/1.0</em>)
+       <strong><code>true</code></strong> を指定すると、リクエストを生成する際に完全な URI
+       (<code class="literal">GET http://www.example.com/path/to/file.html HTTP/1.0</code>)
        が用いられます。これは標準のリクエストフォーマットではありませんが、
        このようなフォーマットを要求するプロキシサーバーも存在します。
       </p>
       <p class="para">
-       デフォルトは <strong><code>FALSE</code></strong> です。
+       デフォルトは <strong><code>false</code></strong> です。
       </p>
      </dd>
 
@@ -140,17 +157,17 @@
     
      <dt id="context.http.follow-location">
       <code class="parameter">follow_location</code>
-      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      <span class="type">int</span>
      </dt>
 
      <dd>
 
       <p class="para">
-       <em>Location</em> のリダイレクトをたどります。
-       <em>0</em> で無効にできます。
+       <code class="literal">Location</code> のリダイレクトをたどります。
+       <code class="literal">0</code> で無効にできます。
       </p>
       <p class="para">
-       デフォルトは <em>1</em> です。
+       デフォルトは <code class="literal">1</code> です。
       </p>
      </dd>
 
@@ -158,17 +175,17 @@
     
      <dt id="context.http.max-redirects">
       <code class="parameter">max_redirects</code>
-      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      <span class="type">int</span>
      </dt>
 
      <dd>
 
       <p class="para">
-       リダイレクトをたどる最大数。値が <em>1</em> 以下の場合は
+       リダイレクトをたどる最大数。値が <code class="literal">1</code> 以下の場合は
        リダイレクトをたどらないことを意味します。
       </p>
       <p class="para">
-       デフォルトは <em>20</em> です。
+       デフォルトは <code class="literal">20</code> です。
       </p>
      </dd>
 
@@ -176,7 +193,7 @@
     
      <dt id="context.http.protocol-version">
       <code class="parameter">protocol_version</code>
-      <span class="type"><a href="language.types.float.html" class="type float">float</a></span>
+      <span class="type">float</span>
      </dt>
 
      <dd>
@@ -185,29 +202,22 @@
        HTTP プロトコルのバージョン。
       </p>
       <p class="para">
-       デフォルトは <em>1.0</em> です。
+       デフォルトは <code class="literal">1.0</code> です。
       </p>
-      <blockquote class="note"><p><strong class="note">注意</strong>: 
-       <p class="para">
-        5.3.0 より前のバージョンの PHP では chunked transfer decoding を実装していません。
-        この値を <em>1.1</em> に設定するなら、
-        <em>1.1</em> 準拠にするのは自分の責任となります。
-       </p>
-      </p></blockquote>
      </dd>
 
     
     
      <dt id="context.http.timeout">
       <code class="parameter">timeout</code>
-      <span class="type"><a href="language.types.float.html" class="type float">float</a></span>
+      <span class="type">float</span>
      </dt>
 
      <dd>
 
       <p class="para">
-       読み込みタイムアウト秒数を <span class="type"><a href="language.types.float.html" class="type float">float</a></span> (例
-       <em>10.5</em>) で指定します。
+       読み込みタイムアウト秒数を <span class="type">float</span> (例
+       <code class="literal">10.5</code>) で指定します。
       </p>
       <p class="para">
        デフォルトでは <var class="filename">php.ini</var> 設定
@@ -220,7 +230,7 @@
     
      <dt id="context.http.ignore-errors">
       <code class="parameter">ignore_errors</code>
-      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      <span class="type">bool</span>
      </dt>
 
      <dd>
@@ -229,7 +239,7 @@
        ステータスコードが失敗を意味する場合でもコンテンツを取得します。
       </p>
       <p class="para">
-       デフォルトは <strong><code>FALSE</code></strong> です。
+       デフォルトは <strong><code>false</code></strong> です。
       </p>
      </dd>
 
@@ -240,90 +250,10 @@
  </div>
 
  
- <div class="refsect1 changelog" id="refsect1-context.http-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>5.3.4</td>
-       <td>
-        <code class="parameter">follow_location</code> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.3.0</td>
-       <td>
-        <code class="parameter">protocol_version</code> に
-        <em>1.1</em> を設定した場合に、
-        chuned transfer decoding をサポートするようになりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.2.10</td>
-       <td>
-        <code class="parameter">ignore_errors</code> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.2.10</td>
-       <td>
-        <code class="parameter">header</code> に数値添字の配列を使用できるようになりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.2.1</td>
-       <td>
-        <code class="parameter">timeout</code> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.1.0</td>
-       <td>
-        HTTP プロキシを使用した HTTPS のプロキシが追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.1.0</td>
-       <td>
-        <code class="parameter">max_redirects</code> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.1.0</td>
-       <td>
-        <code class="parameter">protocol_version</code> が追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
- 
  <div class="refsect1 examples" id="refsect1-context.http-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="context.http.example-post">
+   <div class="example" id="iteratoraggregate.example.basic">
     <p><strong>例1 ページの取得と POST データの送信</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -335,7 +265,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="context.http.example-fetch-ignore-redirect">
+   <div class="example" id="arrayaccess.example.basic">
     <p><strong>例2 リダイレクトを無視し、ヘッダとコンテンツの取得</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -357,9 +287,9 @@
     これ以外のコンテキストオプションが
     <a href="transports.inet.html" class="link">基盤となるトランスポート</a>
     でサポートされています。
-    <em>http://</em> ストリームの場合は、<em>tcp://</em>
+    <code class="literal">http://</code> ストリームの場合は、<code class="literal">tcp://</code>
     のコンテキストオプションを参照ください。
-    <em>https://</em> ストリームの場合は、<em>ssl://</em>
+    <code class="literal">https://</code> ストリームの場合は、<code class="literal">ssl://</code>
     のコンテキストオプションを参照ください。
    </span>
   </p></blockquote>
@@ -368,7 +298,7 @@
    <span class="simpara">
     このストリームラッパーがリダイレクトをたどると、
     <span class="function"><a href="function.stream-get-meta-data.html" class="function">stream_get_meta_data()</a></span> が返す
-    <em>wrapper_data</em> のインデックス <em>0</em>
+    <code class="literal">wrapper_data</code> のインデックス <code class="literal">0</code>
     の内容が必ずしもそのコンテンツの HTTP ステータスラインであるとは限らなくなります。
    </span>
    <div class="example-contents screen">
@@ -376,7 +306,7 @@
 array (
   &#039;wrapper_data&#039; =&gt;
   array (
-    0 =&gt; &#039;HTTP/1.0 301 Moved Permantenly&#039;,
+    0 =&gt; &#039;HTTP/1.0 301 Moved Permanently&#039;,
     1 =&gt; &#039;Cache-Control: no-cache&#039;,
     2 =&gt; &#039;Connection: close&#039;,
     3 =&gt; &#039;Location: http://example.com/foo.jpg&#039;,
@@ -385,9 +315,9 @@ array (
 </pre></div>
    </div>
    <span class="simpara">
-    最初のリクエストが <em>301</em> (permanent redirect)
+    最初のリクエストが <code class="literal">301</code> (permanent redirect)
     を返したので、ストリームラッパーが自動的にリダイレクト先をたどり、レスポンス
-    <em>200</em> (インデックス = <em>4</em>)
+    <code class="literal">200</code> (インデックス = <code class="literal">4</code>)
     を取得しました。
    </span>
   </p></blockquote>
@@ -406,9 +336,4 @@ array (
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="context.socket.html">ソケットコンテキストオプション</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="context.ftp.html">FTP コンテキストオプション</a></div>
- <div class="up"><a href="context.html">コンテキストオプションとパラメータ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

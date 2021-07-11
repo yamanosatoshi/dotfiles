@@ -2,31 +2,41 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Assemble a url</title>
+  <title>URL を組み立てる</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="class.yaf-route-static.html">Yaf_Route_Static</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="yaf-route-static.match.html">Yaf_Route_Static::match</a></div>
- <div class="up"><a href="class.yaf-route-static.html">Yaf_Route_Static</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="yaf-route-static.assemble" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="class.yaf-route-static.html">« Yaf_Route_Static</a></li>
+      <li style="float: right;"><a href="yaf-route-static.match.html">Yaf_Route_Static::match »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.yaf-route-static.html">Yaf_Route_Static</a></li>
+    <li>URL を組み立てる</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="yaf-route-static.assemble" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">Yaf_Route_Static::assemble</h1>
-  <p class="verinfo">(Yaf &gt;=2.3.0)</p><p class="refpurpose"><span class="refname">Yaf_Route_Static::assemble</span> &mdash; <span class="dc-title">Assemble a url</span></p>
+  <p class="verinfo">(Yaf &gt;=2.3.0)</p><p class="refpurpose"><span class="refname">Yaf_Route_Static::assemble</span> &mdash; <span class="dc-title">URL を組み立てる</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-yaf-route-static.assemble-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><strong>Yaf_Route_Static::assemble</strong></span>
-    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$info</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$query</code></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>Yaf_Route_Static::assemble</strong></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter">$info</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$query</code><span class="initializer"> = ?</span></span>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
-   Assemble a url.
+   URL を組み立てます。
   </p>
  </div>
 
@@ -64,10 +74,29 @@
  </div>
 
 
+ <div class="refsect1 returnvalues" id="refsect1-yaf-route-static.assemble-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   文字列を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-yaf-route-static.assemble-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+   <code class="parameter">info</code> に
+   キー <code class="literal">&#039;:c&#039;</code> と <code class="literal">&#039;:a&#039;</code>
+   が設定されていなかった場合、
+   <a href="class.yaf-exception-typeerror.html" class="classname">Yaf_Exception_TypeError</a> をスローします。
+  </p>
+ </div>
+
+
  <div class="refsect1 examples" id="refsect1-yaf-route-static.assemble-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-4771">
-   <p><strong>例1 <span class="function"><strong>Yaf_Route_Static::assemble()</strong></span>example</strong></p>
+  <div class="example" id="example-3940">
+   <p><strong>例1 <span class="function"><strong>Yaf_Route_Static::assemble()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$router&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Yaf_Router</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$route&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Yaf_Route_Static</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$router</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addRoute</span><span style="color: #007700">(</span><span style="color: #DD0000">"static"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$route</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$router</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getRoute</span><span style="color: #007700">(</span><span style="color: #DD0000">'static'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">assemble</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">':a'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'yafaction'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'tkey'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'tval'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">':c'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'yafcontroller'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">':m'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'yafmodule'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br />);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$router</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getRoute</span><span style="color: #007700">(</span><span style="color: #DD0000">'static'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">assemble</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">':a'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'yafaction'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'tkey'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'tval'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">':c'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'yafcontroller'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">':m'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'yafmodule'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'tkey1'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'tval1'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'tkey2'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'tval2'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br />);</span>
@@ -87,17 +116,4 @@ string(%d) &quot;/yafmodule/yafcontroller/yafaction?tkey1=tval1&amp;tkey2=tval2&
  </div>
 
 
- <div class="refsect1 returnvalues" id="refsect1-yaf-route-static.assemble-returnvalues">
-  <h3 class="title">返り値</h3>
-  <p class="para">
-
-  </p>
- </div>
-
-
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="class.yaf-route-static.html">Yaf_Route_Static</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="yaf-route-static.match.html">Yaf_Route_Static::match</a></div>
- <div class="up"><a href="class.yaf-route-static.html">Yaf_Route_Static</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

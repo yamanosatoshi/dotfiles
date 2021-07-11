@@ -4,33 +4,42 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>キーを基準にし、コールバック関数を用いて
   配列の共通項を計算する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.array-intersect-uassoc.html">array_intersect_uassoc</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.array-intersect.html">array_intersect</a></div>
- <div class="up"><a href="ref.array.html">配列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.array-intersect-ukey" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.array-intersect-uassoc.html">« array_intersect_uassoc</a></li>
+      <li style="float: right;"><a href="function.array-intersect.html">array_intersect »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">配列 関数</a></li>
+    <li>キーを基準にし、コールバック関数を用いて
+  配列の共通項を計算する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.array-intersect-ukey" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">array_intersect_ukey</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7)</p><p class="refpurpose"><span class="refname">array_intersect_ukey</span> &mdash; <span class="dc-title">キーを基準にし、コールバック関数を用いて
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">array_intersect_ukey</span> &mdash; <span class="dc-title">キーを基準にし、コールバック関数を用いて
   配列の共通項を計算する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.array-intersect-ukey-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>array_intersect_ukey</strong></span>
-    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$array1</code></span>
-   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$array2</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$...</code></span>
-   ], <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$key_compare_func</code></span>
-   )</div>
+   <span class="methodname"><strong>array_intersect_ukey</strong></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter">$array</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">...$arrays</code></span>, <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$key_compare_func</code></span>): <span class="type">array</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>array_intersect_ukey()</strong></span> は、他の全ての引数に存在する
-   <code class="parameter">array1</code> の値を全て有する配列を返します。
+   <code class="parameter">array</code> の値を全て有する配列を返します。
   </p>
  </div>
 
@@ -42,7 +51,7 @@
 
     
      <dt>
-<code class="parameter">array1</code></dt>
+<code class="parameter">array</code></dt>
 
      <dd>
 
@@ -54,24 +63,12 @@
     
     
      <dt>
-<code class="parameter">array2</code></dt>
+<code class="parameter">arrays</code></dt>
 
      <dd>
 
       <p class="para">
-       キーを比較する対象となる最初の配列。
-      </p>
-     </dd>
-
-    
-    
-     <dt>
-<code class="parameter">...</code></dt>
-
-     <dd>
-
-      <p class="para">
-       キーを比較する対象となる配列の、可変リスト。
+       キーを比較する対象となる配列。
       </p>
      </dd>
 
@@ -83,9 +80,9 @@
      <dd>
 
       <p class="para">
-       比較関数は、最初の引数と二番目の引数の比較結果を返します。最初の引数のほうが二番目の引数より大きい場合は正の数を、二番目の引数と等しい場合はゼロを、そして二番目の引数より小さい場合は負の数を返す必要があります。PHP 7.0.0 より前のバージョンでは、この整数が -2147483648 から 2147483647 までの範囲におさまる必要がありました。
+       比較関数は、最初の引数と二番目の引数の比較結果を返します。最初の引数のほうが二番目の引数より大きい場合は正の数を、二番目の引数と等しい場合はゼロを、そして二番目の引数より小さい場合は負の数を返す必要があります。
       </p>
-      <div class="methodsynopsis dc-description"><span class="type">int</span> <span class="methodname"><span class="replaceable">callback</span></span> ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$a</code></span>, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$b</code></span> )</div>
+      <div class="methodsynopsis dc-description"><span class="methodname"><span class="replaceable">callback</span></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$a</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$b</code></span>): <span class="type">int</span></div>
 
      </dd>
 
@@ -99,7 +96,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.array-intersect-ukey-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <code class="parameter">array1</code> の値のうち、
+   <code class="parameter">array</code> の値のうち、
    すべての引数に存在するキーのものを含む連想配列を返します。
   </p>
  </div>
@@ -108,7 +105,7 @@
  <div class="refsect1 examples" id="refsect1-function.array-intersect-ukey-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5554">
+   <div class="example" id="example-4899">
     <p><strong>例1 <span class="function"><strong>array_intersect_ukey()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -131,12 +128,12 @@ array(2) {
    </div>
   </p>
   <p class="para">
-   この例では、両方の配列に存在するキーが <em>&#039;blue&#039;</em>
-   と <em>&#039;green&#039;</em> だけであり、それが返されていることがわかります。
-   また、ふたつの配列の間で <em>&#039;blue&#039;</em> と
-   <em>&#039;green&#039;</em> に対応する値が違うことにも注意しましょう。
+   この例では、両方の配列に存在するキーが <code class="literal">&#039;blue&#039;</code>
+   と <code class="literal">&#039;green&#039;</code> だけであり、それが返されていることがわかります。
+   また、ふたつの配列の間で <code class="literal">&#039;blue&#039;</code> と
+   <code class="literal">&#039;green&#039;</code> に対応する値が違うことにも注意しましょう。
    それでも一致していると判定されるのは、ただキーだけがチェックされているからです。
-   返される値は <code class="parameter">array1</code> のものです。
+   返される値は <code class="parameter">array</code> のものです。
   </p>
  </div>
 
@@ -165,9 +162,4 @@ array(2) {
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.array-intersect-uassoc.html">array_intersect_uassoc</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.array-intersect.html">array_intersect</a></div>
- <div class="up"><a href="ref.array.html">配列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

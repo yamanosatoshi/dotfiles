@@ -3,18 +3,31 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>接続の現在の文字セットを考慮して、SQL 文で使用する文字列の特殊文字をエスケープする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.real-connect.html">mysqli::real_connect</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.real-query.html">mysqli::real_query</a></div>
- <div class="up"><a href="class.mysqli.html">mysqli</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqli.real-escape-string" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.real-connect.html">« mysqli::real_connect</a></li>
+      <li style="float: right;"><a href="mysqli.real-query.html">mysqli::real_query »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli.html">mysqli</a></li>
+    <li>接続の現在の文字セットを考慮して、SQL 文で使用する文字列の特殊文字をエスケープする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.real-escape-string" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mysqli::real_escape_string</h1>
   <h1 class="refname">mysqli_real_escape_string</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mysqli::real_escape_string</span> -- <span class="refname">mysqli_real_escape_string</span> &mdash; <span class="dc-title">接続の現在の文字セットを考慮して、SQL 文で使用する文字列の特殊文字をエスケープする</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli::real_escape_string</span> -- <span class="refname">mysqli_real_escape_string</span> &mdash; <span class="dc-title">接続の現在の文字セットを考慮して、SQL 文で使用する文字列の特殊文字をエスケープする</span></p>
 
  </div>
 
@@ -22,25 +35,14 @@
   <h3 class="title">説明</h3>
   <p class="para">オブジェクト指向型</p>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><a href="function.mysqli-escape-string.html" class="methodname">mysqli::escape_string</a></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$escapestr</code></span>
-   )</div>
-
-  <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>mysqli::real_escape_string</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$escapestr</code></span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>mysqli::real_escape_string</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">手続き型</p>
-  <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>mysqli_real_escape_string</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter">$link</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$escapestr</code></span>
-   )</div>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>mysqli_real_escape_string</strong></span>(<span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter">$mysql</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
    この関数を使用して、SQL 文中で使用できる正当な形式の SQL 文字列を作成します。
-   文字列 <em>escapestr</em> が、エスケープされた
+   文字列 <code class="literal">escapestr</code> が、エスケープされた
    SQL に変換されます。その際、接続で使用している現在の文字セットが考慮されます。
   </p>
   <div class="caution"><strong class="caution">警告</strong>
@@ -68,12 +70,12 @@
 link</code></dt>
 <dd>
 <p class="para">手続き型のみ:
-<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> あるいは <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> が返すリンク ID。
+<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> あるいは <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> が返す <a href="class.mysqli.html" class="classname">mysqli</a>オブジェクト。
 </p></dd>
 
     
      <dt>
-<code class="parameter">escapestr</code></dt>
+<code class="parameter">string</code></dt>
 
      <dd>
 
@@ -81,8 +83,8 @@ link</code></dt>
        エスケープする文字列。
       </p>
       <p class="para">
-       エンコードされる文字は <em>NUL (ASCII 0), \n, \r, \, &#039;, &quot;, および
-       Control-Z</em> です。
+       エンコードされる文字は <code class="literal">NUL (ASCII 0), \n, \r, \, &#039;, &quot;, および
+       Control-Z</code> です。
       </p>
      </dd>
 
@@ -103,12 +105,12 @@ link</code></dt>
 
  <div class="refsect1 examples" id="refsect1-mysqli.real-escape-string-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1863">
+  <div class="example" id="example-1427">
    <p><strong>例1 <span class="methodname"><strong>mysqli::real_escape_string()</strong></span> の例</strong></p>
    <div class="example-contents"><p>オブジェクト指向型</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;接続状況をチェックします&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Connect&nbsp;failed:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;exit();<br />}<br /><br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE&nbsp;TEMPORARY&nbsp;TABLE&nbsp;myCity&nbsp;LIKE&nbsp;City"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$city&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"'s&nbsp;Hertogenbosch"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*&nbsp;このクエリは失敗します。なぜなら&nbsp;$city&nbsp;をエスケープしていないからです&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT&nbsp;into&nbsp;myCity&nbsp;(Name)&nbsp;VALUES&nbsp;('</span><span style="color: #0000BB">$city</span><span style="color: #DD0000">')"</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Error:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sqlstate</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$city&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$city</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;$city&nbsp;をエスケープしたので、このクエリは正しく動作します&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT&nbsp;into&nbsp;myCity&nbsp;(Name)&nbsp;VALUES&nbsp;('</span><span style="color: #0000BB">$city</span><span style="color: #DD0000">')"</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;Row&nbsp;inserted.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">affected_rows</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />mysqli_report</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLI_REPORT_ERROR&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">MYSQLI_REPORT_STRICT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$city&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"'s-Hertogenbosch"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*&nbsp;$city&nbsp;はエスケープされ、クエリは動作します。*/<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;CountryCode&nbsp;FROM&nbsp;City&nbsp;WHERE&nbsp;name='%s'"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$city</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Select&nbsp;returned&nbsp;%d&nbsp;rows.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">num_rows</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;このクエリは失敗します。なぜなら、$city&nbsp;をエスケープしていないからです&nbsp;*/<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;CountryCode&nbsp;FROM&nbsp;City&nbsp;WHERE&nbsp;name='%s'"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$city</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);</span>
 </span>
 </code></div>
    </div>
@@ -116,35 +118,21 @@ link</code></dt>
    <div class="example-contents"><p>手続き型</p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;接続状況をチェックします&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Connect&nbsp;failed:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;exit();<br />}<br /><br /></span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"CREATE&nbsp;TEMPORARY&nbsp;TABLE&nbsp;myCity&nbsp;LIKE&nbsp;City"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$city&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"'s&nbsp;Hertogenbosch"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*&nbsp;このクエリは失敗します。なぜなら&nbsp;$city&nbsp;をエスケープしていないからです&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;into&nbsp;myCity&nbsp;(Name)&nbsp;VALUES&nbsp;('</span><span style="color: #0000BB">$city</span><span style="color: #DD0000">')"</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Error:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_sqlstate</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">$city&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$city</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;$city&nbsp;をエスケープしたので、このクエリは正しく動作します&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;into&nbsp;myCity&nbsp;(Name)&nbsp;VALUES&nbsp;('</span><span style="color: #0000BB">$city</span><span style="color: #DD0000">')"</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;Row&nbsp;inserted.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_affected_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">mysqli_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />mysqli_report</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLI_REPORT_ERROR&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">MYSQLI_REPORT_STRICT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$city&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"'s-Hertogenbosch"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*&nbsp;$city&nbsp;はエスケープされ、クエリは動作します。*/<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;CountryCode&nbsp;FROM&nbsp;City&nbsp;WHERE&nbsp;name='%s'"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysqli_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$city</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Select&nbsp;returned&nbsp;%d&nbsp;rows.\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;このクエリは失敗します。なぜなら、$city&nbsp;をエスケープしていないからです&nbsp;*/<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;CountryCode&nbsp;FROM&nbsp;City&nbsp;WHERE&nbsp;name='%s'"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$city</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$query</span><span style="color: #007700">);</span>
 </span>
 </code></div>
    </div>
 
-   <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+   <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
    <div class="example-contents screen">
 <div class="cdata"><pre>
-Error: 42000
-1 Row inserted.
+Select returned 1 rows.
+
+Fatal error: Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#039;s-Hertogenbosch&#039;&#039; at line 1 in...
 </pre></div>
    </div>
   </div>
- </div>
-
-
- <div class="refsect1 notes" id="refsect1-mysqli.real-escape-string-notes">
-  <h3 class="title">注意</h3>
-  <blockquote class="note"><p><strong class="note">注意</strong>: 
-   <p class="para">
-    これまでに <span class="function"><a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span> をよく使っていた人は、
-    <span class="function"><strong>mysqli_real_escape_string()</strong></span> の引数が
-    <span class="function"><a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span> とは違うことに注意しましょう。
-    <span class="function"><strong>mysqli_real_escape_string()</strong></span> の最初の引数は
-    <code class="parameter">link</code> であり、
-    <span class="function"><a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span>
-    のようにエスケープしたい文字列を最初に書くのではなくなりました。
-   </p>
-  </p></blockquote>
  </div>
 
 
@@ -153,15 +141,9 @@ Error: 42000
   <p class="para">
    <ul class="simplelist">
     <li class="member"><span class="function"><a href="mysqli.set-charset.html" class="function" rel="rdfs-seeAlso">mysqli_set_charset()</a> - クライアントのデフォルト文字セットを設定する</span></li>
-    <li class="member"><span class="function"><a href="mysqli.character-set-name.html" class="function" rel="rdfs-seeAlso">mysqli_character_set_name()</a> - データベース接続のデフォルトの文字コードセットを返す</span></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.real-connect.html">mysqli::real_connect</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.real-query.html">mysqli::real_query</a></div>
- <div class="up"><a href="class.mysqli.html">mysqli</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

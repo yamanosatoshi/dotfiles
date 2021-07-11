@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>フォームの処理</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="tutorial.useful.html">実用的な例</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="tutorial.oldcode.html">新しいバージョンの PHP で古いコードを使用する</a></div>
- <div class="up"><a href="tutorial.html">簡易チュートリアル</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="tutorial.forms" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="tutorial.useful.html">« 実用的な例</a></li>
+      <li style="float: right;"><a href="tutorial.whatsnext.html">次にするべきことは? »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="tutorial.html">簡易チュートリアル</a></li>
+    <li>フォームの処理</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="tutorial.forms" class="sect1">
    <h2 class="title">フォームの処理</h2>
    <p class="para">
     PHP の最も強力な機能の一つは、HTML フォームを処理する手段です。
@@ -62,25 +75,25 @@
    </p>
    <p class="para">
     <span class="function"><a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span> および
-    <em>(int)</em> の部分以外は、何を行っているかは明らかでしょう。
+    <code class="literal">(int)</code> の部分以外は、何を行っているかは明らかでしょう。
     <span class="function"><a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span> は、html での特殊な文字を適切にエンコードし、
     HTML タグや Javascript をページ内に仕込めないようにします。
     また、age フィールドには数値が入ることがわかっているので、これを
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 型に <a href="language.types.type-juggling.html#language.types.typecasting" class="link">変換</a> 
+    <span class="type">int</span> 型に <a href="language.types.type-juggling.html#language.types.typecasting" class="link">変換</a> 
     します。これにより、おかしな文字が入力されることを防ぎます。
     これらの処理を PHP に自動的に行わせるためには、
     <a href="ref.filter.html" class="link">filter</a> 拡張モジュールを使用します。
-    変数 <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST['name']</a></var></var> と
-    <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST['age']</a></var></var> は PHP により自動的に設定されます。
-    前の部分では、スーパーグローバル<var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var> を使用しましたが、
+    変数 <var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST['name']</a></var> と
+    <var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST['age']</a></var> は PHP により自動的に設定されます。
+    前の部分では、スーパーグローバル<var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var> を使用しましたが、
     ここでは、全ての POST データを保持するスーパーグローバル
-    <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var> を導入しています。
+    <var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var> を導入しています。
     フォームの<em class="emphasis">メソッド</em>が POST であることに注意してください。
     <em class="emphasis">GET</em> メソッドを使用している場合、
-    フォームの情報は代わりにスーパーグローバル <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var>
+    フォームの情報は代わりにスーパーグローバル <var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var>
     に代入されます。リクエストデータの発信源に留意しない場合には、
     スーパーグローバル変数
-    <var class="varname"><var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var></var>
+    <var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var>
     を使用することもできます。この変数は、GET, POST, COOKIE, FILE
     データの混ざったものが含まれます。
    </p>
@@ -91,9 +104,4 @@
     機能概要の節にある <a href="features.xforms.html" class="link">
     XForm から受信したデータの処理方法</a> を参照ください。
    </p>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="tutorial.useful.html">実用的な例</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="tutorial.oldcode.html">新しいバージョンの PHP で古いコードを使用する</a></div>
- <div class="up"><a href="tutorial.html">簡易チュートリアル</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>代入演算子</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.operators.arithmetic.html">代数演算子</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.operators.bitwise.html">ビット演算子</a></div>
- <div class="up"><a href="language.operators.html">演算子</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.operators.assignment" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.operators.arithmetic.html">« 代数演算子</a></li>
+      <li style="float: right;"><a href="language.operators.bitwise.html">ビット演算子 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.operators.html">演算子</a></li>
+    <li>代入演算子</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.operators.assignment" class="sect1">
    <h2 class="title">代入演算子</h2>
    <p class="simpara">
     代入演算子の基本となるものは &quot;=&quot; です。この演算子に関して最初に
@@ -19,7 +32,7 @@
     ことを意味します。
    </p>
    <p class="para">
-    代入式の値は、代入される値です。つまり、&quot;<em>$a = 3</em>&quot; の値は、3 です。
+    代入式の値は、代入される値です。つまり、&quot;<code class="literal">$a = 3</code>&quot; の値は、3 です。
     これにより、以下のようなトリッキーなことができるようになります。
     <div class="informalexample">
      <div class="example-contents">
@@ -33,7 +46,7 @@
    </p>
    <p class="para">
     基本代入演算子に加えて、全ての<a href="language.operators.html" class="link">
-    バイナリ演算子</a>、配列結合および文字列演算子に関して
+    演算子</a>、配列結合および文字列演算子に関して
     「複合演算子」があります。
     これにより、式の中の値を使用し、その値をその式の結果とすることができます。
     例えば、
@@ -54,8 +67,9 @@
     コピーする必要がある場合には問題を生じる可能性があります。
    </p>
    <p class="para">
-    PHP では通常は値による代入になりますが、オブジェクト型については例外です。
-    PHP 5 以降、オブジェクトは参照で代入されるようになりました。オブジェクトを明示的にコピーするには
+    PHP では通常は値による代入になりますが、
+    オブジェクトは参照で代入されます。
+    オブジェクトを明示的にコピーするには
     <a href="language.oop5.cloning.html" class="link">clone</a> キーワードを使います。
    </p>
 
@@ -68,7 +82,7 @@
      データのコピーは発生しません。
     </p>
     <p class="para">
-     <div class="example" id="example-135">
+     <div class="example" id="example-91">
       <p><strong>例1 参照による代入</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -80,33 +94,180 @@
      </div>
     </p>
     <p class="para">
-     PHP 5 以降では、<a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a>
-     演算子が自動的に参照を返すようになりました。そのため、
-     <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a> の結果を参照で代入しようとすると
-     PHP 5.3 以降では <strong><code>E_DEPRECATED</code></strong>、それより前のバージョンでは 
-     <strong><code>E_STRICT</code></strong> が発生します。
+     <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a>
+     演算子は自動的に参照を返します。そのため、
+     <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a> の結果を参照で代入するとエラーが発生します。
     </p>
     <p class="para">
-     たとえば、このコードは警告が発生します。
      <div class="informalexample">
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">{}<br /><br /></span><span style="color: #FF8000">/*&nbsp;次の行を実行すると、このようなエラーメッセージが出ます<br />&nbsp;*&nbsp;Deprecated:&nbsp;Assigning&nbsp;the&nbsp;return&nbsp;value&nbsp;of&nbsp;new&nbsp;by&nbsp;reference&nbsp;is&nbsp;deprecated&nbsp;in...<br />&nbsp;*/<br /></span><span style="color: #0000BB">$o&nbsp;</span><span style="color: #007700">=&nbsp;&amp;new&nbsp;</span><span style="color: #0000BB">C</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">{}<br /><br /></span><span style="color: #0000BB">$o&nbsp;</span><span style="color: #007700">=&nbsp;&amp;new&nbsp;</span><span style="color: #0000BB">C</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
       </div>
 
+      <p class="para">上の例の出力は以下となります。</p>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+Parse error: syntax error, unexpected &#039;new&#039; (T_NEW) in …
+</pre></div>
+      </div>
      </div>
     </p>
     <p class="para">
      参照に関する詳細な情報やその使い方については、このマニュアルの
-     <a href="language.references.html" class="link">参照に関する説明</a>
+     <a href="language.references.html" class="link">リファレンスに関する説明</a>
      をご覧ください。
     </p>
    </div>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.operators.arithmetic.html">代数演算子</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.operators.bitwise.html">ビット演算子</a></div>
- <div class="up"><a href="language.operators.html">演算子</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+
+   <div class="sect2" id="language.operators.assignment.arithmetic">
+    <h3 class="title">算術代入演算子</h3>
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>例</th>
+        <th>同一の結果になる操作</th>
+        <th>演算</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>$a += $b</td>
+        <td>$a = $a + $b</td>
+        <td>加算</td>
+       </tr>
+
+       <tr>
+        <td>$a -= $b</td>
+        <td>$a = $a - $b</td>
+        <td>減算</td>
+       </tr>
+
+       <tr>
+        <td>$a *= $b</td>
+        <td>$a = $a * $b</td>
+        <td>乗算</td>
+       </tr>
+
+       <tr>
+        <td>$a /= $b</td>
+        <td>$a = $a / $b</td>
+        <td>除算</td>
+       </tr>
+
+       <tr>
+        <td>$a %= $b</td>
+        <td>$a = $a % $b</td>
+        <td>剰余</td>
+       </tr>
+
+       <tr>
+        <td>$a **= $b</td>
+        <td>$a = $a ** $b</td>
+        <td>べき乗</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </div>
+
+   <div class="sect2" id="language.operators.assignment.bitwise">
+    <h3 class="title">ビット代入演算子</h3>
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>例</th>
+        <th>同一の結果になる操作</th>
+        <th>演算</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>$a &amp;= $b</td>
+        <td>$a = $a &amp; $b</td>
+        <td>ビット積</td>
+       </tr>
+
+       <tr>
+        <td>$a |= $b</td>
+        <td>$a = $a | $b</td>
+        <td>ビット和</td>
+       </tr>
+
+       <tr>
+        <td>$a ^= $b</td>
+        <td>$a = $a ^ $b</td>
+        <td>排他的論理和</td>
+       </tr>
+
+       <tr>
+        <td>$a &lt;&lt;= $b</td>
+        <td>$a = $a &lt;&lt; $b</td>
+        <td>左シフト</td>
+       </tr>
+
+       <tr>
+        <td>$a &gt;&gt;= $b</td>
+        <td>$a = $a &gt;&gt; $b</td>
+        <td>右シフト</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </div>
+
+   <div class="sect2" id="language.operators.assignment.other">
+    <h3 class="title">その他の代入演算子</h3>
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>例</th>
+        <th>同一の結果になる操作</th>
+        <th>演算</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>$a .= $b</td>
+        <td>$a = $a . $b</td>
+        <td>文字列の結合</td>
+       </tr>
+
+       <tr>
+        <td>$a ??= $b</td>
+        <td>$a = $a ?? $b</td>
+        <td>Null合体</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </div>
+
+   <div class="sect2" id="language.operators.assignment.see-also">
+     <h3 class="title">参考</h3>
+     <p class="para">
+      <ul class="simplelist">
+       <li class="member"><a href="language.operators.arithmetic.html" class="link">arithmetic operators</a></li>
+       <li class="member"><a href="language.operators.bitwise.html" class="link">bitwise operators</a></li>
+       <li class="member"><a href="language.operators.comparison.html#language.operators.comparison.coalesce" class="link">null coalescing operator</a></li>
+      </ul>
+     </p>
+   </div>
+  </div></div></div></body></html>

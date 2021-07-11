@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>陥りやすい落とし穴</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.file-upload.errors.html">エラーメッセージの説明</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.file-upload.multiple.html">複数ファイルのアップロード</a></div>
- <div class="up"><a href="features.file-upload.html">ファイルアップロードの処理</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="features.file-upload.common-pitfalls" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.file-upload.errors.html">« エラーメッセージの説明</a></li>
+      <li style="float: right;"><a href="features.file-upload.multiple.html">複数ファイルのアップロード »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.file-upload.html">ファイルアップロードの処理</a></li>
+    <li>陥りやすい落とし穴</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.file-upload.common-pitfalls" class="sect1">
    <h2 class="title">陥りやすい落とし穴</h2>
    <p class="simpara">
-    <em>MAX_FILE_SIZE</em> の値に、<var class="filename">php.ini</var> の <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a>
+    <code class="literal">MAX_FILE_SIZE</code> の値に、<var class="filename">php.ini</var> の <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a>
     で指定されたファイルサイズより大きなファイルサイズを指定する
     ことはできません。デフォルトは、2 メガバイトです。
    </p>
@@ -27,7 +40,7 @@
     <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a>
     に設定した値が小さすぎた場合、スクリプトの実行時間がこの値を越える
     可能性を生じます。
-    <em>max_execution_time</em> に充分大きな値を設定するように
+    <code class="literal">max_execution_time</code> に充分大きな値を設定するように
     してください。
    </p>
    <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -47,23 +60,22 @@
      は、スクリプトで入力を受け付けることができる最大秒数を設定します。
      この秒数には、ファイルアップロードの時間も含まれます。
      大きなファイルや複数のファイルをアップロードしたり接続に時間を要したりする場合は、
-     デフォルト値の <em>60 seconds</em> を増やしましょう。
+     デフォルト値の <code class="literal">60 seconds</code> を増やしましょう。
     </p>
    </div>
    <p class="simpara">
     <a href="ini.core.html#ini.post-max-size" class="link">post_max_size</a> の設定値が
     小さすぎた場合、大きなファイルをアップロードすることができなくなります。
-    <em>post_max_size</em> に充分大きな値を設定するように
+    <code class="literal">post_max_size</code> に充分大きな値を設定するように
     してください。
    </p>
    <p class="simpara">
-    PHP 5.2.12 以降、
     <a href="ini.core.html#ini.max-file-uploads" class="link">max_file_uploads</a>
     は一回のリクエストあたりでアップロードできるファイルの数の制限値となります。
     この制限を超える数のファイルをアップロードしようとすると、制限に達した時点で
-    <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var></var> は処理を停止します。たとえば
+    <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var> は処理を停止します。たとえば
     <a href="ini.core.html#ini.max-file-uploads" class="link">max_file_uploads</a> が
-    <em>10</em> の場合には、<var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var></var>
+    <code class="literal">10</code> の場合には、<var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var>
     には 10 件までの要素しか入らないということです。
    </p>
    <p class="simpara">
@@ -82,13 +94,8 @@
     保証できません。
    </p>
    <p class="simpara">
-    通常の <em>input</em> フィールドとファイルアップロードフィールドを
-    (<em>input</em> の name に <em>foo[]</em> を利用するなどして)
+    通常の <code class="literal">input</code> フィールドとファイルアップロードフィールドを
+    (<code class="literal">input</code> の name に <code class="literal">foo[]</code> を利用するなどして)
     同一のフォーム変数で扱うことはできません。
    </p>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.file-upload.errors.html">エラーメッセージの説明</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.file-upload.multiple.html">複数ファイルのアップロード</a></div>
- <div class="up"><a href="features.file-upload.html">ファイルアップロードの処理</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

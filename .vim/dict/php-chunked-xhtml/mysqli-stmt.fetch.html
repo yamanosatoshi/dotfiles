@@ -3,18 +3,31 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>プリペアドステートメントから結果を取得し、バインド変数に格納する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli-stmt.execute.html">mysqli_stmt::execute</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli-stmt.field-count.html">mysqli_stmt::$field_count</a></div>
- <div class="up"><a href="class.mysqli-stmt.html">mysqli_stmt</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqli-stmt.fetch" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli-stmt.execute.html">« mysqli_stmt::execute</a></li>
+      <li style="float: right;"><a href="mysqli-stmt.field-count.html">mysqli_stmt::$field_count »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli-stmt.html">mysqli_stmt</a></li>
+    <li>プリペアドステートメントから結果を取得し、バインド変数に格納する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli-stmt.fetch" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mysqli_stmt::fetch</h1>
   <h1 class="refname">mysqli_stmt_fetch</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mysqli_stmt::fetch</span> -- <span class="refname">mysqli_stmt_fetch</span> &mdash; <span class="dc-title">プリペアドステートメントから結果を取得し、バインド変数に格納する</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli_stmt::fetch</span> -- <span class="refname">mysqli_stmt_fetch</span> &mdash; <span class="dc-title">プリペアドステートメントから結果を取得し、バインド変数に格納する</span></p>
 
  </div>
 
@@ -22,15 +35,10 @@
   <h3 class="title">説明</h3>
   <p class="para">オブジェクト指向型</p>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>mysqli_stmt::fetch</strong></span>
-    ( <span class="methodparam">void</span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>mysqli_stmt::fetch</strong></span>(): <span class="type"><span class="type">bool</span>|<span class="type">null</span></span></div>
 
   <p class="para rdfs-comment">手続き型</p>
-  <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>mysqli_stmt_fetch</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="class.mysqli-stmt.html" class="type mysqli_stmt">mysqli_stmt</a></span> <code class="parameter">$stmt</code></span>
-   )</div>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>mysqli_stmt_fetch</strong></span>(<span class="methodparam"><span class="type"><a href="class.mysqli-stmt.html" class="type mysqli_stmt">mysqli_stmt</a></span> <code class="parameter">$statement</code></span>): <span class="type"><span class="type">bool</span>|<span class="type">null</span></span></div>
 
   <p class="para rdfs-comment">
    プリペアドステートメントから結果を読み込み、
@@ -64,7 +72,7 @@
 stmt</code></dt>
 <dd>
 <p class="para">手続き型のみ:
-<span class="function"><a href="mysqli.stmt-init.html" class="function">mysqli_stmt_init()</a></span> が返すステートメント ID。</p></dd>
+<span class="function"><a href="mysqli.stmt-init.html" class="function">mysqli_stmt_init()</a></span> が返す <a href="class.mysqli-stmt.html" class="classname">mysqli_stmt</a> オブジェクト。</p></dd>
 
    </dl>
 
@@ -74,7 +82,7 @@ stmt</code></dt>
 
  <div class="refsect1 returnvalues" id="refsect1-mysqli-stmt.fetch-returnvalues">
   <h3 class="title">返り値</h3>
-  <table class="doctable table">
+  <table id="mysqli-stmt.fetch.returnvalues" class="doctable table">
    <caption><strong>返り値</strong></caption>
    
     <thead>
@@ -87,17 +95,17 @@ stmt</code></dt>
 
     <tbody class="tbody">
      <tr>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>true</code></strong></td>
       <td>成功。データが取得されました。</td>
      </tr>
 
      <tr>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>false</code></strong></td>
       <td>エラーが発生しました。</td>
      </tr>
 
      <tr>
-      <td><strong><code>NULL</code></strong></td>
+      <td><strong><code>null</code></strong></td>
       <td>行/データがもうありません。あるいは、データの切り詰めが発生しました。</td>
      </tr>
 
@@ -110,7 +118,7 @@ stmt</code></dt>
 
  <div class="refsect1 examples" id="refsect1-mysqli-stmt.fetch-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1889">
+  <div class="example" id="example-1450">
    <p><strong>例1 オブジェクト指向型</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -120,7 +128,7 @@ stmt</code></dt>
    </div>
 
   </div>
-  <div class="example" id="example-1890">
+  <div class="example" id="example-1451">
    <p><strong>例2 手続き型</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -147,7 +155,7 @@ Springfield (USA)
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><span class="function"><a href="mysqli.prepare.html" class="function" rel="rdfs-seeAlso">mysqli_prepare()</a> - 実行するための SQL ステートメントを準備する</span></li>
+    <li class="member"><span class="function"><a href="mysqli.prepare.html" class="function" rel="rdfs-seeAlso">mysqli_prepare()</a> - 実行するための SQL文 を準備する</span></li>
     <li class="member"><span class="function"><a href="mysqli-stmt.errno.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_errno()</a> - 直近のステートメントのコールに関するエラーコードを返す</span></li>
     <li class="member"><span class="function"><a href="mysqli-stmt.error.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_error()</a> - 直近のステートメントのエラー内容を文字列で返す</span></li>
     <li class="member"><span class="function"><a href="mysqli-stmt.bind-result.html" class="function" rel="rdfs-seeAlso">mysqli_stmt_bind_result()</a> - 結果を保存するため、プリペアドステートメントに変数をバインドする</span></li>
@@ -156,9 +164,4 @@ Springfield (USA)
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli-stmt.execute.html">mysqli_stmt::execute</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli-stmt.field-count.html">mysqli_stmt::$field_count</a></div>
- <div class="up"><a href="class.mysqli-stmt.html">mysqli_stmt</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

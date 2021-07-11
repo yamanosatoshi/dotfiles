@@ -3,22 +3,35 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>型の相互変換</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.pseudo-types.html">本ドキュメントにおける疑似的な型および変数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.variables.html">変数</a></div>
- <div class="up"><a href="language.types.html">型</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.types.type-juggling" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.types.declarations.html">« 型宣言</a></li>
+      <li style="float: right;"><a href="language.variables.html">変数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.types.html">型</a></li>
+    <li>型の相互変換</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.types.type-juggling" class="sect1">
  <h2 class="title">型の相互変換</h2>
 
  <p class="simpara">
   PHP は、変数定義時に明示的な型定義を必要と(または、サポート)
   しません。ある変数の型は、その変数が使用される文により定義されます。
-  これは、ある文字列を変数 <code class="parameter">var</code> に代入した場合には、
-  <code class="parameter">var</code> は文字列になることを意味しています。
-  ある整数値を <code class="parameter">var</code> に代入した場合には、
+  これは、ある文字列を変数 <code class="parameter">$var</code> に代入した場合には、
+  <code class="parameter">$var</code> は文字列になることを意味しています。
+  ある整数値を <code class="parameter">$var</code> に代入した場合には、
   その変数は整数になります。
  </p>
 
@@ -28,14 +41,14 @@
   として評価され、結果は float になります。
   その他の場合、オペランドは整数として解釈され、結果も整数になります。
   この自動型変換は、
-  オペランド自体の型を変更するものではないということに注意してください。
+  オペランド自体の型を変更するものでは<em class="emphasis">ない</em>ということに注意してください。
   変わるのは、オペランドがどのように評価されるかだけです。
  </p>
 
  <div class="informalexample">
   <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"1"</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;は文字列&nbsp;(ASCII&nbsp;49)&nbsp;です<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">*=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;ここでは、$foo&nbsp;は整数&nbsp;(2)&nbsp;です<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">1.3</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;ここでは、$foo&nbsp;はfloat&nbsp;(2.6)&nbsp;です<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #DD0000">"10&nbsp;Little&nbsp;Piggies"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;は整数&nbsp;(50)&nbsp;です<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #DD0000">"10&nbsp;Small&nbsp;Pigs"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;は整数&nbsp;(50)&nbsp;です<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"1"</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;は文字列&nbsp;(ASCII&nbsp;49)&nbsp;です<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">*=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;ここでは、$foo&nbsp;は整数&nbsp;(2)&nbsp;です<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">1.3</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;ここでは、$foo&nbsp;はfloat&nbsp;(2.6)&nbsp;です<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #DD0000">"10&nbsp;Little&nbsp;Piggies"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;は&nbsp;integer&nbsp;(50)&nbsp;です<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #DD0000">"10&nbsp;Small&nbsp;Pigs"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;は&nbsp;integer&nbsp;(50)&nbsp;です<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
 
@@ -45,15 +58,15 @@
 
  <p class="simpara">
   最後の二つの例が奇妙に思える場合には、
-  <a href="language.types.string.html#language.types.string.conversion" class="link">文字列変換</a>
-  を参照ください。
+  <a href="language.types.numeric-strings.html" class="link">数値形式の文字列</a>
+  がどのようにして数値に変換されるかを見て下さい。
  </p>
 
  <p class="simpara">
   ある変数を強制的にある特定の型として評価させたい場合には、
   <a href="language.types.type-juggling.html#language.types.typecasting" class="link">型キャスト</a>
   のセクションを参照ください。ある変数の型を変更したい場合には、
-  <span class="function"><a href="function.settype.html" class="function">settype()</a></span> を参照してください。
+  <span class="function"><a href="function.settype.html" class="function">settype()</a></span> を参照ください。
  </p>
  <p class="para">
   本節の例をテストしたい場合には、
@@ -82,7 +95,7 @@
 
   <p class="para">
    詳細は、<a href="language.types.string.html#language.types.string.substr" class="link">
-   文字として文字列をアクセスする</a>というセクションを参照してください。
+   文字として文字列をアクセスする</a>というセクションを参照ください。
   </p>
  </p></blockquote>
 
@@ -128,12 +141,21 @@
     <span class="simpara">(object) - オブジェクトへのキャスト</span>
    </li>
    <li class="listitem">
-    <span class="simpara">(unset) - <span class="type"><a href="language.types.null.html" class="type NULL">NULL</a></span> へのキャスト (PHP 5)</span>
+    <span class="simpara">(unset) - <span class="type">NULL</span> へのキャスト</span>
    </li>
   </ul>
 
   <p class="para">
-   (binary) によるキャストや b プレフィックスのサポートは、PHP 5.2.1 で追加されました。
+   (binary) によるキャストや b プレフィックスもサポートされています。
+   (binary) によるキャストは本質的には (string)
+   と同じですが、それに依存すべきではありません。
+  </p>
+
+  <p class="para">
+   (unset) によるキャストは PHP 7.2.0 以降推奨されなくなりました。
+   (unset) によるキャストは、値に <span class="type">NULL</span>
+   値を代入することと同じです。
+   (unset) によるキャストは、PHP 8.0.0 で削除されました。
   </p>
 
   <p class="para">
@@ -234,9 +256,4 @@
   </ul>
 
  </div>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.pseudo-types.html">本ドキュメントにおける疑似的な型および変数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.variables.html">変数</a></div>
- <div class="up"><a href="language.types.html">型</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,20 +3,33 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>無名関数</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="functions.internal.html">内部（ビルトイン）関数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.oop5.html">クラスとオブジェクト</a></div>
- <div class="up"><a href="language.functions.html">関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="functions.anonymous" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="functions.internal.html">« 内部（ビルトイン）関数</a></li>
+      <li style="float: right;"><a href="functions.arrow.html">アロー関数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.functions.html">関数</a></li>
+    <li>無名関数</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="functions.anonymous" class="sect1">
    <h2 class="title">無名関数</h2>
 
    <p class="simpara">
-    無名関数は<em>クロージャ</em>とも呼ばれ、
+    無名関数は<code class="literal">クロージャ</code>とも呼ばれ、
     関数名を指定せずに関数を作成できるようにするものです。
-    <a href="language.pseudo-types.html#language.types.callback" class="link">コールバック</a>
+    <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>
     パラメータとして使う際に便利ですが、用途はそれにとどまりません。
    </p>
    <p class="simpara">
@@ -24,7 +37,7 @@
     <a href="class.closure.html" class="classname">Closure</a></a> クラスを使っています。
    </p>
 
-   <div class="example" id="example-201">
+   <div class="example" id="example-156">
     <p><strong>例1 無名関数の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -43,7 +56,7 @@
     同じく最後にセミコロンをつけます。
    </p>
 
-   <div class="example" id="example-202">
+   <div class="example" id="example-157">
     <p><strong>例2 変数への無名関数の代入</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -56,14 +69,16 @@
    
    <p class="simpara">
     クロージャは、変数を親のスコープから引き継ぐことができます。
-    引き継ぐ変数は、<em>use</em> で渡さなければなりません。
+    引き継ぐ変数は、<code class="literal">use</code> で渡さなければなりません。
+    PHP 7.1 以降は、引き継ぐ値に <a href="language.variables.predefined.html" class="link">superglobals</a> や
+    <var class="varname">$this</var>、およびパラメータと同じ名前の変数を含めてはいけません。
    </p>
 
-   <div class="example" id="example-203">
+   <div class="example" id="example-158">
     <p><strong>例3 親のスコープからの変数の引き継ぎ</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;"use"&nbsp;がない場合<br /></span><span style="color: #0000BB">$example&nbsp;</span><span style="color: #007700">=&nbsp;function&nbsp;()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br />};<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;$message&nbsp;を引き継ぎます<br /></span><span style="color: #0000BB">$example&nbsp;</span><span style="color: #007700">=&nbsp;function&nbsp;()&nbsp;use&nbsp;(</span><span style="color: #0000BB">$message</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br />};<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;引き継がれた変数の値は、関数が定義された時点のものであり、<br />//&nbsp;関数が呼ばれた時点のものではありません<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'world'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;$message&nbsp;をリセットします<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;参照渡しで引き継ぎます<br /></span><span style="color: #0000BB">$example&nbsp;</span><span style="color: #007700">=&nbsp;function&nbsp;()&nbsp;use&nbsp;(&amp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br />};<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;親のスコープで変更された値が、<br />//&nbsp;関数呼び出しの内部にも反映されます<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'world'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;クロージャは、通常の引数も受け付けます<br /></span><span style="color: #0000BB">$example&nbsp;</span><span style="color: #007700">=&nbsp;function&nbsp;(</span><span style="color: #0000BB">$arg</span><span style="color: #007700">)&nbsp;use&nbsp;(</span><span style="color: #0000BB">$message</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$arg&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br />};<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">(</span><span style="color: #DD0000">"hello"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;"use"&nbsp;がない場合<br /></span><span style="color: #0000BB">$example&nbsp;</span><span style="color: #007700">=&nbsp;function&nbsp;()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br />};<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;$message&nbsp;を引き継ぎます<br /></span><span style="color: #0000BB">$example&nbsp;</span><span style="color: #007700">=&nbsp;function&nbsp;()&nbsp;use&nbsp;(</span><span style="color: #0000BB">$message</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br />};<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;引き継がれた変数の値は、関数が定義された時点のものであり、<br />//&nbsp;関数が呼ばれた時点のものではありません<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'world'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;$message&nbsp;をリセットします<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;リファレンス渡しで引き継ぎます<br /></span><span style="color: #0000BB">$example&nbsp;</span><span style="color: #007700">=&nbsp;function&nbsp;()&nbsp;use&nbsp;(&amp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br />};<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;親のスコープで変更された値が、<br />//&nbsp;関数呼び出しの内部にも反映されます<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'world'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;クロージャは、通常の引数も受け付けます<br /></span><span style="color: #0000BB">$example&nbsp;</span><span style="color: #007700">=&nbsp;function&nbsp;(</span><span style="color: #0000BB">$arg</span><span style="color: #007700">)&nbsp;use&nbsp;(</span><span style="color: #0000BB">$message</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$arg&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br />};<br /></span><span style="color: #0000BB">$example</span><span style="color: #007700">(</span><span style="color: #DD0000">"hello"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -83,6 +98,10 @@ string(11) &quot;hello world&quot;
     </div>
    </div>
 
+   <p class="para">
+    PHP 8.0.0 以降では、親のスコープを継承した変数の一覧の最後にカンマを付けられるようになりました。
+    このカンマは無視されます。
+   </p>
    <p class="simpara">
     親のスコープからの変数の引き継ぎは、グローバル変数を使うのとは
     <em class="emphasis">異なります</em>。グローバル変数は、
@@ -92,7 +111,7 @@ string(11) &quot;hello world&quot;
     次の例を参照ください。
    </p>
 
-   <div class="example" id="example-204">
+   <div class="example" id="example-159">
     <p><strong>例4 クロージャのスコープ</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -103,8 +122,8 @@ string(11) &quot;hello world&quot;
 
    </div>
 
-   <div class="example" id="example-205">
-    <p><strong>例5 <em>$this</em> の自動バインド</strong></p>
+   <div class="example" id="example-160">
+    <p><strong>例5 <code class="literal">$this</code> の自動バインド</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Test<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">testing</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$object&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Test</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$function&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$object</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">testing</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$function</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -119,17 +138,11 @@ object(Test)#1 (0) {
 }
 </pre></div>
     </div>
-    <div class="example-contents"><p>上の例の PHP 5.3 での出力は、このようになります。</p></div>
-    <div class="example-contents screen">
-<div class="cdata"><pre>
-Notice: Undefined variable: this in script.php on line 8
-NULL</pre></div>
-    </div>
    </div>
 
    <p class="para">
-    PHP 5.4.0 以降では、クラスのコンテキストで宣言した場合は現在のクラスが自動的にバインドされて、
-    関数のスコープで <em>$this</em> が使えるようになります。
+    クラスのコンテキストで宣言した場合は、現在のクラスが自動的にバインドされて、
+    関数のスコープで <code class="literal">$this</code> が使えるようになります。
     現在のクラスへの自動バインドを望まない場合は、
     <a href="functions.anonymous.html#functions.anonymous-functions.static" class="link">静的無名関数</a>
     を使いましょう。
@@ -138,16 +151,16 @@ NULL</pre></div>
    <div class="sect2" id="functions.anonymous-functions.static">
     <h3 class="title">静的無名関数</h3>
     <p class="para">
-     PHP 5.4 以降では、静的な無名関数を宣言できるようになりました。
-     こうすれば、現在のクラスが無名関数を自動的にバインドすることがなくなります。
+     静的な無名関数を宣言することができます。
+     こうすることで、現在のクラスが無名関数を自動的にバインドすることがなくなります。
      オブジェクトも、実行時にはバインドされなくなります。
     </p>
     <p class="para">
-     <div class="example" id="example-206">
-      <p><strong>例6 静的無名関数内での <em>$this</em> の使用例</strong></p>
+     <div class="example" id="example-161">
+      <p><strong>例6 静的無名関数内での <code class="literal">$this</code> の使用例</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">new&nbsp;class&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(static&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />};<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Foo<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$func&nbsp;</span><span style="color: #007700">=&nbsp;static&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$func</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />};<br />new&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
       </div>
@@ -163,11 +176,11 @@ NULL
     </p>
 
     <p class="para">
-     <div class="example" id="example-207">
+     <div class="example" id="example-162">
       <p><strong>例7 静的無名関数へのオブジェクトのバインド</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">(static&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;関数の本体<br /></span><span style="color: #007700">})-&gt;</span><span style="color: #0000BB">call</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">StdClass</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />$func&nbsp;</span><span style="color: #007700">=&nbsp;static&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;関数の本体<br /></span><span style="color: #007700">};<br /></span><span style="color: #0000BB">$func&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$func</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindTo</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">StdClass</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$func</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
       </div>
@@ -175,7 +188,7 @@ NULL
       <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
       <div class="example-contents screen">
 <div class="cdata"><pre>
-Warning: Cannot bind an instance to a static closure in /in/sLLS9 on line 5
+Warning: Cannot bind an instance to a static closure in %s on line %d
 </pre></div>
       </div>
      </div>
@@ -197,17 +210,11 @@ Warning: Cannot bind an instance to a static closure in /in/sLLS9 on line 5
 
        <tbody class="tbody">
         <tr>
-         <td>5.4.0</td>
+         <td>7.1.0</td>
          <td>
-          無名関数で、静的に宣言したときのように
-          <var class="varname"><var class="varname">$this</var></var> を使えるようになりました。
-         </td>
-        </tr>
-
-        <tr>
-         <td>5.3.0</td>
-         <td>
-          無名関数が使えるようになりました。
+          無名関数は、<a href="language.variables.predefined.html" class="link">superglobals</a> や、
+          <var class="varname">$this</var>, もしくは
+          引数と同じ名前の変数を use で引き継げなくなりました。
          </td>
         </tr>
 
@@ -229,9 +236,4 @@ Warning: Cannot bind an instance to a static closure in /in/sLLS9 on line 5
     </p></blockquote>
    </div>
 
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="functions.internal.html">内部（ビルトイン）関数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.oop5.html">クラスとオブジェクト</a></div>
- <div class="up"><a href="language.functions.html">関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

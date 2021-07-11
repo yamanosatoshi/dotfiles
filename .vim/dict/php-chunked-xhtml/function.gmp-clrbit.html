@@ -3,30 +3,40 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ビットをクリアする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.gmp-and.html">gmp_and</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.gmp-cmp.html">gmp_cmp</a></div>
- <div class="up"><a href="ref.gmp.html">GMP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.gmp-clrbit" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.gmp-binomial.html">« gmp_binomial</a></li>
+      <li style="float: right;"><a href="function.gmp-cmp.html">gmp_cmp »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.gmp.html">GMP 関数</a></li>
+    <li>ビットをクリアする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.gmp-clrbit" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">gmp_clrbit</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">gmp_clrbit</span> &mdash; <span class="dc-title">ビットをクリアする</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">gmp_clrbit</span> &mdash; <span class="dc-title">ビットをクリアする</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.gmp-clrbit-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>gmp_clrbit</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="class.gmp.html" class="type GMP">GMP</a></span> <code class="parameter">$a</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
-   )</div>
+   <span class="methodname"><strong>gmp_clrbit</strong></span>(<span class="methodparam"><span class="type"><a href="class.gmp.html" class="type GMP">GMP</a></span> <code class="parameter">$num</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>): <span class="type"><span class="type void">void</span></span></div>
 
   <p class="para rdfs-comment">
-   <code class="parameter">a</code> のビット <code class="parameter">index</code>
+   <code class="parameter">num</code> のビット <code class="parameter">index</code>
    をクリア (0 に設定) します。index は 0 から始まります。
   </p>
  </div>
@@ -39,11 +49,11 @@
 
     
      <dt>
-<code class="parameter">a</code></dt>
+<code class="parameter">num</code></dt>
 
      <dd>
 
-      <p class="para">PHP 5.5 以前での GMP 数リソース、PHP 5.6 以降での <a href="class.gmp.html" class="classname">GMP</a> オブジェクト、あるいは数値に変換可能な数値形式の文字列。</p> 
+      <p class="para"><a href="class.gmp.html" class="classname">GMP</a> オブジェクト、整数、あるいは数値に変換可能な数値形式の文字列。</p> 
      </dd>
 
     
@@ -68,14 +78,14 @@
  <div class="refsect1 returnvalues" id="refsect1-function.gmp-clrbit-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   PHP 5.5 以前は GMP 数リソースを、そして PHP 5.6 以降は <a href="class.gmp.html" class="classname">GMP</a> オブジェクトを返します。
+   <a href="class.gmp.html" class="classname">GMP</a> オブジェクトを返します。
   </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.gmp-clrbit-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-3949">
+  <div class="example" id="example-3029">
    <p><strong>例1 <span class="function"><strong>gmp_clrbit()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -99,7 +109,7 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     他の大半の GMP 関数とは異なり、<span class="function"><strong>gmp_clrbit()</strong></span>
-    は必ず既存の GMP リソース (例えば <span class="function"><a href="function.gmp-init.html" class="function">gmp_init()</a></span>
+    は必ず既存の GMP オブジェクト (例えば <span class="function"><a href="function.gmp-init.html" class="function">gmp_init()</a></span>
     を使用して取得したもの) を使用してコールしなければなりません。
     リソースは自動的には作成されません。
    </p>
@@ -118,9 +128,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.gmp-and.html">gmp_and</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.gmp-cmp.html">gmp_cmp</a></div>
- <div class="up"><a href="ref.gmp.html">GMP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

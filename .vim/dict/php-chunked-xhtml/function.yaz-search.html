@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>検索を準備する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.yaz-schema.html">yaz_schema</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.yaz-set-option.html">yaz_set_option</a></div>
- <div class="up"><a href="ref.yaz.html">YAZ 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.yaz-search" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.yaz-schema.html">« yaz_schema</a></li>
+      <li style="float: right;"><a href="function.yaz-set-option.html">yaz_set_option »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.yaz.html">YAZ 関数</a></li>
+    <li>検索を準備する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.yaz-search" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">yaz_search</h1>
   <p class="verinfo">(PHP 4 &gt;= 4.0.1, PECL yaz &gt;= 0.9.0)</p><p class="refpurpose"><span class="refname">yaz_search</span> &mdash; <span class="dc-title">検索を準備する</span></p>
@@ -19,11 +32,7 @@
  <div class="refsect1 description" id="refsect1-function.yaz-search-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>yaz_search</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$id</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$type</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$query</code></span>
-   )</div>
+   <span class="methodname"><strong>yaz_search</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$id</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$type</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$query</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>yaz_search()</strong></span> は、指定した接続で検索を行う準備をします。
@@ -59,7 +68,7 @@
      <dd>
 
       <p class="para">
-       クエリの型を表します。現在は <em>&quot;rpn&quot;</em> のみがサポート
+       クエリの型を表します。現在は <code class="literal">&quot;rpn&quot;</code> のみがサポート
        されており、この場合 3 番目の引数には Type-1 クエリを前置表記で
        指定します。
       </p>
@@ -77,7 +86,7 @@
        表現です。しかし、YAZ により使用されるテキスト表現では、演算子が
        オペランドの前にある前置表記が使用されます。クエリ文字列はトークンの
        並びであり、このトークンでは 2 重引用符で括られない限り空白文字は
-       無視されます。アットマーク(<em>@</em>)で始まるトークンは
+       無視されます。アットマーク(<code class="literal">@</code>)で始まるトークンは
        演算子とみなされ、そうでない場合は検索項目として処理されます。
       </p>
       <table class="doctable table">
@@ -95,35 +104,35 @@
 
         <tbody class="tbody">
          <tr>
-          <td><em>@and</em> query1 query2</td>
+          <td><code class="literal">@and</code> query1 query2</td>
           <td>
            query1 および query2 の積集合
           </td>
          </tr>
 
          <tr>
-          <td><em>@or</em> query1 query2</td>
+          <td><code class="literal">@or</code> query1 query2</td>
           <td>
            query1 および query2 の和集合
           </td>
          </tr>
 
          <tr>
-          <td><em>@not</em> query1 query2</td>
+          <td><code class="literal">@not</code> query1 query2</td>
           <td>
            query1 であり、query2 でない
           </td>
          </tr>
 
          <tr>
-          <td><em>@set</em> name</td>
+          <td><code class="literal">@set</code> name</td>
           <td>
            結果セットへのリファレンス
           </td>
          </tr>
 
          <tr>
-          <td><em>@attrset</em> set query</td>
+          <td><code class="literal">@attrset</code> set query</td>
           <td>
            クエリの属性セットを指定します。この構造が使用できるのは
            全てのクエリの始めに一回だけです。
@@ -131,7 +140,7 @@
          </tr>
 
          <tr>
-          <td><em>@attr</em> [set] type=value query</td>
+          <td><code class="literal">@attr</code> [set] type=value query</td>
           <td>
            クエリに属性を適用します。型と値は属性型と属性値をそれぞれ指定する
            整数です。この組みが指定された場合、属性の組を指定します。
@@ -165,13 +174,13 @@
  <div class="refsect1 returnvalues" id="refsect1-function.yaz-search-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
  <div class="refsect1 examples" id="refsect1-function.yaz-search-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-5233">
+  <div class="example" id="example-4586">
    <p><strong>例1 クエリの例</strong></p>
    <div class="example-contents"><p>
     単純な検索は以下のように行います。
@@ -205,8 +214,8 @@
 <div class="examplescode"><pre class="examplescode">@and @or a b @not @or c d e</pre>
 </div>
     </div>
-    は、次のような意味になります。<em>(a or b) and ((c or d) not 
-    e)</em>
+    は、次のような意味になります。<code class="literal">(a or b) and ((c or d) not 
+    e)</code>
    </p></div>
    <div class="example-contents"><p>
     さらに複雑な例です。
@@ -216,16 +225,11 @@
 </pre></div>
     </div>
     このクエリは GILS 属性セットをすべて使用しています。このクエリは
-    表題（Title）に <em>art</em> が含まれ（GILS,BIB-1）、
-    配布者（Distributor）に <em>company</em> が含まれる（GILS）
+    表題（Title）に <code class="literal">art</code> が含まれ（GILS,BIB-1）、
+    配布者（Distributor）に <code class="literal">company</code> が含まれる（GILS）
     文書にマッチします。
    </p></div>
   </div>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.yaz-schema.html">yaz_schema</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.yaz-set-option.html">yaz_set_option</a></div>
- <div class="up"><a href="ref.yaz.html">YAZ 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

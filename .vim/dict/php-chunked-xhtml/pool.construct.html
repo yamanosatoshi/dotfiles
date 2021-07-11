@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Creates a new Pool of Workers</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pool.collect.html">Pool::collect</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pool.resize.html">Pool::resize</a></div>
- <div class="up"><a href="class.pool.html">Pool</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="pool.construct" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pool.collect.html">« Pool::collect</a></li>
+      <li style="float: right;"><a href="pool.resize.html">Pool::resize »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pool.html">Pool</a></li>
+    <li>Creates a new Pool of Workers</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pool.construct" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">Pool::__construct</h1>
   <p class="verinfo">(PECL pthreads &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">Pool::__construct</span> &mdash; <span class="dc-title">Creates a new Pool of Workers</span></p>
@@ -20,14 +33,12 @@
  <div class="refsect1 description" id="refsect1-pool.construct-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><a href="class.pool.html" class="type Pool">Pool</a></span> <span class="methodname"><strong>Pool::__construct</strong></span>
-    ( <span class="methodparam"><span class="type">integer</span> <code class="parameter">$size</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$class</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ctor</code></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>Pool::__construct</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$class</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ctor</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="class.pool.html" class="type Pool">Pool</a></span></div>
 
   <p class="para rdfs-comment">
-  Construct a new Pool of Workers
+   Construct a new pool of workers. Pools lazily create their threads, which
+   means new threads will only be spawned when they are required to execute
+   tasks.
   </p>
  </div>
 
@@ -43,7 +54,7 @@
     <dd>
 
      <p class="para">
-  The maximum number of Workers this Pool can create
+      The maximum number of workers for this pool to create
      </p>
     </dd>
 
@@ -55,7 +66,8 @@
     <dd>
 
      <p class="para">
-  The class for new Workers
+      The class for new Workers. If no class is given, then it defaults to the
+      <a href="class.worker.html" class="classname">Worker</a> class.
      </p>
     </dd>
 
@@ -67,7 +79,7 @@
     <dd>
 
      <p class="para">
-  An array of arguments to be passed to new Workers
+      An array of arguments to be passed to new workers&#039; constructors
      </p>
     </dd>
 
@@ -80,7 +92,7 @@
  <div class="refsect1 returnvalues" id="refsect1-pool.construct-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
- the new Pool
+   The new pool
   </p>
  </div>
 
@@ -88,7 +100,7 @@
  <div class="refsect1 examples" id="refsect1-pool.construct-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4263">
+   <div class="example" id="example-3337">
     <p><strong>例1 Creating Pools</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -125,9 +137,4 @@ object(Pool)#1 (6) {
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pool.collect.html">Pool::collect</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pool.resize.html">Pool::resize</a></div>
- <div class="up"><a href="class.pool.html">Pool</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

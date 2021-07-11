@@ -3,39 +3,48 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>フォーマットに基づきファイルからの入力を処理する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.fread.html">fread</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.fseek.html">fseek</a></div>
- <div class="up"><a href="ref.filesystem.html">ファイルシステム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.fscanf" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.fread.html">« fread</a></li>
+      <li style="float: right;"><a href="function.fseek.html">fseek »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">ファイルシステム 関数</a></li>
+    <li>フォーマットに基づきファイルからの入力を処理する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.fscanf" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">fscanf</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.1, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">fscanf</span> &mdash; <span class="dc-title">フォーマットに基づきファイルからの入力を処理する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.1, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">fscanf</span> &mdash; <span class="dc-title">フォーマットに基づきファイルからの入力を処理する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.fscanf-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>fscanf</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$handle</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
-   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&$...</code></span>
-  ] )</div>
+   <span class="methodname"><strong>fscanf</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$stream</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&...$vars</code></span>): <span class="type"><span class="type">array</span>|<span class="type">int</span>|<span class="type"><span class="type false">false</span></span>|<span class="type">null</span></span></div>
 
   <p class="para rdfs-comment">
    関数<span class="function"><strong>fscanf()</strong></span> は <span class="function"><a href="function.sscanf.html" class="function">sscanf()</a></span>
-   に似ていますが、<code class="parameter">handle</code> が指すファイルから入力を取得し、
+   に似ていますが、<code class="parameter">stream</code> が指すファイルから入力を取得し、
    指定したフォーマット <code class="parameter">format</code> に基づき解釈を行います。
    フォーマットについては <span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span> に解説されています。
   </p>
   <p class="para">
    フォーマット文字列におけるあらゆる空白は
    入力ストリームのあらゆる空白にマッチします。
-   これはつまりフォーマット文字列の<em>\t</em>（タブ）すらも
+   これはつまりフォーマット文字列の<code class="literal">\t</code>（タブ）すらも
    入力ストリームの空白1個にマッチしてしまうことを意味します。
   </p>
   <p class="para">
@@ -51,7 +60,7 @@
 
     
      <dt>
-<code class="parameter">handle</code></dt>
+<code class="parameter">stream</code></dt>
 
      <dd>
 
@@ -61,20 +70,374 @@
 
     
     
-     <dt>
+
+ <dt>
 <code class="parameter">format</code></dt>
 
-     <dd>
+ <dd>
 
-      <p class="para">
-       <span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span> のドキュメントに説明されているフォーマット。
-      </p>
-     </dd>
+  <p class="para">
+   0個以上のディレクティブで構成されるフォーマット文字列:
 
+   変換結果に直接コピーされる通常文字列 (<code class="literal">%</code> は除きます)
+   と、<em class="emphasis">変換仕様</em>。
+   これらのいずれも、自分が持つパラメータを取得します。
+  </p>
+
+  <p class="para">
+   変換の仕様は、以下のプロトタイプに従います:
+   <code class="literal">%[argnum$][flags][width][.precision]specifier</code>.
+  </p>
+
+  <p class="formalpara">
+   <h5 class="title">Argnum</h5>
+   <p class="para">
+    何番目の引数を変換の対象にするかを指定するために、
+    数値の後にドル記号 <code class="literal">$</code> を続けます。
+   </p>
+  </p>
+  
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>フラグ一覧</strong></caption>
     
+     <thead>
+      <tr>
+       <th>フラグ</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><code class="literal">-</code></td>
+       <td>
+        与えられたフィールドの幅を左寄せにします。
+        右寄せがデフォルトです。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">+</code></td>
+       <td>
+        正の数値の前に付ける <code class="literal">+</code> 符号です;
+        デフォルトは、負の数にだけマイナスの符号が数値の前に付きます。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal"> </code>(space)</td>
+       <td>
+        スペースに変換される詰め物です。
+        これがデフォルトです。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">0</code></td>
+       <td>
+        数値の左側を0埋めします。
+        <code class="literal">s</code> 指定子を使うと、
+        右側にも0埋めできます。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">&#039;</code>(char)</td>
+       <td>
+        指定された (char) で埋めます。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+
+  <p class="formalpara">
+   <h5 class="title">Width</h5>
+   <p class="para">
+    (最小で)何文字がこの変換結果に含まれるかを数値で指定します。
+   </p>
+  </p>
+
+  <p class="formalpara">
+   <h5 class="title">Precision</h5>
+   <p class="para">
+    ピリオド <code class="literal">.</code> の後に数値を続けますが、
+    その意味は指定子に依存します:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       <code class="literal">e</code>, <code class="literal">E</code>,
+       <code class="literal">f</code> と <code class="literal">F</code>
+       指定子の場合:
+       小数点の後に表示する桁数 (デフォルトでは、この値は6です)
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <code class="literal">g</code>, <code class="literal">G</code>,
+       <code class="literal">h</code>, <code class="literal">H</code> 指定子の場合:
+       表示する最大の有効桁数
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <code class="literal">s</code> 指定子の場合:
+       文字列を切り捨てる時点、つまり、文字列の最大の長さを設定します。
+      </span>
+     </li>
+    </ul>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <span class="simpara">
+      明示的に精度を指定せず、ピリオドを指定した場合、精度は0として扱われます。
+     </span>
+    </p></blockquote>
+   </p>
+  </p>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    位置を示す指定子に、<strong><code>PHP_INT_MAX</code></strong>
+    を超える値を指定すると、警告が発生します。
+   </span>
+  </p></blockquote>
+
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>指定子の一覧</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>指定子</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><code class="literal">%</code></td>
+       <td>
+        文字通り、パーセント文字です。
+        引数は不要です。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">b</code></td>
+       <td>
+        引数は数値として扱われ、バイナリ値として表現されます。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">c</code></td>
+       <td>
+        引数は数値として扱われ、ASCII文字として表現されます。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">d</code></td>
+       <td>
+        引数は数値として扱われ、(符号付き)小数値として表現されます。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">e</code></td>
+       <td>
+        引数は科学的記法で表現された値(e.g. 1.2e+2)として扱われます。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">E</code></td>
+       <td>
+        <code class="literal">e</code> 指定子に似ていますが、
+        大文字を使います(e.g. 1.2E+2)
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">f</code></td>
+       <td>
+        引数は小数として扱われ、浮動小数値として表現されます(ロケールを考慮します)。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">F</code></td>
+       <td>
+        引数は小数として扱われ、浮動小数値として表現されます(ロケールを考慮しません)。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">g</code></td>
+       <td>
+        <p class="para">
+         汎用フォーマット
+        </p>
+        <p class="para">
+         P を精度を表す、ゼロでない値とします。
+         精度が省略された場合、Pの値は6です。
+         精度に0を指定した場合、Pの値は1になります。
+         この場合、 <code class="literal">E</code> 指定子の変換結果は、
+         X乗になります。
+        </p>
+        <p class="para">
+         P &gt; X ≥ −4 の場合、<code class="literal">E</code>
+         指定子の変換結果となり、精度は、P − (X + 1) になります。
+         そうでない場合、<code class="literal">e</code> 指定子の変換結果となり、
+         精度は、P - 1 になります。
+        </p>
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">G</code></td>
+       <td>
+        <code class="literal">g</code> 指定子に似ていますが、
+        <code class="literal">E</code> と <code class="literal">f</code> を使います。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">h</code></td>
+       <td>
+        <code class="literal">g</code> 指定子に似ていますが、
+        <code class="literal">F</code> を使います。
+        PHP 8.0.0 以降で利用可能です。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">H</code></td>
+       <td>
+        <code class="literal">g</code> 指定子に似ていますが、
+        <code class="literal">E</code> と <code class="literal">F</code> を使います。
+        PHP 8.0.0 以降で利用可能です。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">o</code></td>
+       <td>
+        引数は数値として扱われ、8進数値として表現されます。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">s</code></td>
+       <td>
+        引数は文字列として扱われ、文字列として表現されます。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">u</code></td>
+       <td>
+        引数は数値として扱われ、符号なし小数値として表現されます。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">x</code></td>
+       <td>
+        引数は数値として扱われ、16進数値(小文字)として表現されます。
+       </td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">X</code></td>
+       <td>
+        引数は数値として扱われ、16進数値(大文字)として表現されます。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    <code class="literal">c</code> 指定子はパディングと幅を無視します
+   </p>
+  </div>
+
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    文字列と width
+    指定子を、1文字の表現に1バイト以上必要な文字セットと一緒に使おうとすると、
+    期待しない結果になるかもしれません。
+   </p>
+  </div>
+
+  <p class="para">
+   値は、指定子の型に合うように強制されます:
+   <table class="doctable table">
+    <caption><strong>型のハンドリング</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>型</th>
+       <th>指定子</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><span class="type">string</span></td>
+       <td><code class="literal">s</code></td>
+      </tr>
+
+      <tr>
+       <td><span class="type">int</span></td>
+       <td>
+        <code class="literal">d</code>,
+        <code class="literal">u</code>,
+        <code class="literal">c</code>,
+        <code class="literal">o</code>,
+        <code class="literal">x</code>,
+        <code class="literal">X</code>,
+        <code class="literal">b</code>
+       </td>
+      </tr>
+
+      <tr>
+       <td><span class="type">float</span></td>
+       <td>
+        <code class="literal">e</code>,
+        <code class="literal">E</code>,
+        <code class="literal">f</code>,
+        <code class="literal">F</code>,
+        <code class="literal">g</code>,
+        <code class="literal">G</code>,
+        <code class="literal">h</code>,
+        <code class="literal">H</code>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </dd>
+
+
+
     
      <dt>
-<code class="parameter">...</code></dt>
+<code class="parameter">vars</code></dt>
 
      <dd>
 
@@ -98,13 +461,18 @@
    この関数は、代入された値の数を返します。
    オプション引数は参照渡しとする必要があります。
   </p>
+  <p class="para">
+   <code class="parameter">string</code> で利用可能な部分文字列よりも、
+   <code class="parameter">format</code> で期待された部分文字列の数が多い場合は、<strong><code>null</code></strong> が返されます。
+   その他のエラーが発生した場合は、<strong><code>false</code></strong> が返されます。
+  </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.fscanf-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2655">
+   <div class="example" id="example-2146">
     <p><strong>例1 <span class="function"><strong>fscanf()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -116,7 +484,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2656">
+   <div class="example" id="example-2147">
     <p><strong>例2 users.txt の内容</strong></p>
     <div class="example-contents">
 <div class="txtcode"><pre class="txtcode">javier  argonaut        pe
@@ -146,9 +514,4 @@ luigi   florist it</pre>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.fread.html">fread</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.fseek.html">fseek</a></div>
- <div class="up"><a href="ref.filesystem.html">ファイルシステム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

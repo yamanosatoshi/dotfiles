@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>保存用表現から PHP の値を生成する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.strval.html">strval</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.unset.html">unset</a></div>
- <div class="up"><a href="ref.var.html">変数操作 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.unserialize" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.strval.html">« strval</a></li>
+      <li style="float: right;"><a href="function.unset.html">unset »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.var.html">変数操作 関数</a></li>
+    <li>保存用表現から PHP の値を生成する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.unserialize" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">unserialize</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">unserialize</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">unserialize</span> &mdash; <span class="dc-title">
    保存用表現から PHP の値を生成する
   </span></p>
 
@@ -22,10 +35,7 @@
  <div class="refsect1 description" id="refsect1-function.unserialize-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>unserialize</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code></span>
-  ] )</div>
+   <span class="methodname"><strong>unserialize</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = []</span></span>): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
 
   <p class="simpara">
    <span class="function"><strong>unserialize()</strong></span> は、シリアル化された変数を
@@ -33,6 +43,7 @@
   </p>
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
+    <code class="literal">allowed_classes</code> の <code class="parameter">options</code> の値にかかわらず、
     ユーザーからの入力をそのまま <span class="function"><strong>unserialize()</strong></span> に渡してはいけません。
     アンシリアライズの時には、オブジェクトのインスタンス生成やオートローディングなどで
     コードが実行されることがあり、悪意のあるユーザーがこれを悪用するかもしれないからです。
@@ -57,7 +68,7 @@
 
     
      <dt>
-<code class="parameter">str</code></dt>
+<code class="parameter">data</code></dt>
 
      <dd>
 
@@ -67,7 +78,7 @@
       <p class="para">
        もしアンシリアライズする変数がオブジェクトの場合、
        オブジェクトが無事再作成された後、PHP は自動的にメンバ関数
-       <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a>
+       <a href="language.oop5.magic.html#object.unserialize" class="link">__unserialize()</a> または <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a>
        (存在していれば) をコールしようとします。
       </p>
       <p class="para">
@@ -75,10 +86,10 @@
         <strong>unserialize_callback_func ディレクティブ</strong><br />
         <p class="para">
          コールバック関数を設定することが可能です。(不完全な
-         <span class="type"><a href="language.types.object.html" class="type object">object</a></span> &quot;__PHP_Incomplete_Class&quot;を得ることを防ぐため)
+         <span class="type">object</span> &quot;__PHP_Incomplete_Class&quot;を得ることを防ぐため)
          コールバック関数は、非シリアル化する際に未定義のクラスをインスタ
          ンス化する必要がある場合にコールされます。
-         &#039;<em>unserialize_callback_func</em>&#039;を定義するためには、
+         &#039;<code class="literal">unserialize_callback_func</code>&#039;を定義するためには、
          <var class="filename">php.ini</var>, <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>, <var class="filename">.htaccess</var> を使用し
          てください。未定義のクラスをインスタンス化する度に、コールバック関
          数がコールされます。この機能を無効とするには、
@@ -112,19 +123,19 @@
 
         <tbody class="tbody">
          <tr>
-          <td><em>allowed_classes</em></td>
-          <td><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span></td>
+          <td><code class="literal">allowed_classes</code></td>
+          <td><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></td>
           <td>
            <span class="simpara">
             受け付けるクラス名の配列を指定します。あらゆるクラスを拒否する場合は
-            <strong><code>FALSE</code></strong>、あらゆるクラスを受け付ける場合は <strong><code>TRUE</code></strong> を指定します。
+            <strong><code>false</code></strong>、あらゆるクラスを受け付ける場合は <strong><code>true</code></strong> を指定します。
             このオプションを指定しているときに、もし
             <span class="function"><strong>unserialize()</strong></span> が受け付け対象外のクラスのオブジェクトに遭遇すると、
             そのオブジェクトを
             <strong class="classname">__PHP_Incomplete_Class</strong> のインスタンスに変換します。
            </span>
            <span class="simpara">
-            このオプションを省略すると、<strong><code>TRUE</code></strong> を指定したのと同じ意味になります。
+            このオプションを省略すると、<strong><code>true</code></strong> を指定したのと同じ意味になります。
             つまり、PHP はあらゆるクラスのオブジェクトをインスタンス化しようとします。
            </span>
           </td>
@@ -147,13 +158,22 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    変換された値が返されます。その値は、
-   <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>, <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>, <span class="type"><a href="language.types.float.html" class="type float">float</a></span>,
-   <span class="type"><a href="language.types.string.html" class="type string">string</a></span>, <span class="type"><a href="language.types.array.html" class="type array">array</a></span>, <span class="type"><a href="language.types.object.html" class="type object">object</a></span>
+   <span class="type">bool</span>, <span class="type">int</span>, <span class="type">float</span>,
+   <span class="type">string</span>, <span class="type">array</span>, <span class="type">object</span>
    のいずれかとなります。
   </p>
   <p class="para">
-   渡された文字列が復元できなかった場合、<strong><code>FALSE</code></strong> を返して
+   渡された文字列が復元できなかった場合、<strong><code>false</code></strong> を返して
    <strong><code>E_NOTICE</code></strong> を発生します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.unserialize-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+   オブジェクトは、
+   アンシリアライズを実行するハンドラで <a href="class.throwable.html" class="classname">Throwable</a> をスローしても構いません。
   </p>
  </div>
 
@@ -173,18 +193,13 @@
 
      <tbody class="tbody">
       <tr>
-       <td>7.0.0</td>
+       <td>7.1.0</td>
        <td>
-        <code class="parameter">options</code> パラメータが追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.6.0</td>
-       <td>
-        シリアライズされたデータを改変して <em>C:</em> を
-        <em>O:</em> に置き換え、オブジェクトのインスタンス化の際にコンストラクタを呼ばないようにしたものは、
-        処理に失敗するようになりました。
+        <code class="parameter">options</code> の <code class="literal">allowed_classes</code> 要素は、
+        型を厳密に調べるようになりました。
+        つまり、<span class="type">array</span> または <span class="type">bool</span> 以外の型が与えられると、
+        <span class="function"><strong>unserialize()</strong></span> 関数は <strong><code>false</code></strong> を返し、
+        <strong><code>E_WARNING</code></strong> レベルの警告を発生させます。
        </td>
       </tr>
 
@@ -199,7 +214,7 @@
  <div class="refsect1 examples" id="refsect1-function.unserialize-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-6128">
+   <div class="example" id="example-5203">
     <p><strong>例1 <span class="function"><strong>unserialize()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -211,11 +226,11 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-6129">
+   <div class="example" id="example-5204">
     <p><strong>例2 unserialize_callback_func の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$serialized_object</span><span style="color: #007700">=</span><span style="color: #DD0000">'O:1:"a":1:{s:5:"value";s:3:"100";}'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;unserialize_callback_func&nbsp;ディレクティブは&nbsp;PHP&nbsp;4.2.0&nbsp;以降で利用可能<br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'unserialize_callback_func'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mycallback'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;独自のコールバック関数を設定する<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">mycallback</span><span style="color: #007700">(</span><span style="color: #0000BB">$classname</span><span style="color: #007700">)&nbsp;<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;クラスが定義されているファイルをインクルードするだけです。<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;どのクラス定義が必要になるのかを&nbsp;$classname&nbsp;で判断します。<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$serialized_object</span><span style="color: #007700">=</span><span style="color: #DD0000">'O:1:"a":1:{s:5:"value";s:3:"100";}'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'unserialize_callback_func'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mycallback'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;独自のコールバック関数を設定する<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">mycallback</span><span style="color: #007700">(</span><span style="color: #0000BB">$classname</span><span style="color: #007700">)&nbsp;<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;クラスが定義されているファイルをインクルードするだけです。<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;どのクラス定義が必要になるのかを&nbsp;$classname&nbsp;で判断します。<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -229,9 +244,9 @@
   <h3 class="title">注意</h3>
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
-    エラーやシリアライズされた <strong><code>FALSE</code></strong> 値をアンシリアライズする場合、
-    <strong><code>FALSE</code></strong> が返されます。この特殊なケースは
-    <code class="parameter">str</code> を <em>serialize(false)</em>
+    エラーやシリアライズされた <strong><code>false</code></strong> 値をアンシリアライズする場合、
+    <strong><code>false</code></strong> が返されます。この特殊なケースは
+    <code class="parameter">data</code> を <code class="literal">serialize(false)</code>
     で比較する、もしくは <strong><code>E_NOTICE</code></strong>
     をキャッチすることで区別することができます。
    </p>
@@ -250,14 +265,11 @@
     <li class="member"><a href="language.oop5.autoload.html" class="link">クラスのオートローディング</a></li>
     <li class="member"><a href="var.configuration.html#unserialize-callback-func" class="link">unserialize_callback_func</a></li>
     <li class="member"><a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a></li>
+    <li class="member"><a href="language.oop5.magic.html#object.serialize" class="link">__serialize()</a></li>
+    <li class="member"><a href="language.oop5.magic.html#object.unserialize" class="link">__unserialize()</a></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.strval.html">strval</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.unset.html">unset</a></div>
- <div class="up"><a href="ref.var.html">変数操作 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

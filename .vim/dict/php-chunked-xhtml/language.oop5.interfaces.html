@@ -3,45 +3,113 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>オブジェクト インターフェイス</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.abstract.html">クラスの抽象化</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.oop5.traits.html">トレイト</a></div>
- <div class="up"><a href="language.oop5.html">クラスとオブジェクト</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.oop5.interfaces" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.oop5.abstract.html">« クラスの抽象化</a></li>
+      <li style="float: right;"><a href="language.oop5.traits.html">トレイト »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.oop5.html">クラスとオブジェクト</a></li>
+    <li>オブジェクト インターフェイス</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.oop5.interfaces" class="sect1">
  <h2 class="title">オブジェクト インターフェイス</h2>
  <p class="para">
-  オブジェクトインターフェイスにより、あるクラスが実装する必要があるメソッドの
-  種類を、これらのメソッドの実体を定義することなく、指定するコードを作成できる
-  ようになります。
+  オブジェクト インターフェイスを使うと、
+  メソッドの実装を定義せずに、
+  クラスが実装する必要があるメソッドを指定するコードを作成できます。
+  インターフェイス は クラス や トレイト と名前空間を共有するので、
+  それらと同じ名前を使ってはいけません。
  </p>
  <p class="para">
   インターフェイスは通常のクラスと同様に定義することができますが、
-  キーワード <em>class</em> のかわりに <em>interface</em>
-  を用います。またメソッドの実装は全く定義されません。
+  キーワード <code class="literal">class</code> のかわりに <code class="literal">interface</code>
+  を用います。またメソッドの実装は全く定義しません。
  </p>
  <p class="para">
-  インターフェイス内で宣言される全てのメソッドはpublicである必要があります。
+  インターフェイス内で宣言される全てのメソッドは public である必要があります。
   これは、インターフェイスの特性によります。
  </p>
+ <p class="para">
+   インターフェイスには、ふたつの互いを補完する役割があります。
+  </p>
+  <ul class="simplelist">
+   <li class="member">
+    同じインターフェイスを実装していることで、
+    開発者が交換可能な異なるクラスを作成できるようにします。
+    同じインターフェイスを持つクラスによくある例として、
+    複数のデータベースにアクセスするサービスや
+    決済のゲートウェイ、
+    異なるキャッシュ戦略が挙げられます。
+    実装が異なっていても、
+    それを使うコードに変更を加えることなく、それらを交換することができます。
+   </li>
+   <li class="member">
+    メソッドや関数が、インターフェイスを満たす引数を受け付け、
+    操作できるようにします。
+    オブジェクトが何をするのかや、
+    どう実装されているのかを気にする必要はありません。
+    振る舞いの重要性を説明するために、
+    <code class="literal">Iterable</code> や
+    <code class="literal">Cacheable</code>、
+    <code class="literal">Renderable</code> のような名前が付けられることがよくあります。
+   </li>
+  </ul>
+  <p class="para">
+   インターフェイスは、
+   <a href="language.oop5.magic.html" class="link">マジックメソッド</a>
+   を宣言しても問題ありません。
+ </p>
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  <p class="para">
+   <a href="language.oop5.decon.html#language.oop5.decon.constructor" class="link">コンストラクタ</a>
+   をインターフェイスで宣言できますが、全くおすすめできません。
+   そうしてしまうと、
+   インターフェイスを実装するクラスの柔軟性が大きく損なわれる上、
+   コンストラクタには継承ルールが適用されないため、
+   一貫しない、予期せぬ結果を生む可能性があるからです。
+  </p>
+ </p></blockquote>
+
   <div class="sect2" id="language.oop5.interfaces.implements">
-   <h3 class="title"><em>implements</em></h3>
+   <h3 class="title"><code class="literal">implements</code></h3>
    <p class="para">
-    インターフェイスを実装するには、<em>implements</em>
+    インターフェイスを実装するには、<code class="literal">implements</code>
     演算子を使用し、
     このインターフェイスに含まれる全てのメソッドを実装する必要があります。
     実装されていない場合、致命的エラーとなります。
     各インターフェイスをカンマで区切って指定することで、
     クラスは複数のインターフェイスを実装することができます。
    </p>
-   <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <div class="warning"><strong class="warning">警告</strong>
     <p class="para">
-     PHP 5.3.9 より前のバージョンでは、ひとつのクラスの中で同じ名前のメソッドを定義した2つのインターフェイスを実装することはできませんでした。曖昧さを解決できなくなるためです。
-     PHP 5.3.9 以後のバージョンでは、同じ名前のメソッドが同じシグナチャを持っている場合に限り、こうした実装を行えるようになっています。
+     クラスは、同じ名前のメソッドを定義した2つのインターフェイスを実装することが出来ます。
+     但し、両方のインターフェイスのメソッド宣言が同一な場合に限ります。
     </p>
-   </p></blockquote>
+   </div>
+   <div class="warning"><strong class="warning">警告</strong>
+    <p class="para">
+     インターフェイスを実装するクラスでは、
+     インターフェイス内の名前とは異なる名前を
+     メソッドの引数に使うことができます。
+     しかし、PHP 8.0 以降では
+     <a href="functions.arguments.html#functions.named-arguments" class="link">名前付き引数</a>
+     がサポートされています。
+     これは、メソッドをコールする側がインターフェイス内の名前に依存する可能性があるということです。
+     そうした理由から、開発者は実装されるインターフェイスと同じ引数名を使うことを強く推奨します。
+    </p>
+   </div>
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <p class="para">
      クラスと同様、インターフェイスも
@@ -51,14 +119,16 @@
    </p></blockquote>
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <p class="para">
-     インターフェイスを実装したクラスには、
-     そのインターフェイスで定義されているメソッドとまったく同じシグネチャを持つメソッドが必要です。
-     そうしなければ致命的なエラーが発生します。
+     インターフェイスを実装したクラスでは、
+     <a href="language.oop5.basic.html#language.oop.lsp" class="link">シグネチャの互換性に関するルール</a>
+     を守った形で、
+     インターフェイス内の全てのメソッドを宣言しなければいけません。
      </p>
     </p></blockquote>
   </div>
+  
   <div class="sect2" id="language.oop5.interfaces.constants">
-   <h3 class="title"><em>定数</em></h3>
+   <h3 class="title"><code class="literal">定数</code></h3>
    <p class="para">
     インターフェイスに定数を持たせることもできます。
     インターフェイス定数は <a href="language.oop5.constants.html" class="link">クラス定数</a>
@@ -68,58 +138,73 @@
   </div>
   <div class="sect2" id="language.oop5.interfaces.examples">
    <h3 class="title">例</h3>
-   <div class="example" id="language.oop5.interfaces.examples.ex1">
+   <div class="example" id="example-212">
     <p><strong>例1 Interface の例</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;インターフェイス&nbsp;'iTemplate'&nbsp;を宣言する<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">iTemplate<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">setVariable</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getHtml</span><span style="color: #007700">(</span><span style="color: #0000BB">$template</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;インターフェイスを実装する。<br />//&nbsp;これは動作します。<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Template&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">iTemplate<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$vars&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">setVariable</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">vars</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getHtml</span><span style="color: #007700">(</span><span style="color: #0000BB">$template</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">vars&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$template&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'{'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'}'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$template</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$template</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;これは動作しません。<br />//&nbsp;Fatal&nbsp;error:&nbsp;Class&nbsp;BadTemplate&nbsp;contains&nbsp;1&nbsp;abstract&nbsp;methods<br />//&nbsp;and&nbsp;must&nbsp;therefore&nbsp;be&nbsp;declared&nbsp;abstract&nbsp;(iTemplate::getHtml)<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">BadTemplate&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">iTemplate<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$vars&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">setVariable</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">vars</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;インターフェイス&nbsp;'iTemplate'&nbsp;を宣言する<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">Template<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">setVariable</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getHtml</span><span style="color: #007700">(</span><span style="color: #0000BB">$template</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;インターフェイスを実装する。<br />//&nbsp;これは動作します。<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">WorkingTemplate&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">Template<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$vars&nbsp;</span><span style="color: #007700">=&nbsp;[];<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">setVariable</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">vars</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getHtml</span><span style="color: #007700">(</span><span style="color: #0000BB">$template</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">vars&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$template&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'{'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'}'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$template</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$template</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;これは動作しません。<br />//&nbsp;Fatal&nbsp;error:&nbsp;Class&nbsp;BadTemplate&nbsp;contains&nbsp;1&nbsp;abstract&nbsp;methods<br />//&nbsp;and&nbsp;must&nbsp;therefore&nbsp;be&nbsp;declared&nbsp;abstract&nbsp;(Template::getHtml)<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">BadTemplate&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">Template<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$vars&nbsp;</span><span style="color: #007700">=&nbsp;[];<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">setVariable</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">vars</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
 
    </div>
-   <div class="example" id="language.oop5.interfaces.examples.ex2">
+   <div class="example" id="example-213">
     <p><strong>例2 インターフェイスの継承</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">a<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />}<br /><br />interface&nbsp;</span><span style="color: #0000BB">b&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">a<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">(</span><span style="color: #0000BB">Baz&nbsp;$baz</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;これは動作します<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">c&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">b<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">(</span><span style="color: #0000BB">Baz&nbsp;$baz</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;これは動作せず、fatal&nbsp;error&nbsp;となります<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">d&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">b<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">(</span><span style="color: #0000BB">Foo&nbsp;$foo</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />}<br /><br />interface&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">(</span><span style="color: #0000BB">Baz&nbsp;$baz</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;これは動作します。<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">B<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">(</span><span style="color: #0000BB">Baz&nbsp;$baz</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;これは動作せず、fatal&nbsp;error&nbsp;となります。<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">D&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">B<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">(</span><span style="color: #0000BB">Foo&nbsp;$foo</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
 
    </div>
-   <div class="example" id="language.oop5.interfaces.examples.ex3">
+   <div class="example" id="example-214">
     <p><strong>例3 複数のインターフェイスの継承</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">a<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />}<br /><br />interface&nbsp;</span><span style="color: #0000BB">b<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br />}<br /><br />interface&nbsp;</span><span style="color: #0000BB">c&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">b<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">();<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">d&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">c<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />}<br /><br />interface&nbsp;</span><span style="color: #0000BB">B<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br />}<br /><br />interface&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">B<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">();<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">D&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">C<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
 
    </div>
-   <div class="example" id="language.oop5.interfaces.examples.ex4">
+   <div class="example" id="example-215">
     <p><strong>例4 インターフェイスでの定数</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">a<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Interface&nbsp;constant'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Interface&nbsp;constant&nbsp;と表示します<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">a</span><span style="color: #007700">::</span><span style="color: #0000BB">b</span><span style="color: #007700">;<br /><br /><br /></span><span style="color: #FF8000">//&nbsp;しかし、これは動作しません。定数のオーバーライドが<br />//&nbsp;できないからです。<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">b&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">a<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Class&nbsp;constant'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Interface&nbsp;constant'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Interface&nbsp;constant&nbsp;と表示します。<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">B</span><span style="color: #007700">;<br /><br /><br /></span><span style="color: #FF8000">//&nbsp;これは動作しません。定数をオーバーライドできないからです。<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Class&nbsp;constant'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+   </div>
+   <div class="example" id="example-216">
+    <p><strong>例5 抽象クラスとインターフェイス</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">interface&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">string&nbsp;$s</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">string</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">(</span><span style="color: #0000BB">int&nbsp;$i</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">int</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;抽象クラスは、インターフェイスの一部のみを実装しても構いません。<br />//&nbsp;抽象クラスを継承したクラスは、未実装の残りのメソッドを実装しなければなりません。<br /></span><span style="color: #007700">abstract&nbsp;class&nbsp;</span><span style="color: #0000BB">B&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">string&nbsp;$s</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">string<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$s&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">B<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">(</span><span style="color: #0000BB">int&nbsp;$i</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">int<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+   </div>
+   <div class="example" id="example-217">
+    <p><strong>例6 継承と実装を同時に行う</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">One<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br /></span><span style="color: #007700">}<br /><br />interface&nbsp;</span><span style="color: #0000BB">Usable<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br /></span><span style="color: #007700">}<br /><br />interface&nbsp;</span><span style="color: #0000BB">Updatable<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #FF8000">//&nbsp;ここでは、キーワードの順番が重要です。<br />//&nbsp;'extends'&nbsp;を始めに置かなければいけません。<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Two&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">One&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">Usable</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">Updatable<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
 
    </div>
    <p class="para">
-     インターフェイスとタイプヒンティングを組み合わせると、
+     インターフェイスと型宣言を組み合わせると、
      特定のオブジェクトに特定のメソッドをうまく持たせることができます。
      <a href="language.operators.type.html" class="link">instanceof</a> 演算子および
-     <a href="language.oop5.typehinting.html" class="link">タイプヒンティング</a>
+     <a href="language.types.declarations.html" class="link">型宣言</a>
      を参照ください。
    </p>
   </div>
 
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.abstract.html">クラスの抽象化</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.oop5.traits.html">トレイト</a></div>
- <div class="up"><a href="language.oop5.html">クラスとオブジェクト</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

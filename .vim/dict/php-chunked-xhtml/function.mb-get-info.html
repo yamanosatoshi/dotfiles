@@ -3,26 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>mbstring の内部設定値を取得する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mb-eregi.html">mb_eregi</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mb-http-input.html">mb_http_input</a></div>
- <div class="up"><a href="ref.mbstring.html">マルチバイト文字列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.mb-get-info" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mb-eregi.html">« mb_eregi</a></li>
+      <li style="float: right;"><a href="function.mb-http-input.html">mb_http_input »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mbstring.html">マルチバイト文字列 関数</a></li>
+    <li>mbstring の内部設定値を取得する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mb-get-info" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mb_get_info</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mb_get_info</span> &mdash; <span class="dc-title">mbstring の内部設定値を取得する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mb_get_info</span> &mdash; <span class="dc-title">mbstring の内部設定値を取得する</span></p>
 
  </div>
    
  <div class="refsect1 description" id="refsect1-function.mb-get-info-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>mb_get_info</strong></span>
-    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$type</code><span class="initializer"> = &quot;all&quot;</span></span>
-  ] )</div>
+   <span class="methodname"><strong>mb_get_info</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$type</code><span class="initializer"> = &quot;all&quot;</span></span>): <span class="type"><span class="type">array</span>|<span class="type">string</span>|<span class="type">int</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="simpara">
    <span class="function"><strong>mb_get_info()</strong></span> は、mbstring
@@ -43,14 +54,24 @@
      <dd>
 
       <p class="para">
-       <code class="parameter">type</code> が指定されない場合または &quot;all&quot;
-       が指定された場合、&quot;internal_encoding&quot;, &quot;http_output&quot;, &quot;http_input&quot;,
-       &quot;func_overload&quot;, &quot;mail_charset&quot;, &quot;mail_header_encoding&quot;,
-       &quot;mail_body_encoding&quot; の設定値を有する連想配列が返されます。
+       <code class="parameter">type</code> が指定されない場合、または、<code class="literal">&quot;all&quot;</code> の場合、
+       <code class="literal">&quot;internal_encoding&quot;</code>, <code class="literal">&quot;http_input&quot;</code>,
+       <code class="literal">&quot;http_output&quot;</code>, <code class="literal">&quot;http_output_conv_mimetypes&quot;</code>,
+       <code class="literal">&quot;mail_charset&quot;</code>, <code class="literal">&quot;mail_header_encoding&quot;</code>,
+       <code class="literal">&quot;mail_body_encoding&quot;</code>, <code class="literal">&quot;illegal_chars&quot;</code>,
+       <code class="literal">&quot;encoding_translation&quot;</code>, <code class="literal">&quot;language&quot;</code>,
+       <code class="literal">&quot;detect_order&quot;</code>, <code class="literal">&quot;substitute_character&quot;</code>,
+       <code class="literal">&quot;strict_detection&quot;</code> の設定値を有する連想配列が返されます。
       </p>
       <p class="para">
-       <code class="parameter">type</code> に &quot;http_output&quot;,
-       &quot;http_input&quot;, &quot;internal_encoding&quot;, &quot;func_overload&quot; が指定された場合、
+       <code class="parameter">type</code> に
+       <code class="literal">&quot;internal_encoding&quot;</code>, <code class="literal">&quot;http_input&quot;</code>,
+       <code class="literal">&quot;http_output&quot;</code>, <code class="literal">&quot;http_output_conv_mimetypes&quot;</code>,
+       <code class="literal">&quot;mail_charset&quot;</code>, <code class="literal">&quot;mail_header_encoding&quot;</code>,
+       <code class="literal">&quot;mail_body_encoding&quot;</code>, <code class="literal">&quot;illegal_chars&quot;</code>,
+       <code class="literal">&quot;encoding_translation&quot;</code>, <code class="literal">&quot;language&quot;</code>,
+       <code class="literal">&quot;detect_order&quot;</code>, <code class="literal">&quot;substitute_character&quot;</code>,
+       <code class="literal">&quot;strict_detection&quot;</code> が指定された場合、
        指定された設定パラメータが返されます。
       </p>
      </dd>
@@ -67,44 +88,36 @@
   <p class="para">
    <code class="parameter">type</code> が指定されていない場合は型情報を含む配列、
    それ以外の場合は指定した <code class="parameter">type</code> の値を返します。
+   失敗した場合に <strong><code>false</code></strong> を返します
   </p>
  </div>
 
 
  <div class="refsect1 changelog" id="refsect1-function.mb-get-info-changelog">
   <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
 
-     </thead>
+    </thead>
 
-     <tbody class="tbody">
-      <tr>
-       <td>5.1.3</td>
-       <td>
-        エントリ &quot;mail_charset&quot;, &quot;mail_header_encoding&quot; および
-        &quot;mail_body_encoding&quot; が使用できるようになりました。
-       </td>
-      </tr>
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       引数 <code class="parameter">type</code> の <code class="literal">&quot;func_overload&quot;</code>
+       と <code class="literal">&quot;func_overload_list&quot;</code> はサポートされなくなりました。
+      </td>
+     </tr>
 
-      <tr>
-       <td>5.3.0</td>
-       <td>
-        エントリ &quot;http_output_conv_mimetypes&quot; が使用できるようになりました。
-       </td>
-      </tr>
+    </tbody>
+   
+  </table>
 
-     </tbody>
-    
-   </table>
-
-  </p>
  </div>
 
 
@@ -119,9 +132,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mb-eregi.html">mb_eregi</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mb-http-input.html">mb_http_input</a></div>
- <div class="up"><a href="ref.mbstring.html">マルチバイト文字列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

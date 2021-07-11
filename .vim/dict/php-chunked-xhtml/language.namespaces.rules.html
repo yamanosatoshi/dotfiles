@@ -3,16 +3,29 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>名前解決のルール</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.fallback.html">名前空間の使用法: グローバル関数/定数への移行</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.faq.html">FAQ: 名前空間について知っておくべきこと</a></div>
- <div class="up"><a href="language.namespaces.html">名前空間</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.namespaces.rules" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.namespaces.fallback.html">« 名前空間の使用法: グローバル関数/定数への移行</a></li>
+      <li style="float: right;"><a href="language.namespaces.faq.html">FAQ: 名前空間について知っておくべきこと »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.namespaces.html">名前空間</a></li>
+    <li>名前解決のルール</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.namespaces.rules" class="sect1">
   <h2 class="title">名前解決のルール</h2>
-  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p>
   <p class="para">
    名前解決のルールを説明するにあたって、いくつかの重要な定義を示しておきます。
    <dl>
@@ -25,7 +38,7 @@
      <dd>
 
       <p class="para">
-       これは名前空間区切り文字を含まない識別子で、<em>Foo</em> のようなものです。
+       これは名前空間区切り文字を含まない識別子で、<code class="literal">Foo</code> のようなものです。
       </p>
      </dd>
 
@@ -37,7 +50,7 @@
      <dd>
 
       <p class="para">
-       これは名前空間区切り文字を含む識別子で、<em>Foo\Bar</em> のようなものです。
+       これは名前空間区切り文字を含む識別子で、<code class="literal">Foo\Bar</code> のようなものです。
       </p>
      </dd>
 
@@ -50,8 +63,21 @@
 
       <p class="para">
        これは名前空間区切り文字を含む識別子のうち先頭が名前空間区切り文字で始まるもので、
-       <em>\Foo\Bar</em> のようなものです。名前空間 <em>\Foo</em>
+       <code class="literal">\Foo\Bar</code> のようなものです。名前空間 <code class="literal">\Foo</code>
        も完全修飾名です。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+相対名</dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="literal">namespace\Foo\Bar</code> のように、
+       <code class="literal">namespace</code> で始まる識別子です。
       </p>
      </dd>
 
@@ -64,100 +90,94 @@
    <ol type="1">
     <li class="listitem">
      <span class="simpara">
-      完全修飾された関数、クラス、定数へのコールはコンパイル時に解決されます。
-      たとえば、<em>new \A\B</em> は <em>A\B</em> クラスと解釈されます。
+      完全修飾名は、先頭の名前空間区切り文字を除いた名前に常に解決されます。
+      たとえば、<code class="literal">\A\B</code> は <code class="literal">A\B</code> と解釈されます。
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      非修飾名および (完全修飾でない) 修飾名の変換は、現在のインポートルールに基づいてコンパイル時に行われます。
-      たとえば、名前空間 <em>A\B\C</em> が
-      <em>C</em> という名前でインポートされている場合、
-      <em>C\D\e()</em> へのコールは <em>A\B\C\D\e()</em>
-      と変換されます。
+      相対名は、<code class="literal">namespace</code> という名前を、
+      現在の名前空間に置き換えたものに常に解決されます。
+      現在の名前空間がグローバル名前空間だった場合、
+      <code class="literal">namespace\</code> 名前空間は取り除かれます。
+      たとえば、名前空間 <code class="literal">X\Y</code> の中にある
+      <code class="literal">namespace\A</code> は、
+      <code class="literal">X\Y\A</code> に解決されます。
+      グローバル名前空間の中にある同じ名前は、
+      <code class="literal">A</code> に解決されます。
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      名前空間内で、インポートルールによる変換が行われなかった修飾名は
-      現在の名前空間が先頭に付加されます。たとえば、
-      <em>C\D\e()</em> へのコールが名前空間 <em>A\B</em>
-      内で行われた場合、それは <em>A\B\C\D\e()</em> に変換されます。
+      修飾名の場合は、名前の最初の識別子を、
+      現在のクラス/名前空間のインポートテーブルに従って翻訳します。
+      たとえば、名前空間 <code class="literal">A\B\C</code> が 
+      <code class="literal">C</code> としてインポートされた場合、
+      <code class="literal">C\D\E</code> という名前は、
+      <code class="literal">A\B\C\D\E</code> と翻訳されます。
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      非修飾クラス名の変換は、現在のインポートルールに基づいてコンパイル時に行われます
-      (インポートされた短い名前がフルネームに置き換わります)。たとえば、
-      名前空間 <em>A\B\C</em> が C という名前でインポートされている場合、
-      <em>new C()</em> は <em>new A\B\C()</em> と変換されます。
+      修飾名の場合で、適用すべきインポートルールがない場合、
+      現在の名前空間が名前の先頭に付加されます。
+      たとえば、名前空間 <code class="literal">A\B</code> の中にある
+      <code class="literal">C\D\E</code> という名前は
+      <code class="literal">A\B\C\D\E</code> に解決されます。
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      名前空間内 (ここでは A\B としましょう) で、非修飾な関数へのコールは実行時に解決されます。
-      関数 <em>foo()</em> のコールは、次のように解決されます。
+      非修飾名の場合、名前はそれぞれのシンボルタイプの
+      現在のインポートテーブルに従って翻訳されます。
+      これは、クラスのような名前は、クラス/名前空間のインポートテーブルに従って
+      翻訳されるし、関数名は、関数のインポートテーブルに従うし、
+      定数は定数のインポートテーブルに従うということになります。
+      たとえば、<code class="literal">use A\B\C;</code> の後に、
+      <code class="literal">new C()</code> のようなことをすると、
+      C は <code class="literal">A\B\C()</code> に解決されます。
+      同じように、<code class="literal">use function A\B\fn;</code>
+      の後に <code class="literal">fn()</code> のようなことをすると、
+      <code class="literal">A\B\fn</code> という名前に解決されます。
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      非修飾名について、適用すべきインポートルールが存在せず、
+      名前がクラスのようなシンボルを参照している場合、
+      現在の名前空間が先頭に付加されます。
+      たとえば、名前空間 <code class="literal">A\B</code> の内部にある
+      <code class="literal">new C()</code> は、
+      <code class="literal">A\B\C</code> という名前に解決されます。
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      非修飾名について、適用すべきインポートルールが存在せず、
+      名前が関数や定数を参照しており、
+      コードがグローバル名前空間の外に存在する場合は
+      名前は実行時に解決されます。
+      コードが名前空間 <code class="literal">A\B</code> の中にあると仮定すると、
+      関数 <code class="literal">foo()</code> のコールは、次のように解決されます。
      </span>
       <ol type="1">
        <li class="listitem">
         <span class="simpara">
          まず現在の名前空間から関数
-         <em>A\B\foo()</em> を探します。
+         <code class="literal">A\B\foo()</code> を探します。
         </span>
        </li>
        <li class="listitem">
         <span class="simpara">
          次に <em class="emphasis">グローバル</em> 関数
-         <em>foo()</em> を探します。
+         <code class="literal">foo()</code> を探します。
         </span>
        </li>
       </ol>
     </li>
-    <li class="listitem">
-     <span class="simpara">
-      名前空間内 (ここでは <em>A\B</em> としましょう) で、
-      非修飾あるいは (完全修飾でない) 修飾なクラスへのコールは実行時に解決されます。
-      <em>new C()</em> や <em>new D\E()</em>
-      がどのように解決されるかを示します。
-      <em> new C()</em> の場合は、
-     </span>
-     <ol type="1">
-      <li class="listitem">
-       <span class="simpara">
-        まず現在の名前空間からクラス
-        <em>A\B\C</em> を探します。
-       </span>
-      </li>
-      <li class="listitem">
-       <span class="simpara">
-        <em>A\B\C</em> を autoload します。
-       </span>
-      </li>
-     </ol>
-     <span class="simpara">
-      <em> new D\E()</em> の場合は、
-     </span>
-     <ol type="1">
-      <li class="listitem">
-       <span class="simpara">
-        現在の名前空間を先頭につけた
-        <em>A\B\D\E</em> を探します。
-       </span>
-      </li>
-      <li class="listitem">
-       <span class="simpara">
-        <em>A\B\D\E</em> を autoload します。
-       </span>
-      </li>
-     </ol>
-     <span class="simpara">
-      グローバル名前空間内のグローバルクラスを参照するには、完全修飾形式の
-      <em>new \C()</em> を使わなければなりません。
-     </span>
-    </li>
    </ol>
   </p>
-  <div class="example" id="example-300">
+  <div class="example" id="example-274">
    <p><strong>例1 名前解決の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -167,9 +187,4 @@
    </div>
 
   </div>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.fallback.html">名前空間の使用法: グローバル関数/定数への移行</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.faq.html">FAQ: 名前空間について知っておくべきこと</a></div>
- <div class="up"><a href="language.namespaces.html">名前空間</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

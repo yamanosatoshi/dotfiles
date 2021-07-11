@@ -4,27 +4,39 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>変数に含まれるすべての要素、
   あるいはオブジェクトに含まれる何かの数を数える</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.compact.html">compact</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.current.html">current</a></div>
- <div class="up"><a href="ref.array.html">配列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.count" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.compact.html">« compact</a></li>
+      <li style="float: right;"><a href="function.current.html">current »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">配列 関数</a></li>
+    <li>変数に含まれるすべての要素、
+  あるいはオブジェクトに含まれる何かの数を数える</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.count" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">count</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">count</span> &mdash; <span class="dc-title">変数に含まれるすべての要素、
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">count</span> &mdash; <span class="dc-title">変数に含まれるすべての要素、
   あるいはオブジェクトに含まれる何かの数を数える</span></p>
 
  </div>
+
  <div class="refsect1 description" id="refsect1-function.count-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">int</span> <span class="methodname"><strong>count</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$array_or_countable</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = COUNT_NORMAL</span></span>
-  ] )</div>
+   <span class="methodname"><strong>count</strong></span>(<span class="methodparam"><span class="type"><span class="type"><a href="class.countable.html" class="type Countable">Countable</a></span>|<span class="type">array</span></span> <code class="parameter">$value</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = <strong><code>COUNT_NORMAL</code></strong></span></span>): <span class="type">int</span></div>
 
   <p class="para rdfs-comment">
    変数に含まれるすべての要素、
@@ -44,6 +56,7 @@
   </p>
  </div>
 
+
  <div class="refsect1 parameters" id="refsect1-function.count-parameters">
   <h3 class="title">パラメータ</h3>
   <p class="para">
@@ -51,7 +64,7 @@
 
     
      <dt>
-<code class="parameter">array_or_countable</code></dt>
+<code class="parameter">value</code></dt>
 
      <dd>
 
@@ -88,43 +101,119 @@
   </p>
  </div>
 
+
  <div class="refsect1 returnvalues" id="refsect1-function.count-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <code class="parameter">array_or_countable</code> に含まれる要素の数を返します。
-   もしパラメータが配列もしくは
-   <a href="class.countable.html" class="classname">Countable</a> インターフェイスを実装したオブジェクトではない場合、
-   <em>1</em> が返されます。
-   ひとつ例外があり、<code class="parameter">array_or_countable</code> が <strong><code>NULL</code></strong> の場合、
-   <em>0</em> が返されます。
+   <code class="parameter">value</code> に含まれる要素の数を返します。
+   もしパラメータが配列でもなく <a href="class.countable.html" class="classname">Countable</a> インターフェイスを
+   実装したオブジェクトでもない場合、<code class="literal">1</code> が返されます。
+   ひとつ例外があり、<code class="parameter">value</code> が <strong><code>null</code></strong> の場合、
+   <code class="literal">0</code> が返されます。
   </p>
-  <div class="caution"><strong class="caution">警告</strong>
-   <p class="para">
-    <span class="function"><strong>count()</strong></span> は、セットされていない変数に関して 0
-    を返しますが、変数が空の配列として初期化されている場合にも 0 を返します。
-    ある変数がセットされているかどうかを調べるには、
-    <span class="function"><a href="function.isset.html" class="function">isset()</a></span> を使用してください。
-   </p>
-  </div>
  </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.count-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">value</code> パラメータに不正な型を渡した場合に、
+       <a href="class.typeerror.html" class="classname">TypeError</a> をスローするようになりました。
+      </td>
+     </tr>
+
+     <tr>
+      <td>7.2.0</td>
+      <td>
+       <code class="parameter">value</code> パラメータに不正な型を渡した場合に、
+       警告を発生させるようになりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
 
  <div class="refsect1 examples" id="refsect1-function.count-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5608">
+   <div class="example" id="example-4957">
     <p><strong>例1 <span class="function"><strong>count()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$a</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$result&nbsp;==&nbsp;3<br /><br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;&nbsp;=&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">5</span><span style="color: #007700">]&nbsp;&nbsp;=&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">10</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">11</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$result&nbsp;==&nbsp;3<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$result&nbsp;==&nbsp;0<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$result&nbsp;==&nbsp;1<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$a</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;&nbsp;=&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">5</span><span style="color: #007700">]&nbsp;&nbsp;=&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">10</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">11</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
 
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+int(3)
+int(3)
+</pre></div>
+    </div>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5609">
-    <p><strong>例2 再帰的な <span class="function"><strong>count()</strong></span> の例</strong></p>
+   <div class="example" id="example-4958">
+    <p><strong>例2 Countable|array でない値を渡した場合の <span class="function"><strong>count()</strong></span>  の例 (悪い例です - 真似しないでね！)</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$b</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;&nbsp;=&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">5</span><span style="color: #007700">]&nbsp;&nbsp;=&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">10</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">11</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">false</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+int(3)
+int(0)
+int(1)
+</pre></div>
+    </div>
+    <div class="example-contents"><p>上の例の PHP 7.2 での出力は、このようになります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+int(3)
+
+Warning: count(): Parameter must be an array or an object that implements Countable in … on line 12
+int(0)
+
+Warning: count(): Parameter must be an array or an object that implements Countable in … on line 14
+int(1)
+</pre></div>
+    </div>
+    <div class="example-contents"><p>上の例の PHP 8 での出力は、このようになります。:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+int(3)
+
+Fatal error: Uncaught TypeError: count(): Argument #1 ($var) must be of type Countable .. on line 12
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4959">
+    <p><strong>例3 再帰的な <span class="function"><strong>count()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$food&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'fruits'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'orange'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'banana'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'veggie'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'carrot'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'collard'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pea'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;再帰的なカウント<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$food</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">COUNT_RECURSIVE</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;output&nbsp;8<br /><br />//&nbsp;通常のカウント<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$food</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;output&nbsp;2<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -136,20 +225,19 @@
   </p>
  </div>
 
+
  <div class="refsect1 seealso" id="refsect1-function.count-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
     <li class="member"><span class="function"><a href="function.is-array.html" class="function" rel="rdfs-seeAlso">is_array()</a> - 変数が配列かどうかを検査する</span></li>
-    <li class="member"><span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - 変数がセットされていること、そして NULL でないことを検査する</span></li>
+    <li class="member"><span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - 変数が宣言されていること、そして null とは異なることを検査する</span></li>
+    <li class="member"><span class="function"><a href="function.empty.html" class="function" rel="rdfs-seeAlso">empty()</a> - 変数が空であるかどうかを検査する</span></li>
     <li class="member"><span class="function"><a href="function.strlen.html" class="function" rel="rdfs-seeAlso">strlen()</a> - 文字列の長さを得る</span></li>
+    <li class="member"><span class="function"><a href="function.is-countable.html" class="function" rel="rdfs-seeAlso">is_countable()</a> - 引数が、数えられる値かどうかを調べる</span></li>
    </ul>
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.compact.html">compact</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.current.html">current</a></div>
- <div class="up"><a href="ref.array.html">配列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+
+</div></div></div></body></html>

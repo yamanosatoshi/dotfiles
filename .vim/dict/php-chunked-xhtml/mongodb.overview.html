@@ -3,25 +3,39 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Architecture Overview</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mongodb.architecture.html">Driver Architecture and Internals</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mongodb.persistence.html">Persisting Data</a></div>
- <div class="up"><a href="mongodb.architecture.html">Driver Architecture and Internals</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mongodb.overview" class="article">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mongodb.architecture.html">« Driver Architecture and Internals</a></li>
+      <li style="float: right;"><a href="mongodb.connection-handling.html">Connections »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mongodb.architecture.html">Driver Architecture and Internals</a></li>
+    <li>Architecture Overview</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mongodb.overview" class="article">
   
   <h1>Architecture Overview</h1>
 
 
   <p class="para">
    This section explains how all the different parts of the driver fit
-   together. From the different language runtimes, through the extensions and
+   together. From the different language runtimes, through the extension and
    to the PHP libraries on top. This new architecture has replaced the old
-   <a href="book.mongo.html" class="link">mongo</a> extension. We refer to the new one
-   as the <em class="emphasis">mongodb</em> extension.
+   <code class="code">mongo</code> extension. We refer to the new one
+   as the <code class="code">mongodb</code> extension.
   </p>
+
   <p class="para">
    <div class="mediaobject">
     
@@ -30,9 +44,10 @@
     </div>
    </div>
   </p>
+
   <p class="para">
    At the top of this stack sits a pure
-   <a href="http://github.com/mongodb/mongo-php-library" class="link external">&raquo;&nbsp;PHP library</a>, which we will
+   <a href="https://github.com/mongodb/mongo-php-library" class="link external">&raquo;&nbsp;PHP library</a>, which we will
    distribute as a Composer package. This library will provide an API similar
    to what users have come to expect from the old mongo driver (e.g. CRUD methods,
    database and collection objects, command helpers) and we expect it to be a
@@ -40,14 +55,15 @@
    will also implement common
    <a href="https://github.com/mongodb/specifications" class="link external">&raquo;&nbsp;specifications</a>, in the
    interest of improving API consistency across all of the
-   <a href="http://docs.mongodb.org/ecosystem/drivers/" class="link external">&raquo;&nbsp;drivers</a> maintained by
+   <a href="https://docs.mongodb.com/ecosystem/drivers/" class="link external">&raquo;&nbsp;drivers</a> maintained by
    MongoDB (and hopefully some community drivers, too).
   </p>
+
   <p class="para">
-   Sitting below that library we have the lower level drivers—one per platform.
-   These extensions will effectively form the glue between PHP and HHVM and our
-   system libraries (<a href="http://github.com/mongodb/mongo-c-driver" class="link external">&raquo;&nbsp;libmongoc</a> and
-   <a href="http://github.com/mongodb/libbson" class="link external">&raquo;&nbsp;libbson</a>). These extensions
+   Sitting below that library we have the lower level driver.
+   This extension will effectively form the glue between PHP and our
+   system libraries (<a href="https://github.com/mongodb/mongo-c-driver" class="link external">&raquo;&nbsp;libmongoc</a> and
+   <a href="https://github.com/mongodb/libbson" class="link external">&raquo;&nbsp;libbson</a>). This extension
    will expose an identical public API for the most essential and
    performance-sensitive functionality:
 
@@ -61,16 +77,16 @@
   </p>
 
   <p class="para">
-   By decoupling the driver internals and a high-level API into extensions and
+   By decoupling the driver internals and a high-level API into an extension and
    PHP libraries, respectively, we hope to reduce our maintainence burden and
    allow for faster iteration on new features. As a welcome side effect, this
    also makes it easier for anyone to contribute to the driver. Additionally,
-   an identical public API for these extensions will make it that much easier
-   to port an application across PHP runtimes, whether the application uses
-   the low-level driver directly or a higher-level PHP library.
+   an identical public API will make it that much easier to port an
+   application across PHP runtimes, whether the application uses the low-level
+   driver directly or a higher-level PHP library.
   </p>
   <p class="para">
-   <a href="http://docs.mongodb.org/manual/core/gridfs/" class="link external">&raquo;&nbsp;GridFS</a> is a great example
+   <a href="https://docs.mongodb.com/manual/core/gridfs/" class="link external">&raquo;&nbsp;GridFS</a> is a great example
    of why we chose this direction.
    Although we implemented GridFS in C for our old mongo driver, it is actually
    quite a high-level specification. Its API is just an abstraction for
@@ -114,20 +130,14 @@
      <tbody class="tbody">
       <tr>
        <td>PHP Library</td>
-       <td><a href="http://github.com/mongodb/mongo-php-library" class="link external">&raquo;&nbsp;mongodb/mongo-php-library</a></td>
-       <td><a href="http://jira.mongodb.org/browse/PHPLIB" class="link external">&raquo;&nbsp;PHPLIB</a></td>
+       <td><a href="https://github.com/mongodb/mongo-php-library" class="link external">&raquo;&nbsp;mongodb/mongo-php-library</a></td>
+       <td><a href="https://jira.mongodb.org/browse/PHPLIB" class="link external">&raquo;&nbsp;PHPLIB</a></td>
       </tr>
 
       <tr>
        <td>PHP 5 and PHP 7 Driver (phongo)</td>
-       <td><a href="http://github.com/mongodb/mongo-php-driver" class="link external">&raquo;&nbsp;mongodb/mongo-php-driver</a></td>
-       <td><a href="http://jira.mongodb.org/browse/PHPC" class="link external">&raquo;&nbsp;PHPC</a></td>
-      </tr>
-
-      <tr>
-       <td>HHVM Driver (hippo)</td>
-       <td><a href="http://github.com/mongodb/mongo-hhvm-driver" class="link external">&raquo;&nbsp;mongodb/mongo-hhvm-driver</a></td>
-       <td><a href="http://jira.mongodb.org/browse/HHVM" class="link external">&raquo;&nbsp;HHVM</a></td>
+       <td><a href="https://github.com/mongodb/mongo-php-driver" class="link external">&raquo;&nbsp;mongodb/mongo-php-driver</a></td>
+       <td><a href="https://jira.mongodb.org/browse/PHPC" class="link external">&raquo;&nbsp;PHPC</a></td>
       </tr>
 
      </tbody>
@@ -137,15 +147,10 @@
   </p>
 
   <p class="para">
-   The existing <a href="http://jira.mongodb.org/browse/PHP" class="link external">&raquo;&nbsp;PHP</a> project in JIRA
+   The existing <a href="https://jira.mongodb.org/browse/PHP" class="link external">&raquo;&nbsp;PHP</a> project in JIRA
    will remain open for reporting bugs against the old mongo driver, but we
    would ask that you use the new projects above for anything pertaining to
    our next-generation drivers.
   </p>
  </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mongodb.architecture.html">Driver Architecture and Internals</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mongodb.persistence.html">Persisting Data</a></div>
- <div class="up"><a href="mongodb.architecture.html">Driver Architecture and Internals</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

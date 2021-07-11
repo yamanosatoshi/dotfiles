@@ -3,26 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>メソッドの配列を取得する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="reflectionclass.getmethod.html">ReflectionClass::getMethod</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="reflectionclass.getmodifiers.html">ReflectionClass::getModifiers</a></div>
- <div class="up"><a href="class.reflectionclass.html">ReflectionClass</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="reflectionclass.getmethods" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="reflectionclass.getmethod.html">« ReflectionClass::getMethod</a></li>
+      <li style="float: right;"><a href="reflectionclass.getmodifiers.html">ReflectionClass::getModifiers »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.reflectionclass.html">ReflectionClass</a></li>
+    <li>メソッドの配列を取得する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="reflectionclass.getmethods" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">ReflectionClass::getMethods</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">ReflectionClass::getMethods</span> &mdash; <span class="dc-title">メソッドの配列を取得する</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ReflectionClass::getMethods</span> &mdash; <span class="dc-title">メソッドの配列を取得する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-reflectionclass.getmethods-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><strong>ReflectionClass::getMethods</strong></span>
-    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$filter</code></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>ReflectionClass::getMethods</strong></span>(<span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$filter</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">array</span></div>
 
   <p class="para rdfs-comment">
    クラスのメソッドの配列を取得します。
@@ -57,7 +68,7 @@
       </p>
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <span class="simpara">
-        その他のビット演算 (<em>~</em> など) は期待通りの挙動にはなりません。
+        その他のビット演算 (<code class="literal">~</code> など) は期待通りの挙動にはなりません。
         つまり、たとえば static ではないメソッドをすべて取得するなどといったことはできません。
        </span>
       </p></blockquote>
@@ -78,10 +89,37 @@
  </div>
 
  
+ <div class="refsect1 changelog" id="refsect1-reflectionclass.getmethods-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>7.2.0</td>
+      <td>
+       <code class="parameter">filter</code> は、nullable になりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
  <div class="refsect1 examples" id="refsect1-reflectionclass.getmethods-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-6023">
+   <div class="example" id="example-5080">
     <p><strong>例1 <span class="methodname"><strong>ReflectionClass::getMethods()</strong></span> の基本的な使用例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -95,21 +133,21 @@
 <div class="cdata"><pre>
 array(3) {
   [0]=&gt;
-  &amp;object(ReflectionMethod)#2 (2) {
+  object(ReflectionMethod)#2 (2) {
     [&quot;name&quot;]=&gt;
     string(11) &quot;firstMethod&quot;
     [&quot;class&quot;]=&gt;
     string(5) &quot;Apple&quot;
   }
   [1]=&gt;
-  &amp;object(ReflectionMethod)#3 (2) {
+  object(ReflectionMethod)#3 (2) {
     [&quot;name&quot;]=&gt;
     string(12) &quot;secondMethod&quot;
     [&quot;class&quot;]=&gt;
     string(5) &quot;Apple&quot;
   }
   [2]=&gt;
-  &amp;object(ReflectionMethod)#4 (2) {
+  object(ReflectionMethod)#4 (2) {
     [&quot;name&quot;]=&gt;
     string(11) &quot;thirdMethod&quot;
     [&quot;class&quot;]=&gt;
@@ -121,7 +159,7 @@ array(3) {
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-6024">
+   <div class="example" id="example-5081">
     <p><strong>例2 <span class="methodname"><strong>ReflectionClass::getMethods()</strong></span> のフィルタリング</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -135,14 +173,14 @@ array(3) {
 <div class="cdata"><pre>
 array(2) {
   [0]=&gt;
-  &amp;object(ReflectionMethod)#2 (2) {
+  object(ReflectionMethod)#2 (2) {
     [&quot;name&quot;]=&gt;
     string(12) &quot;secondMethod&quot;
     [&quot;class&quot;]=&gt;
     string(5) &quot;Apple&quot;
   }
   [1]=&gt;
-  &amp;object(ReflectionMethod)#3 (2) {
+  object(ReflectionMethod)#3 (2) {
     [&quot;name&quot;]=&gt;
     string(11) &quot;thirdMethod&quot;
     [&quot;class&quot;]=&gt;
@@ -167,9 +205,4 @@ array(2) {
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="reflectionclass.getmethod.html">ReflectionClass::getMethod</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="reflectionclass.getmodifiers.html">ReflectionClass::getModifiers</a></div>
- <div class="up"><a href="class.reflectionclass.html">ReflectionClass</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

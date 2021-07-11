@@ -3,50 +3,43 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>文字列を処理し、変数に代入する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.ord.html">ord</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.print.html">print</a></div>
- <div class="up"><a href="ref.strings.html">String 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.parse-str" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ord.html">« ord</a></li>
+      <li style="float: right;"><a href="function.print.html">print »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">String 関数</a></li>
+    <li>文字列を処理し、変数に代入する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.parse-str" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">parse_str</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">parse_str</span> &mdash; <span class="dc-title">文字列を処理し、変数に代入する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">parse_str</span> &mdash; <span class="dc-title">文字列を処理し、変数に代入する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.parse-str-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>parse_str</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$arr</code></span>
-  ] )</div>
+   <span class="methodname"><strong>parse_str</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$result</code></span>): <span class="type"><span class="type void">void</span></span></div>
 
   <p class="para rdfs-comment">
-   URL 経由で渡されるクエリ文字列と同様に <code class="parameter">str</code>
+   URL 経由で渡されるクエリ文字列と同様に <code class="parameter">string</code>
    を処理し、現在のスコープに変数をセットします。
+   (<code class="parameter">result</code> が指定された場合は、配列 <code class="parameter">result</code> にセットします)
   </p>
-  <blockquote class="note"><p><strong class="note">注意</strong>: 
-   <p class="para">
-    現在の <em>QUERY_STRING</em> を取得するには、変数
-    <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['QUERY_STRING']</a></var></var>
-    を使用する事ができます。また、
-    <a href="language.variables.external.html" class="link">外部から来る変数</a>
-    のセクションも読んでください。
-   </p>
-  </p></blockquote>
-  <blockquote class="note"><p><strong class="note">注意</strong>: 
-   <p class="para">
-    <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>
-    の設定が、この関数の出力に影響を与えます。というのも
-    <span class="function"><strong>parse_str()</strong></span> が使用している仕組みは
-    PHP が <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var> や
-    <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var> などの設定に使用しているものと同じだからです。
-   </p>
-  </p></blockquote>
  </div>
 
 
@@ -57,7 +50,7 @@
 
     
      <dt>
-<code class="parameter">str</code></dt>
+<code class="parameter">string</code></dt>
 
      <dd>
 
@@ -69,15 +62,22 @@
     
     
      <dt>
-<code class="parameter">arr</code></dt>
+<code class="parameter">result</code></dt>
 
      <dd>
 
       <p class="para">
        2 番目の引数
-       <code class="parameter">arr</code> が指定された場合、
+       <code class="parameter">result</code> が指定された場合、
        変数は、代わりに配列の要素としてこの変数に保存されます。
       </p>
+      <div class="warning"><strong class="warning">警告</strong>
+       <p class="para">
+        この関数を <code class="parameter">result</code> パラメータを指定せずに使うことは
+        絶対に <em class="emphasis">おすすめしません</em> し、
+        PHP 7.2 以降では <em class="emphasis">推奨されません</em> 
+       </p>
+      </div>
      </dd>
 
     
@@ -95,20 +95,95 @@
  </div>
 
 
+ <div class="refsect1 changelog" id="refsect1-function.parse-str-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">result</code> は、オプションではなくなりました。
+      </td>
+     </tr>
+
+      <tr>
+       <td>7.2.0</td>
+       <td>
+        <span class="function"><strong>parse_str()</strong></span>関数を
+        第二引数を指定せずに使うと
+        <strong><code>E_DEPRECATED</code></strong> レベルの警告が発生するようになりました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
  <div class="refsect1 examples" id="refsect1-function.parse-str-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5450">
+   <div class="example" id="example-4786">
     <p><strong>例1 <span class="function"><strong>parse_str()</strong></span> の使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"first=value&amp;arr[]=foo+bar&amp;arr[]=baz"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">parse_str</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$first</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;value<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;bar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;baz<br /><br /></span><span style="color: #0000BB">parse_str</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'first'</span><span style="color: #007700">];&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;value<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'arr'</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;bar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'arr'</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;baz<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"first=value&amp;arr[]=foo+bar&amp;arr[]=baz"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;推奨<br /></span><span style="color: #0000BB">parse_str</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'first'</span><span style="color: #007700">];&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;value<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'arr'</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;bar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'arr'</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;baz<br /><br />//&nbsp;お勧めできない<br /></span><span style="color: #0000BB">parse_str</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$first</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;value<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;bar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;baz<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
 
    </div>
   </p>
+  <p class="para">
+   PHP における変数は、名前にドットやスペースを許容しないので、
+   そういった値はアンダースコアに変換されます。同じことは、
+   この関数に <code class="parameter">result</code> パラメータを指定した
+   場合の、配列のキーの名前にも当てはまります。
+   <div class="example" id="example-4787">
+    <p><strong>例2 <span class="function"><strong>parse_str()</strong></span> name mangling</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />parse_str</span><span style="color: #007700">(</span><span style="color: #DD0000">"My&nbsp;Value=Something"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$My_Value</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Something<br /><br /></span><span style="color: #0000BB">parse_str</span><span style="color: #007700">(</span><span style="color: #DD0000">"My&nbsp;Value=Something"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'My_Value'</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;Something<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p> 
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.parse-str-notes">
+  <h3 class="title">注意</h3>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    全ての作成された変数 (第二引数が設定された場合は配列に設定される値)
+    の値は、既に <span class="function"><a href="function.urldecode.html" class="function">urldecode()</a></span> されています。
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    現在の <code class="literal">QUERY_STRING</code> を取得するには、変数
+    <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['QUERY_STRING']</a></var>
+    を使用する事ができます。また、
+    <a href="language.variables.external.html" class="link">外部から来る変数</a>
+    のセクションも読んでください。
+   </p>
+  </p></blockquote>
  </div>
 
 
@@ -119,16 +194,10 @@
     <li class="member"><span class="function"><a href="function.parse-url.html" class="function" rel="rdfs-seeAlso">parse_url()</a> - URL を解釈し、その構成要素を返す</span></li>
     <li class="member"><span class="function"><a href="function.pathinfo.html" class="function" rel="rdfs-seeAlso">pathinfo()</a> - ファイルパスに関する情報を返す</span></li>
     <li class="member"><span class="function"><a href="function.http-build-query.html" class="function" rel="rdfs-seeAlso">http_build_query()</a> - URL エンコードされたクエリ文字列を生成する</span></li>
-    <li class="member"><span class="function"><a href="function.get-magic-quotes-gpc.html" class="function" rel="rdfs-seeAlso">get_magic_quotes_gpc()</a> - magic_quotes_gpc の現在の設定を得る</span></li>
     <li class="member"><span class="function"><a href="function.urldecode.html" class="function" rel="rdfs-seeAlso">urldecode()</a> - URL エンコードされた文字列をデコードする</span></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.ord.html">ord</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.print.html">print</a></div>
- <div class="up"><a href="ref.strings.html">String 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

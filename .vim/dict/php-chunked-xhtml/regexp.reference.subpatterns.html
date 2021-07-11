@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>サブパターン</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="regexp.reference.internal-options.html">内部オプション設定</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="regexp.reference.repetition.html">繰り返し</a></div>
- <div class="up"><a href="reference.pcre.pattern.syntax.html">PCRE 正規表現構文</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="regexp.reference.subpatterns" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="regexp.reference.internal-options.html">« 内部オプション設定</a></li>
+      <li style="float: right;"><a href="regexp.reference.repetition.html">繰り返し »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reference.pcre.pattern.syntax.html">PCRE 正規表現構文</a></li>
+    <li>サブパターン</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="regexp.reference.subpatterns" class="section">
      <h2 class="title">サブパターン</h2>
      <p class="para">
      サブパターンは、丸カッコで括られたパターンのことで、ネストも可能です。
@@ -20,7 +33,7 @@
    <li class="listitem">
     <p class="para">
      選択肢の範囲の指定 (localize)。例えば、パターン
-     <em>cat(aract|erpillar|)</em>
+     <code class="literal">cat(aract|erpillar|)</code>
      は、単語 &quot;cat&quot;, &quot;cataract&quot;, &quot;caterpillar&quot; にマッチします。
      カッコをつけないと、このパターンは、&quot;cataract&quot;, &quot;erpillar&quot;
      または空の文字列にマッチしてしまいます。
@@ -92,12 +105,12 @@
      </p>
      
      <p class="para">
-      <em>(?P&lt;name&gt;pattern)</em> という記法を用いて
+      <code class="literal">(?P&lt;name&gt;pattern)</code> という記法を用いて
       サブパターンに名前をつけることができます。
       このサブパターンにマッチした部分は、マッチ時に返される配列内で
       通常どおりの数値添字によるアクセスだけでなく名前でもアクセスできるようになります。
-      PHP 5.2.2 からは、二通りの別の構文
-      <em>(?&lt;name&gt;pattern)</em> および <em>(?&#039;name&#039;pattern)</em>
+      二通りの別の構文
+      <code class="literal">(?&lt;name&gt;pattern)</code> および <code class="literal">(?&#039;name&#039;pattern)</code>
       も用意されています。
      </p>
 
@@ -106,10 +119,10 @@
    ひとつの正規表現の中でサブグループを切り替えなければならないこともあります。
    通常は、たとえその中のいずれかひとつにしかマッチしなかったとしても
    それぞれに個別の後方参照番号が振られます。
-   これを解決するために使えるのが <em>(?|</em> 構文で、
+   これを解決するために使えるのが <code class="literal">(?|</code> 構文で、
    重複した番号を振ることができるようになります。
    次の正規表現で文字列
-   <em>Sunday</em> をマッチングするとどうなるでしょうか。
+   <code class="literal">Sunday</code> をマッチングするとどうなるでしょうか。
   </p>
 
   <div class="informalexample">
@@ -120,11 +133,11 @@
   </div>
 
   <p class="para">
-   <em>Sun</em> が後方参照 2 に格納され、
-   後方参照 1 は空となります。<em>Sat</em>
+   <code class="literal">Sun</code> が後方参照 2 に格納され、
+   後方参照 1 は空となります。<code class="literal">Sat</code>
    にマッチした場合は後方参照 1 に入り、後方参照 2 は存在しません。
    この問題を解決するには、パターンを変更して
-   <em>(?|</em> を使うようにします。
+   <code class="literal">(?|</code> を使うようにします。
   </p>
 
   <div class="informalexample">
@@ -135,12 +148,7 @@
   </div>
 
   <p class="para">
-   このパターンを使えば、<em>Sun</em> と <em>Sat</em>
+   このパターンを使えば、<code class="literal">Sun</code> と <code class="literal">Sat</code>
    の両方が後方参照 1 に格納されます。
   </p>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="regexp.reference.internal-options.html">内部オプション設定</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="regexp.reference.repetition.html">繰り返し</a></div>
- <div class="up"><a href="reference.pcre.pattern.syntax.html">PCRE 正規表現構文</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

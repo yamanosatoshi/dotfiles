@@ -3,25 +3,38 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>The Event class</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="event.constructing.signal.events.html">Constructing signal events</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="event.add.html">Event::add</a></div>
- <div class="up"><a href="book.event.html">Event</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="class.event" class="reference">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="event.constructing.signal.events.html">« Constructing signal events</a></li>
+      <li style="float: right;"><a href="event.add.html">Event::add »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.event.html">Event</a></li>
+    <li>The Event class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.event" class="reference">
  <h1 class="title">The Event class</h1>
  
  <div class="partintro"><p class="verinfo">(PECL event &gt;= 1.2.6-beta)</p>
 
   <div class="section" id="event.intro">
-   <h2 class="title">導入</h2>
+   <h2 class="title">はじめに</h2>
    <p class="para">
     <strong class="classname">Event</strong>
     class represents and event firing on a file descriptor being ready to read
     from or write to; a file descriptor becoming ready to read from or write
-    to(edge-triggered I/O only); a timeout expiring; a signal occuring; a
+    to(edge-triggered I/O only); a timeout expiring; a signal occurring; a
     user-triggered event.
    </p>
    <p class="para">
@@ -68,44 +81,38 @@
     <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.event.html#event.constants.et"><var class="varname">ET</var></a></var>
-     <span class="initializer"> = 32</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.event.html#event.constants.et"><var class="varname">ET</var></a></var><span class="initializer"> = 32</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.event.html#event.constants.persist"><var class="varname">PERSIST</var></a></var>
-     <span class="initializer"> = 16</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.event.html#event.constants.persist"><var class="varname">PERSIST</var></a></var><span class="initializer"> = 16</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.event.html#event.constants.read"><var class="varname">READ</var></a></var>
-     <span class="initializer"> = 2</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.event.html#event.constants.read"><var class="varname">READ</var></a></var><span class="initializer"> = 2</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.event.html#event.constants.write"><var class="varname">WRITE</var></a></var>
-     <span class="initializer"> = 4</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.event.html#event.constants.write"><var class="varname">WRITE</var></a></var><span class="initializer"> = 4</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.event.html#event.constants.signal"><var class="varname">SIGNAL</var></a></var>
-     <span class="initializer"> = 8</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.event.html#event.constants.signal"><var class="varname">SIGNAL</var></a></var><span class="initializer"> = 8</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.event.html#event.constants.timeout"><var class="varname">TIMEOUT</var></a></var>
-     <span class="initializer"> = 1</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.event.html#event.constants.timeout"><var class="varname">TIMEOUT</var></a></var><span class="initializer"> = 1</span>
     ;</div>
 
     <div class="classsynopsisinfo classsynopsisinfo_comment">/* プロパティ */</div>
@@ -113,193 +120,119 @@
      <span class="modifier">public</span>
      <span class="modifier">readonly</span>
      <span class="type">bool</span>
-      <var class="varname"><a href="class.event.html#event.props.pending">$<var class="varname">pending</var></a></var>
-    ;</div>
+      <var class="varname"><a href="class.event.html#event.props.pending">$<var class="varname">pending</var></a></var>;</div>
 
     <div class="classsynopsisinfo classsynopsisinfo_comment">/* メソッド */</div>
     <div class="methodsynopsis dc-description">
    <span class="modifier">public</span>
-   <span class="type">bool</span> 
-   <span class="methodname"><a href="event.add.html" class="methodname">add</a></span>
-    ([ <span class="methodparam">
-    <span class="type">double</span>
+   <span class="methodname"><a href="event.add.html" class="methodname">add</a></span>(<span class="methodparam">
+    <span class="type">float</span>
      <code class="parameter">$timeout</code>
-   </span>
-  ] )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
-   <span class="type">bool</span> 
-   <span class="methodname"><a href="event.addsignal.html" class="methodname">addSignal</a></span>
-    ([ <span class="methodparam">
-    <span class="type">double</span>
+   <span class="initializer"> = ?</span></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="event.addsignal.html" class="methodname">addSignal</a></span>(<span class="methodparam">
+    <span class="type">float</span>
      <code class="parameter">$timeout</code>
-   </span>
-  ] )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
-   <span class="type">bool</span> 
-   <span class="methodname"><a href="event.addtimer.html" class="methodname">addTimer</a></span>
-    ([ <span class="methodparam">
-    <span class="type">double</span>
+   <span class="initializer"> = ?</span></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="event.addtimer.html" class="methodname">addTimer</a></span>(<span class="methodparam">
+    <span class="type">float</span>
      <code class="parameter">$timeout</code>
-   </span>
-  ] )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
-   <span class="methodname"><a href="event.construct.html" class="methodname">__construct</a></span>
-    ( <span class="methodparam">
+   <span class="initializer"> = ?</span></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="event.construct.html" class="methodname">__construct</a></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type"><a href="class.eventbase.html" class="type EventBase">EventBase</a></span>
      <code class="parameter">$base</code>
-   </span>
-   , <span class="methodparam">
-    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
      <code class="parameter">$fd</code>
-   </span>
-   , <span class="methodparam">
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type">int</span>
      <code class="parameter">$what</code>
-   </span>
-   , <span class="methodparam">
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>
      <code class="parameter">$cb</code>
-   </span>
-   [, <span class="methodparam">
-    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
      <code class="parameter">$arg</code>
     <span class="initializer"> = NULL</span>
-   </span>
-  ] )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
-   <span class="type">bool</span> 
-   <span class="methodname"><a href="event.del.html" class="methodname">del</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
-   <span class="type">bool</span> 
-   <span class="methodname"><a href="event.delsignal.html" class="methodname">delSignal</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
-   <span class="type">bool</span> 
-   <span class="methodname"><a href="event.deltimer.html" class="methodname">delTimer</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="event.free.html" class="methodname">free</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
+   </span><br>)</div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="event.del.html" class="methodname">del</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="event.delsignal.html" class="methodname">delSignal</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="event.deltimer.html" class="methodname">delTimer</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="event.free.html" class="methodname">free</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">array</span> 
-   <span class="methodname"><a href="event.getsupportedmethods.html" class="methodname">getSupportedMethods</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
-   <span class="type">bool</span> 
-   <span class="methodname"><a href="event.pending.html" class="methodname">pending</a></span>
-    ( <span class="methodparam">
+   <span class="methodname"><a href="event.getsupportedmethods.html" class="methodname">getSupportedMethods</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="event.pending.html" class="methodname">pending</a></span>(<span class="methodparam">
     <span class="type">int</span>
      <code class="parameter">$flags</code>
-   </span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
-   <span class="type">bool</span> 
-   <span class="methodname"><a href="event.set.html" class="methodname">set</a></span>
-    ( <span class="methodparam">
+   </span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="event.set.html" class="methodname">set</a></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type"><a href="class.eventbase.html" class="type EventBase">EventBase</a></span>
      <code class="parameter">$base</code>
-   </span>
-   , <span class="methodparam">
-    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
      <code class="parameter">$fd</code>
-   </span>
-   [, <span class="methodparam">
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type">int</span>
      <code class="parameter">$what</code>
-   </span>
-   [, <span class="methodparam">
+   <span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>
      <code class="parameter">$cb</code>
-   </span>
-   [, <span class="methodparam">
-    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+   <span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
      <code class="parameter">$arg</code>
-   </span>
-  ]]] )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
-   <span class="type">bool</span> 
-   <span class="methodname"><a href="event.setpriority.html" class="methodname">setPriority</a></span>
-    ( <span class="methodparam">
+   <span class="initializer"> = ?</span></span><br>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="event.setpriority.html" class="methodname">setPriority</a></span>(<span class="methodparam">
     <span class="type">int</span>
      <code class="parameter">$priority</code>
-   </span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
-   <span class="type">bool</span> 
-   <span class="methodname"><a href="event.settimer.html" class="methodname">setTimer</a></span>
-    ( <span class="methodparam">
+   </span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="event.settimer.html" class="methodname">setTimer</a></span>(<span class="methodparam">
     <span class="type"><a href="class.eventbase.html" class="type EventBase">EventBase</a></span>
      <code class="parameter">$base</code>
-   </span>
-   , <span class="methodparam">
+   </span>, <span class="methodparam">
     <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>
      <code class="parameter">$cb</code>
-   </span>
-   [, <span class="methodparam">
-    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+   </span>, <span class="methodparam">
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
      <code class="parameter">$arg</code>
-   </span>
-  ] )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
+   <span class="initializer"> = ?</span></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">Event</span> 
-   <span class="methodname"><a href="event.signal.html" class="methodname">signal</a></span>
-    ( <span class="methodparam">
+   <span class="methodname"><a href="event.signal.html" class="methodname">signal</a></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type"><a href="class.eventbase.html" class="type EventBase">EventBase</a></span>
      <code class="parameter">$base</code>
-   </span>
-   , <span class="methodparam">
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type">int</span>
      <code class="parameter">$signum</code>
-   </span>
-   , <span class="methodparam">
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>
      <code class="parameter">$cb</code>
-   </span>
-   [, <span class="methodparam">
-    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
      <code class="parameter">$arg</code>
-   </span>
-  ] )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span>
+   <span class="initializer"> = ?</span></span><br>): <span class="type"><a href="class.event.html" class="type Event">Event</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">Event</span> 
-   <span class="methodname"><a href="event.timer.html" class="methodname">timer</a></span>
-    ( <span class="methodparam">
+   <span class="methodname"><a href="event.timer.html" class="methodname">timer</a></span>(<span class="methodparam">
     <span class="type"><a href="class.eventbase.html" class="type EventBase">EventBase</a></span>
      <code class="parameter">$base</code>
-   </span>
-   , <span class="methodparam">
+   </span>, <span class="methodparam">
     <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>
      <code class="parameter">$cb</code>
-   </span>
-   [, <span class="methodparam">
-    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+   </span>, <span class="methodparam">
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
      <code class="parameter">$arg</code>
-   </span>
-  ] )</div>
+   <span class="initializer"> = ?</span></span>): <span class="type"><a href="class.event.html" class="type Event">Event</a></span></div>
 
    }</div>
 
@@ -311,7 +244,7 @@
 
     
      <dt id="event.props.pending">
-      <var class="varname"><var class="varname">pending</var></var>
+      <var class="varname">pending</var>
      </dt>
 
      <dd>
@@ -427,7 +360,7 @@
        timeout when event is
        <em class="emphasis">added</em>
        , or not. It is set in the
-       <em>$what</em>
+       <code class="literal">$what</code>
        argument to the callback function when a timeout has occurred.
       </p>
      </dd>
@@ -517,11 +450,6 @@
 
 
 <h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="event.add.html">Event::add</a> — Makes event pending</li><li><a href="event.addsignal.html">Event::addSignal</a> — Makes signal event pending</li><li><a href="event.addtimer.html">Event::addTimer</a> — Makes timer event pending</li><li><a href="event.construct.html">Event::__construct</a> — Constructs Event object</li><li><a href="event.del.html">Event::del</a> — Makes event non-pending</li><li><a href="event.delsignal.html">Event::delSignal</a> — Makes signal event non-pending</li><li><a href="event.deltimer.html">Event::delTimer</a> — Makes timer event non-pending</li><li><a href="event.free.html">Event::free</a> — Make event non-pending and free resources allocated for this
-  event.</li><li><a href="event.getsupportedmethods.html">Event::getSupportedMethods</a> — Returns array with of the names of the methods supported in this version of Libevent</li><li><a href="event.pending.html">Event::pending</a> — Detects whether event is pending or scheduled</li><li><a href="event.set.html">Event::set</a> — Re-configures event</li><li><a href="event.setpriority.html">Event::setPriority</a> — Set event priority</li><li><a href="event.settimer.html">Event::setTimer</a> — Re-configures timer event</li><li><a href="event.signal.html">Event::signal</a> — Constructs signal event object</li><li><a href="event.timer.html">Event::timer</a> — Constructs timer event object</li></ul>
+  event</li><li><a href="event.getsupportedmethods.html">Event::getSupportedMethods</a> — Returns array with of the names of the methods supported in this version of Libevent</li><li><a href="event.pending.html">Event::pending</a> — Detects whether event is pending or scheduled</li><li><a href="event.set.html">Event::set</a> — Re-configures event</li><li><a href="event.setpriority.html">Event::setPriority</a> — Set event priority</li><li><a href="event.settimer.html">Event::setTimer</a> — Re-configures timer event</li><li><a href="event.signal.html">Event::signal</a> — Constructs signal event object</li><li><a href="event.timer.html">Event::timer</a> — Constructs timer event object</li></ul>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="event.constructing.signal.events.html">Constructing signal events</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="event.add.html">Event::add</a></div>
- <div class="up"><a href="book.event.html">Event</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

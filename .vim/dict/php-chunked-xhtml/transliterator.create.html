@@ -3,18 +3,31 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Transliterator を作成する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="transliterator.construct.html">Transliterator::__construct</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="transliterator.createfromrules.html">Transliterator::createFromRules</a></div>
- <div class="up"><a href="class.transliterator.html">Transliterator</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="transliterator.create" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="transliterator.construct.html">« Transliterator::__construct</a></li>
+      <li style="float: right;"><a href="transliterator.createfromrules.html">Transliterator::createFromRules »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.transliterator.html">Transliterator</a></li>
+    <li>Transliterator を作成する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="transliterator.create" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">Transliterator::create</h1>
   <h1 class="refname">transliterator_create</h1>
-  <p class="verinfo">(PHP &gt;= 5.4.0, PECL intl &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">Transliterator::create</span> -- <span class="refname">transliterator_create</span> &mdash; <span class="dc-title">Transliterator を作成する</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.4.0, PHP 7, PHP 8, PECL intl &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">Transliterator::create</span> -- <span class="refname">transliterator_create</span> &mdash; <span class="dc-title">Transliterator を作成する</span></p>
 
  </div>
 
@@ -22,20 +35,13 @@
   <h3 class="title">説明</h3>
   <p class="para">オブジェクト指向型</p>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type"><a href="class.transliterator.html" class="type Transliterator">Transliterator</a></span> <span class="methodname"><strong>Transliterator::create</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$id</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$direction</code></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><strong>Transliterator::create</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$id</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$direction</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="class.transliterator.html" class="type Transliterator">Transliterator</a></span></div>
 
   <p class="para rdfs-comment">手続き型</p>
-  <div class="methodsynopsis dc-description">
-   <span class="type"><a href="class.transliterator.html" class="type Transliterator">Transliterator</a></span> <span class="methodname"><strong>transliterator_create</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$id</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$direction</code></span>
-  ] )</div>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>transliterator_create</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$id</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$direction</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="class.transliterator.html" class="type Transliterator">Transliterator</a></span></div>
 
   <p class="para rdfs-comment">
-   id を指定して Transliterator をオープンします。
+   ID を指定して Transliterator をオープンします。
   </p>
 
   <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は、
@@ -56,7 +62,9 @@
     <dd>
 
      <p class="para">
-      id。
+      ID を指定します。
+      全ての登録済みの transliterator ID は、
+      <span class="methodname"><a href="transliterator.listids.html" class="methodname">Transliterator::listIDs()</a></span> を使って取得できます。
      </p>
     </dd>
 
@@ -69,7 +77,7 @@
 
      <p class="para">
       方向。デフォルトは
-      <a href="class.transliterator.html#transliterator.constants.forward" class="link">&gt;Transliterator::FORWARD</a> です。
+      <a href="class.transliterator.html#transliterator.constants.forward" class="link">Transliterator::FORWARD</a> です。
       <a href="class.transliterator.html#transliterator.constants.reverse" class="link">Transliterator::REVERSE</a> も指定できます。
      </p>
     </dd>
@@ -84,7 +92,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    成功した場合に <a href="class.transliterator.html" class="classname">Transliterator</a> オブジェクト、失敗した場合に
-   <strong><code>NULL</code></strong> を返します。
+   <strong><code>null</code></strong> を返します。
   </p>
  </div>
 
@@ -100,9 +108,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="transliterator.construct.html">Transliterator::__construct</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="transliterator.createfromrules.html">Transliterator::createFromRules</a></div>
- <div class="up"><a href="class.transliterator.html">Transliterator</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

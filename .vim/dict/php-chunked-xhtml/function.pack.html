@@ -3,28 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>データをバイナリ文字列にパックする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.ignore-user-abort.html">ignore_user_abort</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.php-check-syntax.html">php_check_syntax</a></div>
- <div class="up"><a href="ref.misc.html">その他の関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.pack" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ignore-user-abort.html">« ignore_user_abort</a></li>
+      <li style="float: right;"><a href="function.php-strip-whitespace.html">php_strip_whitespace »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.misc.html">その他の関数</a></li>
+    <li>データをバイナリ文字列にパックする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.pack" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">pack</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">pack</span> &mdash; <span class="dc-title">データをバイナリ文字列にパックする</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">pack</span> &mdash; <span class="dc-title">データをバイナリ文字列にパックする</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.pack-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>pack</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
-   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$args</code></span>
-   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$...</code></span>
-  ]] )</div>
+   <span class="methodname"><strong>pack</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">...$values</code></span>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
    指定された引数を <code class="parameter">format</code> に基づいて
@@ -58,7 +67,7 @@
        フォーマット文字列は、
        フォーマットコードの後にオプションの反復指定用引数が続く形式と
        なっています。反復指定用引数として整数値、または入力データの最後まで
-       反復を意味する <em>*</em> のどちらかを指定することができます。
+       反復を意味する <code class="literal">*</code> のどちらかを指定することができます。
        a, A, h, H の場合、
        反復数はそのデータ引数が取得する文字の数を指定します。反復数が @ の場合、
        次のデータを置く場所の絶対位置を表します。その他の場合、反復数は
@@ -177,8 +186,28 @@
           </tr>
 
           <tr>
+           <td>g</td>
+           <td>float (サイズはマシン依存。 リトルエンディアンバイトオーダー)</td>
+          </tr>
+
+          <tr>
+           <td>G</td>
+           <td>float (サイズはマシン依存。 ビッグエンディアンバイトオーダー)</td>
+          </tr>
+
+          <tr>
            <td>d</td>
            <td>double (サイズおよび表現はマシン依存)</td>
+          </tr>
+
+          <tr>
+           <td>e</td>
+           <td>double (サイズはマシン依存。 リトルエンディアンバイトオーダー)</td>
+          </tr>
+
+          <tr>
+           <td>E</td>
+           <td>double (サイズはマシン依存。 ビッグエンディアンバイトオーダー)</td>
           </tr>
 
           <tr>
@@ -193,7 +222,7 @@
 
           <tr>
            <td>Z</td>
-           <td>NUL 埋め文字列 (PHP 5.5 以降)</td>
+           <td>NUL 埋め文字列</td>
           </tr>
 
           <tr>
@@ -211,7 +240,7 @@
     
     
      <dt>
-<code class="parameter">args</code></dt>
+<code class="parameter">values</code></dt>
 
      <dd>
 
@@ -229,7 +258,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.pack-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   バイナリ文字列を含むデータを返します。
+   バイナリ文字列を含むデータを返します。失敗した場合に <strong><code>false</code></strong> を返します
   </p>
  </div>
 
@@ -249,16 +278,23 @@
 
      <tbody class="tbody">
       <tr>
-       <td>5.6.3</td>
+       <td>8.0.0</td>
        <td>
-        &quot;q&quot;、&quot;Q&quot;、&quot;J&quot;、&quot;P&quot; が追加され、64ビットの数値が使えるようになりました。
+        この関数は、失敗時に <strong><code>false</code></strong> を返さなくなりました。
        </td>
       </tr>
 
       <tr>
-       <td>5.5.0</td>
+       <td>7.2.0</td>
        <td>
-        &quot;Z&quot; が追加されました。Perl の &quot;a&quot; と互換性のある機能です。
+        <span class="type">float</span> と <span class="type">double</span> 型は、ビッグエンディアンとリトルエンディアンを両方サポートしました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.0.15,7.1.1</td>
+       <td>
+        &quot;e&quot;, &quot;E&quot;, &quot;g&quot; および &quot;G&quot; コードが、float と double のバイトオーダーをサポートするために追加されました。
        </td>
       </tr>
 
@@ -273,7 +309,7 @@
  <div class="refsect1 examples" id="refsect1-function.pack-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4360">
+   <div class="example" id="example-3487">
     <p><strong>例1 <span class="function"><strong>pack()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -295,28 +331,28 @@
   <h3 class="title">注意</h3>
   <div class="caution"><strong class="caution">警告</strong>
    <p class="para">
-    PHP は、<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 型の値を内部的に格納する際に
-    サイズがマシン依存の符号付き値 (C の <em>long</em> 型)
-    を使うことに注意しましょう。<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
-    型の範囲外の数値となる整数リテラルや演算結果は <span class="type"><a href="language.types.float.html" class="type float">float</a></span>
+    PHP は、<span class="type">int</span> 型の値を内部的に格納する際に
+    サイズがマシン依存の符号付き値 (C の <code class="literal">long</code> 型)
+    を使うことに注意しましょう。<span class="type">int</span>
+    型の範囲外の数値となる整数リテラルや演算結果は <span class="type">float</span>
     として保持されます。この float 値を integer としてパックする際には
     まず最初に integer 型へのキャストを行います。
     その結果、できあがるバイトパターンは期待通りにはならないかもしれません。
    </p>
    <p class="para">
-    この問題にもっとも関連するのが、符号なしの数値で <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    この問題にもっとも関連するのが、符号なしの数値で <span class="type">int</span>
     型で表現できるものをパックする場合です。
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 型のサイズが 32 ビットであるシステムでのキャスト結果は、
+    <span class="type">int</span> 型のサイズが 32 ビットであるシステムでのキャスト結果は、
     (実装で定義されている標準 C の符号なし型から符号付き型への変換に依存しますが)
-    まるで <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> が符号なし整数であるかのような同一のバイトパターンになることがよくあります。
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 型のサイズが 64 ビットであるシステムでは、
-    たいていの場合は <span class="type"><a href="language.types.float.html" class="type float">float</a></span> の仮数部のサイズが足りず、
+    まるで <span class="type">int</span> が符号なし整数であるかのような同一のバイトパターンになることがよくあります。
+    <span class="type">int</span> 型のサイズが 64 ビットであるシステムでは、
+    たいていの場合は <span class="type">float</span> の仮数部のサイズが足りず、
     値の精度を損なわずに保持することができません。
-    ネイティブの 64 ビット C <em>int</em> 型を持つシステム
+    ネイティブの 64 ビット C <code class="literal">int</code> 型を持つシステム
     (UNIX 系システムのほとんどは持っていません) では、上側の範囲の値で
-    パック書式 <em>I</em> を使うための唯一の方法は、
+    パック書式 <code class="literal">I</code> を使うための唯一の方法は、
     希望する符号なし値と同じバイト表現になるような負の
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 値を作ることになります。
+    <span class="type">int</span> 値を作ることになります。
    </p>
   </div>
  </div>
@@ -332,9 +368,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.ignore-user-abort.html">ignore_user_abort</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.php-check-syntax.html">php_check_syntax</a></div>
- <div class="up"><a href="ref.misc.html">その他の関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

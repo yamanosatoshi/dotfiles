@@ -3,18 +3,31 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>include</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.require.html">require</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.require-once.html">require_once</a></div>
- <div class="up"><a href="language.control-structures.html">制御構造</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.include" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.require.html">« require</a></li>
+      <li style="float: right;"><a href="function.require-once.html">require_once »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">制御構造</a></li>
+    <li>include</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.include" class="sect1">
  <h2 class="title">include</h2>
- <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p>
  <p class="simpara">
-  <em>include</em> 文は指定されたファイルを読み込み、評価します。
+  <code class="literal">include</code> 式は指定されたファイルを読み込み、評価します。
  </p>
  <p class="simpara">
   以下の記述内容は <span class="function"><a href="function.require.html" class="function">require</a></span> にも当てはまります。
@@ -23,23 +36,29 @@
   ファイルのインクルードは、指定されたパスから行います。パスを指定しない場合は、
   <a href="ini.core.html#ini.include-path" class="link">include_path</a> の設定を利用します。
   ファイルが <a href="ini.core.html#ini.include-path" class="link">include_path</a>
-  に見つからないときは、<em>include</em>
+  に見つからないときは、<code class="literal">include</code>
   は呼び出し元スクリプトのディレクトリと現在の作業ディレクトリも探します。
-  <em>include</em> は、ファイルを見つけられない場合に
-  <a href="" class="link">warning</a>
+  <code class="literal">include</code> は、ファイルを見つけられない場合に
+  <strong><code>E_WARNING</code></strong>
   を発行します。一方 <span class="function"><a href="function.require.html" class="function">require</a></span> の場合は、同じ場合に
-  <a href="" class="link">fatal error</a>
+  <strong><code>E_ERROR</code></strong>
   を発行する点が異なります。
+ </p>
+ <p class="simpara">
+  <code class="literal">include</code> と <code class="literal">require</code> は、
+  ファイルがアクセスできない場合、
+  最終的に <strong><code>E_WARNING</code></strong> や <strong><code>E_ERROR</code></strong> を発生させる前に、
+  追加の <strong><code>E_WARNING</code></strong> を発生させることに注意して下さい。
  </p>
  <p class="simpara">
   パスを指定した場合 —
   絶対パス (Windows ならドライブレターあるいは
-  <em>\</em> で始まるパス、Unix/Linux 系なら <em>/</em>
+  <code class="literal">\</code> で始まるパス、Unix/Linux 系なら <code class="literal">/</code>
   で始まるパス) あるいはカレントディレクトリからの相対パス
-  (<em>.</em> あるいは <em>..</em> で始まるパス) のどちらでも
+  (<code class="literal">.</code> あるいは <code class="literal">..</code> で始まるパス) のどちらでも
   — は
   <a href="ini.core.html#ini.include-path" class="link">include_path</a> は無視されます。たとえば
-  <em>../</em> ではじまるファイル名を指定した場合は、
+  <code class="literal">../</code> ではじまるファイル名を指定した場合は、
   親ディレクトリからそのファイルを探します。
  </p>
  <p class="simpara">
@@ -55,8 +74,8 @@
   グローバルスコープとなります。
  </p>
  <p class="para">
-  <div class="example" id="example-160">
-   <p><strong>例1 基本的な <em>include</em> の例</strong></p>
+  <div class="example" id="example-119">
+   <p><strong>例1 基本的な <code class="literal">include</code> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 vars.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$color&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'green'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fruit&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;<br /></span><br />test.php<br /><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"A&nbsp;</span><span style="color: #0000BB">$color</span><span style="color: #DD0000">&nbsp;</span><span style="color: #0000BB">$fruit</span><span style="color: #DD0000">"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;A<br /><br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'vars.php'</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"A&nbsp;</span><span style="color: #0000BB">$color</span><span style="color: #DD0000">&nbsp;</span><span style="color: #0000BB">$fruit</span><span style="color: #DD0000">"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;A&nbsp;green&nbsp;apple<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -75,7 +94,7 @@ vars.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$color&nbsp;</spa
   は例外で、これは読み込みを行う前にパーサが評価します。
  </p>
  <p class="para">
-  <div class="example" id="example-161">
+  <div class="example" id="example-120">
    <p><strong>例2 関数内での読み込み</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -104,11 +123,11 @@ vars.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$color&nbsp;</spa
   スクリプトに読み込まれる、というだけのことです。
  </p>
  <p class="para">
-  <div class="example" id="example-162">
-   <p><strong>例3 HTTP経由の <em>include</em></strong></p>
+  <div class="example" id="example-121">
+   <p><strong>例3 HTTP経由の <code class="literal">include</code></strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;この例は&nbsp;www.example.com&nbsp;が.phpはPHPスクリプトとして扱い、.txtは通常の&nbsp;*<br />&nbsp;*&nbsp;ファイルとして扱うように設定されていると仮定しています。また、ここでの&nbsp;*<br />&nbsp;*&nbsp;'動作します'という言葉の意味は、変数$fooと$barが読み込まれる側のファイ&nbsp;*<br />&nbsp;*&nbsp;ルで使用可能である、ということです。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br /><br />//&nbsp;動作しません:&nbsp;www.example.com&nbsp;では&nbsp;file.txt&nbsp;はPHPコードとして解釈されません。<br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'http://www.example.com/file.txt?foo=1&amp;bar=2'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;動作しません:&nbsp;'file.php?foo=1&amp;bar=2'&nbsp;という名前のファイルをローカルファイル<br />//&nbsp;システム上から探し出そうとします。<br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'file.php?foo=1&amp;bar=2'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;動作します。<br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'http://www.example.com/file.php?foo=1&amp;bar=2'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />include&nbsp;</span><span style="color: #DD0000">'file.txt'</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;動作する<br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'file.php'</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;動作する<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;この例は&nbsp;www.example.com&nbsp;が.phpはPHPスクリプトとして扱い、.txtは通常の&nbsp;*<br />&nbsp;*&nbsp;ファイルとして扱うように設定されていると仮定しています。また、ここでの&nbsp;*<br />&nbsp;*&nbsp;'動作します'という言葉の意味は、変数$fooと$barが読み込まれる側のファイ&nbsp;*<br />&nbsp;*&nbsp;ルで使用可能である、ということです。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br /><br />//&nbsp;動作しません:&nbsp;www.example.com&nbsp;では&nbsp;file.txt&nbsp;はPHPコードとして解釈されません。<br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'http://www.example.com/file.txt?foo=1&amp;bar=2'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;動作しません:&nbsp;'file.php?foo=1&amp;bar=2'&nbsp;という名前のファイルをローカルファイル<br />//&nbsp;システム上から探し出そうとします。<br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'file.php?foo=1&amp;bar=2'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;動作します。<br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'http://www.example.com/file.php?foo=1&amp;bar=2'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
    </div>
@@ -132,10 +151,10 @@ vars.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$color&nbsp;</spa
   <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>, <span class="function"><a href="function.file.html" class="function">file()</a></span>も参照してください。
  </p>
  <p class="simpara">
-  値の返し方: <em>include</em> に失敗したときには
-  <em>FALSE</em> を返し、警告を発生させます。
+  値の返し方: <code class="literal">include</code> に失敗したときには
+  <code class="literal">FALSE</code> を返し、警告を発生させます。
   成功した場合の返り値は、インクルードしたファイル側で変更していない限りは
-  <em>1</em> です。
+  <code class="literal">1</code> です。
   インクルードしたファイルの中で <span class="function"><a href="function.return.html" class="function">return</a></span> を実行すれば、
   そのファイルの処理をそこで止めて呼び出し元に処理を戻せます。
   読み込まれたファイルから値を返すことも可能です。
@@ -148,14 +167,14 @@ vars.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$color&nbsp;</spa
   ファイルが読み込まれた位置で使用可能となります。
  </p>
  <p class="para">
-  <em>include</em> は特別な言語構造であるため、
+  <code class="literal">include</code> は特別な言語構造であるため、
   引数の前後に括弧は不要です。
   返り値を比較する際には注意してください。
-  <div class="example" id="example-163">
+  <div class="example" id="example-122">
    <p><strong>例4 インクルードの戻り値を比較する</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;won't&nbsp;work,&nbsp;evaluated&nbsp;as&nbsp;include(('vars.php')&nbsp;==&nbsp;TRUE),&nbsp;i.e.&nbsp;include('')<br /></span><span style="color: #007700">if&nbsp;(include(</span><span style="color: #DD0000">'vars.php'</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'OK'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;works<br /></span><span style="color: #007700">if&nbsp;((include&nbsp;</span><span style="color: #DD0000">'vars.php'</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'OK'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;動作しません。include(('vars.php')&nbsp;==&nbsp;TRUE)&nbsp;つまり、include('1')&nbsp;と評価されます<br /></span><span style="color: #007700">if&nbsp;(include(</span><span style="color: #DD0000">'vars.php'</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'OK'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;動作します。<br /></span><span style="color: #007700">if&nbsp;((include&nbsp;</span><span style="color: #DD0000">'vars.php'</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'OK'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
    </div>
@@ -163,8 +182,8 @@ vars.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$color&nbsp;</spa
   </div>
  </p>
  <p class="para">
-  <div class="example" id="example-164">
-   <p><strong>例5 <em>include</em> と <span class="function"><a href="function.return.html" class="function">return</a></span> 文</strong></p>
+  <div class="example" id="example-123">
+   <p><strong>例5 <code class="literal">include</code> と <span class="function"><a href="function.return.html" class="function">return</a></span> 文</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 return.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'PHP'</span><span style="color: #007700">;<br /><br />return&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;<br /></span><br />noreturn.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'PHP'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;<br /></span><br />testreturns.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;include&nbsp;</span><span style="color: #DD0000">'return.php'</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;'PHP'と出力されます<br /><br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;include&nbsp;</span><span style="color: #DD0000">'noreturn.php'</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;1が出力されます<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -175,20 +194,18 @@ return.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$var&nbsp;</spa
   </div>
  </p>
  <p class="simpara">
-  読み込みが成功すると<em>$bar</em>の値は1となります。上の2つの例の違いに
+  読み込みが成功すると<code class="literal">$bar</code>の値は1となります。上の2つの例の違いに
   注目してください。最初の例では読み込まれるファイル側で <span class="function"><a href="function.return.html" class="function">return</a></span>
   を使用し、もう一方では使用していません。
-  ファイルが読み込めなかった場合、<strong><code>FALSE</code></strong> が返され、
+  ファイルが読み込めなかった場合、<strong><code>false</code></strong> が返され、
   <strong><code>E_WARNING</code></strong> が発生します。
  </p>
  <p class="para">
   読み込まれるファイルで定義された関数がある場合、
   これらは、<span class="function"><a href="function.return.html" class="function">return</a></span> の前後によらず
   メインファイルで使用できます。
-  このファイルが二度読み込まれた場合、PHP 5は関数が定義済みであるため
-  致命的なエラーを発生します。一方、PHP 4は
-  <span class="function"><a href="function.return.html" class="function">return</a></span> の後に定義された関数については、
-  エラーを発生しません。
+  このファイルが二度読み込まれた場合、関数が定義済みであるため
+  致命的なエラーが発生します。
   ファイルが読み込み済みであるかどうかを調べ、
   読み込まれるファイルの内容を条件分岐で返すかわりに
   <span class="function"><a href="function.include-once.html" class="function">include_once</a></span> を使用することを推奨します。
@@ -196,11 +213,11 @@ return.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$var&nbsp;</spa
  <p class="simpara">
   PHP ファイルの内容を変数に &quot;include する&quot; もうひとつの方法は、
   <a href="ref.outcontrol.html" class="link">出力制御関数</a>
-  を <em>include</em> とともに用いて
+  を <code class="literal">include</code> とともに用いて
   出力をキャプチャすることです。たとえば、
  </p>
  <p class="para">
-  <div class="example" id="example-165">
+  <div class="example" id="example-124">
    <p><strong>例6 出力バッファリングを用い、 PHP ファイルの内容を文字列として読み込む</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -228,9 +245,4 @@ return.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$var&nbsp;</spa
   <span class="function"><a href="function.readfile.html" class="function">readfile()</a></span>, <span class="function"><a href="function.virtual.html" class="function">virtual()</a></span> および
   <a href="ini.core.html#ini.include-path" class="link">include_path</a> も参照ください。
  </p>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.require.html">require</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.require-once.html">require_once</a></div>
- <div class="up"><a href="language.control-structures.html">制御構造</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

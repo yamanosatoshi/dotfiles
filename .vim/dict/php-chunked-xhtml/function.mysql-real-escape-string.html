@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>SQL 文中で用いる文字列の特殊文字をエスケープする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-query.html">mysql_query</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mysql-result.html">mysql_result</a></div>
- <div class="up"><a href="ref.mysql.html">MySQL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.mysql-real-escape-string" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mysql-query.html">« mysql_query</a></li>
+      <li style="float: right;"><a href="function.mysql-result.html">mysql_result »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mysql.html">MySQL 関数</a></li>
+    <li>SQL 文中で用いる文字列の特殊文字をエスケープする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mysql-real-escape-string" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mysql_real_escape_string</h1>
   <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_real_escape_string</span> &mdash; <span class="dc-title">SQL 文中で用いる文字列の特殊文字をエスケープする</span></p>
@@ -23,8 +36,7 @@
 この拡張モジュールは PHP 5.5.0 で非推奨になり、PHP 7.0.0 で削除されました。
 <a href="book.mysqli.html" class="link">MySQLi</a> あるいは
 <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a> を使うべきです。詳細な情報は
-<a href="mysqlinfo.api.choosing.html" class="link">MySQL: API の選択</a> や
-<a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
+<a href="mysqlinfo.api.choosing.html" class="link">MySQL: API の選択</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
     <li class="member"><span class="function"><a href="mysqli.real-escape-string.html" class="function">mysqli_real_escape_string()</a></span></li>
@@ -36,10 +48,7 @@
  <div class="refsect1 description" id="refsect1-function.mysql-real-escape-string-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>mysql_real_escape_string</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$unescaped_string</code></span>
-   [, <span class="methodparam"><span class="type">resource</span> <code class="parameter">$link_identifier</code><span class="initializer"> = NULL</span></span>
-  ] )</div>
+   <span class="methodname"><strong>mysql_real_escape_string</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$unescaped_string</code></span>, <span class="methodparam"><span class="type">resource</span> <code class="parameter">$link_identifier</code><span class="initializer"> = NULL</span></span>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
    現在の接続の文字セットで <code class="parameter">unescaped_string</code>
@@ -51,9 +60,9 @@
    <span class="function"><strong>mysql_real_escape_string()</strong></span> は、MySQL のライブラリ関数
    mysql_real_escape_string をコールしています。
    これは以下の文字について先頭にバックスラッシュを付加します。
-   <em>\x00</em>, <em>\n</em>,
-   <em>\r</em>, <em>\</em>, <em>&#039;</em>,
-   <em>&quot;</em> そして <em>\x1a</em>.
+   <code class="literal">\x00</code>, <code class="literal">\n</code>,
+   <code class="literal">\r</code>, <code class="literal">\</code>, <code class="literal">&#039;</code>,
+   <code class="literal">&quot;</code> そして <code class="literal">\x1a</code>.
   </p>
   <p class="para">
    データの安全性を確保するため、MySQL へクエリを送信する場合には
@@ -113,7 +122,7 @@ link_identifier</code></dt>
  <div class="refsect1 returnvalues" id="refsect1-function.mysql-real-escape-string-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合にエスケープ後の文字列、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合にエスケープ後の文字列、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -131,7 +140,7 @@ link_identifier</code></dt>
  <div class="refsect1 examples" id="refsect1-function.mysql-real-escape-string-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1983">
+   <div class="example" id="example-1734">
     <p><strong>例1 単純な <span class="function"><strong>mysql_real_escape_string()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -143,7 +152,7 @@ link_identifier</code></dt>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-1984">
+   <div class="example" id="example-1735">
     <p><strong>例2 <span class="function"><strong>mysql_real_escape_string()</strong></span> には接続が必須であることを示す例</strong></p>
     <div class="example-contents"><p>
      この例では、MySQL 接続が存在しない状態でこの関数を実行したときにどうなるかを示します。
@@ -169,7 +178,7 @@ string(41) &quot;SELECT * FROM actors WHERE last_name = &#039;&#039;&quot;
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-1985">
+   <div class="example" id="example-1736">
     <p><strong>例3 SQL インジェクション攻撃の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -200,7 +209,7 @@ SELECT * FROM users WHERE user=&#039;aidan&#039; AND password=&#039;&#039; OR &#
    <p class="para">
     <span class="function"><strong>mysql_real_escape_string()</strong></span> を利用する前に、MySQL
     接続が確立されている必要があります。もし存在しなければ、
-    <strong><code>E_WARNING</code></strong> レベルのエラーが生成され、<strong><code>FALSE</code></strong>
+    <strong><code>E_WARNING</code></strong> レベルのエラーが生成され、<strong><code>false</code></strong>
     が返されます。<code class="parameter">link_identifier</code> が指定されなかった場合は、
     直近の MySQL 接続が用いられます。
    </p>
@@ -223,9 +232,9 @@ SELECT * FROM users WHERE user=&#039;aidan&#039; AND password=&#039;&#039; OR &#
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <span class="simpara">
     <span class="function"><strong>mysql_real_escape_string()</strong></span> は
-    <em>%</em> や <em>_</em> をエスケープしません。
-    MySQL では、これらの文字を <em>LIKE</em>, <em>GRANT</em>,
-    または <em>REVOKE</em> とともに用いることで、
+    <code class="literal">%</code> や <code class="literal">_</code> をエスケープしません。
+    MySQL では、これらの文字を <code class="literal">LIKE</code>, <code class="literal">GRANT</code>,
+    または <code class="literal">REVOKE</code> とともに用いることで、
     ワイルドカードを表現します。
    </span>
   </p></blockquote>
@@ -246,9 +255,4 @@ SELECT * FROM users WHERE user=&#039;aidan&#039; AND password=&#039;&#039; OR &#
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-query.html">mysql_query</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mysql-result.html">mysql_result</a></div>
- <div class="up"><a href="ref.mysql.html">MySQL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

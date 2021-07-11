@@ -665,7 +665,9 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 "}}}
 
 " {{{ ref.vim
-let $PATH = $PATH . ';C:\Program Files (x86)\Lynx for Win32'
+if has('win16') || has('win32')
+    let $PATH = $PATH . ';C:\Program Files (x86)\Lynx for Win32'
+endif
 nmap ,ra :<C-u>Ref alc<Space>
 let g:ref_alc_start_linenumber = 39 " 表示する行数
 nmap ,rp :<C-u>Ref phpmanual<Space>

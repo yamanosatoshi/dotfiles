@@ -2,33 +2,42 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Calculates the fingerprint, or digest, of a given X.509 certificate</title>
+  <title>与えられた X.509 証明書のフィンガープリントあるいはダイジェストを計算する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.openssl-x509-export.html">openssl_x509_export</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.openssl-x509-free.html">openssl_x509_free</a></div>
- <div class="up"><a href="ref.openssl.html">OpenSSL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.openssl-x509-fingerprint" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.openssl-x509-export.html">« openssl_x509_export</a></li>
+      <li style="float: right;"><a href="function.openssl-x509-free.html">openssl_x509_free »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.openssl.html">OpenSSL 関数</a></li>
+    <li>与えられた X.509 証明書のフィンガープリントあるいはダイジェストを計算する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.openssl-x509-fingerprint" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">openssl_x509_fingerprint</h1>
-  <p class="verinfo">(PHP 5.6, PHP 7)</p><p class="refpurpose"><span class="refname">openssl_x509_fingerprint</span> &mdash; <span class="dc-title">Calculates the fingerprint, or digest, of a given X.509 certificate</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.6.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">openssl_x509_fingerprint</span> &mdash; <span class="dc-title">与えられた X.509 証明書のフィンガープリントあるいはダイジェストを計算する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.openssl-x509-fingerprint-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>openssl_x509_fingerprint</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$x509</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$hash_algorithm</code><span class="initializer"> = &quot;sha1&quot;</span></span>
-   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$raw_output</code><span class="initializer"> = <strong><code>FALSE</code></strong></span></span>
-  ]] )</div>
+   <span class="methodname"><strong>openssl_x509_fingerprint</strong></span>(<span class="methodparam"><span class="type"><span class="type"><a href="class.opensslcertificate.html" class="type OpenSSLCertificate">OpenSSLCertificate</a></span>|<span class="type">string</span></span> <code class="parameter">$certificate</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$digest_algo</code><span class="initializer"> = &quot;sha1&quot;</span></span>, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$binary</code><span class="initializer"> = <strong><code>false</code></strong></span></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
-   <span class="function"><strong>openssl_x509_fingerprint()</strong></span> returns the digest of
-   <code class="parameter">x509</code> as a string.
+   <span class="function"><strong>openssl_x509_fingerprint()</strong></span> は
+   <code class="parameter">certificate</code> のダイジェストを文字列で返します。
   </p>
  </div>
 
@@ -45,32 +54,32 @@
  <dd>
 
   <p class="para">
-   使用できる値の一覧は
-   <a href="openssl.certparams.html" class="link">キー/証明書パラメータ</a> を参照ください。
+   使用できる値の一覧は <a href="openssl.certparams.html" class="link">キー/証明書パラメータ</a> を参照ください。
   </p>
  </dd>
 
 
     
      <dt>
-<code class="parameter">hash_algorithm</code></dt>
+<code class="parameter">digest_algo</code></dt>
 
      <dd>
 
       <p class="para">
-       The hash algorithm to use, e.g. &quot;md5&quot; or &quot;sha1&quot;
+       &quot;sha256&quot; といったダイジェストメソッド、またはハッシュアルゴリズム。
+       有効な値の一覧は、<span class="function"><a href="function.openssl-get-md-methods.html" class="function">openssl_get_md_methods()</a></span> で得られます。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">raw_output</code></dt>
+<code class="parameter">binary</code></dt>
 
      <dd>
 
       <p class="para">
-      When set to <strong><code>TRUE</code></strong>, outputs raw binary data. <strong><code>FALSE</code></strong> outputs lowercase hexits.
+      <strong><code>true</code></strong> が設定された場合、生のバイナリデータを出力します。<strong><code>false</code></strong> では小文字の8進数を出力します。
       </p>
      </dd>
 
@@ -84,17 +93,42 @@
  <div class="refsect1 returnvalues" id="refsect1-function.openssl-x509-fingerprint-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-    Returns a string containing the calculated certificate fingerprint as lowercase hexits unless <code class="parameter">raw_output</code> is set to <strong><code>TRUE</code></strong> in which case the raw binary representation of the message digest is returned.
+   <code class="parameter">binary</code> が <strong><code>true</code></strong> に設定されていない場合、小文字の8進数として計算された証明書のフィンガープリントを含む文字列を返します。
+   <code class="parameter">binary</code> が <strong><code>true</code></strong> に設定されている場合、メッセージダイジェストの生のバイナリ表現が返されます。
   </p>
   <p class="para">
-    Returns <strong><code>FALSE</code></strong> on failure.
+    失敗したときは <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.openssl-x509-export.html">openssl_x509_export</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.openssl-x509-free.html">openssl_x509_free</a></div>
- <div class="up"><a href="ref.openssl.html">OpenSSL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ <div class="refsect1 changelog" id="refsect1-function.openssl-x509-fingerprint-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">certificate</code> は、
+       <a href="class.opensslcertificate.html" class="classname">OpenSSLCertificate</a> クラスのインスタンスを受け入れるようになりました。
+       これより前のバージョンでは、
+       <code class="literal">OpenSSL X.509</code> 型のリソースを受け入れていました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+</div></div></div></body></html>

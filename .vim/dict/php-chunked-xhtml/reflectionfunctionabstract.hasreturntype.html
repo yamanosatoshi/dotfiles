@@ -2,30 +2,41 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Checks if the function has a specified return type</title>
+  <title>関数が戻り値の型を指定しているかを調べる</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="reflectionfunctionabstract.getstaticvariables.html">ReflectionFunctionAbstract::getStaticVariables</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="reflectionfunctionabstract.innamespace.html">ReflectionFunctionAbstract::inNamespace</a></div>
- <div class="up"><a href="class.reflectionfunctionabstract.html">ReflectionFunctionAbstract</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="reflectionfunctionabstract.hasreturntype" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="reflectionfunctionabstract.getstaticvariables.html">« ReflectionFunctionAbstract::getStaticVariables</a></li>
+      <li style="float: right;"><a href="reflectionfunctionabstract.innamespace.html">ReflectionFunctionAbstract::inNamespace »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.reflectionfunctionabstract.html">ReflectionFunctionAbstract</a></li>
+    <li>関数が戻り値の型を指定しているかを調べる</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="reflectionfunctionabstract.hasreturntype" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">ReflectionFunctionAbstract::hasReturnType</h1>
-  <p class="verinfo">(PHP 7)</p><p class="refpurpose"><span class="refname">ReflectionFunctionAbstract::hasReturnType</span> &mdash; <span class="dc-title">Checks if the function has a specified return type</span></p>
+  <p class="verinfo">(PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ReflectionFunctionAbstract::hasReturnType</span> &mdash; <span class="dc-title">関数が戻り値の型を指定しているかを調べる</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-reflectionfunctionabstract.hasreturntype-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><strong>ReflectionFunctionAbstract::hasReturnType</strong></span>
-    ( <span class="methodparam">void</span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>ReflectionFunctionAbstract::hasReturnType</strong></span>(): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
-   Checks whether the reflected function has a return type specified.
+   リフレクションされた関数が、戻り値の型を指定しているかを調べます
   </p>
  </div>
 
@@ -39,7 +50,8 @@
  <div class="refsect1 returnvalues" id="refsect1-reflectionfunctionabstract.hasreturntype-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   Returns <strong><code>TRUE</code></strong> if the function is a specified return type, otherwise <strong><code>FALSE</code></strong>.
+   関数が戻り値の型を指定しているなら <strong><code>true</code></strong> を返します。
+   指定していないなら <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -47,8 +59,8 @@
  <div class="refsect1 examples" id="refsect1-reflectionfunctionabstract.hasreturntype-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-6063">
-    <p><strong>例1 <span class="methodname"><strong>ReflectionFunctionAbstract::hasReturnType()</strong></span> example</strong></p>
+   <div class="example" id="example-5121">
+    <p><strong>例1 <span class="methodname"><strong>ReflectionFunctionAbstract::hasReturnType()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">to_int</span><span style="color: #007700">(</span><span style="color: #0000BB">$param</span><span style="color: #007700">)&nbsp;:&nbsp;</span><span style="color: #0000BB">int&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(int)&nbsp;</span><span style="color: #0000BB">$param</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$reflection1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ReflectionFunction</span><span style="color: #007700">(</span><span style="color: #DD0000">'to_int'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$reflection1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasReturnType</span><span style="color: #007700">());</span>
@@ -64,8 +76,8 @@ bool(true)
     </div>
    </div>
 
-   <div class="example" id="example-6064">
-    <p><strong>例2 Usage on built-in functions</strong></p>
+   <div class="example" id="example-5122">
+    <p><strong>例2 ビルトイン関数で使う</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$reflection2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ReflectionFunction</span><span style="color: #007700">(</span><span style="color: #DD0000">'array_merge'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$reflection2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasReturnType</span><span style="color: #007700">());</span>
@@ -82,9 +94,8 @@ bool(false)
    </div>
   </p>
   <p class="para">
-   This is because many internal functions do not have types specified for their
-   parameters or return values. It is therefore best to avoid using this
-   method on built-in functions.
+   こうなるのは、たくさんの内部関数が引数や返り値に型を指定していないからです。
+   よって、このメソッドはビルトイン関数に使わないのが最適です。
   </p>
  </div>
 
@@ -93,15 +104,10 @@ bool(false)
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><span class="methodname"><a href="reflectionfunctionabstract.getreturntype.html" class="methodname" rel="rdfs-seeAlso">ReflectionFunctionAbstract::getReturnType()</a> - Gets the specified return type of a function</span></li>
+    <li class="member"><span class="methodname"><a href="reflectionfunctionabstract.getreturntype.html" class="methodname" rel="rdfs-seeAlso">ReflectionFunctionAbstract::getReturnType()</a> - 指定された関数の戻り値の型を取得する</span></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="reflectionfunctionabstract.getstaticvariables.html">ReflectionFunctionAbstract::getStaticVariables</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="reflectionfunctionabstract.innamespace.html">ReflectionFunctionAbstract::inNamespace</a></div>
- <div class="up"><a href="class.reflectionfunctionabstract.html">ReflectionFunctionAbstract</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

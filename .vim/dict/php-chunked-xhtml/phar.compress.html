@@ -3,31 +3,41 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Phar アーカイブ全体を Gzip あるいは Bzip2 で圧縮する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="phar.canwrite.html">Phar::canWrite</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="phar.compressallfilesbzip2.html">Phar::compressAllFilesBZIP2</a></div>
- <div class="up"><a href="class.phar.html">Phar</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="phar.compress" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phar.canwrite.html">« Phar::canWrite</a></li>
+      <li style="float: right;"><a href="phar.compressfiles.html">Phar::compressFiles »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.phar.html">Phar</a></li>
+    <li>Phar アーカイブ全体を Gzip あるいは Bzip2 で圧縮する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phar.compress" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">Phar::compress</h1>
-  <p class="verinfo">(PHP &gt;= 5.3.0, PECL phar &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">Phar::compress</span> &mdash; <span class="dc-title">Phar アーカイブ全体を Gzip あるいは Bzip2 で圧縮する</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL phar &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">Phar::compress</span> &mdash; <span class="dc-title">Phar アーカイブ全体を Gzip あるいは Bzip2 で圧縮する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-phar.compress-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">object</span> <span class="methodname"><strong>Phar::compress</strong></span>
-    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$compression</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$extension</code></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>Phar::compress</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$compression</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$extension</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="class.phar.html" class="type Phar">Phar</a></span></div>
 
  <blockquote class="note"><p><strong class="note">注意</strong>: <p class="para">
-このメソッドは、<var class="filename">php.ini</var> の <em>phar.readonly</em>
-が <em>0</em> でないと <a href="class.phar.html" class="classname">Phar</a>
+このメソッドは、<var class="filename">php.ini</var> の <code class="literal">phar.readonly</code>
+が <code class="literal">0</code> でないと <a href="class.phar.html" class="classname">Phar</a>
 オブジェクトで動作しません。それ以外の場合は
 <a href="class.pharexception.html" class="classname">PharException</a> がスローされます。</p></p></blockquote>
 
@@ -48,8 +58,8 @@
   </p>
   <p class="para">
    さらに、このメソッドは自動的にアーカイブの名前を変更し、
-   <em>.gz</em> あるいは <em>.bz2</em>
-   を追加します。<em>Phar::NONE</em>
+   <code class="literal">.gz</code> あるいは <code class="literal">.bz2</code>
+   を追加します。<code class="literal">Phar::NONE</code>
    を渡して圧縮を解除した場合は拡張子も削除します。
    もうひとつの方法として、ファイルの拡張子を 2 番目のパラメータで指定することもできます。
   </p>
@@ -68,9 +78,9 @@
      <dd>
 
       <p class="para">
-       圧縮を行う場合には <em>Phar::GZ</em> あるいは
-       <em>Phar::BZ2</em>、圧縮を解除する場合には
-       <em>Phar::NONE</em> を指定します。
+       圧縮を行う場合には <code class="literal">Phar::GZ</code> あるいは
+       <code class="literal">Phar::BZ2</code>、圧縮を解除する場合には
+       <code class="literal">Phar::NONE</code> を指定します。
       </p>
      </dd>
 
@@ -83,11 +93,11 @@
 
       <p class="para">
        デフォルトでは、phar 形式のアーカイブを圧縮する際の拡張子は
-       <em>.phar.gz</em> あるいは <em>.phar.bz2</em>
+       <code class="literal">.phar.gz</code> あるいは <code class="literal">.phar.bz2</code>
        となり、tar 形式のアーカイブを圧縮する際の拡張子は
-       <em>.phar.tar.gz</em> あるいは <em>.phar.tar.bz2</em>
+       <code class="literal">.phar.tar.gz</code> あるいは <code class="literal">.phar.tar.bz2</code>
        となります。伸長の際は、デフォルトの拡張子は
-       <em>.phar</em> および <em>.phar.tar</em> となります。
+       <code class="literal">.phar</code> および <code class="literal">.phar.tar</code> となります。
       </p>
      </dd>
 
@@ -121,7 +131,7 @@
  <div class="refsect1 examples" id="refsect1-phar.compress-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-760">
+   <div class="example" id="example-668">
     <p><strong>例1 <span class="function"><strong>Phar::compress()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -155,9 +165,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="phar.canwrite.html">Phar::canWrite</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="phar.compressallfilesbzip2.html">Phar::compressAllFilesBZIP2</a></div>
- <div class="up"><a href="class.phar.html">Phar</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,29 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>特殊文字を HTML エンティティに変換する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.htmlspecialchars-decode.html">htmlspecialchars_decode</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.implode.html">implode</a></div>
- <div class="up"><a href="ref.strings.html">String 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.htmlspecialchars" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.htmlspecialchars-decode.html">« htmlspecialchars_decode</a></li>
+      <li style="float: right;"><a href="function.implode.html">implode »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">String 関数</a></li>
+    <li>特殊文字を HTML エンティティに変換する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.htmlspecialchars" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">htmlspecialchars</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">htmlspecialchars</span> &mdash; <span class="dc-title">特殊文字を HTML エンティティに変換する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">htmlspecialchars</span> &mdash; <span class="dc-title">特殊文字を HTML エンティティに変換する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.htmlspecialchars-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>htmlspecialchars</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = ENT_COMPAT | ENT_HTML401</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code><span class="initializer"> = ini_get(&quot;default_charset&quot;)</span></span>
-   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$double_encode</code><span class="initializer"> = true</span></span>
-  ]]] )</div>
+   <span class="methodname"><strong>htmlspecialchars</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code>ENT_COMPAT</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$encoding</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$double_encode</code><span class="initializer"> = <strong><code>true</code></strong></span></span><br>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
    文字の中には HTML において特殊な意味を持つものがあり、
@@ -61,19 +69,19 @@
 
      <tbody class="tbody">
       <tr>
-       <td><em>&amp;</em> (アンパサンド)</td>
-       <td><em>&amp;amp;</em></td>
+       <td><code class="literal">&amp;</code> (アンパサンド)</td>
+       <td><code class="literal">&amp;amp;</code></td>
       </tr>
 
       <tr>
-       <td><em>&quot;</em> (ダブルクォート)</td>
-       <td><strong><code>ENT_NOQUOTES</code></strong> が指定されていない場合、<em>&amp;quot;</em></td>
+       <td><code class="literal">&quot;</code> (ダブルクォート)</td>
+       <td><strong><code>ENT_NOQUOTES</code></strong> が指定されていない場合、<code class="literal">&amp;quot;</code></td>
       </tr>
 
       <tr>
-       <td><em>&#039;</em> (シングルクォート)</td>
+       <td><code class="literal">&#039;</code> (シングルクォート)</td>
        <td>
-        <em>&amp;#039;</em> (<strong><code>ENT_HTML401</code></strong> の場合) あるいは <em>&amp;apos;</em> (
+        <code class="literal">&amp;#039;</code> (<strong><code>ENT_HTML401</code></strong> の場合) あるいは <code class="literal">&amp;apos;</code> (
         <strong><code>ENT_XML1</code></strong>、<strong><code>ENT_XHTML</code></strong>、
         <strong><code>ENT_HTML5</code></strong> の場合)。ただし
         <strong><code>ENT_QUOTES</code></strong> が指定されている場合に限る
@@ -81,13 +89,13 @@
       </tr>
 
       <tr>
-       <td><em>&lt;</em> (小なり)</td>
-       <td><em>&amp;lt;</em></td>
+       <td><code class="literal">&lt;</code> (小なり)</td>
+       <td><code class="literal">&amp;lt;</code></td>
       </tr>
 
       <tr>
-       <td><em>&gt;</em> (大なり)</td>
-       <td><em>&amp;gt;</em></td>
+       <td><code class="literal">&gt;</code> (大なり)</td>
+       <td><code class="literal">&amp;gt;</code></td>
       </tr>
 
      </tbody>
@@ -124,7 +132,7 @@
       <p class="para">
        以下のフラグを組み合わせたビットマスクです。
        クォートや無効な符号単位シーケンス、そして文書型の扱いを指定します。
-       デフォルトは <em>ENT_COMPAT | ENT_HTML401</em> です。
+       デフォルトは <code class="literal">ENT_COMPAT | ENT_HTML401</code> です。
        <table class="doctable table">
         <caption><strong>利用可能な <code class="parameter">flags</code> 定数</strong></caption>
         
@@ -229,27 +237,23 @@
  </p>
 
  <p class="para">
-  省略した場の <code class="parameter">encoding</code> のデフォルト値は、varies
-  PHP のバージョンによって異なります。
-  PHP 5.6.0 以降では、デフォルト値として <a href="ini.core.html#ini.default-charset" class="link">default_charset</a>
-  の値を使います。PHP 5.4 と PHP 5.5 のデフォルト値は、
-  <em>UTF-8</em> で、それより前のバージョンの PHP のデフォルト値は
-  <em>ISO-8859-1</em> でした。
+  省略した場合の <code class="parameter">encoding</code> のデフォルト値は、
+  <a href="ini.core.html#ini.default-charset" class="link">default_charset</a> の値を使います。
  </p>
 
  <p class="para">
-  技術的にはこの引数を省略可能ですが、PHP 5.5 以前のバージョンを使っている場合や、
+  技術的にはこの引数を省略可能ですが、
   <a href="ini.core.html#ini.default-charset" class="link">default_charset</a>
-  の指定が入力とは違う文字セットになっている場合は、
+  の指定が入力とは違う文字セットになっている可能性もあるので、
   適切な値を指定しておくことを強く推奨します。
  </p>
 
       <p class="para">
        この関数を使ううえでは
-       <em>ISO-8859-1</em> と <em>ISO-8859-15</em>、
-       <em>UTF-8</em>、<em>cp866</em>、
-       <em>cp1251</em>、<em>cp1252</em> そして
-       <em>KOI8-R</em> は事実上同等です。
+       <code class="literal">ISO-8859-1</code> と <code class="literal">ISO-8859-15</code>、
+       <code class="literal">UTF-8</code>、<code class="literal">cp866</code>、
+       <code class="literal">cp1251</code>、<code class="literal">cp1252</code> そして
+       <code class="literal">KOI8-R</code> は事実上同等です。
        <code class="parameter">string</code> 自体がそのエンコーディングにおける有効な文字列である限り、
        これらのエンコーディングでは
        <span class="function"><strong>htmlspecialchars()</strong></span> の影響が及ぶ文字がみな同じ位置にあるからです。
@@ -386,7 +390,7 @@
     </tr>
 
     <tr>
-     <td><em>&#039;&#039;</em></td>
+     <td><code class="literal">&#039;&#039;</code></td>
      <td class="empty">&nbsp;</td>
      <td>
       空文字列を指定すると、
@@ -449,73 +453,10 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.htmlspecialchars-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      
- <tr>
-  <td>5.6.0</td>
-  <td>
-   <code class="parameter">encoding</code> パラメータのデフォルト値が、
-   <a href="ini.core.html#ini.default-charset" class="link">default_charset</a> の設定値に変わりました。
-  </td>
- </tr>
-
-
-      <tr>
-       <td>5.4.0</td>
-       <td>
-        <code class="parameter">encoding</code> パラメータのデフォルトが
-        UTF-8 に変わりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.4.0</td>
-       <td>
-        定数 <strong><code>ENT_SUBSTITUTE</code></strong>、<strong><code>ENT_DISALLOWED</code></strong>、
-        <strong><code>ENT_HTML401</code></strong>、<strong><code>ENT_XML1</code></strong>、
-        <strong><code>ENT_XHTML</code></strong> および <strong><code>ENT_HTML5</code></strong> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.3.0</td>
-       <td>
-        定数 <strong><code>ENT_IGNORE</code></strong> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.2.3</td>
-       <td>
-        <code class="parameter">double_encode</code> パラメータが追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.htmlspecialchars-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5434">
+   <div class="example" id="example-4768">
     <p><strong>例1 <span class="function"><strong>htmlspecialchars()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -538,6 +479,56 @@
     <span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span> を参照してください。
    </p>
   </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    <code class="parameter">flags</code> の値が曖昧な場合、以下のルールが適用されます:
+   </p>
+   <p class="para">
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>ENT_COMPAT</code></strong>, <strong><code>ENT_QUOTES</code></strong>,
+       <strong><code>ENT_NOQUOTES</code></strong> のいずれも存在しない場合、
+       デフォルトは <strong><code>ENT_NOQUOTES</code></strong> になります。
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>ENT_COMPAT</code></strong>, <strong><code>ENT_QUOTES</code></strong>,
+       <strong><code>ENT_NOQUOTES</code></strong> のうちひとつ以上が存在する場合、
+       <strong><code>ENT_QUOTES</code></strong> がもっとも優先度が高くなり、
+       その後に <strong><code>ENT_COMPAT</code></strong> が続きます。
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>ENT_HTML401</code></strong>, <strong><code>ENT_HTML5</code></strong>,
+       <strong><code>ENT_XHTML</code></strong>,
+       <strong><code>ENT_XML1</code></strong> のいずれも存在しなければ、
+       デフォルトは <strong><code>ENT_HTML401</code></strong> になります。
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>ENT_HTML401</code></strong>, <strong><code>ENT_HTML5</code></strong>,
+       <strong><code>ENT_XHTML</code></strong>,
+       <strong><code>ENT_XML1</code></strong> のうちひとつ以上が存在している場合、
+       <strong><code>ENT_HTML5</code></strong> が最も優先度が高くなり、
+       <strong><code>ENT_XHTML</code></strong>,
+       <strong><code>ENT_XML1</code></strong> そして <strong><code>ENT_HTML401</code></strong> の順に続きます。
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>ENT_DISALLOWED</code></strong>, <strong><code>ENT_IGNORE</code></strong>,
+       <strong><code>ENT_SUBSTITUTE</code></strong> のうち、ひとつ以上が存在している場合、
+       <strong><code>ENT_IGNORE</code></strong> の優先度がもっとも高くなり、
+       <strong><code>ENT_SUBSTITUTE</code></strong> がその後に続きます。
+      </span>
+     </li>
+    </ul>
+   </p>
+  </p></blockquote>
  </div>
 
 
@@ -555,9 +546,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.htmlspecialchars-decode.html">htmlspecialchars_decode</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.implode.html">implode</a></div>
- <div class="up"><a href="ref.strings.html">String 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

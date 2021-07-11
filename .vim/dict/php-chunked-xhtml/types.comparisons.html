@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>PHP 型の比較表</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="transports.unix.html">Unix ドメイン: Unix および UDG</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="tokens.html">パーサトークンの一覧</a></div>
- <div class="up"><a href="appendices.html">付録</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="types.comparisons" class="appendix">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="transports.unix.html">« Unix ドメイン: Unix および UDG</a></li>
+      <li style="float: right;"><a href="tokens.html">パーサトークンの一覧 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="appendices.html">付録</a></li>
+    <li>PHP 型の比較表</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="types.comparisons" class="appendix">
  <h1>PHP 型の比較表</h1>
 
  <p class="para">
@@ -25,9 +38,9 @@
  </p>
  <p class="para">
   この表を活用する前に、型とその意味について理解しておく必要があります。
-  例えば、<em>&quot;42&quot;</em>は<span class="type"><span class="type 文字列">文字列</span></span>ですが
-  <em>42</em>は<span class="type"><span class="type 整数">整数</span></span>です。
-  <strong><code>FALSE</code></strong>は<span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>ですが<em>&quot;false&quot;</em>は
+  例えば、<code class="literal">&quot;42&quot;</code>は<span class="type"><span class="type 文字列">文字列</span></span>ですが
+  <code class="literal">42</code>は<span class="type"><span class="type 整数">整数</span></span>です。
+  <strong><code>false</code></strong>は<span class="type">bool</span>ですが<code class="literal">&quot;false&quot;</code>は
   <span class="type"><span class="type 文字列">文字列</span></span>です。
  </p>
  <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -39,27 +52,27 @@
  </p></blockquote>
  <blockquote class="note"><p><strong class="note">注意</strong>: 
   <p class="para">
-   <var class="varname"><var class="varname">$x</var></var>が定義されていない状態で単に
-   <em>if ($x)</em>としてしまうと<strong><code>E_NOTICE</code></strong>
-   レベルのエラーが発行てしまいます。代わりに、<span class="function"><a href="function.empty.html" class="function">empty()</a></span>や
-   <span class="function"><a href="function.isset.html" class="function">isset()</a></span>を使うかあるいは変数を初期化するように
+   <var class="varname">$x</var>が定義されていない状態で単に
+   <code class="literal">if ($x)</code>とすると<strong><code>E_NOTICE</code></strong>
+   レベルのエラーが発生します。代わりに、<span class="function"><a href="function.empty.html" class="function">empty()</a></span>や
+   <span class="function"><a href="function.isset.html" class="function">isset()</a></span>を使うか、あるいは変数を初期化するように
    してください。
   </p>
  </p></blockquote>
  <blockquote class="note"><p><strong class="note">注意</strong>: 
   <p class="para">
    数値演算の結果が、定数 <strong><code>NAN</code></strong> で表される値になることがあります。
-   この値を、自分自身を含む他の値と比較すると、緩い比較であっても厳しい比較であっても結果は
-   <strong><code>FALSE</code></strong> となります
-   (つまり <em>NAN != NAN</em> であり <em>NAN !== NAN</em> であるということです)。
+   この値を他の値と比較すると、緩やかな比較および厳密な比較のいずれでも結果は <strong><code>false</code></strong> になります。
+   自分自身と比較した場合も含みますが、<strong><code>true</code></strong> と比較した場合は除きます。
+   (つまり <code class="literal">NAN != NAN</code> であり <code class="literal">NAN !== NAN</code> であるということです)。
    結果が <strong><code>NAN</code></strong> になる演算の例には
-   <em>sqrt(-1)</em> や <em>asin(2)</em> そして
-   <em>asinh(0)</em> があります。
+   <code class="literal">sqrt(-1)</code> や <code class="literal">asin(2)</code> そして
+   <code class="literal">acosh(0)</code> があります。
   </p>
  </p></blockquote>
  <p class="para">
   <table class="doctable table">
-   <caption><strong>PHP 関数による <var class="varname"><var class="varname">$x</var></var> の比較</strong></caption>
+   <caption><strong>PHP 関数による <var class="varname">$x</var> の比較</strong></caption>
    
     <thead>
      <tr>
@@ -68,172 +81,172 @@
       <th><span class="function"><a href="function.empty.html" class="function">empty()</a></span></th>
       <th><span class="function"><a href="function.is-null.html" class="function">is_null()</a></span></th>
       <th><span class="function"><a href="function.isset.html" class="function">isset()</a></span></th>
-      <th><span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span> : <em>if($x)</em></th>
+      <th><span class="type">bool</span> : <code class="literal">if($x)</code></th>
      </tr>
 
     </thead>
 
     <tbody class="tbody">
      <tr>
-      <td><em>$x = &quot;&quot;;</em></td>
-      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">$x = &quot;&quot;;</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = null;</em></td>
-      <td><span class="type"><a href="language.types.null.html" class="type NULL">NULL</a></span></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">$x = null;</code></td>
+      <td><span class="type">NULL</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>var $x;</em></td>
-      <td><span class="type"><a href="language.types.null.html" class="type NULL">NULL</a></span></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">var $x;</code></td>
+      <td><span class="type">NULL</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><var class="varname"><var class="varname">$x</var></var> が未定義</td>
-      <td><span class="type"><a href="language.types.null.html" class="type NULL">NULL</a></span></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><var class="varname">$x</var> が未定義</td>
+      <td><span class="type">NULL</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = array();</em></td>
-      <td><span class="type"><a href="language.types.array.html" class="type array">array</a></span></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">$x = array();</code></td>
+      <td><span class="type">array</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = array(&#039;a&#039;, &#039;b&#039;);</em></td>
-      <td><span class="type"><a href="language.types.array.html" class="type array">array</a></span></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">$x = array(&#039;a&#039;, &#039;b&#039;);</code></td>
+      <td><span class="type">array</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = false;</em></td>
-      <td><span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">$x = false;</code></td>
+      <td><span class="type">bool</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = true;</em></td>
-      <td><span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">$x = true;</code></td>
+      <td><span class="type">bool</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = 1;</em></td>
-      <td><span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">$x = 1;</code></td>
+      <td><span class="type">int</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = 42;</em></td>
-      <td><span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">$x = 42;</code></td>
+      <td><span class="type">int</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = 0;</em></td>
-      <td><span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">$x = 0;</code></td>
+      <td><span class="type">int</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = -1;</em></td>
-      <td><span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">$x = -1;</code></td>
+      <td><span class="type">int</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = &quot;1&quot;;</em></td>
-      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">$x = &quot;1&quot;;</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = &quot;0&quot;;</em></td>
-      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">$x = &quot;0&quot;;</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = &quot;-1&quot;;</em></td>
-      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">$x = &quot;-1&quot;;</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = &quot;php&quot;;</em></td>
-      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">$x = &quot;php&quot;;</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = &quot;true&quot;;</em></td>
-      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">$x = &quot;true&quot;;</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>$x = &quot;false&quot;;</em></td>
-      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">$x = &quot;false&quot;;</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
     </tbody>
@@ -244,218 +257,218 @@
 
  <p class="para">
   <table id="types.comparisions-loose" class="doctable table">
-   <caption><strong><em>==</em> による緩やかな比較</strong></caption>
+   <caption><strong><code class="literal">==</code> による緩やかな比較</strong></caption>
    
     <thead>
      <tr>
       <th> </th>
-      <th><strong><code>TRUE</code></strong></th>
-      <th><strong><code>FALSE</code></strong></th>
-      <th><em>1</em></th>
-      <th><em>0</em></th>
-      <th><em>-1</em></th>
-      <th><em>&quot;1&quot;</em></th>
-      <th><em>&quot;0&quot;</em></th>
-      <th><em>&quot;-1&quot;</em></th>
-      <th><strong><code>NULL</code></strong></th>
-      <th><em>array()</em></th>
-      <th><em>&quot;php&quot;</em></th>
-      <th><em>&quot;&quot;</em></th>
+      <th><strong><code>true</code></strong></th>
+      <th><strong><code>false</code></strong></th>
+      <th><code class="literal">1</code></th>
+      <th><code class="literal">0</code></th>
+      <th><code class="literal">-1</code></th>
+      <th><code class="literal">&quot;1&quot;</code></th>
+      <th><code class="literal">&quot;0&quot;</code></th>
+      <th><code class="literal">&quot;-1&quot;</code></th>
+      <th><strong><code>null</code></strong></th>
+      <th><code class="literal">array()</code></th>
+      <th><code class="literal">&quot;php&quot;</code></th>
+      <th><code class="literal">&quot;&quot;</code></th>
      </tr>
 
     </thead>
 
     <tbody class="tbody">
      <tr>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>1</em></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">1</code></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>0</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">0</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>-1</em></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">-1</code></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>&quot;1&quot;</em></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">&quot;1&quot;</code></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>&quot;0&quot;</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">&quot;0&quot;</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>&quot;-1&quot;</em></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">&quot;-1&quot;</code></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><strong><code>NULL</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>null</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>array()</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">array()</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>&quot;php&quot;</em></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">&quot;php&quot;</code></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>&quot;&quot;</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">&quot;&quot;</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
     </tbody>
@@ -466,218 +479,218 @@
 
  <p class="para">
   <table id="type.comparisons-strict" class="doctable table">
-   <caption><strong><em>===</em> による厳密な比較</strong></caption>
+   <caption><strong><code class="literal">===</code> による厳密な比較</strong></caption>
    
     <thead>
      <tr>
       <th> </th>
-      <th><strong><code>TRUE</code></strong></th>
-      <th><strong><code>FALSE</code></strong></th>
-      <th><em>1</em></th>
-      <th><em>0</em></th>
-      <th><em>-1</em></th>
-      <th><em>&quot;1&quot;</em></th>
-      <th><em>&quot;0&quot;</em></th>
-      <th><em>&quot;-1&quot;</em></th>
-      <th><strong><code>NULL</code></strong></th>
-      <th><em>array()</em></th>
-      <th><em>&quot;php&quot;</em></th>
-      <th><em>&quot;&quot;</em></th>
+      <th><strong><code>true</code></strong></th>
+      <th><strong><code>false</code></strong></th>
+      <th><code class="literal">1</code></th>
+      <th><code class="literal">0</code></th>
+      <th><code class="literal">-1</code></th>
+      <th><code class="literal">&quot;1&quot;</code></th>
+      <th><code class="literal">&quot;0&quot;</code></th>
+      <th><code class="literal">&quot;-1&quot;</code></th>
+      <th><strong><code>null</code></strong></th>
+      <th><code class="literal">array()</code></th>
+      <th><code class="literal">&quot;php&quot;</code></th>
+      <th><code class="literal">&quot;&quot;</code></th>
      </tr>
 
     </thead>
 
     <tbody class="tbody">
      <tr>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>1</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">1</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>0</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">0</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>-1</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">-1</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>&quot;1&quot;</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">&quot;1&quot;</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>&quot;0&quot;</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">&quot;0&quot;</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>&quot;-1&quot;</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">&quot;-1&quot;</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><strong><code>NULL</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>null</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>array()</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">array()</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>&quot;php&quot;</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
+      <td><code class="literal">&quot;php&quot;</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
      </tr>
 
      <tr>
-      <td><em>&quot;&quot;</em></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>FALSE</code></strong></td>
-      <td><strong><code>TRUE</code></strong></td>
+      <td><code class="literal">&quot;&quot;</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
      </tr>
 
     </tbody>
@@ -686,9 +699,4 @@
 
  </p>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="transports.unix.html">Unix ドメイン: Unix および UDG</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="tokens.html">パーサトークンの一覧</a></div>
- <div class="up"><a href="appendices.html">付録</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

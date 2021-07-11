@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ビルトインウェブサーバー</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.interactive.html">対話シェル</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.commandline.ini.html">INI 設定</a></div>
- <div class="up"><a href="features.commandline.html">コマンドラインの使用法</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="features.commandline.webserver" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.commandline.interactive.html">« 対話シェル</a></li>
+      <li style="float: right;"><a href="features.commandline.ini.html">INI 設定 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.commandline.html">コマンドラインの使用法</a></li>
+    <li>ビルトインウェブサーバー</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.commandline.webserver" class="section">
   <h2 class="title">ビルトインウェブサーバー</h2>
 
   <div class="warning"><strong class="warning">警告</strong>
@@ -23,7 +36,7 @@
   </div>
 
   <p class="para">
-   PHP 5.4.0 から、<acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> にはウェブサーバーの機能が組み込まれるようになりました。
+   <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> にはウェブサーバーの機能が組み込まれています。
   </p>
 
   <p class="para">
@@ -47,7 +60,7 @@
     ウェブサーバーの開始時にコマンドラインで PHP ファイルを指定すると、
     そのファイルをウェブサーバーの &quot;ルーター&quot; スクリプトとして使います。
     このスクリプトは、各 HTTP リクエストの開始時に動きます。このスクリプトが
-    <strong><code>FALSE</code></strong> を返すと、リクエストされたリソースをそのままの形式で返します。
+    <strong><code>false</code></strong> を返すと、リクエストされたリソースをそのままの形式で返します。
     それ以外の場合はスクリプトの出力をブラウザに返します。
   </p>
 
@@ -63,7 +76,7 @@
 
 
   <table class="doctable table">
-   <caption><strong>Changelog: サポートする MIME タイプ (ファイル拡張子)</strong></caption>
+   <caption><strong>変更履歴: サポートする MIME タイプ (ファイル拡張子)</strong></caption>
    
     <thead>
      <tr>
@@ -117,7 +130,43 @@
   </table>
 
 
-  <div class="example" id="example-440">
+
+  <table class="doctable table">
+   <caption><strong>変更履歴</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>7.4.0</td>
+      <td>
+       ビルトインウェブサーバに対して複数のリクエストを並列で投げる必要があるテストコードのために、
+       複数のワーカーをフォークさせるよう設定できるようになりました。
+       サーバを起動する前に欲しいワーカーの数を <var class="envar">PHP_CLI_SERVER_WORKERS</var> 環境変数に設定してください。
+       この機能は Windows ではサポートされていません。
+       <div class="warning"><strong class="warning">警告</strong>
+        <p class="para">
+         この機能は <em class="emphasis">実験的なもの</em> であり、
+         本番環境で使うことを意図した機能では <em class="emphasis">ありません</em>。
+         ビルトインウェブサーバは本番環境で使うものでは<em class="emphasis">ありません</em>。
+        </p>
+       </div>
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+
+
+  <div class="example" id="example-424">
    <p><strong>例1 ウェブサーバーの起動</strong></p> 
    <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ cd ~/public_html
@@ -154,9 +203,14 @@ Press Ctrl-C to quit.
 [Thu Jul 21 10:48:52 2011] ::1:39149 GET /favicon.ico - Request read
 </pre></div>
    </div>
+   <div class="example-contents"><p>
+    Windows 環境、かつ PHP 7.4.0 より前のバージョンでは、
+    ルーティングを行うスクリプトがシンボリックリンク先の静的なリソースを処理しない限り、
+    それらのリソースにアクセスできませんでした。
+   </p></div>
   </div>
 
-  <div class="example" id="example-441">
+  <div class="example" id="example-425">
    <p><strong>例2 ドキュメントルートディレクトリを指定した起動</strong></p> 
    <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ cd ~/public_html
@@ -177,7 +231,7 @@ Press Ctrl-C to quit
    </div>
   </div>
 
-  <div class="example" id="example-442">
+  <div class="example" id="example-426">
    <p><strong>例3 ルータースクリプトの使用</strong></p> 
 <div class="example-contents"><p>
   この例では、画像ファイルをリクエストすればそのまま表示し、HTML ファイルをリクエストすると &quot;Welcome to PHP&quot; と表示します。
@@ -196,7 +250,7 @@ Press Ctrl-C to quit
 
   </div>
 
-  <div class="example" id="example-443">
+  <div class="example" id="example-427">
    <p><strong>例4 CLI ウェブサーバーを使っているかどうかのチェック</strong></p> 
 <div class="example-contents"><p>
   フレームワークのルータースクリプトを、開発中は CLI ウェブサーバーで使って
@@ -216,7 +270,7 @@ Press Ctrl-C to quit
 
   </div>
 
-  <div class="example" id="example-444">
+  <div class="example" id="example-428">
    <p><strong>例5 未サポートのファイル形式の処理</strong></p> 
 <div class="example-contents"><p>
   CLI ウェブサーバーで対応していない MIME タイプの静的リソースを扱うには、このようにします。
@@ -235,7 +289,7 @@ Press Ctrl-C to quit
 
   </div>
 
-  <div class="example" id="example-445">
+  <div class="example" id="example-429">
    <p><strong>例6 CLI ウェブサーバーへのリモートマシンからのアクセス</strong></p> 
 <div class="example-contents"><p>
   ウェブサーバーを、任意のインターフェイスからポート 8000 でアクセスできるようにするには、このようにします。
@@ -245,11 +299,11 @@ Press Ctrl-C to quit
 </div>
    </div>
 
+   <div class="warning"><strong class="warning">警告</strong>
+    <p class="para">
+      ビルトインウェブサーバは、公開ネットワークで使うべきではありません。
+    </p>
+   </div>
   </div>
 
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.interactive.html">対話シェル</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.commandline.ini.html">INI 設定</a></div>
- <div class="up"><a href="features.commandline.html">コマンドラインの使用法</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

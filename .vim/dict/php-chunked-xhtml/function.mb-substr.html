@@ -3,34 +3,42 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>文字列の一部を得る</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mb-substr-count.html">mb_substr_count</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="book.pspell.html">Pspell</a></div>
- <div class="up"><a href="ref.mbstring.html">マルチバイト文字列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.mb-substr" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mb-substr-count.html">« mb_substr_count</a></li>
+      <li style="float: right;"><a href="book.pspell.html">Pspell »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mbstring.html">マルチバイト文字列 関数</a></li>
+    <li>文字列の一部を得る</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mb-substr" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mb_substr</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mb_substr</span> &mdash; <span class="dc-title">文字列の一部を得る</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mb_substr</span> &mdash; <span class="dc-title">文字列の一部を得る</span></p>
 
  </div>
    
  <div class="refsect1 description" id="refsect1-function.mb-substr-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>mb_substr</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$start</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code><span class="initializer"> = NULL</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code><span class="initializer"> = mb_internal_encoding()</span></span>
-  ]] )</div>
+   <span class="methodname"><strong>mb_substr</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$start</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$length</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$encoding</code><span class="initializer"> = <strong><code>null</code></strong></span></span><br>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
    文字数に基づきマルチバイト対応の
    <span class="function"><a href="function.substr.html" class="function">substr()</a></span> 処理を行います。位置は、
-   <code class="parameter">str</code> の始めから数えられます。
+   <code class="parameter">string</code> の始めから数えられます。
    最初の文字の位置は 0、2 番目の文字の位置は 1、といったようになります。
   </p>
  </div>
@@ -43,7 +51,7 @@
 
     
      <dt>
-<code class="parameter">str</code></dt>
+<code class="parameter">string</code></dt>
 
      <dd>
 
@@ -61,14 +69,14 @@
 
       <p class="para">
        <code class="parameter">start</code> が非負である場合に返される文字列は、
-       <code class="parameter">str</code> の <code class="parameter">start</code> <em class="emphasis">バイト</em>目以降の文字列となります (ゼロから数えます)。
-       たとえば、文字列 &#039;<em>abcdef</em>&#039; の
-       <em>0</em> バイト目は &#039;<em>a</em>&#039; で、
-       <em>2</em> バイト目は &#039;<em>c</em>&#039; のようになります。
+       <code class="parameter">string</code> の <code class="parameter">start</code> <em class="emphasis">バイト</em>目以降の文字列となります (ゼロから数えます)。
+       たとえば、文字列 &#039;<code class="literal">abcdef</code>&#039; の
+       <code class="literal">0</code> バイト目は &#039;<code class="literal">a</code>&#039; で、
+       <code class="literal">2</code> バイト目は &#039;<code class="literal">c</code>&#039; のようになります。
       </p>
       <p class="para">
        <code class="parameter">start</code> が負の数の場合に返される文字列は、
-       <code class="parameter">str</code> の後ろから数えて <code class="parameter">start</code> バイト目以降となります。
+       <code class="parameter">string</code> の後ろから数えて <code class="parameter">start</code> バイト目以降となります。
       </p>
      </dd>
 
@@ -80,8 +88,8 @@
      <dd>
 
       <p class="para">
-       <code class="parameter">str</code> の中から取り出す最大文字数。
-       省略したり <em>NULL</em> を渡したりした場合は、
+       <code class="parameter">string</code> の中から取り出す最大文字数。
+       省略したり <code class="literal">NULL</code> を渡したりした場合は、
        文字列の最後までの全バイトを取り出します。
       </p>
      </dd>
@@ -94,7 +102,7 @@
      <dd>
 
       <p class="para"><code class="parameter">encoding</code> 
-パラメータには文字エンコーディングを指定します。省略した場合は、
+パラメータには文字エンコーディングを指定します。省略した場合、もしくは <strong><code>null</code></strong> の場合は、
 内部文字エンコーディングを使用します。</p>
      </dd>
 
@@ -110,39 +118,35 @@
   <p class="para">
    <span class="function"><strong>mb_substr()</strong></span> は、<code class="parameter">start</code>
    および <code class="parameter">length</code> パラメータで指定した
-   <code class="parameter">str</code> の一部を返します。
+   <code class="parameter">string</code> の一部を返します。
   </p>
  </div>
 
 
  <div class="refsect1 changelog" id="refsect1-function.mb-substr-changelog">
   <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
 
-     </thead>
+    </thead>
 
-     <tbody class="tbody">
-      <tr>
-       <td>5.4.8</td>
-       <td>
-        <code class="parameter">length</code> に <em>NULL</em>
-        を渡すと、文字列の末尾までのすべてのバイトを取り出すようになりました。
-        これより前のバージョンでは、<em>NULL</em> は <em>0</em> と同じ扱いでした。
-       </td>
-      </tr>
+    <tbody class="tbody">
+     <tr>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">encoding</code> は、nullable になりました。
+ </td>
+</tr>
 
-     </tbody>
-    
-   </table>
+    </tbody>
+   
+  </table>
 
-  </p>
  </div>
 
 
@@ -157,9 +161,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mb-substr-count.html">mb_substr_count</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="book.pspell.html">Pspell</a></div>
- <div class="up"><a href="ref.mbstring.html">マルチバイト文字列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

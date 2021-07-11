@@ -3,30 +3,39 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>現在のメールボックスから削除するメッセージに印を付ける</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imap-createmailbox.html">imap_createmailbox</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imap-deletemailbox.html">imap_deletemailbox</a></div>
- <div class="up"><a href="ref.imap.html">IMAP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.imap-delete" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imap-createmailbox.html">« imap_createmailbox</a></li>
+      <li style="float: right;"><a href="function.imap-deletemailbox.html">imap_deletemailbox »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.imap.html">IMAP 関数</a></li>
+    <li>現在のメールボックスから削除するメッセージに印を付ける</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imap-delete" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imap_delete</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imap_delete</span> &mdash; <span class="dc-title">現在のメールボックスから削除するメッセージに印を付ける</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imap_delete</span> &mdash; <span class="dc-title">現在のメールボックスから削除するメッセージに印を付ける</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imap-delete-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>imap_delete</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$imap_stream</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$msg_number</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
-  ] )</div>
+   <span class="methodname"><strong>imap_delete</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$imap</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$message_num</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
-   <code class="parameter">msg_number</code> が指すメッセージに
+   <code class="parameter">message_num</code> が指すメッセージに
    削除予定のマークをします。削除マークを付けられたメッセージは、
    <span class="function"><a href="function.imap-expunge.html" class="function">imap_expunge()</a></span> がコールされるか
    <span class="function"><a href="function.imap-close.html" class="function">imap_close()</a></span> に <strong><code>CL_EXPUNGE</code></strong>
@@ -41,14 +50,14 @@
 
     <dt>
 <code class="parameter">
-imap_stream</code></dt>
+imap</code></dt>
 <dd>
 <p class="para"><span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
 が返す IMAP ストリーム。</p></dd>
 
     
      <dt>
-<code class="parameter">msg_number</code></dt>
+<code class="parameter">message_num</code></dt>
 
      <dd>
 
@@ -60,13 +69,13 @@ imap_stream</code></dt>
     
     
      <dt>
-<code class="parameter">options</code></dt>
+<code class="parameter">flags</code></dt>
 
      <dd>
 
       <p class="para">
        <code class="parameter">FT_UID</code> を指定すると、
-       引数 <code class="parameter">msg_number</code> を
+       引数 <code class="parameter">message_num</code> を
        <code class="parameter">UID</code> として処理することを関数に指示できます。
       </p>
      </dd>
@@ -80,14 +89,14 @@ imap_stream</code></dt>
  <div class="refsect1 returnvalues" id="refsect1-function.imap-delete-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   Returns <strong><code>TRUE</code></strong>.
+   Returns <strong><code>true</code></strong>.
   </p>
  </div>
 
  <div class="refsect1 examples" id="refsect1-function.imap-delete-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3902">
+   <div class="example" id="example-2978">
     <p><strong>例1 <span class="function"><strong>imap_delete()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -122,9 +131,4 @@ imap_stream</code></dt>
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imap-createmailbox.html">imap_createmailbox</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imap-deletemailbox.html">imap_deletemailbox</a></div>
- <div class="up"><a href="ref.imap.html">IMAP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

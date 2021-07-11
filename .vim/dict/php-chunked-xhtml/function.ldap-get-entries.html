@@ -3,27 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>全ての結果エントリを得る</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-get-dn.html">ldap_get_dn</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.ldap-get-option.html">ldap_get_option</a></div>
- <div class="up"><a href="ref.ldap.html">LDAP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.ldap-get-entries" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ldap-get-dn.html">« ldap_get_dn</a></li>
+      <li style="float: right;"><a href="function.ldap-get-option.html">ldap_get_option »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ldap.html">LDAP 関数</a></li>
+    <li>全ての結果エントリを得る</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ldap-get-entries" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">ldap_get_entries</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">ldap_get_entries</span> &mdash; <span class="dc-title">全ての結果エントリを得る</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ldap_get_entries</span> &mdash; <span class="dc-title">全ての結果エントリを得る</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.ldap-get-entries-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>ldap_get_entries</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$link_identifier</code></span>
-   , <span class="methodparam"><span class="type">resource</span> <code class="parameter">$result_identifier</code></span>
-   )</div>
+   <span class="methodname"><strong>ldap_get_entries</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$ldap</code></span>, <span class="methodparam"><span class="type">resource</span> <code class="parameter">$result</code></span>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    指定した結果から複数のエントリを読み込み、
@@ -39,23 +49,24 @@
 
     
      <dt>
-<code class="parameter">link_identifier</code></dt>
+<code class="parameter">ldap</code></dt>
 
      <dd>
 
       <p class="para">
-       <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span> が返す LDAP リンク ID。
+       <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span> が返す LDAP リソース。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">result_identifier</code></dt>
+<code class="parameter">result</code></dt>
 
      <dd>
 
       <p class="para">
+       <span class="function"><a href="function.ldap-list.html" class="function">ldap_list()</a></span> や <span class="function"><a href="function.ldap-search.html" class="function">ldap_search()</a></span> が返す、LDAP 結果リソース。
       </p>
      </dd>
 
@@ -69,8 +80,8 @@
  <div class="refsect1 returnvalues" id="refsect1-function.ldap-get-entries-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功時に完全な結果情報を多次元配列で返します。エラーの場合に <strong><code>FALSE</code></strong>
-   を返します。
+   成功時に完全な結果情報を多次元配列で返します。
+   失敗した場合に <strong><code>false</code></strong> を返します
   </p>
   <p class="para">
    配列の構造は次のようになります。
@@ -108,9 +119,4 @@ return_value[i][&quot;attribute&quot;][j] = i 番目のエントリにおける 
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-get-dn.html">ldap_get_dn</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.ldap-get-option.html">ldap_get_option</a></div>
- <div class="up"><a href="ref.ldap.html">LDAP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

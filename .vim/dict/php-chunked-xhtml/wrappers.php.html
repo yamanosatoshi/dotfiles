@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>さまざまな入出力ストリームへのアクセス</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="wrappers.ftp.html">ftp://</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="wrappers.compression.html">zlib://</a></div>
- <div class="up"><a href="wrappers.html">サポートするプロトコル/ラッパー</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="wrappers.php" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="wrappers.ftp.html">« ftp://</a></li>
+      <li style="float: right;"><a href="wrappers.compression.html">zlib:// »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="wrappers.html">サポートするプロトコル/ラッパー</a></li>
+    <li>さまざまな入出力ストリームへのアクセス</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="wrappers.php" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">php://</h1>
   <p class="refpurpose"><span class="refname">php://</span> &mdash; <span class="dc-title">さまざまな入出力ストリームへのアクセス</span></p>
@@ -27,7 +40,7 @@
    フィルタを使って他のファイルリソースの読み書きに手を加えることもできます。
   </p>
 
-  <div class="refsect2 unknown-descriptioo" id="refsect2-wrappers.php-unknown-descriptioo">
+  <div class="refsect2 unknown-descriptioo" id="wrappers.php.std">
    <h4 class="title">php://stdin, php://stdout および php://stderr</h4>
    <p class="simpara">
     <var class="filename">php://stdin</var>、<var class="filename">php://stdout</var> 
@@ -55,31 +68,19 @@
    <p class="simpara">
     <var class="filename">php://input</var> は読み込み専用のストリームで、
     リクエストの body 部から生のデータを読み込むことができます。
-    POST リクエストの場合は <var class="varname"><var class="varname"><a href="reserved.variables.httprawpostdata.html" class="classname">$HTTP_RAW_POST_DATA</a></var></var>
+    POST リクエストの場合は <var class="varname">$HTTP_RAW_POST_DATA</var>
     よりも <var class="filename">php://input</var> を使うのが望ましいでしょう。<var class="filename">php.ini</var> ディレクティブの設定に依存しないからです。
-    さらに、<var class="varname"><var class="varname"><a href="reserved.variables.httprawpostdata.html" class="classname">$HTTP_RAW_POST_DATA</a></var></var> がデフォルトで設定されない場合は、
-    <a href="ini.core.html#ini.always-populate-raw-post-data" class="link">always_populate_raw_post_data</a>
-    を有効にするよりも <var class="varname"><var class="varname"><a href="reserved.variables.httprawpostdata.html" class="classname">$HTTP_RAW_POST_DATA</a></var></var>
+    さらに、<var class="varname">$HTTP_RAW_POST_DATA</var> がデフォルトで設定されない場合は、
+    <code class="literal">always_populate_raw_post_data</code>
+    を有効にするよりも <var class="varname">$HTTP_RAW_POST_DATA</var>
     を使うほうがメモリの消費量が少なくなるでしょう。
     <var class="filename">php://input</var> は、
-    <em>enctype=&quot;multipart/form-data&quot;</em> に対しては使用できません。
+    <code class="literal">enctype=&quot;multipart/form-data&quot;</code> に対しては使用できません。
    </p>
-   <blockquote class="note"><p><strong class="note">注意</strong>: 
-    <span class="simpara">
-     PHP 5.6 より前のバージョンでは、
-     <var class="filename">php://input</var> でオープンしたストリームは、一度しか読み込めません。
-     また、このストリームは seek 操作をサポートしていません。
-     しかし、SAPI の実装によっては、別の <var class="filename">php://input</var>
-     ストリームをオープンして読み込みを再開できる可能性もあります。
-     これは、リクエストの body 部のデータが保存されている場合にのみ可能となります。
-     通常、POST リクエストの場合はそのようになりますが、
-     PUT や PROPFIND といった他のメソッドの場合は保存されません。
-    </span>
-   </p></blockquote>
   </div>
 
 
-  <div class="refsect2 unknown-unknown-unknown-descriptioq" id="refsect2-wrappers.php-unknown-unknown-unknown-descriptioq">
+  <div class="refsect2 unknown-unknown-unknown-descriptioq" id="wrappers.php.output">
    <h4 class="title">php://output</h4>
    <p class="para">
     <var class="filename">php://output</var> は書き込み専用のストリームで、
@@ -89,7 +90,7 @@
   </div>
 
 
-  <div class="refsect2 unknown-unknown-unknown-unknown-descriptior" id="refsect2-wrappers.php-unknown-unknown-unknown-unknown-descriptior">
+  <div class="refsect2 unknown-unknown-unknown-unknown-descriptior" id="wrappers.php.fd">
    <h4 class="title">php://fd</h4>
    <p class="simpara">
     <var class="filename">php://fd</var> は、指定したファイル記述子に直接アクセスすることができます。
@@ -98,7 +99,7 @@
   </div>
 
 
-  <div class="refsect2 unknown-unknown-unknown-unknown-unknown-descriptios" id="refsect2-wrappers.php-unknown-unknown-unknown-unknown-unknown-descriptios">
+  <div class="refsect2 unknown-unknown-unknown-unknown-unknown-descriptios" id="wrappers.php.memory">
    <h4 class="title">php://memory および php://temp</h4>
    <p class="simpara">
     <var class="filename">php://memory</var> および <var class="filename">php://temp</var>
@@ -112,14 +113,14 @@
    </p>
    <p class="simpara">
     <var class="filename">php://temp</var> のメモリ制限を制御するには
-    <em>/maxmemory:NN</em> を追加します。この <em>NN</em>
+    <code class="literal">/maxmemory:NN</code> を追加します。この <code class="literal">NN</code>
     はメモリに保持するデータの最大量で、単位はバイトです。
     このサイズを超えるとテンポラリファイルを使います。
    </p>
   </div>
 
 
-  <div class="refsect2 unknown-unknown-unknown-unknown-unknown-unknown-descriptiot" id="refsect2-wrappers.php-unknown-unknown-unknown-unknown-unknown-unknown-descriptiot">
+  <div class="refsect2 unknown-unknown-unknown-unknown-unknown-unknown-descriptiot" id="wrappers.php.filter">
    <h4 class="title">php://filter</h4>
    <p class="simpara">
     <var class="filename">php://filter</var> は、<a href="filters.html" class="link">フィルタ</a>アプリケーションが
@@ -150,7 +151,7 @@
       <tbody class="tbody">
        <tr>
         <td>
-         <em>resource=&lt;フィルタの対象となるストリーム&gt;</em>
+         <code class="literal">resource=&lt;フィルタの対象となるストリーム&gt;</code>
         </td>
         <td>
          このパラメータは必須です。フィルタリングしたいストリームを指定します。
@@ -159,30 +160,30 @@
 
        <tr>
         <td>
-         <em>read=&lt;読み込みチェーンに適用するフィルタのリスト&gt;</em>
+         <code class="literal">read=&lt;読み込みチェーンに適用するフィルタのリスト&gt;</code>
         </td>
         <td>
          このパラメータは任意です。ひとつあるいは複数のフィルタ名を、
-         パイプ文字 (<em>|</em>) で区切って指定します。
+         パイプ文字 (<code class="literal">|</code>) で区切って指定します。
         </td>
        </tr>
 
        <tr>
         <td>
-         <em>write=&lt;書き込みチェーンに適用するフィルタのリスト&gt;</em>
+         <code class="literal">write=&lt;書き込みチェーンに適用するフィルタのリスト&gt;</code>
         </td>
         <td>
          このパラメータは任意です。ひとつあるいは複数のフィルタ名を、
-         パイプ文字 (<em>|</em>) で区切って指定します。
+         パイプ文字 (<code class="literal">|</code>) で区切って指定します。
         </td>
        </tr>
 
        <tr>
         <td>
-         <em>&lt;両方のチェーンに適用するフィルタのリスト&gt;</em>
+         <code class="literal">&lt;両方のチェーンに適用するフィルタのリスト&gt;</code>
         </td>
         <td>
-         <em>read=</em> や <em>write=</em>
+         <code class="literal">read=</code> や <code class="literal">write=</code>
          がついていないすべてのフィルタは、読み込みと書き込みのチェーンの両方に適切に適用されます。
         </td>
        </tr>
@@ -202,7 +203,7 @@
   <p class="para">
    <table class="doctable table">
     <caption><strong>
-     ラッパーの概要（<em>php://filter</em> については、
+     ラッパーの概要（<code class="literal">php://filter</code> については、
      フィルタされる側のラッパーの概要を参照します）
     </strong></caption>
     
@@ -223,62 +224,63 @@
       <tr>
        <td><a href="filesystem.configuration.html#ini.allow-url-include" class="link">allow_url_include</a> で制約される</td>
        <td>
-        <em>php://input</em>、
-        <em>php://stdin</em>、
-        <em>php://memory</em> および
-        <em>php://temp</em> のみ。
+        <code class="literal">php://input</code>、
+        <code class="literal">php://stdin</code>、
+        <code class="literal">php://memory</code> および
+        <code class="literal">php://temp</code> のみ。
        </td>
       </tr>
 
       <tr>
        <td>読み込み許可</td>
        <td>
-        <em>php://stdin</em>、
-        <em>php://input</em>、
-        <em>php://fd</em>、
-        <em>php://memory</em> および
-        <em>php://temp</em> のみ。
+        <code class="literal">php://stdin</code>、
+        <code class="literal">php://input</code>、
+        <code class="literal">php://fd</code>、
+        <code class="literal">php://memory</code> および
+        <code class="literal">php://temp</code> のみ。
        </td>
       </tr>
 
       <tr>
        <td>書き込み許可</td>
        <td>
-        <em>php://stdout</em>、
-        <em>php://stderr</em>、
-        <em>php://output</em>、
-        <em>php://fd</em>、
-        <em>php://memory</em> および
-        <em>php://temp</em> のみ。
+        <code class="literal">php://stdout</code>、
+        <code class="literal">php://stderr</code>、
+        <code class="literal">php://output</code>、
+        <code class="literal">php://fd</code>、
+        <code class="literal">php://memory</code> および
+        <code class="literal">php://temp</code> のみ。
        </td>
       </tr>
 
       <tr>
        <td>追加許可</td>
        <td>
-        <em>php://stdout</em>、
-        <em>php://stderr</em>、
-        <em>php://output</em>、
-        <em>php://fd</em>、
-        <em>php://memory</em> および
-        <em>php://temp</em> のみ (書き込みと同じ)。
+        <code class="literal">php://stdout</code>、
+        <code class="literal">php://stderr</code>、
+        <code class="literal">php://output</code>、
+        <code class="literal">php://fd</code>、
+        <code class="literal">php://memory</code> および
+        <code class="literal">php://temp</code> のみ (書き込みと同じ)。
        </td>
       </tr>
 
       <tr>
        <td>同時読み書き許可</td>
        <td>
-        <em>php://fd</em>、
-        <em>php://memory</em> および
-        <em>php://temp</em> のみ。
+        <code class="literal">php://fd</code>、
+        <code class="literal">php://memory</code> および
+        <code class="literal">php://temp</code> のみ。
        </td>
       </tr>
 
       <tr>
        <td><span class="function"><a href="function.stat.html" class="function">stat()</a></span> のサポート</td>
        <td>
-        <em>php://memory</em> および
-        <em>php://temp</em> のみ。
+        No. 
+        但し、<code class="literal">php://memory</code> および
+        <code class="literal">php://temp</code> は、<span class="function"><a href="function.fstat.html" class="function">fstat()</a></span> をサポートしています。
        </td>
       </tr>
 
@@ -305,11 +307,11 @@
       <tr>
        <td><span class="function"><a href="function.stream-select.html" class="function">stream_select()</a></span> のサポート</td>
        <td>
-        <em>php://stdin</em>、
-        <em>php://stdout</em>、
-        <em>php://stderr</em>、
-        <em>php://fd</em>、および
-        <em>php://temp</em> のみ。
+        <code class="literal">php://stdin</code>、
+        <code class="literal">php://stdout</code>、
+        <code class="literal">php://stderr</code>、
+        <code class="literal">php://fd</code>、および
+        <code class="literal">php://temp</code> のみ。
        </td>
       </tr>
 
@@ -321,60 +323,9 @@
  </div>
  
 
- <div class="refsect1 changelog" id="refsect1-wrappers.php-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>5.6.0</td>
-       <td>
-        <var class="filename">php://input</var> が再利用可能になりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.3.6</td>
-       <td>
-        <var class="filename">php://fd</var> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.1.0</td>
-       <td>
-        <var class="filename">php://memory</var> および <var class="filename">php://temp</var>
-        が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.0.0</td>
-       <td>
-        <var class="filename">php://filter</var> が追加されました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-wrappers.php-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-373">
+  <div class="example" id="example-363">
    <p><strong>例1 php://temp/maxmemory</strong></p>
    <div class="example-contents"><p>
     このオプションパラメータは、<var class="filename">php://temp</var>
@@ -388,7 +339,7 @@
    </div>
 
   </div>
-  <div class="example" id="example-374">
+  <div class="example" id="example-364">
    <p><strong>例2 php://filter/resource=&lt;フィルタの対象となるストリーム&gt;</strong></p>
    <div class="example-contents"><p>
     このパラメータは、
@@ -403,11 +354,11 @@
    </div>
 
   </div>
-  <div class="example" id="example-375">
+  <div class="example" id="example-365">
    <p><strong>例3 php://filter/read=&lt;読み込みチェーンに適用するフィルタのリスト&gt;</strong></p>
    <div class="example-contents"><p>
     このパラメータは 1 つ以上のフィルタ名を
-    パラメータとしてとり、それらはパイプ文字 <em>|</em> で区切られます。
+    パラメータとしてとり、それらはパイプ文字 <code class="literal">|</code> で区切られます。
    </p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -417,11 +368,11 @@
    </div>
 
   </div>
-  <div class="example" id="example-376">
+  <div class="example" id="example-366">
    <p><strong>例4 php://filter/write=&lt;書き込みチェーンに適用するフィルタのリスト&gt;</strong></p>
    <div class="example-contents"><p>
     このパラメータは 1 つ以上のフィルタ名を
-    パラメータとしてとり、それらはパイプ文字 <em>|</em> で区切られます。
+    パラメータとしてとり、それらはパイプ文字 <code class="literal">|</code> で区切られます。
    </p></div>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -431,7 +382,7 @@
    </div>
 
   </div>
-  <div class="example" id="example-377">
+  <div class="example" id="example-367">
    <p><strong>例5 php://memory と php://temp は再利用できない</strong></p>
    <div class="example-contents"><p>
     <var class="filename">php://memory</var> と <var class="filename">php://temp</var>
@@ -446,9 +397,4 @@ file_put_contents('php://memory',&nbsp;'PHP');<br />echo&nbsp;file_get_contents(
   </div>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="wrappers.ftp.html">ftp://</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="wrappers.compression.html">zlib://</a></div>
- <div class="up"><a href="wrappers.html">サポートするプロトコル/ラッパー</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

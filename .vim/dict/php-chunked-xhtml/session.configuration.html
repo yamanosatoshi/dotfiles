@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>実行時設定</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="session.installation.html">インストール手順</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="session.resources.html">リソース型</a></div>
- <div class="up"><a href="session.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="session.configuration" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="session.installation.html">« インストール手順</a></li>
+      <li style="float: right;"><a href="session.resources.html">リソース型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="session.setup.html">インストール/設定</a></li>
+    <li>実行時設定</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="session.configuration" class="section">
  <h2 class="title">実行時設定</h2>
  <p class="simpara">
 <var class="filename">php.ini</var> の設定により動作が変化します。
@@ -69,7 +82,7 @@
      <td><a href="session.configuration.html#ini.session.gc-divisor" class="link">session.gc_divisor</a></td>
      <td>&quot;100&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 4.3.2 から利用可能</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
@@ -111,21 +124,28 @@
      <td><a href="session.configuration.html#ini.session.cookie-secure" class="link">session.cookie_secure</a></td>
      <td>&quot;&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 4.0.4  から利用可能</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="session.configuration.html#ini.session.cookie-httponly" class="link">session.cookie_httponly</a></td>
      <td>&quot;&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 5.2.0 から利用可能</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="session.configuration.html#ini.session.cookie-samesite" class="link">session.cookie_samesite</a></td>
+     <td>&quot;&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>PHP 7.3.0 から利用可能</td>
     </tr>
 
     <tr>
      <td><a href="session.configuration.html#ini.session.use-strict-mode" class="link">session.use_strict_mode</a></td>
      <td>&quot;0&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 5.5.2 から利用可能</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
@@ -139,7 +159,7 @@
      <td><a href="session.configuration.html#ini.session.use-only-cookies" class="link">session.use_only_cookies</a></td>
      <td>&quot;1&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 4.3.0  から利用可能</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
@@ -167,7 +187,7 @@
      <td><a href="session.configuration.html#ini.session.use-trans-sid" class="link">session.use_trans_sid</a></td>
      <td>&quot;0&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP_INI_ALL は PHP &lt;= 4.2.3、PHP_INI_PERDIR は PHP &lt; 5 から。PHP 4.0.3 から利用可能。</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
@@ -179,7 +199,7 @@
 
     <tr>
      <td><a href="session.configuration.html#ini.session.trans-sid-hosts" class="link">session.trans_sid_hosts</a></td>
-     <td><em>$_SERVER[&#039;HTTP_HOST&#039;]</em></td>
+     <td><code class="literal">$_SERVER[&#039;HTTP_HOST&#039;]</code></td>
      <td>PHP_INI_ALL</td>
      <td>PHP 7.1.0 から利用可能</td>
     </tr>
@@ -193,93 +213,72 @@
 
     <tr>
      <td><a href="session.configuration.html#ini.session.sid-bits-per-character" class="link">session.sid_bits_per_character</a></td>
-     <td>&quot;5&quot;</td>
-     <td>PHP_INI_ALL</td>
-     <td>PHP 7.1.0 から利用可能</td>
-    </tr>
-
-    <tr>
-     <td><a href="session.configuration.html#ini.session.hash-function" class="link">session.hash_function</a></td>
-     <td>&quot;0&quot;</td>
-     <td>PHP_INI_ALL</td>
-     <td>PHP 5.0.0 から利用可能。PHP 7.1.0 で削除されました。</td>
-    </tr>
-
-    <tr>
-     <td><a href="session.configuration.html#ini.session.hash-bits-per-character" class="link">session.hash_bits_per_character</a></td>
      <td>&quot;4&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 5.0.0 から利用可能。PHP 7.1.0 で削除されました。</td>
+     <td>PHP 7.1.0 から利用可能</td>
     </tr>
 
     <tr>
      <td><a href="session.configuration.html#ini.session.upload-progress.enabled" class="link">session.upload_progress.enabled</a></td>
      <td>&quot;1&quot;</td>
      <td>PHP_INI_PERDIR</td>
-     <td>PHP 5.4.0 から利用可能</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="session.configuration.html#ini.session.upload-progress.cleanup" class="link">session.upload_progress.cleanup</a></td>
      <td>&quot;1&quot;</td>
      <td>PHP_INI_PERDIR</td>
-     <td>PHP 5.4.0 から利用可能</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="session.configuration.html#ini.session.upload-progress.prefix" class="link">session.upload_progress.prefix</a></td>
      <td>&quot;upload_progress_&quot;</td>
      <td>PHP_INI_PERDIR</td>
-     <td>PHP 5.4.0 から利用可能</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="session.configuration.html#ini.session.upload-progress.name" class="link">session.upload_progress.name</a></td>
      <td>&quot;PHP_SESSION_UPLOAD_PROGRESS&quot;</td>
      <td>PHP_INI_PERDIR</td>
-     <td>PHP 5.4.0 から利用可能</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="session.configuration.html#ini.session.upload-progress.freq" class="link">session.upload_progress.freq</a></td>
      <td>&quot;1%&quot;</td>
      <td>PHP_INI_PERDIR</td>
-     <td>PHP 5.4.0 から利用可能</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="session.configuration.html#ini.session.upload-progress.min-freq" class="link">session.upload_progress.min_freq</a></td>
      <td>&quot;1&quot;</td>
      <td>PHP_INI_PERDIR</td>
-     <td>PHP 5.4.0 から利用可能</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="session.configuration.html#ini.session.lazy-write" class="link">session.lazy_write</a></td>
      <td>&quot;1&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 7.0.0 から利用可能</td>
-    </tr>
-
-    <tr>
-     <td><a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a></td>
-     <td>&quot;a=href,area=href,frame=src,form=&quot;</td>
-     <td>PHP_INI_ALL</td>
-     <td>PHP 4.0.4 から利用可能。PHP 7.1.0 以降は、セッションではこの項目を使いません。</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="session.configuration.html#ini.session.hash-function" class="link">session.hash_function</a></td>
      <td>&quot;0&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 5.0.0 から利用可能。PHP 7.1.0 で削除されました。</td>
+     <td>PHP 7.1.0 で削除されました。</td>
     </tr>
 
     <tr>
      <td><a href="session.configuration.html#ini.session.hash-bits-per-character" class="link">session.hash_bits_per_character</a></td>
      <td>&quot;4&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 5.0.0 から利用可能。PHP 7.1.0 で削除されました。</td>
+     <td>PHP 7.1.0 で削除されました。</td>
     </tr>
 
     <tr>
@@ -294,20 +293,6 @@
      <td>&quot;0&quot;</td>
      <td>PHP_INI_ALL</td>
      <td>PHP 7.1.0 で削除されました。</td>
-    </tr>
-
-    <tr>
-     <td><a href="session.configuration.html#ini.session.bug-compat-42" class="link">session.bug_compat_42</a></td>
-     <td>&quot;1&quot;</td>
-     <td>PHP_INI_ALL</td>
-     <td>PHP 4.3.0 から利用可能。PHP 5.4.0 で削除されました。</td>
-    </tr>
-
-    <tr>
-     <td><a href="session.configuration.html#ini.session.bug-compat-warn" class="link">session.bug_compat_warn</a></td>
-     <td>&quot;1&quot;</td>
-     <td>PHP_INI_ALL</td>
-     <td>PHP 4.3.0 から利用可能。PHP 5.4.0 で削除されました。</td>
     </tr>
 
    </tbody>
@@ -326,16 +311,16 @@
   
    <dt id="ini.session.save-handler">
     <code class="parameter">session.save_handler</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-      <em>session.save_handler</em> は、
+      <code class="literal">session.save_handler</code> は、
       セッションに関連するデータの保存および取得時に使用するハンドラを定義します。
-      デフォルトは、<em>files</em> です。各拡張モジュールで、
-      独自の <em>save_handler</em> を使用できることに注意しましょう。
+      デフォルトは、<code class="literal">files</code> です。各拡張モジュールで、
+      独自の <code class="literal">save_handler</code> を使用できることに注意しましょう。
       インストール環境単位で登録されているハンドラを取得するには
       <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> を使用します。
       <span class="function"><a href="function.session-set-save-handler.html" class="function">session_set_save_handler()</a></span> も参照してください。
@@ -347,70 +332,63 @@
   
    <dt id="ini.session.save-path">
     <code class="parameter">session.save_path</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-      <em>session.save_path</em> は、保存ハンドラに渡される
+      <code class="literal">session.save_path</code> は、保存ハンドラに渡される
       引数を定義します。デフォルトのファイルハンドラを選択した場合、
       ファイルが作成される場所のパスになります。
       <span class="function"><a href="function.session-save-path.html" class="function">session_save_path()</a></span> も参照ください。
     </span>
     <p class="para">
-     オプションの引数として <em>N</em>（数値）を指定できます。
+     オプションの引数として <code class="literal">N</code>（数値）を指定できます。
      これはセッションファイルを分散して保存する際に
      ディレクトリ階層レベルを決定します。
-     例えば、<em>&#039;5;/tmp&#039;</em>とすると
-     <em>/tmp/4/b/1/e/3/sess_4b1e384ad74619bd212e236e52a5a174If</em>
+     例えば、<code class="literal">&#039;5;/tmp&#039;</code>とすると
+     <code class="literal">/tmp/4/b/1/e/3/sess_4b1e384ad74619bd212e236e52a5a174If</code>
      という位置にセッションファイルを生成します。
-     <em>N</em> を使用するには、これらすべてのディレクトリが
+     <code class="literal">N</code> を使用するには、これらすべてのディレクトリが
      事前に作成されている必要があります。
      そのためのシェルスクリプトが<var class="filename">ext/session</var>に
      <var class="filename">mod_files.sh</var>というファイル名であります。
      Windows 版の <var class="filename">mod_files.bat</var> もあります。
-     また、0以上の <em>N</em> が指定されている場合には自動ガーベッジコレクション
+     また、0以上の <code class="literal">N</code> が指定されている場合には自動ガーベッジコレクション
      が機能しないことに注意してください。詳細は <var class="filename">php.ini</var> を見てください。
-     また、<em>N</em> を指定する場合は、
-     <em>session.save_path</em>を&quot;quotes&quot;で囲う必要があります。
-     なぜならセパレータ(<em>;</em>) は
+     また、<code class="literal">N</code> を指定する場合は、
+     <code class="literal">session.save_path</code>を&quot;quotes&quot;で囲う必要があります。
+     なぜならセパレータ(<code class="literal">;</code>) は
      <var class="filename">php.ini</var> ではコメントとしても利用されているからです。
     </p>
     <p class="para">
      ファイルストレージモジュールが作るファイルのモードは、デフォルトで 600 になります。
-     このデフォルトを変更するには、オプションの引数 <em>MODE</em> を利用します。
-     <em>N;MODE;/path</em> のように使い、<em>MODE</em>
-     の部分に八進形式のモードを指定します。<em>MODE</em> を設定しても、そのプロセスの umask は変わりません。
+     このデフォルトを変更するには、オプションの引数 <code class="literal">MODE</code> を利用します。
+     <code class="literal">N;MODE;/path</code> のように使い、<code class="literal">MODE</code>
+     の部分に八進形式のモードを指定します。<code class="literal">MODE</code> を設定しても、そのプロセスの umask は変わりません。
     </p>
     <div class="warning"><strong class="warning">警告</strong>
      <p class="para">
-      この設定を<var class="filename">/tmp</var> (デフォルト)のようにどこか
-      らでも読み込み可能なディレクトリのままにしている場合、サーバー上
+      この設定を <var class="filename">/tmp</var> (デフォルト) のようにどこか
+      らでも読み込み可能なディレクトリに設定した場合、サーバー上
       の他のユーザーがこのディレクトリのファイルのリストを取得すること
       により、セッションをハイジャックをすることが可能となります。
      </p>
     </div>
     <div class="caution"><strong class="caution">警告</strong>
      <p class="para">
-      オプションのディレクトリレベル定数 <em>N</em> で、
+      オプションのディレクトリレベル定数 <code class="literal">N</code> で、
       1 あるいは 2 以外の値を使うのは、大半のサイトでは不適切です。
       大量のディレクトリが必要になってしまうからです。たとえば、この値を 3 にすると、
-      ファイルシステム上のディレクトリの数が <em>64^3</em> にもなり、
+      ファイルシステム上のディレクトリの数が <code class="literal">(2 ** session.sid_bits_per_character) ** 3</code> にもなり、
       ディスク容量や inode の無駄遣いになってしまいます。
      </p>
      <p class="para">
-      <em>N</em> を 2 より大きくするのは、
+      <code class="literal">N</code> を 2 より大きくするのは、
       それを必要とするような大規模サイトに限るようにしましょう。
      </p>
     </div>
-    <blockquote class="note"><p><strong class="note">注意</strong>: 
-     <span class="simpara">
-      PHP 4.3.6 以前では、WindowsユーザーがPHPのsession関数を使用するためには、
-      この変数を変更する必要があります。<var class="filename">c:/temp</var>
-      のような有効なパスを指定するようにしてください。
-     </span>
-    </p></blockquote>
    </dd>
 
   
@@ -418,16 +396,16 @@
   
    <dt id="ini.session.name">
     <code class="parameter">session.name</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.name</em> はセッション名を指定し、
+     <code class="literal">session.name</code> はセッション名を指定し、
      クッキー名として使用されます。
      アルファベット文字のみで指定する必要があります。
-     デフォルトは、<em>PHPSESSID</em> です。
+     デフォルトは、<code class="literal">PHPSESSID</code> です。
      <span class="function"><a href="function.session-name.html" class="function">session_name()</a></span>も参照してください。
     </span>
    </dd>
@@ -437,15 +415,15 @@
   
    <dt id="ini.session.auto-start">
     <code class="parameter">session.auto_start</code>
-    <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    <span class="type">bool</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.auto_start</em> はリクエスト開始時に
+     <code class="literal">session.auto_start</code> はリクエスト開始時に
      セッションモジュールがセッションを自動的に開始するかどうかを
-     指定します。デフォルトは、<em>0</em>(無効)です。
+     指定します。デフォルトは、<code class="literal">0</code>(無効)です。
     </span>
    </dd>
 
@@ -454,30 +432,28 @@
   
    <dt id="ini.session.serialize-handler">
     <code class="parameter">session.serialize_handler</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.serialize_handler</em> は、シリアル化または
+     <code class="literal">session.serialize_handler</code> は、シリアル化または
      シリアル化データを復元するために使用されるハンドラの名前を定義します。
-     PHP シリアライズフォーマット (<em>php_serialize</em>)、
-     PHP 内部フォーマット (<em>php</em> あるいは <em>php_binary</em>)、
-     そして WDDX (<em>wddx</em>)
+     PHP シリアライズフォーマット (<code class="literal">php_serialize</code>)、
+     PHP 内部フォーマット (<code class="literal">php</code> あるいは <code class="literal">php_binary</code>)、
+     そして WDDX (<code class="literal">wddx</code>)
      に対応しています。WDDX は、PHP が<a href="ref.wddx.html" class="link">WDDX サポート</a>
      を有効にしてコンパイルされている場合のみ使用可能です。
-
-     <em>php_serialize</em> は PHP 5.5.4 以降で使用可能です。
-     <em>php_serialize</em> はプレーンな serialize/unserialize
-     関数を内部的に使っており、<em>php</em> や <em>php_binary</em>
+     <code class="literal">php_serialize</code> はプレーンな serialize/unserialize
+     関数を内部的に使っており、<code class="literal">php</code> や <code class="literal">php_binary</code>
      のような制約はありません。これらのシリアライズハンドラでは、$_SESSION
      の中で数値のインデックスや特殊文字
-     (<em>|</em> や <em>!</em>)
+     (<code class="literal">|</code> や <code class="literal">!</code>)
      を含む文字列のインデックスを使えませんでした。
-     <em>php_serialize</em> を使えば、
+     <code class="literal">php_serialize</code> を使えば、
      スクリプトの終了時に数値インデックスや特殊文字インデックスのエラーが出ないようにできます。
-     デフォルトは <em>php</em> です。
+     デフォルトは <code class="literal">php</code> です。
     </span>
    </dd>
 
@@ -486,16 +462,16 @@
   
    <dt id="ini.session.gc-probability">
     <code class="parameter">session.gc_probability</code>
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    <span class="type">int</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.gc_probability</em>と
-     <em>session.gc_divisor</em>の組み合わせでgc
+     <code class="literal">session.gc_probability</code>と
+     <code class="literal">session.gc_divisor</code>の組み合わせでgc
     （ガーベッジコレクション）ルーチンの始動を制御します。
-     デフォルトは、<em>1</em> です。
+     デフォルトは、<code class="literal">1</code> です。
      詳細は<a href="session.configuration.html#ini.session.gc-divisor" class="link">session.gc_divisor</a>
      をご覧ください
     </span>
@@ -506,19 +482,19 @@
   
    <dt id="ini.session.gc-divisor">
     <code class="parameter">session.gc_divisor</code>
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    <span class="type">int</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.gc_divisor</em>と
-     <em>session.gc_probability</em>の組み合わせで
+     <code class="literal">session.gc_divisor</code>と
+     <code class="literal">session.gc_probability</code>の組み合わせで
      すべてのセッションの初期化過程でgc（ガーベッジコネクション）プロセス
      も始動する確率を制御します。確率は gc_probability/gc_divisor
      で計算されます。例えば、1/100は各リクエスト毎に1%の確率でGCプロセスが
      始動します。
-     <em>session.gc_divisor</em>のデフォルトは<em>100</em>です。
+     <code class="literal">session.gc_divisor</code>のデフォルトは<code class="literal">100</code>です。
     </span>
    </dd>
 
@@ -527,13 +503,13 @@
   
    <dt id="ini.session.gc-maxlifetime">
     <code class="parameter">session.gc_maxlifetime</code>
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    <span class="type">int</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.gc_maxlifetime</em> は、データが
+     <code class="literal">session.gc_maxlifetime</code> は、データが
      &#039;ごみ&#039; とみなされ、消去されるまでの秒数を指定します。
      ガベージコレクション (ごみの収集) は、
      セッションの開始時に行われます (<a href="session.configuration.html#ini.session.gc-probability" class="link">session.gc_probability</a> と
@@ -542,7 +518,7 @@
     </span>
     <blockquote class="note"><p><strong class="note">注意</strong>: 
      <span class="simpara">
-      異なる値を <em>session.gc_maxlifetime</em> に指定している
+      異なる値を <code class="literal">session.gc_maxlifetime</code> に指定している
       別々のスクリプトがセッションデータの保存場所を共有している場合、
       一番小さい設定値に達した時点でデータが消去されます。このような場合には、
       お互いに <a href="session.configuration.html#ini.session.save-path" class="link">session.save_path</a>
@@ -556,13 +532,13 @@
   
    <dt id="ini.session.referer-check">
     <code class="parameter">session.referer_check</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.referer_check</em> には、HTTP Referer に
+     <code class="literal">session.referer_check</code> には、HTTP Referer に
       おいて確認を行う文字列を指定します。Refererがクライアントにより
      送信されており、かつ、指定した文字列が見付からない場合、埋め込
       まれたセッションIDは無効となります。デフォルトは空の文字列です。
@@ -574,21 +550,21 @@
   
    <dt id="ini.session.entropy-file">
     <code class="parameter">session.entropy_file</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.entropy_file</em> は、
+     <code class="literal">session.entropy_file</code> は、
      セッションIDを作成する際の別のエントロピーソースとして使用する
      外部リソースへのパスを指定します。
-     例としては、多くの UNIX で利用可能な <em>/dev/random</em>
-     または <em>/dev/urandom</em> があげられます。
+     例としては、多くの UNIX で利用可能な <code class="literal">/dev/random</code>
+     または <code class="literal">/dev/urandom</code> があげられます。
     </span>
     <span class="simpara">
-     この機能は、Windows では PHP 5.3.3 以降で対応します。
-     <em>session.entropy_length</em> にゼロ以外の値を設定すると、
+     この機能は、Windows でもサポートされています。
+     <code class="literal">session.entropy_length</code> にゼロ以外の値を設定すると、
      PHP は Windows Random API をエントロピーソースとして使います。
     </span>
     <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -596,11 +572,9 @@
       PHP 7.1.0 で削除されました。
      </span>
      <span class="simpara">
-      PHP 5.4.0 以降では、
-      <em>/dev/urandom</em> あるいは <em>/dev/arandom</em>
-      が使えるときはそれを
-      <em>session.entropy_file</em> のデフォルトとするようになりました。
-      それまでのバージョンでは、このディレクティブのデフォルトは空でした。
+      <code class="literal">/dev/urandom</code> あるいは <code class="literal">/dev/arandom</code>
+      が使えるときは、
+      それが <code class="literal">session.entropy_file</code> のデフォルトになります。
      </span>
     </p></blockquote>
    </dd>
@@ -610,14 +584,14 @@
   
    <dt id="ini.session.entropy-length">
     <code class="parameter">session.entropy_length</code>
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    <span class="type">int</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.entropy_length</em> は、前記のファイルから
-     読みこむバイト数を指定します。デフォルトは、<em>32</em>
+     <code class="literal">session.entropy_length</code> は、前記のファイルから
+     読みこむバイト数を指定します。デフォルトは、<code class="literal">32</code>
      です。
     </span>
     <span class="simpara">
@@ -630,28 +604,38 @@
   
    <dt id="ini.session.use-strict-mode">
     <code class="parameter">session.use_strict_mode</code>
-    <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    <span class="type">bool</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.use_strict_mode</em> は、
+     <code class="literal">session.use_strict_mode</code> は、
      厳格なセッション ID モードを利用するかどうかを指定します。
      有効にすると、初期化していないセッション ID を受け付けなくなります。
      初期化していないセッション ID がブラウザから送信された場合は、
      新しいセッション ID をブラウザに送り返します。
      このモードを利用すると、セッションアダプションを利用したセッション固定攻撃からアプリケーションを保護できます。
-     デフォルトは <em>0</em> (無効) です。
+     デフォルトは <code class="literal">0</code> (無効) です。
     </span>
     <blockquote class="note"><p><strong class="note">注意</strong>: 
      <span class="simpara">
      一般的なセッションのセキュリティを踏まえると、
-     <em>session.use_strict_mode</em> を有効にしておく必要があります。
+     <code class="literal">session.use_strict_mode</code> を有効にしておく必要があります。
      すべてのサイトでこれを有効にすることを推奨します。
      詳細は <span class="function"><a href="function.session-create-id.html" class="function">session_create_id()</a></span> のサンプルコードを参照ください。
      </span>
     </p></blockquote>
+    <div class="warning"><strong class="warning">警告</strong>
+     <p class="para">
+      カスタムのセッションハンドラが <span class="function"><a href="function.session-set-save-handler.html" class="function">session_set_save_handler()</a></span> 経由で登録され、
+      それが <span class="methodname"><a href="sessionupdatetimestamphandlerinterface.validateid.html" class="methodname">SessionUpdateTimestampHandlerInterface::validateId()</a></span> を実装せず、
+      <code class="parameter">validate_sid</code> コールバックを提供しない場合、
+      このディレクティブの値に関わらず、厳格なセッションIDモードは無効になります。
+      <a href="class.sessionhandler.html" class="classname">SessionHandler</a> クラスは <span class="methodname"><strong>SessionHandler::validateId()</strong></span>
+      を実装して <em class="emphasis">いない</em> ことに特に注意して下さい。
+     </p>
+    </div>
    </dd>
 
   
@@ -659,15 +643,15 @@
   
    <dt id="ini.session.use-cookies">
     <code class="parameter">session.use_cookies</code>
-    <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    <span class="type">bool</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.use_cookies</em>によりクライアント側にセッ
+     <code class="literal">session.use_cookies</code>によりクライアント側にセッ
      ションIDを保存する際にクッキーを使用するかどうかを指定します。デ
-     フォルトは<em>1</em> (有効)です。
+     フォルトは<code class="literal">1</code> (有効)です。
     </span>
    </dd>
 
@@ -676,20 +660,19 @@
   
    <dt id="ini.session.use-only-cookies">
     <code class="parameter">session.use_only_cookies</code>
-    <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    <span class="type">bool</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.use_only_cookies</em> は、
+     <code class="literal">session.use_only_cookies</code> は、
      このモジュールがクライアント側へのセッション ID の保存に
      Cookie <em class="emphasis">のみ</em>
      を使用することを指定します。
      この設定を有効にすることにより、セッション ID を URL
-     に埋め込む攻撃を防ぐことができます。この設定は、
-     <em>PHP</em> 4.3.0 で追加されました。
-     PHP 5.3.0 以降で、デフォルトは <em>1</em> (有効) となります。
+     に埋め込む攻撃を防ぐことができます。
+     デフォルトは <code class="literal">1</code> (有効) となります。
     </span>
    </dd>
 
@@ -699,16 +682,16 @@
   
    <dt id="ini.session.cookie-lifetime">
     <code class="parameter">session.cookie_lifetime</code>
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    <span class="type">int</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.cookie_lifetime</em> は、
+     <code class="literal">session.cookie_lifetime</code> は、
      ブラウザに送信するクッキーの有効期間を秒単位で指定します。
      0 を指定すると &quot;ブラウザを閉じるまで&quot; という意味になります。
-     デフォルトは、<em>0</em> です。
+     デフォルトは、<code class="literal">0</code> です。
      <span class="function"><a href="function.session-get-cookie-params.html" class="function">session_get_cookie_params()</a></span> および
      <span class="function"><a href="function.session-set-cookie-params.html" class="function">session_set_cookie_params()</a></span> も参照してください。
     </span>
@@ -725,15 +708,15 @@
   
    <dt id="ini.session.cookie-path">
     <code class="parameter">session.cookie_path</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-      <em>session.cookie_path</em>
+      <code class="literal">session.cookie_path</code>
       によりセッションクッキーで設定するパスを指定します。
-      デフォルトは<em>/</em>です。
+      デフォルトは<code class="literal">/</code>です。
      <span class="function"><a href="function.session-get-cookie-params.html" class="function">session_get_cookie_params()</a></span>および
      <span class="function"><a href="function.session-set-cookie-params.html" class="function">session_set_cookie_params()</a></span>も参照してください。
     </span>
@@ -744,13 +727,13 @@
   
    <dt id="ini.session.cookie-domain">
     <code class="parameter">session.cookie_domain</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-      <em>session.cookie_domain</em>
+      <code class="literal">session.cookie_domain</code>
       によりセッションクッキーで指定するドメインを指定します。
       デフォルトでは指定されません。
       この場合は、クッキーの仕様によって、クッキーを作成したサーバーの
@@ -765,16 +748,15 @@
   
    <dt id="ini.session.cookie-secure">
     <code class="parameter">session.cookie_secure</code>
-    <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    <span class="type">bool</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.cookie_secure</em>は、
+     <code class="literal">session.cookie_secure</code>は、
      セキュアな接続を通じてのみCookieを送信できるかどうかを指定します。
-     デフォルトは、<em>off</em>です。
-     この設定は、<em>PHP</em> 4.0.4で追加されました。
+     デフォルトは、<code class="literal">off</code>です。
      <span class="function"><a href="function.session-get-cookie-params.html" class="function">session_get_cookie_params()</a></span>および
      <span class="function"><a href="function.session-set-cookie-params.html" class="function">session_set_cookie_params()</a></span>も参照してください。
     </span>
@@ -785,7 +767,7 @@
   
    <dt id="ini.session.cookie-httponly">
     <code class="parameter">session.cookie_httponly</code>
-    <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    <span class="type">bool</span>
    </dt>
 
    <dd>
@@ -801,19 +783,42 @@
   
 
   
-   <dt id="ini.session.cache-limiter">
-    <code class="parameter">session.cache_limiter</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+   <dt id="ini.session.cookie-samesite">
+    <code class="parameter">session.cookie_samesite</code>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.cache_limiter</em>
+     クロスサイトリクエストで、サーバーにクッキーを送信しないよう指示できるようにします。
+     これを用いると、ユーザーエージェントによる生成元とは異なる場所への情報漏洩のリスクを軽減できます。
+     また、CSRF攻撃に対する防御策のひとつにもなります。
+     この仕組みはすべてのブラウザがサポートしているわけではないことに注意しましょう。
+     この項目に空の値を設定した場合は、クッキーのSameSite属性は送信されません。
+     <code class="literal">Lax</code> や <code class="literal">Strict</code> を設定した場合は、
+     サイトをまたがる POST リクエストではクッキーを送信しません。GET リクエストの場合は、
+     <code class="literal">Lax</code> はサイトをまたがるリクエストでもクッキーを送信しますが、
+     <code class="literal">Strict</code> は送信しません。
+    </span>
+   </dd>
+
+  
+
+  
+   <dt id="ini.session.cache-limiter">
+    <code class="parameter">session.cache_limiter</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <code class="literal">session.cache_limiter</code>
      により、セッションページにおけるキャッシュ制御の方法を指定します。
-     <em>nocache</em>、<em>private</em>、
-     <em>private_no_expire</em> あるいは <em>public</em>
-     のいずれかとなります。デフォルトは <em>nocache</em> です。
+     <code class="literal">nocache</code>、<code class="literal">private</code>、
+     <code class="literal">private_no_expire</code> あるいは <code class="literal">public</code>
+     のいずれかとなります。デフォルトは <code class="literal">nocache</code> です。
      これらの値の意味については
      <span class="function"><a href="function.session-cache-limiter.html" class="function">session_cache_limiter()</a></span> のドキュメントも参照ください。
     </span>
@@ -825,16 +830,16 @@
   
    <dt id="ini.session.cache-expire">
     <code class="parameter">session.cache_expire</code>
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    <span class="type">int</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.cache_expire</em>によりキャッシュされた
+     <code class="literal">session.cache_expire</code>によりキャッシュされた
      セッションページの有効期間を分単位で指定します。
      このオプションは、nocacheリミッタに関しては効果がありません。
-     デフォルトは、<em>180</em>です。
+     デフォルトは、<code class="literal">180</code>です。
      <span class="function"><a href="function.session-cache-expire.html" class="function">session_cache_expire()</a></span>も参照してください。
     </span>
    </dd>
@@ -844,15 +849,15 @@
   
    <dt id="ini.session.use-trans-sid">
     <code class="parameter">session.use_trans_sid</code>
-    <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    <span class="type">bool</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.use_trans_sid</em>は、透過的なセッション
+     <code class="literal">session.use_trans_sid</code>は、透過的なセッション
      IDの付加をするかどうかを指定します。
-     デフォルトは、<em>0</em>(無効)です。
+     デフォルトは、<code class="literal">0</code>(無効)です。
     </span>
     <blockquote class="note"><p><strong class="note">注意</strong>: 
      <span class="simpara">
@@ -879,20 +884,20 @@
   
    <dt id="ini.session.trans-sid-tags">
     <code class="parameter">session.trans_sid_tags</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.trans_sid_tags</em>
+     <code class="literal">session.trans_sid_tags</code>
      は、透過的セッションIDのサポートが有効な場合にどの HTML タグをリライトするかを指定します。
      デフォルトは
-     <em>a=href,area=href,frame=src,input=src,form=</em>
+     <code class="literal">a=href,area=href,frame=src,input=src,form=</code>
      です。
     </span>
     <span class="simpara">
-     <em>form</em> は特別なタグで、<em>&lt;input hidden=&quot;session_id&quot; name=&quot;session_name&quot;&gt;</em>
+     <code class="literal">form</code> は特別なタグで、<code class="literal">&lt;input hidden=&quot;session_id&quot; name=&quot;session_name&quot;&gt;</code>
      がフォーム変数に追加されます。
     </span>
     <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -900,7 +905,7 @@
       PHP 7.1.0 より前のバージョンでは、この目的で使われていた設定項目は
       <a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a>
       でした。
-      PHP 7.1.0 以降は、<em>fieldset</em>
+      PHP 7.1.0 以降は、<code class="literal">fieldset</code>
       が特別なタグとはみなされなくなります。
      </span>
     </p></blockquote>
@@ -911,18 +916,18 @@
   
    <dt id="ini.session.trans-sid-hosts">
     <code class="parameter">session.trans_sid_hosts</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.trans_sid_hosts</em> は、
+     <code class="literal">session.trans_sid_hosts</code> は、
      は、透過的セッションIDのサポートが有効な場合にどのホストをセッションIDつきにリライトするかを指定します。
-     デフォルトは <em>$_SERVER[&#039;HTTP_HOST&#039;]</em> です。
+     デフォルトは <code class="literal">$_SERVER[&#039;HTTP_HOST&#039;]</code> です。
      複数のホストを指定する場合は &quot;,&quot; で区切ってつなぎます。
      ホストとホストの間にスペースを入れることはできません。つまり、たとえば
-     <em>php.net,wiki.php.net,bugs.php.net</em>
+     <code class="literal">php.net,wiki.php.net,bugs.php.net</code>
      のように指定します。
     </span>
    </dd>
@@ -930,96 +935,43 @@
   
 
   
-   <dt id="ini.session.bug-compat-42">
-    <code class="parameter">session.bug_compat_42</code>
-    <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-   </dt>
-
-   <dd>
-
-    <span class="simpara">
-     PHP バージョンが 4.2.3 とそれ以前には、たとえ
-     <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
-     が無効の場合でもグローバルスコープでセッション変数の初期化を
-     許してしまうドキュメント化されていない特徴/バグがあります。
-     この機能を使用している場合で <a href="session.configuration.html#ini.session.bug-compat-warn" class="link">
-     session.bug_compat_warn</a> も有効にしている場合、
-     PHP 4.3.0 とそれ以降のバージョンでは警告が発されます。
-     この特徴/バグは、
-     このディレクティブを無効にすることで無効にすることが可能です。
-    </span>
-    <blockquote class="note"><p><strong class="note">注意</strong>: 
-     <span class="simpara">
-      PHP 5.4.0 で削除されました。
-     </span>
-    </p></blockquote>
-   </dd>
-
-  
-
-  
-   <dt id="ini.session.bug-compat-warn">
-    <code class="parameter">session.bug_compat_warn</code>
-    <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
-   </dt>
-
-   <dd>
-
-    <span class="simpara">
-     PHP バージョンが 4.2.3 とそれ以前には、たとえ
-     <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
-     が無効の場合でもグローバルスコープでセッション変数の初期化を
-     許してしまうドキュメント化されていない特徴/バグがあります。
-     この機能を
-     <a href="session.configuration.html#ini.session.bug-compat-42" class="link">session.bug_compat_42</a>
-     と <a href="session.configuration.html#ini.session.bug-compat-warn" class="link">
-     session.bug_compat_warn</a> を有効にして使用している場合、
-     PHP 4.3.0 とそれ以降のバージョンでは警告が発されます。
-    </span>
-    <blockquote class="note"><p><strong class="note">注意</strong>: 
-     <span class="simpara">
-      PHP 5.4.0 で削除されました。
-     </span>
-    </p></blockquote>
-   </dd>
-
-  
-
-  
    <dt id="ini.session.sid-length">
     <code class="parameter">session.sid_length</code>
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    <span class="type">int</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.sid_length</em> は、セッション ID 文字列の長さを指定します。
+     <code class="literal">session.sid_length</code> は、セッション ID 文字列の長さを指定します。
      22 から 256 までの値が使えます。
     </span>
     <span class="simpara">
      デフォルトは 32 です。互換性を考慮するなら 32 や 40 などを使ってもかまいません。
      セッション ID は長ければ長いほど推測されにくくなります。少なくとも 32 を指定することを推奨します。
     </span>
-    <p class="para">
-      互換性に関するメモ。
-      <em>session.hash_func</em>=0 (MD5) で
-      <em>session.hash_bits_per_character</em>=4
+    <div class="tip"><strong class="tip">ヒント</strong>
+     <p class="para">
+      互換性に関するメモ: 
+      <code class="literal">session.hash_function</code>=0 (MD5) で
+      <code class="literal">session.hash_bits_per_character</code>=4
       の場合、あるいは
-      <em>session.hash_func</em>=1 (SHA1) で
-      <em>session.hash_bits_per_character</em>=6
+      <code class="literal">session.hash_function</code>=1 (SHA1) で
+      <code class="literal">session.hash_bits_per_character</code>=6
       の場合は 32 を使います。
-      <em>session.hash_func</em>=0 (MD5) で
-      <em>session.hash_bits_per_character</em>=5
-      の場合は 26 を使います。
-      <em>session.hash_func</em>=0 (MD5) で
-      <em>session.hash_bits_per_character</em>=6
-      の場合は 22 を使います。INI 設定で、セッション ID を少なくとも 128
+      <code class="literal">session.hash_function</code>=0 (MD5) で
+      <code class="literal">session.hash_bits_per_character</code>=5
+      の場合は、26 を使います。
+      <code class="literal">session.hash_function</code>=0 (MD5) で
+      <code class="literal">session.hash_bits_per_character</code>=6
+      の場合は、22 を使います。
+      INI 設定で、セッション ID を少なくとも 128
       ビットにしておく必要があります。
-      <em>session.sid_bits_per_character</em>
+      <code class="literal">session.sid_bits_per_character</code>
       に適切な値を指定することを忘れないようにしましょう。
       そうしないと、脆弱なセッション ID を使うことになってしまいます。
-    </p>
+     </p>
+    </div> 
     <blockquote class="note"><p><strong class="note">注意</strong>: 
      <span class="simpara">
       この設定は PHP 7.1.0 で導入されました。
@@ -1032,13 +984,13 @@
   
    <dt id="ini.session.sid-bits-per-character">
     <code class="parameter">session.sid_bits_per_character</code>
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    <span class="type">int</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.sid_per_character</em>
+     <code class="literal">session.sid_per_character</code>
      エンコードされたセッション ID 文字のビット数を指定します。指定できる値は
      &#039;4&#039; (0-9, a-f)、&#039;5&#039; (0-9, a-v)、&#039;6&#039; (0-9, a-z, A-Z, &quot;-&quot;, &quot;,&quot;) です。
     </span>
@@ -1060,28 +1012,28 @@
   
    <dt id="ini.session.hash-function">
     <code class="parameter">session.hash_function</code>
-    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.hash_function</em> によりセッション ID
+     <code class="literal">session.hash_function</code> によりセッション ID
      を生成するために使用されるハッシュアルゴリズムを指定することが可能です。
      &#039;0&#039; は MD5 (128 ビット) で、&#039;1&#039; は SHA-1 (160 ビット) を意味します。
     </span>
     <p class="para">
-     PHP 5.3.0 以降では、<a href="ref.hash.html" class="link">hash 拡張モジュール</a>
+     <a href="ref.hash.html" class="link">hash 拡張モジュール</a>
      の任意のアルゴリズムが (この拡張モジュールが使用可能な場合に)
-     指定できるようになります。たとえば
-     <em>sha512</em> や
-     <em>whirlpool</em> などです。
+     指定できます。たとえば
+     <code class="literal">sha512</code> や
+     <code class="literal">whirlpool</code> などです。
      サポートされているアルゴリズムの一覧は、
      <span class="function"><a href="function.hash-algos.html" class="function">hash_algos()</a></span> 関数で取得できます。
     </p>
     <blockquote class="note"><p><strong class="note">注意</strong>: 
      <p class="para">
-      この設定は PHP 5 で導入されました。また、PHP 7.1.0 で削除されました。
+      この設定は、PHP 7.1.0 で削除されました。
      </p>
     </p></blockquote>
    </dd>
@@ -1091,13 +1043,13 @@
   
    <dt id="ini.session.hash-bits-per-character">
     <code class="parameter">session.hash_bits_per_character</code>
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    <span class="type">int</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.hash_bits_per_character</em> により
+     <code class="literal">session.hash_bits_per_character</code> により
      バイナリのハッシュデータを何らかの可読なデータに変換する際、
      それぞれの文字に何ビットストアさせるかを定義することが可能です。
      指定可能な値は、&#039;4&#039; (0-9, a-f)、&#039;5&#039; (0-9, a-v) そして
@@ -1105,7 +1057,7 @@
     </span>
     <blockquote class="note"><p><strong class="note">注意</strong>: 
      <p class="para">
-      この設定は PHP 5 で導入されました。また、PHP 7.1.0 で削除されました。
+      この設定は、PHP 7.1.0 で削除されました。
      </p>
     </p></blockquote>
    </dd>
@@ -1115,13 +1067,13 @@
   
    <dt id="ini.session.upload-progress.enabled">
     <code class="parameter">session.upload_progress.enabled</code>
-    <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    <span class="type">bool</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     アップロードの進捗を追跡して <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> 変数に格納するかどうか。
+     アップロードの進捗を追跡して <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> 変数に格納するかどうか。
      デフォルトは 1 で、この機能は有効になっています。
     </span>
    </dd>
@@ -1131,7 +1083,7 @@
   
    <dt id="ini.session.upload-progress.cleanup">
     <code class="parameter">session.upload_progress.cleanup</code>
-    <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    <span class="type">bool</span>
    </dt>
 
    <dd>
@@ -1153,15 +1105,15 @@
   
    <dt id="ini.session.upload-progress.prefix">
     <code class="parameter">session.upload_progress.prefix</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     アップロードの進捗を <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> で管理するときに使うキーのプレフィックス。
+     アップロードの進捗を <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> で管理するときに使うキーのプレフィックス。
      このキーを
-     <em>$_POST[ini_get(&quot;session.upload_progress.name&quot;)]</em>
+     <code class="literal">$_POST[ini_get(&quot;session.upload_progress.name&quot;)]</code>
      の値と連結して、一意なインデックスを作ります。
     </span>
     <span class="simpara">
@@ -1174,18 +1126,18 @@
   
    <dt id="ini.session.upload-progress.name">
     <code class="parameter">session.upload_progress.name</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     進捗情報を <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> に格納するときに使うキーの名前。
+     進捗情報を <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> に格納するときに使うキーの名前。
      <a href="session.configuration.html#ini.session.upload-progress.prefix" class="link">session.upload_progress.prefix</a>
      も参照ください。
     </span>
     <span class="simpara">
-     <em>$_POST[ini_get(&quot;session.upload_progress.name&quot;)]</em>
+     <code class="literal">$_POST[ini_get(&quot;session.upload_progress.name&quot;)]</code>
      が渡されていない場合や存在しない場合は、アップロードの進捗を記録しません。
     </span>
     <span class="simpara">
@@ -1198,7 +1150,7 @@
   
    <dt id="ini.session.upload-progress.freq">
     <code class="parameter">session.upload_progress.freq</code>
-    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
    </dt>
 
    <dd>
@@ -1219,7 +1171,7 @@
   
    <dt id="ini.session.upload-progress.min-freq">
     <code class="parameter">session.upload_progress.min_freq</code>
-    <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    <span class="type">int</span>
    </dt>
 
    <dd>
@@ -1235,13 +1187,13 @@
   
    <dt id="ini.session.lazy-write">
     <code class="parameter">session.lazy_write</code>
-    <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    <span class="type">bool</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>session.lazy_write</em> を 1 に設定すると、
+     <code class="literal">session.lazy_write</code> を 1 に設定すると、
      セッションのデータが変更されたときにだけ再書き込みを行います。
      デフォルトは 1 で、この機能は有効になっています。
     </span>
@@ -1254,11 +1206,6 @@
  </p>
 
  <p class="para">
-  <a href="ini.core.html#ini.register-globals" class="link"><em>register_globals</em></a>
-  設定は、セッション変数の保存および回復方法に影響を与えます。
- </p>
-
- <p class="para">
   アップロードの進捗は、
   session.upload_progress.enabled を有効にして
   $_POST[ini_get(&quot;session.upload_progress.name&quot;)] を設定するまでは登録されません。
@@ -1266,9 +1213,4 @@
   を参照ください。
  </p>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="session.installation.html">インストール手順</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="session.resources.html">リソース型</a></div>
- <div class="up"><a href="session.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

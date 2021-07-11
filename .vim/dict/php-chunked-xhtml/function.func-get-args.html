@@ -3,26 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>関数の引数リストを配列として返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.func-get-arg.html">func_get_arg</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.func-num-args.html">func_num_args</a></div>
- <div class="up"><a href="ref.funchand.html">関数処理 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.func-get-args" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.func-get-arg.html">« func_get_arg</a></li>
+      <li style="float: right;"><a href="function.func-num-args.html">func_num_args »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.funchand.html">関数処理 関数</a></li>
+    <li>関数の引数リストを配列として返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.func-get-args" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">func_get_args</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">func_get_args</span> &mdash; <span class="dc-title">関数の引数リストを配列として返す</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">func_get_args</span> &mdash; <span class="dc-title">関数の引数リストを配列として返す</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.func-get-args-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>func_get_args</strong></span>
-    ( <span class="methodparam">void</span>
-   )</div>
+   <span class="methodname"><strong>func_get_args</strong></span>(): <span class="type">array</span></div>
 
   <p class="para rdfs-comment">
    関数の引数リストを配列で取得します。
@@ -35,50 +46,17 @@
  </div>
 
 
+ <div class="refsect1 parameters" id="refsect1-function.func-get-args-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">この関数にはパラメータはありません。</p>
+ </div>
+
+
  <div class="refsect1 returnvalues" id="refsect1-function.func-get-args-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
    配列を返します。この配列の各要素は、
    現在のユーザー定義関数の引数リストにおける対応するメンバのコピーとなります。
-  </p>
- </div>
-
-
- <div class="refsect1 changelog" id="refsect1-function.func-get-args-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>5.3.0</td>
-       <td>
-        この関数はパラメータリスト内で使用できるようになりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.3.0</td>
-       <td>
-        ある関数内で <span class="function"><a href="function.include.html" class="function">include</a></span> や
-        <span class="function"><a href="function.require.html" class="function">require</a></span> を使って別のファイルを読み込んでいるときに
-        別のファイル側からこの関数をコールすると、警告を発生して
-        <strong><code>FALSE</code></strong> を返すようになりました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
   </p>
  </div>
 
@@ -94,7 +72,7 @@
  <div class="refsect1 examples" id="refsect1-function.func-get-args-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5948">
+   <div class="example" id="example-5058">
     <p><strong>例1 <span class="function"><strong>func_get_args()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -106,51 +84,18 @@
     <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
     <div class="example-contents screen">
 <div class="cdata"><pre>
-Number of arguments: 3
-Second argument is: 2
-Argument 0 is: 1
-Argument 1 is: 2
-Argument 2 is: 3
+引数の数: 3
+二番目の引数は: 2 です。
+引数 0 は: 1 です。
+引数 1 は: 2 です。
+引数 2 は: 3 です。
 </pre></div>
     </div>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5949">
-    <p><strong>例2 <span class="function"><strong>func_get_args()</strong></span> の PHP 5.3 前後の例</strong></p>
-    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-test.php<br /><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;include&nbsp;</span><span style="color: #DD0000">'./fga.inc'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #DD0000">'First&nbsp;arg'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Second&nbsp;arg'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;<br /></span><br />fga.inc<br /><span style="color: #0000BB">&lt;?php<br /><br />$args&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$args</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
-    </div>
-
-    <div class="example-contents"><p>
-     PHP 5.3 より前のバージョンでの出力は、このようになります。
-    </p></div>
-    <div class="example-contents screen">
-<div class="cdata"><pre>
-array (
-  0 =&gt; &#039;First arg&#039;,
-  1 =&gt; &#039;Second arg&#039;,
-)
-</pre></div>
-    </div>
-    <div class="example-contents"><p>
-     PHP 5.3 以降のバージョンでの出力は、このようになります。
-    </p></div>
-    <div class="example-contents screen">
-<div class="cdata"><pre>
-Warning: func_get_args():  Called from the global scope - no function
-context in /home/torben/Desktop/code/ml/fga.inc on line 3
-false
-</pre></div>
-    </div>
-   </div>
-  </p>
-  <p class="para">
-   <div class="example" id="example-5950">
-    <p><strong>例3 <span class="function"><strong>func_get_args()</strong></span> での引数の参照渡しと値渡しの例</strong></p>
+   <div class="example" id="example-5059">
+    <p><strong>例2 <span class="function"><strong>func_get_args()</strong></span> での引数の参照渡しと値渡しの例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">byVal</span><span style="color: #007700">(</span><span style="color: #0000BB">$arg</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'As&nbsp;passed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">()),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$arg&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'baz'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'After&nbsp;change&nbsp;&nbsp;:&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">()),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">byRef</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$arg</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'As&nbsp;passed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">()),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$arg&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'baz'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'After&nbsp;change&nbsp;&nbsp;:&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">()),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$arg&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">byVal</span><span style="color: #007700">(</span><span style="color: #0000BB">$arg</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">byRef</span><span style="color: #007700">(</span><span style="color: #0000BB">$arg</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -158,28 +103,13 @@ false
 </code></div>
     </div>
 
-    <div class="example-contents"><p>上の例の PHP 7 での出力は、このようになります。</p></div>
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
     <div class="example-contents screen"><br />
 As passed     : array (<br />
   0 =&gt; &#039;bar&#039;,<br />
 )<br />
 After change  : array (<br />
   0 =&gt; &#039;baz&#039;,<br />
-)<br />
-As passed     : array (<br />
-  0 =&gt; &#039;bar&#039;,<br />
-)<br />
-After change  : array (<br />
-  0 =&gt; &#039;baz&#039;,<br />
-)<br />
-    </div>
-    <div class="example-contents"><p>上の例の PHP 5 での出力は、このようになります。</p></div>
-    <div class="example-contents screen"><br />
-As passed     : array (<br />
-  0 =&gt; &#039;bar&#039;,<br />
-)<br />
-After change  : array (<br />
-  0 =&gt; &#039;bar&#039;,<br />
 )<br />
 As passed     : array (<br />
   0 =&gt; &#039;bar&#039;,<br />
@@ -196,13 +126,8 @@ After change  : array (<br />
 
  <div class="refsect1 notes" id="refsect1-function.func-get-args-notes">
   <h3 class="title">注意</h3>
-  <blockquote class="note"><p><strong class="note">注意</strong>: <p class="para">この関数は、
-カレントスコープに依存してパラメータの詳細を決定しますので、
-5.3.0 より前のバージョンでは関数パラメータとして使用することができません。
-もし、この値を渡さなければならない場合、戻り値を変数に割り当て、
-その変数を渡してください。</p></p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: <p class="para">
-引数を参照渡しにすると、その引数への変更がすべてこの関数の返り値に反映されます。
+引数をリファレンス渡しにすると、その引数への変更がすべてこの関数の返り値に反映されます。
 PHP 7 からは、引数が値渡しされた場合には現在の値も返されるようになりました。</p></p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <span class="simpara">
@@ -217,7 +142,7 @@ PHP 7 からは、引数が値渡しされた場合には現在の値も返さ�
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member">PHP 5.6 以降の <a href="functions.arguments.html#functions.variable-arg-list.new" class="link"><em>...</em> 構文</a></li>
+    <li class="member"><a href="functions.arguments.html#functions.variable-arg-list" class="link"><code class="literal">...</code> 構文</a></li>
     <li class="member"><span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span></li>
     <li class="member"><span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span></li>
     <li class="member"><span class="methodname"><a href="reflectionfunctionabstract.getparameters.html" class="methodname">ReflectionFunctionAbstract::getParameters()</a></span></li>
@@ -226,9 +151,4 @@ PHP 7 からは、引数が値渡しされた場合には現在の値も返さ�
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.func-get-arg.html">func_get_arg</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.func-num-args.html">func_num_args</a></div>
- <div class="up"><a href="ref.funchand.html">関数処理 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,40 +3,48 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>メッセージを出力し、現在のスクリプトを終了する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.eval.html">eval</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.get-browser.html">get_browser</a></div>
- <div class="up"><a href="ref.misc.html">その他の関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.exit" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.eval.html">« eval</a></li>
+      <li style="float: right;"><a href="function.get-browser.html">get_browser »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.misc.html">その他の関数</a></li>
+    <li>メッセージを出力し、現在のスクリプトを終了する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.exit" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">exit</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">exit</span> &mdash; <span class="dc-title">メッセージを出力し、現在のスクリプトを終了する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">exit</span> &mdash; <span class="dc-title">メッセージを出力し、現在のスクリプトを終了する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.exit-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>exit</strong></span>
-    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$status</code></span>
-  ] )</div>
+   <span class="methodname"><strong>exit</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$status</code><span class="initializer"> = ?</span></span>): <span class="type"><span class="type void">void</span></span></div>
 
-  <div class="methodsynopsis dc-description">
-   <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>exit</strong></span>
-    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$status</code></span>
-   )</div>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>exit</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$status</code></span>): <span class="type"><span class="type void">void</span></span></div>
 
   <p class="para rdfs-comment">
    スクリプトの実行を終了します。
    <a href="function.register-shutdown-function.html" class="link">シャットダウン関数</a>
    や <a href="language.oop5.decon.html#language.oop5.decon.destructor" class="link">オブジェクトのデストラクタ</a>
-   は、<em>exit</em> がコールされた場合にも実行されます。
+   は、<code class="literal">exit</code> がコールされた場合にも実行されます。
   </p>
   <p class="para">
-   <em>exit</em> は言語構造です。
+   <code class="literal">exit</code> は言語構造です。
    <code class="parameter">status</code> を指定しない場合は括弧なしでコールできます。
   </p>
  </div>
@@ -58,18 +66,12 @@
        <code class="parameter">status</code> を表示します。
       </p>
       <p class="para">
-       <code class="parameter">status</code> が <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> の場合は
+       <code class="parameter">status</code> が <span class="type">int</span> の場合は
        その値が終了ステータスとして使われ、表示はされません。終了ステータスは
        0 から 254 までの値でなければなりません。終了ステータス 255 は
        PHP に予約されており、使用してはいけません。ステータス 0 は、
        プログラムを正常終了させる際に使用します。
       </p>
-      <blockquote class="note"><p><strong class="note">注意</strong>: 
-       <span class="simpara">
-        PHP &gt;= 4.2.0 では<code class="parameter">status</code> が
-        <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> の場合それを表示しません。
-       </span>
-      </p></blockquote>
      </dd>
 
     
@@ -90,8 +92,8 @@
  <div class="refsect1 examples" id="refsect1-function.exit-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4353">
-    <p><strong>例1 <em>exit</em> の例</strong></p>
+   <div class="example" id="example-3479">
+    <p><strong>例1 <code class="literal">exit</code> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br />$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/path/to/data-file'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;exit(</span><span style="color: #DD0000">"ファイル&nbsp;(</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">)&nbsp;をオープンできません"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -102,8 +104,8 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4354">
-    <p><strong>例2 <em>exit</em> でステータスを指定する例</strong></p>
+   <div class="example" id="example-3480">
+    <p><strong>例2 <code class="literal">exit</code> でステータスを指定する例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;正常終了<br /></span><span style="color: #007700">exit;<br />exit();<br />exit(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;エラーコードつきの終了<br /></span><span style="color: #007700">exit(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />exit(</span><span style="color: #0000BB">0376</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;八進数<br /><br /></span><span style="color: #0000BB">?&gt;</span>
@@ -114,7 +116,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-4355">
+   <div class="example" id="example-3481">
     <p><strong>例3 シャットダウン関数やデストラクタが実行される例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -160,9 +162,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.eval.html">eval</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.get-browser.html">get_browser</a></div>
- <div class="up"><a href="ref.misc.html">その他の関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,30 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ファイルポインタから行を取得し、CSVフィールドを処理する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.fgetc.html">fgetc</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.fgets.html">fgets</a></div>
- <div class="up"><a href="ref.filesystem.html">ファイルシステム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.fgetcsv" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.fgetc.html">« fgetc</a></li>
+      <li style="float: right;"><a href="function.fgets.html">fgets »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">ファイルシステム 関数</a></li>
+    <li>ファイルポインタから行を取得し、CSVフィールドを処理する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.fgetcsv" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">fgetcsv</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">fgetcsv</span> &mdash; <span class="dc-title">ファイルポインタから行を取得し、CSVフィールドを処理する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">fgetcsv</span> &mdash; <span class="dc-title">ファイルポインタから行を取得し、CSVフィールドを処理する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.fgetcsv-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>fgetcsv</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$handle</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code><span class="initializer"> = 0</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$delimiter</code><span class="initializer"> = &quot;,&quot;</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$enclosure</code><span class="initializer"> = &#039;&quot;&#039;</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$escape</code><span class="initializer"> = &quot;\&quot;</span></span>
-  ]]]] )</div>
+   <span class="methodname"><strong>fgetcsv</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">resource</span> <code class="parameter">$stream</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code><span class="initializer"> = 0</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$separator</code><span class="initializer"> = &quot;,&quot;</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$enclosure</code><span class="initializer"> = &#039;&quot;&#039;</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$escape</code><span class="initializer"> = &quot;\\&quot;</span></span><br>): <span class="type">array</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span> に動作は似ていますが、
@@ -34,6 +41,13 @@
    フォーマットのフィールドとして読込み処理を行い、
    読み込んだフィールドを含む配列を返すという違いがあります。
   </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    この関数はロケール設定を考慮します。もし <var class="varname">LC_CTYPE</var>
+    が例えば <code class="literal">en_US.UTF-8</code> の場合、
+    1 バイトエンコーディングのファイルは間違って読み込まれるかもしれません。
+   </p>
+  </p></blockquote>
  </div>
 
 
@@ -44,7 +58,7 @@
 
     
      <dt>
-<code class="parameter">handle</code></dt>
+<code class="parameter">stream</code></dt>
 
      <dd>
 
@@ -79,12 +93,12 @@
     
     
      <dt>
-<code class="parameter">delimiter</code></dt>
+<code class="parameter">separator</code></dt>
 
      <dd>
 
       <p class="para">
-       オプションの <code class="parameter">delimiter</code> パラメータで、フィールドのデリミタ (1 文字のみ) を設定します。
+       オプションの <code class="parameter">separator</code> パラメータで、フィールドのデリミタ (1 文字のみ) を設定します。
       </p>
      </dd>
 
@@ -108,8 +122,21 @@
      <dd>
 
       <p class="para">
-       オプションの <code class="parameter">escape</code> パラメータで、エスケープ文字 (1 文字のみ) を設定します。
+       オプションの <code class="parameter">escape</code> パラメータで、エスケープ文字 (最大で1文字) を設定します。
+       空文字列(<code class="literal">&quot;&quot;</code>) を指定すると、プロプライエタリなエスケープ機構が無効になります。
       </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <span class="simpara">
+        <code class="parameter">enclosure</code> の文字は、フィールド内で2回出力される
+        ことでエスケープされます。しかし、
+        <code class="parameter">escape</code> 文字はその代替として使えます。
+        デフォルトのパラメータの値
+        <code class="literal">&quot;&quot;</code> と <code class="literal">\&quot;</code> は同じ意味を持ちます。
+        <code class="parameter">enclosure</code> の文字を
+        <code class="parameter">escape</code> 文字でエスケープすることには、
+        特別な意味はありません。それ自身をエスケープする意味ですらありません。
+       </span>
+      </p></blockquote>
      </dd>
 
     
@@ -126,20 +153,20 @@
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    CSV ファイルの空行は <span class="type"><a href="language.types.null.html" class="type null">null</a></span>
+    CSV ファイルの空行は <span class="type">null</span>
     フィールドを一つだけ含む配列として返され、
     エラーにはなりません。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">
 マッキントッシュコンピュータ上で作成されたファイルを読み込む際に、
-<em>PHP</em> が行末を認識できないという問題が発生した場合、
+<code class="literal">PHP</code> が行末を認識できないという問題が発生した場合、
 実行時の設定オプション<a href="filesystem.configuration.html#ini.auto-detect-line-endings" class="link">auto_detect_line_endings</a> を有効にする必要が生じるかもしれません。</span>
 </p></blockquote>
   <p class="para">
-   <span class="function"><strong>fgetcsv()</strong></span> は、無効な <code class="parameter">handle</code>
-   を受け取った場合に <strong><code>NULL</code></strong> を返します。
-   また、ファイルの終端に達した場合を含めたその他のエラー時には <strong><code>FALSE</code></strong> を返します。
+   <span class="function"><strong>fgetcsv()</strong></span> は、無効な <code class="parameter">stream</code>
+   を受け取った場合に <strong><code>null</code></strong> を返します。
+   また、ファイルの終端に達した場合を含めたその他のエラー時には <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -159,25 +186,10 @@
 
      <tbody class="tbody">
       <tr>
-       <td>5.3.0</td>
+       <td>7.4.0</td>
        <td>
-        <code class="parameter">escape</code> パラメータが追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.1.0</td>
-       <td>
-        <code class="parameter">length</code> が必須ではなくなりました。
-        デフォルトは <em>0</em> で、これは長さの制限がないことを表します。
-        
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.3.5</td>
-       <td>
-        <span class="function"><strong>fgetcsv()</strong></span> はバイナリセーフとなりました。
+        <code class="parameter">escape</code> パラメータが空文字列を受け入れるようになりました。
+        この場合、プロプライエタリなエスケープ機構が無効になります。
        </td>
       </tr>
 
@@ -192,7 +204,7 @@
  <div class="refsect1 examples" id="refsect1-function.fgetcsv-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2625">
+   <div class="example" id="example-2116">
     <p><strong>例1 CSV ファイルの全てのコンテンツを読み込み、表示する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -203,18 +215,6 @@
 
    </div>
   </p>
- </div>
-
-
- <div class="refsect1 notes" id="refsect1-function.fgetcsv-notes">
-  <h3 class="title">注意</h3>
-  <blockquote class="note"><p><strong class="note">注意</strong>: 
-   <p class="para">
-    この関数はロケール設定を考慮します。もし <var class="varname"><var class="varname">LANG</var></var>
-    が例えば <em>en_US.UTF-8</em> の場合、
-    ファイル中の 1 バイトエンコーディングは間違って読み込まれます。
-   </p>
-  </p></blockquote>
  </div>
 
 
@@ -232,9 +232,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.fgetc.html">fgetc</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.fgets.html">fgets</a></div>
- <div class="up"><a href="ref.filesystem.html">ファイルシステム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

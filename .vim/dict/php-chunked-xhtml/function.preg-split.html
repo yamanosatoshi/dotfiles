@@ -3,29 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>正規表現で文字列を分割する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.preg-replace.html">preg_replace</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="book.regex.html">POSIX Regex</a></div>
- <div class="up"><a href="ref.pcre.html">PCRE 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.preg-split" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.preg-replace.html">« preg_replace</a></li>
+      <li style="float: right;"><a href="book.ssdeep.html">ssdeep »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pcre.html">PCRE 関数</a></li>
+    <li>正規表現で文字列を分割する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.preg-split" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">preg_split</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">preg_split</span> &mdash; <span class="dc-title">正規表現で文字列を分割する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">preg_split</span> &mdash; <span class="dc-title">正規表現で文字列を分割する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.preg-split-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>preg_split</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$subject</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code><span class="initializer"> = -1</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>
-  ]] )</div>
+   <span class="methodname"><strong>preg_split</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$subject</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code><span class="initializer"> = -1</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span><br>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    指定した文字列を、正規表現で分割します。
@@ -72,9 +80,7 @@
        これを指定した場合、最大
        <code class="parameter">limit</code> 個の部分文字列を返します。
        残りの文字列は、最後の部分文字列に含めて返されます。
-       <code class="parameter">limit</code> が -1、0 あるいは <strong><code>NULL</code></strong> の場合は「制限が無い」ことを意味します。
-       制限を指定せずに
-       <code class="parameter">flags</code> パラメータを指定したい場合などに <strong><code>NULL</code></strong> を使用します。
+       <code class="parameter">limit</code> が -1 あるいは 0 の場合は「制限が無い」ことを意味します。
       </p>
      </dd>
 
@@ -87,7 +93,7 @@
 
       <p class="para">
        <code class="parameter">flags</code> は、次のフラグを組み合わせたものとする
-       （ビット和演算子 <em>|</em> で組み合わせる）ことが可能です。
+       （ビット和演算子 <code class="literal">|</code> で組み合わせる）ことが可能です。
        <dl>
 
         
@@ -124,8 +130,8 @@
 
           <p class="para">
            このフラグを設定した場合、各マッチに対応する文字列のオフセットも返されます。
-           これにより、返り値は配列となり、配列の要素 <em>0</em>
-           はマッチした文字列、 要素 <em>1</em>
+           これにより、返り値は配列となり、配列の要素 <code class="literal">0</code>
+           はマッチした文字列、 要素 <code class="literal">1</code>
            は <code class="parameter">subject</code> におけるマッチした文字列のオフセット値となることに
            注意してください。
           </p>
@@ -148,7 +154,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    <code class="parameter">pattern</code> にマッチした境界で分割した
-   <code class="parameter">subject</code> の部分文字列の配列を返します。失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   <code class="parameter">subject</code> の部分文字列の配列を返します。失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -156,7 +162,7 @@
  <div class="refsect1 examples" id="refsect1-function.preg-split-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5396">
+   <div class="example" id="example-4739">
     <p><strong>例1 <span class="function"><strong>preg_split()</strong></span> の例 : 検索文字列のある部分を取得</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -179,7 +185,7 @@ Array
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5397">
+   <div class="example" id="example-4740">
     <p><strong>例2 文字列を文字要素に分割</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -205,7 +211,7 @@ Array
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5398">
+   <div class="example" id="example-4741">
     <p><strong>例3 文字列をマッチするものとそのオフセットに分割</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -279,9 +285,4 @@ Array
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.preg-replace.html">preg_replace</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="book.regex.html">POSIX Regex</a></div>
- <div class="up"><a href="ref.pcre.html">PCRE 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

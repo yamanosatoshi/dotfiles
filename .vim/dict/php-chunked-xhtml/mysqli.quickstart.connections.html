@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Connections</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.quickstart.dual-interface.html">Dual procedural and object-oriented interface</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.quickstart.statements.html">Executing statements</a></div>
- <div class="up"><a href="mysqli.quickstart.html">Quick start guide</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqli.quickstart.connections" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.quickstart.dual-interface.html">« Dual procedural and object-oriented interface</a></li>
+      <li style="float: right;"><a href="mysqli.quickstart.statements.html">Executing statements »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mysqli.quickstart.html">Quick start guide</a></li>
+    <li>Connections</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.quickstart.connections" class="section">
   <h2 class="title">Connections</h2>
   <p class="para">
    The MySQL server supports the use of different transport
@@ -18,17 +31,17 @@
    Windows named pipes.
   </p>
   <p class="para">
-   The hostname <em>localhost</em> has a special meaning.
-   It is bound to the use of Unix domain sockets. It is not possible
-   to open a TCP/IP connection using the hostname <em>localhost</em>
-   you must use <em>127.0.0.1</em> instead.
+   The hostname <code class="literal">localhost</code> has a special meaning.
+   It is bound to the use of Unix domain sockets.
+   To open a TCP/IP connection to the localhost, <code class="literal">127.0.0.1</code> must be used
+   instead of the hostname <code class="literal">localhost</code>.
   </p>
   <p class="para">
-   <div class="example" id="example-1802">
+   <div class="example" id="example-1369">
     <p><strong>例1 Special meaning of localhost</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_errno</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;MySQL:&nbsp;("&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_errno&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">")&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_error</span><span style="color: #007700">;<br />}<br />echo&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">host_info&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"127.0.0.1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"database"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3306</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_errno</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;MySQL:&nbsp;("&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_errno&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">")&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_error</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">host_info&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">host_info&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"127.0.0.1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"database"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3306</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">host_info&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;</span>
 </span>
 </code></div>
     </div>
@@ -51,7 +64,7 @@ Localhost via UNIX socket
    use the default values that are set in the PHP configuration file.
   </p>
   <p class="para">
-   <div class="example" id="example-1803">
+   <div class="example" id="example-1370">
     <p><strong>例2 Setting defaults</strong></p>
     <div class="example-contents">
 <div class="inicode"><pre class="inicode">mysqli.default_host=192.168.2.27
@@ -74,22 +87,22 @@ mysqli.default_socket=/tmp/mysql.sock</pre>
   </p>
   <p class="para">
    If the host value is unset or empty, then the client library will
-   default to a Unix socket connection on <em>localhost</em>.
+   default to a Unix socket connection on <code class="literal">localhost</code>.
    If socket is unset or empty, and a Unix socket connection is requested,
-   then a connection to the default socket on <em>/tmp/mysql.sock</em>
+   then a connection to the default socket on <code class="literal">/tmp/mysql.sock</code>
    is attempted.
   </p>
   <p class="para">
-   On Windows systems, the host name <em>.</em> is interpreted
+   On Windows systems, the host name <code class="literal">.</code> is interpreted
    by the client library as an attempt to open a Windows named pipe based
    connection. In this case the socket parameter is interpreted as the pipe
    name. If not given or empty, then the socket (pipe name) defaults to
-   <em>\\.\pipe\MySQL</em>.
+   <code class="literal">\\.\pipe\MySQL</code>.
   </p>
   <p class="para">
    If neither a Unix domain socket based not a Windows named pipe based connection
    is to be established and the port parameter value is unset, the library
-   will default to port <em>3306</em>.
+   will default to port <code class="literal">3306</code>.
   </p>
   <p class="para">
    The <a href="mysqlnd.overview.html" class="link">mysqlnd</a> library and the
@@ -107,9 +120,9 @@ mysqli.default_socket=/tmp/mysql.sock</pre>
   <p class="para">
    For setting a connection option, the connect operation has to be
    performed in three steps: creating a connection handle with
-   <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span>, setting the requested options using
-   <span class="function"><a href="mysqli.options.html" class="function">mysqli_options()</a></span>, and establishing the network
-   connection with <span class="function"><a href="mysqli.real-connect.html" class="function">mysqli_real_connect()</a></span>.
+   <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> or <span class="methodname"><a href="mysqli.construct.html" class="methodname">mysqli::__construct()</a></span>, 
+   setting the requested options using <span class="methodname"><a href="mysqli.options.html" class="methodname">mysqli::options()</a></span>, 
+   and establishing the network connection with <span class="methodname"><a href="mysqli.real-connect.html" class="methodname">mysqli::real_connect()</a></span>.
   </p>
   <p class="para">
    <em class="emphasis">Connection pooling</em>
@@ -133,14 +146,14 @@ mysqli.default_socket=/tmp/mysql.sock</pre>
    <em class="emphasis">Persistent connection</em>
   </p>
   <p class="para">
-   If a unused persistent connection for a given combination of host, username,
-   password, socket, port and default database can not be found in the connection pool,
+   If an unused persistent connection for a given combination of host, username,
+   password, socket, port and default database cannot be found in the connection pool,
    then mysqli opens a new connection. The use of persistent connections can be
    enabled and disabled using the PHP directive <a href="mysqli.configuration.html#ini.mysqli.allow-persistent" class="link">mysqli.allow_persistent</a>.
    The total number of connections opened by a script can be limited with
    <a href="mysqli.configuration.html#ini.mysqli.max-links" class="link">mysqli.max_links</a>. The maximum number of persistent connections
    per PHP process can be restricted with <a href="mysqli.configuration.html#ini.mysqli.max-persistent" class="link">mysqli.max_persistent</a>.
-   Please note, that the web server may spawn many PHP processes.
+   Please note that the web server may spawn many PHP processes.
   </p>
   <p class="para">
    A common complain about persistent connections is that their state is
@@ -148,19 +161,19 @@ mysqli.default_socket=/tmp/mysql.sock</pre>
    automatically rolled back. But also, authorization changes which happened
    in the time between putting the connection into the pool and reusing it
    are not reflected. This may be seen as an unwanted side-effect. On the contrary,
-   the name <em>persistent</em> may be understood as a promise
+   the name <code class="literal">persistent</code> may be understood as a promise
    that the state is persisted.
   </p>
   <p class="para">
    The mysqli extension supports both interpretations of a persistent connection:
    state persisted, and state reset before reuse. The default is reset.
    Before a persistent connection is reused, the mysqli extension implicitly
-   calls <span class="function"><a href="mysqli.change-user.html" class="function">mysqli_change_user()</a></span> to reset the state. The
+   calls <span class="methodname"><a href="mysqli.change-user.html" class="methodname">mysqli::change_user()</a></span> to reset the state. The
    persistent connection appears to the user as if it was just opened. No
    artifacts from previous usages are visible.
   </p>
   <p class="para">
-   The <span class="function"><a href="mysqli.change-user.html" class="function">mysqli_change_user()</a></span> function is an expensive operation.
+   The <span class="methodname"><a href="mysqli.change-user.html" class="methodname">mysqli::change_user()</a></span> call is an expensive operation.
    For best performance, users may want to recompile the extension with the
    compile flag <strong><code>MYSQLI_NO_CHANGE_USER_ON_PCONNECT</code></strong> being set.
   </p>
@@ -175,7 +188,7 @@ mysqli.default_socket=/tmp/mysql.sock</pre>
   <p class="para">
    <ul class="simplelist">
     <li class="member"><span class="methodname"><a href="mysqli.construct.html" class="methodname">mysqli::__construct()</a></span></li>
-    <li class="member"><span class="methodname"><a href="mysqli.init.html" class="methodname">mysqli::init()</a></span></li>
+    <li class="member"><span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span></li>
     <li class="member"><span class="methodname"><a href="mysqli.options.html" class="methodname">mysqli::options()</a></span></li>
     <li class="member"><span class="methodname"><a href="mysqli.real-connect.html" class="methodname">mysqli::real_connect()</a></span></li>
     <li class="member"><span class="methodname"><a href="mysqli.change-user.html" class="methodname">mysqli::change_user()</a></span></li>
@@ -184,9 +197,4 @@ mysqli.default_socket=/tmp/mysql.sock</pre>
     <li class="member"><a href="features.persistent-connections.html" class="link">Persistent Database Connections</a></li>
    </ul>
   </p>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.quickstart.dual-interface.html">Dual procedural and object-oriented interface</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.quickstart.statements.html">Executing statements</a></div>
- <div class="up"><a href="mysqli.quickstart.html">Quick start guide</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

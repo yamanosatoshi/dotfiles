@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Open a persistent connection to CUBRID server</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.cubrid-num-rows.html">cubrid_num_rows</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.cubrid-pconnect.html">cubrid_pconnect</a></div>
- <div class="up"><a href="ref.cubrid.html">CUBRID 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.cubrid-pconnect-with-url" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.cubrid-num-rows.html">« cubrid_num_rows</a></li>
+      <li style="float: right;"><a href="function.cubrid-pconnect.html">cubrid_pconnect »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.cubrid.html">CUBRID 関数</a></li>
+    <li>Open a persistent connection to CUBRID server</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.cubrid-pconnect-with-url" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">cubrid_pconnect_with_url</h1>
   <p class="verinfo">(PECL CUBRID &gt;= 8.3.1)</p><p class="refpurpose"><span class="refname">cubrid_pconnect_with_url</span> &mdash; <span class="dc-title">Open a persistent connection to CUBRID server</span></p>
@@ -20,11 +33,7 @@
  <div class="refsect1 description" id="refsect1-function.cubrid-pconnect-with-url-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">resource</span> <span class="methodname"><strong>cubrid_pconnect_with_url</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$conn_url</code></span>  
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$userid</code></span>  
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$passwd</code></span>  
-  ]] )</div>
+   <span class="methodname"><strong>cubrid_pconnect_with_url</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$conn_url</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$userid</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$passwd</code><span class="initializer"> = ?</span></span>): <span class="type">resource</span></div>
 
   <p class="para rdfs-comment">
    Establishes a persistent connection to a CUBRID server.
@@ -114,16 +123,16 @@
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    <em>?</em> and <em>:</em> that are used as identifiers
+    <code class="literal">?</code> and <code class="literal">:</code> that are used as identifiers
     in PHP connection URL can&#039;t be included in the password. The following is
     an example of a password that is invalid to use as connection URL because it contains
-    &quot;<em>?:</em>&quot;.
+    &quot;<code class="literal">?:</code>&quot;.
    </p>
    <p class="para">
     $url = &quot;CUBRID:localhost:33000:tdb:dba:12?:?login_timeout=100&quot;;
    </p>
    <p class="para">
-    Passwords that contain <em>?</em> or <em>:</em> may be
+    Passwords that contain <code class="literal">?</code> or <code class="literal">:</code> may be
     passed as a separate parameter.
    </p>
    <p class="para">
@@ -133,7 +142,7 @@
     $conn = cubrid_pconnect_with_url ($url, &quot;dba&quot;, &quot;12?&quot;);
    </p>
    <p class="para">
-    If user or password is empty,you can&#039;t delete &quot;<em>:</em>&quot;,the following is
+    If user or password is empty,you can&#039;t delete &quot;<code class="literal">:</code>&quot;,the following is
     an example.
    </p>
    <p class="para">
@@ -181,17 +190,14 @@
  <div class="refsect1 returnvalues" id="refsect1-function.cubrid-pconnect-with-url-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   Connection identifier, when process is successful. 
-  </p>
-  <p class="para">
-   <strong><code>FALSE</code></strong>, when process is unsuccessful.
+   Connection identifier, when process is successful,失敗した場合に <strong><code>false</code></strong> を返します.
   </p>
  </div>
 
  
  <div class="refsect1 examples" id="refsect1-function.cubrid-pconnect-with-url-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1167">
+  <div class="example" id="example-1096">
    <p><strong>例1 <span class="function"><strong>cubrid_pconnect_with_url()</strong></span> url without properties example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -202,7 +208,7 @@
 
   </div>
   
-  <div class="example" id="example-1168">
+  <div class="example" id="example-1097">
    <p><strong>例2 <span class="function"><strong>cubrid_pconnect_with_url()</strong></span> url with properties example</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -220,8 +226,8 @@
   <p class="para">
    <ul class="simplelist">
     <li class="member"><span class="function"><a href="function.cubrid-connect.html" class="function" rel="rdfs-seeAlso">cubrid_connect()</a> - Open a connection to a CUBRID Server</span></li>
+    <li class="member"><span class="function"><a href="function.cubrid-connect-with-url.html" class="function" rel="rdfs-seeAlso">cubrid_connect_with_url()</a> - Establish the environment for connecting to CUBRID server</span></li>
     <li class="member"><span class="function"><a href="function.cubrid-pconnect.html" class="function" rel="rdfs-seeAlso">cubrid_pconnect()</a> - Open a persistent connection to a CUBRID server</span></li>
-    <li class="member"><span class="function"><strong>cubrid_pconnect_with_url()</strong></span></li>
     <li class="member"><span class="function"><a href="function.cubrid-disconnect.html" class="function" rel="rdfs-seeAlso">cubrid_disconnect()</a> - Close a database connection</span></li>
     <li class="member"><span class="function"><a href="function.cubrid-close.html" class="function" rel="rdfs-seeAlso">cubrid_close()</a> - Close CUBRID connection</span></li>
    </ul>
@@ -229,9 +235,4 @@
  </div>
 
  
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.cubrid-num-rows.html">cubrid_num_rows</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.cubrid-pconnect.html">cubrid_pconnect</a></div>
- <div class="up"><a href="ref.cubrid.html">CUBRID 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

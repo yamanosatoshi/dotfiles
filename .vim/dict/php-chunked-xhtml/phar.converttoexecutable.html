@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>phar アーカイブを実行可能な別の phar アーカイブ形式に変換する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="phar.converttodata.html">Phar::convertToData</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="phar.copy.html">Phar::copy</a></div>
- <div class="up"><a href="class.phar.html">Phar</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="phar.converttoexecutable" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phar.converttodata.html">« Phar::convertToData</a></li>
+      <li style="float: right;"><a href="phar.copy.html">Phar::copy »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.phar.html">Phar</a></li>
+    <li>phar アーカイブを実行可能な別の phar アーカイブ形式に変換する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phar.converttoexecutable" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">Phar::convertToExecutable</h1>
-  <p class="verinfo">(PHP &gt;= 5.3.0, PECL phar &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">Phar::convertToExecutable</span> &mdash; <span class="dc-title">phar アーカイブを実行可能な別の phar アーカイブ形式に変換する</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL phar &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">Phar::convertToExecutable</span> &mdash; <span class="dc-title">phar アーカイブを実行可能な別の phar アーカイブ形式に変換する</span></p>
 
  </div>
 
@@ -21,15 +34,11 @@
  <div class="refsect1 description" id="refsect1-phar.converttoexecutable-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><a href="class.phar.html" class="type Phar">Phar</a></span> <span class="methodname"><strong>Phar::convertToExecutable</strong></span>
-    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$format</code><span class="initializer"> = 9021976</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$compression</code><span class="initializer"> = 9021976</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$extension</code></span>
-  ]]] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>Phar::convertToExecutable</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$format</code><span class="initializer"> = 9021976</span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$compression</code><span class="initializer"> = 9021976</span></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$extension</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="class.phar.html" class="type Phar">Phar</a></span></div>
 
   <blockquote class="note"><p><strong class="note">注意</strong>: <p class="para">
-このメソッドは、<var class="filename">php.ini</var> の <em>phar.readonly</em>
-が <em>0</em> でないと <a href="class.phar.html" class="classname">Phar</a>
+このメソッドは、<var class="filename">php.ini</var> の <code class="literal">phar.readonly</code>
+が <code class="literal">0</code> でないと <a href="class.phar.html" class="classname">Phar</a>
 オブジェクトで動作しません。それ以外の場合は
 <a href="class.pharexception.html" class="classname">PharException</a> がスローされます。</p></p></blockquote>
   <p class="para">
@@ -64,9 +73,9 @@
      <dd>
 
       <p class="para">
-       これは <em>Phar::PHAR</em>、<em>Phar::TAR</em>
-       あるいは <em>Phar::ZIP</em> のいずれかとなります。
-       <strong><code>NULL</code></strong> を指定すると、現在のファイル形式をそのまま保持します。
+       これは <code class="literal">Phar::PHAR</code>、<code class="literal">Phar::TAR</code>
+       あるいは <code class="literal">Phar::ZIP</code> のいずれかとなります。
+       <strong><code>null</code></strong> を指定すると、現在のファイル形式をそのまま保持します。
       </p>
      </dd>
 
@@ -78,9 +87,9 @@
      <dd>
 
       <p class="para">
-       アーカイブ全体の圧縮を行わない場合は <em>Phar::NONE</em>、
-       zlib による圧縮の場合は <em>Phar::GZ</em>、そして bzip による圧縮の場合は
-       <em>Phar::BZ2</em> のいずれかを指定します。
+       アーカイブ全体の圧縮を行わない場合は <code class="literal">Phar::NONE</code>、
+       zlib による圧縮の場合は <code class="literal">Phar::GZ</code>、そして bzip による圧縮の場合は
+       <code class="literal">Phar::BZ2</code> のいずれかを指定します。
       </p>
      </dd>
 
@@ -94,15 +103,15 @@
       <p class="para">
        このパラメータは、変換後のアーカイブのデフォルトのファイル拡張子を変更します。
        実行可能でない tar や zip アーカイブのファイル名としては
-       <em>.phar</em> は使用できないことに注意しましょう。
+       <code class="literal">.phar</code> は使用できないことに注意しましょう。
       </p>
       <p class="para">
        phar 形式のアーカイブに変換する場合、デフォルトの拡張子は圧縮形式によって
-       <em>.phar</em>、<em>.phar.gz</em> あるいは <em>.phar.bz2</em>
+       <code class="literal">.phar</code>、<code class="literal">.phar.gz</code> あるいは <code class="literal">.phar.bz2</code>
        のいずれかとなります。tar 形式のアーカイブの場合、デフォルトの拡張子は
-       <em>.phar.tar</em>、<em>.phar.tar.gz</em>
-       および <em>.phar.tar.bz2</em> です。zip 形式のアーカイブの場合、
-       デフォルトの拡張子は <em>.phar.zip</em> となります。
+       <code class="literal">.phar.tar</code>、<code class="literal">.phar.tar.gz</code>
+       および <code class="literal">.phar.tar.bz2</code> です。zip 形式のアーカイブの場合、
+       デフォルトの拡張子は <code class="literal">.phar.zip</code> となります。
       </p>
      </dd>
 
@@ -140,7 +149,7 @@
  <div class="refsect1 examples" id="refsect1-phar.converttoexecutable-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-766">
+   <div class="example" id="example-672">
     <p><strong>例1 <span class="function"><strong>Phar::convertToExecutable()</strong></span> の例</strong></p>
     <div class="example-contents"><p>
      Phar::convertToExecutable() の使用例です。
@@ -169,9 +178,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="phar.converttodata.html">Phar::convertToData</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="phar.copy.html">Phar::copy</a></div>
- <div class="up"><a href="class.phar.html">Phar</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

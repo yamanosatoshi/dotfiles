@@ -3,27 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>GMT/UTC の日付/時刻を書式化する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.gettimeofday.html">gettimeofday</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.gmmktime.html">gmmktime</a></div>
- <div class="up"><a href="ref.datetime.html">日付・時刻 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.gmdate" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.gettimeofday.html">« gettimeofday</a></li>
+      <li style="float: right;"><a href="function.gmmktime.html">gmmktime »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.datetime.html">日付・時刻 関数</a></li>
+    <li>GMT/UTC の日付/時刻を書式化する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.gmdate" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">gmdate</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">gmdate</span> &mdash; <span class="dc-title">GMT/UTC の日付/時刻を書式化する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">gmdate</span> &mdash; <span class="dc-title">GMT/UTC の日付/時刻を書式化する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.gmdate-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>gmdate</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timestamp</code><span class="initializer"> = time()</span></span>
-  ] )</div>
+   <span class="methodname"><strong>gmdate</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>, <span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$timestamp</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><a href="function.date.html" class="function">date()</a></span> 関数と同じですが、返される時刻が
@@ -57,8 +67,8 @@
 <dd>
 <p class="para">
 オプションのパラメータ <code class="parameter">timestamp</code> は、
-<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 型の Unix タイムスタンプです。
-<code class="parameter">timestamp</code> が指定されなかった場合のデフォルト値は、
+<span class="type">int</span> 型の Unix タイムスタンプです。
+<code class="parameter">timestamp</code> が指定されなかったり、<strong><code>null</code></strong> だった場合のデフォルト値は、
 現在の時刻です。言い換えると、デフォルトは
 <span class="function"><a href="function.time.html" class="function">time()</a></span> の返り値となります。
 </p></dd>
@@ -74,9 +84,6 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    日付を表す文字列を返します。
-   <code class="parameter">timestamp</code> に数字以外が使用された場合は
-   <strong><code>FALSE</code></strong> が返され、<strong><code>E_WARNING</code></strong>
-   レベルのエラーが発生します。
   </p>
  </div>
    
@@ -96,23 +103,9 @@
 
      <tbody class="tbody">
       <tr>
-       <td>5.1.0</td>
+       <td>8.0.0</td>
        <td>
-        有効なタイムスタンプの範囲は、通常 Fri, 13 Dec 1901
-        20:45:54 GMT から Tue, 19 Jan 2038 03:14:07 GMT までです
-        (これらの日付は、32 ビット符号付き整数の最小および最大値に
-        対応します)。
-        しかし、PHP 5.1 より前のバージョンでは、システム環境によっては
-        (例: Windows) この範囲が 1970 年 1 月 1 日から 2038 年 1 月 19 日
-        までに制限されます。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.1.1</td>
-       <td>
-        PHP 5.1.1 以降、<code class="parameter">format</code> パラメータで標準的な
-        日付/時刻フォーマットを指定する際に有用な <a href="datetime.constants.html" class="link">定数</a>がいくつか追加されました。
+        <code class="parameter">timestamp</code> は、nullable になりました。
        </td>
       </tr>
 
@@ -127,7 +120,7 @@
  <div class="refsect1 examples" id="refsect1-function.gmdate-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2570">
+   <div class="example" id="example-2063">
     <p><strong>例1 <span class="function"><strong>gmdate()</strong></span> の例</strong></p>
     <div class="example-contents"><p>
      フィンランド (GMT +0200) で実行した場合、一行目の出力は &quot;Jan 01
@@ -157,9 +150,4 @@
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.gettimeofday.html">gettimeofday</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.gmmktime.html">gmmktime</a></div>
- <div class="up"><a href="ref.datetime.html">日付・時刻 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

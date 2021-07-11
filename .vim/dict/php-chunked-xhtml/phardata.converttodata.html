@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>phar アーカイブを実行可能でない tar あるいは zip ファイルに変換する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="phardata.construct.html">PharData::__construct</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="phardata.converttoexecutable.html">PharData::convertToExecutable</a></div>
- <div class="up"><a href="class.phardata.html">PharData</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="phardata.converttodata" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phardata.construct.html">« PharData::__construct</a></li>
+      <li style="float: right;"><a href="phardata.converttoexecutable.html">PharData::convertToExecutable »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.phardata.html">PharData</a></li>
+    <li>phar アーカイブを実行可能でない tar あるいは zip ファイルに変換する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phardata.converttodata" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">PharData::convertToData</h1>
-  <p class="verinfo">(PHP &gt;= 5.3.0, PECL phar &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">PharData::convertToData</span> &mdash; <span class="dc-title">phar アーカイブを実行可能でない tar あるいは zip ファイルに変換する</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL phar &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">PharData::convertToData</span> &mdash; <span class="dc-title">phar アーカイブを実行可能でない tar あるいは zip ファイルに変換する</span></p>
 
  </div>
 
@@ -21,11 +34,7 @@
  <div class="refsect1 description" id="refsect1-phardata.converttodata-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><a href="class.phardata.html" class="type PharData">PharData</a></span> <span class="methodname"><strong>PharData::convertToData</strong></span>
-    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$format</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$compression</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$extension</code></span>
-  ]]] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>PharData::convertToData</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$format</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$compression</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$extension</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="class.phardata.html" class="type PharData">PharData</a></span></div>
 
 
   <p class="para rdfs-comment">
@@ -60,9 +69,9 @@
      <dd>
 
       <p class="para">
-       これは <em>Phar::TAR</em>
-       あるいは <em>Phar::ZIP</em> のいずれかとなります。
-       <strong><code>NULL</code></strong> を指定すると、現在のファイル形式をそのまま保持します。
+       これは <code class="literal">Phar::TAR</code>
+       あるいは <code class="literal">Phar::ZIP</code> のいずれかとなります。
+       <strong><code>null</code></strong> を指定すると、現在のファイル形式をそのまま保持します。
       </p>
      </dd>
 
@@ -74,9 +83,9 @@
      <dd>
 
       <p class="para">
-       アーカイブ全体の圧縮を行わない場合は <em>Phar::NONE</em>、
-       zlib による圧縮の場合は <em>Phar::GZ</em>、そして bzip による圧縮の場合は
-       <em>Phar::BZ2</em> のいずれかを指定します。
+       アーカイブ全体の圧縮を行わない場合は <code class="literal">Phar::NONE</code>、
+       zlib による圧縮の場合は <code class="literal">Phar::GZ</code>、そして bzip による圧縮の場合は
+       <code class="literal">Phar::BZ2</code> のいずれかを指定します。
       </p>
      </dd>
 
@@ -90,14 +99,14 @@
       <p class="para">
        このパラメータは、変換後のアーカイブのデフォルトのファイル拡張子を変更します。
        実行可能でない tar や zip アーカイブのファイル名としては
-       <em>.phar</em> は使用できないことに注意しましょう。
+       <code class="literal">.phar</code> は使用できないことに注意しましょう。
       </p>
       <p class="para">
        tar 形式の phar アーカイブの場合、デフォルトの拡張子は圧縮形式によって
-       <em>.tar</em>、<em>.tar.gz</em>、
-       <em>.tar.bz2</em> のいずれかとなります。
+       <code class="literal">.tar</code>、<code class="literal">.tar.gz</code>、
+       <code class="literal">.tar.bz2</code> のいずれかとなります。
        zip 形式のアーカイブの場合、デフォルトの拡張子は
-       <em>.zip</em> となります。
+       <code class="literal">.zip</code> となります。
       </p>
      </dd>
 
@@ -133,7 +142,7 @@
  <div class="refsect1 examples" id="refsect1-phardata.converttodata-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-809">
+   <div class="example" id="example-714">
     <p><strong>例1 <span class="function"><strong>PharData::convertToData()</strong></span> の例</strong></p>
     <div class="example-contents"><p>
      PharData::convertToData() の使用法です。
@@ -162,9 +171,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="phardata.construct.html">PharData::__construct</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="phardata.converttoexecutable.html">PharData::convertToExecutable</a></div>
- <div class="up"><a href="class.phardata.html">PharData</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

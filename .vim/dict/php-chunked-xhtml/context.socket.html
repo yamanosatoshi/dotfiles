@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ソケットコンテキストオプション一覧</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="context.html">コンテキストオプションとパラメータ</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="context.http.html">HTTP コンテキストオプション</a></div>
- <div class="up"><a href="context.html">コンテキストオプションとパラメータ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="context.socket" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="context.html">« コンテキストオプションとパラメータ</a></li>
+      <li style="float: right;"><a href="context.http.html">HTTP コンテキストオプション »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="context.html">コンテキストオプションとパラメータ</a></li>
+    <li>ソケットコンテキストオプション一覧</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="context.socket" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">ソケットコンテキストオプション</h1>
   <p class="refpurpose"><span class="refname">ソケットコンテキストオプション</span> &mdash; <span class="dc-title">ソケットコンテキストオプション一覧</span></p>
@@ -21,8 +34,8 @@
   <h3 class="title">説明</h3>
   <p class="para">
    ここでは、ソケット越しに動作するラッパー
-   すなわち <em>tcp</em>、<em>http</em>
-   あるいは <em>ftp</em> でサポートされるオプションを扱います。
+   すなわち <code class="literal">tcp</code>、<code class="literal">http</code>
+   あるいは <code class="literal">ftp</code> でサポートされるオプションを扱います。
   </p>
  </div>
 
@@ -40,10 +53,10 @@
       <p class="para">
        PHP がネットワークにアクセスする際の IP アドレス
        (IPv4 あるいは IPv6 のどちらか）やポート番号を指定する際に使用されます。
-       書式は、IPv4 アドレスの場合は <em>ip:port</em>、
-       IPv6 アドレスの場合は <em>[ip]:port</em> です。
+       書式は、IPv4 アドレスの場合は <code class="literal">ip:port</code>、
+       IPv6 アドレスの場合は <code class="literal">[ip]:port</code> です。
        IP やポート番号に
-       <em>0</em> を指定すると、それをシステムに自動的に設定させる
+       <code class="literal">0</code> を指定すると、それをシステムに自動的に設定させる
        ことができます。
       </p>
       <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -71,6 +84,73 @@
      </dd>
 
     
+    
+     <dt id="context.socket.ipv6_v6only"><code class="parameter">ipv6_v6only</code></dt>
+
+     <dd>
+
+      <p class="para">
+       IPv4射影アドレスに関する OS のデフォルトを上書きする
+      </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <p class="para">
+        これは、<code class="literal">[::]</code> に バインドされたアドレスが存在するときに、
+        IPv4 アドレス で listen しようとする場合に特に重要です。
+        上で、
+       </p>
+       <p class="para">
+        <span class="function"><a href="function.stream-socket-server.html" class="function">stream_socket_server()</a></span> でのみ有効です。
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+    
+     <dt id="context.socket.so_reuseport"><code class="parameter">so_reuseport</code></dt>
+
+     <dd>
+
+      <p class="para">
+       異なるプロセスからであっても、同じ IPアドレス:ポート のペアに 複数 bind することを許可します。
+      </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <p class="para">
+        <span class="function"><a href="function.stream-socket-server.html" class="function">stream_socket_server()</a></span> でのみ有効です。
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+    
+     <dt id="context.socket.so_broadcast"><code class="parameter">so_broadcast</code></dt>
+
+     <dd>
+
+      <p class="para">
+       ブロードキャストアドレスへのデータの送信や、
+       ブロードキャストアドレスからのデータの受信を有効にします。
+      </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <p class="para">
+        <span class="function"><a href="function.stream-socket-server.html" class="function">stream_socket_server()</a></span> でのみ有効です。
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+    
+     <dt id="context.socket.tcp_nodelay"><code class="parameter">tcp_nodelay</code></dt>
+
+     <dd>
+
+      <p class="para">
+       このオプションを <strong><code>true</code></strong> にすると、
+       <code class="literal">SOL_TCP,NO_DELAY=1</code> をそれぞれ設定します。
+       これによって、TCP の Nagle アルゴリズムを無効にします。
+      </p>
+     </dd>
+
+    
    </dl>
 
   </p>
@@ -92,16 +172,16 @@
 
      <tbody class="tbody">
       <tr>
-       <td>5.3.3</td>
+       <td>7.1.0</td>
        <td>
-        <code class="parameter">backlog</code> が追加されました。
+        <code class="parameter">tcp_nodelay</code> が追加されました。
        </td>
       </tr>
 
       <tr>
-       <td>5.1.0</td>
+       <td>7.0.1</td>
        <td>
-        <code class="parameter">bindto</code> が追加されました。
+        <code class="parameter">ipv6_v6only</code> が追加されました。
        </td>
       </tr>
 
@@ -116,7 +196,7 @@
  <div class="refsect1 examples" id="refsect1-context.socket-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="context.socket.example-bindto">
+   <div class="example" id="iterator.example.basic">
     <p><strong>例1 基本的な <code class="parameter">bindto</code> の使用例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -130,9 +210,4 @@
  </div>
 
  
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="context.html">コンテキストオプションとパラメータ</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="context.http.html">HTTP コンテキストオプション</a></div>
- <div class="up"><a href="context.html">コンテキストオプションとパラメータ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

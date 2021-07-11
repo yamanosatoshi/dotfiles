@@ -3,16 +3,29 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>名前空間の使用法: 基本編</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.definitionmultiple.html">同一ファイル内での複数の名前空間の定義</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.dynamic.html">名前空間と動的言語機能</a></div>
- <div class="up"><a href="language.namespaces.html">名前空間</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.namespaces.basics" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.namespaces.definitionmultiple.html">« 同一ファイル内での複数の名前空間の定義</a></li>
+      <li style="float: right;"><a href="language.namespaces.dynamic.html">名前空間と動的言語機能 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.namespaces.html">名前空間</a></li>
+    <li>名前空間の使用法: 基本編</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.namespaces.basics" class="sect1">
   <h2 class="title">名前空間の使用法: 基本編</h2>
-  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p>
   <p class="para">
    名前空間の使い方についてあれこれ言う前に、まずは
    PHP がどのようにしてコード中の要素の名前空間を知るのかを理解しておくことが重要です。
@@ -21,23 +34,23 @@
    <ol type="1">
     <li class="listitem">
      <span class="simpara">
-      <em>foo.txt</em> のような相対ファイル名を使う。これは
-      <em>currentdirectory/foo.txt</em> と解釈されます。ここで、
+      <code class="literal">foo.txt</code> のような相対ファイル名を使う。これは
+      <code class="literal">currentdirectory/foo.txt</code> と解釈されます。ここで、
       currentdirectory は現在いるディレクトリを表します。したがって、カレントディレクトリが
-      <em>/home/foo</em> であった場合はこれは <em>/home/foo/foo.txt</em>
+      <code class="literal">/home/foo</code> であった場合はこれは <code class="literal">/home/foo/foo.txt</code>
       となります。
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>subdirectory/foo.txt</em> のような相対パス名を使う。これは
-      <em>currentdirectory/subdirectory/foo.txt</em> と解釈されます。
+      <code class="literal">subdirectory/foo.txt</code> のような相対パス名を使う。これは
+      <code class="literal">currentdirectory/subdirectory/foo.txt</code> と解釈されます。
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>/main/foo.txt</em> のような絶対パス名を使う。これは
-      <em>/main/foo.txt</em> と解釈されます。
+      <code class="literal">/main/foo.txt</code> のような絶対パス名を使う。これは
+      <code class="literal">/main/foo.txt</code> と解釈されます。
      </span>
     </li>
    </ol>
@@ -46,13 +59,13 @@
    <ol type="1">
     <li class="listitem">
      <span class="simpara">
-      <em>$a = new foo();</em> あるいは
-      <em>foo::staticmethod();</em> のような非修飾名
+      <code class="literal">$a = new foo();</code> あるいは
+      <code class="literal">foo::staticmethod();</code> のような非修飾名
       あるいはプレフィックスなしのクラス名。
-      現在の名前空間が <em>currentnamespace</em> である場合、これは
-      <em>currentnamespace\foo</em> と解釈されます。
+      現在の名前空間が <code class="literal">currentnamespace</code> である場合、これは
+      <code class="literal">currentnamespace\foo</code> と解釈されます。
       名前空間に属さないグローバルなコードにおいては、これは
-      <em>foo</em> と解釈されます。
+      <code class="literal">foo</code> と解釈されます。
      </span>
      <span class="simpara">
       注意: 修飾されていない関数や定数は、名前空間内にその関数や定数がなければ
@@ -63,22 +76,22 @@
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>$a = new subnamespace\foo();</em> あるいは
-      <em>subnamespace\foo::staticmethod();</em> のような修飾名
+      <code class="literal">$a = new subnamespace\foo();</code> あるいは
+      <code class="literal">subnamespace\foo::staticmethod();</code> のような修飾名
       あるいはプレフィックスつきクラス名。
-      現在の名前空間が <em>currentnamespace</em> である場合、これは
-      <em>currentnamespace\subnamespace\foo</em> と解釈されます。
+      現在の名前空間が <code class="literal">currentnamespace</code> である場合、これは
+      <code class="literal">currentnamespace\subnamespace\foo</code> と解釈されます。
       名前空間に属さないグローバルなコードにおいては、これは
-      <em>subnamespace\foo</em> と解釈されます。
+      <code class="literal">subnamespace\foo</code> と解釈されます。
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>$a = new \currentnamespace\foo();</em> あるいは
-      <em>\currentnamespace\foo::staticmethod();</em> のような完全修飾名
+      <code class="literal">$a = new \currentnamespace\foo();</code> あるいは
+      <code class="literal">\currentnamespace\foo::staticmethod();</code> のような完全修飾名
       あるいはグローバルプレフィックス演算子つきのクラス名。
       これは、常にコードで記述されたとおりの名前である
-      <em>currentnamespace\foo</em> と解釈されます。
+      <code class="literal">currentnamespace\foo</code> と解釈されます。
      </span>
     </li>
    </ol>
@@ -107,8 +120,8 @@
   <p class="para">
    グローバルなクラス、関数あるいは定数にアクセスするには、完全修飾名を使用して
    <span class="function"><strong>\strlen()</strong></span>、<strong class="classname">\Exception</strong> あるいは
-   <em>\INI_ALL</em> などとすることができます。
-   <div class="example" id="example-284">
+   <code class="literal">\INI_ALL</code> などとすることができます。
+   <div class="example" id="example-258">
     <p><strong>例1 グローバルなクラス、関数および定数への名前空間内からのアクセス</strong></p>
     <div class="example-contents">
      <div class="phpcode"><code><span style="color: #000000">
@@ -119,9 +132,4 @@
 
    </div>
   </p>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.definitionmultiple.html">同一ファイル内での複数の名前空間の定義</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.dynamic.html">名前空間と動的言語機能</a></div>
- <div class="up"><a href="language.namespaces.html">名前空間</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

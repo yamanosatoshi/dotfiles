@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>下位互換性のない変更点</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="migration70.html">PHP 5.6.x から PHP 7.0.x への移行</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="migration70.new-features.html">新機能</a></div>
- <div class="up"><a href="migration70.html">PHP 5.6.x から PHP 7.0.x への移行</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="migration70.incompatible" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration70.html">« PHP 5.6.x から PHP 7.0.x への移行</a></li>
+      <li style="float: right;"><a href="migration70.new-features.html">新機能 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration70.html">PHP 5.6.x から PHP 7.0.x への移行</a></li>
+    <li>下位互換性のない変更点</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration70.incompatible" class="sect1">
  <h2 class="title">下位互換性のない変更点</h2>
 
  
@@ -74,7 +87,7 @@
 
   <p class="para">
    これまでは、コンストラクタの処理が失敗した際に、
-   <strong><code>NULL</code></strong> を返したり使用不能なオブジェクトを返したりする内部クラスがありました。
+   <strong><code>null</code></strong> を返したり使用不能なオブジェクトを返したりする内部クラスがありました。
    PHP 7 では、同様の場合に
    <a href="class.exception.html" class="classname">Exception</a> をスローするようになりました。
    ユーザー定義のクラスでは以前からそうすべきだとされていたことです。
@@ -86,7 +99,7 @@
 
   <p class="para">
    パースエラーが発生すると <a href="class.parseerror.html" class="classname">ParseError</a> オブジェクトをスローするようになりました。
-   <span class="function"><a href="function.eval.html" class="function">eval()</a></span> のエラーハンドリングをする際には、<a href="language.exceptions.html#language.exceptions.catch" class="link"><em>catch</em></a>
+   <span class="function"><a href="function.eval.html" class="function">eval()</a></span> のエラーハンドリングをする際には、<a href="language.exceptions.html#language.exceptions.catch" class="link"><code class="literal">catch</code></a>
    ブロックを用意してこのエラーを処理しなければいけません。
   </p>
  </div>
@@ -97,7 +110,7 @@
   <p class="para">
    すべての <strong><code>E_STRICT</code></strong> 通知が、改めて別のレベルに移動しました。
    定数 <strong><code>E_STRICT</code></strong> はそのまま残っているので、
-   <em>error_reporting(E_ALL|E_STRICT)</em> のような呼び出しがエラーになることはありません。
+   <code class="literal">error_reporting(E_ALL|E_STRICT)</code> のような呼び出しがエラーになることはありません。
   </p>
   <p class="para">
    <table class="doctable table">
@@ -268,6 +281,21 @@
    (表の中央列のように) 書き直す必要があります。
    そうすれば、PHP 7.x との互換性を保ちつつ、PHP 5.x との下位互換性も維持できます。
   </p>
+
+  <p class="para">
+   これは、<a href="language.variables.scope.html#language.variables.scope.global" class="link"><code class="literal">global</code></a> キーワードにも影響します。
+   必要であれば、波括弧構文を使えばこれまでのバージョンでの挙動を再現できます。
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">f</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;PHP&nbsp;5&nbsp;でしか使えません<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">global&nbsp;$</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;PHP&nbsp;5&nbsp;と&nbsp;PHP&nbsp;7&nbsp;の両方で使えます<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">global&nbsp;${</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">};<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
  </div>
 
  <div class="sect3" id="migration70.incompatible.variable-handling.list">
@@ -399,31 +427,6 @@ array(2) {
 </pre></div>
    </div>
   </div>
- </div>
-
- <div class="sect3" id="migration70.incompatible.variable-handling.global">
-  <h4 class="title"><a href="language.variables.scope.html#language.variables.scope.global" class="link"><em>global</em></a> は単純な変数だけを受け付ける</h4>
-
-  <p class="para">
-   <a href="language.variables.variable.html" class="link">可変変数</a>
-   を <a href="language.variables.scope.html#language.variables.scope.global" class="link"><em>global</em></a> キーワードを組み合わせて使うことができなくなりました。
-   必要であれば、波括弧構文を使えばこれまでのバージョンでの挙動を再現できます。
-  </p>
-
-  <div class="informalexample">
-   <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">f</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;PHP&nbsp;5&nbsp;でしか使えません<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">global&nbsp;$</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;PHP&nbsp;5&nbsp;と&nbsp;PHP&nbsp;7&nbsp;の両方で使えます<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">global&nbsp;${</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">};<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
-   </div>
-
-  </div>
-
-  <p class="para">
-   一般論として、単純な変数以外を
-   <a href="language.variables.scope.html#language.variables.scope.global" class="link"><em>global</em></a> で使うことは推奨しません。
-  </p>
  </div>
 
  <div class="sect3" id="migration70.incompatible.variable-handling.parentheses">
@@ -569,15 +572,15 @@ int(1)
 
 
 <div class="sect2" id="migration70.incompatible.integers">
- <h3 class="title"><span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> の取り扱いの変更</h3>
+ <h3 class="title"><span class="type">int</span> の取り扱いの変更</h3>
 
  <div class="sect3" id="migration70.incompatible.integers.invalid-octals">
   <h4 class="title">無効な形式の八進リテラル</h4>
 
   <p class="para">
    以前のバージョンでは、無効な数値が八進リテラルに含まれている場合は、
-   単純にそれを無視していました (たとえば <em>0128</em> は
-   <em>012</em> として扱っていました)。
+   単純にそれを無視していました (たとえば <code class="literal">0128</code> は
+   <code class="literal">012</code> として扱っていました)。
    PHP 7 では、このような場合にパースエラーが発生します。
   </p>
  </div>
@@ -619,7 +622,7 @@ Stack trace:
   <h4 class="title">範囲外のビットシフト</h4>
 
   <p class="para">
-   <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> のビット幅を超えるビットシフト (左右問わず)
+   <span class="type">int</span> のビット幅を超えるビットシフト (左右問わず)
    を行うと、結果は常に 0 となります。
    以前のバージョンでは、このときの振る舞いはアーキテクチャに依存していました。
   </p>
@@ -726,7 +729,7 @@ string(3) &quot;foo&quot;
   <p class="para">
    <span class="function"><a href="function.filter-var.html" class="function">filter_var()</a></span> を使えば、
    文字列が十六進数値形式であるかどうかをチェックでき、
-   その文字列を <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> に変換することもできます。
+   その文字列を <span class="type">int</span> に変換することもできます。
   </p>
 
   <div class="informalexample">
@@ -741,11 +744,11 @@ string(3) &quot;foo&quot;
  </div>
 
  <div class="sect3" id="migration70.incompatible.strings.unicode-escapes">
-  <h4 class="title"><em>\u{</em> がエラーの原因になることがある</h4>
+  <h4 class="title"><code class="literal">\u{</code> がエラーの原因になることがある</h4>
 
   <p class="para">
    <a href="migration70.new-features.html#migration70.new-features.unicode-codepoint-escape-syntax" class="link">Unicode コードポイントのエスケープ構文</a>
-   が導入されたことにより、<em>\u{</em> のあとに無効なシーケンスが続く文字列が
+   が導入されたことにより、<code class="literal">\u{</code> のあとに無効なシーケンスが続く文字列が
    fatal error となる可能性があります。
    これを回避するには、先頭のバックスラッシュをエスケープする必要があります。
   </p>
@@ -758,13 +761,14 @@ string(3) &quot;foo&quot;
 
 
 
+
 <div class="sect2" id="migration70.incompatible.removed-functions">
  <h3 class="title">削除された関数</h3>
 
  <div class="sect3" id="migration70.incompatible.removed-functions.call-user-method">
   <h4 class="title">
-   <span class="function"><a href="function.call-user-method.html" class="function">call_user_method()</a></span> および
-   <span class="function"><a href="function.call-user-method-array.html" class="function">call_user_method_array()</a></span>
+   <span class="function"><strong>call_user_method()</strong></span> および
+   <span class="function"><strong>call_user_method_array()</strong></span>
   </h4>
 
   <p class="para">
@@ -774,7 +778,7 @@ string(3) &quot;foo&quot;
    あるいは
    <a href="functions.variable-functions.html" class="link">可変関数</a>
    や
-   <a href="functions.arguments.html#functions.variable-arg-list.new" class="link"><em>...</em></a>
+   <a href="functions.arguments.html#functions.variable-arg-list" class="link"><code class="literal">...</code></a>
    演算子を使うことを検討しましょう。
   </p>
  </div>
@@ -784,7 +788,7 @@ string(3) &quot;foo&quot;
    ereg* 系のすべての関数
   </h4>
   <p class="para">
-   <a href="book.regex.html" class="link">ereg</a> 関数はすべて削除されました。かわりに
+   <code class="literal">ereg</code> 関数はすべて削除されました。かわりに
    <a href="book.pcre.html" class="link">PCRE</a> を使うことを推奨します。
   </p>
  </div>
@@ -793,14 +797,14 @@ string(3) &quot;foo&quot;
   <h4 class="title"><a href="book.mcrypt.html" class="link">mcrypt</a> のエイリアス</h4>
 
   <p class="para">
-   非推奨の <span class="function"><a href="function.mcrypt-generic-end.html" class="function">mcrypt_generic_end()</a></span> 関数が削除されました。
+   非推奨の <span class="function"><strong>mcrypt_generic_end()</strong></span> 関数が削除されました。
    かわりに <span class="function"><a href="function.mcrypt-generic-deinit.html" class="function">mcrypt_generic_deinit()</a></span> を使いましょう。
   </p>
 
   <p class="para">
-   さらに、非推奨の <span class="function"><a href="function.mcrypt-ecb.html" class="function">mcrypt_ecb()</a></span>、
-   <span class="function"><a href="function.mcrypt-cbc.html" class="function">mcrypt_cbc()</a></span>、<span class="function"><a href="function.mcrypt-cfb.html" class="function">mcrypt_cfb()</a></span>、
-   <span class="function"><a href="function.mcrypt-ofb.html" class="function">mcrypt_ofb()</a></span> も削除されました。
+   さらに、非推奨の <span class="function"><strong>mcrypt_ecb()</strong></span>、
+   <span class="function"><strong>mcrypt_cbc()</strong></span>、<span class="function"><strong>mcrypt_cfb()</strong></span>、
+   <span class="function"><strong>mcrypt_ofb()</strong></span> も削除されました。
    <span class="function"><a href="function.mcrypt-decrypt.html" class="function">mcrypt_decrypt()</a></span> に、適切な
    <strong><code>MCRYPT_MODE_*</code></strong> 定数を組み合わせて使いましょう。
   </p>
@@ -823,9 +827,14 @@ string(3) &quot;foo&quot;
    すべての ext/mssql 関数
   </h4>
   <p class="para">
-   <a href="book.mssql.html" class="link">ext/mssql</a> のすべての関数が削除されました。
-   代替となる選択肢については、
-   <a href="intro.mssql.html" class="link">MSSQL の導入ページ</a> を参照ください。
+   <code class="literal">ext/mssql</code> のすべての関数が削除されました。
+   代替となる選択肢については、以下を参照して下さい。
+   <ul class="simplelist">
+    <li class="member"><a href="ref.pdo-sqlsrv.html" class="link">PDO_SQLSRV</a></li>
+    <li class="member"><a href="ref.pdo-odbc.html" class="link">PDO_ODBC</a></li>
+    <li class="member"><a href="book.sqlsrv.html" class="link">SQLSRV</a></li>
+    <li class="member"><a href="book.uodbc.html" class="link">Unified ODBC API</a></li>
+   </ul>
   </p>
  </div>
 
@@ -833,30 +842,29 @@ string(3) &quot;foo&quot;
   <h4 class="title"><a href="book.intl.html" class="link">intl</a> のエイリアス</h4>
 
   <p class="para">
-   非推奨のエイリアス <span class="function"><a href="intldateformatter.settimezoneid.html" class="function">datefmt_set_timezone_id()</a></span> および
-   <span class="methodname"><a href="intldateformatter.settimezoneid.html" class="methodname">IntlDateFormatter::setTimeZoneID()</a></span> が削除されました。
+   非推奨のエイリアス <span class="function"><strong>datefmt_set_timezone_id()</strong></span> および
+   <span class="methodname"><strong>IntlDateFormatter::setTimeZoneID()</strong></span> が削除されました。
    かわりに <span class="function"><a href="intldateformatter.settimezone.html" class="function">datefmt_set_timezone()</a></span> および
    <span class="methodname"><a href="intldateformatter.settimezone.html" class="methodname">IntlDateFormatter::setTimeZone()</a></span> を使いましょう。
   </p>
  </div>
 
  <div class="sect3" id="migration70.incompatible.removed-functions.magic-quotes">
-  <h4 class="title"><span class="function"><a href="function.set-magic-quotes-runtime.html" class="function">set_magic_quotes_runtime()</a></span></h4>
+  <h4 class="title"><span class="function"><strong>set_magic_quotes_runtime()</strong></span></h4>
 
   <p class="para">
-   <span class="function"><a href="function.set-magic-quotes-runtime.html" class="function">set_magic_quotes_runtime()</a></span> およびそのエイリアスである
-   <span class="function"><a href="function.magic-quotes-runtime.html" class="function">magic_quotes_runtime()</a></span> が削除されました。
+   <span class="function"><strong>set_magic_quotes_runtime()</strong></span> およびそのエイリアスである
+   <span class="function"><strong>magic_quotes_runtime()</strong></span> が削除されました。
    これらは PHP 5.3.0 で非推奨となり、
-   <a href="migration54.incompatible.html" class="link">PHP 5.4.0</a>
-   でマジッククォートが廃止された時点で事実上無意味になっていました。
+   PHP 5.4.0 でマジッククォートが廃止された時点で事実上無意味になっていました。
   </p>
  </div>
 
  <div class="sect3" id="migration70.incompatible.removed-functions.set-socket-blocking">
-  <h4 class="title"><span class="function"><a href="function.set-socket-blocking.html" class="function">set_socket_blocking()</a></span></h4>
+  <h4 class="title"><span class="function"><strong>set_socket_blocking()</strong></span></h4>
 
   <p class="para">
-   非推奨のエイリアス <span class="function"><a href="function.set-socket-blocking.html" class="function">set_socket_blocking()</a></span> が削除されました。
+   非推奨のエイリアス <span class="function"><strong>set_socket_blocking()</strong></span> が削除されました。
    かわりに <span class="function"><a href="function.stream-set-blocking.html" class="function">stream_set_blocking()</a></span> を使いましょう。
   </p>
  </div>
@@ -881,37 +889,37 @@ string(3) &quot;foo&quot;
   <ul class="itemizedlist">
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a href="function.imagepsbbox.html" class="function">imagepsbbox()</a></span>
+     <span class="function"><strong>imagepsbbox()</strong></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a href="function.imagepsencodefont.html" class="function">imagepsencodefont()</a></span>
+     <span class="function"><strong>imagepsencodefont()</strong></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a href="function.imagepsextendfont.html" class="function">imagepsextendfont()</a></span>
+     <span class="function"><strong>imagepsextendfont()</strong></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a href="function.imagepsfreefont.html" class="function">imagepsfreefont()</a></span>
+     <span class="function"><strong>imagepsfreefont()</strong></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a href="function.imagepsloadfont.html" class="function">imagepsloadfont()</a></span>
+     <span class="function"><strong>imagepsloadfont()</strong></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a href="function.imagepsslantfont.html" class="function">imagepsslantfont()</a></span>
+     <span class="function"><strong>imagepsslantfont()</strong></span>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a href="function.imagepstext.html" class="function">imagepstext()</a></span>
+     <span class="function"><strong>imagepstext()</strong></span>
     </span>
    </li>
   </ul>
@@ -941,12 +949,12 @@ string(3) &quot;foo&quot;
   <ul class="itemizedlist">
    <li class="listitem">
     <span class="simpara">
-     <a href="ini.core.html#ini.always-populate-raw-post-data" class="link"><code class="parameter">always_populate_raw_post_data</code></a>
+     <code class="parameter">always_populate_raw_post_data</code>
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <a href="ini.core.html#ini.asp-tags" class="link"><code class="parameter">asp_tags</code></a>
+     <code class="parameter">asp_tags</code>
     </span>
    </li>
   </ul>
@@ -976,7 +984,7 @@ string(3) &quot;foo&quot;
   <h4 class="title">新しいオブジェクトを参照渡しで代入できない</h4>
 
   <p class="para">
-   <a href="language.oop5.basic.html#language.oop5.basic.new" class="link"><em>new</em></a> 文の結果を参照渡しで変数に代入することができなくなりました。
+   <a href="language.oop5.basic.html#language.oop5.basic.new" class="link"><code class="literal">new</code></a> 文の結果を参照渡しで変数に代入することができなくなりました。
    by reference:
   </p>
 
@@ -1012,25 +1020,25 @@ Parse error: syntax error, unexpected &#039;new&#039; (T_NEW) in /tmp/test.php o
 
   <ul class="itemizedlist">
    <li class="listitem">
-    <span class="simpara"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></span>
+    <span class="simpara"><span class="type">bool</span></span>
    </li>
    <li class="listitem">
-    <span class="simpara"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></span>
+    <span class="simpara"><span class="type">int</span></span>
    </li>
    <li class="listitem">
-    <span class="simpara"><span class="type"><a href="language.types.float.html" class="type float">float</a></span></span>
+    <span class="simpara"><span class="type">float</span></span>
    </li>
    <li class="listitem">
-    <span class="simpara"><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span>
+    <span class="simpara"><span class="type">string</span></span>
    </li>
    <li class="listitem">
-    <span class="simpara"><strong><code>NULL</code></strong></span>
+    <span class="simpara"><strong><code>null</code></strong></span>
    </li>
    <li class="listitem">
-    <span class="simpara"><strong><code>TRUE</code></strong></span>
+    <span class="simpara"><strong><code>true</code></strong></span>
    </li>
    <li class="listitem">
-    <span class="simpara"><strong><code>FALSE</code></strong></span>
+    <span class="simpara"><strong><code>false</code></strong></span>
    </li>
   </ul>
 
@@ -1042,13 +1050,13 @@ Parse error: syntax error, unexpected &#039;new&#039; (T_NEW) in /tmp/test.php o
 
   <ul class="itemizedlist">
    <li class="listitem">
-    <span class="simpara"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></span>
+    <span class="simpara"><span class="type">resource</span></span>
    </li>
    <li class="listitem">
-    <span class="simpara"><span class="type"><a href="language.types.object.html" class="type object">object</a></span></span>
+    <span class="simpara"><span class="type">object</span></span>
    </li>
    <li class="listitem">
-    <span class="simpara"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span></span>
+    <span class="simpara"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></span>
    </li>
    <li class="listitem">
     <span class="simpara"><span class="type"><span class="type numeric">numeric</span></span></span>
@@ -1103,7 +1111,7 @@ Parse error: syntax error, unexpected &#039;new&#039; (T_NEW) in /tmp/test.php o
   <p class="para">
    <a href="migration56.deprecated.html#migration56.deprecated.incompatible-context" class="link">既に PHP 5.6 で非推奨になっていますが</a>、
    static ではないメソッドに対して非互換のコンテキストで static 呼び出しを行うと、
-   呼ばれた側のメソッドが未定義の <em>$this</em> 変数を持つことになって警告が発生します。
+   呼ばれた側のメソッドが未定義の <code class="literal">$this</code> 変数を持つことになって警告が発生します。
   </p>
 
   <div class="informalexample">
@@ -1140,14 +1148,14 @@ NULL
   <p class="para">
     <a href="language.generators.syntax.html#control-structures.yield" class="link">yield</a> で括弧が必須ではなくなり、右代入演算子に変わりました。
    優先順位は
-   <em>print</em> と <em>=&gt;</em> の間になります。
+   <code class="literal">print</code> と <code class="literal">=&gt;</code> の間になります。
    これによって、以下のように振る舞いが変わります。
   </p>
 
   <div class="informalexample">
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">yield&nbsp;</span><span style="color: #007700">-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;以前はこのように解釈されました<br /></span><span style="color: #007700">echo&nbsp;(</span><span style="color: #0000BB">yield</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;7&nbsp;ではこのように解釈されます<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">yield&nbsp;</span><span style="color: #007700">(-</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">yield&nbsp;$foo&nbsp;</span><span style="color: #007700">or&nbsp;die;<br /></span><span style="color: #FF8000">//&nbsp;以前はこのように解釈されました<br /></span><span style="color: #0000BB">yield&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">or&nbsp;die);<br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;7&nbsp;ではこのように解釈されます<br /></span><span style="color: #007700">(</span><span style="color: #0000BB">yield&nbsp;$foo</span><span style="color: #007700">)&nbsp;or&nbsp;die;<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;yield&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;以前はこのように解釈されました<br /></span><span style="color: #007700">echo&nbsp;(yield)&nbsp;-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;7&nbsp;ではこのように解釈されます<br /></span><span style="color: #007700">echo&nbsp;yield&nbsp;(-</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br />yield&nbsp;</span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">or&nbsp;die;<br /></span><span style="color: #FF8000">//&nbsp;以前はこのように解釈されました<br /></span><span style="color: #007700">yield&nbsp;(</span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">or&nbsp;die);<br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;7&nbsp;ではこのように解釈されます<br /></span><span style="color: #007700">(yield&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">)&nbsp;or&nbsp;die;<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
    </div>
@@ -1217,7 +1225,7 @@ NULL
 
   <p class="para">
    ひとつの switch 文の中に、複数の default ブロックを定義することができなくなりました。
-   たとえば次のように書くと
+   たとえば次の switch 文は
    <strong><code>E_COMPILE_ERROR</code></strong> になります。
   </p>
 
@@ -1233,21 +1241,21 @@ NULL
  </div>
 
  <div class="sect3" id="migration70.incompatible.other.http-raw-post-data">
-  <h4 class="title"><var class="varname"><var class="varname"><a href="reserved.variables.httprawpostdata.html" class="classname">$HTTP_RAW_POST_DATA</a></var></var> の削除</h4>
+  <h4 class="title"><var class="varname">$HTTP_RAW_POST_DATA</var> の削除</h4>
 
   <p class="para">
-   <var class="varname"><var class="varname"><a href="reserved.variables.httprawpostdata.html" class="classname">$HTTP_RAW_POST_DATA</a></var></var> が使えなくなりました。かわりに
-   <a href="wrappers.php.html#wrappers.php.input" class="link"><em>php://input</em></a>
+   <var class="varname">$HTTP_RAW_POST_DATA</var> が使えなくなりました。かわりに
+   <a href="wrappers.php.html#wrappers.php.input" class="link"><code class="literal">php://input</code></a>
    ストリームを使いましょう。
   </p>
  </div>
 
  <div class="sect3" id="migration70.incompatible.other.ini-comments">
-  <h4 class="title">INI ファイルにおける <em>#</em> 形式のコメントの削除</h4>
+  <h4 class="title">INI ファイルにおける <code class="literal">#</code> 形式のコメントの削除</h4>
 
   <p class="para">
-   INI ファイルにおいて <em>#</em> で始まる行をコメントとする機能が削除されました。
-   かわりに <em>;</em> を使いましょう。
+   INI ファイルにおいて <code class="literal">#</code> で始まる行をコメントとする機能が削除されました。
+   かわりに <code class="literal">;</code> を使いましょう。
    この変更は、<var class="filename">php.ini</var> だけではなく、
    <span class="function"><a href="function.parse-ini-file.html" class="function">parse_ini_file()</a></span> や <span class="function"><a href="function.parse-ini-string.html" class="function">parse_ini_string()</a></span>
    が扱うファイルにもあてはまります。
@@ -1261,12 +1269,13 @@ NULL
    JSON 拡張モジュールが JSOND に置き換わりました。
    下位互換性を損ねるちょっとした変更が二点あります。
    まず、数値の最後を小数点で終えることができなくなりました (つまり、
-   <em>34.</em> とすることはできず、<em>34.0</em> あるいは
-   <em>34</em> としなければいけません)。
+   <code class="literal">34.</code> とすることはできず、<code class="literal">34.0</code> あるいは
+   <code class="literal">34</code> としなければいけません)。
    次に、科学記法を使う際に、指数記号
-   <em>e</em> を小数点の直後に置くことができなくなりました
-   (つまり、<em>3.e3</em> とすることはできず、
-   <em>3.0e3</em> あるいは <em>3e3</em> としなければいけません)。
+   <code class="literal">e</code> を小数点の直後に置くことができなくなりました
+   (つまり、<code class="literal">3.e3</code> とすることはできず、
+   <code class="literal">3.0e3</code> あるいは <code class="literal">3e3</code> としなければいけません)。
+   最後に、空の文字列は妥当な JSON だとみなされなくなりました。
   </p>
  </div>
 
@@ -1276,7 +1285,7 @@ NULL
   <p class="para">
    これまでのバージョンでは、浮動小数点数値が大きすぎて整数として表せない場合に、
    float から integer に変換した結果を黙って切り詰めていました。
-   PHP 7 では E_WARNING が発生し、<strong><code>NULL</code></strong> を返します。
+   PHP 7 では E_WARNING が発生し、<strong><code>null</code></strong> を返します。
   </p>
  </div>
 
@@ -1285,31 +1294,55 @@ NULL
 
   <p class="para">
    カスタムセッションハンドラとして実装した関数が
-   <strong><code>FALSE</code></strong> あるいは <em>-1</em> を返すとき、fatal error が発生します。
-   この関数が boolead 値か <em>-1</em>, あるいは
-   <em>0</em> 以外を返す場合は、その関数は失敗して E_WARNING が発生します。
+   <strong><code>false</code></strong> あるいは <code class="literal">-1</code> を返すとき、fatal error が発生します。
+   この関数が boolean 値か <code class="literal">-1</code>, あるいは
+   <code class="literal">0</code> 以外を返す場合は、その関数は失敗して E_WARNING が発生します。
   </p>
  </div>
 
- <div class="sect3" id="migration70.incompatible.other.func-get-args-change">
-  <h4 class="title">
-   <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span> と <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span>
-   が現在の引数の値を返すようになる
-  </h4>
-
+ <div class="sect3" id="migration70.incompatible.other.sort-order">
+  <h4 class="title">同値な要素の並び順</h4>
   <p class="para">
-   <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span> および <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span>
-   はこれまで、(たとえ関数内でその値が変更されていたとしても) 当初の引数の値を返していました。
-   PHP 7 以降は、常にその時点の引数の値を返すようになります。
+   内部的なソートアルゴリズムが改良されたことに伴って、
+   比較したときに等しいとみなされる要素の並び順が以前とは変わるかもしれません。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    同値な要素の並び順に依存するコードは書かないようにしましょう。
+    その並び順がいつまでも同じであるとは限りません。
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="sect3" id="migration70.incompatible.other.break-continue">
+  <h4 class="title">break 文と switch 文の位置の間違い</h4>
+  <p class="para">
+   ループまたは <code class="literal">switch</code> 制御構造の外の
+   <code class="literal">break</code> および <code class="literal">continue</code> 文は、 
+   以前のように実行時ではなくコンパイル時に検出され、
+   <strong><code>E_COMPILE_ERROR</code></strong> を起こします。
+  </p>
+ </div>
+
+ <div class="sect3" id="migration70.incompatible.other.mhash">
+  <h4 class="title">Mhash はもう拡張機能ではありません</h4>
+  <p class="para">
+   Mhash 拡張は <a href="book.hash.html" class="link">Hash</a> 拡張に完全に統合されました。
+   したがって、<span class="function"><a href="function.extension-loaded.html" class="function">extension_loaded()</a></span> で Mhash サポートを検出できなくなりました。
+   代わりに <span class="function"><a href="function.function-exists.html" class="function">function_exists()</a></span> を使用してください。
+   さらに、Mhash は <span class="function"><a href="function.get-loaded-extensions.html" class="function">get_loaded_extensions()</a></span> および関連機能により報告されなくなりました。
+  </p>
+ </div>
+
+ <div class="sect3" id="migration70.incompatible.other.declare-ticks">
+  <h4 class="title">declare(ticks)</h4>
+  <p class="para">
+   <a href="control-structures.declare.html#control-structures.declare.ticks" class="link">declare(ticks)</a>
+   ディレクティブは、異なるコンパイル単位にリークしなくなりました。
   </p>
  </div>
 </div>
 
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="migration70.html">PHP 5.6.x から PHP 7.0.x への移行</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="migration70.new-features.html">新機能</a></div>
- <div class="up"><a href="migration70.html">PHP 5.6.x から PHP 7.0.x への移行</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,21 +3,33 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>コマンドラインオプション</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.differences.html">他の SAPI との違い</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.commandline.usage.html">Usage</a></div>
- <div class="up"><a href="features.commandline.html">コマンドラインの使用法</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="features.commandline.options" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.commandline.differences.html">« 他の SAPI との違い</a></li>
+      <li style="float: right;"><a href="features.commandline.usage.html">Usage »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.commandline.html">コマンドラインの使用法</a></li>
+    <li>コマンドラインオプション</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.commandline.options" class="section">
   <h2 class="title">コマンドラインオプション</h2>
   
   
   <p class="para">
    PHP バイナリにより提供されるコマンドラインオプションの一覧は、
-   <strong class="option unknown">-h</strong>
- スイッチを指定して PHP を実行することにより
+   <strong class="option unknown">-h</strong> スイッチを指定して PHP を実行することにより
    いつでも調べることができます。
    <div class="example-contents screen">
 <div class="cdata"><pre>
@@ -127,7 +139,7 @@ Usage: php [options] [-f] &lt;file&gt; [--] [args...]
        <td>--timing</td>
        <td>
         <p class="para">
-         スクリプトを <var class="varname"><var class="varname">count</var></var> 回繰り返して実行した時間を計測します
+         スクリプトを <var class="varname">count</var> 回繰り返して実行した時間を計測します
          (<acronym title="Common Gateway Interface">CGI</acronym> のみ)。
         </p>
        </td>
@@ -139,7 +151,7 @@ Usage: php [options] [-f] &lt;file&gt; [--] [args...]
        <td>
         <p class="para">
          このオプションを使用することにより、<var class="filename">php.ini</var> を探すディレクトリを
-         指定したり、カスタマイズされた <em>INI</em> ファイル
+         指定したり、カスタマイズされた <code class="literal">INI</code> ファイル
          (<var class="filename">php.ini</var> という名前である必要はありません)を直接指定する
          ことが可能です。例：
         </p>
@@ -183,7 +195,7 @@ $ php -c /custom/directory/custom-file.ini my_script.php
  </pre></div>
          </div>
         </p>
-        <p class="para"><div class="example" id="example-423">
+        <p class="para"><div class="example" id="example-407">
          <div class="example-contents screen">
 <div class="cdata"><pre>
 # 値の部分を省略すると、設定ディレクティブに&quot;1&quot;を指定します
@@ -225,15 +237,14 @@ string(15) &quot;doesntmakesense&quot;
        <td>--file</td>
        <td>
         <p class="para">
-         <strong class="option unknown">-f</strong>
- オプションに指定したファイル名をパースし、
+         <strong class="option unknown">-f</strong> オプションに指定したファイル名をパースし、
          実行します。このスイッチはオプションで省略することもできます。
          実行するスクリプトを指定するだけで充分です。
         </p>
         <blockquote class="note"><p><strong class="note">注意</strong>: 
          <p class="para">
           引数をスクリプトに渡すには、最初の引数を
-          <em>--</em> としなければなりません。
+          <code class="literal">--</code> としなければなりません。
           そうしないと、PHP は渡された内容を PHP のオプションとみなしてしまいます。
          </p>
         </p></blockquote>
@@ -271,23 +282,21 @@ string(15) &quot;doesntmakesense&quot;
          このオプションにより、指定した PHP コードの
          構文チェックのみを簡単に行なうことができます。成功した場合、
          テキスト
-         <em>No syntax errors detected in &lt;filename&gt;</em>
-         が標準出力に書き込まれ、リターンコードは <em>0</em>
-         となります。失敗した場合、テキスト <em>Errors parsing
-          &lt;filename&gt;</em> に加え、内部パーサエラーメッセージ
+         <code class="literal">No syntax errors detected in &lt;filename&gt;</code>
+         が標準出力に書き込まれ、リターンコードは <code class="literal">0</code>
+         となります。失敗した場合、テキスト <code class="literal">Errors parsing
+          &lt;filename&gt;</code> に加え、内部パーサエラーメッセージ
          が標準出力に書き込まれ、シェルリターンコードは、
-         <em>-1</em> となります。
+         <code class="literal">-1</code> となります。
         </p>
         <p class="para">
          このオプションは、(未定義の関数のような)致命的なエラー(fatal error)
          はみつけません。致命的なエラーについても調べたい場合は、
-         <strong class="option unknown">-f</strong>
- を使用してください。
+         <strong class="option unknown">-f</strong> を使用してください。
         </p>
         <blockquote class="note"><p><strong class="note">注意</strong>: 
          <p class="para">
-          このオプションは、オプション <strong class="option unknown">-r</strong>
- と共に使用することは
+          このオプションは、オプション <strong class="option unknown">-r</strong> と共に使用することは
           できません。
          </p>
         </p></blockquote>
@@ -298,7 +307,7 @@ string(15) &quot;doesntmakesense&quot;
        <td>-m</td>
        <td>--modules</td>
        <td>
-        <p class="para"><div class="example" id="example-424">
+        <p class="para"><div class="example" id="example-408">
          <p><strong>例1 PHP に組み込まれた (そしてロードされた) Zend モジュールの表示</strong></p>
          <div class="example-contents screen">
 <div class="cdata"><pre>
@@ -330,7 +339,7 @@ ctype
          このオプションにより、コマンドラインのみで PHP
          の実行ができるようになります。
          PHP の開始および終了タグ
-         (<em>&lt;?php</em> および <em>?&gt;</em>)
+         (<code class="literal">&lt;?php</code> および <code class="literal">?&gt;</code>)
          は<em class="emphasis">不要</em>で、これらを付けると
          パーサエラーとなります。
         </p>
@@ -339,7 +348,7 @@ ctype
           このように PHP を実行する際に、コマンドラインの
           変数がシェルにより行なわれる置換と干渉しないように注意してください。
          </p>
-         <div class="example" id="example-425">
+         <div class="example" id="example-409">
           <p><strong>例2 ダブルクォートの使用時に構文エラーが出る例</strong></p>
           <div class="example-contents screen">
 <div class="cdata"><pre>
@@ -351,9 +360,9 @@ Parse error: syntax error, unexpected &#039;=&#039; in Command line code on line
           </div>
          </div>
          <p class="para">
-          ここでの問題は、2 重引用符 <em>&quot;</em> を用いた場合でも
+          ここでの問題は、2 重引用符 <code class="literal">&quot;</code> を用いた場合でも
           sh/bash が変数置換を行うことです。
-          <var class="varname"><var class="varname">$foo</var></var> はおそらく定義されていないので、
+          <var class="varname">$foo</var> はおそらく定義されていないので、
           空文字列に展開された後、実行用に PHP に
           そのコードが渡され、以下のように読み込むことになります。
          </p>
@@ -366,10 +375,10 @@ $ php -r &quot; = get_defined_constants();&quot;
          </div>
          
          <p class="para">
-          正しい方法は、1 重引用符<em>&#039;</em>を使用することです。
+          正しい方法は、1 重引用符<code class="literal">&#039;</code>を使用することです。
           1 重引用符で括られた文字列の中の変数は、sh/bash により展開されません。
          </p>
-         <div class="example" id="example-426">
+         <div class="example" id="example-410">
           <p><strong>例3 シングルクォートを使い、シェルの変数置換を防ぐ例</strong></p>
           <div class="example-contents screen">
 <div class="cdata"><pre>
@@ -391,7 +400,7 @@ array(370) {
          <p class="para">
           sh/bash 以外のシェルを使用している場合には、別の問題を経験したことが
           あるかもしれません。バグを
-          <a href="http://bugs.php.net/" class="link external">&raquo;&nbsp;http://bugs.php.net/</a>
+          <a href="https://bugs.php.net/" class="link external">&raquo;&nbsp;https://bugs.php.net/</a>
           に報告してください。
           シェル変数をコードに取得しようとしたり、エスケープを行なうために
           バックスラッシュを使用したりした場合にも、容易に問題を発生する
@@ -400,8 +409,7 @@ array(370) {
         </p></blockquote>
         <blockquote class="note"><p><strong class="note">注意</strong>: 
          <p class="para">
-          <strong class="option unknown">-r</strong>
- は <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> で有効で、
+          <strong class="option unknown">-r</strong> は <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> で有効で、
           <em class="emphasis">CGI</em> <acronym title="Server Application Programming Interface">SAPI</acronym> では使用できません。
          </p>
         </p></blockquote>
@@ -421,7 +429,6 @@ array(370) {
        <td>
         <p class="para">
          標準入力を処理する前に実行する PHP コードを指定します。
-         PHP 5 で追加されました。
         </p>
        </td>
       </tr>
@@ -432,14 +439,13 @@ array(370) {
        <td>
         <p class="para">
          それぞれの入力行に対して実行する PHP コードを指定します。
-         PHP 5 で追加されました。
         </p>
         <p class="para">
          このモードには 2 つの特別な変数
-         <var class="varname"><var class="varname">$argn</var></var> と <var class="varname"><var class="varname">$argi</var></var>
+         <var class="varname">$argn</var> と <var class="varname">$argi</var>
          が用意されています。
-         <var class="varname"><var class="varname">$argn</var></var> は PHP がその瞬間に処理している行を含み、
-         <var class="varname"><var class="varname">$argi</var></var> はその行番号を含んでいます。
+         <var class="varname">$argn</var> は PHP がその瞬間に処理している行を含み、
+         <var class="varname">$argi</var> はその行番号を含んでいます。
         </p>
        </td>
       </tr>
@@ -450,7 +456,6 @@ array(370) {
        <td>
         <p class="para">
          全ての入力行に対して実行する PHP ファイルを指定します。
-         PHP 5 で追加されました。
         </p>
        </td>
       </tr>
@@ -461,14 +466,10 @@ array(370) {
        <td>
         <p class="para">
          入力を処理した後に実行する PHP コードを指定します。
-         PHP 5 で追加されました。
         </p>
-        <p class="para"><div class="example" id="example-427">
+        <p class="para"><div class="example" id="example-411">
          <p><strong>例4 とあるプロジェクトの行数をカウントするための
-         <strong class="option unknown">-B</strong>
-, <strong class="option unknown">-R</strong>
- そして <strong class="option unknown">-E</strong>
-
+         <strong class="option unknown">-B</strong>, <strong class="option unknown">-R</strong> そして <strong class="option unknown">-E</strong>
          オプションの使用例
          </strong></p>
          <div class="example-contents screen">
@@ -487,7 +488,7 @@ Total Lines: 37328
        <td>
         <p class="para">
          <a href="features.commandline.webserver.html" class="link">ビルトインウェブサーバー</a>
-         を開始させます。PHP 5.4.0 以降で利用可能です。
+         を開始させます。
         </p>
        </td>
       </tr>
@@ -497,7 +498,7 @@ Total Lines: 37328
        <td>--docroot</td>
        <td>
         <a href="features.commandline.webserver.html" class="link">ビルトインウェブサーバー</a>
-        のドキュメントルートを指定します。PHP 5.4.0 以降で利用可能です。
+        のドキュメントルートを指定します。
        </td>
       </tr>
 
@@ -512,14 +513,13 @@ Total Lines: 37328
          このオプションは、ファイルをパースし、HTML
          ハイライト表示版のファイルを生成し、標準出力に書き出す内部機
          構を使用します。行うのは
-         <em>&lt;code&gt; [...] &lt;/code&gt;</em> のブロックを
+         <code class="literal">&lt;code&gt; [...] &lt;/code&gt;</code> のブロックを
          生成することだけで、HTML ヘッダは
          出力されないことに注意してください。
         </p>
         <blockquote class="note"><p><strong class="note">注意</strong>: 
          <p class="para">
-          このオプションは、<strong class="option unknown">-r</strong>
- オプションと同時に
+          このオプションは、<strong class="option unknown">-r</strong> オプションと同時に
           使用することはできません。
          </p>
         </p></blockquote>
@@ -530,9 +530,8 @@ Total Lines: 37328
        <td>-v</td>
        <td>--version</td>
        <td>
-        <p class="para"><div class="example" id="example-428">
-         <p><strong>例5 <strong class="option unknown">-v</strong>
- による、<acronym title="Server Application Programming Interface">SAPI</acronym>
+        <p class="para"><div class="example" id="example-412">
+         <p><strong>例5 <strong class="option unknown">-v</strong> による、<acronym title="Server Application Programming Interface">SAPI</acronym>
          名および PHP と Zend のバージョンの取得</strong></p>
          <div class="example-contents screen">
 <div class="cdata"><pre>
@@ -555,8 +554,7 @@ Zend Engine v2.3.0, Copyright (c) 1998-2009 Zend Technologies
         </p>
         <blockquote class="note"><p><strong class="note">注意</strong>: 
          <p class="para">
-          このオプションは、<strong class="option unknown">-r</strong>
- オプションと同時に
+          このオプションは、<strong class="option unknown">-r</strong> オプションと同時に
           使用することはできません。
          </p>
         </p></blockquote>
@@ -588,9 +586,8 @@ Zend Engine v2.3.0, Copyright (c) 1998-2009 Zend Technologies
        <td>
         <p class="para">
          設定ファイルの名前、設定ファイルを検索するディレクトリを表示します。
-         PHP 5.2.3 以降で使用可能です。
-         <div class="example" id="example-429">
-          <p><strong>例6 <em>--ini</em> の例</strong></p>
+         <div class="example" id="example-413">
+          <p><strong>例6 <code class="literal">--ini</code> の例</strong></p>
           <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ php --ini
 Configuration File (php.ini) Path: /usr/dev/php/5.2/lib
@@ -612,7 +609,6 @@ Additional .ini files parsed:      (none)</pre>
         <p class="para">
          指定した関数あるいはクラスメソッドについての情報
          (たとえばパラメータの数と名前など) を表示します。
-         PHP 5.1.2 以降で使用可能です。
         </p>
         <p class="para">
          このオプションは、PHP が
@@ -620,8 +616,8 @@ Additional .ini files parsed:      (none)</pre>
          のサポートつきでコンパイルされている場合にのみ使用可能です。
         </p>
         <p class="para">
-         <div class="example" id="example-430">
-          <p><strong>例7 基本的な <em>--rf</em> の使用法</strong></p>
+         <div class="example" id="example-414">
+          <p><strong>例7 基本的な <code class="literal">--rf</code> の使用法</strong></p>
           <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ php --rf var_dump
 Function [ &lt;internal&gt; public function var_dump ] {
@@ -645,7 +641,7 @@ Function [ &lt;internal&gt; public function var_dump ] {
        <td>
         <p class="para">
          指定したクラスについての情報 (定数、プロパティおよびメソッドの一覧)
-         を表示します。PHP 5.1.2 以降で使用可能です。
+         を表示します。
         </p>
         <p class="para">
          このオプションは、PHP が
@@ -653,8 +649,8 @@ Function [ &lt;internal&gt; public function var_dump ] {
          のサポートつきでコンパイルされている場合にのみ使用可能です。
         </p>
         <p class="para">
-         <div class="example" id="example-431">
-          <p><strong>例8 <em>--rc</em> の例</strong></p>
+         <div class="example" id="example-415">
+          <p><strong>例8 <code class="literal">--rc</code> の例</strong></p>
           <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ php --rc Directory
 Class [ &lt;internal:standard&gt; class Directory ] {
@@ -697,7 +693,6 @@ Class [ &lt;internal:standard&gt; class Directory ] {
         <p class="para">
          指定した拡張モジュールについての情報 (<var class="filename">php.ini</var> オプション、
          定義されている関数、定数およびクラスの一覧) を表示します。
-         PHP 5.1.2 以降で使用可能です。
         </p>
         <p class="para">
          このオプションは、PHP が
@@ -705,8 +700,8 @@ Class [ &lt;internal:standard&gt; class Directory ] {
          のサポートつきでコンパイルされている場合にのみ使用可能です。
         </p>
         <p class="para">
-         <div class="example" id="example-432">
-          <p><strong>例9 <em>--re</em> の例</strong></p>
+         <div class="example" id="example-416">
+          <p><strong>例9 <code class="literal">--re</code> の例</strong></p>
           <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ php --re json
 Extension [ &lt;persistent&gt; extension #19 json version 1.2.1 ] {
@@ -734,7 +729,6 @@ Extension [ &lt;persistent&gt; extension #19 json version 1.2.1 ] {
          指定した Zend 拡張モジュールについての情報
          (<span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> が返す情報と同じもの)
          を表示します。
-         PHP 5.4.0 以降で使用可能です。
         </p>
        </td>
       </tr>
@@ -746,12 +740,12 @@ Extension [ &lt;persistent&gt; extension #19 json version 1.2.1 ] {
         <p class="para">
          指定した拡張モジュールについての設定情報 (<span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span>
          が返す情報と同じもの) を表示します。
-         PHP 5.2.2 以降で使用可能です。コア機能に関する設定情報は、
+         コア機能に関する設定情報は、
          &quot;main&quot; というモジュール名で取得できます。
         </p>
         <p class="para">
-         <div class="example" id="example-433">
-          <p><strong>例10 <em>--ri</em> の例</strong></p>
+         <div class="example" id="example-417">
+          <p><strong>例10 <code class="literal">--ri</code> の例</strong></p>
           <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">$ php --ri date
 
@@ -784,13 +778,8 @@ date.sunrise_zenith =&gt; 90.583333 =&gt; 90.583333</pre>
   
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    オプション <em>-rBRFEH</em>、<em>--ini</em> および
-    <em>--r[fcezi]</em> は <acronym title="Command Line Interpreter/Interface">CLI</acronym> でのみ使用可能です。
+    オプション <code class="literal">-rBRFEH</code>、<code class="literal">--ini</code> および
+    <code class="literal">--r[fcezi]</code> は <acronym title="Command Line Interpreter/Interface">CLI</acronym> でのみ使用可能です。
    </p>
   </p></blockquote>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.differences.html">他の SAPI との違い</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.commandline.usage.html">Usage</a></div>
- <div class="up"><a href="features.commandline.html">コマンドラインの使用法</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

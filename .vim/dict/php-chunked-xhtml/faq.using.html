@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>PHP の使いかた</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="faq.build.html">構築時の問題</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="faq.passwords.html">パスワードのハッシュ</a></div>
- <div class="up"><a href="faq.html">FAQ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="faq.using" class="chapter">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="faq.build.html">« 構築時の問題</a></li>
+      <li style="float: right;"><a href="faq.passwords.html">パスワードのハッシュ »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li>PHP の使いかた</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="faq.using" class="chapter">
   <h1>PHP の使いかた</h1>
 
   
@@ -36,16 +49,6 @@
       シングルクオート(\&#039;)に変換しなければならないのですが、
       正規表現を用いてこれを行うにはどの様にするのですか？
       同様に &quot; を \&quot; に、\ を \\ に変換したいのです。
-     
-    </a></li><li><a href="#faq.using.stripslashes">
-     
-      &quot; は \&quot; に、また &#039; は \&#039; に全て変換されているのですが、
-      これら無用なバックスラッシュを除去するにはどうしたらよいですか？
-      どうやって、そしてなぜ、こんなことになっているのでしょう？
-     
-    </a></li><li><a href="#faq.register-globals">
-     
-      PHP の設定項目 register_globals はどんな影響があるの?
      
     </a></li><li><a href="#faq.using.wrong-order">
      
@@ -108,33 +111,19 @@ echo &quot;myfunc($variable) = &quot; . myfunc($variable);
     </a></li><li><a href="#faq.using.freepdf">
      
       フリーではない商用ライブラリである
-      PDFLibを使わずに
+      PDFLib を使わずに
       PDFファイルを生成するにはどうしたらよいでしょうか？
-      フリーのもので、外部のPDFライブラリを必要としない
-      ものがいいのです。
-     
-    </a></li><li><a href="#faq.using.cgi-vars">
-     
-      ユーザー定義関数の中で、標準的な
-      ($DOCUMENT_ROOT や $HTTP_REFERER のような)
-      CGI変数にアクセスしたいのですが、PHPはそれらの変数を見つけること
-      ができていないようです。何がおかしいのですか？
+      フリーのもので、外部のPDFライブラリが不要なものがいいのですが。
      
     </a></li><li><a href="#faq.using.shorthandbytes">
      
-      いくつかの PHP ディレクティブでは、バイト値を integer 
+      いくつかの PHP ディレクティブでは、バイト値を int 
       ではなく省略形で設定できます。この省略形で使えるオプションを教えてください。
-     
-    </a></li><li><a href="#faq.using.windowslocalhostissue">
-     
-      Windows で、
-      &quot;127.0.0.1&quot; だと動作するのに
-      localhost
-      を使うと接続がタイムアウトします。
      
     </a></li></ol></div>
 
    <dl class="qandaentry" id="faq.using.parameterorder">
+    
     <dt><strong>
      
       PHP の関数のパラメータの順番を覚えられません。だって関数によってばらばらなんだもん。
@@ -165,9 +154,9 @@ echo &quot;myfunc($variable) = &quot; . myfunc($variable);
     </strong></dt>
     <dd class="answer">
      <p class="para">
-      PHPは<var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var>のような
+      PHPは<var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var>のような
       <a href="language.variables.predefined.html" class="link">定義済みの変数</a>
-      を沢山提供しています。<var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var>を連想配列として
+      を沢山提供しています。<var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var>を連想配列として
       ループすることでPOSTされた全ての値にアクセスできます。例えば、
       <a href="control-structures.foreach.html" class="link">foreach</a> で単純にループして <span class="function"><a href="function.empty.html" class="function">empty()</a></span> で値をチェックし、
       結果を出力します。
@@ -202,96 +191,8 @@ echo &quot;myfunc($variable) = &quot; . myfunc($variable);
       <span class="function"><a href="function.stripslashes.html" class="function">stripslashes()</a></span> もありますが、
       これはさらに古い時代の PHP コードで使われていたものです。
      </p>
-
-     <blockquote class="note"><p><strong class="note">注意</strong>: <strong>ディレクティブに関する注意:
-magic_quotes_gpc</strong><br /><p class="para">PHP ディレクティブ<a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a> のデフォルトは
-<em>on</em> です。この場合、すべての GET, POST, COOKIE データに
-ついて <span class="function"><a href="function.addslashes.html" class="function">addslashes()</a></span> が実行されます。
-これらを取り除くため <span class="function"><a href="function.stripslashes.html" class="function">stripslashes()</a></span> を使用することが
-できます。</p></p></blockquote>
-
     </dd>
    </dl>
-
-   <dl class="qandaentry" id="faq.using.stripslashes">
-    <dt><strong>
-     
-      &quot; は \&quot; に、また &#039; は \&#039; に全て変換されているのですが、
-      これら無用なバックスラッシュを除去するにはどうしたらよいですか？
-      どうやって、そしてなぜ、こんなことになっているのでしょう？
-     
-    </strong></dt>
-    <dd class="answer">
-     <p class="para">
-      なぜかバックスラッシュがついてしまう、という現象の原因のほとんどは、PHP の
-      <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>
-      ディレクティブが On になっていることです。これは古い時代の PHP
-      の機能であり、現在は無効にしておくべきものです。この仕組みに頼ってはいけません。
-      文字列からバックスラッシュを取り除くために、PHP の
-      <span class="function"><a href="function.stripslashes.html" class="function">stripslashes()</a></span> を使うことができます。
-     </p>
-     
-     <blockquote class="note"><p><strong class="note">注意</strong>: <strong>ディレクティブに関する注意:
-magic_quotes_gpc</strong><br /><p class="para">PHP ディレクティブ<a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a> のデフォルトは
-<em>on</em> です。この場合、すべての GET, POST, COOKIE データに
-ついて <span class="function"><a href="function.addslashes.html" class="function">addslashes()</a></span> が実行されます。
-これらを取り除くため <span class="function"><a href="function.stripslashes.html" class="function">stripslashes()</a></span> を使用することが
-できます。</p></p></blockquote>
-     
-    </dd>
-   </dl>   
-
-   <dl class="qandaentry" id="faq.register-globals">
-    <dt><strong>
-     
-      PHP の設定項目 register_globals はどんな影響があるの?
-     
-    </strong></dt>
-    <dd class="answer">
-     <div class="warning"><strong class="warning">警告</strong><p class="simpara">この機能は PHP 5.3.0 で
-<em class="emphasis">非推奨</em>となり、
-PHP 5.4.0 で<em class="emphasis">削除</em>されました。</p></div>
-     <p class="para">
-      まずはじめに、この ini 設定がどういうはたらきをするのかを説明します。
-      例として、次のような URL を使用します。
-      <em>http://example.com/foo.php?animal=cat</em>
-      そして <var class="filename">foo.php</var> の中身は次のようなコードが書かれているものとします。
-     </p>
-     <p class="para">
-      <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;ここでは&nbsp;$_GET&nbsp;を使うことを推奨します<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #DD0000">'animal'</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;$animal&nbsp;を使用するには&nbsp;register_globals&nbsp;が&nbsp;on&nbsp;でなければなりませんが<br />//&nbsp;こんなことはしないでください<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$animal</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;これはすべての変数について当てはまります。たとえば&nbsp;$_SERVER&nbsp;についても同じで、<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'PHP_SELF'</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;$PHP_SELF&nbsp;を使用するには&nbsp;register_globals&nbsp;が&nbsp;on&nbsp;でなければなりません<br />//&nbsp;改めて言いますが、こんなことはしないでください<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$PHP_SELF</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
-     </div>
-
-    </p>
-    <p class="para">
-     上のコードでおわかりのように、register_globals を使用すると数多くの変数が作成されます。
-     長年にわたってこの手のコーディングは問題視されており、
-     ここ数年 register_globals のデフォルト設定は無効になっています。
-     大半のウェブサーバーは register_globals を無効にしていますが、
-     いまだに register_globals が on であることを前提とした記事や書籍が存在します。
-     注意しましょう。
-    </p>
-    <p class="para">
-     詳しい情報は、以下のリソースを参照ください。
-     <ul class="simplelist">
-      <li class="member"><a href="ini.core.html#ini.register-globals" class="link">register_globals</a> ディレクティブ</li>
-      <li class="member"><a href="security.globals.html" class="link">セキュリティに関する章での register_globals の説明</a></li>
-      <li class="member"><a href="language.variables.external.html" class="link">外部からくる変数の処理</a></li>
-      <li class="member"><a href="language.variables.superglobals.html" class="link">スーパーグローバル</a></li>
-     </ul>
-    </p>
-    <blockquote class="note"><p><strong class="note">注意</strong>: 
-     <p class="para">
-      上の例では、クエリ文字列を含む <acronym title="Uniform Resource Locator">URL</acronym> を使用しています。
-      このように情報を渡す場合には GET HTTP リクエストを使用するので、
-      この場合はスーパーグローバル <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var> を使用します。
-     </p>
-    </p></blockquote>
-   </dd>
-  </dl>
 
    <dl class="qandaentry" id="faq.using.wrong-order">
     <dt><strong>
@@ -406,8 +307,8 @@ $headers&nbsp;=&nbsp;getallheaders();<br />foreach&nbsp;($headers&nbsp;as&nbsp;$
       問題です。これを回避策するには、認証のかかったディレクトリに(PHP
       が解釈しない)HTMLファイルを作成します。そしてMETAタグを使ってPHP
       を使用したページにリダイレクトするか、リンクを張ります。こうすれ
-      ばPHPは認証済みかどうかを正しく認識することが出来ます。ISAPIモジュー
-      ルの場合はこの問題は起きません。また、これは他のNTウェブサーバーに
+      ばPHPは認証済みかどうかを正しく認識することが出来ます。
+      また、これは他のNTウェブサーバーに
       は影響ありません。詳しくは<a href="http://support.microsoft.com/kb/q160422/" class="link external">&raquo;&nbsp;http://support.microsoft.com/kb/q160422/</a>
       と<a href="features.http-auth.html" class="link">HTTP 認証</a>を
       参照してください。
@@ -424,17 +325,17 @@ $headers&nbsp;=&nbsp;getallheaders();<br />foreach&nbsp;($headers&nbsp;as&nbsp;$
     </strong></dt>
     <dd class="answer">
      <p class="para">
-      <em>Go to Internet Information
-      Services</em> を変更する必要があります。PHP ファイルを選択して
-      プロパティを開き、<em>セキュリティ</em> タブに移動し、
-      <em>Edit -&lt; Anonymous access and authentication control</em> 。
+      <code class="literal">Go to Internet Information
+      Services</code> を変更する必要があります。PHP ファイルを選択して
+      プロパティを開き、<code class="literal">セキュリティ</code> タブに移動し、
+      <code class="literal">Edit -&lt; Anonymous access and authentication control</code> 。
      </p>
      <p class="para">
-      この問題を解決するには <em>Anonymous
-      Access</em> のチェックをはずして <em>Integrated Window
-      Authentication</em> をチェックしたままにしておきか、
-      あるいは <em>Anonymous
-      Access</em> をチェックしてアクセスできないユーザーを別途指定します。
+      この問題を解決するには <code class="literal">Anonymous
+      Access</code> のチェックをはずして <code class="literal">Integrated Window
+      Authentication</code> をチェックしたままにしておきか、
+      あるいは <code class="literal">Anonymous
+      Access</code> をチェックしてアクセスできないユーザーを別途指定します。
      </p>
     </dd>
    </dl>
@@ -450,11 +351,11 @@ $headers&nbsp;=&nbsp;getallheaders();<br />foreach&nbsp;($headers&nbsp;as&nbsp;$
      <p class="para">
       &lt;?xml を直接PHPコードに埋め込むには、
       PHPディレクティブの<a href="ini.core.html#ini.short-open-tag" class="link">short_tags</a>
-      を <em>0</em> に設定しなければなりません。
+      を <code class="literal">0</code> に設定しなければなりません。
       このディレクティブは<span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>でセットすることは
       できません。<a href="ini.core.html#ini.short-open-tag" class="link">short_open_tags</a>
       のオン/オフに関わらず、次のようにもできます: 
-      <em>&lt;?php echo &#039;&lt;?xml&#039;; ?&gt;</em>
+      <code class="literal">&lt;?php echo &#039;&lt;?xml&#039;; ?&gt;</code>
       このディレクティブはデフォルトでオンです。
      </p>
     </dd>
@@ -479,15 +380,6 @@ $headers&nbsp;=&nbsp;getallheaders();<br />foreach&nbsp;($headers&nbsp;as&nbsp;$
       のセクションも読んでください。HTMLフォームやCookie、URL等から
       来る外部変数に関するシナリオが説明されています。
      </p>
-     
-     <blockquote class="note"><p><strong class="note">注意</strong>: <strong>register_globals:
-重要な注意</strong><br /><p class="para">PHP 4.2.0 以降、PHP ディレクティブ
-<a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
-のデフォルト値は <em class="emphasis">off</em> となっています。
-PHP コミュニティは、ユーザーがこのディレクティブの設定に依存せず、
-<a href="language.variables.predefined.html" class="link">superglobals</a> のような他の手段を使用することを推奨します。
-</p></p></blockquote>
-
     </dd>
    </dl>
 
@@ -495,10 +387,9 @@ PHP コミュニティは、ユーザーがこのディレクティブの設定�
     <dt><strong>
      
       フリーではない商用ライブラリである
-      <a href="ref.pdf.html" class="link">PDFLib</a>を使わずに
+      PDFLib を使わずに
       PDFファイルを生成するにはどうしたらよいでしょうか？
-      フリーのもので、外部のPDFライブラリを必要としない
-      ものがいいのです。
+      フリーのもので、外部のPDFライブラリが不要なものがいいのですが。
      
     </strong></dt>
     <dd class="answer">
@@ -507,53 +398,29 @@ PHP コミュニティは、ユーザーがこのディレクティブの設定�
       <a href="http://www.fpdf.org/" class="link external">&raquo;&nbsp;FPDF</a> や
       <a href="http://www.tcpdf.org/" class="link external">&raquo;&nbsp;TCPDF</a> などです。
      </p>
-     <p class="para">
-      また、<a href="book.haru.html" class="link">Haru</a> 拡張モジュールもあります。
-      これは、フリーな外部ライブラリ libHaru を使用しています。
-     </p>
-    </dd>
-   </dl>
-
-   <dl class="qandaentry" id="faq.using.cgi-vars">
-    <dt><strong>
-     
-      ユーザー定義関数の中で、標準的な
-      (<var class="varname"><var class="varname">$DOCUMENT_ROOT</var></var> や <var class="varname"><var class="varname">$HTTP_REFERER</var></var> のような)
-      CGI変数にアクセスしたいのですが、PHPはそれらの変数を見つけること
-      ができていないようです。何がおかしいのですか？
-     
-    </strong></dt>
-    <dd class="answer">
-     <p class="para">
-      PHPディレクティブの
-      <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
-      がサーバーと環境変数に与える影響を認識することは重要なことです。
-      register_globals = off (PHP4.2.0以降デフォルトでoff)の場合、
-      <var class="varname"><var class="varname">$DOCUMENT_ROOT</var></var>は存在しません。代わりに
-      <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['DOCUMENT_ROOT']</a></var></var>を使用してください。
-      register_globals = on の場合は <var class="varname"><var class="varname">$DOCUMENT_ROOT</var></var>も
-      <var class="varname"><var class="varname"><a href="reserved.variables.globals.html" class="classname">$GLOBALS['DOCUMENT_ROOT']</a></var></var>も存在します。
-     </p>
-
     </dd>
    </dl>
 
    <dl class="qandaentry" id="faq.using.shorthandbytes">
     <dt><strong>
      
-      いくつかの PHP ディレクティブでは、バイト値を <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 
+      いくつかの PHP ディレクティブでは、バイト値を <span class="type">int</span> 
       ではなく省略形で設定できます。この省略形で使えるオプションを教えてください。
      
     </strong></dt>
     <dd class="answer">
      <p class="para">
-      有効なオプションは K（キロバイト）、M（メガバイト）および G（ギガバイト:
-      PHP 5.1.0 以降で有効）です。これらはすべて、大文字小文字を区別しません。
+      有効なオプションは K（キロバイト）、M（メガバイト）および G（ギガバイト)
+      です。これらはすべて、大文字小文字を区別しません。
       これ以外の文字はバイト値と判断されます。
-      <em>1M</em> は、1 メガバイトあるいは <em>1048576</em>
-      バイトと等しくなります。<em>1K</em> は、1 キロバイトあるいは
-      <em>1024</em> バイトです。この表記法は、 <var class="filename">php.ini</var>
+      <code class="literal">1M</code> は、1 メガバイトあるいは <code class="literal">1048576</code>
+      バイトと等しくなります。<code class="literal">1K</code> は、1 キロバイトあるいは
+      <code class="literal">1024</code> バイトです。この表記法は、 <var class="filename">php.ini</var>
       や <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span> 関数で使えます。
+      ここで、数値の値は、<span class="type">int</span>
+      型にキャストされることに注意して下さい。
+      たとえば、<code class="literal">0.5M</code> は <code class="literal">0</code>
+      と解釈されます。
      </p>
      <blockquote class="note"><p><strong class="note">注意</strong>: 
       <strong>キロバイト? キビバイト?</strong><br />
@@ -567,31 +434,6 @@ PHP コミュニティは、ユーザーがこのディレクティブの設定�
     </dd>
    </dl>
 
-   <dl class="qandaentry" id="faq.using.windowslocalhostissue">
-    <dt><strong>
-     
-      Windows で、
-      <em>&quot;127.0.0.1&quot;</em> だと動作するのに
-      <em>localhost</em>
-      を使うと接続がタイムアウトします。
-     
-    </strong></dt>
-    <dd class="answer">
-     <p class="para">
-      PHP 5.3.4 を使っている場合、その原因は PHP のネットワーク解決に関するコードのバグです。
-      IPv6 が有効になっている環境では、ストリーム関連のすべての場面で
-      <em>localhost</em> への接続に失敗していました。
-      回避策は、 <em>&quot;127.0.0.1&quot;</em> を使うようにするか
-      IPv6 の名前解決を <var class="filename">hosts</var> ファイルで無効にするかのいずれかです。
-     </p>
-    </dd>
-   </dl>
-
   
  </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="faq.build.html">構築時の問題</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="faq.passwords.html">パスワードのハッシュ</a></div>
- <div class="up"><a href="faq.html">FAQ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

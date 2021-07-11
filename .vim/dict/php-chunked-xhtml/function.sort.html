@@ -2,35 +2,44 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>配列をソートする</title>
+  <title>配列を昇順にソートする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.sizeof.html">sizeof</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.uasort.html">uasort</a></div>
- <div class="up"><a href="ref.array.html">配列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.sort" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.sizeof.html">« sizeof</a></li>
+      <li style="float: right;"><a href="function.uasort.html">uasort »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">配列 関数</a></li>
+    <li>配列を昇順にソートする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.sort" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">sort</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">sort</span> &mdash; <span class="dc-title">配列をソートする</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">sort</span> &mdash; <span class="dc-title">配列を昇順にソートする</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.sort-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>sort</strong></span>
-    ( <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$array</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$sort_flags</code><span class="initializer"> = SORT_REGULAR</span></span>
-  ] )</div>
+   <span class="methodname"><strong>sort</strong></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$array</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code>SORT_REGULAR</code></strong></span></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
-   この関数は配列をソートします。この関数が正常に終了すると、
-   各要素が小さい順に並び変わった状態になります。
+   この関数は配列を昇順にソートします。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
  <p class="para">
-  比較結果が等しくなる二つのメンバーがあった場合、ソートした配列におけるそれらの並び順は未定義となります。
+  比較結果が等しくなる二つの要素があった場合、ソートした配列におけるそれらの並び順は不定となります。
  </p>
 </p></blockquote>
 
@@ -54,53 +63,53 @@
 
     
     
-     <dt>
-<code class="parameter">sort_flags</code></dt>
+  <dt>
+<code class="parameter">flags</code></dt>
 
-     <dd>
+  <dd>
 
-      <p class="para">
-       オプションの 2 番目のパラメータ <code class="parameter">sort_flags</code>
-       は、以下の値によりソートの動作を修正するために使用することが可能です。
-      </p>
-      <p class="para">
-       ソート型のフラグ:
-       <ul class="itemizedlist">
-        <li class="listitem">
-         <span class="simpara"><strong><code>SORT_REGULAR</code></strong> - 通常通りに項目を比較
-         (型は変更しません)</span>
-        </li>
-        <li class="listitem">
-         <span class="simpara"><strong><code>SORT_NUMERIC</code></strong> - 数値的に項目を比較</span>
-        </li>
-        <li class="listitem">
-         <span class="simpara"><strong><code>SORT_STRING</code></strong> - 文字列として項目を比較</span>
-        </li>
-        <li class="listitem">
-         <span class="simpara">
-          <strong><code>SORT_LOCALE_STRING</code></strong> - は、現在のロケールに基づいて比較します。
-          比較に使うロケールは、<span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> で変更できます。
-         </span>
-        </li>
-        <li class="listitem">
-         <span class="simpara">
-          <strong><code>SORT_NATURAL</code></strong> - 要素の比較を文字列として行い、
-          <span class="function"><a href="function.natsort.html" class="function">natsort()</a></span> と同様の「自然順」で比較します。
-         </span>
-        </li>
-        <li class="listitem">
-         <span class="simpara">
-          <strong><code>SORT_FLAG_CASE</code></strong> -
-          <strong><code>SORT_STRING</code></strong> や
-          <strong><code>SORT_NATURAL</code></strong> と (ビット OR で) 組み合わせて使い、
-          文字列のソートで大文字小文字を区別しないようにします。
-         </span>
-        </li>
-       </ul>
-      </p>
-     </dd>
+   <p class="para">
+    オプションの第二引数 <code class="parameter">flags</code> によりソートの動作を修正可能です。
+    使える値は下記の通りです:
+   </p>
+   <p class="para">
+    ソートタイプのフラグ:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara"><strong><code>SORT_REGULAR</code></strong> - 通常通りに項目を比較します。
+      詳細は <a href="language.operators.comparison.html" class="link">比較演算子</a> で説明されています。</span>
+     </li>
+     <li class="listitem">
+      <span class="simpara"><strong><code>SORT_NUMERIC</code></strong> - 数値として項目を比較します。</span>
+     </li>
+     <li class="listitem">
+      <span class="simpara"><strong><code>SORT_STRING</code></strong> - 文字列として項目を比較します。</span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>SORT_LOCALE_STRING</code></strong> - 現在のロケールに基づいて、文字列として項目を比較します。
+       比較に使うロケールは、<span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> 関数で変更できます。
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>SORT_NATURAL</code></strong> - 要素の比較を文字列として行い、 
+       <span class="function"><a href="function.natsort.html" class="function">natsort()</a></span> と同様の「自然順」で比較します。
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code>SORT_FLAG_CASE</code></strong> - <strong><code>SORT_STRING</code></strong> や
+       <strong><code>SORT_NATURAL</code></strong> と (ビットORで) 組み合わせて使い、
+       文字列のソートで大文字小文字を区別しないようにします。
+      </span>
+     </li>
+    </ul>
+   </p>
+  </dd>
 
-    
+ 
+
    </dl>
 
   </p>
@@ -109,49 +118,14 @@
  <div class="refsect1 returnvalues" id="refsect1-function.sort-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
- </div>
-
- <div class="refsect1 changelog" id="refsect1-function.sort-changelog">
-  <h3 class="title">変更履歴</h3>
-  <table class="doctable informaltable">
-   
-    <thead>
-     <tr>
-      <th>バージョン</th>
-      <th>説明</th>
-     </tr>
-
-    </thead>
-
-    <tbody class="tbody">
-     <tr>
-      <td>5.4.0</td>
-      <td>
-       <code class="parameter">sort_flags</code> に
-       <strong><code>SORT_NATURAL</code></strong> と
-       <strong><code>SORT_FLAG_CASE</code></strong> が使えるようになりました。
-      </td>
-     </tr>
-
-     <tr>
-      <td>5.0.2</td>
-      <td>
-       <strong><code>SORT_LOCALE_STRING</code></strong> が追加されました。
-      </td>
-     </tr>
-
-    </tbody>
-   
-  </table>
-
  </div>
 
  <div class="refsect1 examples" id="refsect1-function.sort-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5635">
+   <div class="example" id="example-4986">
     <p><strong>例1 <span class="function"><strong>sort()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -175,7 +149,7 @@ fruits[3] = orange
    fruits はアルファベットの昇順にソートされました。
   </p>
   <p class="para">
-   <div class="example" id="example-5636">
+   <div class="example" id="example-4987">
     <p><strong>例2 <span class="function"><strong>sort()</strong></span> で、大文字小文字を区別せずに自然順での並べ替えを行う例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -217,8 +191,10 @@ fruits[3] = orange20
   </p></blockquote>
   <div class="warning"><strong class="warning">警告</strong>
    <p class="simpara">
+    <code class="parameter">flags</code> が
+    <strong><code>SORT_REGULAR</code></strong>の場合に
     複数の型が混在する配列をソートする場合には、注意してください。
-    <span class="function"><strong>sort()</strong></span> が予測不可能な結果を出力することがあります。
+    <span class="function"><strong>sort()</strong></span> が期待しない結果を出力することがあります。
    </p>
   </div>
  </div>
@@ -227,15 +203,11 @@ fruits[3] = orange20
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><span class="function"><a href="function.asort.html" class="function" rel="rdfs-seeAlso">asort()</a> - 連想キーと要素との関係を維持しつつ配列をソートする</span></li>
+    <li class="member"><span class="function"><a href="function.asort.html" class="function" rel="rdfs-seeAlso">asort()</a> - 連想キーと要素との関係を維持しつつ配列を昇順にソートする</span></li>
+    <li class="member"><span class="function"><a href="function.rsort.html" class="function" rel="rdfs-seeAlso">rsort()</a> - 配列を降順にソートする</span></li>
     <li class="member"><a href="array.sorting.html" class="link">配列ソート関数の比較</a></li>
    </ul>
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.sizeof.html">sizeof</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.uasort.html">uasort</a></div>
- <div class="up"><a href="ref.array.html">配列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

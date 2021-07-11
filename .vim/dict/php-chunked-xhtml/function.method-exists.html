@@ -3,29 +3,39 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>クラスメソッドが存在するかどうかを確認する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.is-subclass-of.html">is_subclass_of</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.property-exists.html">property_exists</a></div>
- <div class="up"><a href="ref.classobj.html">クラス/オブジェクト関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.method-exists" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.is-subclass-of.html">« is_subclass_of</a></li>
+      <li style="float: right;"><a href="function.property-exists.html">property_exists »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.classobj.html">クラス/オブジェクト関数</a></li>
+    <li>クラスメソッドが存在するかどうかを確認する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.method-exists" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">method_exists</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">method_exists</span> &mdash; <span class="dc-title">クラスメソッドが存在するかどうかを確認する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">method_exists</span> &mdash; <span class="dc-title">クラスメソッドが存在するかどうかを確認する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.method-exists-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>method_exists</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$object</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$method_name</code></span>
-   )</div>
+   <span class="methodname"><strong>method_exists</strong></span>(<span class="methodparam"><span class="type"><span class="type">object</span>|<span class="type">string</span></span> <code class="parameter">$object_or_class</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$method</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
-   指定した <code class="parameter">object</code> にクラスメソッドが存在するかどうかを調べます。
+   指定した <code class="parameter">object_or_class</code> にクラスメソッドが存在するかどうかを調べます。
   </p>
  </div>
 
@@ -36,7 +46,7 @@
 
     
      <dt>
-<code class="parameter">object</code></dt>
+<code class="parameter">object_or_class</code></dt>
 
      <dd>
 
@@ -48,7 +58,7 @@
     
     
      <dt>
-<code class="parameter">method_name</code></dt>
+<code class="parameter">method</code></dt>
 
      <dd>
 
@@ -66,25 +76,17 @@
  <div class="refsect1 returnvalues" id="refsect1-function.method-exists-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <code class="parameter">method_name</code> で指定したメソッドが
-   指定した <code class="parameter">object</code> において定義されている場合に
-   <strong><code>TRUE</code></strong>、そうでない場合に <strong><code>FALSE</code></strong> を返します。
+   <code class="parameter">method</code> で指定したメソッドが
+   指定した <code class="parameter">object_or_class</code> において定義されている場合に
+   <strong><code>true</code></strong>、そうでない場合に <strong><code>false</code></strong> を返します。
   </p>
- </div>
-
-
- <div class="refsect1 notes" id="refsect1-function.method-exists-notes">
-  <h3 class="title">注意</h3>
-  <blockquote class="note"><p><strong class="note">注意</strong>: 
-<p class="para">この関数を使うと、未知のクラスに対しては登録済みの
-<a href="language.oop5.autoload.html" class="link">autoloader</a> を使用します。</p></p></blockquote>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.method-exists-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5665">
+   <div class="example" id="example-5015">
     <p><strong>例1 <span class="function"><strong>method_exists()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -100,7 +102,7 @@ bool(true)
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-5666">
+   <div class="example" id="example-5016">
     <p><strong>例2 静的な <span class="function"><strong>method_exists()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -119,20 +121,24 @@ bool(true)
   </p>
  </div>
 
+
+ <div class="refsect1 notes" id="refsect1-function.method-exists-notes">
+  <h3 class="title">注意</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+<p class="para">この関数を使うと、未知のクラスに対しては登録済みの
+<a href="language.oop5.autoload.html" class="link">autoloader</a> を使用します。</p></p></blockquote>
+ </div>
+
+ 
  <div class="refsect1 seealso" id="refsect1-function.method-exists-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><span class="function"><a href="function.function-exists.html" class="function" rel="rdfs-seeAlso">function_exists()</a> - 指定した関数が定義されている場合に TRUE を返す</span></li>
-    <li class="member"><span class="function"><a href="function.is-callable.html" class="function" rel="rdfs-seeAlso">is_callable()</a> - 引数が、関数としてコール可能な構造であるかどうかを調べる</span></li>
+    <li class="member"><span class="function"><a href="function.function-exists.html" class="function" rel="rdfs-seeAlso">function_exists()</a> - 指定した関数が定義されている場合に true を返す</span></li>
+    <li class="member"><span class="function"><a href="function.is-callable.html" class="function" rel="rdfs-seeAlso">is_callable()</a> - 引数が、現在のスコープから関数としてコール可能な値かどうかを調べる</span></li>
     <li class="member"><span class="function"><a href="function.class-exists.html" class="function" rel="rdfs-seeAlso">class_exists()</a> - クラスが定義済みかどうかを確認する</span></li>
    </ul>
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.is-subclass-of.html">is_subclass_of</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.property-exists.html">property_exists</a></div>
- <div class="up"><a href="ref.classobj.html">クラス/オブジェクト関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

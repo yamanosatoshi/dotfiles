@@ -3,37 +3,139 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>SoapServer コンストラクタ</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="soapserver.addsoapheader.html">SoapServer::addSoapHeader</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="soapserver.fault.html">SoapServer::fault</a></div>
- <div class="up"><a href="class.soapserver.html">SoapServer</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="soapserver.construct" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="soapserver.addsoapheader.html">« SoapServer::addSoapHeader</a></li>
+      <li style="float: right;"><a href="soapserver.fault.html">SoapServer::fault »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.soapserver.html">SoapServer</a></li>
+    <li>SoapServer コンストラクタ</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="soapserver.construct" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">SoapServer::__construct</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.0.1, PHP 7)</p><p class="refpurpose"><span class="refname">SoapServer::__construct</span> &mdash; <span class="dc-title">SoapServer コンストラクタ</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SoapServer::__construct</span> &mdash; <span class="dc-title">SoapServer コンストラクタ</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-soapserver.construct-description">
   <h3 class="title">説明</h3>
-  <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="methodname"><strong>SoapServer::__construct</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$wsdl</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code></span>
-  ] )</div>
+  <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>SoapServer::__construct</strong></span>(<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$wsdl</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = []</span></span>)</div>
 
   <p class="para rdfs-comment">
-   この関数は次の関数のエイリアスです。 <span class="methodname"><a href="soapserver.soapserver.html" class="methodname">SoapServer::SoapServer()</a></span>
+   このコンストラクタにより <a href="class.soapserver.html" class="classname">SoapServer</a> オブジェクトを
+   WSDL または非 WSDL モードで作成することが可能です。
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="soapserver.addsoapheader.html">SoapServer::addSoapHeader</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="soapserver.fault.html">SoapServer::fault</a></div>
- <div class="up"><a href="class.soapserver.html">SoapServer</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ <div class="refsect1 parameters" id="refsect1-soapserver.construct-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">wsdl</code></dt>
+
+     <dd>
+
+      <p class="para">
+       WSDL モードの場合、これに WSDL ファイルの URI を指定する必要があります。
+       WSDL モードでない場合、<strong><code>null</code></strong> を指定し、<code class="literal">uri</code>
+       オプションを設定する必要があります。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
+
+     <dd>
+
+      <p class="para">
+       デフォルトの SOAP バージョン (<code class="literal">soap_version</code>),
+       内部の文字エンコーディング (<code class="literal">encoding</code>),
+       アクターの URI (<code class="literal">actor</code>) を指定することができます。
+      </p>
+      <p class="para">
+       <code class="literal">classmap</code> オプションにより、WSDL 型を PHP
+       のクラスにマッピングすることが可能です。
+       このオプションには、キーとしてWSDL 型、値として PHP
+       クラスの名前を持つ配列を指定する必要があります。
+      </p>
+      <p class="para">
+       <code class="literal">typemap</code> オプションは、型マッピングの配列です。
+       この配列のキーは <code class="literal">type_name</code>、
+       <code class="literal">type_ns</code> (名前空間 URI)、<code class="literal">from_xml</code>
+       (引数として文字列をひとつ受け取るコールバック) そして <code class="literal">to_xml</code>
+       (引数としてオブジェクトをひとつ受け取るコールバック) です。
+      </p>
+      <p class="para">
+       <code class="literal">cache_wsdl</code> オプションは、
+       <strong><code>WSDL_CACHE_NONE</code></strong>、
+       <strong><code>WSDL_CACHE_DISK</code></strong>、
+       <strong><code>WSDL_CACHE_MEMORY</code></strong> あるいは
+       <strong><code>WSDL_CACHE_BOTH</code></strong> のいずれかです。
+      </p>
+      <p class="para">
+       その他に <code class="literal">features</code> というオプションもあり、
+       <strong><code>SOAP_WAIT_ONE_WAY_CALLS</code></strong>、
+       <strong><code>SOAP_SINGLE_ELEMENT_ARRAYS</code></strong>、
+       <strong><code>SOAP_USE_XSI_ARRAY_TYPE</code></strong> を設定することができます。
+      </p>
+      <p class="para">
+       <code class="literal">send_errors</code> オプションを <strong><code>false</code></strong> にすると、
+       個別のエラーメッセージではなく汎用的なメッセージ (&quot;Internal error&quot;) を送信できます。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-soapserver.construct-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-5240">
+    <p><strong>例1 <span class="function"><strong>SoapServer::__construct()</strong></span> の例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$server&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapServer</span><span style="color: #007700">(</span><span style="color: #DD0000">"some.wsdl"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$server&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapServer</span><span style="color: #007700">(</span><span style="color: #DD0000">"some.wsdl"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'soap_version'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">SOAP_1_2</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$server&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapServer</span><span style="color: #007700">(</span><span style="color: #DD0000">"some.wsdl"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'actor'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"http://example.org/ts-tests/C"</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$server&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapServer</span><span style="color: #007700">(</span><span style="color: #DD0000">"some.wsdl"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'encoding'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'ISO-8859-1'</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$server&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapServer</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"http://test-uri/"</span><span style="color: #007700">));<br /><br />class&nbsp;</span><span style="color: #0000BB">MyBook&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$title</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$author</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$server&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapServer</span><span style="color: #007700">(</span><span style="color: #DD0000">"books.wsdl"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'classmap'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'book'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"MyBook"</span><span style="color: #007700">)));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-soapserver.construct-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="methodname"><a href="soapclient.construct.html" class="methodname" rel="rdfs-seeAlso">SoapClient::__construct()</a> - SoapClient のコンストラクタ</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

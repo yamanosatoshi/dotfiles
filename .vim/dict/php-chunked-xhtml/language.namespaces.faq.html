@@ -3,16 +3,29 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>FAQ: 名前空間について知っておくべきこと</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.rules.html">名前解決のルール</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.errors.html">エラー</a></div>
- <div class="up"><a href="language.namespaces.html">名前空間</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.namespaces.faq" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.namespaces.rules.html">« 名前解決のルール</a></li>
+      <li style="float: right;"><a href="language.errors.html">エラー »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.namespaces.html">名前空間</a></li>
+    <li>FAQ: 名前空間について知っておくべきこと</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.namespaces.faq" class="sect1">
   <h2 class="title">FAQ: 名前空間について知っておくべきこと</h2>
-  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p>
   <p class="para">
    この FAQ は 2 つに別れています。一般的な質問と、
    深く理解するために有用な実装に関する質問です。
@@ -41,7 +54,7 @@
     <li class="listitem">
      <span class="simpara">
       <a href="language.namespaces.faq.html#language.namespaces.faq.full" class="link">
-       <em>\my\name</em> や <em>\name</em>
+       <code class="literal">\my\name</code> や <code class="literal">\name</code>
        のような名前はどのように解決される?
       </a>
      </span>
@@ -49,19 +62,19 @@
     <li class="listitem">
      <span class="simpara">
       <a href="language.namespaces.faq.html#language.namespaces.faq.qualified" class="link">
-      <em>my\name</em> のような名前はどのように解決される?</a>
+      <code class="literal">my\name</code> のような名前はどのように解決される?</a>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
       <a href="language.namespaces.faq.html#language.namespaces.faq.shortname1" class="link">
-      修飾されていない <em>name</em> のようなクラス名はどのように解決される?</a>
+      修飾されていない <code class="literal">name</code> のようなクラス名はどのように解決される?</a>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
       <a href="language.namespaces.faq.html#language.namespaces.faq.shortname2" class="link">
-      修飾されていない <em>name</em> のような関数名/定数名はどのように解決される?</a>
+      修飾されていない <code class="literal">name</code> のような関数名/定数名はどのように解決される?</a>
      </span>
     </li>
    </ol>
@@ -72,19 +85,13 @@
     <li class="listitem">
      <span class="simpara">
       <a href="language.namespaces.faq.html#language.namespaces.faq.conflict" class="link">
-      インポートした名前が同一ファイルで定義されているクラスと衝突しない</a>
+      インポートした名前が同一ファイルで定義されているクラスと衝突してはいけない</a>
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
       <a href="language.namespaces.faq.html#language.namespaces.faq.nested" class="link">名前空間のネストはできない
       </a>
-     </span>
-    </li>
-    <li class="listitem">
-     <span class="simpara">
-      <a href="language.namespaces.faq.html#language.namespaces.faq.nofuncconstantuse" class="link">
-      PHP 5.6 より前のバージョンでは、関数や定数は <em>use</em> 文でインポートできない</a>
      </span>
     </li>
     <li class="listitem">
@@ -115,7 +122,7 @@
     お望みなら名前空間を使わないコードを書くこともできます。
    </p>
    <p class="para">
-    <div class="example" id="example-301">
+    <div class="example" id="example-275">
      <p><strong>例1 名前空間の外部にあるグローバルクラスへのアクセス</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -130,7 +137,7 @@
     これは、機能的に次と同等です。
    </p>
    <p class="para">
-    <div class="example" id="example-302">
+    <div class="example" id="example-276">
      <p><strong>例2 名前空間の外部にあるグローバルクラスへのアクセス</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -145,7 +152,7 @@
   <div class="sect2" id="language.namespaces.faq.globalclass">
    <h3 class="title">名前空間内での内部クラスあるいはグローバルクラスの使用法は?</h3>
    <p class="para">
-    <div class="example" id="example-303">
+    <div class="example" id="example-277">
      <p><strong>例3 名前空間内からの内部クラスへのアクセス</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -162,7 +169,7 @@
     同じ名前空間にあるクラス、関数あるいは定数を使用する方法は?
    </h3>
    <p class="para">
-    <div class="example" id="example-304">
+    <div class="example" id="example-278">
      <p><strong>例4 名前空間内のクラス、関数あるいは定数へのアクセス</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -176,14 +183,14 @@
   </div>
   <div class="sect2" id="language.namespaces.faq.full">
    <h3 class="title">
-     <em>\my\name</em> や <em>\name</em>
+     <code class="literal">\my\name</code> や <code class="literal">\name</code>
      のような名前はどのように解決される?
    </h3>
    <p class="para">
-    <em>\</em> から始まる名前は常に見た目のままに解釈されます。
-    つまり <em>\my\name</em> は <em>my\name</em> であり、
-    <em>\Exception</em> は <em>Exception</em> となります。
-    <div class="example" id="example-305">
+    <code class="literal">\</code> から始まる名前は常に見た目のままに解釈されます。
+    つまり <code class="literal">\my\name</code> は <code class="literal">my\name</code> であり、
+    <code class="literal">\Exception</code> は <code class="literal">Exception</code> となります。
+    <div class="example" id="example-279">
      <p><strong>例5 完全修飾名</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -196,21 +203,21 @@
    </p>
   </div>
   <div class="sect2" id="language.namespaces.faq.qualified">
-   <h3 class="title"><em>my\name</em> のような名前はどのように解決される?</h3>
+   <h3 class="title"><code class="literal">my\name</code> のような名前はどのように解決される?</h3>
    <p class="para">
     名前にバックスラッシュを含むが先頭はバックスラッシュでない名前、たとえば
-    <em>my\name</em> のような名前は 2 通りの方法で解釈されます。
+    <code class="literal">my\name</code> のような名前は 2 通りの方法で解釈されます。
    </p>
    <p class="para">
-    別の名前に <em>my</em> というエイリアスを指定する import
-    文がある場合は、そのエイリアスが <em>my\name</em>
-    の <em>my</em> 部分に適用されます。
+    別の名前に <code class="literal">my</code> というエイリアスを指定する import
+    文がある場合は、そのエイリアスが <code class="literal">my\name</code>
+    の <code class="literal">my</code> 部分に適用されます。
    </p>
    <p class="para">
-    それ以外の場合は、現在の名前空間が <em>my\name</em> の先頭に付け加えられます。
+    それ以外の場合は、現在の名前空間が <code class="literal">my\name</code> の先頭に付け加えられます。
    </p>
    <p class="para">
-    <div class="example" id="example-306">
+    <div class="example" id="example-280">
      <p><strong>例6 修飾名</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -223,20 +230,20 @@
    </p>
   </div>
   <div class="sect2" id="language.namespaces.faq.shortname1">
-   <h3 class="title">修飾されていない <em>name</em> のようなクラス名はどのように解決される?</h3>
+   <h3 class="title">修飾されていない <code class="literal">name</code> のようなクラス名はどのように解決される?</h3>
    <p class="para">
-    バックスラッシュを含まない <em>name</em> のようなクラス名は
+    バックスラッシュを含まない <code class="literal">name</code> のようなクラス名は
     2 通りの方法で解釈されます。
    </p>
    <p class="para">
-    別の名前に <em>name</em> というエイリアスを指定する import
+    別の名前に <code class="literal">name</code> というエイリアスを指定する import
     文がある場合は、そのエイリアスが適用されます。
    </p>
    <p class="para">
-    それ以外の場合は、現在の名前空間が <em>name</em> の先頭に付け加えられます。
+    それ以外の場合は、現在の名前空間が <code class="literal">name</code> の先頭に付け加えられます。
    </p>
    <p class="para">
-    <div class="example" id="example-307">
+    <div class="example" id="example-281">
      <p><strong>例7 非修飾クラス名</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -250,22 +257,22 @@
   </div>
   <div class="sect2" id="language.namespaces.faq.shortname2">
    <h3 class="title">
-    修飾されていない <em>name</em> のような関数名/定数名はどのように解決される?
+    修飾されていない <code class="literal">name</code> のような関数名/定数名はどのように解決される?
    </h3>
    <p class="para">
-    バックスラッシュを含まない <em>name</em> のような関数名/定数名は
+    バックスラッシュを含まない <code class="literal">name</code> のような関数名/定数名は
     2 通りの方法で解釈されます。
    </p>
    <p class="para">
-    まず、現在の名前空間が <em>name</em> の先頭に付け加えられます。
+    まず、現在の名前空間が <code class="literal">name</code> の先頭に付け加えられます。
    </p>
    <p class="para">
-    現在の名前空間に <em>name</em> という関数あるいは定数がない場合は、
-    グローバル関数あるいは定数に <em>name</em>
+    現在の名前空間に <code class="literal">name</code> という関数あるいは定数がない場合は、
+    グローバル関数あるいは定数に <code class="literal">name</code>
     があればそれを使用します。
    </p>
    <p class="para">
-    <div class="example" id="example-308">
+    <div class="example" id="example-282">
      <p><strong>例8 非修飾関数/定数名</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -278,7 +285,7 @@
    </p>
   </div>
   <div class="sect2" id="language.namespaces.faq.conflict">
-   <h3 class="title">インポートした名前が同一ファイルで定義されているクラスと衝突しない</h3>
+   <h3 class="title">インポートした名前が同一ファイルで定義されているクラスと衝突してはいけない</h3>
    <p class="para">
     次のようなスクリプトの組み合わせは、正当なものです。
     <div class="informalexample">
@@ -309,8 +316,8 @@
     </div>
    </p>
    <p class="para">
-    <em>MyClass</em> クラスが名前空間
-    <em>my\stuff</em> にあるとはいえ、名前の衝突はありません。
+    <code class="literal">MyClass</code> クラスが名前空間
+    <code class="literal">my\stuff</code> にあるとはいえ、名前の衝突はありません。
     MyClass の定義は別のファイルにあるからです。
     しかし、次の例は名前の衝突による致命的なエラーとなります。
     MyClass の定義が同じファイル上の use 文で行われているからです。
@@ -350,30 +357,13 @@
     </div>
    </p>
   </div>
-  <div class="sect2" id="language.namespaces.faq.nofuncconstantuse">
-   <h3 class="title">PHP 5.6 より前のバージョンでは、関数や定数は <em>use</em> 文でインポートできない</h3>
-   <p class="para">
-    PHP 5.6 より前のバージョンでは、<em>use</em> 文の影響を受けるのは名前空間とクラス名のみです。
-    長い名前の定数や関数を短い名前にするには、それらが含まれる名前空間をインポートします。
-    <div class="informalexample">
-     <div class="example-contents">
-     <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">mine</span><span style="color: #007700">;<br />use&nbsp;</span><span style="color: #0000BB">ultra</span><span style="color: #007700">\</span><span style="color: #0000BB">long</span><span style="color: #007700">\</span><span style="color: #0000BB">ns</span><span style="color: #007700">\</span><span style="color: #0000BB">name</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">name</span><span style="color: #007700">\</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">name</span><span style="color: #007700">\</span><span style="color: #0000BB">func</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
-     </div>
-
-    </div>
-    PHP 5.6 以降では、関数名や定数名のエイリアスを設定したりインポートしたりできるようになりました。
-   </p>
-  </div>
   <div class="sect2" id="language.namespaces.faq.quote">
    <h3 class="title">動的な名前空間名 (クォートした名前) ではバックスラッシュのエスケープが必要</h3>
    <p class="para">
     バックスラッシュは文字列のエスケープ文字として使われることに注意しましょう。
     文字列の中で使う際にはバックスラッシュを二重に書く必要があります。
     そうしないと、予期せぬ結果を引き起こしてしまいます。
-    <div class="example" id="example-309">
+    <div class="example" id="example-283">
      <p><strong>例9 ダブルクォートで囲んだ文字列内で名前空間名を扱う際の危険</strong></p>
      <div class="example-contents">
       <div class="phpcode"><code><span style="color: #000000">
@@ -391,11 +381,11 @@
   <div class="sect2" id="language.namespaces.faq.constants">
    <h3 class="title">バックスラッシュを含む未定義な定数を参照すると、致命的なエラーが発生する</h3>
    <p class="para">
-    未定義の定数のうち <em>FOO</em> のような修飾されていないものは、
-    PHP が <em>FOO</em> を定数の値と解釈したという notice が発生します。
+    未定義の定数のうち <code class="literal">FOO</code> のような修飾されていないものは、
+    PHP が <code class="literal">FOO</code> を定数の値と解釈したという notice が発生します。
     修飾あるいは完全修飾形式の定数、つまりバックスラッシュを含む定数の場合、
     それが未定義なら致命的なエラーが発生します。
-    <div class="example" id="example-310">
+    <div class="example" id="example-284">
      <p><strong>例10 未定義の定数</strong></p>
      <div class="example-contents">
       <div class="phpcode"><code><span style="color: #000000">
@@ -411,7 +401,7 @@
    <h3 class="title">特別な定数 NULL, TRUE, FALSE, ZEND_THREAD_SAFE そして ZEND_DEBUG_BUILD は上書きできない</h3>
    <p class="para">
     名前空間内で特別な組み込み定数を定義しようとすると、致命的なエラーが発生します。
-    <div class="example" id="example-311">
+    <div class="example" id="example-285">
      <p><strong>例11 未定義の定数</strong></p>
      <div class="example-contents">
       <div class="phpcode"><code><span style="color: #000000">
@@ -423,9 +413,4 @@
     </div>
    </p>
   </div>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.rules.html">名前解決のルール</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.errors.html">エラー</a></div>
- <div class="up"><a href="language.namespaces.html">名前空間</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

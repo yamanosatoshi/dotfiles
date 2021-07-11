@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>XMLファイルをパースし、オブジェクトに代入する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.simplexml-import-dom.html">simplexml_import_dom</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.simplexml-load-string.html">simplexml_load_string</a></div>
- <div class="up"><a href="ref.simplexml.html">SimpleXML 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.simplexml-load-file" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.simplexml-import-dom.html">« simplexml_import_dom</a></li>
+      <li style="float: right;"><a href="function.simplexml-load-string.html">simplexml_load_string »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.simplexml.html">SimpleXML 関数</a></li>
+    <li>XMLファイルをパースし、オブジェクトに代入する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.simplexml-load-file" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">simplexml_load_file</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">simplexml_load_file</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">simplexml_load_file</span> &mdash; <span class="dc-title">
    XMLファイルをパースし、オブジェクトに代入する
   </span></p>
 
@@ -21,13 +34,7 @@
  <div class="refsect1 description" id="refsect1-function.simplexml-load-file-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><a href="class.simplexmlelement.html" class="type SimpleXMLElement">SimpleXMLElement</a></span> <span class="methodname"><strong>simplexml_load_file</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$class_name</code><span class="initializer"> = &quot;SimpleXMLElement&quot;</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$ns</code><span class="initializer"> = &quot;&quot;</span></span>
-   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$is_prefix</code><span class="initializer"> = false</span></span>
-  ]]]] )</div>
+   <span class="methodname"><strong>simplexml_load_file</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$class_name</code><span class="initializer"> = SimpleXMLElement::class</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$namespace_or_prefix</code><span class="initializer"> = &quot;&quot;</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$is_prefix</code><span class="initializer"> = <strong><code>false</code></strong></span></span><br>): <span class="type"><span class="type"><a href="class.simplexmlelement.html" class="type SimpleXMLElement">SimpleXMLElement</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    指定したファイルの中の整形式 XML ドキュメントをオブジェクトに変換します。
@@ -49,16 +56,6 @@
       <p class="para">
        XML ファイルへのパス。
       </p>
-      <blockquote class="note"><p><strong class="note">注意</strong>: 
-       <p class="para">
-        Libxml 2 は URI をエスケープしませんので、例えば URI パラメータ
-        <em>a</em> に <em>b&amp;c</em> を渡したい場合、
-        <em>simplexml_load_file(rawurlencode(&#039;http://example.com/?a=&#039; .
-        urlencode(&#039;b&amp;c&#039;)))</em>
-        をしてコールする必要があります。PHP 5.1.0 以降では、これをする必要は
-        ありません。PHP が自動的に行います。
-       </p>
-      </p></blockquote>
      </dd>
 
     
@@ -85,7 +82,7 @@
      <dd>
 
       <p class="para">
-       PHP 5.1.0 と Libxml 2.6.0 から、<a href="libxml.constants.html" class="link">追加の Libxml パラメータ</a>
+       Libxml 2.6.0 から、<a href="libxml.constants.html" class="link">追加の Libxml パラメータ</a>
        を指定するために <code class="parameter">options</code>
        を使用することもできます。
       </p>
@@ -94,7 +91,7 @@
     
     
      <dt>
-<code class="parameter">ns</code></dt>
+<code class="parameter">namespace_or_prefix</code></dt>
 
      <dd>
 
@@ -111,8 +108,8 @@
      <dd>
 
       <p class="para">
-       <code class="parameter">ns</code> がプレフィックスである場合に <strong><code>TRUE</code></strong>、
-       URI である場合に <strong><code>FALSE</code></strong>。デフォルトは <strong><code>FALSE</code></strong> です。
+       <code class="parameter">namespace_or_prefix</code> がプレフィックスである場合に <strong><code>true</code></strong>、
+       URI である場合に <strong><code>false</code></strong>。デフォルトは <strong><code>false</code></strong> です。
       </p>
      </dd>
 
@@ -128,17 +125,17 @@
   <p class="para">
    <span class="type"><a href="class.simplexmlelement.html" class="type SimpleXMLElement">SimpleXMLElement</a></span> クラスのオブジェクトを返します。
    XML ドキュメント内のデータをプロパティに含みます。
-   失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
   <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は論理値
-<strong><code>FALSE</code></strong> を返す可能性がありますが、<strong><code>FALSE</code></strong> として評価される値を返す可能性もあります。
+<strong><code>false</code></strong> を返す可能性がありますが、<strong><code>false</code></strong> として評価される値を返す可能性もあります。
 詳細については <a href="language.types.boolean.html" class="link">論理値</a>の
 セクションを参照してください。この関数の返り値を調べるには
 <a href="language.operators.comparison.html" class="link">===演算子</a> を
 使用してください。</p></div>
  </div>
 
- 
+
  <div class="refsect1 errors" id="refsect1-function.simplexml-load-file-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
@@ -157,7 +154,7 @@
  <div class="refsect1 examples" id="refsect1-function.simplexml-load-file-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-6351">
+   <div class="example" id="example-5372">
     <p><strong>例1 XMLドキュメントをパースする</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -179,7 +176,7 @@ SimpleXMLElement Object
 </pre></div>
     </div>
     <div class="example-contents"><p>
-     この時点で、<em>$xml-&gt;title</em> としたり、
+     この時点で、<code class="literal">$xml-&gt;title</code> としたり、
      他の全ての要素にアクセスすることができます。
     </p></div>
    </div>
@@ -200,9 +197,4 @@ SimpleXMLElement Object
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.simplexml-import-dom.html">simplexml_import_dom</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.simplexml-load-string.html">simplexml_load_string</a></div>
- <div class="up"><a href="ref.simplexml.html">SimpleXML 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

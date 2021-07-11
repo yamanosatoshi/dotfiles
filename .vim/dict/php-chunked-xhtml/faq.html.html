@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>PHP と HTML</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="faq.passwords.html">パスワードのハッシュ</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="faq.com.html">PHP と COM</a></div>
- <div class="up"><a href="faq.html">FAQ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="faq.html" class="chapter">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="faq.passwords.html">« パスワードのハッシュ</a></li>
+      <li style="float: right;"><a href="faq.com.html">PHP と COM »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li>PHP と HTML</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="faq.html" class="chapter">
   <h1>PHP と HTML</h1>
 
   
@@ -31,7 +44,8 @@
     </a></li><li><a href="#faq.html.form-image">
      
       &lt;input type=&quot;image&quot;&gt; タグを使おうとしているのですが、変数
-      $foo.x と $foo.y が使えません。どうすればよいのですか?
+      $foo.x と $foo.y が使えません。
+      $_GET[&#039;foo.x&#039;] も存在していません。どうすればよいのですか?
      
     </a></li><li><a href="#faq.html.arrays">
      HTML フォームで配列を使用するにはどうすればよいですか？
@@ -55,7 +69,7 @@
     <dd class="answer">
      <p class="para">
       エンコードが重要になる場面はいくつかあります。
-      <span class="type"><a href="language.types.string.html" class="type string">string</a></span> <var class="varname"><var class="varname">$data</var></var> という
+      <span class="type">string</span> <var class="varname">$data</var> という
       エンコードされていない文字列データを渡す場合について考えてみると、
       <ul class="itemizedlist">
        <li class="listitem">
@@ -76,7 +90,7 @@
       </ul>
      </p>
      <p class="para">
-      <div class="example" id="example-6420">
+      <div class="example" id="xmlwriter-write-attribute.example.intermix">
        <p><strong>例1 HTML の hidden 要素</strong></p>
         <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -88,7 +102,7 @@
       </div>
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <span class="simpara">
-        <var class="varname"><var class="varname">$data</var></var> を <span class="function"><a href="function.urlencode.html" class="function">urlencode()</a></span> をしては
+        <var class="varname">$data</var> を <span class="function"><a href="function.urlencode.html" class="function">urlencode()</a></span> をしては
         いけません。なぜなら、その作業はブラウザに任されているからです。
         一般に普及している全てのブラウザは正しくこの処理を行ってくれます。
         ただ、この処理はメソッド(GET や POST)が何であるかにかかわらずに
@@ -97,7 +111,7 @@
         リクエストの内容は通常目に触れることは無いからです。
        </span>
       </p></blockquote>
-      <div class="example" id="example-6421">
+      <div class="example" id="xmlwriter-write-cdata.example.basic">
        <p><strong>例2 ユーザーによって編集するデータ</strong></p>
        <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -119,7 +133,7 @@
         すべて自動的に行われると言うことです。
        </span>
       </p></blockquote>
-      <div class="example" id="example-6422">
+      <div class="example" id="example-5411">
        <p><strong>例3 URL 中の場合</strong></p>
        <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -145,7 +159,7 @@
         解釈することができます。
        </span>
        <span class="simpara">
-        URL 中の <em>&amp;</em> が <em>&amp;amp;</em>
+        URL 中の <code class="literal">&amp;</code> が <code class="literal">&amp;amp;</code>
         に置き換えられていることに気づくでしょう。もしあなたがこれを忘れても
         ほとんどのブラウザは元に戻してくれますが、必ずそうしてくれるとは
         限りませんので、URL が動的に変更されるものでなくても
@@ -162,7 +176,8 @@
     <dt><strong>
      
       &lt;input type=&quot;image&quot;&gt; タグを使おうとしているのですが、変数
-      $foo.x と $foo.y が使えません。どうすればよいのですか?
+      <var class="varname">$foo.x</var> と <var class="varname">$foo.y</var> が使えません。
+      <var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET['foo.x']</a></var> も存在していません。どうすればよいのですか?
      
     </strong></dt>
     <dd class="answer">
@@ -174,17 +189,17 @@
 </div>
       </div>
 
-      ユーザーが画像のどこかをクリックすると、そのフォームの内容に foo.x
-      と foo.y という 2 つの変数が追加され、サーバーに送信されます。
+      ユーザーが画像のどこかをクリックすると、そのフォームの内容に <var class="varname">foo.x</var>
+      と <var class="varname">foo.y</var> という 2 つの変数が追加され、サーバーに送信されます。
      </p>
      <p class="para">
-      PHP では $foo.x と $foo.y という名前は変数名として正しくないので、
-      自動的に $foo_x と $foo_y という名前に変換されます。要は、ピリオドが
+      PHP では <var class="varname">foo.x</var> と <var class="varname">foo.y</var> という名前は変数名として正しくないので、
+      自動的に <var class="varname">foo_x</var> と <var class="varname">foo_y</var> という名前に変換されます。要は、ピリオドが
       アンダースコアに置き換えられる、と言うことです。そのため、これらの
       変数にアクセスする際には
       <a href="language.variables.external.html" class="link">外部から来る変数
       </a> の取得についてのセクションで記述されているのと同様な方法を
-      とります。たとえば <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET['foo_x']</a></var></var> などです。
+      とります。たとえば <var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET['foo_x']</a></var> などです。
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
          リクエスト変数名の中のスペースは、アンダースコアに置き換えられます。
@@ -277,7 +292,7 @@ var=option2
 var=option3
       </pre></div></div>
 
-      それぞれの項目は前の変数 <var class="varname"><var class="varname">$var</var></var> の値を上書きして
+      それぞれの項目は前の変数 <var class="varname">$var</var> の値を上書きして
       しまいます。この問題を解決するには、PHPの &quot;フォームの値を配列にする&quot;
       機能を使います。以下のようにするとよいでしょう。
       <div class="example-contents">
@@ -285,10 +300,10 @@ var=option3
 </div>
       </div>
 
-      こうすれば PHP に <var class="varname"><var class="varname">$var</var></var> を配列として扱うように
+      こうすれば PHP に <var class="varname">$var</var> を配列として扱うように
       知らせることができ、各項目の value の値は配列の要素として var[] に
-      追加されます。最初の項目は <var class="varname"><var class="varname">$var[0]</var></var> になり、
-      次の項目は <var class="varname"><var class="varname">$var[1]</var></var>... というようになります。
+      追加されます。最初の項目は <var class="varname">$var[0]</var> になり、
+      次の項目は <var class="varname">$var[1]</var>... というようになります。
       <span class="function"><a href="function.count.html" class="function">count()</a></span> 関数を使えば選択された項目の数を知る
       ことができます。またもし必要なら <span class="function"><a href="function.sort.html" class="function">sort()</a></span> 関数を
       使ってソートを行うこともできます。
@@ -296,7 +311,7 @@ var=option3
      <p class="para">
       JavaScript を使っている場合、フォーム要素に要素名を使って(訳注：
       document.myform.myelement.value 等の様に)アクセスしようとすると、
-      要素名に含まれる <em>[]</em> が問題となることがあるので
+      要素名に含まれる <code class="literal">[]</code> が問題となることがあるので
       気をつけてください。この場合は、数字で表されるフォーム要素の ID を
       使用するか、シングルクオートで要素名を囲んでフォーム要素の配列の
       インデックスとしてアクセスしてください。例えば、以下のようにします：
@@ -328,7 +343,7 @@ variable = document.forms[0].elements[&#039;var[]&#039;];
       これは通常はクライアントサイドでしかできないことです。
      </p>
      <p class="para">
-      <div class="example" id="example-6423">
+      <div class="example" id="example-5412">
        <p><strong>例4 PHP による Javascript の生成</strong></p>
        <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -344,9 +359,4 @@ variable = document.forms[0].elements[&#039;var[]&#039;];
 
   
  </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="faq.passwords.html">パスワードのハッシュ</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="faq.com.html">PHP と COM</a></div>
- <div class="up"><a href="faq.html">FAQ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

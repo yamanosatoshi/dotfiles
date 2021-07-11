@@ -3,27 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>プロセスへのファイルポインタをオープンする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.pclose.html">pclose</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.readfile.html">readfile</a></div>
- <div class="up"><a href="ref.filesystem.html">ファイルシステム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.popen" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.pclose.html">« pclose</a></li>
+      <li style="float: right;"><a href="function.readfile.html">readfile »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">ファイルシステム 関数</a></li>
+    <li>プロセスへのファイルポインタをオープンする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.popen" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">popen</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">popen</span> &mdash; <span class="dc-title">プロセスへのファイルポインタをオープンする</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">popen</span> &mdash; <span class="dc-title">プロセスへのファイルポインタをオープンする</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.popen-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">resource</span> <span class="methodname"><strong>popen</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$command</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$mode</code></span>
-   )</div>
+   <span class="methodname"><strong>popen</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$command</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$mode</code></span>): <span class="type"><span class="type">resource</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <code class="parameter">command</code> で指定したコマンドのフォークによってできたプロセスへのパイプをオープンします。
@@ -55,7 +65,17 @@
      <dd>
 
       <p class="para">
-       モード。
+       モード。読み取りを行う場合は <code class="literal">&#039;r&#039;</code> を。
+       書き込みを行う場合は <code class="literal">&#039;w&#039;</code> を指定します。
+      </p>
+      <p class="para">
+       Windows では、<span class="function"><strong>popen()</strong></span> はデフォルトでテキストモードになります。
+       つまり、パイプから <code class="literal">\n</code> 文字を読み込んだり、書き込んだりすると、
+       <code class="literal">\r\n</code> に変換されるということです。
+       この振る舞いを望まない場合は、
+       <code class="parameter">mode</code> にバイナリモードを指定し、強制することが出来ます。
+       読み取りのバイナリモードは <code class="literal">&#039;rb&#039;</code> を。
+       書き込みのバイナリモードは<code class="literal">&#039;wb&#039;</code> をそれぞれ指定します。
       </p>
      </dd>
 
@@ -82,7 +102,7 @@
    そのコマンドの STDIN と等しくなります。
   </p>
   <p class="para">
-   エラーが発生した場合は <strong><code>FALSE</code></strong> を返します。
+   エラーが発生した場合は <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -90,7 +110,7 @@
  <div class="refsect1 examples" id="refsect1-function.popen-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2685">
+   <div class="example" id="example-2177">
     <p><strong>例1 <span class="function"><strong>popen()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -105,7 +125,7 @@
    実行すべきコマンドが見つからない場合には、正常なリソースが返されます。
    おかしなことと思われるかもしれませんが、これには意味があります。
    これによってシェルから返されたエラーメッセージにアクセスすることができるのです。
-   <div class="example" id="example-2686">
+   <div class="example" id="example-2178">
     <p><strong>例2 <span class="function"><strong>popen()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -127,16 +147,6 @@
     <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span> を使用してください。
    </p>
   </p></blockquote>
-  <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara"><a href="features.safe-mode.html" class="link">
-セーフモード</a> が有効な場合、<a href="ini.sect.safe-mode.html#ini.safe-mode-exec-dir" class="link">
-safe_mode_exec_dir</a>の中にある実行プログラムのみ実行可能です。
-実際的な理由により、現在、実行プログラムへのパスに <em>..</em>を
-含めることはできません。</span></p></blockquote>
-  <div class="warning"><strong class="warning">警告</strong><p class="simpara"><a href="features.safe-mode.html" class="link">
-セーフモード</a>が有効な場合、コマンド文字列は
-<span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span> でエスケープされます。
-つまり、<em>echo y | echo x</em> は、<em>echo y \| echo x</em>
-となります。</p></div>
  </div>
 
  
@@ -152,9 +162,4 @@ safe_mode_exec_dir</a>の中にある実行プログラムのみ実行可能で�
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.pclose.html">pclose</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.readfile.html">readfile</a></div>
- <div class="up"><a href="ref.filesystem.html">ファイルシステム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

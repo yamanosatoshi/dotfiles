@@ -3,27 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>バイナリ文字列からデータを切り出す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.uniqid.html">uniqid</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.usleep.html">usleep</a></div>
- <div class="up"><a href="ref.misc.html">その他の関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.unpack" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.uniqid.html">« uniqid</a></li>
+      <li style="float: right;"><a href="function.usleep.html">usleep »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.misc.html">その他の関数</a></li>
+    <li>バイナリ文字列からデータを切り出す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.unpack" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">unpack</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">unpack</span> &mdash; <span class="dc-title">バイナリ文字列からデータを切り出す</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">unpack</span> &mdash; <span class="dc-title">バイナリ文字列からデータを切り出す</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.unpack-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>unpack</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
-   )</div>
+   <span class="methodname"><strong>unpack</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code><span class="initializer"> = 0</span></span>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <code class="parameter">format</code> に基づき、バイナリ文字列から配列に分解します。
@@ -34,6 +44,22 @@
    スラッシュ / で区切る必要があります。
    引数にリピータが含まれる場合の配列の要素名は、
    指定した名前の後に順番に番号がついたものとなります。
+  </p>
+  <p class="para">
+   Perl の関数に動きを近づけるために、以下の変更が行われています:
+   <ul class="simplelist">
+    <li class="member">
+     &quot;a&quot; は最後の NULL バイトを維持します。
+    </li>
+    <li class="member">
+     &quot;A&quot; は最後の ASCII 空白文字 (スペース、タブ、改行、キャリッジリターン、
+     NULL バイト) をすべて取り除きます。
+    </li>
+    <li class="member">
+     NULL 埋め文字列用に &quot;Z&quot; が追加されました。
+     これは最後の NULL バイトを取り除きます。
+    </li>
+   </ul>
   </p>
  </div>
 
@@ -57,12 +83,24 @@
     
     
      <dt>
-<code class="parameter">data</code></dt>
+<code class="parameter">string</code></dt>
 
      <dd>
 
       <p class="para">
        パックされたデータ。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">offset</code></dt>
+
+     <dd>
+
+      <p class="para">
+       データ切り出しを開始するオフセット。
       </p>
      </dd>
 
@@ -76,7 +114,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.unpack-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   バイナリ文字列を切り出した要素を含む連想配列を返します。
+   バイナリ文字列を切り出した要素を含む連想配列を返します。失敗した場合に <strong><code>false</code></strong> を返します
   </p>
  </div>
 
@@ -95,23 +133,18 @@
      </thead>
 
      <tbody class="tbody">
-      <tr>
-       <td>5.5.0</td>
+       <tr>
+       <td>7.2.0</td>
        <td>
-        <p class="para">
-         Perl の関数に動きを近づけるための変更をしました。
-        </p>
-        <p class="para">
-         &quot;a&quot; は最後の NULL バイトを維持するようになりました。
-        </p>
-        <p class="para">
-         &quot;A&quot; は最後の ASCII 空白文字 (スペース、タブ、改行、キャリッジリターン、
-         NULL バイト) をすべて取り除くようになりました。
-        </p>
-        <p class="para">
-         NULL 埋め文字列用に &quot;Z&quot; が追加されました。これは最後の NULL バイトを取り除きます。
-         NULL bytes.
-        </p>
+        <span class="type">float</span> および <span class="type">double</span> 型は、
+        ビッグエンディアンとリトルエンディアンの両方をサポートします。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.1.0</td>
+       <td>
+        オプションの <code class="parameter">offset</code> が追加されました。
        </td>
       </tr>
 
@@ -126,7 +159,7 @@
  <div class="refsect1 examples" id="refsect1-function.unpack-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4367">
+   <div class="example" id="example-3499">
     <p><strong>例1 <span class="function"><strong>unpack()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -149,7 +182,7 @@ Array
   </p>
 
   <p class="para">
-   <div class="example" id="example-4368">
+   <div class="example" id="example-3500">
     <p><strong>例2 <span class="function"><strong>unpack()</strong></span> でのリピータの例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -186,12 +219,12 @@ Array
   </div>
   <div class="caution"><strong class="caution">警告</strong>
    <p class="para">
-    要素に名前をつけなければ、<em>1</em> から始まる数値インデックスを用います。
+    要素に名前をつけなければ、<code class="literal">1</code> から始まる数値インデックスを用います。
     名前をつけない要素が複数ある場合は、データが上書きされてしまうかもしれないことに注意しましょう。
-    それぞれの要素について、数値インデックスが <em>1</em> から割りあてられるからです。
+    それぞれの要素について、数値インデックスが <code class="literal">1</code> から割りあてられるからです。
    </p>
    <p class="para">
-    <div class="example" id="example-4369">
+    <div class="example" id="example-3501">
      <p><strong>例3 <span class="function"><strong>unpack()</strong></span> で名前のないキーを扱う例</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -212,8 +245,8 @@ array(2) {
 </pre></div>
      </div>
      <div class="example-contents"><p>
-      <em>c</em> で指定した最初の値が
-      <em>n</em> で指定した値で上書きされることに注意しましょう。
+      <code class="literal">c</code> で指定した最初の値が
+      <code class="literal">n</code> で指定した値で上書きされることに注意しましょう。
      </p></div>
     </div>
    </p>
@@ -231,9 +264,4 @@ array(2) {
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.uniqid.html">uniqid</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.usleep.html">usleep</a></div>
- <div class="up"><a href="ref.misc.html">その他の関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

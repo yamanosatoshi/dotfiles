@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>UTF-8 エンコードされた ISO-8859-1 文字列をシングルバイトの ISO-8859-1 に変換する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="ref.xml.html">XML パーサ 関数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.utf8-encode.html">utf8_encode</a></div>
- <div class="up"><a href="ref.xml.html">XML パーサ 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.utf8-decode" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.xml.html">« XML パーサ 関数</a></li>
+      <li style="float: right;"><a href="function.utf8-encode.html">utf8_encode »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.xml.html">XML パーサ 関数</a></li>
+    <li>UTF-8 エンコードされた ISO-8859-1 文字列をシングルバイトの ISO-8859-1 に変換する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.utf8-decode" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">utf8_decode</h1> 
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">utf8_decode</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">utf8_decode</span> &mdash; <span class="dc-title">
    UTF-8 エンコードされた ISO-8859-1 文字列をシングルバイトの ISO-8859-1 に変換する
   </span></p>
 
@@ -22,15 +35,29 @@
  <div class="refsect1 description" id="refsect1-function.utf8-decode-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>utf8_decode</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
-   )</div>
+   <span class="methodname"><strong>utf8_decode</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
-   この関数は、<code class="parameter">data</code> が
-   <em>UTF-8</em> エンコードされているものとみなして
-   <em>ISO-8859-1</em> に変換します。
+   この関数は、文字列 <code class="parameter">string</code> を <code class="literal">UTF-8</code>
+   エンコードから <code class="literal">ISO-8859-1</code> へ変換します。
+   有効な <code class="literal">UTF-8</code> ではない文字列バイト、
+   および <code class="literal">ISO-8859-1</code> に存在しない <code class="literal">UTF-8</code> の文字
+   (つまり、<code class="literal">U+00FF</code> 以降の文字) は、
+   <code class="literal">?</code> に置き換えられます。
   </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    <code class="literal">ISO-8859-1</code> 文字エンコーディングを使っているとマークされている
+    多くの Web ページが、実際にはそれと似た <code class="literal">Windows-1252</code> を使っており、
+    Web ブラウザは <code class="literal">ISO-8859-1</code> Web ページを <code class="literal">Windows-1252</code>
+    として解釈しています。<code class="literal">Windows-1252</code> は
+    <code class="literal">ISO-8859-1</code> のある制御文字の代わりに、ユーロ記号
+    (<code class="literal">€</code>) や curly quote (<code class="literal">“</code>
+    <code class="literal">”</code>) を印字可能な文字として追加しています。
+    この関数はそうした <code class="literal">Windows-1252</code> 文字を正しく変換しません。
+    <code class="literal">Windows-1252</code> の変換が必要な場合は、別の関数を使ってください。
+   </p>
+  </p></blockquote>
  </div>
 
 
@@ -41,7 +68,7 @@
 
     
      <dt>
-<code class="parameter">data</code></dt>
+<code class="parameter">string</code></dt>
 
      <dd>
 
@@ -60,7 +87,37 @@
  <div class="refsect1 returnvalues" id="refsect1-function.utf8-decode-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <code class="parameter">data</code> を ISO-8859-1 に変換した結果を返します。
+   <code class="parameter">string</code> を ISO-8859-1 に変換した結果を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.utf8-decode-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.2.0</td>
+       <td>
+        この関数は PHP のコアに移動しました。
+        よって、XML拡張機能でこの関数のために必要とされていた条件は撤廃されました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
   </p>
  </div>
 
@@ -69,15 +126,13 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><span class="function"><a href="function.utf8-encode.html" class="function" rel="rdfs-seeAlso">utf8_encode()</a> - ISO-8859-1 文字列を UTF-8 にエンコードする</span> (UTF-8 エンコーディングについての説明があります)</li>
+    <li class="member"><span class="function"><a href="function.utf8-encode.html" class="function" rel="rdfs-seeAlso">utf8_encode()</a> - ISO-8859-1 文字列を UTF-8 にエンコードする</span> - 逆の変換を行う</li>
+    <li class="member"><span class="function"><a href="function.mb-convert-encoding.html" class="function" rel="rdfs-seeAlso">mb_convert_encoding()</a> - 文字エンコーディングを変換する</span> - UTF-8, ISO-8859-1, Windows-1252 を含めた、様々な文字エンコーディング間の変換を行う</li>
+    <li class="member"><span class="function"><a href="function.iconv.html" class="function" rel="rdfs-seeAlso">iconv()</a> - 文字列を指定した文字エンコーディングに変換する</span> - 様々な文字エンコーディング間の変換を行う</li>
+    <li class="member"><span class="function"><a href="function.recode-string.html" class="function" rel="rdfs-seeAlso">recode_string()</a> - コード変換指令に基づき文字列のコードを変換する</span> - 様々な文字エンコーディング間の変換を行う</li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="ref.xml.html">XML パーサ 関数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.utf8-encode.html">utf8_encode</a></div>
- <div class="up"><a href="ref.xml.html">XML パーサ 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

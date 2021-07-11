@@ -2,18 +2,31 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>assertion が FALSE であるかどうかを調べる</title>
+  <title>assertion が false であるかどうかを調べる</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.assert-options.html">assert_options</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.cli-get-process-title.html">cli_get_process_title</a></div>
- <div class="up"><a href="ref.info.html">PHP オプション/情報 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.assert" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.assert-options.html">« assert_options</a></li>
+      <li style="float: right;"><a href="function.cli-get-process-title.html">cli_get_process_title »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.info.html">PHP オプション/情報 関数</a></li>
+    <li>assertion が false であるかどうかを調べる</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.assert" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">assert</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">assert</span> &mdash; <span class="dc-title">assertion が <strong><code>FALSE</code></strong> であるかどうかを調べる</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">assert</span> &mdash; <span class="dc-title">assertion が <strong><code>false</code></strong> であるかどうかを調べる</span></p>
 
  </div>
  
@@ -21,41 +34,30 @@
   <h3 class="title">説明</h3>
   <p class="para">PHP 5 および PHP 7</p>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>assert</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$assertion</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$description</code></span>
-  ] )</div>
+   <span class="methodname"><strong>assert</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$assertion</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$description</code><span class="initializer"> = ?</span></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">PHP 7</p>
-  <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>assert</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$assertion</code></span>
-   [, <span class="methodparam"><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span> <code class="parameter">$exception</code></span>
-  ] )</div>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>assert</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$assertion</code></span>, <span class="methodparam"><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span> <code class="parameter">$exception</code><span class="initializer"> = ?</span></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>assert()</strong></span> は、指定した
    <code class="parameter">assertion</code> を調べて、結果が
-   <strong><code>FALSE</code></strong> の場合に適切な動作をします。
+   <strong><code>false</code></strong> の場合に適切な動作をします。
   </p>
   <div class="refsect2 unknown-descriptioo" id="refsect2-function.assert-unknown-descriptioo">
    <h4 class="title">従来のアサーション (PHP 5 および 7)</h4>
    <p class="para">
     <code class="parameter">assertion</code> が文字列として指定された場合、
     <span class="function"><strong>assert()</strong></span>によりPHPコードとして評価されます。
-    文字列 <code class="parameter">assertion</code>が優れているところは、
-    assertion のチェックがオフになった場合のオーバーヘッドがより少な
-    いことであり、assertionが失敗した場合のメッセージを式
-    <code class="parameter">assertion</code>に有しています。
-    つまり、もし論理型の条件を <code class="parameter">assertion</code> 
-    として渡した場合、この条件が <span class="function"><a href="function.assert-options.html" class="function">assert_options()</a></span>
-    関数で指定したハンドラ関数への引数とはならないということです。
-    条件はハンドラ関数をコールする前に文字列に変換され、論理型の
-    <strong><code>FALSE</code></strong> は空文字列に変換されます。
+    もし論理型の条件を <code class="parameter">assertion</code> として渡した場合、
+    <span class="function"><a href="function.assert-options.html" class="function">assert_options()</a></span> 関数で定義したであろう
+    アサーション関数への引数として表示されません。
+    その条件はハンドラ関数をコールする前に文字列に変換され、論理型の
+    <strong><code>false</code></strong> は空文字列に変換されます。
    </p>
    <p class="para">
     assertion は、デバッグ目的にのみ使用するべきです。
-    assertion を常に<strong><code>TRUE</code></strong>となる条件を調べる不具合診断に使用し、<strong><code>TRUE</code></strong>
+    assertion を常に<strong><code>true</code></strong>となる条件を調べる不具合診断に使用し、<strong><code>true</code></strong>
     でない場合に何らかのプログラミングエラーを示したり、extension
     関数または特定のシステム制限や機能といった、
     特定の機能の存在をチェックするために使用することが可能です。
@@ -126,18 +128,18 @@
        <td>
         <a href="ini.core.html#ini.zend.assertions" class="link">zend.assertions</a>
        </td>
-       <td><em>1</em></td>
+       <td><code class="literal">1</code></td>
        <td>
         <ul class="simplelist">
          <li class="member">
-          <em>1</em>: コードを生成して実行する (開発モード)
+          <code class="literal">1</code>: コードを生成して実行する (開発モード)
          </li>
          <li class="member">
           
-          <em>0</em>: コードを生成するが、実行時には読み飛ばす
+          <code class="literal">0</code>: コードを生成するが、実行時には読み飛ばす
          </li>
          <li class="member">
-          <em>-1</em>: コードを生成しない (運用モード)
+          <code class="literal">-1</code>: コードを生成しない (運用モード)
          </li>
         </ul>
        </td>
@@ -147,17 +149,17 @@
        <td>
         <a href="info.configuration.html#ini.assert.exception" class="link">assert.exception</a>
        </td>
-       <td><em>0</em></td>
+       <td><code class="literal">0</code></td>
        <td>
         <ul class="simplelist">
          <li class="member">
-          <em>1</em>: アサーションに失敗した場合には、
+          <code class="literal">1</code>: アサーションに失敗した場合には、
           <code class="parameter">exception</code> で指定したオブジェクトをスローするか、
           <code class="parameter">exception</code> を指定していない場合は
           <a href="class.assertionerror.html" class="classname">AssertionError</a> オブジェクトをスローします。
          </li>
          <li class="member">
-          <em>0</em>: 先述の
+          <code class="literal">0</code>: 先述の
           <a href="class.throwable.html" class="classname">Throwable</a> を使ったり生成したりしますが、
           そのオブジェクト上で警告を生成するだけであり、スローしません
           (PHP 5 と互換性のある挙動です)。
@@ -189,10 +191,16 @@
       <p class="para">
        アサーション。
        PHP 5 では、評価対象の文字列か、あるいは
-       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span> 値しか指定できませんでした。
+       <span class="type">bool</span> 値しか指定できませんでした。
        PHP 7 ではそれ以外にも、値を返すあらゆる式を指定できます。
        この式を実行した結果を用いて、アサーションに成功したか否かを判断します。
       </p>
+      <div class="warning"><strong class="warning">警告</strong>
+       <p class="para">
+        <code class="parameter">assertion</code> に <span class="type">string</span> を使うのは
+        PHP 7.2 以降は <em class="emphasis">推奨されません</em> 
+       </p>
+      </div>
      </dd>
 
     
@@ -203,8 +211,10 @@
      <dd>
 
       <p class="para">
-       オプションの説明で、
-       <code class="parameter">assertion</code> が失敗したときのメッセージにこれを含めます。
+       オプションの説明です。
+       <code class="parameter">assertion</code> が失敗したときのメッセージを設定します。
+       PHP 7 からは、この説明が指定されない場合、
+       <span class="function"><strong>assert()</strong></span> を呼び出したソースコードに関するデフォルトの説明が設定されます。
       </p>
      </dd>
 
@@ -234,7 +244,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.assert-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   アサーションが false となった場合に <strong><code>FALSE</code></strong>、それ以外の場合に <strong><code>TRUE</code></strong> を返します。
+   アサーションが false となった場合に <strong><code>false</code></strong>、それ以外の場合に <strong><code>true</code></strong> を返します。
   </p>
  </div>
 
@@ -254,24 +264,46 @@
 
      <tbody class="tbody">
       <tr>
+       <td>8.0.0</td>
+       <td>
+        名前空間の内部で、
+        <code class="literal">assert()</code> をコールすることはできなくなりました。
+        コールした場合、<strong><code>E_COMPILE_ERROR</code></strong> が発生します。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.3.0</td>
+       <td>
+        名前空間の内部で、
+        <code class="literal">assert()</code> をコールすることは推奨されなくなりました。
+        コールした場合、
+        <strong><code>E_DEPRECATED</code></strong> が発生するようになっています。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.2.0</td>
+       <td>
+        <code class="parameter">assertion</code> に <span class="type">string</span> を使うことは
+        推奨されなくなりました。
+        <a href="info.configuration.html#ini.assert.active" class="link">assert.active</a>
+        と <a href="ini.core.html#ini.zend.assertions" class="link">zend.assertions</a> が
+        両方 <code class="literal">1</code> に設定されると、
+        <strong><code>E_DEPRECATED</code></strong> レベルの警告が発生するようになりました。
+       </td>
+      </tr>
+
+      <tr>
        <td>7.0.0</td>
        <td>
         <span class="function"><strong>assert()</strong></span> が言語構造となり、関数ではなくなりました。
-        <span class="function"><strong>assertion()</strong></span> に式を指定できるようになりました。
+        <code class="parameter">assertion</code> に式を指定できるようになりました。
         第二パラメータは、
         <code class="parameter">exception</code> (<a href="class.throwable.html" class="classname">Throwable</a> オブジェクトを渡した場合)
         あるいは
         <code class="parameter">description</code> (PHP 5.4.8 以降でサポートされていたもの)
         のいずれかであると解釈されるようになりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.4.8</td>
-       <td>
-        <code class="parameter">description</code> パラメータが追加されました。
-        <code class="parameter">description</code> はまた、
-        <strong><code>ASSERT_CALLBACK</code></strong> モードのコールバック関数の4番目の引数にも指定できるようになりました。
        </td>
       </tr>
 
@@ -288,7 +320,7 @@
   <div class="refsect2 unknown-examplet" id="refsect2-function.assert-unknown-examplet">
    <h4 class="title">従来のアサーション (PHP 5 および 7)</h4>
    <p class="para">
-    <div class="example" id="example-552">
+    <div class="example" id="example-494">
      <p><strong>例1 失敗した assertion をカスタムハンドラで処理する</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -300,7 +332,7 @@
     </div>
    </p>
    <p class="para">
-    <div class="example" id="example-553">
+    <div class="example" id="example-495">
      <p><strong>例2 カスタムハンドラを使った説明の表示</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -322,7 +354,7 @@
 
   <div class="refsect2 unknown-unknown-exampleu" id="refsect2-function.assert-unknown-unknown-exampleu">
    <h4 class="title">Expectation (PHP 7 のみ)</h4>
-   <div class="example" id="example-554">
+   <div class="example" id="example-496">
     <p><strong>例3 自作の例外を指定しない expectation</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -366,7 +398,7 @@ Stack trace:
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-555">
+   <div class="example" id="example-497">
     <p><strong>例4 自作の例外を用いた expectation</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -426,9 +458,4 @@ Stack trace:
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.assert-options.html">assert_options</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.cli-get-process-title.html">cli_get_process_title</a></div>
- <div class="up"><a href="ref.info.html">PHP オプション/情報 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

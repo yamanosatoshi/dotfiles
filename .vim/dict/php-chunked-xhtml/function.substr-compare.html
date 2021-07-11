@@ -3,35 +3,42 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>指定した位置から指定した長さの 2 つの文字列について、バイナリ対応で比較する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.strtr.html">strtr</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.substr-count.html">substr_count</a></div>
- <div class="up"><a href="ref.strings.html">String 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.substr-compare" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.strtr.html">« strtr</a></li>
+      <li style="float: right;"><a href="function.substr-count.html">substr_count »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">String 関数</a></li>
+    <li>指定した位置から指定した長さの 2 つの文字列について、バイナリ対応で比較する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.substr-compare" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">substr_compare</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">substr_compare</span> &mdash; <span class="dc-title">指定した位置から指定した長さの 2 つの文字列について、バイナリ対応で比較する</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">substr_compare</span> &mdash; <span class="dc-title">指定した位置から指定した長さの 2 つの文字列について、バイナリ対応で比較する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.substr-compare-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">int</span> <span class="methodname"><strong>substr_compare</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$main_str</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>
-   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$case_insensitivity</code><span class="initializer"> = false</span></span>
-  ]] )</div>
+   <span class="methodname"><strong>substr_compare</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$haystack</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$needle</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$length</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$case_insensitive</code><span class="initializer"> = <strong><code>false</code></strong></span></span><br>): <span class="type">int</span></div>
 
   <p class="para rdfs-comment">
-   <span class="function"><strong>substr_compare()</strong></span> は、<code class="parameter">main_str</code>
+   <span class="function"><strong>substr_compare()</strong></span> は、<code class="parameter">haystack</code>
    の <code class="parameter">offset</code> 文字目以降の最大
-   <code class="parameter">length</code> 文字を、<code class="parameter">str</code>
+   <code class="parameter">length</code> 文字を、<code class="parameter">needle</code>
    と比較します。
   </p>
  </div>
@@ -44,7 +51,7 @@
 
     
      <dt>
-<code class="parameter">main_str</code></dt>
+<code class="parameter">haystack</code></dt>
 
      <dd>
 
@@ -56,7 +63,7 @@
     
     
      <dt>
-<code class="parameter">str</code></dt>
+<code class="parameter">needle</code></dt>
 
      <dd>
 
@@ -87,20 +94,20 @@
 
       <p class="para">
        比較する長さ。デフォルト値は、
-       <code class="parameter">main_str</code> の長さから <code class="parameter">offset</code> を引いたものと
-       <code class="parameter">str</code> の長さのうち、長いほうです。
+       <code class="parameter">haystack</code> の長さから <code class="parameter">offset</code> を引いたものと
+       <code class="parameter">needle</code> の長さのうち、長いほうです。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">case_insensitivity</code></dt>
+<code class="parameter">case_insensitive</code></dt>
 
      <dd>
 
       <p class="para">
-       <code class="parameter">case_insensitivity</code> が <strong><code>TRUE</code></strong> の場合、
+       <code class="parameter">case_insensitive</code> が <strong><code>true</code></strong> の場合、
        大文字小文字を区別せずに比較します。
       </p>
      </dd>
@@ -115,13 +122,18 @@
  <div class="refsect1 returnvalues" id="refsect1-function.substr-compare-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <code class="parameter">main_str</code> の <code class="parameter">offset</code>
-   以降が <code class="parameter">str</code> より小さい場合に負の数、
-   <code class="parameter">str</code> より大きい場合に正の数、
-   等しい場合に 0 を返します。<code class="parameter">offset</code> が
-   <code class="parameter">main_str</code> の長さ以上であるか、あるいは <code class="parameter">length</code>
-   が設定されていて 1 未満である場合 (PHP 5.6 より前のバージョン)、<span class="function"><strong>substr_compare()</strong></span>
-   は警告を表示して <strong><code>FALSE</code></strong> を返します。
+   <code class="parameter">haystack</code> の <code class="parameter">offset</code>
+   以降が <code class="parameter">needle</code> より小さい場合に負の数、
+   <code class="parameter">needle</code> より大きい場合に正の数、
+   等しい場合に 0 を返します。
+   <code class="parameter">offset</code> が
+   <code class="parameter">haystack</code> と等しい
+   (PHP 7.2.18, 7.3.5 より前のバージョン) か、
+   <code class="parameter">haystack</code> より長い場合、
+   もしくは <code class="parameter">length</code> 
+   が設定されていて0未満である場合、
+   <span class="function"><strong>substr_compare()</strong></span>
+   は警告を表示して <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -141,16 +153,17 @@
 
      <tbody class="tbody">
       <tr>
-       <td>5.6.0</td>
+       <td>8.0.0</td>
        <td>
-        <code class="parameter">length</code> を <em>0</em> にもできるようになりました。
+        <code class="parameter">length</code> は、nullable になりました。
        </td>
       </tr>
 
       <tr>
-       <td>5.1.0</td>
+       <td>7.2.18, 7.3.5</td>
        <td>
-        負の <code class="parameter">offset</code> を使用できるようになりました。
+        <code class="parameter">offset</code> の値は、
+        <code class="parameter">haystack</code> の長さと等しくても問題なくなりました。
        </td>
       </tr>
 
@@ -165,7 +178,7 @@
  <div class="refsect1 examples" id="refsect1-function.substr-compare-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5510">
+   <div class="example" id="example-4853">
     <p><strong>例1 <span class="function"><strong>substr_compare()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -189,9 +202,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.strtr.html">strtr</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.substr-count.html">substr_count</a></div>
- <div class="up"><a href="ref.strings.html">String 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>EvChild ウォッチャーオブジェクトを作る</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="class.evchild.html">EvChild</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="evchild.createstopped.html">EvChild::createStopped</a></div>
- <div class="up"><a href="class.evchild.html">EvChild</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="evchild.construct" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="class.evchild.html">« EvChild</a></li>
+      <li style="float: right;"><a href="evchild.createstopped.html">EvChild::createStopped »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.evchild.html">EvChild</a></li>
+    <li>EvChild ウォッチャーオブジェクトを作る</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="evchild.construct" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">EvChild::__construct</h1>
   <p class="verinfo">(PECL ev &gt;= 0.2.0)</p><p class="refpurpose"><span class="refname">EvChild::__construct</span> &mdash; <span class="dc-title">EvChild ウォッチャーオブジェクトを作る</span></p>
@@ -20,30 +33,24 @@
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
    <span class="modifier">public</span>
-   <span class="methodname"><strong>EvChild::__construct</strong></span>
-    ( <span class="methodparam">
+   <span class="methodname"><strong>EvChild::__construct</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type">int</span>
      <code class="parameter">$pid</code>
-   </span>
-   , <span class="methodparam">
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type">bool</span>
      <code class="parameter">$trace</code>
-   </span>
-   , <span class="methodparam">
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>
      <code class="parameter">$callback</code>
-   </span>
-   [, <span class="methodparam">
-    <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
      <code class="parameter">$data</code>
-    <span class="initializer"> = <strong><code>NULL</code></strong></span>
-   </span>
-   [, <span class="methodparam">
+    <span class="initializer"> = <strong><code>null</code></strong></span>
+   </span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam">
     <span class="type">int</span>
      <code class="parameter">$priority</code>
     <span class="initializer"> = 0</span>
-   </span>
-  ]] )</div>
+   </span><br>)</div>
 
   <p class="para rdfs-comment">
    <a href="class.evchild.html" class="classname">EvChild</a> ウォッチャーオブジェクトを作ります。
@@ -53,7 +60,7 @@
    (<code class="parameter">pid</code> is <strong><code>0</code></strong> の場合は任意の <em class="emphasis">PID</em>)
    の状態の変更を受信したときに、コールバックを呼びます
    (状態が変わるのは、プロセスが停止したり強制終了させられたり、
-   <code class="parameter">trace</code> が <strong><code>TRUE</code></strong> になったり、さらにプロセスを一時停止したり再開したりしたときです)。
+   <code class="parameter">trace</code> が <strong><code>true</code></strong> になったり、さらにプロセスを一時停止したり再開したりしたときです)。
    言い換えると、あるプロセスが <strong><code>SIGCHLD</code></strong> を受信したときに、
    <em class="emphasis">Ev</em> はすべての変更された子プロセスやゾンビ子プロセスの exit/wait
    状態を取得してコールバックを呼びます。
@@ -61,13 +68,13 @@
   <p class="para">
    <a href="class.evchild.html" class="classname">EvChild</a> が終了してから child ウォッチャーをインストールしてもかまいませんが、
    イベントループが次のイテレーションを始める前でないといけません。
-   たとえば、最初のプロセスが <em>fork</em> した後で新しい子プロセスが終了するかもしれません。
+   たとえば、最初のプロセスが <code class="literal">fork</code> した後で新しい子プロセスが終了するかもしれません。
    そのときは、新しい <em class="emphasis">PID</em> の親にだけ
    <a href="class.evchild.html" class="classname">EvChild</a> ウォッチャーをインストールできます。
   </p>
   <p class="para">
    exit/tracing ステータスや <code class="parameter">pid</code> にアクセスするには、
-   ウォッチャーオブジェクトのプロパティ <var class="varname"><var class="varname">rstatus</var></var> および <var class="varname"><var class="varname">rpid</var></var>
+   ウォッチャーオブジェクトのプロパティ <var class="varname">rstatus</var> および <var class="varname">rpid</var>
    を使います。
   </p>
   <p class="para">
@@ -107,8 +114,8 @@
     <dd>
 
      <p class="para">
-      <strong><code>FALSE</code></strong> にすると、プロセスが終了したときにだけウォッチャーをアクティブにします。
-      <strong><code>TRUE</code></strong> の場合は、プロセスが一時停止したり再開したりしたときにもウォッチャーをアクティブにします。
+      <strong><code>false</code></strong> にすると、プロセスが終了したときにだけウォッチャーをアクティブにします。
+      <strong><code>true</code></strong> の場合は、プロセスが一時停止したり再開したりしたときにもウォッチャーをアクティブにします。
      </p>
     </dd>
 
@@ -176,9 +183,4 @@
   </ul>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="class.evchild.html">EvChild</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="evchild.createstopped.html">EvChild::createStopped</a></div>
- <div class="up"><a href="class.evchild.html">EvChild</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

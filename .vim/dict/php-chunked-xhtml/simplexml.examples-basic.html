@@ -3,26 +3,39 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>基本的な SimpleXML の使用法</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="simplexml.examples.html">例</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="simplexml.examples-errors.html">XML エラーの対応</a></div>
- <div class="up"><a href="simplexml.examples.html">例</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="simplexml.examples-basic" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="simplexml.examples.html">« 例</a></li>
+      <li style="float: right;"><a href="simplexml.examples-errors.html">XML エラーの対応 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="simplexml.examples.html">例</a></li>
+    <li>基本的な SimpleXML の使用法</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="simplexml.examples-basic" class="section">
   <h2 class="title">基本的な SimpleXML の使用法</h2>
   <p class="para">
-   このリファレンスの多くの例では XML 文字列を必要とします。各例で
+   このリファレンスの多くの例では XML 文字列が必要です。それぞれの例で
    この文字列をくり返す代わりに、あるファイルにこの文字列を保存して、
-   各例で読みこむことにします。この読みこまれるファイルは、以下の例
-   に関するセクションで使用されます。
+   例ごとに読みこむことにします。この読みこまれるファイルは、以下の例
+   に関するセクションで使います。
    もしくは、XMLドキュメントを作成し、
    <span class="function"><a href="function.simplexml-load-file.html" class="function">simplexml_load_file()</a></span> により読みこむことも
    可能です。
   </p>
   <p class="para">
-   <div class="example" id="example-6314">
+   <div class="example" id="example-5335">
     <p><strong>例1 XML 文字列を設定するインクルードファイル example.php</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -36,8 +49,8 @@
   <p class="para">
    SimpleXML の容易さが最も明確に現われるのは、
    簡単な XML ドキュメントから文字列または数字を展開する時です。
-   <div class="example" id="example-6315">
-    <p><strong>例2 <em>&lt;plot&gt;</em> を取得する</strong></p>
+   <div class="example" id="example-5336">
+    <p><strong>例2 <code class="literal">&lt;plot&gt;</code> を取得する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'example.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$movies&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$movies</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">movie</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">plot</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -61,8 +74,8 @@
    XML ドキュメント内の要素のうち、PHP の命名規約で許可されていない文字
    (たとえばハイフンなど) を含む名前のものにアクセスするには、
    要素名を括弧とアポストロフィで囲みます。
-   <div class="example" id="example-6316">
-    <p><strong>例3 <em>&lt;line&gt;</em> を取得する</strong></p>
+   <div class="example" id="example-5337">
+    <p><strong>例3 <code class="literal">&lt;line&gt;</code> を取得する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'example.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$movies&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$movies</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">movie</span><span style="color: #007700">-&gt;{</span><span style="color: #DD0000">'great-lines'</span><span style="color: #007700">}-&gt;</span><span style="color: #0000BB">line</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -79,7 +92,7 @@ PHP solves all my web problems
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-6317">
+   <div class="example" id="example-5338">
     <p><strong>例4 SimpleXML でユニークでない要素にアクセスする</strong></p>
     <div class="example-contents"><p>
      単一の親要素の子要素としてある要素のインスタンスが複数存在する時、
@@ -103,13 +116,13 @@ Mr. Coder played by El ActÓr
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    プロパティ (先ほどの例の <em>$movies-&gt;movie</em>)
+    プロパティ (先ほどの例の <code class="literal">$movies-&gt;movie</code>)
     は配列ではありません。<a href="class.iterator.html" class="link">反復処理</a> と
     <a href="class.arrayaccess.html" class="link">配列形式でのアクセス</a> ができるオブジェクトです。
    </p>
   </p></blockquote>
   <p class="para">
-   <div class="example" id="example-6318">
+   <div class="example" id="example-5339">
     <p><strong>例5 属性を使用する</strong></p>
     <div class="example-contents"><p>
      ここまでは、要素の名前と値を読む方法のみを扱って来ました。
@@ -133,11 +146,11 @@ Mr. Coder played by El ActÓr
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-6319">
+   <div class="example" id="example-5340">
     <p><strong>例6 要素および属性をテキストと比較する</strong></p>
     <div class="example-contents"><p>
      要素または属性を文字列と比較する、もしくは、文字列を引数とする関数に
-     渡すには、<em>(string)</em> により文字列にキャストする
+     渡すには、<code class="literal">(string)</code> により文字列にキャストする
      必要があります。さもないと、PHP はこの要素をオブジェクトとして扱います。
     </p></div>
     <div class="example-contents">
@@ -156,15 +169,15 @@ My favorite movie.PHP: Behind the Parser
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-6320">
+   <div class="example" id="example-5341">
     <p><strong>例7 ふたつの要素の比較</strong></p>
     <div class="example-contents"><p>
-     PHP 5.2.0 以降、たとえ同一の要素を指していたとしても
+     たとえ同一の要素を指していたとしても
      2 つの SimpleXMLElements は異なるものと見なされます。
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'example.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$movies1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$movies2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$movies1&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">$movies2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;PHP&nbsp;5.2.0&nbsp;以降では&nbsp;false<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'example.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$movies1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$movies2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$movies1&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">$movies2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -178,11 +191,11 @@ bool(false)
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-6321">
+   <div class="example" id="example-5342">
     <p><strong>例8 XPath の使用</strong></p>
     <div class="example-contents"><p>
      SimpleXML は、<acronym title="XML Path Language">XPath</acronym> を標準でサポートしています。
-     <em>&lt;character&gt;</em> 要素をすべて見つけるには、
+     <code class="literal">&lt;character&gt;</code> 要素をすべて見つけるには、
      以下のようにします。
     </p></div>
     <div class="example-contents">
@@ -193,7 +206,7 @@ bool(false)
     </div>
 
     <div class="example-contents"><p>
-     &#039;<em>//</em>&#039; はワイルドカードとして動作します。絶対パスを指定するには、
+     &#039;<code class="literal">//</code>&#039; はワイルドカードとして動作します。絶対パスを指定するには、
      スラッシュを一つだけにします。
     </p></div>
     <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
@@ -206,7 +219,7 @@ Mr. Coder played by El ActÓr
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-6322">
+   <div class="example" id="example-5343">
     <p><strong>例9 値を設定する</strong></p>
     <div class="example-contents"><p>
      SimpleXMLの中のデータは、定数とすることができません。
@@ -253,10 +266,10 @@ Mr. Coder played by El ActÓr
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-6323">
+   <div class="example" id="example-5344">
     <p><strong>例10 要素と属性を追加する</strong></p>
     <div class="example-contents"><p>
-     PHP 5.1.3 以降では、SimpleXML を使用して簡単に子要素および属性を追加することができます。
+     SimpleXML を使用して簡単に子要素および属性を追加することができます。
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -299,7 +312,7 @@ Mr. Coder played by El ActÓr
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-6324">
+   <div class="example" id="example-5345">
     <p><strong>例11 DOM との相互運用性</strong></p>
     <div class="example-contents"><p>
      PHP は、SimpleXML 形式と DOM 形式の間で XML ノードを変換する機構を有しています。
@@ -320,9 +333,4 @@ blah
     </div>
    </div>
   </p>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="simplexml.examples.html">例</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="simplexml.examples-errors.html">XML エラーの対応</a></div>
- <div class="up"><a href="simplexml.examples.html">例</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

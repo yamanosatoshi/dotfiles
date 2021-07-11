@@ -3,33 +3,40 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>MIMEヘッダの文字列をエンコードする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mb-detect-order.html">mb_detect_order</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mb-encode-numericentity.html">mb_encode_numericentity</a></div>
- <div class="up"><a href="ref.mbstring.html">マルチバイト文字列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.mb-encode-mimeheader" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mb-detect-order.html">« mb_detect_order</a></li>
+      <li style="float: right;"><a href="function.mb-encode-numericentity.html">mb_encode_numericentity »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mbstring.html">マルチバイト文字列 関数</a></li>
+    <li>MIMEヘッダの文字列をエンコードする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mb-encode-mimeheader" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mb_encode_mimeheader</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mb_encode_mimeheader</span> &mdash; <span class="dc-title">MIMEヘッダの文字列をエンコードする</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mb_encode_mimeheader</span> &mdash; <span class="dc-title">MIMEヘッダの文字列をエンコードする</span></p>
 
  </div>
    
  <div class="refsect1 description" id="refsect1-function.mb-encode-mimeheader-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>mb_encode_mimeheader</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$charset</code><span class="initializer"> = mb_language() によって決まる値</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$transfer_encoding</code><span class="initializer"> = &quot;B&quot;</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$linefeed</code><span class="initializer"> = &quot;\r\n&quot;</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$indent</code><span class="initializer"> = 0</span></span>
-  ]]]] )</div>
+   <span class="methodname"><strong>mb_encode_mimeheader</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$charset</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$transfer_encoding</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$newline</code><span class="initializer"> = &quot;\r\n&quot;</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$indent</code><span class="initializer"> = 0</span></span><br>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
-   MIME ヘッダエンコーディング方式によって文字列 <code class="parameter">str</code>
+   MIME ヘッダエンコーディング方式によって文字列 <code class="parameter">string</code>
    をエンコードします。
   </p>
  </div>
@@ -42,7 +49,7 @@
 
     
      <dt>
-<code class="parameter">str</code></dt>
+<code class="parameter">string</code></dt>
 
      <dd>
 
@@ -60,9 +67,9 @@
      <dd>
 
       <p class="para">
-       <code class="parameter">charset</code> は、<code class="parameter">str</code>
+       <code class="parameter">charset</code> は、<code class="parameter">string</code>
        の変換後の文字セット名です。デフォルトは、現在の NLS 設定
-       (<em>mbstring.language</em>) によって決まります。
+       (<code class="literal">mbstring.language</code>) によって決まります。
       </p>
      </dd>
 
@@ -75,26 +82,26 @@
 
       <p class="para">
        <code class="parameter">transfer_encoding</code> は MIME エンコーディングの
-       方式を指定します。<em>&quot;B&quot;</em> (Base64) または
-       <em>&quot;Q&quot;</em> (Quoted-Printable) のどちらかでなければなりません。
-       デフォルトは <em>&quot;B&quot;</em> です。
+       方式を指定します。<code class="literal">&quot;B&quot;</code> (Base64) または
+       <code class="literal">&quot;Q&quot;</code> (Quoted-Printable) のどちらかでなければなりません。
+       デフォルトは <code class="literal">&quot;B&quot;</code> です。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">linefeed</code></dt>
+<code class="parameter">newline</code></dt>
 
      <dd>
 
       <p class="para">
-       <code class="parameter">linefeed</code> は EOL (行末) のマーカで、
+       <code class="parameter">newline</code> は EOL (行末) のマーカで、
        <span class="function"><strong>mb_encode_mimeheader()</strong></span> が行を折りたたむ
        (<a href="http://www.faqs.org/rfcs/rfc2822" class="link external">&raquo;&nbsp;RFC</a> 用語で、
        ある一定より長い行を複数行に分割することを言います。
        分割する長さは、現在 74 文字に固定されています) 際に利用します。
-       デフォルトは <em>&quot;\r\n&quot;</em> (CRLF) です。
+       デフォルトは <code class="literal">&quot;\r\n&quot;</code> (CRLF) です。
       </p>
      </dd>
 
@@ -107,7 +114,7 @@
 
       <p class="para">
        最初の行の字下げ (ヘッダで
-       <code class="parameter">str</code> の前におく文字数)。
+       <code class="parameter">string</code> の前におく文字数)。
       </p>
      </dd>
 
@@ -126,10 +133,38 @@
  </div>
 
 
+ <div class="refsect1 changelog" id="refsect1-function.mb-encode-mimeheader-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">charset</code> と <code class="parameter">transfer_encoding</code> は、
+       nullable になりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
  <div class="refsect1 examples" id="refsect1-function.mb-encode-mimeheader-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3033">
+   <div class="example" id="example-2526">
     <p><strong>例1 <span class="function"><strong>mb_encode_mimeheader()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -164,9 +199,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mb-detect-order.html">mb_detect_order</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mb-encode-numericentity.html">mb_encode_numericentity</a></div>
- <div class="up"><a href="ref.mbstring.html">マルチバイト文字列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

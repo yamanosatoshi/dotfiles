@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>配列にテーブルをコピーする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.pg-copy-from.html">pg_copy_from</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.pg-dbname.html">pg_dbname</a></div>
- <div class="up"><a href="ref.pgsql.html">PostgreSQL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.pg-copy-to" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.pg-copy-from.html">« pg_copy_from</a></li>
+      <li style="float: right;"><a href="function.pg-dbname.html">pg_dbname »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pgsql.html">PostgreSQL 関数</a></li>
+    <li>配列にテーブルをコピーする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.pg-copy-to" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">pg_copy_to</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">pg_copy_to</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">pg_copy_to</span> &mdash; <span class="dc-title">
    配列にテーブルをコピーする
   </span></p>
 
@@ -22,16 +35,11 @@
  <div class="refsect1 description" id="refsect1-function.pg-copy-to-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>pg_copy_to</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$connection</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$table_name</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$delimiter</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$null_as</code></span>
-  ]] )</div>
+   <span class="methodname"><strong>pg_copy_to</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">resource</span> <code class="parameter">$connection</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$table_name</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$delimiter</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$null_as</code><span class="initializer"> = ?</span></span><br>): <span class="type">array</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>pg_copy_to()</strong></span> は、テーブルを配列にコピーします。
-   レコードを取得するために、内部では <em>COPY TO</em> SQL
+   レコードを取得するために、内部では <code class="literal">COPY TO</code> SQL
    コマンドを発行します。
   </p>
  </div>
@@ -74,7 +82,7 @@
 
       <p class="para">
        <code class="parameter">rows</code> の要素内で、各フィールドに対応する値を
-       区切る文字。デフォルトは <em>TAB</em> です。
+       区切る文字。デフォルトは <code class="literal">TAB</code> です。
       </p>
      </dd>
 
@@ -86,7 +94,7 @@
      <dd>
 
       <p class="para">
-       <code class="parameter">rows</code> の中で、SQL の <em>NULL</em> 
+       <code class="parameter">rows</code> の中で、SQL の <code class="literal">NULL</code> 
        をどのように表現するか。デフォルトは \N (&quot;\\N&quot;) です。
       </p>
      </dd>
@@ -101,8 +109,8 @@
  <div class="refsect1 returnvalues" id="refsect1-function.pg-copy-to-returnvalues">
   <h3 class="title">返り値</h3>
    <p class="para">
-    <em>COPY</em> されたデータが 1 行ごとにひとつの要素と
-    なっている配列を返します。失敗した場合には <strong><code>FALSE</code></strong> を返します。
+    <code class="literal">COPY</code> されたデータが 1 行ごとにひとつの要素と
+    なっている配列を返します。失敗した場合には <strong><code>false</code></strong> を返します。
    </p>
  </div>
 
@@ -110,7 +118,7 @@
  <div class="refsect1 examples" id="refsect1-function.pg-copy-to-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2305">
+   <div class="example" id="example-1858">
     <p><strong>例1 <span class="function"><strong>pg_copy_to()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -133,9 +141,4 @@
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.pg-copy-from.html">pg_copy_from</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.pg-dbname.html">pg_dbname</a></div>
- <div class="up"><a href="ref.pgsql.html">PostgreSQL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

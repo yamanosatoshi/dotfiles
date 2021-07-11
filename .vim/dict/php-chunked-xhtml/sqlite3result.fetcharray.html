@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>結果の行を、連想配列あるいは数値添字配列あるいはその両方で取得する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="sqlite3result.columntype.html">SQLite3Result::columnType</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="sqlite3result.finalize.html">SQLite3Result::finalize</a></div>
- <div class="up"><a href="class.sqlite3result.html">SQLite3Result</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="sqlite3result.fetcharray" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="sqlite3result.columntype.html">« SQLite3Result::columnType</a></li>
+      <li style="float: right;"><a href="sqlite3result.finalize.html">SQLite3Result::finalize »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.sqlite3result.html">SQLite3Result</a></li>
+    <li>結果の行を、連想配列あるいは数値添字配列あるいはその両方で取得する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="sqlite3result.fetcharray" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">SQLite3Result::fetchArray</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p><p class="refpurpose"><span class="refname">SQLite3Result::fetchArray</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SQLite3Result::fetchArray</span> &mdash; <span class="dc-title">
    結果の行を、連想配列あるいは数値添字配列あるいはその両方で取得する
   </span></p>
 
@@ -22,9 +35,7 @@
  <div class="refsect1 description" id="refsect1-sqlite3result.fetcharray-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><strong>SQLite3Result::fetchArray</strong></span>
-    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = SQLITE3_BOTH</span></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>SQLite3Result::fetchArray</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = <strong><code>SQLITE3_BOTH</code></strong></span></span>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    結果の行を、連想配列あるいは数値添字配列あるいはその両方で取得します。
@@ -46,26 +57,26 @@
 
       <p class="para">
        次の行をどのように返すかを制御します。値は
-       <em>SQLITE3_ASSOC</em> か
-       <em>SQLITE3_NUM</em>、<em>SQLITE3_BOTH</em>
+       <code class="literal">SQLITE3_ASSOC</code> か
+       <code class="literal">SQLITE3_NUM</code>、<code class="literal">SQLITE3_BOTH</code>
        のいずれかでなければなりません。
        <ul class="itemizedlist">
         <li class="listitem">
          <p class="para">
-          <em>SQLITE3_ASSOC</em>:
+          <code class="literal">SQLITE3_ASSOC</code>:
           返された結果セットのカラム名をインデックスとする配列を返します。
          </p>
         </li>
         <li class="listitem">
          <p class="para">
-          <em>SQLITE3_NUM</em>:
+          <code class="literal">SQLITE3_NUM</code>:
           返された結果セットのカラム番号をインデックスとする配列を返します。
           カラム番号は 0 から始まります。
          </p>
         </li>
         <li class="listitem">
          <p class="para">
-          <em>SQLITE3_BOTH</em>:
+          <code class="literal">SQLITE3_BOTH</code>:
           返された結果セットのカラム名とカラム番号の両方をインデックスとする配列を返します。
           カラム番号は 0 から始まります。
          </p>
@@ -86,14 +97,17 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    結果の行を、連想配列あるいは数値添字配列あるいはその両方で取得します。
-   行がない場合は <strong><code>FALSE</code></strong> を返します。
+   行がない場合は <strong><code>false</code></strong> を返します。
+  </p>
+  <p class="para">
+   返される配列の値の型は、SQLite3 のデータ型と以下のようにマッピングされます:
+   数値型の場合、<strong><code>PHP_INT_MIN</code></strong>..<strong><code>PHP_INT_MAX</code></strong>
+   の範囲に入れば、<span class="type">int</span> にマッピングされます。そうでなければ、
+   <span class="type">string</span> になります。Float 型は <span class="type">float</span> に、
+   <code class="literal">NULL</code> 値は <span class="type">null</span> に、
+   そして文字列型や Blob 型は <span class="type">string</span> にマップされます。
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="sqlite3result.columntype.html">SQLite3Result::columnType</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="sqlite3result.finalize.html">SQLite3Result::finalize</a></div>
- <div class="up"><a href="class.sqlite3result.html">SQLite3Result</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

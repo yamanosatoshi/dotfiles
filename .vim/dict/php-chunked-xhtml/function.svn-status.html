@@ -2,32 +2,42 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>作業コピー内のファイルやディレクトリの状態を返す</title>
+  <title>Returns the status of working copy files and directories</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.svn-revert.html">svn_revert</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.svn-update.html">svn_update</a></div>
- <div class="up"><a href="ref.svn.html">SVN 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.svn-status" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.svn-revert.html">« svn_revert</a></li>
+      <li style="float: right;"><a href="function.svn-update.html">svn_update »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.svn.html">SVN 関数</a></li>
+    <li>Returns the status of working copy files and directories</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.svn-status" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">svn_status</h1>
-  <p class="verinfo">(PECL svn &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">svn_status</span> &mdash; <span class="dc-title">作業コピー内のファイルやディレクトリの状態を返す</span></p>
+  <p class="verinfo">(PECL svn &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">svn_status</span> &mdash; <span class="dc-title">Returns the status of working copy files and directories</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.svn-status-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>svn_status</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>
-  ] )</div>
+   <span class="methodname"><strong>svn_status</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>): <span class="type">array</span></div>
 
   <p class="para rdfs-comment">
-   作業コピー内のファイルやディレクトリの状態を返します。
-   作業コピー内での変更、追加、削除などの内容を取得できます。
+   Returns the status of working copy files and directories, giving modifications,
+   additions, deletions and other changes to items in the working copy.
   </p>
  </div>
 
@@ -44,7 +54,7 @@
      <dd>
 
       <p class="para">
-       状態を取得したいファイルやディレクトリへのパス。
+       Local path to file or directory to retrieve status of.
       </p>
       <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">相対パスは、PHP バイナリが存在するディレクトリを基準として解決されます。呼び出しもとのスクリプトの作業ディレクトリを基準とするには、<span class="function"><a href="function.realpath.html" class="function">realpath()</a></span> あるいは dirname(__FILE__) を使用してください。</span></p></blockquote>
      </dd>
@@ -57,13 +67,12 @@
      <dd>
 
       <p class="para">
-       <strong><code>SVN_NON_RECURSIVE</code></strong>、
-       <strong><code>SVN_ALL</code></strong> (変更状態にかかわらずすべて)、
-       <strong><code>SVN_SHOW_UPDATES</code></strong> (最新ではなくなっている項目のエントリを追加)、
-       <strong><code>SVN_NO_IGNORE</code></strong> (新しいファイルを検索する際に
-       <em>svn:ignore</em> プロパティを無視する)
-       および <strong><code>SVN_IGNORE_EXTERNALS</code></strong>
-       の任意の組み合わせ。
+       Any combination of <strong><code>Svn::NON_RECURSIVE</code></strong>,
+       <strong><code>Svn::ALL</code></strong> (regardless of modification status),
+       <strong><code>Svn::SHOW_UPDATES</code></strong> (entries will be added for items
+       that are out-of-date), <strong><code>Svn::NO_IGNORE</code></strong> (disregard
+       <code class="literal">svn:ignore</code> properties when scanning for new files)
+       and <strong><code>Svn::IGNORE_EXTERNALS</code></strong>.
       </p>
      </dd>
 
@@ -77,56 +86,57 @@
  <div class="refsect1 returnvalues" id="refsect1-function.svn-status-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   数値添字の配列を返します。配列の各要素は連想配列となり、
-   リポジトリ内のアイテムの状態の詳細を表します。
+   Returns a numerically indexed array of associative arrays detailing
+   the status of items in the repository:
   </p>
   <div class="example-contents screen">
 <div class="returnvaluescode"><pre class="returnvaluescode">Array (
     [0] =&gt; Array (
-        // アイテムの情報
+        // information on item
     )
     [1] =&gt; ...
 )</pre>
 </div>
   </div>
   <p class="para">
-   アイテムの情報を表す連想配列には、以下のようなキーが含まれます。
+   The information on the item is an associative array that can contain
+   the following keys:
   </p>
   <dl>
 
    
     <dt>
-<var class="varname"><var class="varname">path</var></var></dt>
+<var class="varname">path</var></dt>
 
      <dd>
 
       <span class="simpara">
-       このエントリのファイル/ディレクトリの、ローカルファイルシステム上でのパスを表す文字列。
+       String path to file/directory of this entry on local filesystem.
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">text_status</var></var></dt>
+<var class="varname">text_status</var></dt>
 
      <dd>
 
       <span class="simpara">
-       アイテムのテキストの状態。とりうる値については <a href="svn.constants.html#svn.constants.status" class="link">状態に関する定数</a> を参照ください。
+       Status of item&#039;s text. とりうる値については <a href="svn.constants.html#svn.constants.status" class="link">状態に関する定数</a> を参照ください。
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">repos_text_status</var></var></dt>
+<var class="varname">repos_text_status</var></dt>
 
      <dd>
 
       <span class="simpara">
-       リポジトリ内でのアイテムのテキストの状態。正確な値となるのは、
-       <code class="parameter">update</code> が <strong><code>TRUE</code></strong> の場合のみです。
+       Status of item&#039;s text in repository. Only accurate if
+       <code class="parameter">update</code> was set to <strong><code>true</code></strong>.
        とりうる値については <a href="svn.constants.html#svn.constants.status" class="link">状態に関する定数</a> を参照ください。
       </span>
      </dd>
@@ -134,65 +144,63 @@
    
    
     <dt>
-<var class="varname"><var class="varname">prop_status</var></var></dt>
+<var class="varname">prop_status</var></dt>
 
      <dd>
 
       <span class="simpara">
-       アイテムのプロパティの状態。とりうる値については <a href="svn.constants.html#svn.constants.status" class="link">状態に関する定数</a> を参照ください。
+       Status of item&#039;s properties. とりうる値については <a href="svn.constants.html#svn.constants.status" class="link">状態に関する定数</a> を参照ください。
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">repos_prop_status</var></var></dt>
+<var class="varname">repos_prop_status</var></dt>
 
      <dd>
 
       <span class="simpara">
-       リポジトリ内でのアイテムのプロパティの状態。正確な値となるのは、
-       <code class="parameter">update</code> が <strong><code>TRUE</code></strong> の場合のみです。
-       とりうる値については <a href="svn.constants.html#svn.constants.status" class="link">状態に関する定数</a> を参照ください。
+       Status of item&#039;s property in repository. Only accurate if
+       <code class="parameter">update</code> was set to <strong><code>true</code></strong>. とりうる値については <a href="svn.constants.html#svn.constants.status" class="link">状態に関する定数</a> を参照ください。
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">locked</var></var></dt>
+<var class="varname">locked</var></dt>
 
      <dd>
 
       <span class="simpara">
-       そのアイテムがロックされているかどうか
-       (設定されるのは <strong><code>TRUE</code></strong> の場合のみです)。
+       Whether or not the item is locked. (Only set if <strong><code>true</code></strong>.)
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">copied</var></var></dt>
+<var class="varname">copied</var></dt>
 
      <dd>
 
       <span class="simpara">
-       アイテムがコピーされている (追加予約されている) かどうか。
-       (設定されるのは <strong><code>TRUE</code></strong> の場合のみです)。
+       Whether or not the item was copied (scheduled for addition with
+       history). (Only set if <strong><code>true</code></strong>.)
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">switched</var></var></dt>
+<var class="varname">switched</var></dt>
 
      <dd>
 
       <span class="simpara">
-       switch コマンドによる変更がされているかどうか。
-       (設定されるのは <strong><code>TRUE</code></strong> の場合のみです)。
+       Whether or not the item was switched using the switch command.
+       (Only set if <strong><code>true</code></strong>)
       </span>
      </dd>
 
@@ -200,84 +208,84 @@
   </dl>
 
   <p class="para">
-   これらのキーは、バージョン管理されているアイテムについてのみ設定されます。
+   These keys are only set if the item is versioned:
   </p>
   <dl>
 
    
     <dt>
-<var class="varname"><var class="varname">name</var></var></dt>
+<var class="varname">name</var></dt>
 
      <dd>
 
       <span class="simpara">
-       リポジトリ内でのアイテムのベース名。
+       Base name of item in repository.
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">url</var></var></dt>
+<var class="varname">url</var></dt>
 
      <dd>
 
       <span class="simpara">
-       リポジトリ内でのアイテムの URL。
+       URL of item in repository.
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">repos</var></var></dt>
+<var class="varname">repos</var></dt>
 
      <dd>
 
       <span class="simpara">
-       リポジトリのベース URL。
+       Base URL of repository.
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">revision</var></var></dt>
+<var class="varname">revision</var></dt>
 
      <dd>
 
       <span class="simpara">
-       作業コピーのリビジョン番号。
+       Integer revision of item in working copy.
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">kind</var></var></dt>
+<var class="varname">kind</var></dt>
 
      <dd>
 
       <span class="simpara">
-       アイテムの形式。file あるいは directory のいずれか。とりうる値については <a href="svn.constants.html#svn.constants.type" class="link">型に関する定数</a> を参照ください。
+       Type of item, i.e. file or directory. とりうる値については <a href="svn.constants.html#svn.constants.type" class="link">型に関する定数</a> を参照ください。
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">schedule</var></var></dt>
+<var class="varname">schedule</var></dt>
 
      <dd>
 
       <span class="simpara">
-       そのアイテムに予定されているアクション (追加や削除など)。
-       これらのマジックナンバーに対応する定数は定義されていません。
-       定数を定義するには、次のようにします。
+       Scheduled action for item, i.e. addition or deletion. Constants
+       for these magic numbers are not available, they can
+       be emulated by using:
       </span>
        <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">defined</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_normal'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_normal'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;何も予定なし<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_add'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;追加予定<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_delete'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;削除予定<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_replace'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;追加・削除予定<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">defined</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_normal'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_normal'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;nothing&nbsp;special<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_add'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;item&nbsp;will&nbsp;be&nbsp;added<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_delete'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;item&nbsp;will&nbsp;be&nbsp;deleted<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'svn_wc_schedule_replace'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;item&nbsp;will&nbsp;be&nbsp;added&nbsp;and&nbsp;deleted<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
       </div>
@@ -287,104 +295,100 @@
    
    
     <dt>
-<var class="varname"><var class="varname">deleted</var></var></dt>
+<var class="varname">deleted</var></dt>
 
      <dd>
 
       <span class="simpara">
-       アイテムが削除されたが、親リビジョンのログがあるかどうか
-       (設定されるのは <strong><code>TRUE</code></strong> の場合のみです)。
+       Whether or not the item was deleted, but parent revision lags
+       behind. (Only set if <strong><code>true</code></strong>.)
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">absent</var></var></dt>
+<var class="varname">absent</var></dt>
 
      <dd>
 
       <span class="simpara">
-       アイテムが行方不明、
-       つまり Subversion 上では存在するはずなのに実際には存在しない
-       という状態になっているかどうか
-       (設定されるのは <strong><code>TRUE</code></strong> の場合のみです)。
+       Whether or not the item is absent, that is, Subversion knows that
+       there should be something there but there isn&#039;t. (Only set if
+       <strong><code>true</code></strong>.)
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">incomplete</var></var></dt>
+<var class="varname">incomplete</var></dt>
 
      <dd>
 
       <span class="simpara">
        Whether or not the entries file for a directory is incomplete.
-       (設定されるのは <strong><code>TRUE</code></strong> の場合のみです)。
+       (Only set if <strong><code>true</code></strong>.)
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">cmt_date</var></var></dt>
+<var class="varname">cmt_date</var></dt>
 
      <dd>
 
       <span class="simpara">
-       最終更新日時を表す Unix タイムスタンプ
-       (<code class="parameter">update</code> の影響を受けません)。
+       Integer Unix timestamp of last commit date. (Unaffected by <code class="parameter">update</code>.)
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">cmt_rev</var></var></dt>
+<var class="varname">cmt_rev</var></dt>
 
      <dd>
 
       <span class="simpara">
-       最終更新時のリビジョン
-       (<code class="parameter">update</code> の影響を受けません)。
+       Integer revision of last commit. (Unaffected by <code class="parameter">update</code>.)
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">cmt_author</var></var></dt>
+<var class="varname">cmt_author</var></dt>
 
      <dd>
 
       <span class="simpara">
-       最終更新者
-       (<code class="parameter">update</code> の影響を受けません)。
+       String author of last commit. (Unaffected by <code class="parameter">update</code>.)
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">prop_time</var></var></dt>
+<var class="varname">prop_time</var></dt>
 
      <dd>
 
       <span class="simpara">
-       プロパティの最新日時を表す Unix タイムスタンプ。
+       Integer Unix timestamp of last up-to-date time for properties
       </span>
      </dd>
 
    
    
     <dt>
-<var class="varname"><var class="varname">text_time</var></var></dt>
+<var class="varname">text_time</var></dt>
 
      <dd>
 
       <span class="simpara">
-       テキストの最新日時を表す Unix タイムスタンプ。
+       Integer Unix timestamp of last up-to-date time for text
       </span>
      </dd>
 
@@ -392,16 +396,6 @@
    
   </dl>
 
- </div>
-
-
- <div class="refsect1 notes" id="refsect1-function.svn-status-notes">
-  <h3 class="title">注意</h3>
-  <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は、
-<em class="emphasis">実験的</em> なものです。この関数の動作・
-名前・その他ドキュメントに書かれている事項は、予告なく、将来的な PHP
-のリリースにおいて変更される可能性があります。
-この関数は自己責任で使用してください。</p></div>
  </div>
 
 
@@ -412,10 +406,10 @@
  <div class="refsect1 examples" id="refsect1-function.svn-status-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5219">
-    <p><strong>例1 基本的な使用例</strong></p>
+   <div class="example" id="example-4572">
+    <p><strong>例1 Basic example</strong></p>
     <div class="example-contents"><p>
-     これは、この関数の基本的な使用法を示すものです。
+     This example demonstrates a basic, theoretical usage of this function.
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -431,16 +425,16 @@
 Array (
     [0] =&gt; Array (
         [path] =&gt; /home/bob/wc/sandwich.txt
-        [text_status] =&gt; 8 // アイテムが修正されました
-        [repos_text_status] =&gt; 1 // 情報が存在しません。update を使用します
-        [prop_status] =&gt; 3 // 変更されていません
-        [repos_prop_status] =&gt; 1 // 情報が存在しません。update を使用します
+        [text_status] =&gt; 8 // item was modified
+        [repos_text_status] =&gt; 1 // no information available, use update
+        [prop_status] =&gt; 3 // no changes
+        [repos_prop_status] =&gt; 1 // no information available, use update
         [name] =&gt; sandwich.txt
         [url] =&gt; http://www.example.com/svnroot/deli/trunk/sandwich.txt
         [repos] =&gt; http://www.example.com/svnroot/
         [revision] =&gt; 123
-        [kind] =&gt; 1 // ファイル
-        [schedule] =&gt; 0 // 特別なアクションは予定されていません
+        [kind] =&gt; 1 // file
+        [schedule] =&gt; 0 // no special actions scheduled
         [cmt_date] =&gt; 1165543135
         [cmt_rev] =&gt; 120
         [cmt_author] =&gt; Alice
@@ -455,21 +449,26 @@ Array (
  </div>
 
 
+ <div class="refsect1 notes" id="refsect1-function.svn-status-notes">
+  <h3 class="title">注意</h3>
+  <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は、
+<em class="emphasis">実験的</em> なものです。この関数の動作・
+名前・その他ドキュメントに書かれている事項は、予告なく、将来的な PHP
+のリリースにおいて変更される可能性があります。
+この関数は自己責任で使用してください。</p></div>
+ </div>
+
+
  <div class="refsect1 seealso" id="refsect1-function.svn-status-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><span class="function"><a href="function.svn-update.html" class="function" rel="rdfs-seeAlso">svn_update()</a> - 作業コピーをアップデートする</span></li>
+    <li class="member"><span class="function"><a href="function.svn-update.html" class="function" rel="rdfs-seeAlso">svn_update()</a> - Update working copy</span></li>
     <li class="member"><span class="function"><a href="function.svn-log.html" class="function" rel="rdfs-seeAlso">svn_log()</a> - 指定したリポジトリ URL のコミットログメッセージを返す</span></li>
-    <li class="member"><a href="http://svnbook.red-bean.com/en/1.2/svn.ref.svn.c.status.html" class="link external">&raquo;&nbsp;SVN ドキュメントの svn status</a></li>
+    <li class="member"><a href="http://svnbook.red-bean.com/en/1.2/svn.ref.svn.c.status.html" class="link external">&raquo;&nbsp;SVN documentation for svn status</a></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.svn-revert.html">svn_revert</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.svn-update.html">svn_update</a></div>
- <div class="up"><a href="ref.svn.html">SVN 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

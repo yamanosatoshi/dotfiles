@@ -3,30 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>行を CSV 形式にフォーマットし、ファイルポインタに書き込む</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.fpassthru.html">fpassthru</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.fputs.html">fputs</a></div>
- <div class="up"><a href="ref.filesystem.html">ファイルシステム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.fputcsv" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.fpassthru.html">« fpassthru</a></li>
+      <li style="float: right;"><a href="function.fputs.html">fputs »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">ファイルシステム 関数</a></li>
+    <li>行を CSV 形式にフォーマットし、ファイルポインタに書き込む</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.fputcsv" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">fputcsv</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7)</p><p class="refpurpose"><span class="refname">fputcsv</span> &mdash; <span class="dc-title">行を CSV 形式にフォーマットし、ファイルポインタに書き込む</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">fputcsv</span> &mdash; <span class="dc-title">行を CSV 形式にフォーマットし、ファイルポインタに書き込む</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.fputcsv-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">int</span> <span class="methodname"><strong>fputcsv</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$handle</code></span>
-   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$fields</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$delimiter</code><span class="initializer"> = &quot;,&quot;</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$enclosure</code><span class="initializer"> = &#039;&quot;&#039;</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$escape_char</code><span class="initializer"> = &quot;\&quot;</span></span>
-  ]]] )</div>
+   <span class="methodname"><strong>fputcsv</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">resource</span> <code class="parameter">$handle</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$fields</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$separator</code><span class="initializer"> = &quot;,&quot;</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$enclosure</code><span class="initializer"> = &#039;&quot;&#039;</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$escape_char</code><span class="initializer"> = &quot;\\&quot;</span></span><br>): <span class="type"><span class="type">int</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>fputcsv()</strong></span> は、行（<code class="parameter">fields</code>
@@ -62,19 +69,19 @@
      <dd>
 
       <p class="para">
-       値の配列。
+       文字列の配列。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">delimiter</code></dt>
+<code class="parameter">separator</code></dt>
 
      <dd>
 
       <p class="para">
-       オプションの <code class="parameter">delimiter</code> はフィールド区切り文字
+       オプションの <code class="parameter">separator</code> はフィールド区切り文字
        (一文字だけ) を指定します。
       </p>
      </dd>
@@ -101,7 +108,8 @@
 
       <p class="para">
        オプションの <code class="parameter">escape_char</code> は、エスケープ文字
-       (一文字だけ) を指定します。
+       (最大で一文字) を指定します。
+       空文字(<code class="literal">&quot;&quot;</code>) を指定すると、プロプライエタリなエスケープ機構が無効になります。
       </p>
      </dd>
 
@@ -109,13 +117,19 @@
    </dl>
 
   </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    <code class="parameter">enclosure</code> がフィールド内に含まれる場合は、同じ文字を二度続けることでエスケープします。
+    ただし、その直前に <code class="parameter">escape_char</code> がある場合は別です。
+   </p>
+  </p></blockquote> 
  </div>
 
 
  <div class="refsect1 returnvalues" id="refsect1-function.fputcsv-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   書き込んだ文字列の長さを返します。失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   書き込んだ文字列の長さを返します。失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -135,9 +149,10 @@
 
      <tbody class="tbody">
       <tr>
-       <td>5.5.4</td>
+       <td>7.4.0</td>
        <td>
-        <code class="parameter">escape_char</code> パラメータが追加されました。
+        <code class="parameter">escape_char</code> パラメータが、
+        プロプライエタリなエスケープ機構を無効にするために空文字列を受け入れるようになりました。
        </td>
       </tr>
 
@@ -152,7 +167,7 @@
  <div class="refsect1 examples" id="refsect1-function.fputcsv-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2651">
+   <div class="example" id="example-2142">
     <p><strong>例1 <span class="function"><strong>fputcsv()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -161,7 +176,7 @@
 </code></div>
     </div>
 
-    <div class="example-contents"><p>上の例が書き出す <em>file.csv</em> の内容は、このようになります。</p></div>
+    <div class="example-contents"><p>上の例が書き出す <code class="literal">file.csv</code> の内容は、このようになります。</p></div>
     <div class="example-contents screen">
 <div class="cdata"><pre>
 aaa,bbb,ccc,dddd
@@ -179,7 +194,7 @@ aaa,bbb,ccc,dddd
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">
 マッキントッシュコンピュータ上で作成されたファイルを読み込む際に、
-<em>PHP</em> が行末を認識できないという問題が発生した場合、
+<code class="literal">PHP</code> が行末を認識できないという問題が発生した場合、
 実行時の設定オプション<a href="filesystem.configuration.html#ini.auto-detect-line-endings" class="link">auto_detect_line_endings</a> を有効にする必要が生じるかもしれません。</span>
 </p></blockquote>
  </div>
@@ -195,9 +210,4 @@ aaa,bbb,ccc,dddd
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.fpassthru.html">fpassthru</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.fputs.html">fputs</a></div>
- <div class="up"><a href="ref.filesystem.html">ファイルシステム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

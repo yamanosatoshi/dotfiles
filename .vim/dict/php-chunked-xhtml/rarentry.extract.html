@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>アーカイブのエントリを展開する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="class.rarentry.html">RarEntry</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="rarentry.getattr.html">RarEntry::getAttr</a></div>
- <div class="up"><a href="class.rarentry.html">RarEntry</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="rarentry.extract" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="class.rarentry.html">« RarEntry</a></li>
+      <li style="float: right;"><a href="rarentry.getattr.html">RarEntry::getAttr »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.rarentry.html">RarEntry</a></li>
+    <li>アーカイブのエントリを展開する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="rarentry.extract" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">RarEntry::extract</h1>
   <p class="verinfo">(PECL rar &gt;= 0.1)</p><p class="refpurpose"><span class="refname">RarEntry::extract</span> &mdash; <span class="dc-title">アーカイブのエントリを展開する</span></p>
@@ -20,12 +33,7 @@
  <div class="refsect1 description" id="refsect1-rarentry.extract-description">
   <h3 class="title">説明</h3>
    <div class="methodsynopsis dc-description">
-    <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><strong>RarEntry::extract</strong></span>
-     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$dir</code></span>
-    [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$filepath</code><span class="initializer"> = &quot;&quot;</span></span>
-    [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$password</code><span class="initializer"> = NULL</span></span>
-    [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$extended_data</code><span class="initializer"> = false</span></span>
-   ]]] )</div>
+    <span class="modifier">public</span> <span class="methodname"><strong>RarEntry::extract</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$dir</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$filepath</code><span class="initializer"> = &quot;&quot;</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$password</code><span class="initializer"> = NULL</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$extended_data</code><span class="initializer"> = <strong><code>false</code></strong></span></span><br>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <span class="methodname"><strong>RarEntry::extract()</strong></span> は、エントリのデータを展開します。
@@ -84,9 +92,9 @@
        このパラメータが省略されていてエントリが暗号化されていた場合は、もし
        <span class="function"><a href="rararchive.open.html" class="function">rar_open()</a></span> でパスワードを指定していればそれを使います。
        このパラメータや <span class="function"><a href="rararchive.open.html" class="function">rar_open()</a></span> で指定したパスワードが間違っていたときは、
-       CRC チェックが失敗してこのメソッドが失敗し、<strong><code>FALSE</code></strong> を返します。
+       CRC チェックが失敗してこのメソッドが失敗し、<strong><code>false</code></strong> を返します。
        パスワードが要求されているときにパスワードを指定していなければ、
-       このメソッドは失敗して <strong><code>FALSE</code></strong> を返します。
+       このメソッドは失敗して <strong><code>false</code></strong> を返します。
        エントリが暗号化されているかどうかを知るには <span class="methodname"><a href="rarentry.isencrypted.html" class="methodname">RarEntry::isEncrypted()</a></span>
        を使います。
       </p>
@@ -101,7 +109,7 @@
     <dd>
 
      <p class="para">
-       <strong><code>TRUE</code></strong> にすると、NTFS の ACL や Unix のオーナー情報といった拡張情報が
+       <strong><code>true</code></strong> にすると、NTFS の ACL や Unix のオーナー情報といった拡張情報が
        アーカイブに設定されていれば、取り出したファイルにもそれを設定します。
      </p>
     </dd>
@@ -120,7 +128,7 @@
  <div class="refsect1 returnvalues" id="refsect1-rarentry.extract-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -140,14 +148,14 @@
 
      <tbody class="tbody">
       <tr>
-       <td>3.0.0</td>
+       <td>PECL rar 3.0.0</td>
        <td>
         <code class="parameter">extended_data</code> が追加されました。
        </td>
       </tr>
 
       <tr>
-       <td>3.0.0</td>
+       <td>PECL rar 3.0.0</td>
        <td>
         エントリ名が繰り返される RAR アーカイブも対応するようになりました。
        </td>
@@ -164,7 +172,7 @@
  <div class="refsect1 examples" id="refsect1-rarentry.extract-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-858">
+   <div class="example" id="example-758">
     <p><strong>例1 <span class="methodname"><strong>RarEntry::extract()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -174,7 +182,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-859">
+   <div class="example" id="example-759">
     <p><strong>例2 アーカイブ内のすべてのファイルを展開する方法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -193,15 +201,10 @@
   <p class="para">
    <ul class="simplelist">
     <li class="member"><span class="methodname"><a href="rarentry.getstream.html" class="methodname" rel="rdfs-seeAlso">RarEntry::getStream()</a> - このエントリのファイルハンドラを取得する</span></li>
-    <li class="member"><a href="wrappers.rar.html" class="link"><em>rar://</em> wrapper</a></li>
+    <li class="member"><a href="wrappers.rar.html" class="link"><code class="literal">rar://</code> wrapper</a></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="class.rarentry.html">RarEntry</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="rarentry.getattr.html">RarEntry::getAttr</a></div>
- <div class="up"><a href="class.rarentry.html">RarEntry</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -2,31 +2,42 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Retrieves cached information from APCu's data store</title>
+  <title>APCu のデータから、キャッシュされた情報を取得する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.apcu-add.html">apcu_add</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.apcu-cas.html">apcu_cas</a></div>
- <div class="up"><a href="ref.apcu.html">APCu 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.apcu-cache-info" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.apcu-add.html">« apcu_add</a></li>
+      <li style="float: right;"><a href="function.apcu-cas.html">apcu_cas »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.apcu.html">APCu 関数</a></li>
+    <li>APCu のデータから、キャッシュされた情報を取得する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.apcu-cache-info" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">apcu_cache_info</h1>
   <p class="verinfo">(PECL apcu &gt;= 4.0.0)</p><p class="refpurpose"><span class="refname">apcu_cache_info</span> &mdash; <span class="dc-title">
-   Retrieves cached information from APCu&#039;s data store
+   APCu のデータから、キャッシュされた情報を取得する
   </span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.apcu-cache-info-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>apcu_cache_info</strong></span>
-    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$limited</code><span class="initializer"> = false</span></span>
-  ] )</div>
+   <span class="methodname"><strong>apcu_cache_info</strong></span>(<span class="methodparam"><span class="type">bool</span> <code class="parameter">$limited</code><span class="initializer"> = <strong><code>false</code></strong></span></span>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
-   Retrieves cached information and meta-data from APC&#039;s data store.
+   APC のデータから、キャッシュされた情報およびメタデータを取得します。
   </p>
  </div>
 
@@ -43,9 +54,9 @@
      <dd>
 
       <p class="para">
-       If <code class="parameter">limited</code> is <strong><code>TRUE</code></strong>, the
-       return value will exclude the individual list of cache entries.  This
-       is useful when trying to optimize calls for statistics gathering.
+       <code class="parameter">limited</code> が <strong><code>true</code></strong> の場合は、
+       返り値にキャッシュエントリの個々の一覧が含まれません。
+       これは、統計情報の収集時に呼び出しを最適化したい場合などに有用です。
       </p>
      </dd>
 
@@ -59,12 +70,14 @@
  <div class="refsect1 returnvalues" id="refsect1-function.apcu-cache-info-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   Array of cached data (and meta-data)失敗した場合に <strong><code>FALSE</code></strong> を返します
+   キャッシュされたデータ（およびメタデータ）の配列を返します。
+   失敗した場合に <strong><code>false</code></strong> を返します
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <span class="simpara">
-    <span class="function"><strong>apcu_cache_info()</strong></span> will raise a warning if it is unable to
-    retrieve APC cache data. This typically occurs when APC is not enabled.
+    もし APC キャッシュのデータを取得できなかった場合、
+    <span class="function"><strong>apcu_cache_info()</strong></span> は警告を発生します。これが起こるのは、
+    一般的には APC が有効になっていない場合などです。
    </span>
   </p></blockquote>
  </div>
@@ -85,17 +98,17 @@
 
      <tbody class="tbody">
       <tr>
-       <td>3.0.11</td>
+       <td>PECL apcu 3.0.11</td>
        <td>
-        The <code class="parameter">limited</code> parameter was introduced.
+        <code class="parameter">limited</code> パラメータが追加されました。
        </td>
       </tr>
 
       <tr>
-       <td>3.0.16</td>
+       <td>PECL apcu 3.0.16</td>
        <td>
-        The &quot;<em>filehits</em>&quot; option for the
-        <code class="parameter">cache_type</code> parameter was introduced.
+        &quot;<code class="literal">filehits</code>&quot; オプションが
+        <code class="parameter">cache_type</code> パラメータに追加されました。
        </td>
       </tr>
 
@@ -110,8 +123,8 @@
  <div class="refsect1 examples" id="refsect1-function.apcu-cache-info-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-480">
-    <p><strong>例1 A <span class="function"><strong>apcu_cache_info()</strong></span> example</strong></p>
+   <div class="example" id="example-447">
+    <p><strong>例1 <span class="function"><strong>apcu_cache_info()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">apcu_cache_info</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -159,18 +172,13 @@ Array
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><a href="apcu.configuration.html" class="link">APCu configuration directives</a></li>
-    <li class="member"><span class="methodname"><a href="apcuiterator.gettotalsize.html" class="methodname" rel="rdfs-seeAlso">APCUIterator::getTotalSize()</a> - Get total cache size</span></li>
-    <li class="member"><span class="methodname"><a href="apcuiterator.gettotalhits.html" class="methodname" rel="rdfs-seeAlso">APCUIterator::getTotalHits()</a> - Get total cache hits</span></li>
-    <li class="member"><span class="methodname"><a href="apcuiterator.gettotalcount.html" class="methodname" rel="rdfs-seeAlso">APCUIterator::getTotalCount()</a> - Get total count</span></li>
+    <li class="member"><a href="apcu.configuration.html" class="link">APCu 設定ディレクティブ</a></li>
+    <li class="member"><span class="methodname"><a href="apcuiterator.gettotalsize.html" class="methodname" rel="rdfs-seeAlso">APCUIterator::getTotalSize()</a> - キャッシュのサイズの合計を取得する</span></li>
+    <li class="member"><span class="methodname"><a href="apcuiterator.gettotalhits.html" class="methodname" rel="rdfs-seeAlso">APCUIterator::getTotalHits()</a> - キャッシュヒットの総数を取得する</span></li>
+    <li class="member"><span class="methodname"><a href="apcuiterator.gettotalcount.html" class="methodname" rel="rdfs-seeAlso">APCUIterator::getTotalCount()</a> - 総数を取得する</span></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.apcu-add.html">apcu_add</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.apcu-cas.html">apcu_cas</a></div>
- <div class="up"><a href="ref.apcu.html">APCu 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

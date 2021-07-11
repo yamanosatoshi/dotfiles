@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>SQLインジェクション</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="security.database.storage.html">ストレージの暗号化</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="security.errors.html">エラーのレポート</a></div>
- <div class="up"><a href="security.database.html">データベースのセキュリティ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="security.database.sql-injection" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="security.database.storage.html">« ストレージの暗号化</a></li>
+      <li style="float: right;"><a href="security.errors.html">エラーのレポート »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="security.database.html">データベースのセキュリティ</a></li>
+    <li>SQLインジェクション</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="security.database.sql-injection" class="sect1">
     <h2 class="title">SQLインジェクション</h2>
     <p class="simpara">
      多くの開発者はSQLクエリがどのように改竄されるかということを余り気にかけておらず、またSQLクエリは信用できるものと考えているようです。
@@ -27,7 +40,7 @@
     </p>
     <p class="para">
      入力のチェックを怠っており、スーパーユーザーもしくはデータベース作成権限を持つユーザー以外のユーザーでデータベースに接続していないために、攻撃者はデータベースにスーパーユーザーを作成することが出来ます。
-     <div class="example" id="example-393">
+     <div class="example" id="example-382">
       <p><strong>例1 
        表示するデータを分割し ... そしてスーパーユーザーを作成します。(PostgreSQLの例)
       </strong></p>
@@ -38,9 +51,9 @@ $offset&nbsp;=&nbsp;$argv[0];&nbsp;//&nbsp;入力チェックが行われてい�
       </div>
 
      </div>
-      通常のユーザーは、<var class="varname"><var class="varname">$offset</var></var>が<acronym title="Uniform Resource Locator">URL</acronym>に埋め込まれている
+      通常のユーザーは、<var class="varname">$offset</var>が<acronym title="Uniform Resource Locator">URL</acronym>に埋め込まれている
       &#039;次へ&#039;または&#039;前へ&#039;リンクをクリックします。スクリプトは、受け取った
-      <var class="varname"><var class="varname">$offset</var></var>が数字であることを期待します。しかしながら、
+      <var class="varname">$offset</var>が数字であることを期待します。しかしながら、
       攻撃者は<span class="function"><a href="function.urlencode.html" class="function">urlencode()</a></span>された以下のような<acronym title="Uniform Resource Locator">URL</acronym>を追加
       することで攻撃を試みます。
       <div class="informalexample">
@@ -56,13 +69,13 @@ insert into pg_shadow(usename,usesysid,usesuper,usecatupd,passwd)
 
       </div>
       このようなことが行われると、スクリプトは攻撃者にスーパーユーザー権限での
-      アクセスを提供してしまいます。<em>0;</em>が正しいオフセット
+      アクセスを提供してしまいます。<code class="literal">0;</code>が正しいオフセット
       指していると同時に、クエリをそこで終端させていることに気をつけてください。
     </p>
     <blockquote class="note"><p><strong class="note">注意</strong>: 
      <p class="para">
       SQLパーサにクエリの残りの部分を無視させるために開発者によく使わ
-      れる技法として、SQLのコメント記号である<em>--</em>があ
+      れる技法として、SQLのコメント記号である<code class="literal">--</code>があ
       ります。
      </p>
     </p></blockquote>
@@ -71,14 +84,14 @@ insert into pg_shadow(usename,usesysid,usesuper,usecatupd,passwd)
     というものがあります。攻撃する者が必要とするものは、投稿された変数
     の中でSQL命令で使用される際に正しく扱われていないものがあるかどう
     かを確かめるだけです。これらのフィルタは、通常、
-    <em>SELECT</em>文の<em>WHERE, ORDER BY,
-    LIMIT</em>及び<em>OFFSET</em>句をカスタマイズするた
+    <code class="literal">SELECT</code>文の<code class="literal">WHERE, ORDER BY,
+    LIMIT</code>及び<code class="literal">OFFSET</code>句をカスタマイズするた
     めに前に置かれる形で設定されます。使用するデータベースが
-    <em>UNION</em>構造をサポートしている場合、
+    <code class="literal">UNION</code>構造をサポートしている場合、
     攻撃者は元のクエリに任意のテーブルからパスワードのリストを取得する
     クエリを追加しようとするかもしれません。
     暗号化されたパスワードフィールドを使用することが強く推奨されます。
-     <div class="example" id="example-394">
+     <div class="example" id="example-383">
       <p><strong>例2 
       記事...そして(全てのデータベースサーバーの)いくつかのパスワード
        のリストを表示する
@@ -91,7 +104,7 @@ $query&nbsp;&nbsp;=&nbsp;"SELECT&nbsp;id,&nbsp;name,&nbsp;inserted,&nbsp;size&nb
 
      </div>
      クエリの静的な部分は、以下のように全てのパスワードを外部にもらす別の
-     <em>SELECT</em>文と組み合わせることができます。
+     <code class="literal">SELECT</code>文と組み合わせることができます。
      <div class="informalexample">
       <div class="example-contents">
 <div class="cdata"><pre>
@@ -102,19 +115,19 @@ union select &#039;1&#039;, concat(uname||&#039;-&#039;||passwd) as name, &#039;
       </div>
 
      </div>
-     (<em>&#039;</em>及び<em>--</em>を使用する)
-     このクエリが<var class="varname"><var class="varname">$query</var></var>で使用される変数の１つに代入
+     (<code class="literal">&#039;</code>及び<code class="literal">--</code>を使用する)
+     このクエリが<var class="varname">$query</var>で使用される変数の１つに代入
      された場合、この悪意のあるクエリが実行されることになります。
     </p>
     <p class="para">
      SQL UPDATE もデータベースを攻撃するために使用されます。これらのク
      エリも切捨てたり新しいクエリを元のクエリに追加することによる攻撃
-     を受けます。しかし、攻撃者は<em>SET</em>句を使用する可
+     を受けます。しかし、攻撃者は<code class="literal">SET</code>句を使用する可
      能性があります。この場合、クエリを成功させるためにいくつかのスキー
      マ情報を保有する必要があります。これは、フォームの変数名や総当た
      り法により調べることができます。パスワードまたはユーザー名を保存す
      るフィールド用の命名記法はそう多くはありません。
-     <div class="example" id="example-395">
+     <div class="example" id="example-384">
      <p><strong>例3 
      パスワードのリセットから ... (全てのデータベースサーバーで)より多
      くの権限を得るまで
@@ -126,12 +139,12 @@ $query&nbsp;=&nbsp;"UPDATE&nbsp;usertable&nbsp;SET&nbsp;pwd='$pwd'&nbsp;WHERE&nb
       </div>
 
      </div>
-     しかし、悪意のあるユーザーは、管理者のパスワードを変更するために
-     値 <em>&#039; or uid like&#039;%admin%</em> を
-     <var class="varname"><var class="varname">$uid</var></var> に代入するか、または、より多くの権限を得
-     るために、単純に<var class="varname"><var class="varname">$pwd</var></var> に
-     <em>hehehe&#039;, trusted=100, admin=&#039;yes</em>と設定する可能性があります。この場合、このクエリは以下のように改謬されてし
-     まいます。
+     しかし、もし悪意のあるユーザーが管理者のパスワードを変更するために
+     値 <code class="literal">&#039; or uid like&#039;%admin%</code> を
+     <var class="varname">$uid</var> に代入するか、または、より多くの権限を得
+     るために、単純に<var class="varname">$pwd</var> に
+     <code class="literal">hehehe&#039;, trusted=100, admin=&#039;yes</code>と設定すると、
+     このクエリは以下のように改謬されてしまいます。
      <div class="informalexample">
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -145,7 +158,7 @@ $query&nbsp;=&nbsp;"UPDATE&nbsp;usertable&nbsp;SET&nbsp;pwd='$pwd'&nbsp;WHERE&nb
     <p class="para">
     恐ろしい例として、いくつかのデータベースホストのオペレーティン
     グシステムレベルのコマンドがアクセス可能となる方法を示します。
-     <div class="example" id="example-396">
+     <div class="example" id="example-385">
      <p><strong>例4 データベースホストのオペレーティングシステムを攻撃する
      (MSSQLサーバー)</strong></p>
       <div class="example-contents">
@@ -156,9 +169,9 @@ $query&nbsp;&nbsp;=&nbsp;"SELECT&nbsp;*&nbsp;FROM&nbsp;products&nbsp;WHERE&nbsp;
 
      </div>
      攻撃者が、値
-     <em>a%&#039; exec master..xp_cmdshell &#039;net user test testpass /ADD&#039; --</em>
-     を<var class="varname"><var class="varname">$prod</var></var>に投稿した場合、
-     <var class="varname"><var class="varname">$query</var></var> は以下のようになります。
+     <code class="literal">a%&#039; exec master..xp_cmdshell &#039;net user test testpass /ADD&#039; --</code>
+     を<var class="varname">$prod</var>に投稿した場合、
+     <var class="varname">$query</var> は以下のようになります。
      <div class="informalexample">
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -169,7 +182,7 @@ $query&nbsp;&nbsp;=&nbsp;"SELECT&nbsp;*&nbsp;FROM&nbsp;products<br />&nbsp;&nbsp
      </div>
      MSSQLサーバー−は、新規ユーザーをローカルアカウント用データベースに追
      加するコマンドを含むSQL命令をバッチ実行します。
-     このアプリケーションが<em>sa</em>で実行され、
+     このアプリケーションが<code class="literal">sa</code>で実行され、
      MSSQLSERVERサービスが充分な権限で実行されている場合、攻撃者は
      このマシンにアクセスする権限を有することになります。
     </p>
@@ -248,7 +261,7 @@ $query&nbsp;&nbsp;=&nbsp;"SELECT&nbsp;*&nbsp;FROM&nbsp;products<br />&nbsp;&nbsp
        <span class="function"><a href="function.settype.html" class="function">settype()</a></span>により暗黙の型変換を行うか、
        <span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span>により数値表現を使用することを検討
        してみてください。
-        <div class="example" id="example-397">
+        <div class="example" id="example-386">
          <p><strong>例5 ページング用のクエリを構築するためのより安全な方法</strong></p>
          <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -265,11 +278,11 @@ settype($order,&nbsp;'integer');<br />$query&nbsp;&nbsp;=&nbsp;"SELECT&nbsp;id,&
        データベースに渡される数値以外のユーザー入力を
        データベース固有の文字列エスケープ関数
        (<span class="function"><a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span>,
-        <span class="function"><a href="function.sqlite-escape-string.html" class="function">sqlite_escape_string()</a></span> など)
+        <span class="function"><strong>sqlite_escape_string()</strong></span> など)
        でクオートしてください。
         <span class="function"><a href="function.addslashes.html" class="function">addslashes()</a></span> のような汎用関数が使える場面は非常に限られています
         (MySQL をシングルバイト文字セットで使っていて、かつ
-        <var class="varname"><var class="varname">NO_BACKSLASH_ESCAPES</var></var> を無効にしている場合など)。
+        <var class="varname">NO_BACKSLASH_ESCAPES</var> を無効にしている場合など)。
         なので、<span class="function"><a href="function.addslashes.html" class="function">addslashes()</a></span> などの関数を使ってはいけません。
       </span>
      </li>
@@ -296,9 +309,4 @@ settype($order,&nbsp;'integer');<br />$query&nbsp;&nbsp;=&nbsp;"SELECT&nbsp;id,&
     攻撃されたアプリケーションを追跡する際には有効です。ログ自体は有益ではありませんが、含まれている情報は有益です。通常、より詳細なログをとる方が良いでしょう。
     </p>
    </div>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="security.database.storage.html">ストレージの暗号化</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="security.errors.html">エラーのレポート</a></div>
- <div class="up"><a href="security.database.html">データベースのセキュリティ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

@@ -3,33 +3,44 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>取得されたすべての行を配列として取得する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.pg-fetch-all-columns.html">pg_fetch_all_columns</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.pg-fetch-array.html">pg_fetch_array</a></div>
- <div class="up"><a href="ref.pgsql.html">PostgreSQL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.pg-fetch-all" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.pg-fetch-all-columns.html">« pg_fetch_all_columns</a></li>
+      <li style="float: right;"><a href="function.pg-fetch-array.html">pg_fetch_array »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pgsql.html">PostgreSQL 関数</a></li>
+    <li>取得されたすべての行を配列として取得する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.pg-fetch-all" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">pg_fetch_all</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">pg_fetch_all</span> &mdash; <span class="dc-title">取得されたすべての行を配列として取得する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">pg_fetch_all</span> &mdash; <span class="dc-title">取得されたすべての行を配列として取得する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.pg-fetch-all-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>pg_fetch_all</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$result</code></span>
-   )</div>
+   <span class="methodname"><strong>pg_fetch_all</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$result</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$result_type</code><span class="initializer"> = PGSQL_ASSOC</span></span>): <span class="type">array</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>pg_fetch_all()</strong></span>は、結果リソースのすべての行
    （レコード）を保持する配列を返します。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">この関数は、
-NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定します。</span></p></blockquote>
+NULL フィールドに PHPの <strong><code>null</code></strong> 値を設定します。</span></p></blockquote>
  </div>
 
 
@@ -66,18 +77,47 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
   </p>
   <p class="para">
    結果の行数が 0 だった場合、あるいはその他のエラーが発生した場合に
-   <strong><code>FALSE</code></strong> を返します。
+   <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
  
+ <div class="refsect1 changelog" id="refsect1-function.pg-fetch-all-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.1.0</td>
+       <td>
+        <code class="parameter">result_type</code> パラメータが追加されました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
  <div class="refsect1 examples" id="refsect1-function.pg-fetch-all-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2315">
+   <div class="example" id="example-1868">
     <p><strong>例1 PostgreSQL fetch all</strong></p>
     <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
+     <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php&nbsp;<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_pconnect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"An&nbsp;error&nbsp;occurred.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;authors"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"An&nbsp;error&nbsp;occurred.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_fetch_all</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
@@ -86,7 +126,7 @@ NULL フィールドに PHPの <strong><code>NULL</code></strong> 値を設定�
     <div class="example-contents"><p>上の例の出力は、
 たとえば以下のようになります。</p></div>
     <div class="example-contents screen">
-<div class="cdata"><pre>
+     <div class="cdata"><pre>
 Array
 (
     [0] =&gt; Array
@@ -121,9 +161,4 @@ Array
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.pg-fetch-all-columns.html">pg_fetch_all_columns</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.pg-fetch-array.html">pg_fetch_array</a></div>
- <div class="up"><a href="ref.pgsql.html">PostgreSQL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,27 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>クライアント識別子を設定します</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.oci-set-action.html">oci_set_action</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.oci-set-client-info.html">oci_set_client_info</a></div>
- <div class="up"><a href="ref.oci8.html">OCI8 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.oci-set-client-identifier" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.oci-set-call-timout.html">« oci_set_call_timeout</a></li>
+      <li style="float: right;"><a href="function.oci-set-client-info.html">oci_set_client_info »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.oci8.html">OCI8 関数</a></li>
+    <li>クライアント識別子を設定します</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.oci-set-client-identifier" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">oci_set_client_identifier</h1>
-  <p class="verinfo">(PHP 5.3.2, PHP 7, PECL OCI8 &gt;= 1.4.0)</p><p class="refpurpose"><span class="refname">oci_set_client_identifier</span> &mdash; <span class="dc-title">クライアント識別子を設定します</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.2, PHP 7, PHP 8, PECL OCI8 &gt;= 1.4.0)</p><p class="refpurpose"><span class="refname">oci_set_client_identifier</span> &mdash; <span class="dc-title">クライアント識別子を設定します</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.oci-set-client-identifier-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>oci_set_client_identifier</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$connection</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$client_identifier</code></span>
-   )</div>
+   <span class="methodname"><strong>oci_set_client_identifier</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$connection</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$client_identifier</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    同一のデータベース・ユーザーとして認証するライトウェイト・アプリケーションのユーザーを識別するために、
@@ -34,10 +44,10 @@
    クライアント識別子がデータベースに登録されます。これは一般的にSQLステートメントが実行されるときに起こります。
   </p>
   <p class="para">
-   <em>SELECT SYS_CONTEXT(&#039;USERENV&#039;,&#039;CLIENT_IDENTIFIER&#039;)
-   FROM DUAL</em> などとして、クライアント識別子を後に問い合わせることができます。
-   <em>V$SESSION</em> のようなデータベース管理ビューにも同じ値が含まれています。
-   それは <em>DBMS_MONITOR.CLIENT_ID_TRACE_ENABLE</em>
+   <code class="literal">SELECT SYS_CONTEXT(&#039;USERENV&#039;,&#039;CLIENT_IDENTIFIER&#039;)
+   FROM DUAL</code> などとして、クライアント識別子を後に問い合わせることができます。
+   <code class="literal">V$SESSION</code> のようなデータベース管理ビューにも同じ値が含まれています。
+   それは <code class="literal">DBMS_MONITOR.CLIENT_ID_TRACE_ENABLE</code>
    と一緒に追跡のために使われることができます。
    それは監査のために使われることができます。
   </p>
@@ -85,7 +95,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.oci-set-client-identifier-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -93,7 +103,7 @@
  <div class="refsect1 examples" id="refsect1-function.oci-set-client-identifier-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2280">
+   <div class="example" id="example-1837">
     <p><strong>例1 クライアント識別子をアプリケーションのユーザーに設定する</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -124,14 +134,10 @@
     <li class="member"><span class="function"><a href="function.oci-set-module-name.html" class="function" rel="rdfs-seeAlso">oci_set_module_name()</a> - モジュール名を設定します</span></li>
     <li class="member"><span class="function"><a href="function.oci-set-action.html" class="function" rel="rdfs-seeAlso">oci_set_action()</a> - アクション名を設定します</span></li>
     <li class="member"><span class="function"><a href="function.oci-set-client-info.html" class="function" rel="rdfs-seeAlso">oci_set_client_info()</a> - クライアント情報を設定する</span></li>
+    <li class="member"><span class="function"><a href="function.oci-set-db-operation.html" class="function" rel="rdfs-seeAlso">oci_set_db_operation()</a> - Sets the database operation</span></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.oci-set-action.html">oci_set_action</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.oci-set-client-info.html">oci_set_client_info</a></div>
- <div class="up"><a href="ref.oci8.html">OCI8 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

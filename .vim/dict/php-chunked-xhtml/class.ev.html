@@ -3,22 +3,35 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Ev クラス</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="ev.periodic-modes.html">Periodic ウォッチャーの操作モード</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="ev.backend.html">Ev::backend</a></div>
- <div class="up"><a href="book.ev.html">Ev</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="class.ev" class="reference">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ev.periodic-modes.html">« Periodic ウォッチャーの操作モード</a></li>
+      <li style="float: right;"><a href="ev.backend.html">Ev::backend »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.ev.html">Ev</a></li>
+    <li>Ev クラス</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.ev" class="reference">
  <h1 class="title">Ev クラス</h1>
  
  <div class="partintro"><p class="verinfo">(PECL ev &gt;= 0.2.0)</p>
 
   <div class="section" id="ev.intro">
-   <h2 class="title">導入</h2>
+   <h2 class="title">はじめに</h2>
    <p class="para">
-    Ev はシングルトンで、デフォルトのループへのアクセスや各種共通操作へのアクセスを提供します。
+    Ev は静的クラスで、デフォルトのループへのアクセスや各種共通操作へのアクセスを提供します。
    </p>
   </div>
 
@@ -42,240 +55,206 @@
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-auto"><var class="varname">FLAG_AUTO</var></a></var>
-     <span class="initializer"> = 0</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-auto"><var class="varname">FLAG_AUTO</var></a></var><span class="initializer"> = 0</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-noenv"><var class="varname">FLAG_NOENV</var></a></var>
-     <span class="initializer"> = 16777216</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-noenv"><var class="varname">FLAG_NOENV</var></a></var><span class="initializer"> = 16777216</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-forkcheck"><var class="varname">FLAG_FORKCHECK</var></a></var>
-     <span class="initializer"> = 33554432</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-forkcheck"><var class="varname">FLAG_FORKCHECK</var></a></var><span class="initializer"> = 33554432</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-noinotify"><var class="varname">FLAG_NOINOTIFY</var></a></var>
-     <span class="initializer"> = 1048576</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-noinotify"><var class="varname">FLAG_NOINOTIFY</var></a></var><span class="initializer"> = 1048576</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-signalfd"><var class="varname">FLAG_SIGNALFD</var></a></var>
-     <span class="initializer"> = 2097152</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-signalfd"><var class="varname">FLAG_SIGNALFD</var></a></var><span class="initializer"> = 2097152</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-nosigmask"><var class="varname">FLAG_NOSIGMASK</var></a></var>
-     <span class="initializer"> = 4194304</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-nosigmask"><var class="varname">FLAG_NOSIGMASK</var></a></var><span class="initializer"> = 4194304</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.run-nowait"><var class="varname">RUN_NOWAIT</var></a></var>
-     <span class="initializer"> = 1</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.run-nowait"><var class="varname">RUN_NOWAIT</var></a></var><span class="initializer"> = 1</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.run-once"><var class="varname">RUN_ONCE</var></a></var>
-     <span class="initializer"> = 2</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.run-once"><var class="varname">RUN_ONCE</var></a></var><span class="initializer"> = 2</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.break-cancel"><var class="varname">BREAK_CANCEL</var></a></var>
-     <span class="initializer"> = 0</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.break-cancel"><var class="varname">BREAK_CANCEL</var></a></var><span class="initializer"> = 0</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.break-one"><var class="varname">BREAK_ONE</var></a></var>
-     <span class="initializer"> = 1</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.break-one"><var class="varname">BREAK_ONE</var></a></var><span class="initializer"> = 1</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.break-all"><var class="varname">BREAK_ALL</var></a></var>
-     <span class="initializer"> = 2</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.break-all"><var class="varname">BREAK_ALL</var></a></var><span class="initializer"> = 2</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.minpri"><var class="varname">MINPRI</var></a></var>
-     <span class="initializer"> = -2</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.minpri"><var class="varname">MINPRI</var></a></var><span class="initializer"> = -2</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.maxpri"><var class="varname">MAXPRI</var></a></var>
-     <span class="initializer"> = 2</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.maxpri"><var class="varname">MAXPRI</var></a></var><span class="initializer"> = 2</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.read"><var class="varname">READ</var></a></var>
-     <span class="initializer"> = 1</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.read"><var class="varname">READ</var></a></var><span class="initializer"> = 1</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.write"><var class="varname">WRITE</var></a></var>
-     <span class="initializer"> = 2</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.write"><var class="varname">WRITE</var></a></var><span class="initializer"> = 2</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.timer"><var class="varname">TIMER</var></a></var>
-     <span class="initializer"> = 256</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.timer"><var class="varname">TIMER</var></a></var><span class="initializer"> = 256</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.periodic"><var class="varname">PERIODIC</var></a></var>
-     <span class="initializer"> = 512</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.periodic"><var class="varname">PERIODIC</var></a></var><span class="initializer"> = 512</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.signal"><var class="varname">SIGNAL</var></a></var>
-     <span class="initializer"> = 1024</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.signal"><var class="varname">SIGNAL</var></a></var><span class="initializer"> = 1024</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.child"><var class="varname">CHILD</var></a></var>
-     <span class="initializer"> = 2048</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.child"><var class="varname">CHILD</var></a></var><span class="initializer"> = 2048</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.stat"><var class="varname">STAT</var></a></var>
-     <span class="initializer"> = 4096</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.stat"><var class="varname">STAT</var></a></var><span class="initializer"> = 4096</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.idle"><var class="varname">IDLE</var></a></var>
-     <span class="initializer"> = 8192</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.idle"><var class="varname">IDLE</var></a></var><span class="initializer"> = 8192</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.prepare"><var class="varname">PREPARE</var></a></var>
-     <span class="initializer"> = 16384</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.prepare"><var class="varname">PREPARE</var></a></var><span class="initializer"> = 16384</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.check"><var class="varname">CHECK</var></a></var>
-     <span class="initializer"> = 32768</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.check"><var class="varname">CHECK</var></a></var><span class="initializer"> = 32768</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.embed"><var class="varname">EMBED</var></a></var>
-     <span class="initializer"> = 65536</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.embed"><var class="varname">EMBED</var></a></var><span class="initializer"> = 65536</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.custom"><var class="varname">CUSTOM</var></a></var>
-     <span class="initializer"> = 16777216</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.custom"><var class="varname">CUSTOM</var></a></var><span class="initializer"> = 16777216</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.error"><var class="varname">ERROR</var></a></var>
-     <span class="initializer"> = 2147483648</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.error"><var class="varname">ERROR</var></a></var><span class="initializer"> = 2147483648</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-select"><var class="varname">BACKEND_SELECT</var></a></var>
-     <span class="initializer"> = 1</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-select"><var class="varname">BACKEND_SELECT</var></a></var><span class="initializer"> = 1</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-poll"><var class="varname">BACKEND_POLL</var></a></var>
-     <span class="initializer"> = 2</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-poll"><var class="varname">BACKEND_POLL</var></a></var><span class="initializer"> = 2</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-epoll"><var class="varname">BACKEND_EPOLL</var></a></var>
-     <span class="initializer"> = 4</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-epoll"><var class="varname">BACKEND_EPOLL</var></a></var><span class="initializer"> = 4</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-kqueue"><var class="varname">BACKEND_KQUEUE</var></a></var>
-     <span class="initializer"> = 8</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-kqueue"><var class="varname">BACKEND_KQUEUE</var></a></var><span class="initializer"> = 8</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-devpoll"><var class="varname">BACKEND_DEVPOLL</var></a></var>
-     <span class="initializer"> = 16</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-devpoll"><var class="varname">BACKEND_DEVPOLL</var></a></var><span class="initializer"> = 16</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-port"><var class="varname">BACKEND_PORT</var></a></var>
-     <span class="initializer"> = 32</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-port"><var class="varname">BACKEND_PORT</var></a></var><span class="initializer"> = 32</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-all"><var class="varname">BACKEND_ALL</var></a></var>
-     <span class="initializer"> = 63</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-all"><var class="varname">BACKEND_ALL</var></a></var><span class="initializer"> = 63</span>
     ;</div>
 
     <div class="fieldsynopsis">
      <span class="modifier">const</span>
-     <span class="type">integer</span>
-      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-mask"><var class="varname">BACKEND_MASK</var></a></var>
-     <span class="initializer"> = 65535</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-mask"><var class="varname">BACKEND_MASK</var></a></var><span class="initializer"> = 65535</span>
     ;</div>
 
 
@@ -284,153 +263,86 @@
    <span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">int</span> 
-   <span class="methodname"><a href="ev.backend.html" class="methodname">backend</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="methodname"><a href="ev.backend.html" class="methodname">backend</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">int</span> 
-   <span class="methodname"><a href="ev.depth.html" class="methodname">depth</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="methodname"><a href="ev.depth.html" class="methodname">depth</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="ev.embeddablebackends.html" class="methodname">embeddableBackends</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="methodname"><a href="ev.embeddablebackends.html" class="methodname">embeddableBackends</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="ev.feedsignal.html" class="methodname">feedSignal</a></span>
-    ( <span class="methodparam">
+   <span class="methodname"><a href="ev.feedsignal.html" class="methodname">feedSignal</a></span>(<span class="methodparam">
     <span class="type">int</span>
      <code class="parameter">$signum</code>
-   </span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   </span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="ev.feedsignalevent.html" class="methodname">feedSignalEvent</a></span>
-    ( <span class="methodparam">
+   <span class="methodname"><a href="ev.feedsignalevent.html" class="methodname">feedSignalEvent</a></span>(<span class="methodparam">
     <span class="type">int</span>
      <code class="parameter">$signum</code>
-   </span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   </span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">int</span> 
-   <span class="methodname"><a href="ev.iteration.html" class="methodname">iteration</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="methodname"><a href="ev.iteration.html" class="methodname">iteration</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">double</span> 
-   <span class="methodname"><a href="ev.now.html" class="methodname">now</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="methodname"><a href="ev.now.html" class="methodname">now</a></span>(): <span class="type">float</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="ev.nowupdate.html" class="methodname">nowUpdate</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="methodname"><a href="ev.nowupdate.html" class="methodname">nowUpdate</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="ev.recommendedbackends.html" class="methodname">recommendedBackends</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="methodname"><a href="ev.recommendedbackends.html" class="methodname">recommendedBackends</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="ev.resume.html" class="methodname">resume</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="methodname"><a href="ev.resume.html" class="methodname">resume</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="ev.run.html" class="methodname">run</a></span>
-    ([ <span class="methodparam">
+   <span class="methodname"><a href="ev.run.html" class="methodname">run</a></span>(<span class="methodparam">
     <span class="type">int</span>
      <code class="parameter">$flags</code>
-   </span>
-  ] )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="initializer"> = ?</span></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="ev.sleep.html" class="methodname">sleep</a></span>
-    ( <span class="methodparam">
-    <span class="type">double</span>
+   <span class="methodname"><a href="ev.sleep.html" class="methodname">sleep</a></span>(<span class="methodparam">
+    <span class="type">float</span>
      <code class="parameter">$seconds</code>
-   </span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   </span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="ev.stop.html" class="methodname">stop</a></span>
-    ([ <span class="methodparam">
+   <span class="methodname"><a href="ev.stop.html" class="methodname">stop</a></span>(<span class="methodparam">
     <span class="type">int</span>
      <code class="parameter">$how</code>
-   </span>
-  ] )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="initializer"> = ?</span></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="ev.supportedbackends.html" class="methodname">supportedBackends</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="methodname"><a href="ev.supportedbackends.html" class="methodname">supportedBackends</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="ev.suspend.html" class="methodname">suspend</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="methodname"><a href="ev.suspend.html" class="methodname">suspend</a></span>(): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">double</span> 
-   <span class="methodname"><a href="ev.time.html" class="methodname">time</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+   <span class="methodname"><a href="ev.time.html" class="methodname">time</a></span>(): <span class="type">float</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">void</span> 
-   <span class="methodname"><a href="ev.verify.html" class="methodname">verify</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
+   <span class="methodname"><a href="ev.verify.html" class="methodname">verify</a></span>(): <span class="type"><span class="type void">void</span></span></div>
 
    }</div>
 
@@ -466,10 +378,10 @@
 
        <p class="para">
         このフラグを使う (あるいは setuid や setgid でプログラムを実行する) と、
-        <em>libev</em> は環境変数
-        <var class="varname"><var class="varname">LIBEV_FLAGS</var></var> を見ません。
+        <code class="literal">libev</code> は環境変数
+        <var class="varname">LIBEV_FLAGS</var> を見ません。
         それ以外の場合 (デフォルト) は、
-        <var class="varname"><var class="varname">LIBEV_FLAGS</var></var> が見つかった場合は
+        <var class="varname">LIBEV_FLAGS</var> が見つかった場合は
         その内容でフラグを上書きします。パフォーマンステストやバグの調査のときに有用です。
        </p>
       </dd>
@@ -486,10 +398,10 @@
         libev が繰り返しのたびにフォークをチェックするようにします。毎回手動で
         <span class="methodname"><a href="evloop.fork.html" class="methodname">EvLoop::fork()</a></span> を呼ぶことがなくなります。
         これを実現するために、ループ内での繰り返しの旅に
-        <em>getpid()</em> を呼んでいます。
+        <code class="literal">getpid()</code> を呼んでいます。
         そのため、繰り返しの回数が増えるとイベントループがスローダウンするかもしれませんが、
         通常は気になるほどではありません。このフラグの設定を上書きしたり、
-        環境変数 <var class="varname"><var class="varname">LIBEV_FLAGS</var></var> で指定したりすることはできません。
+        環境変数 <var class="varname">LIBEV_FLAGS</var> で指定したりすることはできません。
        </p>
       </dd>
 
@@ -503,14 +415,14 @@
 
        <p class="para">
         このフラグを指定すると、
-        <em>libev</em>
+        <code class="literal">libev</code>
         は <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#code_ev_stat_code_did_the_file_attri" class="link external">&raquo;&nbsp;ev_stat</a>
         ウォッチャーに
-        <em>inotify</em> API を使わなくなります。
+        <code class="literal">inotify</code> API を使わなくなります。
         このフラグは inotify ファイルディスクリプタを節約するのに便利です。
-        これを使わなければ、<em>ev_stat</em>
+        これを使わなければ、<code class="literal">ev_stat</code>
         ウォッチャーを使ったループのたびに
-        <em>inotify</em>
+        <code class="literal">inotify</code>
         ハンドルをひとつずつ消費することになります。
        </p>
       </dd>
@@ -525,18 +437,18 @@
 
        <p class="para">
         このフラグを指定すると、
-        <em>libev</em>
+        <code class="literal">libev</code>
         は
         <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#code_ev_signal_code_signal_me_when_a" class="link external">&raquo;&nbsp;ev_signal</a>
         (および
         <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#code_ev_child_code_watch_out_for_pro" class="link external">&raquo;&nbsp;ev_child</a>
         ) ウォッチャーに
-        <em>signalfd</em> API を使おうとします。
+        <code class="literal">signalfd</code> API を使おうとします。
         この API はシグナルを同期的に配送し、高速に処理したり
         キューに入ったシグナルデータを取得できるようにしたりします。
         また、スレッドを使ったときのシグナル処理も、
         スレッド内でシグナルが適切にブロックされている限りはシンプルになります。
-        デフォルトでは <em>signalfd</em> を使いません。
+        デフォルトでは <code class="literal">signalfd</code> を使いません。
        </p>
       </dd>
 
@@ -550,7 +462,7 @@
 
        <p class="para">
         このフラグを指定すると、
-        <em>libev</em> はシグナルのマスクを変更しないようにします。
+        <code class="literal">libev</code> はシグナルのマスクを変更しないようにします。
         具体的には、シグナルが受信されるまではブロックしないようになるということです。
        </p>
        <p class="para">
@@ -876,7 +788,7 @@
 
        <p class="para">
         <a href="class.evembed.html" class="classname">EvEmbed</a>
-        で指定した埋め込みイベントループが注目を必要としています。
+        で指定した埋め込みイベントループのウォッチャーが注目する必要があります。
        </p>
       </dd>
 
@@ -890,9 +802,9 @@
 
        <p class="para">
         まだ
-        <em>libev</em>
+        <code class="literal">libev</code>
         で送信したりそれ以外の使いかたをしたりはしていませんが、
-        <em>libev</em>
+        <code class="literal">libev</code>
         ユーザーが (<span class="methodname"><a href="evwatcher.feed.html" class="methodname">EvWatcher::feed()</a></span> などで)
         ウォッチャーに通知するために使えます。
        </p>
@@ -909,9 +821,9 @@
        <p class="para">
         指定されていないエラーが発生し、ウォッチャーが停止しました。
         これが発生する原因として考えられるのは、
-        <em>libev</em> がメモリ不足でウォッチャーをきちんと開始できなかった場合や
+        <code class="literal">libev</code> がメモリ不足でウォッチャーをきちんと開始できなかった場合や
         ファイルディスクリプタが閉じてしまった場合などがあります。
-        <em>libev</em> は、これらに関してはアプリケーションのバグとみなします。
+        <code class="literal">libev</code> は、これらに関してはアプリケーションのバグとみなします。
         詳細は
         <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#ANATOMY_OF_A_WATCHER_CONTENT" class="link external">&raquo;&nbsp;ANATOMY
     OF A WATCHER</a>
@@ -937,7 +849,7 @@
       <dd>
 
        <p class="para">
-        <em>select(2) バックエンド</em>
+        <code class="literal">select(2) バックエンド</code>
        </p>
       </dd>
 
@@ -950,7 +862,7 @@
       <dd>
 
        <p class="para">
-        <em>poll(2) バックエンド</em>
+        <code class="literal">poll(2) バックエンド</code>
        </p>
       </dd>
 
@@ -964,7 +876,7 @@
 
        <p class="para">
         Linux 限定の
-        <em>epoll(7)</em>
+        <code class="literal">epoll(7)</code>
         バックエンド。2.6.9 以前のカーネルでもそれ以降のカーネルでも使えます。
        </p>
       </dd>
@@ -978,12 +890,12 @@
       <dd>
 
        <p class="para">
-        <em>kqueue</em>
+        <code class="literal">kqueue</code>
         バックエンド。大半の BSD システムで利用します。
         <a href="class.evembed.html" class="classname">EvEmbed</a> ウォッチャーを使って、
         kqueue バックエンドのループを別のループに埋め込むことができます。
         たとえば、
-        <em>kqueue</em> バックエンドのループを作って、
+        <code class="literal">kqueue</code> バックエンドのループを作って、
         それをソケットに対してだけ使うこともできます。
        </p>
       </dd>
@@ -1046,7 +958,7 @@
         これはバックエンドではなく、
         <code class="parameter">flags</code> の中のすべてのバックエンドビットをマスクするものです。
         たとえば、環境変数
-        <var class="varname"><var class="varname">LIBEV_FLAGS</var></var>
+        <var class="varname">LIBEV_FLAGS</var>
         を変更するときに使います。
        </p>
       </dd>
@@ -1059,8 +971,8 @@
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <p class="para">
      デフォルトのループの場合は、モジュールの初期化時に
-     <em>Ev</em> が
-     (もし使えれば) <em>pthread_atfork</em> を使って
+     <code class="literal">Ev</code> が
+     (もし使えれば) <code class="literal">pthread_atfork</code> を使って
      <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#FUNCTIONS_CONTROLLING_EVENT_LOOPS_CO" class="link external">&raquo;&nbsp;ev_loop_fork</a>
      の呼び出しを登録します。
     </p>
@@ -1189,12 +1101,9 @@
 
 
 
-<h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="ev.backend.html">Ev::backend</a> — libev が使うバックエンドを表す整数値を返す</li><li><a href="ev.depth.html">Ev::depth</a> — 再帰の深さを返す</li><li><a href="ev.embeddablebackends.html">Ev::embeddableBackends</a> — 他のイベントループに埋め込めるバックエンド群を返す</li><li><a href="ev.feedsignal.html">Ev::feedSignal</a> — シグナルイベントを Ev に送る</li><li><a href="ev.feedsignalevent.html">Ev::feedSignalEvent</a> — シグナルイベントの情報をデフォルトループに送る</li><li><a href="ev.iteration.html">Ev::iteration</a> — デフォルトのイベントループが新しいイベントをポーリングした回数を返す</li><li><a href="ev.now.html">Ev::now</a> — デフォルトのイベントループで直近の処理が始まった時刻を返す</li><li><a href="ev.nowupdate.html">Ev::nowUpdate</a> — カーネルに問い合わせて現在時刻を確認し、処理中の Ev::now が返す時刻を更新する</li><li><a href="ev.recommendedbackends.html">Ev::recommendedBackends</a> — Returns a bit mask of recommended backends for current
-  platform.</li><li><a href="ev.resume.html">Ev::resume</a> — 一時停止していたデフォルトのイベントループを再開させる</li><li><a href="ev.run.html">Ev::run</a> — イベントのチェックとデフォルトループのコールバックの呼び出しを開始する</li><li><a href="ev.sleep.html">Ev::sleep</a> — 指定した秒数だけプロセスをブロックする</li><li><a href="ev.stop.html">Ev::stop</a> — デフォルトのイベントループを止める</li><li><a href="ev.supportedbackends.html">Ev::supportedBackends</a> — 現在の libev の構成でサポートするバックエンド群を返す</li><li><a href="ev.suspend.html">Ev::suspend</a> — デフォルトのイベントループを一時停止する</li><li><a href="ev.time.html">Ev::time</a> — epoch から現在時刻までの秒数を返す</li><li><a href="ev.verify.html">Ev::verify</a> — 内部の整合性をチェックする (デバッグ用)</li></ul>
+
+
+
+<h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="ev.backend.html">Ev::backend</a> — libev が使うバックエンドを表す整数値を返す</li><li><a href="ev.depth.html">Ev::depth</a> — 再帰の深さを返す</li><li><a href="ev.embeddablebackends.html">Ev::embeddableBackends</a> — 他のイベントループに埋め込めるバックエンド群を返す</li><li><a href="ev.feedsignal.html">Ev::feedSignal</a> — シグナルイベントを Ev に送る</li><li><a href="ev.feedsignalevent.html">Ev::feedSignalEvent</a> — シグナルイベントの情報をデフォルトループに送る</li><li><a href="ev.iteration.html">Ev::iteration</a> — デフォルトのイベントループが新しいイベントをポーリングした回数を返す</li><li><a href="ev.now.html">Ev::now</a> — デフォルトのイベントループで直近の処理が始まった時刻を返す</li><li><a href="ev.nowupdate.html">Ev::nowUpdate</a> — カーネルに問い合わせて現在時刻を確認し、処理中の Ev::now が返す時刻を更新する</li><li><a href="ev.recommendedbackends.html">Ev::recommendedBackends</a> — 現在のプラットフォーム上でおすすめのバックエンドのビットマスクを返す</li><li><a href="ev.resume.html">Ev::resume</a> — 一時停止していたデフォルトのイベントループを再開させる</li><li><a href="ev.run.html">Ev::run</a> — イベントのチェックとデフォルトループのコールバックの呼び出しを開始する</li><li><a href="ev.sleep.html">Ev::sleep</a> — 指定した秒数だけプロセスをブロックする</li><li><a href="ev.stop.html">Ev::stop</a> — デフォルトのイベントループを止める</li><li><a href="ev.supportedbackends.html">Ev::supportedBackends</a> — 現在の libev の構成でサポートするバックエンド群を返す</li><li><a href="ev.suspend.html">Ev::suspend</a> — デフォルトのイベントループを一時停止する</li><li><a href="ev.time.html">Ev::time</a> — epoch から現在時刻までの秒数を返す</li><li><a href="ev.verify.html">Ev::verify</a> — 内部の整合性をチェックする (デバッグ用)</li></ul>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="ev.periodic-modes.html">Periodic ウォッチャーの操作モード</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="ev.backend.html">Ev::backend</a></div>
- <div class="up"><a href="book.ev.html">Ev</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

@@ -3,31 +3,39 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>GD2 イメージをブラウザまたはファイルに出力する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagegammacorrect.html">imagegammacorrect</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imagegd.html">imagegd</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.imagegd2" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagegammacorrect.html">« imagegammacorrect</a></li>
+      <li style="float: right;"><a href="function.imagegd.html">imagegd »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">GD および Image 関数</a></li>
+    <li>GD2 イメージをブラウザまたはファイルに出力する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagegd2" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagegd2</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.7, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagegd2</span> &mdash; <span class="dc-title">GD2 イメージをブラウザまたはファイルに出力する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.7, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagegd2</span> &mdash; <span class="dc-title">GD2 イメージをブラウザまたはファイルに出力する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagegd2-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>imagegd2</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$image</code></span>
-   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$to</code><span class="initializer"> = NULL</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$chunk_size</code><span class="initializer"> = 128</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code><span class="initializer"> = IMG_GD2_RAW</span></span>
-  ]]] )</div>
+   <span class="methodname"><strong>imagegd2</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.gdimage.html" class="type GdImage">GdImage</a></span> <code class="parameter">$image</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$file</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$chunk_size</code><span class="initializer"> = 128</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = IMG_GD2_RAW</span></span><br>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
-   GD2 イメージを、指定した <code class="parameter">to</code>
+   GD2 イメージを、指定した <code class="parameter">file</code>
    に出力します。
   </p>
  </div>
@@ -42,15 +50,15 @@
 image</code></dt>
 <dd>
 <p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
-のような画像作成関数が返す画像リソース。</p></dd>
+のような画像作成関数が返す <a href="class.gdimage.html" class="classname">GdImage</a> オブジェクト。</p></dd>
 
     
      <dt>
-<code class="parameter">to</code></dt>
+<code class="parameter">image</code></dt>
 
      <dd>
 
-      <p class="para">ファイル保存先のパスあるいはオープン中のリソース (この関数が値を戻した後で自動的にクローズされます)。省略したり <strong><code>NULL</code></strong> を設定したりした場合は、画像ストリームを直接出力します。</p>
+      <p class="para">ファイル保存先のパスあるいはオープン中のリソース (この関数が値を戻した後で自動的にクローズされます)。省略したり <strong><code>null</code></strong> を設定したりした場合は、画像ストリームを直接出力します。</p>
      </dd>
 
     
@@ -68,7 +76,7 @@ image</code></dt>
     
     
      <dt>
-<code class="parameter">type</code></dt>
+<code class="parameter">mode</code></dt>
 
      <dd>
 
@@ -88,45 +96,53 @@ image</code></dt>
  <div class="refsect1 returnvalues" id="refsect1-function.imagegd2-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
+  <div class="caution"><strong class="caution">警告</strong><p class="simpara">しかしながら、libgd がイメージの出力に失敗した場合、この関数は <strong><code>true</code></strong> を返します。</p></div>
  </div>
 
 
  <div class="refsect1 changelog" id="refsect1-function.imagegd2-changelog">
   <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
 
-     </thead>
+    </thead>
 
-     <tbody class="tbody">
-      <tr>
-       <td>5.4.0</td>
-       <td>
-        ストリームリソースを
-        <code class="parameter">to</code> に渡せるようになりました。
-       </td>
-      </tr>
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.3</td>
+      <td>
+       <code class="parameter">file</code> は、nullable になりました。
+      </td>
+     </tr>
 
-     </tbody>
-    
-   </table>
+     <tr>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">image</code> は、
+  <a href="class.gdimage.html" class="classname">GdImage</a>
+  クラスのインスタンスを期待するようになりました。
+  これより前のバージョンでは、<span class="type">resource</span> が期待されていました。
+ </td>
+</tr>
 
-  </p>
+    </tbody>
+   
+  </table>
+
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.imagegd2-examples">
  <h3 class="title">例</h3>
  <p class="para">
-  <div class="example" id="example-3573">
+  <div class="example" id="example-2654">
    <p><strong>例1 GD2 画像の出力</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -138,7 +154,7 @@ image</code></dt>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3574">
+   <div class="example" id="example-2655">
     <p><strong>例2 GD2 画像の保存</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -160,20 +176,15 @@ image</code></dt>
     互換アプリケーションでのみ使用可能であることに注意してください。
    </p>
   </p></blockquote>
+  <div class="warning"><strong class="warning">警告</strong><p class="simpara">GD
+と GD2 画像フォーマットは libgd のプロプライエタリな画像フォーマットです。これらは <em class="emphasis">obsolete</em> と見なされているため、開発とテストの用途にだけ使うべきです。</p></div>
  </div>
 
  <div class="refsect1 seealso" id="refsect1-function.imagegd2-seealso">
   <h3 class="title">参考</h3>
-  <p class="para">
-   <ul class="simplelist">
-    <li class="member"><span class="function"><a href="function.imagegd.html" class="function" rel="rdfs-seeAlso">imagegd()</a> - GD イメージをブラウザまたはファイルに出力する</span></li>
-   </ul>
-  </p>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.imagegd.html" class="function" rel="rdfs-seeAlso">imagegd()</a> - GD イメージをブラウザまたはファイルに出力する</span></li>
+  </ul>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagegammacorrect.html">imagegammacorrect</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imagegd.html">imagegd</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

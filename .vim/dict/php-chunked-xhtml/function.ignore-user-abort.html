@@ -3,26 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>クライアントの接続が切断された際にスクリプトの実行を終了するかどうかを設定する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.highlight-string.html">highlight_string</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.pack.html">pack</a></div>
- <div class="up"><a href="ref.misc.html">その他の関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.ignore-user-abort" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.hrtime.html">« hrtime</a></li>
+      <li style="float: right;"><a href="function.pack.html">pack »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.misc.html">その他の関数</a></li>
+    <li>クライアントの接続が切断された際にスクリプトの実行を終了するかどうかを設定する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ignore-user-abort" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">ignore_user_abort</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">ignore_user_abort</span> &mdash; <span class="dc-title">クライアントの接続が切断された際にスクリプトの実行を終了するかどうかを設定する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ignore_user_abort</span> &mdash; <span class="dc-title">クライアントの接続が切断された際にスクリプトの実行を終了するかどうかを設定する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.ignore-user-abort-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">int</span> <span class="methodname"><strong>ignore_user_abort</strong></span>
-    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$value</code></span>
-  ] )</div>
+   <span class="methodname"><strong>ignore_user_abort</strong></span>(<span class="methodparam"><span class="type"><span class="type">bool</span>|<span class="type">null</span></span> <code class="parameter">$enable</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">int</span></div>
 
   <p class="para rdfs-comment">
    クライアントの接続が切断された際にスクリプトの実行を終了するかどうかを設定します。
@@ -31,7 +42,7 @@
    PHP をコマンドラインスクリプトとして実行していて
    スクリプトを終了させずに tty が消えた場合は、
    次に何かを書こうとしたときにスクリプトが終了します。これは
-   <code class="parameter">value</code> が <strong><code>TRUE</code></strong> に設定されていても同じです。
+   <code class="parameter">enable</code> が <strong><code>true</code></strong> に設定されていても同じです。
   </p>
  </div>
 
@@ -43,13 +54,13 @@
 
     
      <dt>
-<code class="parameter">value</code></dt>
+<code class="parameter">enable</code></dt>
 
      <dd>
 
       <p class="para">
-       指定すると、この関数は ini 項目 <a href="misc.configuration.html#ini.ignore-user-abort" class="link">ignore_user_abort</a>
-       に <code class="parameter">value</code> の値を設定します。
+       この値が指定されるか、<strong><code>null</code></strong> でない場合、この関数は ini 項目 <a href="misc.configuration.html#ini.ignore-user-abort" class="link">ignore_user_abort</a>
+       に <code class="parameter">enable</code> の値を設定します。
        省略した場合、この関数は前の設定をそのまま返し、何も変更しません。
       </p>
      </dd>
@@ -69,10 +80,37 @@
  </div>
 
 
+ <div class="refsect1 changelog" id="refsect1-function.ignore-user-abort-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">enable</code> は、nullable になりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
  <div class="refsect1 examples" id="refsect1-function.ignore-user-abort-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4359">
+   <div class="example" id="example-3486">
     <p><strong>例1 <span class="function"><strong>ignore_user_abort()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -112,9 +150,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.highlight-string.html">highlight_string</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.pack.html">pack</a></div>
- <div class="up"><a href="ref.misc.html">その他の関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

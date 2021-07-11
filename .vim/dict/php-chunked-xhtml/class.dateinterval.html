@@ -3,23 +3,36 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>DateInterval クラス</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="datetimezone.listidentifiers.html">DateTimeZone::listIdentifiers</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="dateinterval.construct.html">DateInterval::__construct</a></div>
- <div class="up"><a href="book.datetime.html">Date/Time</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="class.dateinterval" class="reference">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="datetimezone.listidentifiers.html">« DateTimeZone::listIdentifiers</a></li>
+      <li style="float: right;"><a href="dateinterval.construct.html">DateInterval::__construct »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.datetime.html">Date/Time</a></li>
+    <li>DateInterval クラス</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.dateinterval" class="reference">
 
  <h1 class="title">DateInterval クラス</h1>
  
 
- <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p>
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p>
 
 
   <div class="section" id="dateinterval.intro">
-   <h2 class="title">導入</h2>
+   <h2 class="title">はじめに</h2>
    <p class="para">
     日付の間隔をあらわします。
    </p>
@@ -27,6 +40,17 @@
     格納方式は、固定値 (年、月、日、時など)
     あるいは相対時刻 (<a href="class.datetime.html" class="classname">DateTime</a> のコンストラクタがサポートしている書式)
     となります。
+   </p>
+   <p class="para">
+    さらに厳密に言うと、
+    <strong class="classname">DateInterval</strong> オブジェクトが保持している情報は、
+    ある date/time オブジェクトから別の date/time オブジェクトに情報を移す手順です。
+    この過程は必ずしも可逆ではありません。
+   </p>
+   <p class="para">
+    <strong class="classname">DateInterval</strong> オブジェクトを生成する一般的なやり方は、
+    2つの date/time オブジェクトの差分を
+    <span class="function"><strong>DateTimeInterface::diff()</strong></span> 経由で計算することです。
    </p>
   </div>
 
@@ -49,68 +73,49 @@
     <div class="classsynopsisinfo classsynopsisinfo_comment">/* プロパティ */</div>
     <div class="fieldsynopsis">
      <span class="modifier">public</span>
-     <span class="type">integer</span>
-      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.y">$<var class="varname">y</var></a></var>
-    ;</div>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.y">$<var class="varname">y</var></a></var>;</div>
 
-    <div class="fieldsynopsis">
-     <span class="modifier">public</span>
-     <span class="type">integer</span>
-      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.m">$<var class="varname">m</var></a></var>
-    ;</div>
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.m">$<var class="varname">m</var></a></var>;</div>
 
-    <div class="fieldsynopsis">
-     <span class="modifier">public</span>
-     <span class="type">integer</span>
-      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.d">$<var class="varname">d</var></a></var>
-    ;</div>
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.d">$<var class="varname">d</var></a></var>;</div>
 
-    <div class="fieldsynopsis">
-     <span class="modifier">public</span>
-     <span class="type">integer</span>
-      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.h">$<var class="varname">h</var></a></var>
-    ;</div>
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.h">$<var class="varname">h</var></a></var>;</div>
 
-    <div class="fieldsynopsis">
-     <span class="modifier">public</span>
-     <span class="type">integer</span>
-      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.i">$<var class="varname">i</var></a></var>
-    ;</div>
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.i">$<var class="varname">i</var></a></var>;</div>
 
-    <div class="fieldsynopsis">
-     <span class="modifier">public</span>
-     <span class="type">integer</span>
-      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.s">$<var class="varname">s</var></a></var>
-    ;</div>
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.s">$<var class="varname">s</var></a></var>;</div>
 
-    <div class="fieldsynopsis">
-     <span class="modifier">public</span>
-     <span class="type">integer</span>
-      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.invert">$<var class="varname">invert</var></a></var>
-    ;</div>
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">float</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.f">$<var class="varname">f</var></a></var>;</div>
 
-    <div class="fieldsynopsis">
-     <span class="modifier">public</span>
-     <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
-      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.days">$<var class="varname">days</var></a></var>
-    ;</div>
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.invert">$<var class="varname">invert</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
+      <var class="varname"><a href="class.dateinterval.html#dateinterval.props.days">$<var class="varname">days</var></a></var>;</div>
 
     
     <div class="classsynopsisinfo classsynopsisinfo_comment">/* メソッド */</div>
     <div class="constructorsynopsis dc-description">
-   <span class="modifier">public</span> <span class="methodname"><a href="dateinterval.construct.html" class="methodname">__construct</a></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$interval_spec</code></span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><a href="dateinterval.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$duration</code></span>)</div>
 
     
-    <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">DateInterval</span> <span class="methodname"><a href="dateinterval.createfromdatestring.html" class="methodname">createFromDateString</a></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$time</code></span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="dateinterval.format.html" class="methodname">format</a></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
-   )</div>
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><a href="dateinterval.createfromdatestring.html" class="methodname">createFromDateString</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$datetime</code></span>): <span class="type"><span class="type"><a href="class.dateinterval.html" class="type DateInterval">DateInterval</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="dateinterval.format.html" class="methodname">format</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>): <span class="type">string</span></div>
 
 
    }</div>
@@ -123,7 +128,7 @@
    <dl>
 
     
-     <dt id="dateinterval.props.y"><var class="varname"><var class="varname">y</var></var></dt>
+     <dt id="dateinterval.props.y"><var class="varname">y</var></dt>
 
      <dd>
 
@@ -134,7 +139,7 @@
 
     
     
-     <dt id="dateinterval.props.m"><var class="varname"><var class="varname">m</var></var></dt>
+     <dt id="dateinterval.props.m"><var class="varname">m</var></dt>
 
      <dd>
 
@@ -145,7 +150,7 @@
 
     
     
-     <dt id="dateinterval.props.d"><var class="varname"><var class="varname">d</var></var></dt>
+     <dt id="dateinterval.props.d"><var class="varname">d</var></dt>
 
      <dd>
 
@@ -156,7 +161,7 @@
 
     
     
-     <dt id="dateinterval.props.h"><var class="varname"><var class="varname">h</var></var></dt>
+     <dt id="dateinterval.props.h"><var class="varname">h</var></dt>
 
      <dd>
 
@@ -167,7 +172,7 @@
 
     
     
-     <dt id="dateinterval.props.i"><var class="varname"><var class="varname">i</var></var></dt>
+     <dt id="dateinterval.props.i"><var class="varname">i</var></dt>
 
      <dd>
 
@@ -178,7 +183,7 @@
 
     
     
-     <dt id="dateinterval.props.s"><var class="varname"><var class="varname">s</var></var></dt>
+     <dt id="dateinterval.props.s"><var class="varname">s</var></dt>
 
      <dd>
 
@@ -189,37 +194,70 @@
 
     
     
-     <dt id="dateinterval.props.invert"><var class="varname"><var class="varname">invert</var></var></dt>
+     <dt id="dateinterval.props.f"><var class="varname">f</var></dt>
 
      <dd>
 
       <p class="para">
-       間隔が負の数になっている場合は <em>1</em>、そうでない場合は
-       <em>0</em>。
+       マイクロ秒。1秒の100万分の1です。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.invert"><var class="varname">invert</var></dt>
+
+     <dd>
+
+      <p class="para">
+       間隔が負の数になっている場合は <code class="literal">1</code>、そうでない場合は
+       <code class="literal">0</code>。
        <span class="methodname"><a href="dateinterval.format.html" class="methodname">DateInterval::format()</a></span> を参照ください。
       </p>
      </dd>
 
     
     
-     <dt id="dateinterval.props.days"><var class="varname"><var class="varname">days</var></var></dt>
+     <dt id="dateinterval.props.days"><var class="varname">days</var></dt>
 
      <dd>
 
       <p class="para">
        <span class="function"><a href="datetime.diff.html" class="function">DateTime::diff()</a></span> で作られた DateInterval
        オブジェクトの場合は、開始日と終了日の間の日数。
-       それ以外の場合は <var class="varname"><var class="varname">days</var></var> は <strong><code>FALSE</code></strong> となります。
-      </p>
-      <p class="para">
-       PHP 5.4.20/5.5.4 より前のバージョンでは、
-       <strong><code>FALSE</code></strong> ではなく -99999 となっていました。
+       それ以外の場合は <var class="varname">days</var> は <strong><code>false</code></strong> となります。
       </p>
      </dd>
 
     
    </dl>
 
+  </div>
+
+  <div class="section" id="dateinterval.changelog">
+   <h2 class="title">変更履歴</h2>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>バージョン</th>
+        <th>説明</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>7.1.0</td>
+        <td><var class="varname">f</var> プロパティが追加されました</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
   </div>
 
  </div>
@@ -250,11 +288,9 @@
 
 
 
+
+
+
 <h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="dateinterval.construct.html">DateInterval::__construct</a> — 新しい DateInterval オブジェクトを作成する</li><li><a href="dateinterval.createfromdatestring.html">DateInterval::createFromDateString</a> — 相対指定文字列から DateInterval を作成する</li><li><a href="dateinterval.format.html">DateInterval::format</a> — 間隔をフォーマットする</li></ul>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="datetimezone.listidentifiers.html">DateTimeZone::listIdentifiers</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="dateinterval.construct.html">DateInterval::__construct</a></div>
- <div class="up"><a href="book.datetime.html">Date/Time</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

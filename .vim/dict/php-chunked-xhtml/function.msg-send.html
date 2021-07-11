@@ -3,35 +3,41 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>メッセージキューにメッセージを送信する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.msg-remove-queue.html">msg_remove_queue</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.msg-set-queue.html">msg_set_queue</a></div>
- <div class="up"><a href="ref.sem.html">セマフォ関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.msg-send" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.msg-remove-queue.html">« msg_remove_queue</a></li>
+      <li style="float: right;"><a href="function.msg-set-queue.html">msg_set_queue »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.sem.html">セマフォ関数</a></li>
+    <li>メッセージキューにメッセージを送信する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.msg-send" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">msg_send</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">msg_send</span> &mdash; <span class="dc-title">メッセージキューにメッセージを送信する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">msg_send</span> &mdash; <span class="dc-title">メッセージキューにメッセージを送信する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.msg-send-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>msg_send</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$queue</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$msgtype</code></span>
-   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$message</code></span>
-   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$serialize</code><span class="initializer"> = true</span></span>
-   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$blocking</code><span class="initializer"> = true</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$errorcode</code></span>
-  ]]] )</div>
+   <span class="methodname"><strong>msg_send</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type SysvMessageQueue">SysvMessageQueue</span></span> <code class="parameter">$queue</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$message_type</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">int</span>|<span class="type">float</span>|<span class="type">bool</span></span> <code class="parameter">$message</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$serialize</code><span class="initializer"> = <strong><code>true</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$blocking</code><span class="initializer"> = <strong><code>true</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$error_code</code><span class="initializer"> = <strong><code>null</code></strong></span></span><br>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>msg_send()</strong></span> は、<code class="parameter">queue</code>
-   で指定したメッセージキューに対して <code class="parameter">msgtype</code>
+   で指定したメッセージキューに対して <code class="parameter">message_type</code>
    で指定した型 (0 より大きい数値である必要があります) のメッセージ
    <code class="parameter">message</code> を送信します。
   </p>
@@ -50,17 +56,19 @@
      <dd>
 
       <p class="para">
+       メッセージキュー
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">msgtype</code></dt>
+<code class="parameter">message_type</code></dt>
 
      <dd>
 
       <p class="para">
+       メッセージのタイプ (0より大きい数値でなければいけません)
       </p>
      </dd>
 
@@ -72,7 +80,16 @@
      <dd>
 
       <p class="para">
+       メッセージの本体
       </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <p class="para">
+        <code class="parameter">serialize</code> が <strong><code>false</code></strong> に設定された場合、
+        この値は <span class="type">string</span>, <span class="type">int</span>, <span class="type">float</span> 
+        または <span class="type">bool</span> のいずれかでなければなりません。
+        それら以外の場合、警告が発生します。
+       </p>
+      </p></blockquote>
      </dd>
 
     
@@ -85,7 +102,7 @@
       <p class="para">
        オプションのパラメータ <code class="parameter">serialize</code> は、
        <code class="parameter">message</code> を送信する方法を制御します。
-       <code class="parameter">serialize</code> のデフォルト値は <strong><code>TRUE</code></strong> で、
+       <code class="parameter">serialize</code> のデフォルト値は <strong><code>true</code></strong> で、
        この場合 <code class="parameter">message</code> が送信される前に
        セッションモジュールと同じ方法でシリアライズされます。
        これにより、配列やオブジェクトのような複雑な形式のデータを
@@ -107,10 +124,10 @@
        現在キューにあるメッセージを読み込んでキューの空き容量が確保されるまで
        スクリプトの実行を待ち続けます。これをブロックモードといいます。
        オプションのパラメータ <code class="parameter">blocking</code>
-       を <strong><code>FALSE</code></strong> に設定することでブロックモードではなくすることが可能で、
+       を <strong><code>false</code></strong> に設定することでブロックモードではなくすることが可能で、
        この場合、もしキューの空き容量よりも大きなメッセージを送信すると
-       <span class="function"><strong>msg_send()</strong></span> はすぐに <strong><code>FALSE</code></strong> を返します。
-       また、オプションのパラメータ <code class="parameter">errorcode</code>
+       <span class="function"><strong>msg_send()</strong></span> はすぐに <strong><code>false</code></strong> を返します。
+       また、オプションのパラメータ <code class="parameter">error_code</code>
        を <strong><code>MSG_EAGAIN</code></strong> に設定すると、
        少し時間をおいてメッセージを再度送信しなければならないことが戻り値からわかります。
       </p>
@@ -119,11 +136,12 @@
     
     
      <dt>
-<code class="parameter">errorcode</code></dt>
+<code class="parameter">error_code</code></dt>
 
      <dd>
 
       <p class="para">
+       この関数の実行が失敗した場合、オプションのエラーコードがシステムの errno 変数の値に設定されます。
       </p>
      </dd>
 
@@ -137,13 +155,44 @@
  <div class="refsect1 returnvalues" id="refsect1-function.msg-send-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
   <p class="para">
    処理が正常に完了すると、メッセージキューデータ構造体は以下のように更新されます。
    <code class="parameter">msg_lspid</code> には呼び出し元のプロセス ID が
    設定され、<code class="parameter">msg_qnum</code> が 1 増加し、
    <code class="parameter">msg_stime</code> が現在の時刻に設定されます。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.msg-send-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.0.0</td>
+       <td>
+        引数 <code class="parameter">queue</code> は、
+        <strong class="classname">SysvMessageQueue</strong> のインスタンスを期待するようになりました。
+        これより前のバージョンでは、リソースが期待されていました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
   </p>
  </div>
 
@@ -161,9 +210,4 @@
  </div>
   
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.msg-remove-queue.html">msg_remove_queue</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.msg-set-queue.html">msg_set_queue</a></div>
- <div class="up"><a href="ref.sem.html">セマフォ関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

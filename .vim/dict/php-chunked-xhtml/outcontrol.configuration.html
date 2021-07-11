@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>実行時設定</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="outcontrol.installation.html">インストール手順</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="outcontrol.resources.html">リソース型</a></div>
- <div class="up"><a href="outcontrol.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="outcontrol.configuration" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="outcontrol.installation.html">« インストール手順</a></li>
+      <li style="float: right;"><a href="outcontrol.resources.html">リソース型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="outcontrol.setup.html">インストール/設定</a></li>
+    <li>実行時設定</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="outcontrol.configuration" class="section">
  <h2 class="title">実行時設定</h2>
  <p class="simpara">
 <var class="filename">php.ini</var> の設定により動作が変化します。
@@ -41,28 +54,28 @@
      <td><a href="outcontrol.configuration.html#ini.output-handler" class="link">output_handler</a></td>
      <td>NULL</td>
      <td>PHP_INI_PERDIR</td>
-     <td>PHP 4.0.4 以降で使用可能です。</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="outcontrol.configuration.html#ini.implicit-flush" class="link">implicit_flush</a></td>
      <td>&quot;0&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP &lt;= 4.2.3 では PHP_INI_PERDIR です。</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a></td>
      <td>&quot;a=href,area=href,frame=src,form=,fieldset=&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 4.0.4 以降で使用可能です。PHP 7.1.0 より前のバージョンでは、これを用いて
+     <td>PHP 7.1.0 より前のバージョンでは、これを用いて
      透過的セッションIDのリライトを設定していました。PHP 7.1.0 以降では、これは
      <span class="function"><a href="function.output-add-rewrite-var.html" class="function">output_add_rewrite_var()</a></span> でだけ用いられます。</td>
     </tr>
 
     <tr>
      <td><a href="outcontrol.configuration.html#ini.url-rewriter.hosts" class="link">url_rewriter.hosts</a></td>
-     <td><em>$_SERVER[&#039;HTTP_HOST&#039;]</em></td>
+     <td><code class="literal">$_SERVER[&#039;HTTP_HOST&#039;]</code></td>
      <td>PHP_INI_ALL</td>
      <td>PHP 7.1.0 以降で使用可能です。</td>
     </tr>
@@ -84,7 +97,7 @@
    
     <dt id="ini.output-buffering">
      <code class="parameter">output_buffering</code>
-     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>/<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+     <span class="type">bool</span>/<span class="type">int</span>
     </dt>
 
     <dd>
@@ -95,7 +108,7 @@
       特定の大きさにバッファの大きさを制限したい場合、このディレクティブの
       値として &#039;On&#039; の代わりに最大バイト数(例:output_buffering=4096)
       を使用することができます。
-      PHP 4.3.5 以降、PHP-CLI ではこのディレクティブが常に Off となります。
+      PHP-CLI ではこのディレクティブが常に Off となります。
     </p>
     </dd>
 
@@ -104,7 +117,7 @@
    
     <dt id="ini.output-handler">
      <code class="parameter">output_handler</code>
-     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     <span class="type">string</span>
     </dt>
 
     <dd>
@@ -139,24 +152,24 @@
    
     <dt id="ini.implicit-flush">
      <code class="parameter">implicit_flush</code>
-     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     <span class="type">bool</span>
     </dt>
 
     <dd>
 
     <p class="para">
-      デフォルトは <strong><code>FALSE</code></strong> です。これを <strong><code>TRUE</code></strong> に変更すると、PHP が
+      デフォルトは <strong><code>false</code></strong> です。これを <strong><code>true</code></strong> に変更すると、PHP が
       各出力ブロックの後で自動的に出力レイヤをフラッシュするよう
       指定します。これは、各
       <span class="function"><a href="function.print.html" class="function">print</a></span> あるいは <span class="function"><a href="function.echo.html" class="function">echo</a></span>
-      そして <em>HTML</em> ブロックの後で
+      そして <code class="literal">HTML</code> ブロックの後で
       <span class="function"><a href="function.flush.html" class="function">flush()</a></span> 関数をコールすることと等価です。
     </p>
      <p class="para">
       Web 環境の中で PHP を使用している時に
       このオプションを on に変更すると、著しい性能低下が生じるため、
-      通常はデバッグ目的のみにすることが推奨されます。<em>CLI
-      SAPI</em> のもとで実行される時、この値はデフォルトで <strong><code>TRUE</code></strong>
+      通常はデバッグ目的のみにすることが推奨されます。<code class="literal">CLI
+      SAPI</code> のもとで実行される時、この値はデフォルトで <strong><code>true</code></strong>
       になっています。
      </p>
      <p class="para">
@@ -169,26 +182,26 @@
   
    <dt id="ini.url-rewriter.tags">
     <code class="parameter">url_rewriter.tags</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>url_rewriter.tags</em> は、
+     <code class="literal">url_rewriter.tags</code> は、
      <span class="function"><a href="function.output-add-rewrite-var.html" class="function">output_add_rewrite_var()</a></span> でどの HTML タグをリライトするかを指定します。
      デフォルトは
-     <em>a=href,area=href,frame=src,input=src,form=</em> です。
+     <code class="literal">a=href,area=href,frame=src,input=src,form=</code> です。
     </span>
     <span class="simpara">
-     <em>form</em> は特別なタグです。<em>&lt;input hidden=&quot;session_id&quot; name=&quot;session_name&quot;&gt;</em>
+     <code class="literal">form</code> は特別なタグです。<code class="literal">&lt;input hidden=&quot;session_id&quot; name=&quot;session_name&quot;&gt;</code>
      が form 変数に追加されます。
     </span>
     <blockquote class="note"><p><strong class="note">注意</strong>: 
      <span class="simpara">
       PHP 7.1.0 より前のバージョンでは、<a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a>
       は <a href="session.configuration.html#ini.session.trans-sid-tags" class="link">session.trans_sid_tags</a> のを指定するために使われていました。
-      PHP 7.1.0 以降は、<em>fieldset</em> は特別なタグとはみなされなくなります。
+      PHP 7.1.0 以降は、<code class="literal">fieldset</code> は特別なタグとはみなされなくなります。
      </span>
     </p></blockquote>
    </dd>
@@ -198,17 +211,17 @@
   
    <dt id="ini.url-rewriter.hosts">
     <code class="parameter">url_rewriter.hosts</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <span class="simpara">
-     <em>url_rewriter.hosts</em> は、
+     <code class="literal">url_rewriter.hosts</code> は、
      <span class="function"><a href="function.output-add-rewrite-var.html" class="function">output_add_rewrite_var()</a></span> に含めるリライト対象のホストを指定します。
-     デフォルトは <em>$_SERVER[&#039;HTTP_HOST&#039;]</em> です。
+     デフォルトは <code class="literal">$_SERVER[&#039;HTTP_HOST&#039;]</code> です。
      複数のホストを指定する場合は &quot;,&quot; でつなぎます。その際に、ホストとホストの間にスペースを入れてはいけません。つまり、
-     <em>php.net,wiki.php.net,bugs.php.net</em> のように指定します。
+     <code class="literal">php.net,wiki.php.net,bugs.php.net</code> のように指定します。
     </span>
    </dd>
 
@@ -217,9 +230,4 @@
  </dl>
 
  </p>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="outcontrol.installation.html">インストール手順</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="outcontrol.resources.html">リソース型</a></div>
- <div class="up"><a href="outcontrol.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

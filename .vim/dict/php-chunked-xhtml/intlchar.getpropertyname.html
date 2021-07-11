@@ -3,27 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Get the Unicode name for a property</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="intlchar.getpropertyenum.html">IntlChar::getPropertyEnum</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="intlchar.getpropertyvalueenum.html">IntlChar::getPropertyValueEnum</a></div>
- <div class="up"><a href="class.intlchar.html">IntlChar</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="intlchar.getpropertyname" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="intlchar.getpropertyenum.html">« IntlChar::getPropertyEnum</a></li>
+      <li style="float: right;"><a href="intlchar.getpropertyvalueenum.html">IntlChar::getPropertyValueEnum »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.intlchar.html">IntlChar</a></li>
+    <li>Get the Unicode name for a property</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="intlchar.getpropertyname" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">IntlChar::getPropertyName</h1>
-  <p class="verinfo">(PHP 7)</p><p class="refpurpose"><span class="refname">IntlChar::getPropertyName</span> &mdash; <span class="dc-title">Get the Unicode name for a property</span></p>
+  <p class="verinfo">(PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">IntlChar::getPropertyName</span> &mdash; <span class="dc-title">Get the Unicode name for a property</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-intlchar.getpropertyname-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname"><strong>IntlChar::getPropertyName</strong></span>
-    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$property</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$nameChoice</code><span class="initializer"> = <strong><code>IntlChar::LONG_PROPERTY_NAME</code></strong></span></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><strong>IntlChar::getPropertyName</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$property</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$nameChoice</code><span class="initializer"> = <strong><code>IntlChar::LONG_PROPERTY_NAME</code></strong></span></span>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
    Returns the Unicode name for a given property, as given in the Unicode database file PropertyAliases.txt.
@@ -33,7 +43,7 @@
    synthetic names &quot;gcm&quot; / &quot;General_Category_Mask&quot;. These names are not in PropertyAliases.txt.
   </p>
   <p class="para">
-   This function compliments <span class="function"><a href="intlchar.getpropertyenum.html" class="function">IntlChar::getPropertyEnum()</a></span>.
+   This function complements <span class="function"><a href="intlchar.getpropertyenum.html" class="function">IntlChar::getPropertyEnum()</a></span>.
   </p>
  </div>
 
@@ -48,10 +58,10 @@
 
     <dd>
 
-     <p class="para">調べたい Unicode プロパティ (定数 <em>IntlChar::PROPERTY_*</em> を参照ください)。</p>
+     <p class="para">調べたい Unicode プロパティ (定数 <code class="literal">IntlChar::PROPERTY_*</code> を参照ください)。</p>
      <p class="para">
       <strong><code>IntlChar::PROPERTY_INVALID_CODE</code></strong> should not be used.
-      Also, if <code class="parameter">property</code> is out of range, <strong><code>FALSE</code></strong> is returned.
+      Also, if <code class="parameter">property</code> is out of range, <strong><code>false</code></strong> is returned.
      </p>
     </dd>
 
@@ -63,7 +73,7 @@
     <dd>
 
      <p class="para">
-      Selector for which name to get. If out of range, <strong><code>FALSE</code></strong> is returned.
+      Selector for which name to get. If out of range, <strong><code>false</code></strong> is returned.
      </p>
      <p class="para">
       All properties have a long name. Most have a short name, but some do not. Unicode allows for additional names;
@@ -80,21 +90,21 @@
  <div class="refsect1 returnvalues" id="refsect1-intlchar.getpropertyname-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   Returns the name, or <strong><code>FALSE</code></strong> if either the <code class="parameter">property</code> or the <code class="parameter">nameChoice</code>
+   Returns the name, or <strong><code>false</code></strong> if either the <code class="parameter">property</code> or the <code class="parameter">nameChoice</code>
    is out of range.
   </p>
   <p class="para">
-   If a given <code class="parameter">nameChoice</code> returns <strong><code>FALSE</code></strong>, then all larger values of
-   <code class="parameter">nameChoice</code> will return <strong><code>FALSE</code></strong>, with one exception: if <strong><code>FALSE</code></strong> is returned for
+   If a given <code class="parameter">nameChoice</code> returns <strong><code>false</code></strong>, then all larger values of
+   <code class="parameter">nameChoice</code> will return <strong><code>false</code></strong>, with one exception: if <strong><code>false</code></strong> is returned for
    <strong><code>IntlChar::SHORT_PROPERTY_NAME</code></strong>, then <strong><code>IntlChar::LONG_PROPERTY_NAME</code></strong>
-   (and higher) may still return a non-<strong><code>FALSE</code></strong> value.
+   (and higher) may still return a non-<strong><code>false</code></strong> value.
   </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-intlchar.getpropertyname-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-2976">
+  <div class="example" id="example-2466">
    <p><strong>例1 さまざまなプロパティの例</strong></p>
    <div class="example-contents">
     <div class="phpcode"><code><span style="color: #000000">
@@ -126,9 +136,4 @@ bool(false)
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="intlchar.getpropertyenum.html">IntlChar::getPropertyEnum</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="intlchar.getpropertyvalueenum.html">IntlChar::getPropertyValueEnum</a></div>
- <div class="up"><a href="class.intlchar.html">IntlChar</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

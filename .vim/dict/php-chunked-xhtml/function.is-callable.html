@@ -2,19 +2,32 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>引数が、関数としてコール可能な構造であるかどうかを調べる</title>
+  <title>引数が、現在のスコープから関数としてコール可能な値かどうかを調べる</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.is-bool.html">is_bool</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.is-double.html">is_double</a></div>
- <div class="up"><a href="ref.var.html">変数操作 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.is-callable" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.is-bool.html">« is_bool</a></li>
+      <li style="float: right;"><a href="function.is-countable.html">is_countable »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.var.html">変数操作 関数</a></li>
+    <li>引数が、現在のスコープから関数としてコール可能な値かどうかを調べる</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.is-callable" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">is_callable</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">is_callable</span> &mdash; <span class="dc-title">
-   引数が、関数としてコール可能な構造であるかどうかを調べる
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">is_callable</span> &mdash; <span class="dc-title">
+   引数が、現在のスコープから関数としてコール可能な値かどうかを調べる
   </span></p>
 
  </div>
@@ -22,17 +35,10 @@
  <div class="refsect1 description" id="refsect1-function.is-callable-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>is_callable</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$var</code></span>
-   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$syntax_only</code><span class="initializer"> = false</span></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter reference">&$callable_name</code></span>
-  ]] )</div>
+   <span class="methodname"><strong>is_callable</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$syntax_only</code><span class="initializer"> = <strong><code>false</code></strong></span></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter reference">&$callable_name</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
-   引数の内容が、関数としてコール可能かどうかを調べます。
-   変数が有効な関数名かどうかを調べたり、配列の中に適切に
-   エンコードされたオブジェクトと関数名が格納されているかどうかを
-   調べたりすることが可能です。
+   引数の内容が、<span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> かどうかを調べます。
   </p>
  </div>
 
@@ -44,7 +50,7 @@
 
     
      <dt>
-<code class="parameter">var</code></dt>
+<code class="parameter">value</code></dt>
 
      <dd>
 
@@ -61,7 +67,7 @@
      <dd>
 
       <p class="para">
-       <strong><code>TRUE</code></strong> の場合、この関数は単に <code class="parameter">name</code>
+       <strong><code>true</code></strong> の場合、この関数は単に <code class="parameter">value</code>
        が関数またはメソッドであるかどうかだけを調べます。
        文字列以外の型の変数や不正な形式の配列は、
        引数として受け付けられません。有効な配列の形式は、
@@ -94,8 +100,8 @@
  <div class="refsect1 returnvalues" id="refsect1-function.is-callable-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <code class="parameter">var</code> がコール可能な場合に <strong><code>TRUE</code></strong>、
-   それ以外の場合に <strong><code>FALSE</code></strong> を返します。
+   <code class="parameter">value</code> がコール可能な場合に <strong><code>true</code></strong>、
+   それ以外の場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -103,7 +109,7 @@
  <div class="refsect1 examples" id="refsect1-function.is-callable-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-6111">
+   <div class="example" id="example-5184">
     <p><strong>例1 <span class="function"><strong>is_callable()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -113,15 +119,11 @@
     </div>
 
    </div>   
-   <div class="example" id="example-6112">
+   <div class="example" id="example-5185">
     <p><strong>例2 <span class="function"><strong>is_callable()</strong></span> とコンストラクタ</strong></p>
     <div class="example-contents"><p>
-     PHP 5.3.0 以降は、<span class="function"><strong>is_callable()</strong></span>
-     はコンストラクタを callable だとはみなさなくなりました。
-     これは、PHP 5 以降の形式のコンストラクタ
-     (<em>__construct</em>) であっても PHP 4 形式のコンストラクタ
-     (クラスと同じ名前のメソッド) であっても同じです。
-     PHP 5.3.0 より前のバージョンでは、これらはいずれも callable だとみなされていました。
+     <span class="function"><strong>is_callable()</strong></span>
+     はコンストラクタを callable だとはみなしません。
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -142,20 +144,42 @@ bool(false)
  </div>
 
 
+ <div class="refsect1 notes" id="refsect1-function.is-callable-notes">
+  <h3 class="title">注意</h3>
+  <ul class="simplelist">
+   <li class="member">
+    オブジェクトは、
+    <a href="language.oop5.magic.html#object.invoke" class="link">__invoke()</a>
+    を実装していれば常にコール可能ですし、
+    そのメソッドは現在のスコープからアクセス可能です。
+   </li>
+   <li class="member">
+    <a href="language.oop5.overloading.html#object.callstatic" class="link">__callStatic()</a>
+    を実装したクラスの場合、そのクラス名はコール可能です。
+   </li>
+   <li class="member">
+    <a href="language.oop5.overloading.html#object.call" class="link">__call()</a>
+    を実装しているオブジェクトが存在する場合、
+    この関数は、そのオブジェクトのあらゆるメソッドに対して <strong><code>true</code></strong> を返します。
+    たとえそのメソッドが定義されていなくてもです。
+   </li>
+   <li class="member">
+    この関数を、クラス名を指定してコールすると、
+    オートローディングが行われる可能性があります。
+   </li>
+  </ul>
+ </div>
+
+
  <div class="refsect1 seealso" id="refsect1-function.is-callable-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><span class="function"><a href="function.function-exists.html" class="function" rel="rdfs-seeAlso">function_exists()</a> - 指定した関数が定義されている場合に TRUE を返す</span></li>
+    <li class="member"><span class="function"><a href="function.function-exists.html" class="function" rel="rdfs-seeAlso">function_exists()</a> - 指定した関数が定義されている場合に true を返す</span></li>
     <li class="member"><span class="function"><a href="function.method-exists.html" class="function" rel="rdfs-seeAlso">method_exists()</a> - クラスメソッドが存在するかどうかを確認する</span></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.is-bool.html">is_bool</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.is-double.html">is_double</a></div>
- <div class="up"><a href="ref.var.html">変数操作 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

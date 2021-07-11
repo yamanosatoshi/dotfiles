@@ -3,29 +3,42 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>switch</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="control-structures.continue.html">continue</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="control-structures.declare.html">declare</a></div>
- <div class="up"><a href="language.control-structures.html">制御構造</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="control-structures.switch" class="sect1">
- <h2 class="title"><em>switch</em></h2>
- <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.continue.html">« continue</a></li>
+      <li style="float: right;"><a href="control-structures.match.html">match »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">制御構造</a></li>
+    <li>switch</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.switch" class="sect1">
+ <h2 class="title">switch</h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p>
  <p class="simpara">
-  <em>switch</em>文は、同じ式を用いてIF文を並べたのに似ています。
+  <code class="literal">switch</code>文は、同じ式を用いてIF文を並べたのに似ています。
   同じ変数を異なる値と比較し、値に応じて異なったコードを実行したいと
   思うことがしばしばあるかと思います。
-  <em>switch</em>文は、まさにこのためにあるのです。
+  <code class="literal">switch</code>文は、まさにこのためにあるのです。
  </p>
  <blockquote class="note"><p><strong class="note">注意</strong>: 
   <span class="simpara">
    他の言語とは違って、
    <a href="control-structures.continue.html" class="link">continue</a>命令は
-   <em>switch</em> にも適用され、<em>break</em>と同じ動作をします。
-   ループの内部で <em>switch</em> を使用しており、
-   外側のループの処理を続行させたい場合には、<em>continue 2</em>
+   <code class="literal">switch</code> にも適用され、<code class="literal">break</code>と同じ動作をします。
+   ループの内部で <code class="literal">switch</code> を使用しており、
+   外側のループの処理を続行させたい場合には、<code class="literal">continue 2</code>
    を使用してください。
   </span>
  </p></blockquote>
@@ -36,37 +49,13 @@
    であることに注意しましょう。
   </p>
  </p></blockquote>
- <p class="para">
-  <table class="doctable table">
-   <caption><strong>変更履歴</strong></caption>
-   
-    <thead>
-     <tr>
-      <th>バージョン</th>
-      <th>説明</th>
-     </tr>
 
-    </thead>
-
-    <tbody class="tbody">
-     <tr>
-      <td>7.0.0</td>
-      <td>
-       default ケースを複数指定すると <strong><code>E_COMPILE_ERROR</code></strong> エラーが発生するようになりました。
-      </td>
-     </tr>
-
-    </tbody>
-   
-  </table>
-
- </p> 
  <p class="para">
   次の二つの例は、同じことを二つの異なった方法で書いたものです。
-  一つは、<em>if</em>文を、もう一つは<em>switch</em>
+  一つは、<code class="literal">if</code>文を、もう一つは<code class="literal">switch</code>
   文を使っています。
-  <div class="example" id="example-155">
-   <p><strong>例1 <em>switch</em>構造</strong></p>
+  <div class="example" id="example-111">
+   <p><strong>例1 <code class="literal">switch</code>構造</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"iは0に等しい"</span><span style="color: #007700">;<br />}&nbsp;elseif&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"iは1に等しい"</span><span style="color: #007700">;<br />}&nbsp;elseif&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"iは2に等しい"</span><span style="color: #007700">;<br />}<br /><br />switch&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"iは0に等しい"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"iは1に等しい"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"iは2に等しい"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -75,8 +64,8 @@
    </div>
 
   </div>
-  <div class="example" id="example-156">
-   <p><strong>例2 <em>switch</em>構造では文字列を使用できる</strong></p>
+  <div class="example" id="example-112">
+   <p><strong>例2 <code class="literal">switch</code>構造では文字列を使用できる</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">switch&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">"apple"</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"i&nbsp;is&nbsp;apple"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">"bar"</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"i&nbsp;is&nbsp;bar"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">"cake"</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"i&nbsp;is&nbsp;cake"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -87,16 +76,16 @@
   </div>
  </p>
  <p class="para">
-  失敗を避けるために<em>switch</em>文がどのように実行されるのかを
+  失敗を避けるために<code class="literal">switch</code>文がどのように実行されるのかを
   理解することが重要です。
-  <em>switch</em>文は、行毎に実行されます。
+  <code class="literal">switch</code>文は、行毎に実行されます。
   (実際には、文毎に実行されます。)初めは、何も実行しません。
-  <em>switch</em>式の値と同じ値として評価される式を有する
-  <em>case</em>文が見つけられたときに初めてPHPにより
+  <code class="literal">switch</code>式の値と同じ値として評価される式を有する
+  <code class="literal">case</code>文が見つけられたときに初めてPHPにより
   命令の実行が行われます。
-  PHPは<em>switch</em>ブロックの終わりまたは最初の
-  <em>break</em>文まで実行を続けます。
-  CASE文の終わりに<em>break</em>文を書かない場合は、PHPは
+  PHPは<code class="literal">switch</code>ブロックの終わりまたは最初の
+  <code class="literal">break</code>文まで実行を続けます。
+  CASE文の終わりに<code class="literal">break</code>文を書かない場合は、PHPは
   次のCASE文を実行しつづけます。例えば、
   <div class="informalexample">
    <div class="example-contents">
@@ -109,21 +98,21 @@
   </div>
  </p>
  <p class="simpara">
-  ここで、<var class="varname"><var class="varname">$i</var></var>が0に等しい場合は、PHPは全ての echo
+  ここで、<var class="varname">$i</var>が0に等しい場合は、PHPは全ての echo
   文を出力してしまいます!
-  <var class="varname"><var class="varname">$i</var></var>が1の場合、PHPは最後の二つの echo 文を出力します。
-  <var class="varname"><var class="varname">$i</var></var>が2に等しい場合のみ、&#039;期待した&#039;動作をし、
+  <var class="varname">$i</var>が1の場合、PHPは最後の二つの echo 文を出力します。
+  <var class="varname">$i</var>が2に等しい場合のみ、&#039;期待した&#039;動作をし、
   &#039;iは2に等しい&#039;と表示します。
   このため (ある種の状況下では、BREAKを付加することを避けたいと
   思うかもしれませんが)、
-  <em>break</em>文を忘れないようにすることが重要です。
+  <code class="literal">break</code>文を忘れないようにすることが重要です。
  </p>
  <p class="simpara">
-  <em>switch</em>文では、条件は1度だけ評価され、
-  その結果が各<em>case</em>文と比較されます。
-  <em>elseif</em>文では、条件は、再度評価されます。
+  <code class="literal">switch</code>文では、条件は1度だけ評価され、
+  その結果が各<code class="literal">case</code>文と比較されます。
+  <code class="literal">elseif</code>文では、条件は、再度評価されます。
   使用する条件が単純な比較処理よりも複雑な処理を行ったり、
-  重い繰り返し処理を行う場合、<em>switch</em>の方が
+  重い繰り返し処理を行う場合、<code class="literal">switch</code>の方が
   より処理が速い可能性があります。
  </p>
  <p class="para">
@@ -132,7 +121,7 @@
   <div class="informalexample">
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">switch&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;{<br />case&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">:<br />case&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">:<br />case&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"iは3より小さいですが負ではありません"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;break;<br />case&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"iは3です"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">switch&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"iは3より小さいですが負ではありません"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"iは3です"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
    </div>
@@ -140,7 +129,7 @@
   </div>
  </p>
  <p class="para">
-  <em>default</em> は、case 文の特別な場合です。これは他の全ての case
+  <code class="literal">default</code> は、case 文の特別な場合です。これは他の全ての case
   にマッチしない場合に実行されます。例を以下に示します。
   <div class="informalexample">
    <div class="example-contents">
@@ -151,6 +140,12 @@
    </div>
 
   </div>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    複数の <code class="literal">default</code> を置くと、
+    <strong><code>E_COMPILE_ERROR</code></strong> エラーが発生します。
+   </span>
+  </p></blockquote>
  </p>
  <p class="para">
   switch文の制御構造に関する別の構文がサポートされています。
@@ -178,9 +173,4 @@
 
   </div>
  </p>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="control-structures.continue.html">continue</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="control-structures.declare.html">declare</a></div>
- <div class="up"><a href="language.control-structures.html">制御構造</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

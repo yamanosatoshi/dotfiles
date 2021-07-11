@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>可変変数</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.variables.scope.html">変数のスコープ</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.variables.external.html">外部から来る変数</a></div>
- <div class="up"><a href="language.variables.html">変数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.variables.variable" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.variables.scope.html">« 変数のスコープ</a></li>
+      <li style="float: right;"><a href="language.variables.external.html">外部から来る変数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.variables.html">変数</a></li>
+    <li>可変変数</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.variables.variable" class="sect1">
    <h2 class="title">可変変数</h2>
 
    <p class="simpara">
@@ -47,8 +60,8 @@
 
    <p class="simpara">
     ここまでで、二つの変数が定義され、PHP シンボルツリーに定義されてい
-    ます。これらは、&quot;hello&quot; を値とする<var class="varname"><var class="varname">$a</var></var>と &quot;world&quot;
-    を値とする<var class="varname"><var class="varname">$hello</var></var>です。そこで、次の命令
+    ます。これらは、&quot;hello&quot; を値とする<var class="varname">$a</var>と &quot;world&quot;
+    を値とする<var class="varname">$hello</var>です。そこで、次の命令
    </p>
 
    <div class="informalexample">
@@ -82,30 +95,22 @@
 
    <p class="simpara">
     可変変数を配列で使用する際には、曖昧さの問題を解決する必要がありま
-    す。つまり、<var class="varname"><var class="varname">$$a[1]</var></var>と書いた場合、
-    <var class="varname"><var class="varname">$a[1]</var></var>を変数として使用したいのか、
-    <var class="varname"><var class="varname">$$a</var></var>を変数とし [1] を変数の添え字としたいのかを、
+    す。つまり、<var class="varname">$$a[1]</var>と書いた場合、
+    <var class="varname">$a[1]</var>を変数として使用したいのか、
+    <var class="varname">$$a</var>を変数とし [1] を変数の添え字としたいのかを、
     パーサが知る必要があるのです。この曖昧さを解決するには、前者では
-    <var class="varname"><var class="varname">${$a[1]}</var></var>とし、後者では
-    <var class="varname"><var class="varname">${$a}[1]</var></var>とする構文を用います。
+    <var class="varname">${$a[1]}</var>とし、後者では
+    <var class="varname">${$a}[1]</var>とする構文を用います。
    </p>
 
    <p class="simpara">
     クラスのプロパティには、可変プロパティ名でアクセスすることができます。
     可変プロパティ名の解決は、呼び出し元のスコープで行われます。
-    たとえば <var class="varname"><var class="varname">$foo->$bar</var></var> のようにするとローカルスコープで
-    <var class="varname"><var class="varname">$bar</var></var> を調べ、その値を
-    <var class="varname"><var class="varname">$foo</var></var> のプロパティ名として使います。
-    <var class="varname"><var class="varname">$bar</var></var> が配列へのアクセスであっても同じです。
+    たとえば <var class="varname">$foo->$bar</var> のようにするとローカルスコープで
+    <var class="varname">$bar</var> を調べ、その値を
+    <var class="varname">$foo</var> のプロパティ名として使います。
+    <var class="varname">$bar</var> が配列へのアクセスであっても同じです。
    </p>
-
-   <div class="caution"><strong class="caution">警告</strong>
-    <p class="simpara">
-     可変プロパティが配列である場合の解決方法が、PHP 5 と PHP 7 では異なります。
-     <a href="migration70.incompatible.html#migration70.incompatible.variable-handling.indirect" class="link">PHP 7.0 移行ガイド</a>
-     に、変更点の詳細をまとめました。また、波括弧を使って曖昧さを除去する方法も示します。
-    </p>
-   </div>
 
    <p class="simpara">
     波括弧を使って、プロパティ名の区切りを明確にすることもできます。
@@ -118,7 +123,7 @@
    </p>
 
    <p class="para">
-    <div class="example" id="example-123">
+    <div class="example" id="example-80">
      <p><strong>例1 可変プロパティの例</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -142,14 +147,9 @@ I am r.<br />
      関数やクラスメソッドの内部で、可変変数と PHP の
      <a href="language.variables.superglobals.html" class="link">
      スーパーグローバル配列</a> とを組み合わせては使用できないということに注意してください。
-     <em>$this</em> も特別な変数であり、
+     <code class="literal">$this</code> も特別な変数であり、
      動的に参照することはできません。
     </p>
    </div>
 
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.variables.scope.html">変数のスコープ</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.variables.external.html">外部から来る変数</a></div>
- <div class="up"><a href="language.variables.html">変数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

@@ -3,38 +3,44 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>接続しているかどうかによらずソケットにメッセージを送信する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.socket-sendmsg.html">socket_sendmsg</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.socket-set-block.html">socket_set_block</a></div>
- <div class="up"><a href="ref.sockets.html">ソケット 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.socket-sendto" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.socket-sendmsg.html">« socket_sendmsg</a></li>
+      <li style="float: right;"><a href="function.socket-set-block.html">socket_set_block »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.sockets.html">ソケット 関数</a></li>
+    <li>接続しているかどうかによらずソケットにメッセージを送信する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.socket-sendto" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">socket_sendto</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">socket_sendto</span> &mdash; <span class="dc-title">接続しているかどうかによらずソケットにメッセージを送信する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">socket_sendto</span> &mdash; <span class="dc-title">接続しているかどうかによらずソケットにメッセージを送信する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.socket-sendto-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">int</span> <span class="methodname"><strong>socket_sendto</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$socket</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$buf</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$len</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$addr</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = 0</span></span>
-  ] )</div>
+   <span class="methodname"><strong>socket_sendto</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.socket.html" class="type Socket">Socket</a></span> <code class="parameter">$socket</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$address</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$port</code><span class="initializer"> = <strong><code>null</code></strong></span></span><br>): <span class="type"><span class="type">int</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    関数 <span class="function"><strong>socket_sendto()</strong></span> は、
    アドレス <code class="parameter">addr</code> の <code class="parameter">port</code>
    を使用し、
-   <code class="parameter">buf</code> からソケット <code class="parameter">socket</code>
-   に <code class="parameter">len</code> バイトのデータを送信します。
+   <code class="parameter">data</code> からソケット <code class="parameter">socket</code>
+   に <code class="parameter">length</code> バイトのデータを送信します。
   </p>
  </div>
 
@@ -51,32 +57,32 @@
      <dd>
 
       <p class="para">
-       <span class="function"><a href="function.socket-create.html" class="function">socket_create()</a></span> で作成したソケットリソース。
+       <span class="function"><a href="function.socket-create.html" class="function">socket_create()</a></span> で作成した <a href="class.socket.html" class="classname">Socket</a> クラスのインスタンス。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">buf</code></dt>
+<code class="parameter">data</code></dt>
 
      <dd>
 
       <p class="para">
-       送信するデータが、<code class="parameter">buf</code> から取り出されます。
+       送信するデータが、<code class="parameter">data</code> から取り出されます。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">len</code></dt>
+<code class="parameter">length</code></dt>
 
      <dd>
 
       <p class="para">
-       <code class="parameter">buf</code> から
-       <code class="parameter">len</code> バイト分のデータが送信されます。
+       <code class="parameter">data</code> から
+       <code class="parameter">length</code> バイト分のデータが送信されます。
       </p>
      </dd>
 
@@ -89,7 +95,7 @@
 
       <p class="para">
        <code class="parameter">flags</code> の値は、以下のフラグの任意の組み合わせを
-       論理 OR 演算子 (<em>|</em>) で連結したものとなります。
+       論理 OR 演算子 (<code class="literal">|</code>) で連結したものとなります。
        <table class="doctable table">
         <caption><strong><code class="parameter">flags</code> がとりうる値</strong></caption>
         
@@ -134,7 +140,7 @@
     
     
      <dt>
-<code class="parameter">addr</code></dt>
+<code class="parameter">address</code></dt>
 
      <dd>
 
@@ -167,16 +173,50 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    <span class="function"><strong>socket_sendto()</strong></span> は、リモートホストに送信したバイト数を返します。
-   エラーが発生した場合は <strong><code>FALSE</code></strong> を返します。
+   エラーが発生した場合は <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
+
+ <div class="refsect1 changelog" id="refsect1-function.socket-sendto-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+  <td>8.0.0</td>
+  <td>
+   <code class="parameter">socket</code> は、<a href="class.socket.html" class="classname">Socket</a> クラスのインスタンスになりました。
+   これより前のバージョンでは、リソース型でした。
+  </td>
+ </tr>
+
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">port</code> は、nullable になりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.socket-sendto-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5148">
+   <div class="example" id="snmp.walk.example.basic">
     <p><strong>例1 <span class="function"><strong>socket_sendto()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -200,9 +240,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.socket-sendmsg.html">socket_sendmsg</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.socket-set-block.html">socket_set_block</a></div>
- <div class="up"><a href="ref.sockets.html">ソケット 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

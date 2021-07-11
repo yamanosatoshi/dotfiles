@@ -3,27 +3,36 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>指定したメッセージのヘッダ情報の概要を読む</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imap-expunge.html">imap_expunge</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imap-fetchbody.html">imap_fetchbody</a></div>
- <div class="up"><a href="ref.imap.html">IMAP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.imap-fetch-overview" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imap-expunge.html">« imap_expunge</a></li>
+      <li style="float: right;"><a href="function.imap-fetchbody.html">imap_fetchbody »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.imap.html">IMAP 関数</a></li>
+    <li>指定したメッセージのヘッダ情報の概要を読む</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imap-fetch-overview" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imap_fetch_overview</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imap_fetch_overview</span> &mdash; <span class="dc-title">指定したメッセージのヘッダ情報の概要を読む</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imap_fetch_overview</span> &mdash; <span class="dc-title">指定したメッセージのヘッダ情報の概要を読む</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imap-fetch-overview-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>imap_fetch_overview</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$imap_stream</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$sequence</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
-  ] )</div>
+   <span class="methodname"><strong>imap_fetch_overview</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$imap</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$sequence</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    この関数は、指定された <code class="parameter">sequence</code>
@@ -38,7 +47,7 @@
 
     <dt>
 <code class="parameter">
-imap_stream</code></dt>
+imap</code></dt>
 <dd>
 <p class="para"><span class="function"><a href="function.imap-open.html" class="function">imap_open()</a></span>
 が返す IMAP ストリーム。</p></dd>
@@ -51,15 +60,15 @@ imap_stream</code></dt>
 
       <p class="para">
        メッセージのシーケンスを指定します。
-       <em>X,Y</em> 形式で列挙したり、
-       <em>X:Y</em> 形式でその範囲内のすべてのメッセージを取得したりできます。
+       <code class="literal">X,Y</code> 形式で列挙したり、
+       <code class="literal">X:Y</code> 形式でその範囲内のすべてのメッセージを取得したりできます。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">options</code></dt>
+<code class="parameter">flags</code></dt>
 
      <dd>
 
@@ -86,125 +95,99 @@ imap_stream</code></dt>
    <ul class="itemizedlist">
     <li class="listitem">
      <span class="simpara">
-      <em>subject</em> - メッセージの題名(subject)
+      <code class="literal">subject</code> - メッセージの題名(subject)
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>from</em> - 送信者
+      <code class="literal">from</code> - 送信者
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>to</em> - 受信者
+      <code class="literal">to</code> - 受信者
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>date</em> - 送信日
+      <code class="literal">date</code> - 送信日
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>message_id</em> - Message-ID 
+      <code class="literal">message_id</code> - Message-ID 
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>references</em> - このメッセージ ID への参照です
+      <code class="literal">references</code> - このメッセージ ID への参照です
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>in_reply_to</em> - このメッセージ ID への返信です
+      <code class="literal">in_reply_to</code> - このメッセージ ID への返信です
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>size</em> - サイズ（バイト数）
+      <code class="literal">size</code> - サイズ（バイト数）
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>uid</em> - メールボックスにおけるこのメッセージの UID
+      <code class="literal">uid</code> - メールボックスにおけるこのメッセージの UID
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>msgno</em> - メールボックスにおけるこのメッセージのシーケンス番号
+      <code class="literal">msgno</code> - メールボックスにおけるこのメッセージのシーケンス番号
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>recent</em> - このメッセージには recent フラグが立てられています
+      <code class="literal">recent</code> - このメッセージには recent フラグが立てられています
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>flagged</em> -  フラグが立てられています
+      <code class="literal">flagged</code> -  フラグが立てられています
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>answered</em> -  返信済みフラグが立てられています
+      <code class="literal">answered</code> -  返信済みフラグが立てられています
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>deleted</em> -  削除フラグが立てられています
+      <code class="literal">deleted</code> -  削除フラグが立てられています
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>seen</em> -  既読フラグが立てられています
+      <code class="literal">seen</code> -  既読フラグが立てられています
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>draft</em> -  草稿フラグが立てられています
+      <code class="literal">draft</code> -  草稿フラグが立てられています
      </span>
     </li>
     <li class="listitem">
      <span class="simpara">
-      <em>update</em> - 受信日時の UNIX タイムスタンプ
+      <code class="literal">udate</code> - 受信日時の UNIX タイムスタンプ
      </span>
     </li>
    </ul>
+   この関数は、失敗した時に <strong><code>false</code></strong> を返します。
   </p>
- </div>
-
-
- <div class="refsect1 changelog" id="refsect1-function.imap-fetch-overview-changelog">
-  <h3 class="title">変更履歴</h3>
-  <table class="doctable informaltable">
-   
-    <thead>
-     <tr>
-      <th>バージョン</th>
-      <th>説明</th>
-     </tr>
-
-    </thead>
-
-    <tbody class="tbody">
-     <tr>
-      <td>PHP 5.3.3</td>
-      <td>
-       <em>update</em> プロパティが追加されました。
-      </td>
-     </tr>
-
-    </tbody>
-   
-  </table>
-
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.imap-fetch-overview-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3903">
+   <div class="example" id="example-2979">
     <p><strong>例1 <span class="function"><strong>imap_fetch_overview()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -226,9 +209,4 @@ imap_stream</code></dt>
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imap-expunge.html">imap_expunge</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imap-fetchbody.html">imap_fetchbody</a></div>
- <div class="up"><a href="ref.imap.html">IMAP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

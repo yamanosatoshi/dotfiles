@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Oracle 関数 (PDO_OCI)</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="ref.pdo-sqlsrv.connection.html">PDO_SQLSRV DSN</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="ref.pdo-oci.connection.html">PDO_OCI DSN</a></div>
- <div class="up"><a href="pdo.drivers.html">PDO ドライバ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="ref.pdo-oci" class="reference">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.pdo-sqlsrv.connection.html">« PDO_SQLSRV DSN</a></li>
+      <li style="float: right;"><a href="ref.pdo-oci.connection.html">PDO_OCI DSN »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="pdo.drivers.html">PDO ドライバ</a></li>
+    <li>Oracle 関数 (PDO_OCI)</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ref.pdo-oci" class="reference">
   
   <h1 class="title">Oracle 関数 (PDO_OCI)</h1>
   
@@ -19,19 +32,25 @@
    
 
 
+
 <div class="section" id="ref.pdo-oci.installation">
  <h2 class="title">インストール手順</h2>
  <p class="para">
-  <strong class="option configure">--with-pdo-oci[=DIR]</strong>
- で
-  PDO Oracle OCI 拡張モジュールをインストールします。オプションの <em>[=DIR]</em>
+  Oracle データベースがPHPと同じマシンにインストールされている場合、
+  必要なライブラリはデータベースソフトウェアに既に含まれています。
+  PHP が Oracle データベースと違うマシンにある場合、
+  フリーの <a href="https://www.oracle.com/database/technologies/instant-client.html" class="link external">&raquo;&nbsp;Oracle インスタントクライアント</a> ライブラリを使ってください。
+  詳細は <a href="oci8.requirements.html" class="link">OCI8 のインストール要件</a> のセクションを参照してください。
+ </p>
+ <p class="para">
+  <strong class="option configure">--with-pdo-oci[=DIR]</strong> で
+  PDO Oracle OCI 拡張モジュールをインストールします。オプションの <code class="literal">[=DIR]</code>
   には、Oracle のホームディレクトリを指定することができます。
-  <em>[=DIR]</em> のデフォルトは、環境変数
-  <var class="varname"><var class="varname">$ORACLE_HOME</var></var> の値です。
+  <code class="literal">[=DIR]</code> のデフォルトは、環境変数
+  <var class="varname">$ORACLE_HOME</var> の値です。
  </p>
  <p class="para">
   <strong class="option configure">--with-pdo-oci=instantclient,prefix,version</strong>
-
   で、Oracle Instant Client <acronym>SDK</acronym> を指定します。prefix および
   version は環境にあわせて設定します。
  </p>
@@ -50,6 +69,99 @@ $ ./configure --with-pdo-oci=instantclient,/usr,10.2.0.3
 
 
 
+   
+
+<div class="section" id="pdo-oci.constants">
+ <h2 class="title">定義済み定数</h2>
+ <p class="simpara">このドライバでは以下の定数が定義されて
+います。これは拡張モジュールが PHP に組み込まれているか、実行時に動的にロード
+されている場合のみ使用可能です。さらに、これらのドライバ固有の定数は
+そのドライバを使用している場合にのみ使用されます。
+あるドライバ固有の属性を別のドライバで使うと、予期せぬ結果を引き起こします。
+もし複数のドライバを使用しているコードを実行している場合、
+<span class="function"><a href="pdo.getattribute.html" class="function">PDO::getAttribute()</a></span> で <strong><code>PDO::ATTR_DRIVER_NAME</code></strong>
+属性を使用することで、使用中のドライバ名を調べることが可能です。</p>
+ <dl>
+
+  
+  
+   <dt id="pdo.constants.oci-attr-action">
+    <strong><code>PDO::OCI_ATTR_ACTION</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Provides a way to specify the action on the database session.
+    </p>
+    <p class="para">
+     これが使えるようになった PHP のバージョンは  7.2.16 and 7.3.3
+    </p>
+   </dd>
+
+  
+  
+  
+   <dt id="pdo.constants.oci-attr-client-info">
+    <strong><code>PDO::OCI_ATTR_CLIENT_INFO</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Provides a way to specify the client info on the database session.
+    </p>
+    <p class="para">
+     これが使えるようになった PHP のバージョンは  7.2.16 and 7.3.3
+    </p>
+   </dd>
+
+  
+  
+  
+   <dt id="pdo.constants.oci-attr-client-identifier">
+    <strong><code>PDO::OCI_ATTR_CLIENT_IDENTIFIER</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Provides a way to specify the client identifier on the database session.
+    </p>
+    <p class="para">
+     これが使えるようになった PHP のバージョンは  7.2.16 and 7.3.3
+    </p>
+   </dd>
+
+  
+  
+  
+   <dt id="pdo.constants.oci-attr-module">
+    <strong><code>PDO::OCI_ATTR_MODULE</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Provides a way to specify the module on the database session.
+    </p>
+    <p class="para">
+     これが使えるようになった PHP のバージョンは  7.2.16 and 7.3.3
+    </p>
+   </dd>
+
+  
+
+ </dl>
+
+</div>
+
+
+
 
   </div>
 
@@ -57,9 +169,4 @@ $ ./configure --with-pdo-oci=instantclient,/usr,10.2.0.3
 
  <h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="ref.pdo-oci.connection.html">PDO_OCI DSN</a> — Oracle データベースに接続する</li></ul>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="ref.pdo-sqlsrv.connection.html">PDO_SQLSRV DSN</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="ref.pdo-oci.connection.html">PDO_OCI DSN</a></div>
- <div class="up"><a href="pdo.drivers.html">PDO ドライバ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

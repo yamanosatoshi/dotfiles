@@ -3,32 +3,40 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>文字を HTML 数値エンティティにエンコードする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mb-encode-mimeheader.html">mb_encode_mimeheader</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mb-encoding-aliases.html">mb_encoding_aliases</a></div>
- <div class="up"><a href="ref.mbstring.html">マルチバイト文字列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.mb-encode-numericentity" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mb-encode-mimeheader.html">« mb_encode_mimeheader</a></li>
+      <li style="float: right;"><a href="function.mb-encoding-aliases.html">mb_encoding_aliases »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mbstring.html">マルチバイト文字列 関数</a></li>
+    <li>文字を HTML 数値エンティティにエンコードする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mb-encode-numericentity" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mb_encode_numericentity</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mb_encode_numericentity</span> &mdash; <span class="dc-title">文字を HTML 数値エンティティにエンコードする</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mb_encode_numericentity</span> &mdash; <span class="dc-title">文字を HTML 数値エンティティにエンコードする</span></p>
 
  </div>
    
  <div class="refsect1 description" id="refsect1-function.mb-encode-numericentity-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>mb_encode_numericentity</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
-   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$convmap</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code><span class="initializer"> = mb_internal_encoding()</span></span>
-   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$is_hex</code><span class="initializer"> = FALSE</span></span>
-  ]] )</div>
+   <span class="methodname"><strong>mb_encode_numericentity</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$map</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$encoding</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$hex</code><span class="initializer"> = <strong><code>false</code></strong></span></span><br>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
-   <code class="parameter">str</code>の中で指定した文字コードを
+   <code class="parameter">string</code>の中で指定した文字コードを
    文字コードから HTML 数値エンティティに変換します。
   </p>
  </div>
@@ -41,7 +49,7 @@
 
     
      <dt>
-<code class="parameter">str</code></dt>
+<code class="parameter">string</code></dt>
 
      <dd>
 
@@ -53,12 +61,12 @@
     
     
      <dt>
-<code class="parameter">convmap</code></dt>
+<code class="parameter">map</code></dt>
 
      <dd>
 
       <p class="para">
-       <code class="parameter">convmap</code> は、変換するコード領域を指定する配列です。
+       <code class="parameter">map</code> は、変換するコード領域を指定する配列です。
       </p>
      </dd>
 
@@ -70,18 +78,20 @@
      <dd>
 
       <p class="para"><code class="parameter">encoding</code> 
-パラメータには文字エンコーディングを指定します。省略した場合は、
+パラメータには文字エンコーディングを指定します。省略した場合、もしくは <strong><code>null</code></strong> の場合は、
 内部文字エンコーディングを使用します。</p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">is_hex</code></dt>
+<code class="parameter">hex</code></dt>
 
      <dd>
 
       <p class="para">
+       返されたエンティティのリファレンスが16進記法であるべきかどうか
+       (<strong><code>false</code></strong> の場合、10進記法です)
       </p>
      </dd>
 
@@ -102,38 +112,36 @@
 
  <div class="refsect1 changelog" id="refsect1-function.mb-encode-numericentity-changelog">
   <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
 
-     </thead>
+    </thead>
 
-     <tbody class="tbody">
-      <tr>
-       <td>5.4.0</td>
-       <td>
-        <code class="parameter">is_hex</code> パラメータが追加されました。
-       </td>
-      </tr>
+    <tbody class="tbody">
+     <tr>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">encoding</code> は、nullable になりました。
+ </td>
+</tr>
 
-     </tbody>
-    
-   </table>
+    </tbody>
+   
+  </table>
 
-  </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.mb-encode-numericentity-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3034">
-    <p><strong>例1 <code class="parameter">convmap</code> の例</strong></p>
+   <div class="example" id="example-2527">
+    <p><strong>例1 <code class="parameter">map</code> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$convmap&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(<br />&nbsp;</span><span style="color: #0000BB">int&nbsp;start_code1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;end_code1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;offset1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;mask1</span><span style="color: #007700">,<br />&nbsp;</span><span style="color: #0000BB">int&nbsp;start_code2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;end_code2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;offset2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;mask2</span><span style="color: #007700">,<br />&nbsp;........<br />&nbsp;</span><span style="color: #0000BB">int&nbsp;start_codeN</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;end_codeN</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;offsetN</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">int&nbsp;maskN&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;start_codeN&nbsp;および&nbsp;end_codeN&nbsp;に&nbsp;Unicode&nbsp;値を指定<br />//&nbsp;値に&nbsp;offsetN&nbsp;を追加、マスク&nbsp;maskN&nbsp;を指定してビット毎の'AND'をとり、<br />//&nbsp;数値エンティティに値を変換します。<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -143,13 +151,8 @@
 
    </div>
   </p>
- </div>
-
-
- <div class="refsect1 examples" id="refsect1-function.mb-encode-numericentity-examples">
-  <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3035">
+   <div class="example" id="example-2528">
     <p><strong>例2 <span class="function"><strong>mb_encode_numericentity()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -173,9 +176,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mb-encode-mimeheader.html">mb_encode_mimeheader</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mb-encoding-aliases.html">mb_encoding_aliases</a></div>
- <div class="up"><a href="ref.mbstring.html">マルチバイト文字列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Win32Service サービス制御メッセージが受領されたときのビットマスク</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="win32service.constants.servicecontrol.html">Win32Service サービス制御メッセージ定数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="win32service.constants.servicestarttype.html">Win32Service サービス開始型定数</a></div>
- <div class="up"><a href="win32service.constants.html">定義済み定数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="win32service.constants.controlsaccepted" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="win32service.constants.servicecontrol.html">« Win32Service サービス制御メッセージ定数</a></li>
+      <li style="float: right;"><a href="win32service.constants.servicestarttype.html">Win32Service サービス開始型定数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="win32service.constants.html">定義済み定数</a></li>
+    <li>Win32Service サービス制御メッセージが受領されたときのビットマスク</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="win32service.constants.controlsaccepted" class="section">
   <table class="doctable table">
    <caption><strong>Win32Service サービス制御メッセージが受領されたときのビットマスク</strong></caption>
    
@@ -24,6 +37,40 @@
     </thead>
 
     <tbody class="tbody">
+     <tr id="constant.win32-service-accept-hardwareprofilechange">
+      <td><strong><code>WIN32_SERVICE_ACCEPT_HARDWAREPROFILECHANGE</code></strong></td>
+      <td>0x00000020</td>
+      <td>
+        コンピューターのハードウェアプロファイルが変化した場合にサービスに通知します。
+        これによって、システムは <strong><code>WIN32_SERVICE_CONTROL_HARDWAREPROFILECHANGE</code></strong>
+        をサービスに通知できるようになります。
+      </td>
+     </tr>
+
+     <tr id="constant.win32-service-accept-netbindchange">
+      <td><strong><code>WIN32_SERVICE_ACCEPT_NETBINDCHANGE</code></strong></td>
+      <td>0x00000010</td>
+      <td>
+        このサービスは、停止や再起動なしに、
+        バインディングの変更を受け入れることができるネットワークコンポーネントです。 
+        この制御コードは、サービスが
+        <strong><code>WIN32_SERVICE_CONTROL_NETBINDADD</code></strong>, 
+        <strong><code>WIN32_SERVICE_CONTROL_NETBINDREMOVE</code></strong>, 
+        <strong><code>WIN32_SERVICE_CONTROL_NETBINDENABLE</code></strong> および
+        <strong><code>WIN32_SERVICE_CONTROL_NETBINDDISABLE</code></strong> の通知を受け取れることを表します。
+      </td>
+     </tr>
+
+     <tr id="constant.win32-service-accept-paramchange">
+      <td><strong><code>WIN32_SERVICE_ACCEPT_PARAMCHANGE</code></strong></td>
+      <td>0x00000008</td>
+      <td>
+        サービスを停止したり再起動することなく、スタートアップパラメータを再読込できるサービスです。
+        この制御コードは、サービスが
+        <strong><code>WIN32_SERVICE_CONTROL_PARAMCHANGE</code></strong> の通知を受け取れることを表します。
+      </td>
+     </tr>
+
      <tr id="constant.win32-service-accept-pause-continue">
       <td><strong><code>WIN32_SERVICE_ACCEPT_PAUSE_CONTINUE</code></strong></td>
       <td>0x00000002</td>
@@ -34,6 +81,16 @@
       </td>
      </tr>
 
+     <tr id="constant.win32-service-accept-powerevent">
+      <td><strong><code>WIN32_SERVICE_ACCEPT_POWEREVENT</code></strong></td>
+      <td>0x00000040</td>
+      <td>
+        コンピューターの電源状態が変化した時にサービスに通知します。
+        これによって、システムが <strong><code>WIN32_SERVICE_CONTROL_POWEREVENT</code></strong>
+        通知をサービスに送信できるようになります。
+      </td>
+     </tr>
+
      <tr id="constant.win32-service-accept-preshutdown">
       <td><strong><code>WIN32_SERVICE_ACCEPT_PRESHUTDOWN</code></strong></td>
       <td>0x00000100</td>
@@ -41,6 +98,17 @@
        サービスはシャットダウン前のタスクを処理できます。この制御コードは、サービスが
        <strong><code>WIN32_SERVICE_CONTROL_PRESHUTDOWN</code></strong> の通知を受け取れることを表します。
        この値は Windows Server 2003 や Windows XP/2000 以降では使えません。
+      </td>
+     </tr>
+
+     <tr id="constant.win32-service-accept-sessionchange">
+      <td><strong><code>WIN32_SERVICE_ACCEPT_SESSIONCHANGE</code></strong></td>
+      <td>0x00000080</td>
+      <td>
+        コンピューターのセッション状態が変更された場合にサービスに通知します。
+        これによって、システムは <strong><code>WIN32_SERVICE_CONTROL_SESSIONCHANGE</code></strong>
+        通知をサービスに送信できるようになります。
+        Windows 2000 では、この値は使えません。
       </td>
      </tr>
 
@@ -62,13 +130,32 @@
       </td>
      </tr>
 
+     <tr id="constant.win32-service-accept-timechange">
+      <td><strong><code>WIN32_SERVICE_ACCEPT_TIMECHANGE</code></strong></td>
+      <td>0x00000200</td>
+      <td>
+        システム時刻が変更された場合にサービスに通知します。
+        これによって、システムは
+        <strong><code>WIN32_SERVICE_CONTROL_TIMECHANGE</code></strong> 通知をサービスに送信できるようになります。
+        Windows Server 2008, Windows Vista, Windows Server 2003, 
+        and Windows XP/2000 では、この制御コードはサポートされていません。
+      </td>
+     </tr>
+
+     <tr id="constant.win32-service-accept-triggerevent">
+      <td><strong><code>WIN32_SERVICE_ACCEPT_TRIGGEREVENT</code></strong></td>
+      <td>0x00000400</td>
+      <td>
+        サービスの登録イベントが起きた場合にサービスに通知します。
+        これによって、システムは
+        <strong><code>WIN32_SERVICE_CONTROL_TRIGGEREVENT</code></strong> 通知をサービスに送信できるようになります。
+        Windows Server 2008, Windows Vista, Windows Server 2003, 
+        and Windows XP/2000 では、この制御コードはサポートされていません。
+      </td>
+     </tr>
+
     </tbody>
    
   </table>
 
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="win32service.constants.servicecontrol.html">Win32Service サービス制御メッセージ定数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="win32service.constants.servicestarttype.html">Win32Service サービス開始型定数</a></div>
- <div class="up"><a href="win32service.constants.html">定義済み定数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

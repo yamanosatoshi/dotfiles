@@ -3,56 +3,70 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>インストール手順</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="apcu.requirements.html">要件</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="apcu.configuration.html">実行時設定</a></div>
- <div class="up"><a href="apcu.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="apcu.installation" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="apcu.requirements.html">« 要件</a></li>
+      <li style="float: right;"><a href="apcu.configuration.html">実行時設定 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="apcu.setup.html">インストール/設定</a></li>
+    <li>インストール手順</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="apcu.installation" class="section">
   <h2 class="title">インストール手順</h2>
   <p class="para">
-   If backward compatibility with the applicable parts of APC is required,
-   APCu must be configured with the option --enable-apcu-bc.
+   この PECL 拡張モジュールをインストールする方法は、
+マニュアルの <a href="install.pecl.html" class="link">
+PECL 拡張モジュールのインストール</a> という章にあります。
+新規リリース・ダウンロード・ソースファイル・管理者情報・CHANGELOG
+といった関連する情報については、次の場所にあります。
+   <a href="https://pecl.php.net/package/apcu" class="link external">&raquo;&nbsp;https://pecl.php.net/package/apcu</a>.
+  </p>
+  <p class="para">
+   APC の機能と後方互換を取ることが必須な場合、APCu は --enable-apcu-bc を付けてコンパイルしなければなりません。
   </p>
   <div class="warning"><strong class="warning">警告</strong>
    <p class="simpara">
-    PHP 7 has a separate module (<a href="http://pecl.php.net/apcu_bc" class="link external">&raquo;&nbsp;apc.so</a>) for backwards compatibility with APC.
+    PHP 7 では、APC と後方互換を取るために別のモジュール
+    (<a href="https://pecl.php.net/apcu_bc" class="link external">&raquo;&nbsp;apc.so</a>) を提供しています。
    </p>
   </div>
   <p class="para">
-   In backward compatibility mode, APCu registers the applicable APC functions
-   with backward compatible prototypes.
+   後方互換モードでは、APCu はAPCの関数を後方互換が取れたプロトタイプで登録します。
   </p>
   <p class="para">
-   Where an APC function accepted <code class="parameter">cache_type</code>, it is simply
-   ignored by the backward compatible version, and omitted from the prototype for
-   the APCu version.
+   <code class="parameter">cache_type</code> を引数として取るAPC関数は、
+   後方互換モードが有効なバージョンでは単に無視され、
+   APCu のバージョンではプロトタイプで省略されます。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <span class="simpara">
-    On Windows, APCu needs a temp path to exist, and be
-    writable by the web server.  It checks the TMP, TEMP 
-    and USERPROFILE environment variables in that order
-    and finally tries the WINDOWS directory if none of
-    those are set.
+    Windows では、既に存在しており、
+    かつ Webサーバから書き込み可能な temp path が必要です。
+    APCu は TMP, TEMP, USERPROFILE 環境変数をこの順でチェックし、
+    これらに値がセットされていない場合は WINDOWS ディレクトリを最後に調べます。
    </span>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <span class="simpara">
-    For more in-depth, highly technical implementation details, see the
-    <a href="http://git.php.net/?p=pecl/caching/apc.git;a=blob;f=TECHNOTES.txt" class="link external">&raquo;&nbsp;
-     developer-supplied TECHNOTES file
-    </a>.
+    さらに細かい、技術的に高度な実装の詳細については、
+    <a href="https://github.com/php/pecl-caching-apc/blob/master/TECHNOTES.txt" class="link external">&raquo;&nbsp;
+     開発者が提供している TECHNOTES ファイル
+    </a> を参照して下さい。
    </span>
   </p></blockquote>
   <p class="para">
-   APCu sources can be found <a href="https://www.github.com/krakjoe/apcu" class="link external">&raquo;&nbsp;here</a>.
+   APCu のソースコードは、<a href="https://github.com/krakjoe/apcu" class="link external">&raquo;&nbsp;ここ</a> で見ることが出来ます。
   </p>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="apcu.requirements.html">要件</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="apcu.configuration.html">実行時設定</a></div>
- <div class="up"><a href="apcu.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

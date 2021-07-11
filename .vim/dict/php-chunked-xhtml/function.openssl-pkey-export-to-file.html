@@ -3,34 +3,42 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>エクスポート可能な形式で、キーをファイルに取得する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.openssl-pkcs7-verify.html">openssl_pkcs7_verify</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.openssl-pkey-export.html">openssl_pkey_export</a></div>
- <div class="up"><a href="ref.openssl.html">OpenSSL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.openssl-pkey-export-to-file" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.openssl-pkey-derive.html">« openssl_pkey_derive</a></li>
+      <li style="float: right;"><a href="function.openssl-pkey-export.html">openssl_pkey_export »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.openssl.html">OpenSSL 関数</a></li>
+    <li>エクスポート可能な形式で、キーをファイルに取得する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.openssl-pkey-export-to-file" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">openssl_pkey_export_to_file</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">openssl_pkey_export_to_file</span> &mdash; <span class="dc-title">エクスポート可能な形式で、キーをファイルに取得する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">openssl_pkey_export_to_file</span> &mdash; <span class="dc-title">エクスポート可能な形式で、キーをファイルに取得する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.openssl-pkey-export-to-file-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>openssl_pkey_export_to_file</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$key</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$outfilename</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$passphrase</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$configargs</code></span>
-  ]] )</div>
+   <span class="methodname"><strong>openssl_pkey_export_to_file</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type"><a href="class.opensslasymmetrickey.html" class="type OpenSSLAsymmetricKey">OpenSSLAsymmetricKey</a></span>|<span class="type"><a href="class.opensslcertificate.html" class="type OpenSSLCertificate">OpenSSLCertificate</a></span>|<span class="type">array</span>|<span class="type">string</span></span> <code class="parameter">$key</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$output_filename</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$passphrase</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">null</span></span> <code class="parameter">$options</code><span class="initializer"> = <strong><code>null</code></strong></span></span><br>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>openssl_pkey_export_to_file()</strong></span> は、ASCII 変換された
    (PEM エンコードされた) <code class="parameter">key</code> を
-   <code class="parameter">outfilename</code> のファイルに保存します。
+   <code class="parameter">output_filename</code> のファイルに保存します。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
  <span class="simpara">
@@ -61,7 +69,7 @@
     
     
      <dt>
-<code class="parameter">outfilename</code></dt>
+<code class="parameter">output_filename</code></dt>
 
      <dd>
 
@@ -86,14 +94,14 @@
     
     
      <dt>
-<code class="parameter">configargs</code></dt>
+<code class="parameter">options</code></dt>
 
      <dd>
 
       <p class="para">
-       <code class="parameter">configargs</code> により openssl 設定ファイルの設定を
+       <code class="parameter">options</code> により openssl 設定ファイルの設定を
        追加したり上書きしたりすることで、エクスポート処理の詳細設定が可能です。
-       <code class="parameter">configargs</code> についての詳細な情報は
+       <code class="parameter">options</code> についての詳細な情報は
        <span class="function"><a href="function.openssl-csr-new.html" class="function">openssl_csr_new()</a></span> を参照ください。
       </p>
      </dd>
@@ -108,14 +116,40 @@
  <div class="refsect1 returnvalues" id="refsect1-function.openssl-pkey-export-to-file-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.openssl-pkcs7-verify.html">openssl_pkcs7_verify</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.openssl-pkey-export.html">openssl_pkey_export</a></div>
- <div class="up"><a href="ref.openssl.html">OpenSSL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ <div class="refsect1 changelog" id="refsect1-function.openssl-pkey-export-to-file-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">key</code> は、
+       <a href="class.opensslasymmetrickey.html" class="classname">OpenSSLAsymmetricKey</a> または
+       <a href="class.opensslcertificate.html" class="classname">OpenSSLCertificate</a> クラスのインスタンスを受け入れるようになりました。
+       これより前のバージョンでは、
+       <code class="literal">OpenSSL key</code> または
+       <code class="literal">OpenSSL X.509</code> 型のリソースを受け入れていました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+</div></div></div></body></html>

@@ -2,26 +2,37 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>指定した日付に関する詳細な情報を連想配列で返す</title>
+  <title>指定した日付/時刻の詳細な情報を連想配列で返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.date-parse-from-format.html">date_parse_from_format</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.date-sub.html">date_sub</a></div>
- <div class="up"><a href="ref.datetime.html">日付・時刻 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.date-parse" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.date-parse-from-format.html">« date_parse_from_format</a></li>
+      <li style="float: right;"><a href="function.date-sub.html">date_sub »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.datetime.html">日付・時刻 関数</a></li>
+    <li>指定した日付/時刻の詳細な情報を連想配列で返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.date-parse" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">date_parse</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7)</p><p class="refpurpose"><span class="refname">date_parse</span> &mdash; <span class="dc-title">指定した日付に関する詳細な情報を連想配列で返す</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">date_parse</span> &mdash; <span class="dc-title">指定した日付/時刻の詳細な情報を連想配列で返す</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.date-parse-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>date_parse</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$date</code></span>
-   )</div>
+   <span class="methodname"><strong>date_parse</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$datetime</code></span>): <span class="type">array</span></div>
 
  </div>
 
@@ -33,12 +44,12 @@
 
     
      <dt>
-<code class="parameter">date</code></dt>
+<code class="parameter">datetime</code></dt>
 
      <dd>
 
       <p class="para">
-       <span class="function"><a href="function.strtotime.html" class="function">strtotime()</a></span> が理解できる書式の日付。
+       <span class="function"><a href="datetimeimmutable.construct.html" class="function">DateTimeImmutable::__construct()</a></span> が理解できる書式の日付/時刻。
       </p>
      </dd>
 
@@ -52,7 +63,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.date-parse-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に日付情報を含む配列、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に日付/時刻情報を含む配列、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -60,16 +71,47 @@
  <div class="refsect1 errors" id="refsect1-function.date-parse-errors">
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
-   日付フォーマットにエラーがある場合は、
+   日付/時刻フォーマットにエラーがある場合は、
    &#039;errors&#039; 要素にエラーメッセージが格納されます。
   </p>
  </div>
 
  
+ <div class="refsect1 changelog" id="refsect1-function.date-parse-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>7.2.0</td>
+      <td>
+       返される配列の <code class="literal">zone</code> 要素が、
+       分ではなく秒を表すようになり、
+       符号が逆になりました。
+       たとえば、
+       <code class="literal">-120</code> は <code class="literal">7200</code> を表すようになります。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
  <div class="refsect1 examples" id="refsect1-function.date-parse-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2559">
+   <div class="example" id="example-2048">
     <p><strong>例1 <span class="function"><strong>date_parse()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -104,7 +146,7 @@ Array
    <a href="datetime.formats.relative.html" class="link">相対的な書式</a> は
    絶対的な書式のパース結果に影響を及ぼさず、別途
    &quot;relative&quot; 要素にまとめられます。
-   <div class="example" id="example-2560">
+   <div class="example" id="example-2049">
     <p><strong>例2 <span class="function"><strong>date_parse()</strong></span> での相対的な書式の使用例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -164,9 +206,4 @@ Array
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.date-parse-from-format.html">date_parse_from_format</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.date-sub.html">date_sub</a></div>
- <div class="up"><a href="ref.datetime.html">日付・時刻 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

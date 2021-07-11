@@ -3,122 +3,77 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>インストール手順</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mbstring.requirements.html">要件</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mbstring.configuration.html">実行時設定</a></div>
- <div class="up"><a href="mbstring.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mbstring.installation" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mbstring.requirements.html">« 要件</a></li>
+      <li style="float: right;"><a href="mbstring.configuration.html">実行時設定 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mbstring.setup.html">インストール/設定</a></li>
+    <li>インストール手順</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mbstring.installation" class="section">
   <h2 class="title">インストール手順</h2>
   <p class="para">
-   <em>mbstring</em> は拡張モジュールです。つまり、デフォルトでは
+   <code class="literal">mbstring</code> は拡張モジュールです。つまり、デフォルトでは
    有効にならないということです。
-   <em>configure</em> スクリプトでモジュールを有効にする必要が
+   <code class="literal">configure</code> スクリプトでモジュールを有効にする必要が
    あります。詳細は、<a href="install.html" class="link">インストール</a>の
    節を参照してください。
   </p>
   <p class="simpara">
-   <em>mbstring</em> モジュールに関係する設定オプションは
+   <code class="literal">mbstring</code> モジュールに関係する設定オプションは
    以下のとおりです。
   </p>
   <p class="para">
   <ul class="itemizedlist">
    <li class="listitem">
     <p class="para">
-     <strong class="option configure">--enable-mbstring</strong>
-:
-     <em>mbstring</em> 関数を有効にします。このオプションは、
-     <em>mbstring</em> 関数を利用するために必要です。
+     <strong class="option configure">--enable-mbstring</strong>:
+     <code class="literal">mbstring</code> 関数を有効にします。このオプションは、
+     <code class="literal">mbstring</code> 関数を利用するために必要です。
     </p>
     <p class="para">
-     <em>mbstring</em> 拡張モジュールを使用するためには、
+     <code class="literal">mbstring</code> 拡張モジュールを使用するためには、
      <span class="productname">libmbfl</span>ライブラリが必要です。
-     <span class="productname">libmbfl</span>は、<em>mbstring</em> 
-     拡張モジュールにバンドルされています。システムにインストールされている
-     <span class="productname">libmbfl</span> を利用する場合、
-     <strong class="option configure">--with-libmbfl[=DIR]</strong>
- を指定します。
+     <span class="productname">libmbfl</span>は、<code class="literal">mbstring</code> 
+     拡張モジュールにバンドルされています。PHP 7.3.0 より前では、
+     <span class="productname">libmbfl</span> がシステムにすでにインストール済みの場合、
+     <strong class="option configure">--with-libmbfl[=DIR]</strong> を指定して
+     インストール済みのライブラリを使用します。
     </p>
-    <p class="para">
-     PHP 4.3.0 以降、<em>mbstring</em> 拡張モジュールは
-     日本語のほかに中国語 (簡体字)・中国語 (繁体字)・
-     韓国語・ロシア語をサポートするように機能拡張されました。
-    </p>
-    <p class="para">
-     PHP 4.3.4以前のバージョンの場合、
-     この機能を使用するには、<strong class="option configure">--enable-mbstring=LANG</strong>
-の
-     <em>LANG</em> パラメータに
-     以下のオプションのいずれかを追加する必要があります。
-     <strong class="option configure">--enable-mbstring=cn</strong>
- を
-     使用した場合、簡体字中国語のエンコーディングがサポートされます。
-     <strong class="option configure">--enable-mbstring=tw</strong>
- を
-     使用した場合、繁体字中国語のエンコーディングがサポートされます。
-     <strong class="option configure">--enable-mbstring=kr</strong>
- を
-     使用した場合、韓国語のエンコーディングがサポートされます。
-     <strong class="option configure">--enable-mbstring=ru</strong>
- を
-     使用した場合、ロシア語のエンコーディングがサポートされます。そして、
-     <strong class="option configure">--enable-mbstring=ja</strong>
- (デフォルト)を
-     使用した場合、日本語のエンコーディングがサポートされます。
-     <strong class="option configure">--enable-mbstring=all</strong>
-
-     を指定した場合、サポートされるすべての文字エンコーディングが有効となります。
-     以前のバージョンとの互換性のため、何もオプションを指定せずに
-     <strong class="option configure">--enable-mbstring</strong>
- を使用した場合は
-     日本語のエンコーディングがサポートされます。
-    </p>
-    <blockquote class="note"><p><strong class="note">注意</strong>: 
-     <p class="para">
-      PHP 4.3.4以降では、<strong class="option configure">--enable-mbstring</strong>
-により、
-      <span class="productname">libmbfl</span>でサポートされている全てのエンコーディングが有効となるよう
-      になっています。
-     </p>
-    </p></blockquote>
    </li>
     <li class="listitem">
      <p class="para">
-      <strong class="option configure">--enable-mbstr-enc-trans</strong>
- :
-      <em>mbstring</em> 変換エンジンを使用した、HTTP 入力の
-      文字エンコーディング変換を有効にします。この機能が有効の場合、
-      HTTP 入力文字エンコーディングは、自動的に
-      <em>mbstring.internal_encoding</em> に変換されます。
-     </p>
-     <blockquote class="note"><p><strong class="note">注意</strong>: 
-      <p class="para">
-       PHP 4.3.0 以降、このオプション
-       <strong class="option configure">--enable-mbstr-enc-trans</strong>
-
-       は廃止され、実行時の設定 
-       <em>mbstring.encoding_translation</em>
-       に変更となります。HTTP 入力文字エンコーディング変換は、
-       このオプションを <em>On</em> に設定した場合のみ
-       有効となります
-       (デフォルトは <em>Off</em>です)。
-      </p>
-     </p></blockquote>
-    </li>
-    <li class="listitem">
-     <p class="para">
-      <strong class="option configure">--disable-mbregex</strong>
- :
+      <strong class="option configure">--disable-mbregex</strong> :
       マルチバイト対応の正規表現関数を無効にします。
+     </p>
+     <p class="para">
+      <span class="productname">Oniguruma</span> は、
+      マルチバイト文字をサポートする正規表現関数のために必要です。
+      PHP 7.4.0 以降では、libonig ライブラリを検知するのに pkg-config を使うようになりました。
+      PHP 7.4.0 より前のバージョンでは、
+      <span class="productname">Oniguruma</span> は <code class="literal">mbstring</code> にバンドルされていましたが、
+      既に libonig がシステムにインストール済みの場合、
+      <strong class="option configure">--with-onig[=DIR]</strong> を指定して
+      インストール済みのライブラリを使用することができました。
+     </p>
+     <p class="para">
+      <strong class="option configure">--disable-mbregex-backtrack</strong>
+      を指定して、マルチバイト正規表現バックトラックチェックを無効にすることができます。
      </p>
     </li>
    </ul>
   </p>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mbstring.requirements.html">要件</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mbstring.configuration.html">実行時設定</a></div>
- <div class="up"><a href="mbstring.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

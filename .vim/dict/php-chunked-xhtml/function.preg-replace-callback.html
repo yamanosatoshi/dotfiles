@@ -3,30 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>正規表現検索を行い、コールバック関数を使用して置換を行う</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.preg-replace-callback-array.html">preg_replace_callback_array</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.preg-replace.html">preg_replace</a></div>
- <div class="up"><a href="ref.pcre.html">PCRE 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.preg-replace-callback" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.preg-replace-callback-array.html">« preg_replace_callback_array</a></li>
+      <li style="float: right;"><a href="function.preg-replace.html">preg_replace »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pcre.html">PCRE 関数</a></li>
+    <li>正規表現検索を行い、コールバック関数を使用して置換を行う</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.preg-replace-callback" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">preg_replace_callback</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">preg_replace_callback</span> &mdash; <span class="dc-title">正規表現検索を行い、コールバック関数を使用して置換を行う</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">preg_replace_callback</span> &mdash; <span class="dc-title">正規表現検索を行い、コールバック関数を使用して置換を行う</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.preg-replace-callback-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>preg_replace_callback</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$pattern</code></span>
-   , <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>
-   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$subject</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code><span class="initializer"> = -1</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$count</code></span>
-  ]] )</div>
+   <span class="methodname"><strong>preg_replace_callback</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">array</span></span> <code class="parameter">$pattern</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">array</span></span> <code class="parameter">$subject</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code><span class="initializer"> = -1</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$count</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span><br>): <span class="type"><span class="type">string</span>|<span class="type">array</span>|<span class="type">null</span></span></div>
 
   <p class="para rdfs-comment">
    この関数の動作は、ほぼ <span class="function"><a href="function.preg-replace.html" class="function">preg_replace()</a></span> と同じですが、
@@ -67,9 +74,7 @@
       </p>
       <p class="para">
        <div class="methodsynopsis dc-description">
-        <span class="type">string</span> <span class="methodname"><span class="replaceable">handler</span></span>
-         ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$matches</code></span>
-        )</div>
+        <span class="methodname"><span class="replaceable">handler</span></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter">$matches</code></span>): <span class="type">string</span></div>
 
       </p>
       <p class="para">
@@ -85,7 +90,7 @@
        汚染しないようにすることができます。
       </p>
       <p class="para">
-       <div class="example" id="example-5388">
+       <div class="example" id="example-4731">
         <p><strong>例1 
          <span class="function"><strong>preg_replace_callback()</strong></span> と無名関数
         </strong></p>
@@ -123,7 +128,7 @@
       <p class="para">
        <code class="parameter">subject</code> 文字列における
        各パターンの最大置換回数。デフォルトは
-       <em>-1</em> (無制限) です。
+       <code class="literal">-1</code> (無制限) です。
       </p>
      </dd>
 
@@ -140,6 +145,22 @@
      </dd>
 
     
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="parameter">flags</code> には、
+       <strong><code>PREG_OFFSET_CAPTURE</code></strong> と
+       <strong><code>PREG_UNMATCHED_AS_NULL</code></strong> の組み合わせが指定できます。
+       これは matches 配列のフォーマットに影響します。
+       詳細は <span class="function"><a href="function.preg-match.html" class="function">preg_match()</a></span> 関数の説明を参照してください。
+      </p>
+     </dd>
+
+    
    </dl>
 
   </p>
@@ -152,7 +173,7 @@
    <span class="function"><strong>preg_replace_callback()</strong></span> は、
    <code class="parameter">subject</code> が配列の場合には配列を、
    それ以外の場合は文字列を返します。
-   エラー時の返り値は <strong><code>NULL</code></strong> となります。
+   エラー時の返り値は <strong><code>null</code></strong> となります。
   </p>
   <p class="para">
    マッチするものが見つかった場合は新しい subject
@@ -177,9 +198,9 @@
 
      <tbody class="tbody">
       <tr>
-       <td>5.1.0</td>
+       <td>7.4.0</td>
        <td>
-        パラメータ <code class="parameter">count</code> が追加されました。
+        パラメータ <code class="parameter">flags</code> が追加されました。
        </td>
       </tr>
 
@@ -194,7 +215,7 @@
  <div class="refsect1 examples" id="refsect1-function.preg-replace-callback-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5389">
+   <div class="example" id="example-4732">
     <p><strong>例2 <span class="function"><strong>preg_replace_callback()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -213,7 +234,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5390">
+   <div class="example" id="example-4733">
     <p><strong>例3 
      カプセル化された BB code を処理するための、
      <span class="function"><strong>preg_replace_callback()</strong></span> での再帰構造の使用
@@ -240,15 +261,9 @@
     <li class="member"><span class="function"><a href="function.preg-replace.html" class="function" rel="rdfs-seeAlso">preg_replace()</a> - 正規表現検索および置換を行う</span></li>
     <li class="member"><span class="function"><a href="function.preg-last-error.html" class="function" rel="rdfs-seeAlso">preg_last_error()</a> - 直近の PCRE 正規表現処理のエラーコードを返す</span></li>
     <li class="member"><a href="functions.anonymous.html" class="link">無名関数</a></li>
-    <li class="member"><a href="language.pseudo-types.html#language.types.callback" class="link">callback</a> 型に関する情報</li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.preg-replace-callback-array.html">preg_replace_callback_array</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.preg-replace.html">preg_replace</a></div>
- <div class="up"><a href="ref.pcre.html">PCRE 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

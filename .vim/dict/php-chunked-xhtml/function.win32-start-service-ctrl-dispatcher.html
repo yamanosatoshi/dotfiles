@@ -4,17 +4,31 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>スクリプトを SCM に登録し、指定した名前でサービスとして稼動させる
    ようにする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.win32-set-service-status.html">win32_set_service_status</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.win32-start-service.html">win32_start_service</a></div>
- <div class="up"><a href="ref.win32service.html">win32service 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.win32-start-service-ctrl-dispatcher" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.win32-set-service-status.html">« win32_set_service_status</a></li>
+      <li style="float: right;"><a href="function.win32-start-service.html">win32_start_service »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.win32service.html">win32service 関数</a></li>
+    <li>スクリプトを SCM に登録し、指定した名前でサービスとして稼動させる
+   ようにする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.win32-start-service-ctrl-dispatcher" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">win32_start_service_ctrl_dispatcher</h1>
-  <p class="verinfo">(PECL win32service SVN)</p><p class="refpurpose"><span class="refname">win32_start_service_ctrl_dispatcher</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PECL win32service &gt;=0.1.0)</p><p class="refpurpose"><span class="refname">win32_start_service_ctrl_dispatcher</span> &mdash; <span class="dc-title">
    スクリプトを SCM に登録し、指定した名前でサービスとして稼動させる
    ようにする
   </span></p>
@@ -23,9 +37,7 @@
  <div class="refsect1 description" id="refsect1-function.win32-start-service-ctrl-dispatcher-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>win32_start_service_ctrl_dispatcher</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
-   )</div>
+   <span class="methodname"><strong>win32_start_service_ctrl_dispatcher</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$gracefulMode</code><span class="initializer"> = true</span></span>): <span class="type"><span class="type void">void</span></span></div>
 
 
   <p class="para rdfs-comment">
@@ -47,7 +59,14 @@
    をコールして返り値を適切に処理することで実現できます。
   </p>
 
+  <div class="caution"><strong class="caution">警告</strong>
+   <p class="para">
+    0.2.0 以降では、この関数は &quot;cli&quot; SAPI でのみ動作します。
+    他の SAPI では、この関数は無効になっています。
+   </p>
+  </div>
  </div>
+
 
  <div class="refsect1 parameters" id="refsect1-function.win32-start-service-ctrl-dispatcher-parameters">
   <h3 class="title">パラメータ</h3>
@@ -67,6 +86,20 @@
      </dd>
 
     
+    
+     <dt>
+<code class="parameter">gracefulMode</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <strong><code>true</code></strong> の場合、graceful に終了します。
+       <strong><code>false</code></strong> の場合、エラーで終了します。
+       詳細は <span class="function"><a href="function.win32-set-service-exit-mode.html" class="function">win32_set_service_exit_mode()</a></span> を参照してください。
+      </p>
+     </dd>
+
+    
    </dl>
 
   </p>
@@ -76,7 +109,88 @@
  <div class="refsect1 returnvalues" id="refsect1-function.win32-start-service-ctrl-dispatcher-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を返します。パラメータに問題がある場合は <strong><code>FALSE</code></strong>、失敗した場合は <a href="win32service.constants.errors.html" class="link">Win32 エラーコード</a> を返します。
+   値を返しません。
+  </p>
+  <p class="para">
+    バージョン 1.0.0 より前では、成功した場合に <strong><code>WIN32_NO_ERROR</code></strong> を返していました。パラメータに問題がある場合は <strong><code>false</code></strong>、失敗した場合は <a href="win32service.constants.errors.html" class="link">Win32 エラーコード</a> を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.win32-start-service-ctrl-dispatcher-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+   バージョン 1.0.0 より前では、
+   SAPI が <code class="literal">&quot;cli&quot;</code> でない場合、
+   この関数は <strong><code>E_ERROR</code></strong> レベルのエラーを発生させていました。
+  </p>
+  <p class="para">
+   バージョン 1.0.0 以降では、
+   SAPI が <code class="literal">&quot;cli&quot;</code> でない場合、
+   <a href="class.win32serviceexception.html" class="classname">Win32ServiceException</a> がスローされます。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.win32-start-service-ctrl-dispatcher-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>PECL win32service 1.0.0</td>
+       <td>
+        引数に不正な値があった場合、
+        <a href="class.valueerror.html" class="classname">ValueError</a> をスローするようになりました。
+        これより前のバージョンでは、<strong><code>false</code></strong> を返していました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>PECL win32service 1.0.0</td>
+       <td>
+        エラー時に
+        <a href="class.win32serviceexception.html" class="classname">Win32ServiceException</a> をスローするようになりました。
+        これより前のバージョンでは、
+        <a href="win32service.constants.errors.html" class="link">Win32 エラーコード</a> を返していました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>PECL win32service 1.0.0</td>
+       <td>
+        返り値の型が <span class="type"><span class="type void">void</span></span> になりました。
+        これより前のバージョンでは、<span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> でした。
+       </td>
+      </tr>
+
+      <tr>
+       <td>PECL win32service 0.4.0</td>
+       <td>
+        <code class="parameter">gracefulMode</code> パラメータが追加されました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>PECL win32service 0.2.0</td>
+       <td>
+        この関数は <code class="literal">&quot;cli&quot;</code> SAPI でのみ動作するようになりました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
   </p>
  </div>
 
@@ -84,7 +198,7 @@
  <div class="refsect1 examples" id="refsect1-function.win32-start-service-ctrl-dispatcher-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-6221">
+   <div class="example" id="example-5281">
     <p><strong>例1 <span class="function"><strong>win32_start_service_ctrl_dispatcher()</strong></span> の例</strong></p>
     <div class="example-contents"><p>
      サービスが SCM で実行されているかどうかを調べます。
@@ -107,15 +221,12 @@
    <ul class="simplelist">
     <li class="member"><span class="function"><a href="function.win32-set-service-status.html" class="function" rel="rdfs-seeAlso">win32_set_service_status()</a> - サービスの状態を更新する</span></li>
     <li class="member"><span class="function"><a href="function.win32-get-last-control-message.html" class="function" rel="rdfs-seeAlso">win32_get_last_control_message()</a> - サービスに送信された直近の制御メッセージを返す</span></li>
+    <li class="member"><span class="function"><a href="function.win32-set-service-exit-mode.html" class="function" rel="rdfs-seeAlso">win32_set_service_exit_mode()</a> - Define or return the exit mode for the current running service</span></li>
+    <li class="member"><span class="function"><a href="function.win32-set-service-exit-code.html" class="function" rel="rdfs-seeAlso">win32_set_service_exit_code()</a> - Define or return the exit code for the current running service</span></li>
     <li class="member"><a href="win32service.constants.errors.html" class="link">Win32 エラーコード</a></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.win32-set-service-status.html">win32_set_service_status</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.win32-start-service.html">win32_start_service</a></div>
- <div class="up"><a href="ref.win32service.html">win32service 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

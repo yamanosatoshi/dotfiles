@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>新機能</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="migration70.incompatible.html">下位互換性のない変更点</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="migration70.deprecated.html">PHP 7.0.x で推奨されなくなる機能</a></div>
- <div class="up"><a href="migration70.html">PHP 5.6.x から PHP 7.0.x への移行</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="migration70.new-features" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration70.incompatible.html">« 下位互換性のない変更点</a></li>
+      <li style="float: right;"><a href="migration70.deprecated.html">PHP 7.0.x で推奨されなくなる機能 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration70.html">PHP 5.6.x から PHP 7.0.x への移行</a></li>
+    <li>新機能</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration70.new-features" class="sect1">
  <h2 class="title">新機能</h2>
 
  <div class="sect2" id="migration70.new-features.scalar-type-declarations">
@@ -18,12 +31,12 @@
 
   <p class="para">
    スカラー
-   <a href="functions.arguments.html#functions.arguments.type-declaration" class="link">型宣言</a>
+   <a href="language.types.declarations.html" class="link">型宣言</a>
    には二つの方式があります。デフォルトの自動変換 (coercive) モードと、
    厳密に判断する strict モードです。
    パラメータとして、
-   文字列 (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)、整数 (<em>int</em>)、浮動小数点数
-   (<span class="type"><a href="language.types.float.html" class="type float">float</a></span>)、boolean (<em>bool</em>)
+   文字列 (<span class="type">string</span>)、整数 (<code class="literal">int</code>)、浮動小数点数
+   (<span class="type">float</span>)、boolean (<code class="literal">bool</code>)
    といった型をいずれかの方式で強制できるようになりました。
    これらは、PHP 5 で導入された型宣言 (クラス名やインターフェイス、配列そして <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>)
    を強化するものです。
@@ -46,16 +59,16 @@ int(9)
   </div>
 
   <p class="para">
-   strict モードを有効にするには、ファイルの先頭に <a href="control-structures.declare.html" class="link"><em>declare</em></a> ディレクティブを置く必要があります。
+   strict モードを有効にするには、ファイルの先頭に <a href="control-structures.declare.html" class="link"><code class="literal">declare</code></a> ディレクティブを置く必要があります。
    つまり、スカラー型を厳密に扱うかどうかは、ファイル単位で定めるということです。
    このディレクティブは、パラメータの型宣言だけでなく、関数の戻り値の型
-   (<a href="functions.returning-values.html#functions.returning-values.type-declaration" class="link">戻り値の型宣言</a>を参照ください)
+   (<a href="language.types.declarations.html" class="link">戻り値の型宣言</a>を参照ください)
    や PHP の標準関数、そして拡張モジュールの関数にも影響を及ぼします。
   </p>
 
   <p class="para">
    スカラー型宣言に関するドキュメントやサンプルについては、
-   <a href="functions.arguments.html#functions.arguments.type-declaration" class="link">型宣言</a>
+   <a href="language.types.declarations.html" class="link">型宣言</a>
    を参照ください。
   </p>
  </div>
@@ -65,12 +78,12 @@ int(9)
 
   <p class="para">
    PHP 7 では、
-   <a href="functions.returning-values.html#functions.returning-values.type-declaration" class="link">戻り値の型宣言</a>
+   <a href="language.types.declarations.html" class="link">戻り値の型宣言</a>
    もできるようになりました。
-   <a href="functions.arguments.html#functions.arguments.type-declaration" class="link">引数の型宣言</a>
+   <a href="language.types.declarations.html" class="link">引数の型宣言</a>
    と同様に、戻り値の型宣言では、関数が戻す値がどの型になるかを宣言します。
    戻り値の型宣言で使える
-   <a href="functions.arguments.html#functions.arguments.type-declaration.types" class="link">型</a>
+   <a href="language.types.declarations.html" class="link">型</a>
    は、引数の型宣言で使えるものと同じです。
   </p>
 
@@ -97,7 +110,7 @@ Array
 
   <p class="para">
    詳細なドキュメントやサンプルについては、
-   <a href="functions.returning-values.html#functions.returning-values.type-declaration" class="link">戻り値の型宣言</a>.
+   <a href="language.types.declarations.html" class="link">戻り値の型宣言</a>.
    を参照ください。
   </p>
  </div>
@@ -106,10 +119,10 @@ Array
   <h3 class="title">Null 合体演算子</h3>
 
   <p class="para">
-   null 合体演算子 (<em>??</em>) がシンタックスシュガーとして追加されました。
+   null 合体演算子 (<code class="literal">??</code>) がシンタックスシュガーとして追加されました。
    三項演算子と <span class="function"><a href="function.isset.html" class="function">isset()</a></span> を組み合わせる
    よくありがちなパターンを、より簡単に書くためのものです。
-   この演算子は、もし第一オペランドが非 <strong><code>NULL</code></strong> の値であればそれを返し、
+   この演算子は、もし第一オペランドが非 <strong><code>null</code></strong> の値であればそれを返し、
    そうでない場合は第二オペランドを返します。
   </p>
 
@@ -130,9 +143,9 @@ Array
   <h3 class="title">宇宙船演算子</h3>
   <p class="para">
    宇宙船演算子は、二つの式を比較するために使うものです。
-   <var class="varname"><var class="varname">$a</var></var> が <var class="varname"><var class="varname">$b</var></var> より大きい場合は 1、
-   <var class="varname"><var class="varname">$a</var></var> と <var class="varname"><var class="varname">$b</var></var> が等しい場合は 0、
-   <var class="varname"><var class="varname">$a</var></var> が <var class="varname"><var class="varname">$b</var></var> より小さい場合は -1 をそれぞれ返します。
+   <var class="varname">$a</var> が <var class="varname">$b</var> より大きい場合は 1、
+   <var class="varname">$a</var> と <var class="varname">$b</var> が等しい場合は 0、
+   <var class="varname">$a</var> が <var class="varname">$b</var> より小さい場合は -1 をそれぞれ返します。
    比較の際には、
    <a href="types.comparisons.html" class="link">PHP 型の比較表</a>
    のルールを用います。
@@ -155,7 +168,7 @@ Array
 
   <p class="para">
    <span class="function"><a href="function.define.html" class="function">define()</a></span> で配列の定数を定義できるようになりました。
-   PHP 5.6 までのバージョンでは、配列の定数は <a href="language.constants.syntax.html" class="link"><em>const</em></a> でしか定義できませんでした。
+   PHP 5.6 までのバージョンでは、配列の定数は <a href="language.constants.syntax.html" class="link"><code class="literal">const</code></a> でしか定義できませんでした。
   </p>
 
   <div class="informalexample">
@@ -173,8 +186,8 @@ Array
   <h3 class="title">無名クラス</h3>
 
   <p class="para">
-   無名クラスをサポートするようになりました。<em>new
-   class</em> を使って利用します。
+   無名クラスをサポートするようになりました。<code class="literal">new
+   class</code> を使って利用します。
    その場限りの使い捨てのオブジェクトなどで、完全なクラス定義のかわりとして使えます。
   </p>
 
@@ -221,8 +234,8 @@ echo&nbsp;"\u{aa}";<br />echo&nbsp;"\u{0000aa}";<br />echo&nbsp;"\u{9999}";</spa
    <p class="para">上の例の出力は以下となります。</p>
    <div class="example-contents screen">
 <div class="cdata"><pre>
-ª
-ª (先頭のゼロを省略せずに書いても、前の行と同じ結果になります)
+a
+a (先頭のゼロを省略せずに書いても、前の行と同じ結果になります)
 香
 </pre></div>
    </div>
@@ -241,7 +254,7 @@ echo&nbsp;"\u{aa}";<br />echo&nbsp;"\u{0000aa}";<br />echo&nbsp;"\u{9999}";</spa
   <div class="informalexample">
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{private&nbsp;</span><span style="color: #0000BB">$x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;}<br /><br /></span><span style="color: #FF8000">//&nbsp;以前のバージョンのコード<br /></span><span style="color: #0000BB">$getXCB&nbsp;</span><span style="color: #007700">=&nbsp;function()&nbsp;{return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">x</span><span style="color: #007700">;};<br /></span><span style="color: #0000BB">$getX&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$getXCB</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindTo</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;中間クロージャが必要<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$getX</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;7&nbsp;以降でのコード<br /></span><span style="color: #0000BB">$getX&nbsp;</span><span style="color: #007700">=&nbsp;function()&nbsp;{return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">x</span><span style="color: #007700">;};<br />echo&nbsp;</span><span style="color: #0000BB">$getX</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">call</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">);</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{private&nbsp;</span><span style="color: #0000BB">$x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;}<br /><br /></span><span style="color: #FF8000">//&nbsp;以前のバージョンのコード<br /></span><span style="color: #0000BB">$getX&nbsp;</span><span style="color: #007700">=&nbsp;function()&nbsp;{return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">x</span><span style="color: #007700">;};<br /></span><span style="color: #0000BB">$getXCB&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$getX</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindTo</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'A'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;中間クロージャが必要<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$getXCB</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;7&nbsp;以降でのコード<br /></span><span style="color: #0000BB">$getX&nbsp;</span><span style="color: #007700">=&nbsp;function()&nbsp;{return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">x</span><span style="color: #007700">;};<br />echo&nbsp;</span><span style="color: #0000BB">$getX</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">call</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">);</span>
 </span>
 </code></div>
    </div>
@@ -321,7 +334,7 @@ bool(true)
   <p class="para">
    これまでの API も下位互換性を保つために維持されていますが、
    <span class="function"><a href="function.assert.html" class="function">assert()</a></span> は言語構造となりました。
-   最初のパラメータには、単に評価対象の文字列や <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+   最初のパラメータには、単に評価対象の文字列や <span class="type">bool</span>
    値を指定するだけではなく、式を渡せます。
   </p>
 
@@ -350,11 +363,11 @@ Fatal error: Uncaught CustomError: Some error message
  </div>
 
  <div class="sect2" id="migration70.new-features.group-use-declarations">
-  <h3 class="title"><em>use</em> 宣言のグループ化</h3>
+  <h3 class="title"><code class="literal">use</code> 宣言のグループ化</h3>
 
   <p class="para">
-   複数のクラスや関数そして定数を同じ <a href="language.namespaces.definition.html" class="link"><em>namespace</em></a> からインポートする際に、
-   単一の <a href="language.namespaces.importing.html" class="link"><em>use</em></a> 文にまとめられるようになりました。
+   複数のクラスや関数そして定数を同じ <a href="language.namespaces.definition.html" class="link"><code class="literal">namespace</code></a> からインポートする際に、
+   単一の <a href="language.namespaces.importing.html" class="link"><code class="literal">use</code></a> 文にまとめられるようになりました。
   </p>
 
   <div class="informalexample">
@@ -373,17 +386,17 @@ Fatal error: Uncaught CustomError: Some error message
 
   <p class="para">
    PHP 5.5 で導入されたジェネレータの機能拡張です。
-   ジェネレータの内部で <em>return</em> 文が使えるようになりました。
+   ジェネレータの内部で <code class="literal">return</code> 文が使えるようになりました。
    これを使えば、ジェネレータが最終的に返す式を指定できます (参照を返すことはできません)。
    この値を取得するには、新しいメソッド
-   <em>Generator::getReturn()</em> を用います。
+   <code class="literal">Generator::getReturn()</code> を用います。
    このメソッドを使うのは、ジェネレータが値の生成を終えた後の一度だけになるでしょう。
   </p>
 
   <div class="informalexample">
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br />$gen&nbsp;</span><span style="color: #007700">=&nbsp;(function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;2</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br />})();<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$gen&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">$gen</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getReturn</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;</span>
+<span style="color: #0000BB">&lt;?php<br /><br />$gen&nbsp;</span><span style="color: #007700">=&nbsp;(function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br />})();<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$gen&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">$gen</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getReturn</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;</span>
 </span>
 </code></div>
    </div>
@@ -412,13 +425,13 @@ Fatal error: Uncaught CustomError: Some error message
   <p class="para">
    ジェネレータを、別のジェネレータや
    <a href="class.traversable.html" class="classname">Traversable</a> オブジェクトそして配列に委譲できるようになりました。
-   外側のジェネレータに決まり文句を書いたりする必要はなく、単に <a href="language.generators.syntax.html#control-structures.yield.from" class="link"><em>yield from</em></a> 構文を使うだけです。
+   外側のジェネレータに決まり文句を書いたりする必要はなく、単に <a href="language.generators.syntax.html#control-structures.yield.from" class="link"><code class="literal">yield from</code></a> 構文を使うだけです。
   </p>
 
   <div class="informalexample">
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">gen</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;2</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;from&nbsp;gen2</span><span style="color: #007700">();<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">gen2</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;3</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">yield&nbsp;4</span><span style="color: #007700">;<br />}<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">gen</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">gen</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;from&nbsp;</span><span style="color: #0000BB">gen2</span><span style="color: #007700">();<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">gen2</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;<br />}<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">gen</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
    </div>
@@ -475,7 +488,7 @@ int(3)
    <a href="session.configuration.html#ini.session.lazy-write" class="link">session.lazy_write</a>
    をサポートするようになりました。これはデフォルトで有効になっており、
    セッションのデータが書き換えられたときにだけセッションファイルを上書きします。
-   また、<em>read_and_close</em> も追加されました。
+   また、<code class="literal">read_and_close</code> も追加されました。
    このオプションは <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> だけに渡せるもので、
    セッションデータを読み込んだら何も変更せずその場でクローズするよう指示します。
   </p>
@@ -483,7 +496,7 @@ int(3)
   <p class="para">
    たとえば、
    <a href="session.configuration.html#ini.session.cache-limiter" class="link">session.cache_limiter</a>
-   を <em>private</em> にして、読み込んだセッションをすぐにクローズさせるには次のようにします。
+   を <code class="literal">private</code> にして、読み込んだセッションをすぐにクローズさせるには次のようにします。
   </p>
 
   <div class="informalexample">
@@ -535,9 +548,16 @@ int(3)
    PHP 7 ではこの問題が修正されました。
   </p>
  </div>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="migration70.incompatible.html">下位互換性のない変更点</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="migration70.deprecated.html">PHP 7.0.x で推奨されなくなる機能</a></div>
- <div class="up"><a href="migration70.html">PHP 5.6.x から PHP 7.0.x への移行</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ 
+ <div class="sect2" id="migration70.new-features.others">
+  <h3 class="title">その他の機能</h3>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     クローンしたクラスのメンバーにアクセスできるようになりました。
+     <code class="literal">(clone $foo)-&gt;bar()</code> のようにできるということです。
+    </span>
+   </li>
+  </ul>
+ </div>
+</div></div></div></body></html>

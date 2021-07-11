@@ -3,30 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>メールを送信する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.ezmlm-hash.html">ezmlm_hash</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="book.mailparse.html">Mailparse</a></div>
- <div class="up"><a href="ref.mail.html">メール 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.mail" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ezmlm-hash.html">« ezmlm_hash</a></li>
+      <li style="float: right;"><a href="book.mailparse.html">Mailparse »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mail.html">メール 関数</a></li>
+    <li>メールを送信する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mail" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mail</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mail</span> &mdash; <span class="dc-title">メールを送信する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mail</span> &mdash; <span class="dc-title">メールを送信する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.mail-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>mail</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$to</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$subject</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$additional_headers</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$additional_parameters</code></span>
-  ]] )</div>
+   <span class="methodname"><strong>mail</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$to</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$subject</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">string</span></span> <code class="parameter">$additional_headers</code><span class="initializer"> = []</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$additional_params</code><span class="initializer"> = &quot;&quot;</span></span><br>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    メールを送信します。
@@ -116,16 +123,21 @@
      <dd>
 
       <p class="para">
-       メールヘッダの最後に挿入される文字列。
+       メールヘッダの最後に挿入される <span class="type">String</span> または <span class="type">array</span>。
       </p>
       <p class="para">
        通常、これは追加のヘッダ（From、Cc、Bcc）のために用いられます。
        複数のヘッダを追加する場合は CRLF（\r\n）で区切ります。
        外部からのデータを用いてヘッダを組み立てる際には、想定外のヘッダが注入されることを防ぐための処理が必要です。
       </p>
+      <p class="para">
+       <span class="type">array</span> が渡されると、キーがヘッダの名前となり、
+       値がそれぞれのヘッダの値になります。
+      </p>
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
-        <code class="parameter">additional_headers</code> は、メールヘッダインジェクション対策を行っていません。
+        PHP 5.4.42 および 5.5.27 より前のバージョンでは、<code class="parameter">additional_headers</code> は、
+        メールヘッダインジェクション対策を行っていませんでした。
         したがって、指定したヘッダが安全なものであり、ヘッダ以外のものを含まないようにするのはユーザー側の役目となります。
         複数の改行文字を置くことでメール本文を始めたりしてはいけません。
        </p>
@@ -133,23 +145,24 @@
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
         メールを送信する際には、<em class="emphasis">必ず</em> 
-        <em>From</em> ヘッダが含まれていなければなりません。
+        <code class="literal">From</code> ヘッダが含まれていなければなりません。
         <code class="parameter">additional_headers</code> パラメータで指定するか、
         あるいは <var class="filename">php.ini</var> にデフォルト値を指定します。
        </p>
        <p class="para">
         指定しなかった場合は、以下のようなエラーメッセージが返ります
-        <em>Warning: mail(): &quot;sendmail_from&quot; not
-        set in php.ini or custom &quot;From:&quot; header missing</em> 。
-        Windows では、<em>From</em> ヘッダを設定すると
-        <em>Return-Path</em> も設定されます。
+        <code class="literal">Warning: mail(): &quot;sendmail_from&quot; not
+        set in php.ini or custom &quot;From:&quot; header missing</code> 。
+        Windows では、SMTP経由で直接メールを送信する際は、
+        <code class="literal">From</code> ヘッダを設定すると
+        <code class="literal">Return-Path</code> も設定されます。
        </p>
       </p></blockquote>
       <blockquote class="note"><p><strong class="note">注意</strong>: 
        <p class="para">
         メッセージが受信されなかった場合には、LF（\n）のみを使ってみてください。
         Unix の MTA の中には、自動的に LF を CRLF に変換してしまう
-        もの (有名なところでは、<a href="http://www.qmail.org/" class="link external">&raquo;&nbsp;qmail</a> など)
+        もの (有名なところでは、<a href="http://cr.yp.to/qmail.html" class="link external">&raquo;&nbsp;qmail</a> など)
         があります（もし CRLF を利用していた場合、CR が重複してしまいます）。
         ただし、これは最後の手段です。というのも、これは
         <a href="http://www.faqs.org/rfcs/rfc2822" class="link external">&raquo;&nbsp;RFC 2822</a> に違反しているからです。
@@ -160,16 +173,16 @@
     
     
      <dt>
-<code class="parameter">additional_parameters</code>（オプション）</dt>
+<code class="parameter">additional_params</code>（オプション）</dt>
 
      <dd>
 
       <p class="para">
-       パラメータ <code class="parameter">additional_parameters</code> は、
+       パラメータ <code class="parameter">additional_params</code> は、
        追加のフラグをコマンドラインオプションとしてメール送信プログラムに渡す際に使用可能です。
        メール送信プログラムは、設定オプション
-       <em>sendmail_path</em> により設定されます。例えば、
-       sendmail を使用する際に <em>-f</em> オプションを使って
+       <code class="literal">sendmail_path</code> により設定されます。例えば、
+       sendmail を使用する際に <code class="literal">-f</code> オプションを使って
        エンベロープの sender アドレスを設定する際に使用できます。
       </p>
       <p class="para">
@@ -204,7 +217,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.mail-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   メール送信が受け入れられた場合に <strong><code>TRUE</code></strong> 、それ以外の場合に <strong><code>FALSE</code></strong>
+   メール送信が受け入れられた場合に <strong><code>true</code></strong> 、それ以外の場合に <strong><code>false</code></strong>
    を返します。
   </p>
   <p class="para">
@@ -229,12 +242,10 @@
 
      <tbody class="tbody">
       <tr>
-       <td>4.2.3</td>
+       <td>7.2.0</td>
        <td>
-        <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">safe_mode</a> 時には
-        <code class="parameter">additional_parameters</code> パラメータを無効に
-        しました。もし用いられた場合には <span class="function"><strong>mail()</strong></span> 関数は
-        警告メッセージを出して <strong><code>FALSE</code></strong> を返します。
+        <code class="parameter">additional_headers</code> パラメータは、
+        <span class="type">array</span> も受け入れるようになりました。
        </td>
       </tr>
 
@@ -249,7 +260,7 @@
  <div class="refsect1 examples" id="refsect1-function.mail-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3927">
+   <div class="example" id="example-3004">
     <p><strong>例1 メールを送信する</strong></p>
     <div class="example-contents"><p>
      <span class="function"><strong>mail()</strong></span> を用いて単純なメールを送信する。
@@ -262,7 +273,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-3928">
+   <div class="example" id="example-3005">
     <p><strong>例2 追加ヘッダを付加してメールを送信する</strong></p>
     <div class="example-contents"><p>
      基本ヘッダに加え、MUA に From および Reply-To アドレスを通知する。
@@ -275,11 +286,25 @@
     </div>
 
    </div>
-   <div class="example" id="example-3929">
-    <p><strong>例3 追加ヘッダ及び追加コマンドラインパラメータを指定してメールを送信する</strong></p>
+   <div class="example" id="example-3006">
+    <p><strong>例3 追加のヘッダを <span class="type">array</span> で指定してメールを送信する</strong></p>
     <div class="example-contents"><p>
-     <em>sendmail_path</em> を用いてメールを送信する際に利用する
-     追加パラメータとして、<code class="parameter">additional_parameters</code>
+     この例は、すぐ上の例と同じメールを送信します。
+     しかし、追加のヘッダを配列で渡しています (PHP 7.2.0 以降で利用可能)
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'nobody@example.com'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$subject&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'the&nbsp;subject'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'From'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'webmaster@example.com'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Reply-To'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'webmaster@example.com'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'X-Mailer'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'PHP/'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">phpversion</span><span style="color: #007700">()<br />);<br /><br /></span><span style="color: #0000BB">mail</span><span style="color: #007700">(</span><span style="color: #0000BB">$to</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$subject</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$headers</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-3007">
+    <p><strong>例4 追加のコマンドラインパラメータを指定してメールを送信する</strong></p>
+    <div class="example-contents"><p>
+     <code class="literal">sendmail_path</code> を用いてメールを送信する際に利用する
+     追加パラメータとして、<code class="parameter">additional_params</code>
      が用いられます。
     </p></div>
     <div class="example-contents">
@@ -290,14 +315,14 @@
     </div>
 
    </div>
-   <div class="example" id="example-3930">
-    <p><strong>例4 HTML メールを送信する</strong></p>
+   <div class="example" id="example-3008">
+    <p><strong>例5 HTML メールを送信する</strong></p>
     <div class="example-contents"><p>
      <span class="function"><strong>mail()</strong></span> を用いて HTML メールを送信することも可能です。
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;複数の受信者を指定<br /></span><span style="color: #0000BB">$to&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'aidan@example.com'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">',&nbsp;'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;カンマに注意<br /></span><span style="color: #0000BB">$to&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'wez@example.com'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;表題<br /></span><span style="color: #0000BB">$subject&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Birthday&nbsp;Reminders&nbsp;for&nbsp;August'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;本文<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'<br />&lt;html&gt;<br />&lt;head&gt;<br />&nbsp;&nbsp;&lt;title&gt;Birthday&nbsp;Reminders&nbsp;for&nbsp;August&lt;/title&gt;<br />&lt;/head&gt;<br />&lt;body&gt;<br />&nbsp;&nbsp;&lt;p&gt;Here&nbsp;are&nbsp;the&nbsp;birthdays&nbsp;upcoming&nbsp;in&nbsp;August!&lt;/p&gt;<br />&nbsp;&nbsp;&lt;table&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Person&lt;/th&gt;&lt;th&gt;Day&lt;/th&gt;&lt;th&gt;Month&lt;/th&gt;&lt;th&gt;Year&lt;/th&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Joe&lt;/td&gt;&lt;td&gt;3rd&lt;/td&gt;&lt;td&gt;August&lt;/td&gt;&lt;td&gt;1970&lt;/td&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Sally&lt;/td&gt;&lt;td&gt;17th&lt;/td&gt;&lt;td&gt;August&lt;/td&gt;&lt;td&gt;1973&lt;/td&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br />&nbsp;&nbsp;&lt;/table&gt;<br />&lt;/body&gt;<br />&lt;/html&gt;<br />'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;HTML&nbsp;メールを送信するには&nbsp;Content-type&nbsp;ヘッダが必須<br /></span><span style="color: #0000BB">$headers&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'MIME-Version:&nbsp;1.0'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'Content-type:&nbsp;text/html;&nbsp;charset=iso-8859-1'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;追加のヘッダ<br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'To:&nbsp;Mary&nbsp;&lt;mary@example.com&gt;,&nbsp;Kelly&nbsp;&lt;kelly@example.com&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'From:&nbsp;Birthday&nbsp;Reminder&nbsp;&lt;birthday@example.com&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'Cc:&nbsp;birthdayarchive@example.com'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'Bcc:&nbsp;birthdaycheck@example.com'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;送信する<br /></span><span style="color: #0000BB">mail</span><span style="color: #007700">(</span><span style="color: #0000BB">$to</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$subject</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$headers</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;複数の受信者を指定<br /></span><span style="color: #0000BB">$to&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'johny@example.com,&nbsp;sally@example.com'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;カンマに注意<br /><br />//&nbsp;表題<br /></span><span style="color: #0000BB">$subject&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Birthday&nbsp;Reminders&nbsp;for&nbsp;August'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;本文<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'<br />&lt;html&gt;<br />&lt;head&gt;<br />&nbsp;&nbsp;&lt;title&gt;Birthday&nbsp;Reminders&nbsp;for&nbsp;August&lt;/title&gt;<br />&lt;/head&gt;<br />&lt;body&gt;<br />&nbsp;&nbsp;&lt;p&gt;Here&nbsp;are&nbsp;the&nbsp;birthdays&nbsp;upcoming&nbsp;in&nbsp;August!&lt;/p&gt;<br />&nbsp;&nbsp;&lt;table&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Person&lt;/th&gt;&lt;th&gt;Day&lt;/th&gt;&lt;th&gt;Month&lt;/th&gt;&lt;th&gt;Year&lt;/th&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Johny&lt;/td&gt;&lt;td&gt;10th&lt;/td&gt;&lt;td&gt;August&lt;/td&gt;&lt;td&gt;1970&lt;/td&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Sally&lt;/td&gt;&lt;td&gt;17th&lt;/td&gt;&lt;td&gt;August&lt;/td&gt;&lt;td&gt;1973&lt;/td&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br />&nbsp;&nbsp;&lt;/table&gt;<br />&lt;/body&gt;<br />&lt;/html&gt;<br />'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;HTML&nbsp;メールを送信するには&nbsp;Content-type&nbsp;ヘッダが必須<br /></span><span style="color: #0000BB">$headers</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'MIME-Version:&nbsp;1.0'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'Content-type:&nbsp;text/html;&nbsp;charset=iso-8859-1'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;追加のヘッダ<br /></span><span style="color: #0000BB">$headers</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'To:&nbsp;Mary&nbsp;&lt;mary@example.com&gt;,&nbsp;Kelly&nbsp;&lt;kelly@example.com&gt;'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'From:&nbsp;Birthday&nbsp;Reminder&nbsp;&lt;birthday@example.com&gt;'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'Cc:&nbsp;birthdayarchive@example.com'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$headers</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'Bcc:&nbsp;birthdaycheck@example.com'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;送信する<br /></span><span style="color: #0000BB">mail</span><span style="color: #007700">(</span><span style="color: #0000BB">$to</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$subject</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$headers</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -308,7 +333,7 @@
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <p class="para">
      HTML などの複雑な形式のメールを送信する場合は、PEAR パッケージ
-     <a href="http://pear.php.net/package/Mail_Mime" class="link external">&raquo;&nbsp;PEAR::Mail_Mime</a>
+     <a href="https://pear.php.net/package/Mail_Mime" class="link external">&raquo;&nbsp;PEAR::Mail_Mime</a>
      を利用することを推奨します。
     </p>
    </p></blockquote>
@@ -320,21 +345,21 @@
   <h3 class="title">注意</h3>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    <span class="function"><strong>mail()</strong></span> の Windows 版実装は、Unix 版実装とは
+    Windows 環境での <span class="function"><strong>mail()</strong></span> のSMTP実装は、sendmail の実装とは
     多くの点で違います。
     第一に、メッセージの生成にローカルのバイナリは使用せず、
     ソケットを通じて直接操作するだけです。
-    これは <em>MTA</em> がネットワークソケットを listen している
+    これは <code class="literal">MTA</code> がネットワークソケットを listen している
     必要があるということを意味します（ローカルホスト、リモートマシン
     どちらでもかまいません）。
    </p>
    <p class="para">
     第二に、
-    <em>From:</em> や
-    <em>Cc:</em>・
-    <em>Bcc:</em>・
-    <em>Date:</em> のようなカスタムヘッダは
-    <em>MTA</em> では<em class="emphasis">なく</em>
+    <code class="literal">From:</code> や
+    <code class="literal">Cc:</code>・
+    <code class="literal">Bcc:</code>・
+    <code class="literal">Date:</code> のようなカスタムヘッダは
+    <code class="literal">MTA</code> では<em class="emphasis">なく</em>
     PHP によってパースされます。
    </p>
    <p class="para">
@@ -353,8 +378,8 @@
    </p>
    <p class="para">
     大量のメールを送信する場合は、
-    <a href="http://pear.php.net/package/Mail" class="link external">&raquo;&nbsp;PEAR::Mail</a> および
-    <a href="http://pear.php.net/package/Mail_Queue" class="link external">&raquo;&nbsp;PEAR::Mail_Queue</a>
+    <a href="https://pear.php.net/package/Mail" class="link external">&raquo;&nbsp;PEAR::Mail</a> および
+    <a href="https://pear.php.net/package/Mail_Queue" class="link external">&raquo;&nbsp;PEAR::Mail_Queue</a>
     パッケージを参照ください。
    </p>
   </p></blockquote>
@@ -378,16 +403,12 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mb-send-mail.html" class="function" rel="rdfs-seeAlso">mb_send_mail()</a> - エンコード変換を行ってメールを送信する</span></li>
     <li class="member"><span class="function"><a href="function.imap-mail.html" class="function" rel="rdfs-seeAlso">imap_mail()</a> - e-mail メッセージを送信する</span></li>
-    <li class="member"><a href="http://pear.php.net/package/Mail" class="link external">&raquo;&nbsp;PEAR::Mail</a></li>
-    <li class="member"><a href="http://pear.php.net/package/Mail_Mime" class="link external">&raquo;&nbsp;PEAR::Mail_Mime</a></li>
+    <li class="member"><a href="https://pear.php.net/package/Mail" class="link external">&raquo;&nbsp;PEAR::Mail</a></li>
+    <li class="member"><a href="https://pear.php.net/package/Mail_Mime" class="link external">&raquo;&nbsp;PEAR::Mail_Mime</a></li>
    </ul>
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.ezmlm-hash.html">ezmlm_hash</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="book.mailparse.html">Mailparse</a></div>
- <div class="up"><a href="ref.mail.html">メール 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

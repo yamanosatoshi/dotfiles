@@ -3,26 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>最後に見つかったエラーを返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.oci-define-by-name.html">oci_define_by_name</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.oci-execute.html">oci_execute</a></div>
- <div class="up"><a href="ref.oci8.html">OCI8 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.oci-error" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.oci-define-by-name.html">« oci_define_by_name</a></li>
+      <li style="float: right;"><a href="function.oci-execute.html">oci_execute »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.oci8.html">OCI8 関数</a></li>
+    <li>最後に見つかったエラーを返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.oci-error" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">oci_error</h1>
-  <p class="verinfo">(PHP 5, PHP 7, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_error</span> &mdash; <span class="dc-title">最後に見つかったエラーを返す</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_error</span> &mdash; <span class="dc-title">最後に見つかったエラーを返す</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.oci-error-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>oci_error</strong></span>
-    ([ <span class="methodparam"><span class="type">resource</span> <code class="parameter">$resource</code></span>
-  ] )</div>
+   <span class="methodname"><strong>oci_error</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$resource</code><span class="initializer"> = ?</span></span>): <span class="type">array</span></div>
 
   <p class="para rdfs-comment">
    最後に見つかったエラーを返します。
@@ -66,7 +77,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    もしエラーが見つからない場合、<span class="function"><strong>oci_error()</strong></span> は
-   <strong><code>FALSE</code></strong> を返します。それ以外の場合は、
+   <strong><code>false</code></strong> を返します。それ以外の場合は、
    <span class="function"><strong>oci_error()</strong></span> はエラーの情報を連想配列で返します。
   </p>
   <p class="para">
@@ -85,33 +96,33 @@
 
      <tbody class="tbody">
       <tr>
-       <td><em>code</em></td>
-       <td><span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span></td>
+       <td><code class="literal">code</code></td>
+       <td><span class="type">int</span></td>
        <td>
          Oracle のエラーコード。
        </td>
       </tr>
 
       <tr>
-       <td><em>message</em></td>
-       <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
+       <td><code class="literal">message</code></td>
+       <td><span class="type">string</span></td>
        <td>
          Oracle のエラーメッセージ。
        </td>
       </tr>
 
       <tr>
-       <td><em>offset</em></td>
-       <td><span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span></td>
+       <td><code class="literal">offset</code></td>
+       <td><span class="type">int</span></td>
        <td>
          SQL 文の中でのエラーが発生した場所のバイト位置。SQL 文がない場合は
-         <em>0</em> となります。
+         <code class="literal">0</code> となります。
        </td>
       </tr>
 
       <tr>
-       <td><em>sqltext</em></td>
-       <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
+       <td><code class="literal">sqltext</code></td>
+       <td><span class="type">string</span></td>
        <td>
          SQL 文のテキスト。SQL 文がない場合は空文字列となります。
        </td>
@@ -128,7 +139,7 @@
  <div class="refsect1 examples" id="refsect1-function.oci-error-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2224">
+   <div class="example" id="example-1780">
     <p><strong>例1 接続エラー後の Oracle エラーメッセージの表示</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -140,7 +151,7 @@
    </div>
   </p>
    <p class="para">
-   <div class="example" id="example-2225">
+   <div class="example" id="example-1781">
     <p><strong>例2 パースエラー時の Oracle エラーメッセージの表示</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -152,7 +163,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2226">
+   <div class="example" id="example-1782">
     <p><strong>例3 実行エラー時の、
       Oracle エラーメッセージと問題となった文の表示</strong></p>
     <div class="example-contents">
@@ -166,9 +177,4 @@
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.oci-define-by-name.html">oci_define_by_name</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.oci-execute.html">oci_execute</a></div>
- <div class="up"><a href="ref.oci8.html">OCI8 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

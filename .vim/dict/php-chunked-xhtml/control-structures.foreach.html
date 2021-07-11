@@ -3,27 +3,40 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>foreach</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="control-structures.for.html">for</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="control-structures.break.html">break</a></div>
- <div class="up"><a href="language.control-structures.html">制御構造</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="control-structures.foreach" class="sect1">
- <h2 class="title"><em>foreach</em></h2>
- <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.for.html">« for</a></li>
+      <li style="float: right;"><a href="control-structures.break.html">break »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">制御構造</a></li>
+    <li>foreach</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.foreach" class="sect1">
+ <h2 class="title">foreach</h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p>
  <p class="para">
-  <em>foreach</em> は、配列を反復処理するための便利な方法です。
-  <em>foreach</em> が使えるのは配列とオブジェクトだけであり、
+  <code class="literal">foreach</code> は、配列を反復処理するための便利な方法です。
+  <code class="literal">foreach</code> が使えるのは配列とオブジェクトだけであり、
   別のデータ型や初期化前の変数に対して使うとエラーになります。
   この構造には二種類の構文があります。
   <div class="informalexample">
    <div class="example-contents">
 <div class="cdata"><pre>
-foreach (array_expression as $value)
+foreach (iterable_expression as $value)
     文
-foreach (array_expression as $key =&gt; $value)
+foreach (iterable_expression as $key =&gt; $value)
     文
 </pre></div>
    </div>
@@ -31,39 +44,28 @@ foreach (array_expression as $key =&gt; $value)
   </div>
  </p>
  <p class="simpara">
-  最初の形式は、<em>array_expression</em>で指定した配列に
+  最初の形式は、<code class="literal">iterable_expression</code> で指定した反復可能な値に
   関してループ処理を行います。各反復において現在の要素の値が
-  <em>$value</em>に代入され、内部配列ポインタが一つ前に
-  進められます。(よって、次の反復では次の要素を見ることになります。)
+  <code class="literal">$value</code>に代入されます。
  </p>
  <p class="simpara">
   2番目の形式は、さらに各反復で現在の要素のキーを変数
-  <em>$key</em>に代入します。
+  <code class="literal">$key</code>に代入します。
+ </p>
+ <p class="simpara">
+   <code class="literal">foreach</code> は、
+   <span class="function"><a href="function.current.html" class="function">current()</a></span>  や
+   <span class="function"><a href="function.key.html" class="function">key()</a></span>
+   のような関数で使われる、内部的な配列のポインタを変更しない点に注意して下さい。
  </p>
  <p class="simpara">
   <a href="language.oop5.iterations.html" class="link">オブジェクトの反復処理をカスタマイズ</a>
   することもできます。
  </p>
- <p class="para">
-  <blockquote class="note"><p><strong class="note">注意</strong>: 
-   <p class="para">
-    PHP 5 では、<em>foreach</em>の実行開始時に内部配列ポインタは、
-    配列の先頭要素を指すように自動的にリセットされます。
-    このため、<em>foreach</em>ループの前に
-    <span class="function"><a href="function.reset.html" class="function">reset()</a></span>をコールする必要はありません。
-   </p>
-   <p class="para">
-    PHP 5 では、<em>foreach</em> は内部の配列ポインタに依存するので、
-    ループ内で配列ポインタを変更すると予期せぬ振る舞いを引き起こします。
-   </p>
-   <p class="para">
-    PHP 7 では、<em>foreach</em> は内部の配列ポインタを使わなくなりました。
-   </p>
-  </p></blockquote>
- </p>
+
  <p class="para">
   ループの中で配列の要素を直接変更したい場合は、
-  <em>$value</em> の前に &amp; をつけます。こうすると、変数には
+  <code class="literal">$value</code> の前に &amp; をつけます。こうすると、変数には
   <a href="language.references.html" class="link">リファレンス</a>
   が代入されることになります。
   <div class="informalexample">
@@ -78,8 +80,8 @@ foreach (array_expression as $key =&gt; $value)
  </p>
  <div class="warning"><strong class="warning">警告</strong>
   <p class="para">
-   <em>foreach</em> ループを終えた後でも、
-   <em>$value</em> は配列の最後の要素を参照したままとなります。
+   <code class="literal">foreach</code> ループを終えた後でも、
+   <code class="literal">$value</code> は配列の最後の要素を参照したままとなります。
    <span class="function"><a href="function.unset.html" class="function">unset()</a></span> でその参照を解除しておくようにしましょう。
    さもないと、次のような目に遭うことになるでしょう。
   </p>
@@ -94,8 +96,7 @@ foreach (array_expression as $key =&gt; $value)
   </div>
  </div>
  <p class="para">
-  PHP 5.5.0 より前のバージョンでは、<em>$value</em> の参照は、ループ処理される配列が参照可能である場合 (すなわち、
-  変数である) のみ使用可能です。次のコードは、PHP 5.5.0 以降でしか動作しません。
+  配列定数の値を、参照によって反復処理させることもできます。
   <div class="informalexample">
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -109,34 +110,10 @@ foreach (array_expression as $key =&gt; $value)
  <p class="para">
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    <em>foreach</em> は、&#039;@&#039; によりエラーメッセージ出力を抑
-    制する機能をサポートしていません。
+    <code class="literal">foreach</code> は、<code class="literal">@</code>
+    によりエラーメッセージ出力を抑制する機能をサポートしていません。
    </p>
   </p></blockquote>
- </p>
- <p class="para">
-  既にご存知かと思いますが、以下の文は機能的に等価です。
-  <div class="informalexample">
-   <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$arr&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"one"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"two"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"three"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">reset</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">);<br />while&nbsp;(list(,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Value:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Value:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
-   </div>
-
-  </div>
- </p>
- <p class="para">
-  以下の文も機能的に等価です。
-  <div class="informalexample">
-   <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$arr&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"one"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"two"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"three"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">reset</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">);<br />while&nbsp;(list(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Key:&nbsp;</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">;&nbsp;Value:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Key:&nbsp;</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">;&nbsp;Value:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
-   </div>
-
-  </div>
  </p>
  <p class="para">
   使用法を示すためにその他の例を示します。
@@ -153,10 +130,10 @@ foreach (array_expression as $key =&gt; $value)
 
  <div class="sect2" id="control-structures.foreach.list">
   <h3 class="title">ネストした配列の list() による展開</h3>
-  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7)</p>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7, PHP 8)</p>
 
   <p class="para">
-   PHP 5.5 からは、配列の配列の反復処理ができるようになりました。
+   配列の配列の反復処理を行うこともできます。
    値として <span class="function"><a href="function.list.html" class="function">list()</a></span> を渡すと、
    ネストした配列をループ変数に展開できます。
   </p>
@@ -230,52 +207,4 @@ A: 3; B: 4; C:
   </p>
  </div>
 
- <div class="sect2">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>7.0.0</td>
-       <td>
-        <em>foreach</em> が内部の配列ポインタを使わなくなりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.5.0</td>
-       <td>
-        式から <em>$value</em> を参照できるようになりました。
-        これより前のバージョンでは、変数からの参照にだけ対応していました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>5.5.0</td>
-       <td>
-        ネストした配列の <span class="function"><a href="function.list.html" class="function">list()</a></span> による展開に対応しました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="control-structures.for.html">for</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="control-structures.break.html">break</a></div>
- <div class="up"><a href="language.control-structures.html">制御構造</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,34 +3,40 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>画像にフィルタを適用する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagefilltoborder.html">imagefilltoborder</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imageflip.html">imageflip</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.imagefilter" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagefilltoborder.html">« imagefilltoborder</a></li>
+      <li style="float: right;"><a href="function.imageflip.html">imageflip »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">GD および Image 関数</a></li>
+    <li>画像にフィルタを適用する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagefilter" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagefilter</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagefilter</span> &mdash; <span class="dc-title">画像にフィルタを適用する</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagefilter</span> &mdash; <span class="dc-title">画像にフィルタを適用する</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagefilter-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>imagefilter</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$image</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$filtertype</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$arg1</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$arg2</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$arg3</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$arg4</code></span>
-  ]]]] )</div>
+   <span class="methodname"><strong>imagefilter</strong></span>(<span class="methodparam"><span class="type"><a href="class.gdimage.html" class="type GdImage">GdImage</a></span> <code class="parameter">$image</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$filter</code></span>, <span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">int</span>|<span class="type">float</span>|<span class="type">bool</span></span> <code class="parameter">...$args</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>imagefilter()</strong></span> は、指定したフィルタ
-   <code class="parameter">filtertype</code> を <code class="parameter">image</code>
+   <code class="parameter">filter</code> を <code class="parameter">image</code>
    に適用します。
   </p>
  </div>
@@ -45,16 +51,16 @@
 image</code></dt>
 <dd>
 <p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
-のような画像作成関数が返す画像リソース。</p></dd>
+のような画像作成関数が返す <a href="class.gdimage.html" class="classname">GdImage</a> オブジェクト。</p></dd>
 
     
      <dt>
-<code class="parameter">filtertype</code></dt>
+<code class="parameter">filter</code></dt>
 
      <dd>
 
       <p class="para">
-       <code class="parameter">filtertype</code> は、以下のいずれかです。
+       <code class="parameter">filter</code> は、以下のいずれかです。
        <ul class="itemizedlist">
         <li class="listitem">
          <span class="simpara">
@@ -63,19 +69,23 @@ image</code></dt>
         </li>
         <li class="listitem">
          <span class="simpara">
-          <strong><code>IMG_FILTER_GRAYSCALE</code></strong>: 画像をグレースケールに変換します。
+          <strong><code>IMG_FILTER_GRAYSCALE</code></strong>: 
+          REC.601 luma (Y&#039;) の計算と同じ係数を使い、
+          重み付けを赤、緑、青のコンポーネントごとに変えることで、
+          画像を白黒にします。アルファ値は保持されます。
+          パレットの制限のため、パレット画像の結果は異なるかもしれません。
          </span>
         </li>
         <li class="listitem">
          <span class="simpara">
           <strong><code>IMG_FILTER_BRIGHTNESS</code></strong>: 画像の輝度を変更します。
-          輝度レベルを <code class="parameter">arg1</code> で設定します。輝度の範囲は -255 から 255 までです。
+          輝度レベルを <code class="parameter">args</code> で設定します。輝度の範囲は -255 から 255 までです。
          </span>
         </li>
         <li class="listitem">
          <span class="simpara">
           <strong><code>IMG_FILTER_CONTRAST</code></strong>: 画像のコントラストを
-          変更します。コントラストのレベルを <code class="parameter">arg1</code>
+          変更します。コントラストのレベルを <code class="parameter">args</code>
           で設定します。
          </span>
         </li>
@@ -84,7 +94,7 @@ image</code></dt>
           <strong><code>IMG_FILTER_COLORIZE</code></strong>:
           <strong><code>IMG_FILTER_GRAYSCALE</code></strong> と似ていますが、
           色を指定することが可能です。
-          <code class="parameter">arg1</code>、<code class="parameter">arg2</code> および
+          <code class="parameter">args</code>、<code class="parameter">arg2</code> および
           <code class="parameter">arg3</code> を使用して
           <code class="parameter">red</code>、<code class="parameter">green</code>、
           <code class="parameter">blue</code> の値を指定します。また
@@ -124,14 +134,23 @@ image</code></dt>
         <li class="listitem">
          <span class="simpara">
           <strong><code>IMG_FILTER_SMOOTH</code></strong>: 画像を滑らかにします。
-          滑らかさのレベルを <code class="parameter">arg1</code> で指定します。
+          滑らかさのレベルを <code class="parameter">args</code> で指定します。
          </span>
         </li>
         <li class="listitem">
          <span class="simpara">
           <strong><code>IMG_FILTER_PIXELATE</code></strong>: モザイク効果を画像に適用します。
-          <code class="parameter">arg1</code> でブロックの大きさを、
+          <code class="parameter">args</code> でブロックの大きさを、
           そして <code class="parameter">arg2</code> でモザイク効果のモードを指定します。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_SCATTER</code></strong>: Scatter 効果を
+          画像に適用します。<code class="parameter">args</code> と
+          <code class="parameter">arg2</code> を効果の強さを定義するのに使い、
+          選んだピクセルの色にだけ適用するために
+          追加で <code class="parameter">arg3</code> を使います。
          </span>
         </li>
        </ul>
@@ -141,7 +160,7 @@ image</code></dt>
     
     
      <dt>
-<code class="parameter">arg1</code></dt>
+<code class="parameter">args</code></dt>
 
      <dd>
 
@@ -172,6 +191,12 @@ image</code></dt>
           <strong><code>IMG_FILTER_PIXELATE</code></strong>: ピクセル単位のブロックサイズ。
          </span>
         </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_SCATTER</code></strong>: 効果を減らすレベル。
+          この値は、 <code class="parameter">arg2</code> で設定する追加レベル以上でなければなりません。
+         </span>
+        </li>
        </ul>
       </p>
      </dd>
@@ -193,7 +218,12 @@ image</code></dt>
         <li class="listitem">
          <span class="simpara">
           <strong><code>IMG_FILTER_PIXELATE</code></strong>: 高度なモザイク効果を使用するか否か
-          (デフォルトは <strong><code>FALSE</code></strong>)。
+          (デフォルトは <strong><code>false</code></strong>)。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_SCATTER</code></strong>: 効果の追加レベル
          </span>
         </li>
        </ul>
@@ -212,6 +242,12 @@ image</code></dt>
         <li class="listitem">
          <span class="simpara">
           <strong><code>IMG_FILTER_COLORIZE</code></strong>: 青コンポーネントの値。
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_SCATTER</code></strong>: オプション。
+          効果を適用するインデックスカラーの値の配列。
          </span>
         </li>
        </ul>
@@ -247,7 +283,7 @@ image</code></dt>
  <div class="refsect1 returnvalues" id="refsect1-function.imagefilter-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -266,10 +302,19 @@ image</code></dt>
 
      <tbody class="tbody">
       <tr>
-       <td>5.2.5</td>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">image</code> は、
+  <a href="class.gdimage.html" class="classname">GdImage</a>
+  クラスのインスタンスを期待するようになりました。
+  これより前のバージョンでは、<span class="type">resource</span> が期待されていました。
+ </td>
+</tr>
+
+      <tr>
+       <td>7.4.0</td>
        <td>
-        <strong><code>IMG_FILTER_COLORIZE</code></strong>
-        でアルファチャネルをサポートするようになりました。
+        Scatter 効果のサポート (<strong><code>IMG_FILTER_SCATTER</code></strong>) が追加されました。
        </td>
       </tr>
 
@@ -283,7 +328,7 @@ image</code></dt>
  <div class="refsect1 examples" id="refsect1-function.imagefilter-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3559">
+   <div class="example" id="example-2639">
     <p><strong>例1 <span class="function"><strong>imagefilter()</strong></span> グレースケールの例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -295,7 +340,7 @@ image</code></dt>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3560">
+   <div class="example" id="example-2640">
     <p><strong>例2 <span class="function"><strong>imagefilter()</strong></span> 輝度の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -307,7 +352,7 @@ image</code></dt>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3561">
+   <div class="example" id="example-2641">
     <p><strong>例3 <span class="function"><strong>imagefilter()</strong></span> 単色化の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -319,7 +364,7 @@ image</code></dt>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3562">
+   <div class="example" id="imagecrop.example.basic">
     <p><strong>例4 <span class="function"><strong>imagefilter()</strong></span> での打ち消しの例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -331,7 +376,7 @@ image</code></dt>
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-3563">
+   <div class="example" id="example-2643">
     <p><strong>例5 <span class="function"><strong>imagefilter()</strong></span> でのモザイク処理の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -350,24 +395,42 @@ image</code></dt>
     </div>
    </div>
   </p>
+  <p class="para">
+   <div class="example" id="example-2644">
+    <p><strong>例6 <span class="function"><strong>imagefilter()</strong></span> でのScatter効果の例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Load&nbsp;the&nbsp;image<br /></span><span style="color: #0000BB">$logo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefrompng</span><span style="color: #007700">(</span><span style="color: #DD0000">'./php.png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Apply&nbsp;a&nbsp;very&nbsp;soft&nbsp;scatter&nbsp;effect&nbsp;to&nbsp;the&nbsp;image<br /></span><span style="color: #0000BB">imagefilter</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_FILTER_SCATTER</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Output&nbsp;the&nbsp;image&nbsp;with&nbsp;the&nbsp;scatter&nbsp;effect<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;image/png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
+    <div class="mediaobject">
+     
+     <div class="imageobject">
+      <img src="images/21009b70229598c6a80eef8b45bf282b-scatter.png" alt="出力例 : imagefilter() scatter" width="200" height="106" />
+     </div>
+    </div>
+   </div>
+  </p>
  </div>
 
  <div class="refsect1 notes" id="refsect1-function.imagefilter-notes">
   <h3 class="title">注意</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    <strong><code>IMG_FILTER_SCATTER</code></strong> の適用結果は常にランダムです。
+   </span>
+  </p></blockquote>
  </div>
 
  <div class="refsect1 seealso" id="refsect1-function.imagefilter-seealso">
   <h3 class="title">参考</h3>
-  <p class="para">
-   <ul class="simplelist">
-    <li class="member"><span class="function"><a href="function.imageconvolution.html" class="function" rel="rdfs-seeAlso">imageconvolution()</a> - div および offset の係数を使用し、3x3 の畳み込み配列を適用する</span></li>
-   </ul>
-  </p>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.imageconvolution.html" class="function" rel="rdfs-seeAlso">imageconvolution()</a> - div および offset の係数を使用し、3x3 の畳み込み配列を適用する</span></li>
+  </ul>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagefilltoborder.html">imagefilltoborder</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imageflip.html">imageflip</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -2,36 +2,42 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>S/MIME でサインされたメッセージの署名を検証する</title>
+  <title>S/MIME で署名されたメッセージの署名を検証する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.openssl-pkcs7-sign.html">openssl_pkcs7_sign</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.openssl-pkey-export-to-file.html">openssl_pkey_export_to_file</a></div>
- <div class="up"><a href="ref.openssl.html">OpenSSL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.openssl-pkcs7-verify" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.openssl-pkcs7-sign.html">« openssl_pkcs7_sign</a></li>
+      <li style="float: right;"><a href="function.openssl-pkey-derive.html">openssl_pkey_derive »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.openssl.html">OpenSSL 関数</a></li>
+    <li>S/MIME で署名されたメッセージの署名を検証する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.openssl-pkcs7-verify" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">openssl_pkcs7_verify</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">openssl_pkcs7_verify</span> &mdash; <span class="dc-title">S/MIME でサインされたメッセージの署名を検証する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">openssl_pkcs7_verify</span> &mdash; <span class="dc-title">S/MIME で署名されたメッセージの署名を検証する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.openssl-pkcs7-verify-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>openssl_pkcs7_verify</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$outfilename</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$cainfo</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$extracerts</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$content</code></span>
-  ]]]] )</div>
+   <span class="methodname"><strong>openssl_pkcs7_verify</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$input_filename</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$signers_certificates_filename</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$ca_info</code><span class="initializer"> = []</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$untrusted_certificates_filename</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$content</code><span class="initializer"> = <strong><code>null</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$output_filename</code><span class="initializer"> = <strong><code>null</code></strong></span></span><br>): <span class="type"><span class="type">bool</span>|<span class="type">int</span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>openssl_pkcs7_verify()</strong></span> は、
-   指定したファイルの S/MIME メッセージを読み込み、デジタル署名を評価します。
+   指定したファイルの S/MIME メッセージを読み込み、デジタル署名を検証します。
   </p>
  </div>
 
@@ -43,7 +49,7 @@
 
     
      <dt>
-<code class="parameter">filename</code></dt>
+<code class="parameter">input_filename</code></dt>
 
      <dd>
 
@@ -68,28 +74,27 @@
     
     
      <dt>
-<code class="parameter">outfilename</code></dt>
+<code class="parameter">signers_certificates_filename</code></dt>
 
      <dd>
 
       <p class="para">
-       <code class="parameter">outfilename</code> を指定する場合、
-       メッセージに署名した人の証明書が PEM
-       形式で保存されたファイルの名前をこの変数に指定する必要があります。
+       <code class="parameter">signers_certificates_filename</code> が指定された場合、
+       メッセージに署名した人の証明書が PEM 形式で保存された
+       ファイルの名前を含む文字列でなければなりません。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">cainfo</code></dt>
+<code class="parameter">ca_info</code></dt>
 
      <dd>
 
       <p class="para">
-       <code class="parameter">cainfo</code> が指定された場合、
-       検証処理で使用するために認証済みの
-       CA 証明書に関する情報を保持する必要があります。
+       <code class="parameter">ca_info</code> が指定された場合、
+       検証に使用する信頼された CA 証明書に関する情報を適用する必要があります。
        このパラメータに関するより詳細な情報については、
        <a href="openssl.cert.verification.html" class="link">証明書の検証</a>
        を参照ください。
@@ -99,13 +104,14 @@
     
     
      <dt>
-<code class="parameter">extracerts</code></dt>
+<code class="parameter">untrusted_certificates_filename</code></dt>
 
      <dd>
 
       <p class="para">
-       <code class="parameter">extracerts</code> が指定された場合、
-       これは未認証の CA として一連の証明書を使用するためのファイルの名前となります。
+       <code class="parameter">untrusted_certificates_filename</code> が指定された場合、
+       これは信頼されていない CA と見なす一連の証明書を含んだ
+       ファイルの名前となります。
       </p>
      </dd>
 
@@ -124,6 +130,18 @@
      </dd>
 
     
+    
+     <dt>
+<code class="parameter">output_filename</code></dt>
+
+     <dd>
+
+      <p class="para">
+
+      </p>
+     </dd>
+
+     
    </dl>
 
   </p>
@@ -133,8 +151,8 @@
  <div class="refsect1 returnvalues" id="refsect1-function.openssl-pkcs7-verify-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   署名が検証された場合は <strong><code>TRUE</code></strong>、正しくない場合
-   (メッセージが改暫されたか署名に用いられた証明書が無効) は <strong><code>FALSE</code></strong>、
+   署名が検証された場合は <strong><code>true</code></strong>、正しくない場合
+   (メッセージが改暫されたか署名に用いられた証明書が無効) は <strong><code>false</code></strong>、
    エラーの場合に -1 を返します。
   </p>
  </div>
@@ -142,30 +160,38 @@
 
  <div class="refsect1 changelog" id="refsect1-function.openssl-pkcs7-verify-changelog">
   <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
 
-     </thead>
+    </thead>
 
-     <tbody class="tbody">
-      <tr>
-       <td>5.1.0</td>
-       <td>
-        <code class="parameter">content</code> パラメータが追加されました。
-       </td>
-      </tr>
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">signers_certificates_filename</code>,
+       <code class="parameter">untrusted_certificates_filename</code>,
+       <code class="parameter">content</code>,
+       <code class="parameter">output_filename</code> は、nullable になりました。
+      </td>
+     </tr>
 
-     </tbody>
-    
-   </table>
+     <tr>
+      <td>7.2.0</td>
+      <td>
+       <code class="parameter">output_filename</code> パラメータが追加されました。
+      </td>
+     </tr>
 
-  </p>
+    </tbody>
+   
+  </table>
+
  </div>
 
 
@@ -174,15 +200,10 @@
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <span class="simpara">
     RFC 2045 にあるように、
-    <code class="parameter">filename</code> パラメータのファイル名が 76 文字より長くなってはいけません。
+    <code class="parameter">input_filename</code> パラメータのファイル名が 76 文字より長くなってはいけません。
    </span>
   </p></blockquote>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.openssl-pkcs7-sign.html">openssl_pkcs7_sign</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.openssl-pkey-export-to-file.html">openssl_pkey_export_to_file</a></div>
- <div class="up"><a href="ref.openssl.html">OpenSSL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>循環の収集</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.gc.refcounting-basics.html">参照カウント法の原理</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.gc.performance-considerations.html">パフォーマンスの考慮点</a></div>
- <div class="up"><a href="features.gc.html">ガベージコレクション</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="features.gc.collecting-cycles" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.gc.refcounting-basics.html">« 参照カウント法の原理</a></li>
+      <li style="float: right;"><a href="features.gc.performance-considerations.html">パフォーマンスの考慮点 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.gc.html">ガベージコレクション</a></li>
+    <li>循環の収集</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.gc.collecting-cycles" class="sect1">
    <h2 class="title">循環の収集</h2>
    <p class="para">
     伝統的に、PHP で以前使われていたような参照カウント法記憶機構では、
@@ -20,8 +33,8 @@
     レポートに由来する同期アルゴリズムを実装しています。
    </p>
    <p class="para">
-    アルゴリズムの動作方法の詳しい説明がこのセクションの範囲の少し向こうにあります、
-    しかし、基本はここで説明されます。
+    アルゴリズムの動作方法の詳しい説明についてはこのセクションで扱う範囲を超えるので、
+    ここではその基本を説明します。
     まず第一に、いくつかの基本原則を確立しなければなりません。
     refcount が増やされたら、それはまだ使用中で、従ってゴミではありません。
     refcount が減少して、ゼロに達したら、zvalは解放可能です。
@@ -72,8 +85,8 @@
     ガベージコレクタがオンの場合、
     ルート・バッファが満杯になるといつでも、先に述べたように循環検出法が実行されます。
     ルート・バッファでは、可能性があるルートのサイズが一万件に固定されています。
-    （PHP のソースコードの <em>Zend/zend_gc.c</em> で
-    <em>GC_ROOT_BUFFER_MAX_ENTRIES</em> 定数を変更して、PHP を再コンパイルすると変更できます）
+    （PHP のソースコードの <code class="literal">Zend/zend_gc.c</code> で
+    <code class="literal">GC_ROOT_BUFFER_MAX_ENTRIES</code> 定数を変更して、PHP を再コンパイルすると変更できます）
     ガベージコレクタをオフにすると、循環検出法は実行されなくなります。
     しかしながら、可能性があるルートはルート・バッファに常に記録されます。
     ガベージコレクション機構がこの構成設定値で起動したかどうかは問題ではありません。
@@ -114,9 +127,4 @@
     そうすると、循環収集機構がオフの間、
     可能性があるルートを保管するためのより多くの空間のための空のバッファが残ります。
    </p>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.gc.refcounting-basics.html">参照カウント法の原理</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.gc.performance-considerations.html">パフォーマンスの考慮点</a></div>
- <div class="up"><a href="features.gc.html">ガベージコレクション</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

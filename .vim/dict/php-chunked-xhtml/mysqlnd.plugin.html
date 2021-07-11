@@ -3,31 +3,44 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>MySQL Native Driver プラグインAPI</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqlnd.memory.html">Memory management</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqlnd.plugin.mysql-proxy.html">mysqlndプラグイン と MySQL Proxyの比較</a></div>
- <div class="up"><a href="book.mysqlnd.html">Mysqlnd</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqlnd.plugin" class="chapter">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd.memory.html">« Memory management</a></li>
+      <li style="float: right;"><a href="mysqlnd.plugin.mysql-proxy.html">mysqlndプラグイン と MySQL Proxyの比較 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.mysqlnd.html">Mysqlnd</a></li>
+    <li>MySQL Native Driver プラグインAPI</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd.plugin" class="chapter">
  <h1>MySQL Native Driver プラグインAPI</h1>
 <h2>目次</h2><ul class="chunklist chunklist_chapter"><li><a href="mysqlnd.plugin.mysql-proxy.html">mysqlndプラグイン と MySQL Proxyの比較</a></li><li><a href="mysqlnd.plugin.obtaining.html">mysqlnd plugin APIを取得する</a></li><li><a href="mysqlnd.plugin.architecture.html">MySQL Native Driverプラグイン のアーキテクチャ</a></li><li><a href="mysqlnd.plugin.api.html">mysqlnd のプラグインAPI</a></li><li><a href="mysqlnd.plugin.developing.html">mysqlndプラグインの開発をはじめよう</a></li></ul>
 
  <p class="para">
-  The MySQL Native Driver プラグインAPI は MySQL Native Driver、略して <em>mysqlnd</em> が持つ機能の一つです。<em>mysqlnd</em> プラグインは、PHPアプリケーションと MySQL サーバの間にあるレイヤで動きます。これは MySQL Proxy と比較できます。MySQL Proxy はあらゆる MySQL クライアントアプリケーション、たとえば PHPアプリケーション と MySQL サーバの間のレイヤで動きます。<em>mysqlnd</em> プラグインは典型的な MySQL Proxy のタスク、たとえばロードバランシングやモニタリング、パフォーマンスの最適化をこなせます。アーキテクチャや置かれる場所が異なるため、<em>mysqlnd</em> プラグインは MySQL Proxy が持ついくつかの欠点がありません。たとえば、プラグインを使えば、単一障害点が存在しませんし、専用のプロキシサーバをデプロイする必要もありませんし、新しいプログラミング言語(Lua) を学ぶ必要もありません。
+  The MySQL Native Driver プラグインAPI は MySQL Native Driver、略して <code class="literal">mysqlnd</code> が持つ機能の一つです。<code class="literal">mysqlnd</code> プラグインは、PHPアプリケーションと MySQL サーバの間にあるレイヤで動きます。これは MySQL Proxy と比較できます。MySQL Proxy はあらゆる MySQL クライアントアプリケーション、たとえば PHPアプリケーション と MySQL サーバの間のレイヤで動きます。<code class="literal">mysqlnd</code> プラグインは典型的な MySQL Proxy のタスク、たとえばロードバランシングやモニタリング、パフォーマンスの最適化をこなせます。アーキテクチャや置かれる場所が異なるため、<code class="literal">mysqlnd</code> プラグインは MySQL Proxy が持ついくつかの欠点がありません。たとえば、プラグインを使えば、単一障害点が存在しませんし、専用のプロキシサーバをデプロイする必要もありませんし、新しいプログラミング言語(Lua) を学ぶ必要もありません。
  </p>
  <p class="para">
-  <em>mysqlnd</em>プラグインは <em>mysqlnd</em>の拡張と考えることができます。プラグインは 多くの <em>mysqlnd</em> 関数の制御を奪い取ることができます。<em>mysqlnd</em> 関数は <em>ext/mysql</em> や <em>ext/mysqli</em>、<em>PDO_MYSQL</em> のような PHP の MySQLエクステンションによって呼び出されます。その結果として、<em>mysqlnd</em>プラグイン はクライアントアプリケーションからこれらのエクステンションへの呼び出しの制御をすべて奪うことができるのです。
+  <code class="literal">mysqlnd</code>プラグインは <code class="literal">mysqlnd</code>の拡張と考えることができます。プラグインは 多くの <code class="literal">mysqlnd</code> 関数の制御を奪い取ることができます。<code class="literal">mysqlnd</code> 関数は <code class="literal">ext/mysql</code> や <code class="literal">ext/mysqli</code>、<code class="literal">PDO_MYSQL</code> のような PHP の MySQLエクステンションによって呼び出されます。その結果として、<code class="literal">mysqlnd</code>プラグイン はクライアントアプリケーションからこれらのエクステンションへの呼び出しの制御をすべて奪うことができるのです。
  </p>
  <p class="para">
-  内部的な <em>mysqlnd</em> 関数の呼び出しも制御を奪ったり、処理を置き換えたりすることができます。<em>mysqlnd</em> の内部的な関数テーブルを管理することに関しても全く制限がありません。ある <em>mysqlnd</em> 関数が <em>mysqlnd</em> を使うエクステンションによって呼び出される場合に、適切な <em>mysqlnd</em>プラグインの適切な関数に処理を転送するようにセットアップすることが可能です。このように、<em>mysqlnd</em> の内部関数テーブルを管理できることで、プラグインの柔軟性が最大限に発揮できるのです。
+  内部的な <code class="literal">mysqlnd</code> 関数の呼び出しも制御を奪ったり、処理を置き換えたりすることができます。<code class="literal">mysqlnd</code> の内部的な関数テーブルを管理することに関しても全く制限がありません。ある <code class="literal">mysqlnd</code> 関数が <code class="literal">mysqlnd</code> を使うエクステンションによって呼び出される場合に、適切な <code class="literal">mysqlnd</code>プラグインの適切な関数に処理を転送するようにセットアップすることが可能です。このように、<code class="literal">mysqlnd</code> の内部関数テーブルを管理できることで、プラグインの柔軟性が最大限に発揮できるのです。
  </p>
  <p class="para">
-  <em>mysqlnd</em>プラグインは、実際は <em>mysqlnd</em> のプラグインAPI (これは MySQL Native Driver, 略して <em>mysqlnd</em> に組み込まれています) を使い、C言語 で書かれた PHPエクステンション です。 プラグインは PHPアプリケーションに対して 100% 透過的です。つまり、プラグインがPHPアプリケーションとは異なるレイヤで動作するため、アプリケーションを変更する必要がないのです。<em>mysqlnd</em>プラグイン は、<em>mysqlnd</em> のひとつ下のレイヤで動くと考えることができます。
+  <code class="literal">mysqlnd</code>プラグインは、実際は <code class="literal">mysqlnd</code> のプラグインAPI (これは MySQL Native Driver, 略して <code class="literal">mysqlnd</code> に組み込まれています) を使い、C言語 で書かれた PHPエクステンション です。 プラグインは PHPアプリケーションに対して 100% 透過的です。つまり、プラグインがPHPアプリケーションとは異なるレイヤで動作するため、アプリケーションを変更する必要がないのです。<code class="literal">mysqlnd</code>プラグイン は、<code class="literal">mysqlnd</code> のひとつ下のレイヤで動くと考えることができます。
  </p>
  <p class="para">
-  <em>mysqlnd</em>プラグインで実現可能なアプリケーションのリストをいくつか以下に示します
+  <code class="literal">mysqlnd</code>プラグインで実現可能なアプリケーションのリストをいくつか以下に示します
  </p>
  <ul class="itemizedlist">
   <li class="listitem">
@@ -141,9 +154,4 @@
  
  
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqlnd.memory.html">Memory management</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqlnd.plugin.mysql-proxy.html">mysqlndプラグイン と MySQL Proxyの比較</a></div>
- <div class="up"><a href="book.mysqlnd.html">Mysqlnd</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

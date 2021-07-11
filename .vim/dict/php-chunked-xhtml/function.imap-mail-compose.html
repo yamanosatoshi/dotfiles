@@ -4,17 +4,31 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>指定したエンベロープおよびボディセクションに基づいて
    MIME メッセージを作成する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imap-lsub.html">imap_lsub</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imap-mail-copy.html">imap_mail_copy</a></div>
- <div class="up"><a href="ref.imap.html">IMAP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.imap-mail-compose" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imap-lsub.html">« imap_lsub</a></li>
+      <li style="float: right;"><a href="function.imap-mail-copy.html">imap_mail_copy »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.imap.html">IMAP 関数</a></li>
+    <li>指定したエンベロープおよびボディセクションに基づいて
+   MIME メッセージを作成する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imap-mail-compose" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imap_mail_compose</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imap_mail_compose</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imap_mail_compose</span> &mdash; <span class="dc-title">
    指定したエンベロープおよびボディセクションに基づいて
    MIME メッセージを作成する
   </span></p>
@@ -23,14 +37,11 @@
  <div class="refsect1 description" id="refsect1-function.imap-mail-compose-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>imap_mail_compose</strong></span>
-    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$envelope</code></span>
-   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$body</code></span>
-   )</div>
+   <span class="methodname"><strong>imap_mail_compose</strong></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter">$envelope</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$bodies</code></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    指定したエンベロープ <code class="parameter">envelope</code>
-   およびボディセクション <code class="parameter">body</code> に基づいて
+   およびボディセクション <code class="parameter">bodies</code> に基づいて
    MIME メッセージを作成します。
   </p>
  </div>
@@ -47,28 +58,140 @@
      <dd>
 
       <p class="para">
-       ヘッダフィールドの連想配列。使えるキーは &quot;remail&quot;,
-       &quot;return_path&quot;, &quot;date&quot;, &quot;from&quot;, &quot;reply_to&quot;, &quot;in_reply_to&quot;, &quot;subject&quot;,
-       &quot;to&quot;, &quot;cc&quot;, &quot;bcc&quot;, &quot;message_id&quot; および &quot;custom_headers&quot;
-       (その他のヘッダの連想配列) です。
+       ヘッダフィールドの連想配列。使えるキーは
+       <code class="literal">&quot;remail&quot;</code>,
+       <code class="literal">&quot;return_path&quot;</code>,
+       <code class="literal">&quot;date&quot;</code>, <code class="literal">&quot;from&quot;</code>, <code class="literal">&quot;reply_to&quot;</code>,
+       <code class="literal">&quot;in_reply_to&quot;</code>, <code class="literal">&quot;subject&quot;</code>,
+       <code class="literal">&quot;to&quot;</code>, <code class="literal">&quot;cc&quot;</code>, <code class="literal">&quot;bcc&quot;</code>。
+       <code class="literal">&quot;message_id&quot;</code>。
+       これらの値は、連想配列の値に与えられた文字列でそれぞれのヘッダを設定します。
+       さらに追加のヘッダを設定する用途として、
+       <code class="literal">&quot;custom_headers&quot;</code> がサポートされています。
+       ここには、その他のヘッダの連想配列を指定します。例: <code class="code">[&quot;User-Agent: My Mail Client&quot;]</code>
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">body</code></dt>
+<code class="parameter">bodies</code></dt>
 
      <dd>
 
       <p class="para">
        本文の配列。
+       配列の最初の要素が、メッセージの中心部分です。
+       <strong><code>TYPEMULTIPART</code></strong> の場合にだけ、ふたつめ以降の要素が処理されます。
+       処理された要素は、本文の一部を構成します。
       </p>
       <p class="para">
-       本文は、以下のキーからなる連想配列です。
-       &quot;type&quot;, &quot;encoding&quot;, &quot;charset&quot;, &quot;type.parameters&quot;, &quot;subtype&quot;, &quot;id&quot;,
-       &quot;description&quot;, &quot;disposition.type&quot;, &quot;disposition&quot;, &quot;contents.data&quot;,
-       &quot;lines&quot;, &quot;bytes&quot; および &quot;md5&quot;。
+       <table class="doctable table">
+        <caption><strong>body に指定する配列の構造</strong></caption>
+        
+         <thead>
+          <tr>
+           <th>キー</th>
+           <th>型</th>
+           <th>説明</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td><code class="literal">type</code></td>
+           <td><span class="type">int</span></td>
+           <td>
+            MIMEタイプ。
+            <strong><code>TYPETEXT</code></strong> (デフォルト), <strong><code>TYPEMULTIPART</code></strong>,
+            <strong><code>TYPEMESSAGE</code></strong>, <strong><code>TYPEAPPLICATION</code></strong>,
+            <strong><code>TYPEAUDIO</code></strong>, <strong><code>TYPEIMAGE</code></strong>,
+            <strong><code>TYPEMODEL</code></strong>, <strong><code>TYPEOTHER</code></strong> が指定できます。
+           </td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">encoding</code></td>
+           <td><span class="type">int</span></td>
+           <td>
+            <code class="literal">Content-Transfer-Encoding</code> の値を指定します。
+            <strong><code>ENC7BIT</code></strong> (デフォルト), <strong><code>ENC8BIT</code></strong>,
+            <strong><code>ENCBINARY</code></strong>, <strong><code>ENCBASE64</code></strong>,
+            <strong><code>ENCQUOTEDPRINTABLE</code></strong>, <strong><code>ENCOTHER</code></strong> が指定できます。
+           </td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">charset</code></td>
+           <td><span class="type">string</span></td>
+           <td>MIMEタイプの charset パラメータの値</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">type.parameters</code></td>
+           <td><span class="type">array</span></td>
+           <td><code class="literal">Content-Type</code> の名前と値を連想配列で指定します。</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">subtype</code></td>
+           <td><span class="type">string</span></td>
+           <td>MIMEサブタイプ。例: <strong><code>TYPEIMAGE</code></strong> の場合は <code class="literal">&#039;jpeg&#039;</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">id</code></td>
+           <td><span class="type">string</span></td>
+           <td><code class="literal">Content-ID</code> の値</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">description</code></td>
+           <td><span class="type">string</span></td>
+           <td><code class="literal">Content-Description</code> の値</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">disposition.type</code></td>
+           <td><span class="type">string</span></td>
+           <td><code class="literal">Content-Disposition</code> の値。例: <code class="literal">&#039;attachment&#039;</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">disposition</code></td>
+           <td><span class="type">array</span></td>
+           <td><code class="literal">Content-Disposition</code> の名前と値を連想配列で指定します。</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">contents.data</code></td>
+           <td><span class="type">string</span></td>
+           <td>ペイロード</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">lines</code></td>
+           <td><span class="type">int</span></td>
+           <td>The size of the payload in lines.</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">bytes</code></td>
+           <td><span class="type">int</span></td>
+           <td>ペイロードのサイズをバイト単位で指定します。</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">md5</code></td>
+           <td><span class="type">string</span></td>
+           <td>ペイロードのMD5チェックサム</td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
       </p>
      </dd>
 
@@ -81,14 +204,15 @@
  <div class="refsect1 returnvalues" id="refsect1-function.imap-mail-compose-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   MIME メッセージを返します。
+   MIME メッセージを文字列として返します。
+   失敗した場合に <strong><code>false</code></strong> を返します
   </p>
  </div>
 
  <div class="refsect1 examples" id="refsect1-function.imap-mail-compose-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3911">
+   <div class="example" id="example-2987">
     <p><strong>例1 <span class="function"><strong>imap_mail_compose()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -101,9 +225,4 @@
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imap-lsub.html">imap_lsub</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imap-mail-copy.html">imap_mail_copy</a></div>
- <div class="up"><a href="ref.imap.html">IMAP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

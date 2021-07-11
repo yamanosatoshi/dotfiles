@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>HTTP(s) URL へのアクセス</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="wrappers.file.html">file://</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="wrappers.ftp.html">ftp://</a></div>
- <div class="up"><a href="wrappers.html">サポートするプロトコル/ラッパー</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="wrappers.http" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="wrappers.file.html">« file://</a></li>
+      <li style="float: right;"><a href="wrappers.ftp.html">ftp:// »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="wrappers.html">サポートするプロトコル/ラッパー</a></li>
+    <li>HTTP(s) URL へのアクセス</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="wrappers.http" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">http://</h1>
   <h1 class="refname">https://</h1>
@@ -23,14 +36,14 @@
   <p class="para">
    HTTP 1.0 により HTTP GET メソッドを用いてファイル/リソースに読み込みのみの
    アクセスが可能です。仮想ホストにホスト名でアクセスするために、
-   <em>Host:</em> ヘッダが送信されます。
+   <code class="literal">Host:</code> ヘッダが送信されます。
    <var class="filename">php.ini</var> ファイルまたはストリームコンテキストによって
    <a href="filesystem.configuration.html#ini.user-agent" class="link">user_agent</a> 文字列を設定している場合、
    それはリクエストの中にも含まれます。
   </p>
   <p class="simpara">
    ストリームにより、リソースの <em class="emphasis">body</em> にアクセスすることが
-   できます。ヘッダは、<var class="varname"><var class="varname"><a href="reserved.variables.httpresponseheader.html" class="classname">$http_response_header</a></var></var> 変数に保存されます。
+   できます。ヘッダは、<var class="varname"><a href="reserved.variables.httpresponseheader.html" class="classname">$http_response_header</a></var> 変数に保存されます。
   </p>
   <p class="simpara">
    (全てのリダイレクトが処理された後に)ドキュメント取得元のリソースの URL を知ることが
@@ -39,7 +52,7 @@
   <p class="simpara">
    <a href="filesystem.configuration.html#ini.from" class="link">from</a> ディレクティブが設定されており、かつそれが
    <a href="context.html" class="xref">コンテキストオプションとパラメータ</a> で上書きされていない場合は、その値が
-   <em>From:</em> ヘッダとなります。
+   <code class="literal">From:</code> ヘッダとなります。
   </p>
  </div>
 
@@ -130,52 +143,9 @@
  </div>
  
 
- <div class="refsect1 changelog" id="refsect1-wrappers.http-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>4.3.7</td>
-       <td>
-        バグのある IIS サーバーを検出し、<em>&quot;SSL: Fatal Protocol Error&quot;</em> エラーを回避するようになりました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.3.0</td>
-       <td>
-        <em>https://</em> が追加されました。
-       </td>
-      </tr>
-
-      <tr>
-       <td>4.0.5</td>
-       <td>
-        リダイレクトをサポートするようになりました。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-wrappers.http-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="wrappers.http.example.basic">
+  <div class="example" id="example-362">
    <p><strong>例1 リダイレクト後の URL の検出</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -211,15 +181,10 @@
   <h3 class="title">参考</h3>
   <ul class="simplelist">
    <li class="member"><a href="context.http.html" class="xref">HTTP コンテキストオプション</a></li>
-   <li class="member"><var class="varname"><var class="varname"><a href="reserved.variables.httpresponseheader.html" class="classname">$http_response_header</a></var></var></li>
+   <li class="member"><var class="varname"><a href="reserved.variables.httpresponseheader.html" class="classname">$http_response_header</a></var></li>
    <li class="member"><span class="function"><a href="function.stream-get-meta-data.html" class="function" rel="rdfs-seeAlso">stream_get_meta_data()</a> - ヘッダーあるいはメタデータをストリームまたはファイルポインタから取得する</span></li>
   </ul>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="wrappers.file.html">file://</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="wrappers.ftp.html">ftp://</a></div>
- <div class="up"><a href="wrappers.html">サポートするプロトコル/ラッパー</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

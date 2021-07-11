@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>オブジェクトのシリアライズ</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.references.html">オブジェクトと参照</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.oop5.changelog.html">変更履歴</a></div>
- <div class="up"><a href="language.oop5.html">クラスとオブジェクト</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.oop5.serialization" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.oop5.references.html">« オブジェクトと参照</a></li>
+      <li style="float: right;"><a href="language.oop5.variance.html">共変性と反変性 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.oop5.html">クラスとオブジェクト</a></li>
+    <li>オブジェクトのシリアライズ</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.oop5.serialization" class="sect1">
   <h2 class="title">オブジェクトのシリアライズ</h2>
   <h2 class="title">オブジェクトのシリアライズ - セッション内でのオブジェクト</h2>
 
@@ -46,16 +59,6 @@
   </div>
   
   <p class="para">
-   セッションを使っているアプリケーションで
-   <span class="function"><a href="function.session-register.html" class="function">session_register()</a></span> を使ってオブジェクトを登録した場合は、
-   PHP のページの終了時にオブジェクトが自動的にシリアライズされます。
-   そして、次のページが始まるときに自動的にそれが復元されるのです。
-   これによって、いちどセッションに登録したオブジェクトは
-   アプリケーションのどのページでも使えるようになります。
-   しかし <span class="function"><a href="function.session-register.html" class="function">session_register()</a></span> 関数は PHP 5.4.0 で削除されます。
-  </p>
-  
-  <p class="para">
    アプリケーション内でオブジェクトをシリアライズして再利用する場合のお勧めは、
    そのクラスの定義をアプリケーション全体で include することです。
    クラスの定義が存在しなければオブジェクトの復元に失敗してしまいます。
@@ -65,10 +68,10 @@
   </p>
   
   <p class="para">
-   つまり、もし上の例の <var class="varname"><var class="varname">$a</var></var> を
-   <em>session_register(&quot;a&quot;)</em> でセッションに格納するなら、
+   つまり、もし上の例の <var class="varname">$a</var> を
+   <code class="literal">session_register(&quot;a&quot;)</code> でセッションに格納するなら、
    <var class="filename">page1.php</var> と <var class="filename">page2.php</var> だけではなく
-   すべてのページで <em>classa.inc</em> を include しなければなりません。
+   すべてのページで <code class="literal">classa.inc</code> を include しなければなりません。
   </p>
 
   <p class="para">
@@ -78,9 +81,4 @@
    <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a> を使うと、
    オブジェクトの一部のプロパティだけをシリアライズすることもできます。
   </p>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.references.html">オブジェクトと参照</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.oop5.changelog.html">変更履歴</a></div>
- <div class="up"><a href="language.oop5.html">クラスとオブジェクト</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

@@ -3,27 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>外部プログラムを実行し、未整形の出力を表示する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.exec.html">exec</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.proc-close.html">proc_close</a></div>
- <div class="up"><a href="ref.exec.html">プログラム実行関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.passthru" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.exec.html">« exec</a></li>
+      <li style="float: right;"><a href="function.proc-close.html">proc_close »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.exec.html">プログラム実行関数</a></li>
+    <li>外部プログラムを実行し、未整形の出力を表示する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.passthru" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">passthru</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">passthru</span> &mdash; <span class="dc-title">外部プログラムを実行し、未整形の出力を表示する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">passthru</span> &mdash; <span class="dc-title">外部プログラムを実行し、未整形の出力を表示する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.passthru-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>passthru</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$command</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$return_var</code></span>
-  ] )</div>
+   <span class="methodname"><strong>passthru</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$command</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$return_var</code><span class="initializer"> = ?</span></span>): <span class="type"><span class="type void">void</span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>passthru()</strong></span>関数は<span class="function"><a href="function.exec.html" class="function">exec()</a></span>関数と同様、
@@ -35,7 +45,7 @@
    もしくは<span class="function"><a href="function.system.html" class="function">system()</a></span>の代わりに使用する必要があります。
    よく使うのは、直接画像ストリームを出力することができる pbmplus
    ユーティリティの様なものを実行する場合です。content-type を
-   <em>image/gif</em> に設定して、gifを出力するpbmplus
+   <code class="literal">image/gif</code> に設定して、gifを出力するpbmplus
    プログラムを呼び出すことにより、直接画像を出力する PHP スクリプトを作成
    することができます。
   </p>
@@ -96,16 +106,6 @@
 バックグラウンドで処理を続けさせるには、
 プログラムの出力をファイルや別の出力ストリームにリダイレクトする必要があります。
 そうしないと、プログラムが実行を終えるまで PHP はハングしてしまいます。</p></p></blockquote>
-  <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara"><a href="features.safe-mode.html" class="link">
-セーフモード</a> が有効な場合、<a href="ini.sect.safe-mode.html#ini.safe-mode-exec-dir" class="link">
-safe_mode_exec_dir</a>の中にある実行プログラムのみ実行可能です。
-実際的な理由により、現在、実行プログラムへのパスに <em>..</em>を
-含めることはできません。</span></p></blockquote>
-  <div class="warning"><strong class="warning">警告</strong><p class="simpara"><a href="features.safe-mode.html" class="link">
-セーフモード</a>が有効な場合、コマンド文字列は
-<span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span> でエスケープされます。
-つまり、<em>echo y | echo x</em> は、<em>echo y \| echo x</em>
-となります。</p></div>
  </div>
 
 
@@ -122,9 +122,4 @@ safe_mode_exec_dir</a>の中にある実行プログラムのみ実行可能で�
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.exec.html">exec</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.proc-close.html">proc_close</a></div>
- <div class="up"><a href="ref.exec.html">プログラム実行関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

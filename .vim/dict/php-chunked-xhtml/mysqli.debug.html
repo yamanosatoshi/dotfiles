@@ -3,18 +3,31 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>デバッグ操作を行う</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.construct.html">mysqli::__construct</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.dump-debug-info.html">mysqli::dump_debug_info</a></div>
- <div class="up"><a href="class.mysqli.html">mysqli</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqli.debug" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.construct.html">« mysqli::__construct</a></li>
+      <li style="float: right;"><a href="mysqli.dump-debug-info.html">mysqli::dump_debug_info »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli.html">mysqli</a></li>
+    <li>デバッグ操作を行う</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.debug" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mysqli::debug</h1>
   <h1 class="refname">mysqli_debug</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mysqli::debug</span> -- <span class="refname">mysqli_debug</span> &mdash; <span class="dc-title">デバッグ操作を行う</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli::debug</span> -- <span class="refname">mysqli_debug</span> &mdash; <span class="dc-title">デバッグ操作を行う</span></p>
 
  </div>
 
@@ -22,15 +35,10 @@
   <h3 class="title">説明</h3>
   <p class="para">オブジェクト指向型</p>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>mysqli::debug</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code></span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>mysqli::debug</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$options</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">手続き型</p>
-  <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>mysqli_debug</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code></span>
-   )</div>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>mysqli_debug</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$options</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    Fred Fish debugging library を使用してデバッグを行います。
@@ -45,7 +53,7 @@
 
     
      <dt>
-<code class="parameter">message</code></dt>
+<code class="parameter">options</code></dt>
 
      <dd>
 
@@ -64,7 +72,24 @@
  <div class="refsect1 returnvalues" id="refsect1-mysqli.debug-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   Returns <strong><code>TRUE</code></strong>.
+   Returns <strong><code>true</code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mysqli.debug-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-1405">
+    <p><strong>例1 トレースファイルの作成</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;ローカル（クライアント）マシンの&nbsp;'/tmp/client.trace'&nbsp;に<br />&nbsp;&nbsp;&nbsp;トレースファイルを作成します&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_debug</span><span style="color: #007700">(</span><span style="color: #DD0000">"d:t:o,/tmp/client.trace"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
   </p>
  </div>
 
@@ -81,23 +106,6 @@
  </div>
 
 
- <div class="refsect1 examples" id="refsect1-mysqli.debug-examples">
-  <h3 class="title">例</h3>
-  <p class="para">
-   <div class="example" id="example-1840">
-    <p><strong>例1 トレースファイルの作成</strong></p>
-    <div class="example-contents">
-<div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;ローカル（クライアント）マシンの&nbsp;'/tmp/client.trace'&nbsp;に<br />&nbsp;&nbsp;&nbsp;トレースファイルを作成します&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_debug</span><span style="color: #007700">(</span><span style="color: #DD0000">"d:t:o,/tmp/client.trace"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
-</span>
-</code></div>
-    </div>
-
-   </div>
-  </p>
- </div>
-
-
  <div class="refsect1 seealso" id="refsect1-mysqli.debug-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
@@ -109,9 +117,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.construct.html">mysqli::__construct</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.dump-debug-info.html">mysqli::dump_debug_info</a></div>
- <div class="up"><a href="class.mysqli.html">mysqli</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

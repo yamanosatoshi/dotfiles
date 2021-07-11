@@ -3,18 +3,31 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>直近のクエリから結果セットを転送する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.stmt-init.html">mysqli::stmt_init</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.thread-id.html">mysqli::$thread_id</a></div>
- <div class="up"><a href="class.mysqli.html">mysqli</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqli.store-result" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.stmt-init.html">« mysqli::stmt_init</a></li>
+      <li style="float: right;"><a href="mysqli.thread-id.html">mysqli::$thread_id »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli.html">mysqli</a></li>
+    <li>直近のクエリから結果セットを転送する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.store-result" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mysqli::store_result</h1>
   <h1 class="refname">mysqli_store_result</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mysqli::store_result</span> -- <span class="refname">mysqli_store_result</span> &mdash; <span class="dc-title">直近のクエリから結果セットを転送する</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli::store_result</span> -- <span class="refname">mysqli_store_result</span> &mdash; <span class="dc-title">直近のクエリから結果セットを転送する</span></p>
 
  </div>
 
@@ -22,20 +35,14 @@
   <h3 class="title">説明</h3>
   <p class="para">オブジェクト指向型</p>
   <div class="methodsynopsis dc-description">
-   <span class="type"><a href="class.mysqli-result.html" class="type mysqli_result">mysqli_result</a></span> <span class="methodname"><strong>mysqli::store_result</strong></span>
-    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code></span>
-  ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>mysqli::store_result</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = 0</span></span>): <span class="type"><span class="type"><a href="class.mysqli-result.html" class="type mysqli_result">mysqli_result</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">手続き型</p>
-  <div class="methodsynopsis dc-description">
-   <span class="type"><a href="class.mysqli-result.html" class="type mysqli_result">mysqli_result</a></span> <span class="methodname"><strong>mysqli_store_result</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter">$link</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code></span>
-  ] )</div>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>mysqli_store_result</strong></span>(<span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter">$mysql</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = 0</span></span>): <span class="type"><span class="type"><a href="class.mysqli-result.html" class="type mysqli_result">mysqli_result</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><a href="mysqli-result.data-seek.html" class="function">mysqli_data_seek()</a></span> で使用される、
-   <code class="parameter">link</code> で表されたデータベース接続の直近のクエリ
+   <code class="parameter">mysql</code> で表されたデータベース接続の直近のクエリ
    から結果セットを転送します。
   </p>
  </div>
@@ -51,18 +58,18 @@
 link</code></dt>
 <dd>
 <p class="para">手続き型のみ:
-<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> あるいは <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> が返すリンク ID。
+<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> あるいは <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> が返す <a href="class.mysqli.html" class="classname">mysqli</a>オブジェクト。
 </p></dd>
 
    
      <dt>
-<code class="parameter">option</code></dt>
+<code class="parameter">mode</code></dt>
 
      <dd>
 
       <p class="para">
        指定したいオプション。以下のいずれかの値を指定します。
-       <table class="doctable table">
+       <table id="mysqli.store-result.parameters" class="doctable table">
         <caption><strong>有効なオプション</strong></caption>
         
          <thead>
@@ -82,7 +89,7 @@ link</code></dt>
            ある種の結果セット (短めの行を大量に保持する結果セットなど) の場合は、
            コピーしたほうが、全体的なメモリ使用量を抑えることができます。
            結果を保持する PHP の変数のほうが、解放されるのが早いからです。
-           これは mysqlnd でのみ利用可能で、PHP 5.6.0 以降で使えます。</td>
+           これは mysqlnd でのみ利用可能です。</td>
           </tr>
 
          </tbody>
@@ -102,24 +109,32 @@ link</code></dt>
  <div class="refsect1 returnvalues" id="refsect1-mysqli.store-result-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   バッファに格納した結果オブジェクトを返します。エラー時には <strong><code>FALSE</code></strong> を返します。
+   バッファに格納した結果オブジェクトを返します。エラー時には <strong><code>false</code></strong> を返します。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     <span class="function"><strong>mysqli_store_result()</strong></span> は、クエリが結果セットを
     返さなかった場合（例えば、クエリが INSERT 文であった場合）に
-    <strong><code>FALSE</code></strong> を返します。また、結果セットの読み込みに失敗した場合にも
-    <strong><code>FALSE</code></strong> を返します。エラーが発生したかどうかを調べるには、
+    <strong><code>false</code></strong> を返します。また、結果セットの読み込みに失敗した場合にも
+    <strong><code>false</code></strong> を返します。エラーが発生したかどうかを調べるには、
     <span class="function"><a href="mysqli.error.html" class="function">mysqli_error()</a></span> が空文字列以外を返す・
     <span class="function"><a href="mysqli.errno.html" class="function">mysqli_errno()</a></span> がゼロ以外の値を返す・あるいは
     <span class="function"><a href="mysqli.field-count.html" class="function">mysqli_field_count()</a></span> がゼロ以外の値を返す
-    のいずれかを確認します。それ以外にこの関数が <strong><code>FALSE</code></strong> を返す理由としては
+    のいずれかを確認します。それ以外にこの関数が <strong><code>false</code></strong> を返す理由としては
     <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span> のコールに成功して返された
     結果セットが大きすぎる（メモリに割り当てられない）場合がありえます。
     もし <span class="function"><a href="mysqli.field-count.html" class="function">mysqli_field_count()</a></span> がゼロ以外の値を
     返した場合、文は空でない結果セットを生成しています。
    </p>
   </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mysqli.store-result-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <span class="function"><a href="mysqli.multi-query.html" class="function">mysqli_multi_query()</a></span> を参照ください。
+  </p>
  </div>
 
 
@@ -136,14 +151,6 @@ link</code></dt>
  </div>
 
 
- <div class="refsect1 examples" id="refsect1-mysqli.store-result-examples">
-  <h3 class="title">例</h3>
-  <p class="para">
-   <span class="function"><a href="mysqli.multi-query.html" class="function">mysqli_multi_query()</a></span> を参照ください。
-  </p>
- </div>
-
-
  <div class="refsect1 seealso" id="refsect1-mysqli.store-result-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
@@ -155,9 +162,4 @@ link</code></dt>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.stmt-init.html">mysqli::stmt_init</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.thread-id.html">mysqli::$thread_id</a></div>
- <div class="up"><a href="class.mysqli.html">mysqli</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

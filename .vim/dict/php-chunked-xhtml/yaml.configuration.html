@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>実行時設定</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="yaml.installation.html">インストール手順</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="yaml.resources.html">リソース型</a></div>
- <div class="up"><a href="yaml.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="yaml.configuration" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="yaml.installation.html">« インストール手順</a></li>
+      <li style="float: right;"><a href="yaml.resources.html">リソース型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="yaml.setup.html">インストール/設定</a></li>
+    <li>実行時設定</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="yaml.configuration" class="section">
   <h2 class="title">実行時設定</h2>
   <p class="simpara">
 <var class="filename">php.ini</var> の設定により動作が変化します。
@@ -39,9 +52,9 @@
 
           <tr>
             <td><a href="yaml.configuration.html#ini.yaml.decode-php" class="link">yaml.decode_php</a></td>
-            <td>1</td>
+            <td>0</td>
             <td>PHP_INI_ALL</td>
-            <td></td>
+            <td>1.2.0 で追加されました。2.0.0 より前のデフォルトは 1 でした</td>
           </tr>
 
           <tr>
@@ -87,7 +100,7 @@
       
         <dt id="ini.yaml.decode-binary">
           <code class="parameter">yaml.decode_binary</code>
-          <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+          <span class="type">bool</span>
         </dt>
 
         <dd>
@@ -103,14 +116,14 @@
       
         <dt id="ini.yaml.decode-php">
           <code class="parameter">yaml.decode_php</code>
-          <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+          <span class="type">bool</span>
         </dt>
 
         <dd>
 
           <p class="para">
-            デフォルトではオンです。オフにすると、
-            シリアライズされた php オブジェクトのうち &quot;!php/object&quot; というタグが明示されているものはデシリアライズしなくなります。
+            デフォルトではオフです。
+            しかし、明示的に &quot;!php/object&quot; タグを指定した phpオブジェクトをアンシリアライズさせたい場合には、オンにできます。
           </p>
         </dd>
 
@@ -118,7 +131,7 @@
       
         <dt id="ini.yaml.decode-timestamp">
           <code class="parameter">yaml.decode_timestamp</code>
-          <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+          <span class="type">int</span>
         </dt>
 
         <dd>
@@ -126,11 +139,11 @@
           <p class="para">
             YAML ドキュメントストリームにおける暗黙的なスカラー、
             および明示的に &quot;tag:yaml.org,2002:timestamp&quot; がつけられたスカラーの
-            デコードを制御します。デフォルト設定は <em>0</em>
+            デコードを制御します。デフォルト設定は <code class="literal">0</code>
             で、これはなにもデコードしません。
-            <em>1</em> を設定すると、<span class="function"><a href="function.strtotime.html" class="function">strtotime()</a></span>
+            <code class="literal">1</code> を設定すると、<span class="function"><a href="function.strtotime.html" class="function">strtotime()</a></span>
             を使って timestamp 値を Unix タイムスタンプに変換します。
-            <em>2</em> を設定すると、<span class="function"><a href="function.date-create.html" class="function">date_create()</a></span>
+            <code class="literal">2</code> を設定すると、<span class="function"><a href="function.date-create.html" class="function">date_create()</a></span>
             を使って timestamp 値を <span class="type"><a href="class.datetime.html" class="type DateTime">DateTime</a></span> オブジェクトに変換します。
           </p>
         </dd>
@@ -139,7 +152,7 @@
       
         <dt id="ini.yaml.output-canonical">
           <code class="parameter">yaml.output_canonical</code>
-          <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+          <span class="type">bool</span>
         </dt>
 
         <dd>
@@ -153,14 +166,14 @@
       
         <dt id="ini.yaml.output-indent">
           <code class="parameter">yaml.output_indent</code>
-          <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+          <span class="type">int</span>
         </dt>
 
         <dd>
 
           <p class="para">
             セクションの字下げに使うスペースの数。
-            <em>1</em> から <em>10</em>
+            <code class="literal">1</code> から <code class="literal">10</code>
             までの間の値でなければなりません。
           </p>
         </dd>
@@ -169,13 +182,13 @@
       
         <dt id="ini.yaml.output-width">
           <code class="parameter">yaml.output_width</code>
-          <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+          <span class="type">int</span>
         </dt>
 
         <dd>
 
           <p class="para">
-            行の長さの推奨値。<em>-1</em> は、無制限を意味します。
+            行の長さの推奨値。<code class="literal">-1</code> は、無制限を意味します。
           </p>
         </dd>
 
@@ -183,9 +196,4 @@
     </dl>
 
   </p>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="yaml.installation.html">インストール手順</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="yaml.resources.html">リソース型</a></div>
- <div class="up"><a href="yaml.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

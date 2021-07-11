@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>圧縮ストリーム</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="wrappers.php.html">php://</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="wrappers.data.html">data://</a></div>
- <div class="up"><a href="wrappers.html">サポートするプロトコル/ラッパー</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="wrappers.compression" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="wrappers.php.html">« php://</a></li>
+      <li style="float: right;"><a href="wrappers.data.html">data:// »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="wrappers.html">サポートするプロトコル/ラッパー</a></li>
+    <li>圧縮ストリーム</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="wrappers.compression" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">zlib://</h1>
   <h1 class="refname">bzip2://</h1>
@@ -21,15 +34,14 @@
 
  <div class="refsect1 description" id="refsect1-wrappers.compression-description">
   <h3 class="title">説明</h3>
-  <p class="simpara"><var class="filename">zlib:</var> PHP 4.0.4 - PHP 4.2.3 (fopencookie をサポートするシステムのみ)</p>
-  <p class="simpara"><var class="filename">compress.zlib://</var> および <var class="filename">compress.bzip2://</var> PHP 4.3.0以降</p>
+  <p class="simpara"><var class="filename">compress.zlib://</var> および <var class="filename">compress.bzip2://</var></p>
 
   <p class="simpara">
    <var class="filename">zlib:</var> は <span class="function"><a href="function.gzopen.html" class="function">gzopen()</a></span> と同様に
    動作しますが、このストリームは <span class="function"><a href="function.fread.html" class="function">fread()</a></span> および
    他のファイルシステム関数と組み合わせて使用することができるところが
    異なります。この機能ではファイル名に &#039;:&#039; 文字が含まれる曖昧さが
-   あるため、PHP 4.3.0 以降では古い機能となっています。代わりに
+   あるため、推奨されません。代わりに
    <var class="filename">compress.zlib://</var> を使用してください。
   </p>
 
@@ -39,8 +51,14 @@
    <span class="function"><a href="function.gzopen.html" class="function">gzopen()</a></span> および <span class="function"><a href="function.bzopen.html" class="function">bzopen()</a></span> と等価で、
    fopencookie をサポートしないシステムの上でも動作します。
   </p>
-  <p class="para">
-   <a href="book.zip.html" class="link">ZIP 拡張モジュール</a> は <var class="filename">zip:</var> ラッパーを登録します。
+
+  <p class="simpara">
+   <a href="book.zip.html" class="link">ZIP 拡張モジュール</a>
+   は、<var class="filename">zip:</var> ラッパーを登録します。
+   PHP 7.2.0 以降、かつ libzip 1.2.0+ では、
+   暗号化されたアーカイブに対するパスワードのサポートが追加され、
+   ストリームのコンテキストでパスワードを与えることが出来るようになりました。
+   パスワードは、<code class="literal">&#039;password&#039;</code> コンテキストオプションで設定できます。
   </p>
  </div>
 
@@ -82,12 +100,12 @@
 
       <tr>
        <td>書き込み許可</td>
-       <td>Yes (<em>zip://</em> を除く)</td>
+       <td>Yes (<code class="literal">zip://</code> を除く)</td>
       </tr>
 
       <tr>
        <td>追加許可</td>
-       <td>Yes (<em>zip://</em> を除く)</td>
+       <td>Yes (<code class="literal">zip://</code> を除く)</td>
       </tr>
 
       <tr>
@@ -99,7 +117,7 @@
        <td><span class="function"><a href="function.stat.html" class="function">stat()</a></span> のサポート</td>
        <td>
         No, 圧縮されたファイルの状態を知るには、通常の
-        <em>file://</em> ラッパーを使用します。
+        <code class="literal">file://</code> ラッパーを使用します。
        </td>
       </tr>
 
@@ -107,7 +125,7 @@
        <td><span class="function"><a href="function.unlink.html" class="function">unlink()</a></span> のサポート</td>
        <td>
         No, 圧縮されたファイルを unlink するには、通常の
-        <em>file://</em> ラッパーを使用します。
+        <code class="literal">file://</code> ラッパーを使用します。
        </td>
       </tr>
 
@@ -134,9 +152,4 @@
  </div>
  
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="wrappers.php.html">php://</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="wrappers.data.html">data://</a></div>
- <div class="up"><a href="wrappers.html">サポートするプロトコル/ラッパー</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

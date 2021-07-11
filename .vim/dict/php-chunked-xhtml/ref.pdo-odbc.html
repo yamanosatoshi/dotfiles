@@ -3,21 +3,34 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ODBC および DB2 関数 (PDO_ODBC)</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="ref.pdo-oci.connection.html">PDO_OCI DSN</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="ref.pdo-odbc.connection.html">PDO_ODBC DSN</a></div>
- <div class="up"><a href="pdo.drivers.html">PDO ドライバ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="ref.pdo-odbc" class="reference">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.pdo-oci.connection.html">« PDO_OCI DSN</a></li>
+      <li style="float: right;"><a href="ref.pdo-odbc.connection.html">PDO_ODBC DSN »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="pdo.drivers.html">PDO ドライバ</a></li>
+    <li>ODBC および DB2 関数 (PDO_ODBC)</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ref.pdo-odbc" class="reference">
   
   <h1 class="title">ODBC および DB2 関数 (PDO_ODBC)</h1>
   
   <div class="partintro">
 
    <div class="section" id="pdo-odbc.intro">
-   <h2 class="title">導入</h2>
+   <h2 class="title">はじめに</h2>
     <p class="para">
      PDO_ODBC は <a href="intro.pdo.html" class="link">PHP
      Data Objects (PDO) インターフェイス</a>を実装したドライバで、
@@ -34,7 +47,7 @@ ibm-db2</dt>
        <dd>
 
         <p class="para">
-         DB2 クライアントを使用した、
+         フリーの DB2 express-C クライアントを使用した、
          IBM DB2 Universal Database、Cloudscape および Apache
          Derby サーバーへのアクセスをサポートします。
         </p>
@@ -71,7 +84,8 @@ generic</dt>
 
     </p>
     <p class="para">
-     Windows では、PDO_ODBC はデフォルトで PHP コアに組み込まれています。
+     Windows では、<var class="filename">php_pdo_odbc.dll</var>
+     をエクステンションとして <var class="filename">php.ini</var> で有効にする必要があります。
      これは Windows ODBC ドライバマネージャに対してリンクされており、
      システムの DSN に登録されているあらゆるデータベースに対して
      PHP から接続することができます。Microsoft SQL Server
@@ -89,7 +103,7 @@ generic</dt>
   <strong class="title">UNIX システムでの PDO_ODBC</strong>
   <ol type="1"><li>
    <p class="para">
-    PHP 5.1 では、PDO_ODBC は PHP ソースの中に含まれています。
+    PDO_ODBC は PHP ソースの中に含まれています。
     PDO_ODBC 拡張モジュールを静的モジュールあるいは共有モジュールとして
     コンパイルするには次のような
     <strong class="command">configure</strong> コマンドを実行します。
@@ -109,8 +123,8 @@ ibm_db2</dt>
         をコンパイルするのと同じマシンに DB2 アプリケーション開発用ヘッダが
         インストールされていなければなりません。DB2
         アプリケーション開発ヘッダは DB2 サーバーのインストールオプションに
-        含まれており、また IBM DB2 Universal Database の
-        <a href="http://www-306.ibm.com/software/data/db2/udb/support/downloadv8.html" class="link external">&raquo;&nbsp;サポートサイト</a>
+        含まれており、また IBM developerWorks の
+        <a href="https://www.ibm.com/developerworks/downloads/im/db2express/index.html" class="link external">&raquo;&nbsp;Web サイト</a>
         からフリーでダウンロードできる DB2 Application Development Client
         にも含まれています。
        </p>
@@ -162,7 +176,87 @@ generic</dt>
 
 
 
+   
+   
+
+
+
+<div class="section" id="pdo-odbc.constants">
+ <h2 class="title">定義済み定数</h2>
+ <p class="simpara">このドライバでは以下の定数が定義されて
+います。これは拡張モジュールが PHP に組み込まれているか、実行時に動的にロード
+されている場合のみ使用可能です。さらに、これらのドライバ固有の定数は
+そのドライバを使用している場合にのみ使用されます。
+あるドライバ固有の属性を別のドライバで使うと、予期せぬ結果を引き起こします。
+もし複数のドライバを使用しているコードを実行している場合、
+<span class="function"><a href="pdo.getattribute.html" class="function">PDO::getAttribute()</a></span> で <strong><code>PDO::ATTR_DRIVER_NAME</code></strong>
+属性を使用することで、使用中のドライバ名を調べることが可能です。</p>
+ <dl>
+
   
+   <dt id="pdo.constants.odbc-attr-use-cursor-library">
+    <strong><code>PDO::ODBC_ATTR_USE_CURSOR_LIBRARY</code></strong>
+     (<span class="type">int</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     このオプションは、ODBC のカーソルライブラリが使うかを制御します。
+     ODBC カーソルライブラリは、ドライバが実装していない高度なODBCの機能
+     (例: スクロール可能なブロックカーソル) をいくつかサポートします。
+     サポートしている値は以下の通りです:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <p class="para">
+        <strong><code>PDO::ODBC_SQL_USE_IF_NEEDED</code></strong> (デフォルト):
+        ODBC カーソルライブラリを必要な時に使います。
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <strong><code>PDO::ODBC_SQL_USE_DRIVER</code></strong>:
+        ODBC カーソルライブラリを使いません。
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <strong><code>PDO::ODBC_SQL_USE_ODBC</code></strong>:
+        ODBC カーソルライブラリを常に使います。
+       </p>
+      </li>
+     </ul>
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.odbc-attr-assume-utf8">
+    <strong><code>PDO::ODBC_ATTR_ASSUME_UTF8</code></strong>
+     (<span class="type">bool</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Windows のみ有効です。
+     <strong><code>true</code></strong> の場合、UTF-16 でエンコードされた文字データ(
+     <code class="literal">CHAR</code>,
+     <code class="literal">VARCHAR</code>, <code class="literal">LONGVARCHAR</code>) を
+     データベースから読み取ったり、書き込んだりする際に UTF-8 に変換します。
+     <strong><code>false</code></strong> の場合(デフォルト)、
+     エンコーディングの変換はドライバが行う可能性があります。
+    </p>
+   </dd>
+
+  
+ </dl>
+
+</div>
+
+
+
+   
    
 
 
@@ -190,14 +284,14 @@ generic</dt>
       <td><a href="ref.pdo-odbc.html#ini.pdo-odbc.connection-pooling" class="link">pdo_odbc.connection_pooling</a></td>
       <td>&quot;strict&quot;</td>
       <td>PHP_INI_ALL</td>
-      <td>PHP 5.1.0 以降で使用可能です。</td>
+      <td class="empty">&nbsp;</td>
      </tr>
 
      <tr>
       <td><a href="ref.pdo-odbc.html#ini.pdo-odbc.db2-instance-name" class="link">pdo_odbc.db2_instance_name</a></td>
       <td>NULL</td>
       <td>PHP_INI_SYSTEM</td>
-      <td>PHP 5.1.1 以降で使用可能です。この非推奨の機能は、<em class="emphasis">きっと</em> 
+      <td>この非推奨の機能は、<em class="emphasis">きっと</em> 
 将来 <em class="emphasis">削除</em> されるでしょう。</td>
      </tr>
 
@@ -218,14 +312,14 @@ generic</dt>
    
    <dt id="ini.pdo-odbc.connection-pooling">
     <code class="parameter">pdo_odbc.connection_pooling</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <p class="para">
-     ODBC 接続のプール方法を指定します。<em>&quot;strict&quot;</em>、<em>&quot;relaxed&quot;</em> あるいは
-     <em>&quot;off&quot;</em> (<em>&quot;&quot;</em> と同じ) のいずれかです。このパラメータは、
+     ODBC 接続のプール方法を指定します。<code class="literal">&quot;strict&quot;</code>、<code class="literal">&quot;relaxed&quot;</code> あるいは
+     <code class="literal">&quot;off&quot;</code> (<code class="literal">&quot;&quot;</code> と同じ) のいずれかです。このパラメータは、
      プールされている既存の接続との比較をどの程度厳密に行うのかを
      接続マネージャに指定します。
      <strong class="userinput"><code>strict</code></strong> は推奨されているデフォルト設定で、
@@ -259,13 +353,13 @@ generic</dt>
   
    <dt id="ini.pdo-odbc.db2-instance-name">
     <code class="parameter">pdo_odbc.db2_instance_name</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
 
     <p class="para">
-     <em>db2</em> 方式で PDO_ODBC をコンパイルした場合、
+     <code class="literal">db2</code> 方式で PDO_ODBC をコンパイルした場合、
      Linux および UNIX 上で DB2 インスタンスを指定するための環境変数
      DB2INSTANCE の値を設定します。これによって PDO_ODBC
      が DB2 ライブラリの場所を見つけられるようになり、
@@ -298,9 +392,4 @@ generic</dt>
 
  <h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="ref.pdo-odbc.connection.html">PDO_ODBC DSN</a> — ODBC あるいは DB2 データベースに接続する</li></ul>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="ref.pdo-oci.connection.html">PDO_OCI DSN</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="ref.pdo-odbc.connection.html">PDO_ODBC DSN</a></div>
- <div class="up"><a href="pdo.drivers.html">PDO ドライバ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

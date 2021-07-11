@@ -3,30 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Oracle プレースホルダに PHP 変数をバインドする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.oci-bind-array-by-name.html">oci_bind_array_by_name</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.oci-cancel.html">oci_cancel</a></div>
- <div class="up"><a href="ref.oci8.html">OCI8 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.oci-bind-by-name" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.oci-bind-array-by-name.html">« oci_bind_array_by_name</a></li>
+      <li style="float: right;"><a href="function.oci-cancel.html">oci_cancel »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.oci8.html">OCI8 関数</a></li>
+    <li>Oracle プレースホルダに PHP 変数をバインドする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.oci-bind-by-name" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">oci_bind_by_name</h1>
-  <p class="verinfo">(PHP 5, PHP 7, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_bind_by_name</span> &mdash; <span class="dc-title">Oracle プレースホルダに PHP 変数をバインドする</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_bind_by_name</span> &mdash; <span class="dc-title">Oracle プレースホルダに PHP 変数をバインドする</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.oci-bind-by-name-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>oci_bind_by_name</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$statement</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$bv_name</code></span>
-   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&$variable</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$maxlength</code><span class="initializer"> = -1</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code><span class="initializer"> = SQLT_CHR</span></span>
-  ]] )</div>
+   <span class="methodname"><strong>oci_bind_by_name</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">resource</span> <code class="parameter">$statement</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$bv_name</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&$variable</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$maxlength</code><span class="initializer"> = -1</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code><span class="initializer"> = SQLT_CHR</span></span><br>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    PHP の変数
@@ -52,21 +59,21 @@
 
   <p class="para">
     Oracle のバインド変数は、データベースに渡す値に使う
-    <em>IN</em> 変数と PHP に返される値に使う
-    <em>OUT</em> 変数のふたつに大別できます。
-    バインド変数は <em>IN</em> あるいは <em>OUT</em>
+    <code class="literal">IN</code> 変数と PHP に返される値に使う
+    <code class="literal">OUT</code> 変数のふたつに大別できます。
+    バインド変数は <code class="literal">IN</code> あるいは <code class="literal">OUT</code>
     のどちらかの形式になります。バインド変数を入力用に使うか出力用に使うかは、
     実行時に決まります。
   </p>
 
   <p class="para">
-    <em>OUT</em> 変数を使う場合は
+    <code class="literal">OUT</code> 変数を使う場合は
     <code class="parameter">maxlength</code> を指定しなければなりません。
     これを用いて、返される値を格納するのに必要なメモリを PHP が確保します。
   </p>
 
   <p class="para">
-    <em>IN</em> 変数の場合も、もし PHP
+    <code class="literal">IN</code> 変数の場合も、もし PHP
     の変数にさまざまな値を格納してステートメントを何度も実行するのであれば
     <code class="parameter">maxlength</code> を設定しておくことを推奨します。
     そうしないと、最初に渡した PHP の変数の値にあわせて
@@ -80,13 +87,13 @@
 
   <p class="para">
     バインドは、Oracle にデータをどのメモリアドレスから読み込むのかを指示します。
-    <em>IN</em> 変数の場合、<span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span>
+    <code class="literal">IN</code> 変数の場合、<span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span>
     がコールされたときにそのメモリアドレスに正しいデータがなければなりません。
     つまり、バインドされる変数は実行時までスコープ内に残っていなければならないということです。
     もしそうでなければ、
     &quot;ORA-01460: unimplemented or unreasonable conversion requested&quot;
     のような予期せぬエラーが発生します。
-    <em>OUT</em> 変数の場合は、PHP の変数に何も値が格納されないといったことになるでしょう。
+    <code class="literal">OUT</code> 変数の場合は、PHP の変数に何も値が格納されないといったことになるでしょう。
   </p>
 
   <p class="para">
@@ -271,7 +278,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.oci-bind-by-name-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -279,7 +286,7 @@
  <div class="refsect1 examples" id="refsect1-function.oci-bind-by-name-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2197">
+   <div class="example" id="example-1753">
     <p><strong>例1 <span class="function"><strong>oci_bind_by_name()</strong></span> によるデータの挿入</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -292,7 +299,7 @@
   </p>
 
   <p class="para">
-   <div class="example" id="example-2198">
+   <div class="example" id="example-1754">
     <p><strong>例2 一度組み立てたものを複数回実行</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -305,7 +312,7 @@
   </p>
 
   <p class="para">
-   <div class="example" id="example-2199">
+   <div class="example" id="example-1755">
     <p><strong>例3 <span class="function"><strong>foreach()</strong></span> ループでのバインド</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -318,7 +325,7 @@
   </p>
 
   <p class="para">
-   <div class="example" id="example-2200">
+   <div class="example" id="example-1756">
     <p><strong>例4 WHERE 句でのバインド</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -331,7 +338,7 @@
   </p>
 
   <p class="para">
-   <div class="example" id="example-2201">
+   <div class="example" id="example-1757">
     <p><strong>例5 LIKE 句でのバインド</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -344,7 +351,7 @@
   </p>
 
   <p class="para">
-   <div class="example" id="example-2202">
+   <div class="example" id="example-1758">
     <p><strong>例6 REGEXP_LIKE でのバインド</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -364,7 +371,7 @@
   </p>
 
   <p class="para">
-   <div class="example" id="example-2203">
+   <div class="example" id="example-1759">
     <p><strong>例7 IN 句での複数の値のバインド</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -377,7 +384,7 @@
   </p>
 
   <p class="para">
-   <div class="example" id="example-2204">
+   <div class="example" id="example-1760">
     <p><strong>例8 クエリが返す ROWID のバインド</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -390,7 +397,7 @@
   </p>
 
   <p class="para">
-   <div class="example" id="example-2205">
+   <div class="example" id="example-1761">
     <p><strong>例9 INSERT での ROWID のバインド</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -403,7 +410,7 @@
   </p>
 
   <p class="para">
-   <div class="example" id="example-2206">
+   <div class="example" id="example-1762">
     <p><strong>例10 PL/SQL ストアドファンクションでのバインド</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -416,7 +423,7 @@
   </p>
 
   <p class="para">
-  <div class="example" id="example-2207">
+  <div class="example" id="example-1763">
    <p><strong>例11 PL/SQL ストアドプロシージャでのパラメータのバインド</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -429,7 +436,7 @@
   </p>
 
   <p class="para">
-  <div class="example" id="example-2208">
+  <div class="example" id="example-1764">
    <p><strong>例12 CLOB 列のバインド</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -442,7 +449,7 @@
   </p>
 
   <p class="para">
-  <div class="example" id="example-2209">
+  <div class="example" id="example-1765">
    <p><strong>例13 PL/SQL の BOOLEAN のバインド</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -457,19 +464,11 @@
  </div>
 
 
- <div class="refsect1 returnvalues" id="refsect1-function.oci-bind-by-name-returnvalues">
-  <h3 class="title">返り値</h3>
-  <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
-  </p>
- </div>
-
-
  <div class="refsect1 notes" id="refsect1-function.oci-bind-by-name-notes">
   <h3 class="title">注意</h3>
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
-    クォートは不要なので、<a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a> や
+    クォートは不要なので、
     <span class="function"><a href="function.addslashes.html" class="function">addslashes()</a></span> を
     <span class="function"><strong>oci_bind_by_name()</strong></span> と同時に使わないでください。
     自動的に追加されたクォートはデータベースの中にそのまま書き込まれてしまいます。
@@ -479,11 +478,11 @@
   </div>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    <em>WHERE</em> 句の中の
-    <em>CHAR</em> 型のカラムに文字列をバインドするときには、
-    Oracle における <em>CHAR</em> 型のカラムの比較が
+    <code class="literal">WHERE</code> 句の中の
+    <code class="literal">CHAR</code> 型のカラムに文字列をバインドするときには、
+    Oracle における <code class="literal">CHAR</code> 型のカラムの比較が
     スペースで埋めた (固定長形式で) 行われることを覚えておきましょう。
-    <em>WHERE</em> 句を期待通りに動作させるには、
+    <code class="literal">WHERE</code> 句を期待通りに動作させるには、
     PHP の変数側でもスペースを追加してカラムの幅と同じにしておく必要があります。
    </p>
   </p></blockquote>
@@ -531,9 +530,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.oci-bind-array-by-name.html">oci_bind_array_by_name</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.oci-cancel.html">oci_cancel</a></div>
- <div class="up"><a href="ref.oci8.html">OCI8 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

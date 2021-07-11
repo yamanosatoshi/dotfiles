@@ -3,30 +3,41 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ファイルが書き込み可能かどうかを調べる</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.is-uploaded-file.html">is_uploaded_file</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.is-writeable.html">is_writeable</a></div>
- <div class="up"><a href="ref.filesystem.html">ファイルシステム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.is-writable" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.is-uploaded-file.html">« is_uploaded_file</a></li>
+      <li style="float: right;"><a href="function.is-writeable.html">is_writeable »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">ファイルシステム 関数</a></li>
+    <li>ファイルが書き込み可能かどうかを調べる</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.is-writable" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">is_writable</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">is_writable</span> &mdash; <span class="dc-title">ファイルが書き込み可能かどうかを調べる</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">is_writable</span> &mdash; <span class="dc-title">ファイルが書き込み可能かどうかを調べる</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.is-writable-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>is_writable</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
-   )</div>
+   <span class="methodname"><strong>is_writable</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <code class="parameter">filename</code>が存在して、かつそれが書き込み可能であれば
-   <strong><code>TRUE</code></strong>を返します。引数filenameはディレクトリ名とすることができ、
+   <strong><code>true</code></strong>を返します。引数filenameはディレクトリ名とすることができ、
    ディレクトリが書き込み可能であることを調べることが可能です。
   </p>
   <p class="para">
@@ -64,15 +75,23 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    <code class="parameter">filename</code> が存在して書き込み可能な場合に
-   <strong><code>TRUE</code></strong> を返します。
+   <strong><code>true</code></strong> を返します。
   </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.is-writable-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+失敗したときは <strong><code>E_WARNING</code></strong> が発生します。
+</p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.is-writable-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2669">
+   <div class="example" id="example-2160">
     <p><strong>例1 <span class="function"><strong>is_writable()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -86,14 +105,6 @@
  </div>
 
 
- <div class="refsect1 errors" id="refsect1-function.is-writable-errors">
-  <h3 class="title">エラー / 例外</h3>
-  <p class="para">
-失敗したときは <strong><code>E_WARNING</code></strong> が発生します。
-</p>
- </div>
-
-
  <div class="refsect1 notes" id="refsect1-function.is-writable-notes">
   <h3 class="title">注意</h3>
   
@@ -101,7 +112,7 @@
 キャッシュされます。詳細は、<span class="function"><a href="function.clearstatcache.html" class="function">clearstatcache()</a></span>
 を参照してください。</span></p></blockquote>
   <div class="tip"><strong class="tip">ヒント</strong><p class="simpara">
-<em>PHP 5.0.0</em> 以降、この関数は、
+<code class="literal">PHP 5.0.0</code> 以降、この関数は、
 <em class="emphasis">何らかの</em> URL ラッパーと組合せて使用することができます。
 どのラッパーが <span class="function"><a href="function.stat.html" class="function">stat()</a></span> ファミリーをサポートしているかを調べるには
 <a href="wrappers.html" class="xref">サポートするプロトコル/ラッパー</a> を参照してください。</p></div>
@@ -120,9 +131,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.is-uploaded-file.html">is_uploaded_file</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.is-writeable.html">is_writeable</a></div>
- <div class="up"><a href="ref.filesystem.html">ファイルシステム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

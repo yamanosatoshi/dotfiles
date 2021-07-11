@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>子を置き換える</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="domnode.removechild.html">DOMNode::removeChild</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="class.domnodelist.html">DOMNodeList</a></div>
- <div class="up"><a href="class.domnode.html">DOMNode</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="domnode.replacechild" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="domnode.removechild.html">« DOMNode::removeChild</a></li>
+      <li style="float: right;"><a href="class.domnodelist.html">DOMNodeList »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.domnode.html">DOMNode</a></li>
+    <li>子を置き換える</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="domnode.replacechild" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">DOMNode::replaceChild</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">DOMNode::replaceChild</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DOMNode::replaceChild</span> &mdash; <span class="dc-title">
    子を置き換える
   </span></p>
 
@@ -21,14 +34,11 @@
  <div class="refsect1 description" id="refsect1-domnode.replacechild-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <span class="methodname"><strong>DOMNode::replaceChild</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <code class="parameter">$newnode</code></span>
-   , <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <code class="parameter">$oldnode</code></span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>DOMNode::replaceChild</strong></span>(<span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <code class="parameter">$node</code></span>, <span class="methodparam"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span> <code class="parameter">$child</code></span>): <span class="type"><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
-   この関数は、子要素 <code class="parameter">oldnode</code> を新しいノードに
-   置き換えます。もし <code class="parameter">newnode</code> がすでに子要素であった場合は、
+   この関数は、子要素 <code class="parameter">child</code> を新しいノードに
+   置き換えます。もし <code class="parameter">node</code> がすでに子要素であった場合は、
    それがふたたび追加されることはありません。置き換えに成功すると、
    置き換え前のノードが返されます。
   </p>
@@ -41,7 +51,7 @@
 
     
      <dt>
-<code class="parameter">newnode</code></dt>
+<code class="parameter">node</code></dt>
 
      <dd>
 
@@ -56,7 +66,7 @@
     
     
      <dt>
-<code class="parameter">oldnode</code></dt>
+<code class="parameter">child</code></dt>
 
      <dd>
 
@@ -74,7 +84,7 @@
  <div class="refsect1 returnvalues" id="refsect1-domnode.replacechild-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   古いノード、あるいはエラーが発生した場合は <strong><code>FALSE</code></strong> を返します。
+   古いノード、あるいはエラーが発生した場合は <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -103,7 +113,7 @@
      <dd>
 
       <p class="para">
-       <code class="parameter">newnode</code> で指定した型の子ノードを
+       <code class="parameter">node</code> で指定した型の子ノードを
        保持することが許可されていない場合、あるいは追加しようとしている
        ノードが自分自身やその祖先であった場合に発生します。
       </p>
@@ -117,7 +127,7 @@
      <dd>
 
       <p class="para">
-       <code class="parameter">newnode</code> が、このノードとは別の
+       <code class="parameter">node</code> が、このノードとは別の
        ドキュメントで作成されたものである場合に発生します。
       </p>
      </dd>
@@ -130,7 +140,7 @@
      <dd>
 
       <p class="para">
-       <code class="parameter">oldnode</code> がこのノードの子でない場合に発生します。
+       <code class="parameter">child</code> がこのノードの子でない場合に発生します。
       </p>
      </dd>
 
@@ -150,9 +160,4 @@
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="domnode.removechild.html">DOMNode::removeChild</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="class.domnodelist.html">DOMNodeList</a></div>
- <div class="up"><a href="class.domnode.html">DOMNode</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,26 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>古いセッションを削除する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="sessionhandlerinterface.destroy.html">SessionHandlerInterface::destroy</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="sessionhandlerinterface.open.html">SessionHandlerInterface::open</a></div>
- <div class="up"><a href="class.sessionhandlerinterface.html">SessionHandlerInterface</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="sessionhandlerinterface.gc" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="sessionhandlerinterface.destroy.html">« SessionHandlerInterface::destroy</a></li>
+      <li style="float: right;"><a href="sessionhandlerinterface.open.html">SessionHandlerInterface::open »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.sessionhandlerinterface.html">SessionHandlerInterface</a></li>
+    <li>古いセッションを削除する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="sessionhandlerinterface.gc" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">SessionHandlerInterface::gc</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.4.0, PHP 7)</p><p class="refpurpose"><span class="refname">SessionHandlerInterface::gc</span> &mdash; <span class="dc-title">古いセッションを削除する</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.4.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SessionHandlerInterface::gc</span> &mdash; <span class="dc-title">古いセッションを削除する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-sessionhandlerinterface.gc-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><strong>SessionHandlerInterface::gc</strong></span>
-    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$maxlifetime</code></span>
-   )</div>
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="methodname"><strong>SessionHandlerInterface::gc</strong></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$max_lifetime</code></span>): <span class="type"><span class="type">int</span>|<span class="type">bool</span></span></div>
 
   <p class="para rdfs-comment">
    有効期限を過ぎたセッションを削除します。
@@ -40,12 +51,12 @@
 
    
     <dt>
-<code class="parameter">maxlifetime</code></dt>
+<code class="parameter">max_lifetime</code></dt>
 
     <dd>
 
      <p class="para">
-      直近の <code class="parameter">maxlifetime</code> 秒の間に更新されていないセッションを削除します。
+      直近の <code class="parameter">max_lifetime</code> 秒の間に更新されていないセッションを削除します。
      </p>
     </dd>
 
@@ -58,14 +69,38 @@
  <div class="refsect1 returnvalues" id="refsect1-sessionhandlerinterface.gc-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   返り値 (通常は、<strong><code>TRUE</code></strong> が成功そして <strong><code>FALSE</code></strong> が失敗を表します)。この値は PHP で内部的に処理されるものであることに注意しましょう。
+   成功時に、削除したセッションの数を返します。
+   失敗した場合に <strong><code>false</code></strong> を返します
+   この値は、処理を続けるために PHP の内部にも返される点に注意して下さい。
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="sessionhandlerinterface.destroy.html">SessionHandlerInterface::destroy</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="sessionhandlerinterface.open.html">SessionHandlerInterface::open</a></div>
- <div class="up"><a href="class.sessionhandlerinterface.html">SessionHandlerInterface</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ <div class="refsect1 changelog" id="refsect1-sessionhandlerinterface.gc-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>7.1.0</td>
+      <td>
+       これより前のバージョンでは、この関数は成功時に <strong><code>true</code></strong> を返していました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+</div></div></div></body></html>

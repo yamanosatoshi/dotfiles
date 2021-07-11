@@ -3,35 +3,43 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>インストール手順</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pcre.requirements.html">要件</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pcre.configuration.html">実行時設定</a></div>
- <div class="up"><a href="pcre.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="pcre.installation" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pcre.requirements.html">« 要件</a></li>
+      <li style="float: right;"><a href="pcre.configuration.html">実行時設定 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="pcre.setup.html">インストール/設定</a></li>
+    <li>インストール手順</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pcre.installation" class="section">
  <h2 class="title">インストール手順</h2>
  <p class="para">
   PCRE は PHP のコア拡張モジュールなので、常に有効となっています。
   デフォルトでは、この拡張モジュールのコンパイルには、バンドルされている PCRE
   ライブラリを利用します。別の PCRE ライブラリを使ってコンパイルする場合は、オプション
-  <strong class="option configure">--with-pcre-regex=DIR</strong>
- を利用します。
-  このとき <em>DIR</em> には、PCRE のインクルードファイルやライブラリファイルがある場所を指定します。
-  PHP 5.6 や PHP 7.0 では、PCRE 8.10 以降を使うことを推奨します。
+  <strong class="option configure">--with-pcre-regex=DIR</strong> を利用します。
+  このとき <code class="literal">DIR</code> には、PCRE のインクルードファイルやライブラリファイルがある場所を指定します。
+  PCRE 8.10 以降を使うことを推奨します。PHP 7.3.0 以降では、PCRE2 が必須になっています。
  </p>
- <p class="simpara">Windows 版の <em>PHP</em> には
+ <p class="para">
+  PCRE の JIT(ジャストインタイムコンパイル) 機能はデフォルトでサポートされています。
+  PHP 7.0.12 以降では、<strong class="option configure">--without-pcre-jit</strong> 構成オプションで無効化できます。
+ </p>
+ <p class="simpara">Windows 版の <code class="literal">PHP</code> には
 この拡張モジュールのサポートが組み込まれています。これらの関数を使用
 するために拡張モジュールを追加でロードする必要はありません。</p>
- <blockquote class="note"><p><strong class="note">注意</strong>: 
-  <p class="para">
-   PHP 5.3.0 より前のバージョンでは、configure の際に
-   オプション <strong class="option configure">--without-pcre-regex</strong>
-
-   を指定すれば、この拡張モジュールを無効にできました。
-  </p>
- </p></blockquote>
  <p class="para">
   PCRE は活発なプロジェクトであり、変化し続けています。
   PHP で使える機能もそれに依存しています。
@@ -57,135 +65,45 @@
 
     <tbody class="tbody">
      <tr>
-      <td>7.0.3 / 5.6.18 / 5.5.32</td>
+      <td>7.4.12, 8.0.0</td>
+      <td>10.35</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td>7.4.6</td>
+      <td>10.34</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td>7.4.0</td>
+      <td>10.33</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td>7.3.0</td>
+      <td>10.32</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td>7.2.0</td>
+      <td>8.41</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td>7.0.3</td>
       <td>8.38</td>
-      <td>CVE-2015-8383, CVE-2015-8386, CVE-2015-8387, CVE-2015-8389, CVE-2015-8390, CVE-2015-8391, CVE-2015-8393, CVE-2015-8394 を参照ください</td>
+      <td>See CVE-2015-8383, CVE-2015-8386, CVE-2015-8387, CVE-2015-8389, CVE-2015-8390, CVE-2015-8391, CVE-2015-8393, CVE-2015-8394</td>
      </tr>
 
      <tr>
-      <td>7.0.0 / 5.6.9 / 5.5.26 / 5.4.41</td>
+      <td>7.0.0</td>
       <td>8.37</td>
-      <td>CVE-2015-2325, CVE-2015-2326 を参照ください</td>
-     </tr>
-
-     <tr>
-      <td>5.6.0 / 5.5.10</td>
-      <td>8.34</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.5.0 / 5.4.14 / 5.3.24</td>
-      <td>8.32</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.4.9 / 5.3.19</td>
-      <td>8.31</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.3.7</td>
-      <td>8.12</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.3.6</td>
-      <td>8.11</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.3.4</td>
-      <td>8.10</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.3.3 / 5.2.14</td>
-      <td>8.02</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.3.2</td>
-      <td>8.00</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.3.0 / 5.2.13</td>
-      <td>7.9</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.2.7</td>
-      <td>7.8</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.2.6</td>
-      <td>7.6</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.2.5</td>
-      <td>7.3</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.2.4</td>
-      <td>7.2</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.2.2</td>
-      <td>7.0</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.2.0</td>
-      <td>6.7</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.1.3</td>
-      <td>6.6</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.1.0</td>
-      <td>6.2</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.0.5</td>
-      <td>5.0</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>5.0.0</td>
-      <td>4.5</td>
-      <td class="empty">&nbsp;</td>
-     </tr>
-
-     <tr>
-      <td>4.4.7</td>
-      <td>7.7</td>
-      <td class="empty">&nbsp;</td>
+      <td>See CVE-2015-2325, CVE-2015-2326</td>
      </tr>
 
     </tbody>
@@ -193,9 +111,4 @@
   </table>
 
  </p>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pcre.requirements.html">要件</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pcre.configuration.html">実行時設定</a></div>
- <div class="up"><a href="pcre.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

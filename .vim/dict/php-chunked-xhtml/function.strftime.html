@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ロケールの設定に基づいてローカルな日付・時間をフォーマットする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mktime.html">mktime</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.strptime.html">strptime</a></div>
- <div class="up"><a href="ref.datetime.html">日付・時刻 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.strftime" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mktime.html">« mktime</a></li>
+      <li style="float: right;"><a href="function.strptime.html">strptime »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.datetime.html">日付・時刻 関数</a></li>
+    <li>ロケールの設定に基づいてローカルな日付・時間をフォーマットする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.strftime" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">strftime</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">strftime</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">strftime</span> &mdash; <span class="dc-title">
    ロケールの設定に基づいてローカルな日付・時間をフォーマットする
   </span></p>
 
@@ -22,10 +35,7 @@
  <div class="refsect1 description" id="refsect1-function.strftime-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>strftime</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timestamp</code><span class="initializer"> = time()</span></span>
-  ] )</div>
+   <span class="methodname"><strong>strftime</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>, <span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$timestamp</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    ローカルの時刻・日付を、ロケール設定にもとづいてフォーマットします。
@@ -41,7 +51,7 @@
    つまり、Windows や一部の Linux ディストリビューション、そしてその他のごく一部の
    オペレーティングシステム上では
    %e、%T、%R および %D (あるいはこれ以外も) が
-   <em>Jan 1, 1970</em> より前の日付について動作しないということです。
+   <code class="literal">Jan 1, 1970</code> より前の日付について動作しないということです。
    Windwos システム上でサポートされる変換指定子の概要については、
    <a href="http://msdn.microsoft.com/en-us/library/fe06s4ak.aspx" class="link external">&raquo;&nbsp;<acronym title="Microsoft Developer Network">MSDN</acronym></a>
    に掲載されています。
@@ -81,48 +91,48 @@
           </tr>
 
           <tr>
-           <td><em>%a</em></td>
+           <td><code class="literal">%a</code></td>
            <td>短縮された曜日の名前</td>
-           <td><em>Sun</em> から <em>Sat</em></td>
+           <td><code class="literal">Sun</code> から <code class="literal">Sat</code></td>
           </tr>
 
           <tr>
-           <td><em>%A</em></td>
+           <td><code class="literal">%A</code></td>
            <td>完全な曜日の名前</td>
-           <td><em>Sunday</em> から <em>Saturday</em></td>
+           <td><code class="literal">Sunday</code> から <code class="literal">Saturday</code></td>
           </tr>
 
           <tr>
-           <td><em>%d</em></td>
+           <td><code class="literal">%d</code></td>
            <td>10 進数で 2 桁の日付 (先頭のゼロつき)</td>
-           <td><em>01</em> から <em>31</em></td>
+           <td><code class="literal">01</code> から <code class="literal">31</code></td>
           </tr>
 
           <tr>
-           <td><em>%e</em></td>
+           <td><code class="literal">%e</code></td>
            <td>
             1 桁の場合は先頭にスペースをいれた日付。
             Windows ではそのようには実装されていません。詳細は以下を参照ください。
            </td>
-           <td><em> 1</em> から <em>31</em></td>
+           <td><code class="literal"> 1</code> から <code class="literal">31</code></td>
           </tr>
 
           <tr>
-           <td><em>%j</em></td>
+           <td><code class="literal">%j</code></td>
            <td>3 桁で先頭にゼロを含む年間での日付</td>
-           <td><em>001</em> から <em>366</em></td>
+           <td><code class="literal">001</code> から <code class="literal">366</code></td>
           </tr>
 
           <tr>
-           <td><em>%u</em></td>
+           <td><code class="literal">%u</code></td>
            <td>ISO-8601 数値表現であらわした曜日</td>
-           <td><em>1</em> (月曜日) から <em>7</em> (日曜日)</td>
+           <td><code class="literal">1</code> (月曜日) から <code class="literal">7</code> (日曜日)</td>
           </tr>
 
           <tr>
-           <td><em>%w</em></td>
+           <td><code class="literal">%w</code></td>
            <td>数値表現であらわした曜日</td>
-           <td><em>0</em> (日曜日) から <em>6</em> (土曜日)</td>
+           <td><code class="literal">0</code> (日曜日) から <code class="literal">6</code> (土曜日)</td>
           </tr>
 
           <tr>
@@ -132,23 +142,23 @@
           </tr>
 
           <tr>
-           <td><em>%U</em></td>
+           <td><code class="literal">%U</code></td>
            <td>指定した年の週番号。最初の日曜日を第一週の開始日とする</td>
-           <td><em>13</em> (年間の第 13 週の場合)</td>
+           <td><code class="literal">13</code> (年間の第 13 週の場合)</td>
           </tr>
 
           <tr>
-           <td><em>%V</em></td>
+           <td><code class="literal">%V</code></td>
            <td>ISO-8601:1988 で規定された、指定した年の週番号。
            週の開始日は月曜日で、第 1 週は少なくとも 4 日はあることになる</td>
-           <td><em>01</em> から <em>53</em> (53
+           <td><code class="literal">01</code> から <code class="literal">53</code> (53
            は年をまたがる週になります)</td>
           </tr>
 
           <tr>
-           <td><em>%W</em></td>
+           <td><code class="literal">%W</code></td>
            <td>その年の週番号の数値表現。最初の月曜日を最初の週の初日とする</td>
-           <td><em>46</em> (46 番目の週の場合。開始日は月曜日)</td>
+           <td><code class="literal">46</code> (46 番目の週の場合。開始日は月曜日)</td>
           </tr>
 
           <tr>
@@ -158,27 +168,27 @@
           </tr>
 
           <tr>
-           <td><em>%b</em></td>
+           <td><code class="literal">%b</code></td>
            <td>現在のロケールに基づく短縮された月の名前</td>
-           <td><em>Jan</em> から <em>Dec</em></td>
+           <td><code class="literal">Jan</code> から <code class="literal">Dec</code></td>
           </tr>
 
           <tr>
-           <td><em>%B</em></td>
+           <td><code class="literal">%B</code></td>
            <td>現在のロケールに基づく完全な月の名前</td>
-           <td><em>January</em> から <em>December</em></td>
+           <td><code class="literal">January</code> から <code class="literal">December</code></td>
           </tr>
 
           <tr>
-           <td><em>%h</em></td>
+           <td><code class="literal">%h</code></td>
            <td>現在のロケールに基づく短縮された月の名前 (%b のエイリアス)</td>
-           <td><em>Jan</em> から <em>Dec</em></td>
+           <td><code class="literal">Jan</code> から <code class="literal">Dec</code></td>
           </tr>
 
           <tr>
-           <td><em>%m</em></td>
+           <td><code class="literal">%m</code></td>
            <td>2 桁であらわした月</td>
-           <td><em>01</em> (1 月) から <em>12</em> (12 月)</td>
+           <td><code class="literal">01</code> (1 月) から <code class="literal">12</code> (12 月)</td>
           </tr>
 
           <tr>
@@ -188,33 +198,33 @@
           </tr>
 
           <tr>
-           <td><em>%C</em></td>
+           <td><code class="literal">%C</code></td>
            <td>2 桁であらわした世紀 (年を 100 で割り、整数に丸めたもの)</td>
-           <td>20 正規の場合は <em>19</em></td>
+           <td>20 正規の場合は <code class="literal">19</code></td>
           </tr>
 
           <tr>
-           <td><em>%g</em></td>
+           <td><code class="literal">%g</code></td>
            <td>2 桁であらわした年。ISO-8601:1988 標準形式 (%V を参照)</td>
-           <td>2009 年 1 月 6 日の場合は <em>09</em></td>
+           <td>2009 年 1 月 6 日の場合は <code class="literal">09</code></td>
           </tr>
 
           <tr>
-           <td><em>%G</em></td>
+           <td><code class="literal">%G</code></td>
            <td>%g の 4 桁完全版</td>
-           <td>2009 年 1 月 3 日の場合は <em>2009</em></td>
+           <td>2009 年 1 月 3 日の場合は <code class="literal">2009</code></td>
           </tr>
 
           <tr>
-           <td><em>%y</em></td>
+           <td><code class="literal">%y</code></td>
            <td>2 桁であらわした年</td>
-           <td>2009 年の場合は <em>09</em>、1979 年の場合は <em>79</em></td>
+           <td>2009 年の場合は <code class="literal">09</code>、1979 年の場合は <code class="literal">79</code></td>
           </tr>
 
           <tr>
-           <td><em>%Y</em></td>
+           <td><code class="literal">%Y</code></td>
            <td>4 桁であらわした年</td>
-           <td><em>2038</em></td>
+           <td><code class="literal">2038</code></td>
           </tr>
 
           <tr>
@@ -224,87 +234,87 @@
           </tr>
 
           <tr>
-           <td><em>%H</em></td>
+           <td><code class="literal">%H</code></td>
            <td>2 桁であらわした 24 時間制の時間</td>
-           <td><em>00</em> から <em>23</em></td>
+           <td><code class="literal">00</code> から <code class="literal">23</code></td>
           </tr>
 
           <tr>
-           <td><em>%k</em></td>
-           <td>2 桁であらわした 24 時間制の時間で、1 桁の場合は先頭にスペースをつけたもの</td>
-           <td><em> 0</em> から <em>23</em></td>
+           <td><code class="literal">%k</code></td>
+           <td>24 時間制の時間で、1 桁の場合は先頭にスペースをつけたもの</td>
+           <td><code class="literal"> 0</code> から <code class="literal">23</code></td>
           </tr>
 
           <tr>
-           <td><em>%I</em></td>
+           <td><code class="literal">%I</code></td>
            <td>2 桁であらわした 12 時間制の時間</td>
-           <td><em>01</em> から <em>12</em></td>
+           <td><code class="literal">01</code> から <code class="literal">12</code></td>
           </tr>
 
           <tr>
-           <td><em>%l (小文字の &#039;L&#039;)</em></td>
+           <td><code class="literal">%l (小文字の &#039;L&#039;)</code></td>
            <td>12 時間制の時間で、1 桁の場合は先頭にスペースをつけたもの</td>
-           <td><em> 1</em> から <em>12</em></td>
+           <td><code class="literal"> 1</code> から <code class="literal">12</code></td>
           </tr>
 
           <tr>
-           <td><em>%M</em></td>
+           <td><code class="literal">%M</code></td>
            <td>2 桁であらわした分</td>
-           <td><em>00</em> から <em>59</em></td>
+           <td><code class="literal">00</code> から <code class="literal">59</code></td>
           </tr>
 
           <tr>
-           <td><em>%p</em></td>
+           <td><code class="literal">%p</code></td>
            <td>指定した時刻に応じた大文字の &#039;AM&#039; あるいは &#039;PM&#039;</td>
-           <td>00:31 なら <em>AM</em>、22:23 なら <em>PM</em></td>
+           <td>00:31 なら <code class="literal">AM</code>、22:23 なら <code class="literal">PM</code></td>
           </tr>
 
           <tr>
-           <td><em>%P</em></td>
+           <td><code class="literal">%P</code></td>
            <td>指定した時刻に応じた小文字の &#039;am&#039; あるいは &#039;pm&#039;</td>
-           <td>00:31 なら <em>am</em>、22:23 なら <em>pm</em></td>
+           <td>00:31 なら <code class="literal">am</code>、22:23 なら <code class="literal">pm</code></td>
           </tr>
 
           <tr>
-           <td><em>%r</em></td>
+           <td><code class="literal">%r</code></td>
            <td>&quot;%I:%M:%S %p&quot; と同じ</td>
-           <td>21:34:17 なら <em>09:34:17 PM</em></td>
+           <td>21:34:17 なら <code class="literal">09:34:17 PM</code></td>
           </tr>
 
           <tr>
-           <td><em>%R</em></td>
+           <td><code class="literal">%R</code></td>
            <td>&quot;%H:%M&quot; と同じ</td>
-           <td>12:35 AM なら <em>00:35</em>、4:44 PM なら <em>16:44</em></td>
+           <td>12:35 AM なら <code class="literal">00:35</code>、4:44 PM なら <code class="literal">16:44</code></td>
           </tr>
 
           <tr>
-           <td><em>%S</em></td>
+           <td><code class="literal">%S</code></td>
            <td>2 桁であらわした秒</td>
-           <td><em>00</em> から <em>59</em></td>
+           <td><code class="literal">00</code> から <code class="literal">59</code></td>
           </tr>
 
           <tr>
-           <td><em>%T</em></td>
+           <td><code class="literal">%T</code></td>
            <td>&quot;%H:%M:%S&quot; と同じ</td>
-           <td>09:34:17 PM なら <em>21:34:17</em></td>
+           <td>09:34:17 PM なら <code class="literal">21:34:17</code></td>
           </tr>
 
           <tr>
-           <td><em>%X</em></td>
+           <td><code class="literal">%X</code></td>
            <td>ロケールに基づいた時刻の表現。日付は含まない</td>
-           <td><em>03:59:16</em> あるいは <em>15:59:16</em></td>
+           <td><code class="literal">03:59:16</code> あるいは <code class="literal">15:59:16</code></td>
           </tr>
 
           <tr>
-           <td><em>%z</em></td>
+           <td><code class="literal">%z</code></td>
            <td>タイムゾーンオフセット。Windows では違う実装になっています。詳細は後述します。</td>
-           <td>東海岸時刻なら <em>-0500</em></td>
+           <td>東海岸時刻なら <code class="literal">-0500</code></td>
           </tr>
 
           <tr>
-           <td><em>%Z</em></td>
+           <td><code class="literal">%Z</code></td>
            <td>タイムゾーンの略称。Windows では違う実装になっています。詳細は後述します。</td>
-           <td>東海岸時刻なら <em>EST</em></td>
+           <td>東海岸時刻なら <code class="literal">EST</code></td>
           </tr>
 
           <tr>
@@ -314,34 +324,34 @@
           </tr>
 
           <tr>
-           <td><em>%c</em></td>
+           <td><code class="literal">%c</code></td>
            <td>現在のロケールにもとづく日付と時間の表現</td>
-           <td>2009 年 2 月 5 日 午前 12:45:10 なら <em>Tue Feb  5 00:45:10 2009</em></td>
+           <td>2009 年 2 月 5 日 午前 12:45:10 なら <code class="literal">Tue Feb  5 00:45:10 2009</code></td>
           </tr>
 
           <tr>
-           <td><em>%D</em></td>
+           <td><code class="literal">%D</code></td>
            <td>&quot;%m/%d/%y&quot; と同じ</td>
-           <td>2009 年 2 月 5 日なら <em>02/05/09</em></td>
+           <td>2009 年 2 月 5 日なら <code class="literal">02/05/09</code></td>
           </tr>
 
           <tr>
-           <td><em>%F</em></td>
+           <td><code class="literal">%F</code></td>
            <td>&quot;%Y-%m-%d&quot; と同じ (データベースのタイムスタンプとして一般的)</td>
-           <td>2009 年 2 月 5 日なら <em>2009-02-05</em></td>
+           <td>2009 年 2 月 5 日なら <code class="literal">2009-02-05</code></td>
           </tr>
 
           <tr>
-           <td><em>%s</em></td>
+           <td><code class="literal">%s</code></td>
            <td>Unix エポックからのタイムスタンプ (<span class="function"><a href="function.time.html" class="function">time()</a></span>
            関数と同じ)</td>
-           <td>1979 年 9 月 10 日午前 08:40:00 なら <em>305815200</em></td>
+           <td>1979 年 9 月 10 日午前 08:40:00 なら <code class="literal">305815200</code></td>
           </tr>
 
           <tr>
-           <td><em>%x</em></td>
+           <td><code class="literal">%x</code></td>
            <td>現在のロケールにもとづく日付の表現 (時間は除く)</td>
-           <td>2009 年 2 月 5 日なら <em>02/05/09</em></td>
+           <td>2009 年 2 月 5 日なら <code class="literal">02/05/09</code></td>
           </tr>
 
           <tr>
@@ -351,19 +361,19 @@
           </tr>
 
           <tr>
-           <td><em>%n</em></td>
+           <td><code class="literal">%n</code></td>
            <td>改行文字 (&quot;\n&quot;)</td>
            <td>---</td>
           </tr>
 
           <tr>
-           <td><em>%t</em></td>
+           <td><code class="literal">%t</code></td>
            <td>タブ文字 (&quot;\t&quot;)</td>
            <td>---</td>
           </tr>
 
           <tr>
-           <td><em>%%</em></td>
+           <td><code class="literal">%%</code></td>
            <td>パーセント文字 (&quot;%&quot;)</td>
            <td>---</td>
           </tr>
@@ -373,13 +383,10 @@
        </table>
 
       </p>
-      <p class="para">
-       このパラメータの最大長は 1023 文字です。
-      </p>
       <div class="warning"><strong class="warning">警告</strong>
        <p class="simpara">
         ISO-9889:1999 に反して、Sun Solaris は日曜日を 1 としています。
-        そのため、<em>%u</em> はこのマニュアルの説明どおりに機能しないかもしれません。
+        そのため、<code class="literal">%u</code> はこのマニュアルの説明どおりに機能しないかもしれません。
        </p>
       </div>
       <div class="warning"><strong class="warning">警告</strong>
@@ -387,19 +394,19 @@
         <em class="emphasis">Windows 限定:</em>
        </p>
        <p class="para">
-        Windows 上では <em>%e</em> に対応していません。
-        この値が欲しければ、代わりに <em>%#d</em> を使いましょう。
+        Windows 上では <code class="literal">%e</code> に対応していません。
+        この値が欲しければ、代わりに <code class="literal">%#d</code> を使いましょう。
         クロスプラットフォーム対応の関数を書く方法をこの後の例で示します。
        </p>
        <p class="para">
-        <em>%z</em> と <em>%Z</em>
+        <code class="literal">%z</code> と <code class="literal">%Z</code>
         は、どちらもタイムゾーン名を返します。オフセットや略称は返しません。
        </p>
       </div>
       <div class="warning"><strong class="warning">警告</strong>
        <p class="simpara">
-        <em class="emphasis">Mac OS X 限定:</em> <em>%P</em> 修飾子は
-        Mac OS X 版の実装ではサポートされていません。
+        <em class="emphasis">macOS と musl 限定:</em> <code class="literal">%P</code> 修飾子は
+        macOS 版の実装ではサポートされていません。
        </p>
       </div>
      </dd>
@@ -412,8 +419,8 @@
 <dd>
 <p class="para">
 オプションのパラメータ <code class="parameter">timestamp</code> は、
-<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 型の Unix タイムスタンプです。
-<code class="parameter">timestamp</code> が指定されなかった場合のデフォルト値は、
+<span class="type">int</span> 型の Unix タイムスタンプです。
+<code class="parameter">timestamp</code> が指定されなかったり、<strong><code>null</code></strong> だった場合のデフォルト値は、
 現在の時刻です。言い換えると、デフォルトは
 <span class="function"><a href="function.time.html" class="function">time()</a></span> の返り値となります。
 </p></dd>
@@ -433,6 +440,10 @@
    指定したフォーマット文字列に基づき文字列をフォーマットして返します。
    月および曜日の名前、およびその他の言語依存の文字列は、
    <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> で設定された現在のロケールを尊重して表示されます。
+
+   この関数は、<code class="parameter">format</code> が空だったり、
+   サポートされていない変換指定子が含まれていたり、
+   返される文字列の長さが <code class="literal">4095</code> より大きい場合は、<strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -443,13 +454,13 @@
 すべての日付/時刻関数は、
 有効なタイムゾーンが設定されていない場合に <strong><code>E_NOTICE</code></strong>
 を発生させます。また、システム設定のタイムゾーンあるいは環境変数
-<var class="varname"><var class="varname">TZ</var></var> を使用した場合には <strong><code>E_STRICT</code></strong>
+<var class="varname">TZ</var> を使用した場合には <strong><code>E_STRICT</code></strong>
 あるいは <strong><code>E_WARNING</code></strong> を発生させます。
 <span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span> も参照ください。</p>
   <p class="para">
    出力内容は元となった C ライブラリに依存するため、サポートしていない変換指定子もあります。
    Windows では、対応していない変換指定子を渡すと
-   5 つの <strong><code>E_WARNING</code></strong> メッセージが出て <strong><code>FALSE</code></strong> を返します。
+   5 つの <strong><code>E_WARNING</code></strong> メッセージが出て <strong><code>false</code></strong> を返します。
    その他のオペレーティングシステムでは特に
    <strong><code>E_WARNING</code></strong> メッセージは出ず、
    変換指定子が (変換されずに) そのまま出力されます。
@@ -471,11 +482,12 @@
      </thead>
 
      <tbody class="tbody">
-
-      <tr><td>5.1.0</td><td><p class="para">
-タイムゾーンがおかしい場合に <strong><code>E_STRICT</code></strong> や
-<strong><code>E_NOTICE</code></strong> が発生するようになりました。</p></td></tr>
-
+      <tr>
+       <td>8.0.0</td>
+       <td>
+        <code class="parameter">timestamp</code> は、nullable になりました。
+       </td>
+      </tr>
 
      </tbody>
     
@@ -489,7 +501,7 @@
   <h3 class="title">例</h3>
   <p class="para">
    この例は、それぞれのロケールがシステムにインストールされている場合にのみ動作します。
-   <div class="example" id="example-2581">
+   <div class="example" id="example-2073">
     <p><strong>例1 <span class="function"><strong>strftime()</strong></span> のロケールの例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -501,7 +513,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2582">
+   <div class="example" id="example-2074">
     <p><strong>例2 ISO 8601:1988 の週番号の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -513,8 +525,8 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2583">
-    <p><strong>例3 <em>%e</em> 修飾子を使う、クロスプラットフォーム対応の例</strong></p>
+   <div class="example" id="example-2075">
+    <p><strong>例3 <code class="literal">%e</code> 修飾子を使う、クロスプラットフォーム対応の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;Jan&nbsp;1:&nbsp;はこのようになります。'%e%1%'&nbsp;(%%,&nbsp;e,&nbsp;%%,&nbsp;%e,&nbsp;%%)<br /></span><span style="color: #0000BB">$format&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'%%e%%%e%%'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Windows&nbsp;かどうかをチェックし、%e&nbsp;修飾子を<br />//&nbsp;適切に置換します<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_OS</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">))&nbsp;==&nbsp;</span><span style="color: #DD0000">'WIN'</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$format&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'#(?&lt;!%)((?:%%)*)%e#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'\1%#d'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$format</span><span style="color: #007700">);<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #0000BB">$format</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -525,7 +537,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2584">
+   <div class="example" id="example-2076">
     <p><strong>例4 すべての書式の表示</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -625,9 +637,4 @@ Unknown format : &#039;v&#039;
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mktime.html">mktime</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.strptime.html">strptime</a></div>
- <div class="up"><a href="ref.datetime.html">日付・時刻 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

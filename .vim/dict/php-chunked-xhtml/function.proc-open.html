@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>コマンドを実行し、入出力用にファイルポインタを開く</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.proc-nice.html">proc_nice</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.proc-terminate.html">proc_terminate</a></div>
- <div class="up"><a href="ref.exec.html">プログラム実行関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.proc-open" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.proc-nice.html">« proc_nice</a></li>
+      <li style="float: right;"><a href="function.proc-terminate.html">proc_terminate »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.exec.html">プログラム実行関数</a></li>
+    <li>コマンドを実行し、入出力用にファイルポインタを開く</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.proc-open" class="refentry">
    <div class="refnamediv">
     <h1 class="refname">proc_open</h1>
-    <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">proc_open</span> &mdash; <span class="dc-title">
+    <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">proc_open</span> &mdash; <span class="dc-title">
      コマンドを実行し、入出力用にファイルポインタを開く
     </span></p>
 
@@ -21,14 +34,7 @@
    <div class="refsect1 description" id="refsect1-function.proc-open-description">
     <h3 class="title">説明</h3>
      <div class="methodsynopsis dc-description">
-      <span class="type">resource</span> <span class="methodname"><strong>proc_open</strong></span>
-       ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$cmd</code></span>
-      , <span class="methodparam"><span class="type">array</span> <code class="parameter">$descriptorspec</code></span>
-      , <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$pipes</code></span>
-      [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$cwd</code></span>
-      [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$env</code></span>
-      [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$other_options</code></span>
-     ]]] )</div>
+      <span class="methodname"><strong>proc_open</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$cmd</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$descriptorspec</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$pipes</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$cwd</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$env</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$other_options</code><span class="initializer"> = ?</span></span><br>): <span class="type">resource</span></div>
 
     <p class="para rdfs-comment">
      <span class="function"><strong>proc_open()</strong></span> は <span class="function"><a href="function.popen.html" class="function">popen()</a></span> と
@@ -52,8 +58,36 @@
      <dd>
 
       <p class="para">
-       実行されるコマンド。
+       実行するコマンドラインを <span class="type">string</span> として渡します。
+       特殊な文字は適切にエスケープされ、適切にクォートされます。
       </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <span class="simpara">
+        <em class="emphasis">Windows</em> では、
+        <code class="parameter">other_options</code> の <code class="literal">bypass_shell</code> を <strong><code>true</code></strong> に設定しないと、
+        <strong class="command">cmd.exe</strong> (実際は<code class="literal">%ComSpec%</code>) に 
+        <code class="parameter">cmd</code> の値を <em class="emphasis">クォートしないまま</em>
+        (つまり、<span class="function"><strong>proc_open()</strong></span> に渡されたそのままの値を)
+        <code class="literal">/c</code> と一緒に渡してしまいます。
+        この振る舞いによって、<strong class="command">cmd.exe</strong> が 
+        <code class="parameter">cmd</code> からクォートを削除してしまうため、
+        (詳細は <strong class="command">cmd.exe</strong> のドキュメントを参照してください)
+        予期しない、潜在的に危険とさえ言える結果になります。なぜなら、
+        <strong class="command">cmd.exe</strong> のエラーメッセージには、
+        渡された <code class="parameter">cmd</code> (の一部) が含まれる可能性があるからです(下の例を見てください)。
+       </span>
+      </p></blockquote>
+      <p class="para">
+       PHP 7.4.0 以降、<code class="parameter">cmd</code> にはコマンドの引数も含めた <span class="type">array</span> を渡せるようになりました。
+       この場合、プロセスは直接(シェルを介さずに)オープンされ、PHP が必要な引数のエスケープを全て行います。
+      </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <p class="para">
+        Windows では、<span class="type">array</span> で渡されるコマンドライン引数のエスケープは、
+        コマンドライン引数の解釈が
+        VCランタイムによって行われるものと互換性があることを前提にして行われます。
+       </p>
+      </p></blockquote>
      </dd>
 
     
@@ -76,10 +110,10 @@
         <li class="member">
          プロセスに渡すパイプをあらわす配列。
          最初の要素はディスクリプタの型で、2 番目の要素がその型に対応するオプションとなります。
-         使用できる型は <em>pipe</em> (2 番目の要素は、
-         プロセスにパイプの読み込み側を渡すのなら <em>r</em>、
-         書き込み側を渡すのなら <em>w</em>)
-         および <em>file</em> (2 番目の要素はファイル名)
+         使用できる型は <code class="literal">pipe</code> (2 番目の要素は、
+         プロセスにパイプの読み込み側を渡すのなら <code class="literal">r</code>、
+         書き込み側を渡すのなら <code class="literal">w</code>)
+         および <code class="literal">file</code> (2 番目の要素はファイル名)
          です。
         </li>
         <li class="member">
@@ -124,7 +158,7 @@
        コマンドの初期作業ディレクトリ。
        <em class="emphasis">完全</em>パスである必要があります。
        デフォルト値 (現在の PHP プロセスの作業ディレクトリ) を使用したい場合は
-       <strong><code>NULL</code></strong> を指定します。
+       <strong><code>null</code></strong> を指定します。
       </p>
      </dd>
 
@@ -138,7 +172,7 @@
       <p class="para">
        実行するコマンドのための環境変数の配列。
        現在の PHP プロセスと同じ環境変数を使用する場合は
-       <strong><code>NULL</code></strong> を指定します。
+       <strong><code>null</code></strong> を指定します。
       </p>
      </dd>
 
@@ -154,12 +188,26 @@
        現在サポートされているオプションは次の通りです。
        <ul class="simplelist">
         <li class="member">
-         <em>suppress_errors</em> (windows のみ):
-         <strong><code>TRUE</code></strong> にすると、この関数が出力するエラーを抑制します。
+         <code class="literal">suppress_errors</code> (windows のみ):
+         <strong><code>true</code></strong> にすると、この関数が出力するエラーを抑制します。
         </li>
         <li class="member">
-         <em>bypass_shell</em> (windows のみ):
-         <strong><code>TRUE</code></strong> にすると、<em>cmd.exe</em> シェルをバイパスします。
+         <code class="literal">bypass_shell</code> (windows のみ):
+         <strong><code>true</code></strong> にすると、<code class="literal">cmd.exe</code> シェルをバイパスします。
+        </li>
+        <li class="member">
+         <code class="literal">blocking_pipes</code> (windows のみ):
+         <strong><code>true</code></strong> に設定すると、パイプを強制的に切断します。
+        </li>
+        <li class="member">
+         <code class="literal">create_process_group</code> (Windows のみ):
+         <strong><code>true</code></strong> に設定すると、
+         子プロセスが <code class="literal">CTRL</code> イベントを
+         ハンドルすることを許可します。
+        </li>
+        <li class="member">
+         <code class="literal">create_new_console</code> (windows のみ):
+         新しいプロセスは親の console を継承せず、新しい console を持ちます。
         </li>
        </ul>
       </p>
@@ -177,7 +225,7 @@
   <p class="para">
    プロセスを表すリソースを返します。このリソースは、使用し終えた際に
    <span class="function"><a href="function.proc-close.html" class="function">proc_close()</a></span> を使用して開放する必要があります。
-   失敗した場合は <strong><code>FALSE</code></strong> を返します。
+   失敗した場合は <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -197,10 +245,26 @@
 
      <tbody class="tbody">
       <tr>
-       <td>5.2.1</td>
+       <td>7.4.4</td>
        <td>
         <code class="parameter">other_options</code> パラメータに
-        オプション <em>bypass_shell</em> が追加されました。
+        オプション <code class="literal">create_new_console</code> が追加されました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.4.0</td>
+       <td>
+        <span class="function"><strong>proc_open()</strong></span> 関数は、
+        <code class="parameter">cmd</code> に <span class="type">array</span> を渡せるようになりました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.4.0</td>
+       <td>
+        <code class="parameter">other_options</code> パラメータに
+        オプション <code class="literal">create_process_group</code> が追加されました。
        </td>
       </tr>
 
@@ -215,7 +279,7 @@
  <div class="refsect1 examples" id="refsect1-function.proc-open-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4225">
+   <div class="example" id="example-3294">
     <p><strong>例1 A <span class="function"><strong>proc_open()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -238,6 +302,41 @@ Array
 command returned 0
 </pre></div>
     </div>
+   </div>
+  </p>
+
+  <p class="para">
+   <div class="example" id="example-3295">
+    <p><strong>例2 <span class="function"><strong>proc_open()</strong></span> 関数の癖(Windows限定)</strong></p>
+    <div class="example-contents"><p>
+     次のプログラムで、ファイル <var class="filename">filename.txt</var> にある
+     <code class="literal">search</code> というテキストを検索し、結果を出力したいのですが、
+     実際にはかなり異なる振る舞いをします。
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$descriptorspec&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #0000BB">STDIN</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">STDOUT</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">STDOUT</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">$cmd&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'"findstr"&nbsp;"search"&nbsp;"filename.txt"'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$proc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">proc_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$cmd</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$descriptorspec</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$pipes</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">proc_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$proc</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&#039;findstr&quot; &quot;search&quot; &quot;filename.txt&#039; is not recognized as an internal or external command,
+operable program or batch file.
+</pre></div>
+    </div>
+    <div class="example-contents"><p>
+     この振る舞いを避けるには、
+     <code class="parameter">cmd</code> を追加のクォートで囲めば通常は十分です:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+$cmd&nbsp;=&nbsp;'""findstr"&nbsp;"search"&nbsp;"filename.txt""';</span>
+</code></div>
+    </div>
+
    </div>
   </p>
 
@@ -282,9 +381,4 @@ command returned 0
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.proc-nice.html">proc_nice</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.proc-terminate.html">proc_terminate</a></div>
- <div class="up"><a href="ref.exec.html">プログラム実行関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

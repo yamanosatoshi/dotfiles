@@ -3,35 +3,41 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>画像の生のピクセルをエクスポートする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="imagick.evaluateimage.html">Imagick::evaluateImage</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="imagick.extentimage.html">Imagick::extentImage</a></div>
- <div class="up"><a href="class.imagick.html">Imagick</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="imagick.exportimagepixels" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="imagick.evaluateimage.html">« Imagick::evaluateImage</a></li>
+      <li style="float: right;"><a href="imagick.extentimage.html">Imagick::extentImage »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.imagick.html">Imagick</a></li>
+    <li>画像の生のピクセルをエクスポートする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="imagick.exportimagepixels" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">Imagick::exportImagePixels</h1>
-  <p class="verinfo">(バージョン情報なし。おそらく SVN 版にしか存在しないでしょう)</p><p class="refpurpose"><span class="refname">Imagick::exportImagePixels</span> &mdash; <span class="dc-title">画像の生のピクセルをエクスポートする</span></p>
+  <p class="verinfo">(PECL imagick 2 &gt;=2.3.0, PECL imagick 3)</p><p class="refpurpose"><span class="refname">Imagick::exportImagePixels</span> &mdash; <span class="dc-title">画像の生のピクセルをエクスポートする</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-imagick.exportimagepixels-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><strong>Imagick::exportImagePixels</strong></span>
-    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$x</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$y</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$map</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$STORAGE</code></span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>Imagick::exportImagePixels</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$x</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$y</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$map</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$STORAGE</code></span><br>): <span class="type">array</span></div>
 
   <p class="para rdfs-comment">
    画像のピクセルを配列にエクスポートします。map には、エクスポートするピクセルの順序を指定します。
-   返される配列の大きさは <em>width * height * strlen(map)</em> となります。
+   返される配列の大きさは <code class="literal">width * height * strlen(map)</code> となります。
    このメソッドは、ImageMagick バージョン 6.4.7 以降で Imagick をコンパイルした場合に使用可能です。
   </p>
  </div>
@@ -97,7 +103,7 @@
      <dd>
 
       <p class="para">
-       エクスポートするピクセルの順序。<em>&quot;RGB&quot;</em> など。
+       エクスポートするピクセルの順序。<code class="literal">&quot;RGB&quot;</code> など。
        map で使える文字は R, G, B, A, O, C, Y, M, K, I および P です。
       </p>
      </dd>
@@ -120,11 +126,27 @@
   </p>
  </div>
 
- 
+
+ <div class="refsect1 returnvalues" id="refsect1-imagick.exportimagepixels-returnvalues">
+   <h3 class="title">返り値</h3>
+  <p class="para">
+   ピクセルの値を含む配列を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-imagick.exportimagepixels-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+   エラー時に ImagickException をスローします。
+  </p>
+ </div>
+
+
  <div class="refsect1 examples" id="refsect1-imagick.exportimagepixels-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3671">
+   <div class="example" id="example-2747">
     <p><strong>例1 <span class="function"><strong>Imagick::exportImagePixels()</strong></span> の使用法</strong></p>
     <div class="example-contents"><p>
      画像のピクセルを配列にエクスポートします。
@@ -172,26 +194,4 @@ array(12) {
  </div>
 
 
- <div class="refsect1 returnvalues" id="refsect1-imagick.exportimagepixels-returnvalues">
-   <h3 class="title">返り値</h3>
-  <p class="para">
-   ピクセルの値を含む配列を返します。
-  </p>
- </div>
-
-
- <div class="refsect1 errors" id="refsect1-imagick.exportimagepixels-errors">
-  <h3 class="title">エラー / 例外</h3>
-  <p class="para">
-   エラー時に ImagickException をスローします。
-  </p>
- </div>
-
-
-
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="imagick.evaluateimage.html">Imagick::evaluateImage</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="imagick.extentimage.html">Imagick::extentImage</a></div>
- <div class="up"><a href="class.imagick.html">Imagick</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,27 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ビットが設定されているかどうかを調べる</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.gmp-sub.html">gmp_sub</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.gmp-xor.html">gmp_xor</a></div>
- <div class="up"><a href="ref.gmp.html">GMP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.gmp-testbit" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.gmp-sub.html">« gmp_sub</a></li>
+      <li style="float: right;"><a href="function.gmp-xor.html">gmp_xor »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.gmp.html">GMP 関数</a></li>
+    <li>ビットが設定されているかどうかを調べる</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.gmp-testbit" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">gmp_testbit</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p><p class="refpurpose"><span class="refname">gmp_testbit</span> &mdash; <span class="dc-title">ビットが設定されているかどうかを調べる</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">gmp_testbit</span> &mdash; <span class="dc-title">ビットが設定されているかどうかを調べる</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.gmp-testbit-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>gmp_testbit</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="class.gmp.html" class="type GMP">GMP</a></span> <code class="parameter">$a</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
-   )</div>
+   <span class="methodname"><strong>gmp_testbit</strong></span>(<span class="methodparam"><span class="type"><span class="type"><a href="class.gmp.html" class="type GMP">GMP</a></span>|<span class="type">int</span>|<span class="type">string</span></span> <code class="parameter">$num</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    指定したビットが設定されているかどうかを調べます。
@@ -38,11 +48,11 @@
 
     
      <dt>
-<code class="parameter">a</code></dt>
+<code class="parameter">num</code></dt>
 
      <dd>
 
-      <p class="para">PHP 5.5 以前での GMP 数リソース、PHP 5.6 以降での <a href="class.gmp.html" class="classname">GMP</a> オブジェクト、あるいは数値に変換可能な数値形式の文字列。</p> 
+      <p class="para"><a href="class.gmp.html" class="classname">GMP</a> オブジェクト、整数、あるいは数値に変換可能な数値形式の文字列。</p> 
      </dd>
 
     
@@ -67,8 +77,8 @@
  <div class="refsect1 returnvalues" id="refsect1-function.gmp-testbit-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   リソース <code class="parameter">$a</code> にビットが設定されている場合に <strong><code>TRUE</code></strong>、
-   それ以外の場合に <strong><code>FALSE</code></strong> を返します。
+   <code class="parameter">$num</code> にビットが設定されている場合に <strong><code>true</code></strong>、
+   それ以外の場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -77,7 +87,7 @@
   <h3 class="title">エラー / 例外</h3>
   <p class="para">
    <code class="parameter">index</code> に負の数を指定すると
-   <strong><code>E_WARNING</code></strong> が発生し、<strong><code>FALSE</code></strong> を返します。
+   <strong><code>E_WARNING</code></strong> が発生し、<strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -85,7 +95,7 @@
  <div class="refsect1 examples" id="refsect1-function.gmp-testbit-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3991">
+   <div class="example" id="example-3071">
     <p><strong>例1 <span class="function"><strong>gmp_testbit()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -116,9 +126,4 @@ bool(true)
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.gmp-sub.html">gmp_sub</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.gmp-xor.html">gmp_xor</a></div>
- <div class="up"><a href="ref.gmp.html">GMP 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

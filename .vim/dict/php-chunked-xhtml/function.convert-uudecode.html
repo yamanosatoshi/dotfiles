@@ -3,30 +3,48 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>uuencode された文字列をデコードする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.convert-cyr-string.html">convert_cyr_string</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.convert-uuencode.html">convert_uuencode</a></div>
- <div class="up"><a href="ref.strings.html">String 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.convert-uudecode" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.convert-cyr-string.html">« convert_cyr_string</a></li>
+      <li style="float: right;"><a href="function.convert-uuencode.html">convert_uuencode »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">String 関数</a></li>
+    <li>uuencode された文字列をデコードする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.convert-uudecode" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">convert_uudecode</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">convert_uudecode</span> &mdash; <span class="dc-title">uuencode された文字列をデコードする</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">convert_uudecode</span> &mdash; <span class="dc-title">uuencode された文字列をデコードする</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.convert-uudecode-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>convert_uudecode</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
-   )</div>
+   <span class="methodname"><strong>convert_uudecode</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>convert_uudecode()</strong></span> は、uuencode された文字列をデコードします。
   </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    <span class="function"><strong>convert_uudecode()</strong></span> は、
+    uuencode された <em class="emphasis">ファイル</em> に含まれる
+    <code class="literal">begin</code>, <code class="literal">end</code> を両方受け入れません。
+   </span>
+  </p></blockquote>
  </div>
 
 
@@ -37,7 +55,7 @@
 
     
      <dt>
-<code class="parameter">data</code></dt>
+<code class="parameter">string</code></dt>
 
      <dd>
 
@@ -56,7 +74,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.convert-uudecode-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   デコードしたデータを文字列で返します。失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   デコードしたデータを文字列で返します。失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -64,15 +82,21 @@
  <div class="refsect1 examples" id="refsect1-function.convert-uudecode-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5415">
+   <div class="example" id="example-4748">
     <p><strong>例1 <span class="function"><strong>convert_uudecode()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;何が表示されるか、想像できますか?&nbsp;(^o^)&nbsp;*/<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">convert_uudecode</span><span style="color: #007700">(</span><span style="color: #DD0000">"+22!L;W9E(%!(4\"$`\n`"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">convert_uudecode</span><span style="color: #007700">(</span><span style="color: #DD0000">"+22!L;W9E(%!(4\"$`\n`"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
 
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+I love PHP!
+</pre></div>
+    </div>
    </div>
   </p>
  </div>
@@ -88,9 +112,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.convert-cyr-string.html">convert_cyr_string</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.convert-uuencode.html">convert_uuencode</a></div>
- <div class="up"><a href="ref.strings.html">String 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

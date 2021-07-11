@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>実行時設定</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mail.installation.html">インストール手順</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mail.resources.html">リソース型</a></div>
- <div class="up"><a href="mail.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mail.configuration" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mail.installation.html">« インストール手順</a></li>
+      <li style="float: right;"><a href="mail.resources.html">リソース型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mail.setup.html">インストール/設定</a></li>
+    <li>実行時設定</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mail.configuration" class="section">
  <h2 class="title">実行時設定</h2>
  <p class="simpara">
 <var class="filename">php.ini</var> の設定により動作が変化します。
@@ -34,21 +47,21 @@
      <td><a href="mail.configuration.html#ini.mail.add-x-header" class="link">mail.add_x_header</a></td>
      <td>&quot;0&quot;</td>
      <td>PHP_INI_PERDIR</td>
-     <td>PHP 5.3.0 以降で使用可能</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="mail.configuration.html#ini.mail.log" class="link">mail.log</a></td>
      <td>NULL</td>
-     <td>PHP_INI_PERDIR</td>
-     <td>PHP 5.3.0 以降で使用可能 (PHP_INI_SYSTEM|PHP_INI_PERDIR)</td>
+     <td>PHP_INI_SYSTEM|PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="mail.configuration.html#ini.mail.force_extra_parameters" class="link">mail.force_extra_parameters</a></td>
      <td>NULL</td>
-     <td>PHP_INI_PERDIR</td>
-     <td>PHP 5.0.0 以降で使用可能 (PHP_INI_SYSTEM|PHP_INI_PERDIR)</td>
+     <td>PHP_INI_SYSTEM|PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
@@ -96,13 +109,13 @@
   
    <dt id="ini.mail.add-x-header">
     <code class="parameter">mail.add_x_header</code>
-    <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>
+    <span class="type">bool</span>
    </dt>
 
    <dd>
 
     <p class="para">
-     <em>X-PHP-Originating-Script</em> を追加します。
+     <code class="literal">X-PHP-Originating-Script</code> を追加します。
      それはスクリプトの UID を含み、その後にファイル名が続きます。
     </p>
    </dd>
@@ -112,7 +125,7 @@
   
    <dt id="ini.mail.log">
     <code class="parameter">mail.log</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
@@ -121,7 +134,7 @@
      ログファイルへのパス。<span class="function"><a href="function.mail.html" class="function">mail()</a></span>
      がコールされるたびにこのファイルに記録します。
      ログに含まれる内容は、スクリプトのフルパスと行番号、そして
-     <em>To</em> アドレスとヘッダです。
+     <code class="literal">To</code> アドレスとヘッダです。
     </p>
    </dd>
 
@@ -130,7 +143,7 @@
   
    <dt id="ini.mail.force_extra_parameters">
     <code class="parameter">mail.force_extra_parameters</code>
-    <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    <span class="type">string</span>
    </dt>
 
    <dd>
@@ -147,7 +160,7 @@
    
     <dt id="ini.smtp">
      <code class="parameter">SMTP</code>
-     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     <span class="type">string</span>
     </dt>
 
     <dd>
@@ -164,15 +177,15 @@
    
     <dt id="ini.smtp-port">
     <code class="parameter">smtp_port</code>
-     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+     <span class="type">int</span>
     </dt>
 
     <dd>
 
      <p class="para">
       Windows 環境のみで使用されます: 
-      <em>SMTP</em> 設定で指定したサーバーに接続するポート番号で、
-      デフォルトは 25 です。PHP 4.3.0 以降でのみ利用可能です。
+      <code class="literal">SMTP</code> 設定で指定したサーバーに接続するポート番号で、
+      デフォルトは 25 です。
      </p>
     </dd>
 
@@ -181,15 +194,15 @@
    
     <dt id="ini.sendmail-from">
      <code class="parameter">sendmail_from</code>
-     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     <span class="type">string</span>
     </dt>
 
     <dd>
 
      <p class="para">
-      Windows 環境で、PHP から送信されるメールにおいて <em>&quot;From:&quot;</em>
-      に使用するメールアドレスを指定します。
-      このディレクティブは、<em>&quot;Return-Path:&quot;</em> ヘッダも設定します。
+      SMTP 経由で直接送信されるメールにおいて <code class="literal">&quot;From:&quot;</code>
+      に使用するメールアドレスを指定します(Windows環境のみ)。
+      このディレクティブは、<code class="literal">&quot;Return-Path:&quot;</code> ヘッダも設定します。
      </p>
     </dd>
 
@@ -198,7 +211,7 @@
    
     <dt id="ini.sendmail-path">
      <code class="parameter">sendmail_path</code>
-     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     <span class="type">string</span>
    </dt>
 
     <dd>
@@ -214,7 +227,7 @@
      <p class="para">
       <strong class="command">sendmail</strong> を使用していないシステムは、
       使用するメールシステムが提供する sendmail のラッパー/代替品を、
-      必要に応じてこのディレクティブに設定する必要があります。例えば、<a href="http://www.qmail.org/" class="link external">&raquo;&nbsp;Qmail</a> ユーザーは、通常
+      必要に応じてこのディレクティブに設定する必要があります。例えば、<a href="http://cr.yp.to/qmail.html" class="link external">&raquo;&nbsp;Qmail</a> ユーザーは、通常
       <var class="filename">/var/qmail/bin/sendmail</var> または
       <var class="filename">/var/qmail/bin/qmail-inject</var> に設定します。
      </p>
@@ -224,8 +237,8 @@
      </p>
      <p class="para">
       このディレクティブは Windows 環境でも動作します。指定された場合は
-      <var class="varname"><var class="varname">smtp</var></var> および <var class="varname"><var class="varname">smtp_port</var></var>・
-      <var class="varname"><var class="varname">sendmail_from</var></var> の値は無視され、
+      <var class="varname">smtp</var> および <var class="varname">smtp_port</var>・
+      <var class="varname">sendmail_from</var> の値は無視され、
       ここで指定したコマンドが実行されます。
      </p>
     </dd>
@@ -235,9 +248,4 @@
 
   
  </p>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mail.installation.html">インストール手順</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mail.resources.html">リソース型</a></div>
- <div class="up"><a href="mail.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

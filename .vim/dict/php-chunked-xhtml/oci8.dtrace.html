@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>OCI8 および DTrace 動的トレーシング</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="oci8.fan.html">OCI8 高速アプリケーション通知 (FAN) サポート</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="oci8.datatypes.html">ドライバでサポートされるデータ型</a></div>
- <div class="up"><a href="book.oci8.html">OCI8</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="oci8.dtrace" class="chapter">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="oci8.taf.html">« OCI8 Transparent Application Failover (TAF) Support</a></li>
+      <li style="float: right;"><a href="oci8.datatypes.html">ドライバでサポートされるデータ型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.oci8.html">OCI8</a></li>
+    <li>OCI8 および DTrace 動的トレーシング</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="oci8.dtrace" class="chapter">
  <h1>OCI8 および DTrace 動的トレーシング</h1>
 
  <div class="section">
@@ -25,7 +38,7 @@
  <h2 class="title">DTrace サポート付きで OCI8 をインストール</h2>
   <p class="para">
    PHP OCI8 で DTrace のサポートを有効にするには、
-   <em>PHP_DTRACE</em> を設定後、
+   <code class="literal">PHP_DTRACE</code> を設定後、
    OCI8 を共用拡張モジュールとしてビルドします。
   </p>
   <p class="para">
@@ -56,9 +69,9 @@ extension=oci8.so
   <p class="para">
    もし、<var class="filename">phpize</var> および <var class="filename">configure</var> を
    （ <var class="filename">pecl</var> の代わりに）
-   使用して PECL から PHP OCI8 2.0 をインストールする場合、
-   さらに <em>PHP_DTRACE=yes</em> を設定する必要があります。
-   それは、<em>--enable-dtrace</em> オプションが、PECL バンドルの
+   使用して PECL から PHP OCI8 をインストールする場合、
+   さらに <code class="literal">PHP_DTRACE=yes</code> を設定する必要があります。
+   それは、<code class="literal">--enable-dtrace</code> オプションが、PECL バンドルの
    制限された <var class="filename">configure</var> スクリプトにより
    無視されるからです。
   </p>
@@ -85,45 +98,45 @@ extension=oci8.so
 
     <tbody class="tbody">
      <tr>
-      <td><em>oci8-connect-entry</em></td>
+      <td><code class="literal">oci8-connect-entry</code></td>
       <td>oci_connect()、oci_pconnect() および oci_new_connect() により開始されます。データベース接続が確立する前に発射されます。</td>
-      <td>char *<var class="varname"><var class="varname">username</var></var>, char *<var class="varname"><var class="varname">dbname</var></var>, char *<var class="varname"><var class="varname">charset</var></var>, long <var class="varname"><var class="varname">session_mode</var></var>, int <var class="varname"><var class="varname">persistent</var></var>, int <var class="varname"><var class="varname">exclusive</var></var></td>
+      <td>char *<var class="varname">username</var>, char *<var class="varname">dbname</var>, char *<var class="varname">charset</var>, long <var class="varname">session_mode</var>, int <var class="varname">persistent</var>, int <var class="varname">exclusive</var></td>
      </tr>
 
      <tr>
-      <td><em>oci8-connect-return</em></td>
+      <td><code class="literal">oci8-connect-return</code></td>
       <td>接続終了時に発射されます。</td>
-      <td>void *<var class="varname"><var class="varname">connection</var></var></td>
+      <td>void *<var class="varname">connection</var></td>
      </tr>
 
      <tr>
-      <td><em>oci8-check-connection</em></td>
+      <td><code class="literal">oci8-check-connection</code></td>
       <td>Oracle のエラーにより、接続が不正になったかもしれない場合に発射されます。</td>
-      <td>void *<var class="varname"><var class="varname">connection</var></var>, char *<var class="varname"><var class="varname">client_id</var></var>, int <var class="varname"><var class="varname">is_open</var></var>, long <var class="varname"><var class="varname">errcode</var></var>, unsigned long <var class="varname"><var class="varname">server_status</var></var></td>
+      <td>void *<var class="varname">connection</var>, char *<var class="varname">client_id</var>, int <var class="varname">is_open</var>, long <var class="varname">errcode</var>, unsigned long <var class="varname">server_status</var></td>
      </tr>
 
      <tr>
-      <td><em>oci8-sqltext</em></td>
+      <td><code class="literal">oci8-sqltext</code></td>
       <td>oci_parse() が実行された際に発射されます。</td>
-      <td>void *<var class="varname"><var class="varname">connection</var></var>, char *<var class="varname"><var class="varname">client_id</var></var>, void *<var class="varname"><var class="varname">statement</var></var>, char *<var class="varname"><var class="varname">sql</var></var></td>
+      <td>void *<var class="varname">connection</var>, char *<var class="varname">client_id</var>, void *<var class="varname">statement</var>, char *<var class="varname">sql</var></td>
      </tr>
 
      <tr>
-      <td><em>oci8-connection-close</em></td>
+      <td><code class="literal">oci8-connection-close</code></td>
       <td>データベースへの接続が完全に破壊された際に発射されます。</td>
-      <td>void *<var class="varname"><var class="varname">connection</var></var></td>
+      <td>void *<var class="varname">connection</var></td>
      </tr>
 
      <tr>
-      <td><em>oci8-error</em></td>
+      <td><code class="literal">oci8-error</code></td>
       <td>Oracle のエラーが生じた場合に発射されます。</td>
-      <td>int <var class="varname"><var class="varname">status</var></var>, long <var class="varname"><var class="varname">errcode</var></var></td>
+      <td>int <var class="varname">status</var>, long <var class="varname">errcode</var></td>
      </tr>
 
      <tr>
-      <td><em>oci8-execute-mode</em></td>
+      <td><code class="literal">oci8-execute-mode</code></td>
       <td>実行モードを示す <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> のたびに発射されます。</td>
-      <td>void *<var class="varname"><var class="varname">connection</var></var>, char *<var class="varname"><var class="varname">client_id</var></var>, void *<var class="varname"><var class="varname">statement</var></var>, unsigned int <var class="varname"><var class="varname">mode</var></var></td>
+      <td>void *<var class="varname">connection</var>, char *<var class="varname">client_id</var>, void *<var class="varname">statement</var>, unsigned int <var class="varname">mode</var></td>
      </tr>
 
     </tbody>
@@ -135,13 +148,13 @@ extension=oci8.so
   </p>
 
   <p class="para">
-   <var class="varname"><var class="varname">connection</var></var> および <var class="varname"><var class="varname">statement</var></var> は、
+   <var class="varname">connection</var> および <var class="varname">statement</var> は、
    PHP の接続および実行されたステートメントを追跡するために使用される内部構造への
    ポインタです。
   </p>
 
   <p class="para">
-    <var class="varname"><var class="varname">client_id</var></var> は、
+    <var class="varname">client_id</var> は、
     <span class="function"><a href="function.oci-set-client-identifier.html" class="function">oci_set_client_identifier()</a></span> により設定される値です。
   </p>
 
@@ -173,35 +186,35 @@ extension=oci8.so
 
     <tbody class="tbody">
      <tr>
-      <td><em>oci8-connect-expiry</em></td>
+      <td><code class="literal">oci8-connect-expiry</code></td>
      </tr>
 
      <tr>
-      <td><em>oci8-connect-lookup</em></td>
+      <td><code class="literal">oci8-connect-lookup</code></td>
      </tr>
 
      <tr>
-      <td><em>oci8-connect-p-dtor-close</em></td>
+      <td><code class="literal">oci8-connect-p-dtor-close</code></td>
      </tr>
 
      <tr>
-      <td><em>oci8-connect-p-dtor-release</em></td>
+      <td><code class="literal">oci8-connect-p-dtor-release</code></td>
      </tr>
 
      <tr>
-      <td><em>oci8-connect-type</em></td>
+      <td><code class="literal">oci8-connect-type</code></td>
      </tr>
 
      <tr>
-      <td><em>oci8-sesspool-create</em></td>
+      <td><code class="literal">oci8-sesspool-create</code></td>
      </tr>
 
      <tr>
-      <td><em>oci8-sesspool-stats</em></td>
+      <td><code class="literal">oci8-sesspool-stats</code></td>
      </tr>
 
      <tr>
-      <td><em>oci8-sesspool-type</em></td>
+      <td><code class="literal">oci8-sesspool-type</code></td>
      </tr>
 
     </tbody>
@@ -258,7 +271,7 @@ extension=oci8.so
   </p>
 
    <p class="para">
-    PROVIDER 列の値は、<em>phpoci</em> および
+    PROVIDER 列の値は、<code class="literal">phpoci</code> および
     現在実行中の PHP プロセスのプロセス ID から構成されます。
    </p>
 
@@ -275,7 +288,7 @@ extension=oci8.so
   <h2 class="title">PHP OCI8 についての DTrace の例</h2>
   <p class="para">
    この例では、DTrace の D スクリプト言語の基本を示します。
-   <div class="example" id="example-2195">
+   <div class="example" id="example-1751">
     <p><strong>例1 DTrace を使用して
     すべてのユーザーレベルの PHP OCI8 静的プローブをトレースするための
      <var class="filename">user_oci8_probes.d</var></strong></p>
@@ -349,7 +362,7 @@ php*:::oci8-execute-mode
 
   <p class="para">
    このスクリプトは、<var class="filename">dtrace</var> に対して
-   <em>-Z</em> オプションを使用します。
+   <code class="literal">-Z</code> オプションを使用します。
    それにより、実行中の PHP プロセスがない場合に実行できるようになります。
    もしこのオプションが書き落とされた場合、
    モニターされているプローブがどれも存在しないことがわかっているので、
@@ -415,7 +428,7 @@ php*:::oci8-execute-mode
   </p>
   
   <p class="para">
-   モニタリングが完了した際には、<em>^C</em>を使用して
+   モニタリングが完了した際には、<code class="literal">^C</code>を使用して
    D スクリプトを終わらせることができます。
   </p>
 
@@ -429,9 +442,4 @@ php*:::oci8-execute-mode
 </div>
 
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="oci8.fan.html">OCI8 高速アプリケーション通知 (FAN) サポート</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="oci8.datatypes.html">ドライバでサポートされるデータ型</a></div>
- <div class="up"><a href="book.oci8.html">OCI8</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

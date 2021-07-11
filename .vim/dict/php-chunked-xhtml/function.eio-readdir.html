@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ディレクトリ全体を読み込む</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.eio-readahead.html">eio_readahead</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.eio-readlink.html">eio_readlink</a></div>
- <div class="up"><a href="ref.eio.html">Eio 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.eio-readdir" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.eio-readahead.html">« eio_readahead</a></li>
+      <li style="float: right;"><a href="function.eio-readlink.html">eio_readlink »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.eio.html">Eio 関数</a></li>
+    <li>ディレクトリ全体を読み込む</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.eio-readdir" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">eio_readdir</h1>
   <p class="verinfo">(PECL eio &gt;= 0.0.1dev)</p><p class="refpurpose"><span class="refname">eio_readdir</span> &mdash; <span class="dc-title">ディレクトリ全体を読み込む</span></p>
@@ -20,17 +33,11 @@
  <div class="refsect1 description" id="refsect1-function.eio-readdir-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">resource</span> <span class="methodname"><strong>eio_readdir</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$pri</code></span>
-   , <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code><span class="initializer"> = NULL</span></span>
-  ] )</div>
+   <span class="methodname"><strong>eio_readdir</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$pri</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code><span class="initializer"> = NULL</span></span><br>): <span class="type">resource</span></div>
 
   <p class="para rdfs-comment">
-   ディレクトリ全体を (<em>opendir</em> や <em>readdir</em>、
-   <em>closedir</em> といったシステムコールを使って) 読み込み、
+   ディレクトリ全体を (<code class="literal">opendir</code> や <code class="literal">readdir</code>、
+   <code class="literal">closedir</code> といったシステムコールを使って) 読み込み、
    ファイル名あるいは配列 (<code class="parameter">flags</code> で指定する) を
    <code class="parameter">callback</code> 関数の <code class="parameter">result</code> 引数で返します。
   </p>
@@ -72,8 +79,8 @@
 
     <dd>
 
-     <p class="para">リクエストの優先順位。<strong><code>EIO_PRI_DEFAULT</code></strong>、<strong><code>EIO_PRI_MIN</code></strong>、<strong><code>EIO_PRI_MAX</code></strong> あるいは <strong><code>NULL</code></strong> を指定します。
-<strong><code>NULL</code></strong> を渡した場合、<code class="parameter">pri</code> は内部的に
+     <p class="para">リクエストの優先順位。<strong><code>EIO_PRI_DEFAULT</code></strong>、<strong><code>EIO_PRI_MIN</code></strong>、<strong><code>EIO_PRI_MAX</code></strong> あるいは <strong><code>null</code></strong> を指定します。
+<strong><code>null</code></strong> を渡した場合、<code class="parameter">pri</code> は内部的に
 <strong><code>EIO_PRI_DEFAULT</code></strong> となります。
 </p>
 
@@ -148,7 +155,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
   <h3 class="title">返り値</h3>
   <p class="para">
    <span class="function"><strong>eio_readdir()</strong></span>
-   は、成功した場合にリクエストリソースを返します。エラー時に <strong><code>FALSE</code></strong> を返します。
+   は、成功した場合にリクエストリソースを返します。失敗した場合に <strong><code>false</code></strong> を返します
    <code class="parameter">callback</code> 関数の <code class="parameter">result</code>
    に設定される内容は <code class="parameter">flags</code> によって変わります。
   </p>
@@ -162,19 +169,19 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_READDIR_DENTS</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
 
       <span class="simpara">
        <span class="function"><strong>eio_readdir()</strong></span> のフラグ。指定すると、コールバックの result 引数が次のキーを持つ配列になります。
-       <em>&#039;names&#039;</em> - ディレクトリ名の配列／
-       <em>&#039;dents&#039;</em> - <em>struct eio_dirent</em> 風の配列で、
+       <code class="literal">&#039;names&#039;</code> - ディレクトリ名の配列／
+       <code class="literal">&#039;dents&#039;</code> - <code class="literal">struct eio_dirent</code> 風の配列で、
        それぞれがさらに以下のキーを持ちます (
-       <em>&#039;name&#039;</em> - ディレクトリ名／
-       <em>&#039;type&#039;</em> - <em class="emphasis">EIO_DT_*</em> 定数のいずれか／
-       <em>&#039;inode&#039;</em> - inode 番号。存在しない場合は不定
+       <code class="literal">&#039;name&#039;</code> - ディレクトリ名／
+       <code class="literal">&#039;type&#039;</code> - <em class="emphasis">EIO_DT_*</em> 定数のいずれか／
+       <code class="literal">&#039;inode&#039;</code> - inode 番号。存在しない場合は不定
        )
       </span>
      </dd>
@@ -184,7 +191,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_READDIR_DIRS_FIRST</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -200,14 +207,14 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_READDIR_STAT_ORDER</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
 
       <span class="simpara">
       このフラグを指定すると、名前を返すときの順序が
-      各ファイルを <em>stat</em> するのに適した順となります。
+      各ファイルを <code class="literal">stat</code> するのに適した順となります。
       指定したディレクトリにあるすべてのファイルを
       <span class="function"><a href="function.stat.html" class="function">stat()</a></span> するつもりなら、この順にしておけば最速になります。
       </span>
@@ -218,7 +225,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_READDIR_FOUND_UNKNOWN</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -244,7 +251,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_UNKNOWN</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -259,7 +266,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_FIFO</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -274,7 +281,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_CHR</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -289,7 +296,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_MPC</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -304,7 +311,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_DIR</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -319,7 +326,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_NAM</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -334,7 +341,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_BLK</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -349,7 +356,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_MPB</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -364,7 +371,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_REG</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -379,7 +386,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_NWK</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -393,7 +400,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_CMP</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -408,7 +415,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_LNK</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -423,7 +430,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_SOCK</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -438,7 +445,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_DOOR</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -453,7 +460,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_WHT</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -468,7 +475,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
      <dt>
 
       <strong><code>EIO_DT_MAX</code></strong>
-      (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+      (<span class="type">int</span>)
      </dt>
 
      <dd>
@@ -490,7 +497,7 @@ void&nbsp;callback(mixed&nbsp;$data,&nbsp;int&nbsp;$result[,&nbsp;resource&nbsp;
 
  <div class="refsect1 examples" id="refsect1-function.eio-readdir-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-4150">
+  <div class="example" id="example-3219">
    <p><strong>例1 <span class="function"><strong>eio_readdir()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -611,9 +618,4 @@ result: array(2) {
 
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.eio-readahead.html">eio_readahead</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.eio-readlink.html">eio_readlink</a></div>
- <div class="up"><a href="ref.eio.html">Eio 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

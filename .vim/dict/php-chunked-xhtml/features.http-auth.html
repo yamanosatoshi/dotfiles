@@ -3,38 +3,51 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>PHP による HTTP 認証</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.html">機能</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.cookies.html">クッキー(Cookies)</a></div>
- <div class="up"><a href="features.html">機能</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="features.http-auth" class="chapter">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.html">« 機能</a></li>
+      <li style="float: right;"><a href="features.cookies.html">クッキー(Cookies) »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.html">機能</a></li>
+    <li>PHP による HTTP 認証</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.http-auth" class="chapter">
   <h1>PHP による HTTP 認証</h1>
 
 
   <p class="simpara">
    <span class="function"><a href="function.header.html" class="function">header()</a></span> 関数を使うと、
-   <em>&quot;Authentication Required&quot;</em>
+   <code class="literal">&quot;Authentication Required&quot;</code>
    メッセージをクライアントブラウザに送ることができます。
    これにより、クライアントブラウザではユーザー名とパスワードの入力要求
    ウインドウがポップアップ表示されます。一度、ユーザーがユーザー名と
    パスワードを入力すると、PHP スクリプトを含むその URL は、次回以降、
    <a href="reserved.variables.html" class="link">定義済みの変数</a>
-   <var class="varname"><var class="varname">PHP_AUTH_USER</var></var> と、 <var class="varname"><var class="varname">PHP_AUTH_PW</var></var> と、
-   <var class="varname"><var class="varname">PHP_AUTH_TYPE</var></var> にそれぞれユーザー名、
+   <var class="varname">PHP_AUTH_USER</var> と、 <var class="varname">PHP_AUTH_PW</var> と、
+   <var class="varname">PHP_AUTH_TYPE</var> にそれぞれユーザー名、
    パスワード、認証型が代入された状態で呼ばれます。
    定義済みの変数は、配列
-   <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var> でアクセス可能です。
-   &quot;Basic&quot; 認証および &quot;Digest&quot; 認証 (PHP 5.1.0 以降)
+   <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var> でアクセス可能です。
+   &quot;Basic&quot; 認証および &quot;Digest&quot; 認証
    の両者がサポートされています。詳細は、
    <span class="function"><a href="function.header.html" class="function">header()</a></span>を参照ください。
   </p>
 
   <p class="para">
    ページ上でクライアント認証を強制するスクリプトの例を以下に示します。
-   <div class="example" id="example-410">
+   <div class="example" id="example-394">
     <p><strong>例1 Basic HTTP 認証の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -47,7 +60,7 @@
   </p>
 
   <p class="para">
-   <div class="example" id="example-411">
+   <div class="example" id="example-395">
     <p><strong>例2 Digest HTTP 認証の例</strong></p>
     <div class="example-contents"><p>
      この例は、シンプルな Digest HTTP 認証スクリプトをどの様に実装するか
@@ -80,7 +93,7 @@
   </p></blockquote>
 
   <p class="para">
-   単に <var class="varname"><var class="varname">PHP_AUTH_USER</var></var>および<var class="varname"><var class="varname">PHP_AUTH_PW</var></var>
+   単に <var class="varname">PHP_AUTH_USER</var>および<var class="varname">PHP_AUTH_PW</var>
    を出力するのではなく、ユーザー名とパスワードの有効性をチェックしたいと
    思うかもしれません。
    その場合、クエリーをデータベースに送るか、ある dbm ファイル中の
@@ -90,25 +103,15 @@
   <p class="para">
    バグのある Internet Explorer ブラウザには注意してください。このブラ
    ウザは、ヘッダの順序に関してとてもうるさいようです。今のところ、
-   <em>HTTP/1.0 401</em> ヘッダの前に
+   <code class="literal">HTTP/1.0 401</code> ヘッダの前に
    <em class="emphasis">WWW-Authenticate</em> ヘッダを送るのが効果があるようです。
-  </p>
-
-  <p class="simpara">
-   誰かが従来の外部機構による認証を行ってきたページの
-   パスワードを暴くようなスクリプトを書くことを防ぐために、
-   特定のページに関して外部認証が可能でかつ <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">セーフモード</a> が有効の場合、
-   PHP_AUTH 変数はセットされません。
-   この場合、外部認証されたユーザーかどうかを確認するために
-   <var class="varname"><var class="varname">REMOTE_USER</var></var> 変数、すなわち、
-   <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['REMOTE_USER']</a></var></var> を使用することができます。
   </p>
 
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <strong>設定上の注意</strong><br />
    <p class="para">
     PHP は、外部認証が動作しているかどうかの判定を
-    <em>AuthType</em> ディレクティブの有無で行います。
+    <code class="literal">AuthType</code> ディレクティブの有無で行います。
    </p>
   </p></blockquote>
 
@@ -124,7 +127,7 @@
    ユーザー名とパスワードを再入力させることができます。この機能は、
    &quot;タイムアウト&quot; 付きのログインや、&quot;ログアウト&quot; ボタンに適用されています。
   </p>
-  <div class="example" id="example-412">
+  <div class="example" id="example-396">
    <p><strong>例3 新規に名前 / パスワードを入力させる HTTP 認証の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -135,17 +138,17 @@
 
   </div>
   <p class="simpara">
-   この動作は、<em>HTTP Basic</em> 認証の標準に基づいていません。よって、この機能に
-   依存しないように注意する必要があります。<em>Lynx</em> によるテストの結果、
-   <em>Lynx</em> は、認証証明書を 401 サーバー応答によりクリアしないことが明らかに
+   この動作は、<code class="literal">HTTP Basic</code> 認証の標準に基づいていません。よって、この機能に
+   依存しないように注意する必要があります。<code class="literal">Lynx</code> によるテストの結果、
+   <code class="literal">Lynx</code> は、認証証明書を 401 サーバー応答によりクリアしないことが明らかに
    なっています。このため、back を押してから forward を再度押すことにより
    証明書の要件が変更されない限りリソースをオープンすることができます。
-   しかし、ユーザーは <em>&#039;_&#039;</em> キーを押すことにより認証情報をクリアすることが可能です。
+   しかし、ユーザーは <code class="literal">&#039;_&#039;</code> キーを押すことにより認証情報をクリアすることが可能です。
   </p>
   <p class="simpara">
    IIS サーバーと CGI 版の PHP の組み合わせで HTTP 認証を使うには、
-   IIS の設定の &quot;<em>ディレクトリセキュリティ</em>&quot; の &quot;<em>編集</em>&quot; ボタンを押して
-   &quot;<em>匿名アクセス</em>&quot; のみをオンにしてください。
+   IIS の設定の &quot;<code class="literal">ディレクトリセキュリティ</code>&quot; の &quot;<code class="literal">編集</code>&quot; ボタンを押して
+   &quot;<code class="literal">匿名アクセス</code>&quot; のみをオンにしてください。
    その他のフィールドはオフのままにしてください。
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -153,23 +156,10 @@
    <span class="simpara">
     IIS上 で HTTP 認証を使用する場合、PHP の
     <a href="ini.core.html#ini.cgi.rfc2616-headers" class="link">cgi.rfc2616_headers</a>
-    ディレクティブは<em>0</em> (デフォルト値) にセットされて
+    ディレクティブは<code class="literal">0</code> (デフォルト値) にセットされて
     いなければなりません。
    </span>
   </p></blockquote>
 
-  <blockquote class="note"><p><strong class="note">注意</strong>: 
-   <p class="para">
-    <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">セーフモード</a> が有効の場合、
-    <em>WWW-Authenticate</em>ヘッダの
-    <em>realm</em>部にスクリプトの uid が追加されます。
-   </p>
-  </p></blockquote>
-
  </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.html">機能</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.cookies.html">クッキー(Cookies)</a></div>
- <div class="up"><a href="features.html">機能</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

@@ -3,33 +3,43 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>引数で除算をした際の剰余を返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.floor.html">floor</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.getrandmax.html">getrandmax</a></div>
- <div class="up"><a href="ref.math.html">Math 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.fmod" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.floor.html">« floor</a></li>
+      <li style="float: right;"><a href="function.getrandmax.html">getrandmax »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.math.html">Math 関数</a></li>
+    <li>引数で除算をした際の剰余を返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.fmod" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">fmod</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">fmod</span> &mdash; <span class="dc-title">引数で除算をした際の剰余を返す</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">fmod</span> &mdash; <span class="dc-title">引数で除算をした際の剰余を返す</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.fmod-description">
   <h3 class="title">説明</h3>
-   <div class="methodsynopsis dc-description">
-    <span class="type">float</span> <span class="methodname"><strong>fmod</strong></span>
-     ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x</code></span>
-    , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y</code></span>
-    )</div>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>fmod</strong></span>(<span class="methodparam"><span class="type">float</span> <code class="parameter">$num1</code></span>, <span class="methodparam"><span class="type">float</span> <code class="parameter">$num2</code></span>): <span class="type">float</span></div>
 
   <p class="para rdfs-comment">
-   被除数（<code class="parameter">x</code>）を除数（<code class="parameter">y</code>）
-   で割った余りを返します。余り（<var class="varname"><var class="varname">r</var></var>）は、
-   整数 <var class="varname"><var class="varname">i</var></var> を使用して x = i * y + r で定義されます。
-   <code class="parameter">y</code> がゼロ以外の場合は<var class="varname"><var class="varname">r</var></var>
-   は <code class="parameter">x</code> と同符号で、絶対値は <code class="parameter">y</code>
+   被除数（<code class="parameter">num1</code>）を除数（<code class="parameter">num2</code>）
+   で割った余りを返します。余り（<var class="varname">r</var>）は、
+   整数 <var class="varname">i</var> を使用して num1 = i * num2 + r で定義されます。
+   <code class="parameter">num2</code> がゼロ以外の場合は<var class="varname">r</var>
+   は <code class="parameter">num1</code> と同符号で、絶対値は <code class="parameter">num2</code>
    より小さくなります。
   </p>
  </div>
@@ -41,7 +51,7 @@
 
     
      <dt>
-<code class="parameter">x</code></dt>
+<code class="parameter">num1</code></dt>
 
      <dd>
 
@@ -53,7 +63,7 @@
     
     
      <dt>
-<code class="parameter">y</code></dt>
+<code class="parameter">num2</code></dt>
 
      <dd>
 
@@ -71,14 +81,14 @@
  <div class="refsect1 returnvalues" id="refsect1-function.fmod-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <code class="parameter">x</code>/<code class="parameter">y</code> の剰余を返します。
+   <code class="parameter">num1</code>/<code class="parameter">num2</code> の剰余を返します。
   </p>
  </div>
 
  <div class="refsect1 examples" id="refsect1-function.fmod-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4012">
+   <div class="example" id="example-3087">
     <p><strong>例1 <span class="function"><strong>fmod()</strong></span> の使用法</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -95,16 +105,11 @@
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><a href="language.operators.arithmetic.html" class="link"><em>/</em></a> - 浮動小数点数値の除算</li>
-    <li class="member"><a href="language.operators.arithmetic.html" class="link"><em>%</em></a> - 整数値の剰余</li>
+    <li class="member"><a href="language.operators.arithmetic.html" class="link"><code class="literal">/</code></a> - 浮動小数点数値の除算</li>
+    <li class="member"><a href="language.operators.arithmetic.html" class="link"><code class="literal">%</code></a> - 整数値の剰余</li>
     <li class="member"><span class="function"><a href="function.intdiv.html" class="function">intdiv()</a></span> - 整数値の除算</li>
    </ul>
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.floor.html">floor</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.getrandmax.html">getrandmax</a></div>
- <div class="up"><a href="ref.math.html">Math 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Using the PHP Library for MongoDB (PHPLIB)</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mongodb.tutorial.hhvm.html">Getting Started with HHVM</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mongodb.architecture.html">Driver Architecture and Internals</a></div>
- <div class="up"><a href="mongodb.tutorial.html">Tutorials</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mongodb.tutorial.library" class="chapter">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mongodb.tutorial.html">« Tutorials</a></li>
+      <li style="float: right;"><a href="mongodb.tutorial.apm.html">Application Performance Monitoring (APM) »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mongodb.tutorial.html">Tutorials</a></li>
+    <li>Using the PHP Library for MongoDB (PHPLIB)</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mongodb.tutorial.library" class="chapter">
  <h1>Using the PHP Library for MongoDB (PHPLIB)</h1>
 
 
@@ -38,7 +51,7 @@
    <p class="para">
     Install the library by running:
     <div class="example-contents">
-<div class="shellcode"><pre class="shellcode">$ composer require &quot;mongodb/mongodb=^1.0.0&quot;</pre>
+<div class="shellcode"><pre class="shellcode">$ composer require mongodb/mongodb</pre>
 </div>
     </div>
 
@@ -87,19 +100,18 @@ Generating autoload files</pre>
 
    <p class="para">
     With this done, you can now use any of the functionality as described in the
-    <a href="http://mongodb.github.io/mongo-php-library" class="link external">&raquo;&nbsp;library documentation</a>
-    and its <a href="http://mongodb.github.io/mongo-php-library/api" class="link external">&raquo;&nbsp;API</a>.
+    <a href="https://docs.mongodb.com/php-library" class="link external">&raquo;&nbsp;library documentation</a>.
    </p>
 
    <p class="para">
     If you have previously used the old driver (i.e. <code class="code">mongo</code>
     extension), the library&#039;s API should look familiar. It contains a
-    <a href="http://mongodb.github.io/mongo-php-library/api/class-MongoDB.Client.html" class="link external">&raquo;&nbsp;Client</a>
+    <a href="https://docs.mongodb.com/php-library/master/reference/class/MongoDBClient/" class="link external">&raquo;&nbsp;Client</a>
     class for connecting to MongoDB, and
-    <a href="http://mongodb.github.io/mongo-php-library/api/class-MongoDB.Database.html" class="link external">&raquo;&nbsp;Database</a>
+    <a href="https://docs.mongodb.com/php-library/master/reference/class/MongoDBDatabase/" class="link external">&raquo;&nbsp;Database</a>
     class for database-level operations (e.g. commands, collection management)
     and a
-    <a href="http://mongodb.github.io/mongo-php-library/api/class-MongoDB.Collection.html" class="link external">&raquo;&nbsp;Collection</a>
+    <a href="https://docs.mongodb.com/php-library/master/reference/class/MongoDBCollection" class="link external">&raquo;&nbsp;Collection</a>
     class for collection-level operations (e.g.
     <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" class="link external">&raquo;&nbsp;CRUD</a> methods, index management).
     Various Collection methods have been renamed for clarity, and to be in
@@ -113,7 +125,7 @@ Generating autoload files</pre>
     database:
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">require&nbsp;</span><span style="color: #DD0000">'vendor/autoload.php'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;include&nbsp;Composer&nbsp;goodies<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Client</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://localhost:27017"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$collection&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$client</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">demo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">beers</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insertOne</span><span style="color: #007700">(&nbsp;[&nbsp;</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Hinterland'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'brewery'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'BrewDog'&nbsp;</span><span style="color: #007700">]&nbsp;);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Inserted&nbsp;with&nbsp;Object&nbsp;ID&nbsp;'</span><span style="color: #007700">{</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getInsertedId</span><span style="color: #007700">()}</span><span style="color: #DD0000">'"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">require&nbsp;</span><span style="color: #DD0000">'vendor/autoload.php'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;include&nbsp;Composer's&nbsp;autoloader<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Client</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://localhost:27017"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$collection&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$client</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">demo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">beers</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insertOne</span><span style="color: #007700">(&nbsp;[&nbsp;</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Hinterland'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'brewery'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'BrewDog'&nbsp;</span><span style="color: #007700">]&nbsp;);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Inserted&nbsp;with&nbsp;Object&nbsp;ID&nbsp;'</span><span style="color: #007700">{</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getInsertedId</span><span style="color: #007700">()}</span><span style="color: #DD0000">'"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -132,7 +144,7 @@ Generating autoload files</pre>
     iterable cursor:
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">require&nbsp;</span><span style="color: #DD0000">'vendor/autoload.php'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;include&nbsp;Composer&nbsp;goodies<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Client</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://localhost:27017"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$collection&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$client</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">demo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">beers</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">find</span><span style="color: #007700">(&nbsp;[&nbsp;</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Hinterland'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'brewery'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'BrewDog'&nbsp;</span><span style="color: #007700">]&nbsp;);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">[</span><span style="color: #DD0000">'_id'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">':&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">require&nbsp;</span><span style="color: #DD0000">'vendor/autoload.php'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;include&nbsp;Composer's&nbsp;autoloader<br /><br /></span><span style="color: #0000BB">$client&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Client</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://localhost:27017"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$collection&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$client</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">demo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">beers</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">find</span><span style="color: #007700">(&nbsp;[&nbsp;</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Hinterland'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'brewery'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'BrewDog'&nbsp;</span><span style="color: #007700">]&nbsp;);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">[</span><span style="color: #DD0000">'_id'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">':&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -152,9 +164,4 @@ Generating autoload files</pre>
    </p>
   </div>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mongodb.tutorial.hhvm.html">Getting Started with HHVM</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mongodb.architecture.html">Driver Architecture and Internals</a></div>
- <div class="up"><a href="mongodb.tutorial.html">Tutorials</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

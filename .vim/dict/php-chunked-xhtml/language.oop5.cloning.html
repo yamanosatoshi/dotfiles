@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>オブジェクトのクローン作成</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.final.html">finalキーワード</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.oop5.object-comparison.html">オブジェクトの比較</a></div>
- <div class="up"><a href="language.oop5.html">クラスとオブジェクト</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.oop5.cloning" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.oop5.final.html">« finalキーワード</a></li>
+      <li style="float: right;"><a href="language.oop5.object-comparison.html">オブジェクトの比較 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.oop5.html">クラスとオブジェクト</a></li>
+    <li>オブジェクトのクローン作成</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.oop5.cloning" class="sect1">
  <h2 class="title">オブジェクトのクローン作成</h2>
  
  <p class="para">
@@ -32,7 +45,6 @@
  <p class="para">
   オブジェクトのコピーは、<em class="emphasis">clone</em> キーワード (これは、そのオブジェクトの
   <a href="language.oop5.cloning.html#object.clone" class="link">__clone()</a> メソッドがある場合にこれをコールします)により作成されます。
-  オブジェクトの <a href="language.oop5.cloning.html#object.clone" class="link">__clone()</a> メソッドを直接コールすることはできません。
  </p>
 
  <div class="informalexample">
@@ -45,15 +57,13 @@ $copy_of_object = clone $object;
  </div>
  
  <p class="para">
-  オブジェクトのクローンが作成される際、PHP 5 は、そのオブジェクトのプロパティを
+  オブジェクトのクローンが作成される際、PHP は、そのオブジェクトのプロパティを
   全てシャローコピーします。他の変数へのリファレンスを保持する全てのプロパティは、
   リファレンスのままとなります。
   </p>
 
   <div class="methodsynopsis dc-description" id="object.clone">
-   <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>__clone</strong></span>
-    ( <span class="methodparam">void</span>
-   )</div>
+   <span class="methodname"><strong>__clone</strong></span>(): <span class="type"><span class="type void">void</span></span></div>
 
 
   <p class="para">
@@ -63,7 +73,7 @@ $copy_of_object = clone $object;
    必要な変更を行うことができます。
  </p>
  
- <div class="example" id="example-269">
+ <div class="example" id="language.oop5.traits.static.ex2">
   <p><strong>例1 オブジェクトのクローン作成</strong></p>
   <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -105,13 +115,29 @@ MyCloneable Object
 )
 </pre></div>
 
+   </div>
+
   </div>
 
- </div>
- 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.final.html">finalキーワード</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.oop5.object-comparison.html">オブジェクトの比較</a></div>
- <div class="up"><a href="language.oop5.html">クラスとオブジェクト</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  <p class="para">
+   新しくクローンしたオブジェクトのメンバーに、作成したその式の中でもアクセスできます:
+  </p>
+  <div class="example" id="language.oop5.traits.static.ex3">
+   <p><strong>例2 クローンしたオブジェクトのメンバーへのアクセス</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$dateTime&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">();<br />echo&nbsp;(clone&nbsp;</span><span style="color: #0000BB">$dateTime</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'Y'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+2016
+</pre></div>
+   </div>
+  </div>
+
+ </div></div></div></body></html>

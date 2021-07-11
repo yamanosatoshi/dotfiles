@@ -2,16 +2,29 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>導入</title>
+  <title>はじめに</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="book.phar.html">Phar</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="phar.setup.html">インストール/設定</a></div>
- <div class="up"><a href="book.phar.html">Phar</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="intro.phar" class="preface">
-  <h1 class="title">導入</h1>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="book.phar.html">« Phar</a></li>
+      <li style="float: right;"><a href="phar.setup.html">インストール/設定 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.phar.html">Phar</a></li>
+    <li>はじめに</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="intro.phar" class="preface">
+  <h1 class="title">はじめに</h1>
   <p class="para">
    phar 拡張モジュールは、PHP アプリケーション全体をひとつの &quot;phar&quot; (PHP Archive)
    ファイルにまとめてしまい、配布やインストールを容易にするためのものです。
@@ -37,7 +50,7 @@
    <span class="function"><a href="function.include.html" class="function">include</a></span> を用います。
   </p>
   <p class="para">
-   <div class="example" id="example-746">
+   <div class="example" id="example-655">
     <p><strong>例1 外部ファイルの使用</strong></p>
     <div class="example-contents">
      <div class="phpcode"><code><span style="color: #000000">
@@ -50,17 +63,17 @@
   </p>
   <p class="para">
    PHP は、実際には
-   <em>/path/to/external/file.php</em> をストリームラッパー
-   <em>file:///path/to/external/file.php</em> とみなし、
+   <code class="literal">/path/to/external/file.php</code> をストリームラッパー
+   <code class="literal">file:///path/to/external/file.php</code> とみなし、
    内部的にはファイルストリームラッパーのストリーム関数でローカルファイルにアクセスしています。
   </p>
   <p class="para">
-   Phar アーカイブ <em>/path/to/myphar.phar</em>
-   の中に含まれるファイル <em>file.php</em> を使用する場合に構文は、
-   先ほどの <em>file://</em> 構文と似ています。
+   Phar アーカイブ <code class="literal">/path/to/myphar.phar</code>
+   の中に含まれるファイル <code class="literal">file.php</code> を使用する場合に構文は、
+   先ほどの <code class="literal">file://</code> 構文と似ています。
   </p>
   <p class="para">
-   <div class="example" id="example-747">
+   <div class="example" id="example-656">
     <p><strong>例2 Phar アーカイブ内のファイルの使用</strong></p>
     <div class="example-contents">
      <div class="phpcode"><code><span style="color: #000000">
@@ -88,15 +101,15 @@
    コマンドラインあるいはウェブサーバーからアーカイブを実行します。
   </p>
   <p class="para">
-   Phar アーカイブの配布形式は <em>tar</em> アーカイブか
-   <em>zip</em> アーカイブ、あるいは専用の <em>phar</em>
+   Phar アーカイブの配布形式は <code class="literal">tar</code> アーカイブか
+   <code class="literal">zip</code> アーカイブ、あるいは専用の <code class="literal">phar</code>
    独自ファイルフォーマットのいずれかとなります。
    それぞれの形式には利点と欠点があります。
    tar 形式や zip 形式は、他のツールからでも内容を読んだり展開したりできるという利点がありますが、
    それを実行する環境にも phar 拡張モジュールが必要となります。
    phar 独自フォーマットは phar 拡張モジュール独自の形式です。
    phar 拡張モジュールか PEAR パッケージ
-   <a href="http://pear.php.net/package/PHP_Archive" class="link external">&raquo;&nbsp;PHP_Archive</a>
+   <a href="https://pear.php.net/package/PHP_Archive" class="link external">&raquo;&nbsp;PHP_Archive</a>
    にしか作成できません。しかし、この形式で作成したアプリケーションは
    phar 拡張モジュールのない環境でも動作するという利点があります。
   </p>
@@ -112,7 +125,7 @@
    phar 形式に変換する機能もあります。
   </p>
   <p class="para">
-   <div class="example" id="example-748">
+   <div class="example" id="example-657">
     <p><strong>例3 phar 形式から tar 形式への phar アーカイブの変換</strong></p>
     <div class="example-contents">
      <div class="phpcode"><code><span style="color: #000000">
@@ -135,7 +148,7 @@
    最後に、phar 拡張モジュールはセキュリティにも注意を払っており、
    実行可能な phar アーカイブへの書き込みアクセスはデフォルトで無効にしています。
    phar アーカイブを作成したり変更したりするには、php.ini の設定
-   <em>phar.readonly</em> をシステムレベルで無効にする必要があります。
+   <code class="literal">phar.readonly</code> をシステムレベルで無効にする必要があります。
    通常の、実行可能属性がない tar アーカイブや zip アーカイブは、常に
    <a href="class.phardata.html" class="classname">PharData</a> クラスで作成、変更することができます。
   </p>
@@ -152,14 +165,14 @@
    が参考となるでしょう。
   </p>
   <p class="para">
-   <em>phar</em> という単語は <em>PHP</em> と
-   <em>Archive</em> を組み合わせたもので、
-   Java 開発者ならおなじみの <em>jar</em> (Java Archive)
+   <code class="literal">phar</code> という単語は <code class="literal">PHP</code> と
+   <code class="literal">Archive</code> を組み合わせたもので、
+   Java 開発者ならおなじみの <code class="literal">jar</code> (Java Archive)
    を参考にしています。
   </p>
   <p class="para">
    Phar アーカイブの実装は PEAR の
-   <a href="http://pear.php.net/package/PHP_Archive" class="link external">&raquo;&nbsp;PHP_Archive</a>
+   <a href="https://pear.php.net/package/PHP_Archive" class="link external">&raquo;&nbsp;PHP_Archive</a>
    パッケージに基づいています。実装の詳細は同じですが、
    Phar 拡張モジュールのほうがずっと強力です。
    さらに、Phar 拡張モジュールで作成した PHP アプリケーションは
@@ -167,9 +180,4 @@
    PHP_Archive で作った phar アーカイブは、
    動かす前に多少手を入れなければならないことがよくあります。
   </p>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="book.phar.html">Phar</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="phar.setup.html">インストール/設定</a></div>
- <div class="up"><a href="book.phar.html">Phar</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

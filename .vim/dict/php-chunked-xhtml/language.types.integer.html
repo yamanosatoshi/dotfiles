@@ -3,18 +3,31 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>整数</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.types.boolean.html">論理型 (boolean)</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.types.float.html">浮動小数点数</a></div>
- <div class="up"><a href="language.types.html">型</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.types.integer" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.types.boolean.html">« 論理型 (boolean)</a></li>
+      <li style="float: right;"><a href="language.types.float.html">浮動小数点数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.types.html">型</a></li>
+    <li>整数</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.types.integer" class="sect1">
  <h2 class="title">整数</h2>
  
  <p class="simpara">
-  <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> は、ℤ = {..., -2, -1, 0, 1, 2, ...}
+  <span class="type">int</span> は、ℤ = {..., -2, -1, 0, 1, 2, ...}
   という集合です。
  </p>
   
@@ -49,21 +62,23 @@
   </p>
 
   <p class="para">
-   2 進数の整数リテラルは、PHP 5.4.0 から利用可能となりました。
+   8 進数表記を使用する場合、数の前に <code class="literal">0</code> (ゼロ)
+   を付ける必要があります。また、16 進数表記を使用するには、数の前に
+   <code class="literal">0x</code> を付ける必要があります。
+   2 進数表記を使用する場合、数の前に <code class="literal">0b</code> を付ける必要があります。
   </p>
 
   <p class="para">
-   8 進数表記を使用する場合、数の前に <em>0</em> (ゼロ)
-   を付ける必要があります。また、16 進数表記を使用するには、数の前に
-   <em>0x</em> を付ける必要があります。
-   2 進数表記を使用する場合、数の前に <em>0b</em> を付ける必要があります。
+   PHP 7.4.0 以降では、可読性を向上させるために整数リテラルの桁の間にアンダースコア
+   (<code class="literal">_</code>) を含めることができるようになりました。
+   アンダースコアは PHP の scanner が除去します。
   </p>
 
-  <div class="example" id="example-86">
+  <div class="example" id="example-21">
    <p><strong>例1 整数リテラル</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1234</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;10進整数<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;-</span><span style="color: #0000BB">123</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;負の数<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0123</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;8進数&nbsp;(10進数の83と等価)<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0x1A</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;16進数&nbsp;(10進数の26と等価)<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0b11111111</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;2進数&nbsp;(10進数の255と等価)<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1234</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;10進整数<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0123</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;8進数&nbsp;(10進数の83と等価)<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0x1A</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;16進数&nbsp;(10進数の26と等価)<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0b11111111</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;2進数&nbsp;(10進数の255と等価)<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1_234_567</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;10進数&nbsp;(PHP&nbsp;7.4.0&nbsp;以降)<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
    </div>
@@ -71,25 +86,26 @@
   </div>
 
   <p class="para">
-   使用可能な整数リテラルの形式は以下のように定義されています。
+   PHP 7.4.0 以降で使用可能な整数リテラルの形式は以下のように定義されています。
+   (これより前のバージョンでは、アンダースコアは許されませんでした)
   </p>
  
   <div class="informalexample">
    <div class="example-contents">
 <div class="cdata"><pre>
-decimal     : [1-9][0-9]*
+decimal     : [1-9][0-9]*(_[0-9]+)*
             | 0
 
-hexadecimal : 0[xX][0-9a-fA-F]+
+hexadecimal : 0[xX][0-9a-fA-F]+(_[0-9a-fA-F]+)*
 
-octal       : 0[0-7]+
+octal       : 0[0-7]+(_[0-7]+)*
 
-binary      : 0b[01]+
+binary      : 0[bB][01]+(_[01]+)*
 
-integer     : [+-]?decimal
-            | [+-]?hexadecimal
-            | [+-]?octal
-            | [+-]?binary
+integer     : decimal
+            | hexadecimal
+            | octal
+            | binary
 </pre></div>
    </div>
 
@@ -99,36 +115,25 @@ integer     : [+-]?decimal
    整数のサイズはプラットフォームに依存しますが、
    約 20 億 (32 ビット符号付) が一般的な値です。
    64 ビットプラットフォームでの通常の最大値は、およそ 9*10^18 (900京) になります。
-   しかし PHP 7 より前のバージョンにおける Windows は例外で、Windows で PHP 7 より前のバージョンを使う場合はは常に 32 ビットとなります。
    PHP は符号無し整数をサポートしていません。
    整数のサイズは定数 <strong><code>PHP_INT_SIZE</code></strong> で、
-   そして整数の最大値は定数 <strong><code>PHP_INT_MAX</code></strong> でそれぞれ決まります。
-   これらの定数は、PHP 4.4.0 以降および PHP 5.0.5 以降で使えます。
-   PHP 7.0.0 以降では、整数の最小値を表す定数 <strong><code>PHP_INT_MIN</code></strong>
-   が使えるようになりました。
+   整数の最大値は定数 <strong><code>PHP_INT_MAX</code></strong> で、
+   整数の最小値は定数 <strong><code>PHP_INT_MIN</code></strong> で決まります。
   </p>
 
-  <div class="warning"><strong class="warning">警告</strong>
-   <p class="para">
-    PHP 7 より前のバージョンでは、
-    8 進数の整数値として不正な数字（例: 8 または 9）が渡された場合、
-    数値の残りの部分は無視されます。
-    PHP 7 以降では、パースエラーが発生します。
-   </p>
-  </div>
  </div>
 
  <div class="sect2" id="language.types.integer.overflow">
   <h3 class="title">整数のオーバーフロー</h3>
 
   <p class="para">
-   <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>型の範囲外の数を指定した場合、かわりに
-   <span class="type"><a href="language.types.float.html" class="type float">float</a></span>として解釈されます。また、結果が
-   <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>型の範囲外の数となるような計算を行うと
-   <span class="type"><a href="language.types.float.html" class="type float">float</a></span>が代わりに返されます。
+   <span class="type">int</span>型の範囲外の数を指定した場合、かわりに
+   <span class="type">float</span>として解釈されます。また、結果が
+   <span class="type">int</span>型の範囲外の数となるような計算を行うと
+   <span class="type">float</span>が代わりに返されます。
   </p>
 
-  <div class="example" id="example-87">
+  <div class="example" id="example-22">
    <p><strong>例2 32 ビットシステムにおける整数のオーバーフロー</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -139,7 +144,7 @@ integer     : [+-]?decimal
 
   </div>
 
-  <div class="example" id="example-88">
+  <div class="example" id="example-23">
    <p><strong>例3 64 ビットシステムにおける整数のオーバーフロー</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -151,9 +156,11 @@ integer     : [+-]?decimal
   </div>
   
   <p class="para">
-   PHP には整数の割り算はありません。<em>1/2</em> は <span class="type"><span class="type 
+   PHP には整数の割り算を行う演算子はありません。
+   整数の割り算を行うには、<span class="function"><a href="function.intdiv.html" class="function">intdiv()</a></span> 関数を使って下さい。
+   <code class="literal">1/2</code> は <span class="type"><span class="type 
    float ">
-   float </span></span> 型の <em>0.5</em> になります。
+   float </span></span> 型の <code class="literal">0.5</code> になります。
    0 に近い方向の整数値に値を丸めるためにキャストを使用することができ、
    また、<span class="function"><a href="function.round.html" class="function">round()</a></span> 関数を使用することもできます。
   </p>
@@ -173,17 +180,17 @@ integer     : [+-]?decimal
   <h3 class="title">整数への変換</h3>
 
   <p class="simpara">
-   <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> に値を明示的に変換するには、キャスト
-   <em>(int)</em> または <em>(integer)</em>
+   <span class="type">int</span> に値を明示的に変換するには、キャスト
+   <code class="literal">(int)</code> または <code class="literal">(integer)</code>
    のどちらかを使用してください。しかし、多くの場合、演算子、関数、制御構造が
-   <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 引数を必要とする場合、値は自動的に変換されるため、
+   <span class="type">int</span> 引数を必要とする場合、値は自動的に変換されるため、
    キャストを使用する必要はありません。
    関数 <span class="function"><a href="function.intval.html" class="function">intval()</a></span> を用いて値を整数に変換することも可能です。
   </p>
 
   <p class="simpara">
-   <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> を <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> に変換すると、その結果は一意なリソース番号となります。
-   これは、その <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> に対して PHP が実行時に割り当てた番号です。
+   <span class="type">resource</span> を <span class="type">int</span> に変換すると、その結果は一意なリソース番号となります。
+   これは、その <span class="type">resource</span> に対して PHP が実行時に割り当てた番号です。
   </p>
 
   <p class="simpara">
@@ -195,8 +202,8 @@ integer     : [+-]?decimal
    <h4 class="title"><a href="language.types.boolean.html" class="link">booleans</a> から</h4>
 
    <p class="simpara">
-    <strong><code>FALSE</code></strong> は、<em>0</em> (ゼロ) となり、
-    <strong><code>TRUE</code></strong> は、<em>1</em> となります。
+    <strong><code>false</code></strong> は、<code class="literal">0</code> (ゼロ) となり、
+    <strong><code>true</code></strong> は、<code class="literal">1</code> となります。
    </p>
   </div>
 
@@ -210,8 +217,8 @@ integer     : [+-]?decimal
    </p>
     
    <p class="para">
-    float が整数の範囲 (通常は、32 ビットプラットフォームでは <em>+/- 2.15e+9 =
-    2^31</em>、Windows 以外の 64 ビットプラットフォームでは <em>+/- 9.22e+18 = 2^63</em>
+    float が整数の範囲 (通常は、32 ビットプラットフォームでは <code class="literal">+/- 2.15e+9 =
+    2^31</code>、64 ビットプラットフォームでは <code class="literal">+/- 9.22e+18 = 2^63</code>
     ) を越える場合、結果は undefined となります。これは、
     その float が正しい整数の結果を得るために十分な精度を得られなかったからです。
     この場合、警告も通知も発生しません!
@@ -219,14 +226,13 @@ integer     : [+-]?decimal
 
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <p class="para">
-     NaN や無限大を <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> にキャストした結果は
-     未定義でプラットフォーム依存でしたが、PHP 7.0.0 以降は常にゼロとなります。
+     NaN や無限大を <span class="type">int</span> にキャストした結果は、常にゼロとなります。
     </p>
    </p></blockquote>
     
    <div class="warning"><strong class="warning">警告</strong>
     <p class="para">
-     未知の端数を <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> にキャストしないでください。
+     未知の端数を <span class="type">int</span> にキャストしないでください。
      この場合、予期しない結果となることがあります。
     </p>
 
@@ -251,11 +257,21 @@ integer     : [+-]?decimal
    <h4 class="title">文字列から</h4>
 
    <p class="simpara">
-    <a href="language.types.string.html#language.types.string.conversion" class="link">文字列変換
-    </a>を参照ください。
+    文字列が 
+    <a href="language.types.numeric-strings.html" class="link">数値形式の文字列</a>
+    の場合は、対応する整数値に解決されます。
+    そうでない場合は、ゼロ (<code class="literal">0</code>) に変換されます。
    </p>
   </div>
    
+  <div class="sect3" id="language.types.integer.casting-from-null">
+   <h4 class="title"><span class="type">NULL</span> から</h4>
+
+   <p class="simpara">
+    <strong><code>null</code></strong> は、常に0に変換されます。
+   </p>
+  </div>
+
   <div class="sect3" id="language.types.integer.casting.from-other">
    <h4 class="title">他の型から</h4>
 
@@ -271,9 +287,4 @@ integer     : [+-]?decimal
   </div>
 
  </div>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.types.boolean.html">論理型 (boolean)</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.types.float.html">浮動小数点数</a></div>
- <div class="up"><a href="language.types.html">型</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

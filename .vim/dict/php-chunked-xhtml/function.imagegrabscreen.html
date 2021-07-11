@@ -3,40 +3,91 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>画面全体をキャプチャする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagegif.html">imagegif</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imagegrabwindow.html">imagegrabwindow</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.imagegrabscreen" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagegif.html">« imagegif</a></li>
+      <li style="float: right;"><a href="function.imagegrabwindow.html">imagegrabwindow »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">GD および Image 関数</a></li>
+    <li>画面全体をキャプチャする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagegrabscreen" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagegrabscreen</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.2.2, PHP 7)</p><p class="refpurpose"><span class="refname">imagegrabscreen</span> &mdash; <span class="dc-title">画面全体をキャプチャする</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.2, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagegrabscreen</span> &mdash; <span class="dc-title">画面全体をキャプチャする</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.imagegrabscreen-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">resource</span> <span class="methodname"><strong>imagegrabscreen</strong></span>
-    ( <span class="methodparam">void</span>
-   )</div>
+   <span class="methodname"><strong>imagegrabscreen</strong></span>(): <span class="type"><span class="type"><a href="class.gdimage.html" class="type GdImage">GdImage</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    画面全体のスクリーンショットを取得します。
   </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    この関数は Windows 上でのみ使用できます。
+   </p>
+  </p></blockquote>
  </div>
 
 
+ <div class="refsect1 parameters" id="refsect1-function.imagegrabscreen-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">この関数にはパラメータはありません。</p>
+ </div>
 
 
  <div class="refsect1 returnvalues" id="refsect1-function.imagegrabscreen-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に画像リソースの ID、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に画像オブジェクト、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.imagegrabscreen-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       成功時には、
+       この関数は <a href="class.gdimage.html" class="classname">GDImage</a>
+       クラスのインスタンスを返すようになりました。
+       これより前のバージョンでは、
+       <span class="type">resource</span> を返していました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
  </div>
 
 
@@ -45,7 +96,7 @@
  <div class="refsect1 examples" id="refsect1-function.imagegrabscreen-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3580">
+   <div class="example" id="example-2661">
     <p><strong>例1 <span class="function"><strong>imagegrabscreen()</strong></span> の例</strong></p>
     <div class="example-contents"><p>
       この例は、現在の画面の状態のスクリーンショットを取得してそれを
@@ -63,28 +114,11 @@
  </div>
 
 
- <div class="refsect1 notes" id="refsect1-function.imagegrabscreen-notes">
-  <h3 class="title">注意</h3>
-  <blockquote class="note"><p><strong class="note">注意</strong>: 
-   <p class="para">
-    この関数は Windows 上でしか使用できません。
-   </p>
-  </p></blockquote>
- </div>
-
-
  <div class="refsect1 seealso" id="refsect1-function.imagegrabscreen-seealso">
   <h3 class="title">参考</h3>
-  <p class="para">
-   <ul class="simplelist">
-    <li class="member"><span class="function"><a href="function.imagegrabwindow.html" class="function" rel="rdfs-seeAlso">imagegrabwindow()</a> - ウィンドウをキャプチャする</span></li>
-   </ul>
-  </p>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.imagegrabwindow.html" class="function" rel="rdfs-seeAlso">imagegrabwindow()</a> - ウィンドウをキャプチャする</span></li>
+  </ul>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagegif.html">imagegif</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imagegrabwindow.html">imagegrabwindow</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

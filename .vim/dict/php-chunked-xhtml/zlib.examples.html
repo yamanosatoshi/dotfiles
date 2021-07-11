@@ -3,21 +3,34 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>例</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="zlib.constants.html">定義済み定数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="ref.zlib.html">Zlib 関数</a></div>
- <div class="up"><a href="book.zlib.html">Zlib</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="zlib.examples" class="chapter">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="zlib.constants.html">« 定義済み定数</a></li>
+      <li style="float: right;"><a href="ref.zlib.html">Zlib 関数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.zlib.html">Zlib</a></li>
+    <li>例</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="zlib.examples" class="chapter">
  <h1>例</h1>
 
  <p class="para">
   テンポラリファイルをオープンし、テスト用文字列を書きこみ、
   続いて、このファイルの内容を 2 回出力します。
  </p>
- <div class="example" id="example-909">
+ <div class="example" id="example-817">
   <p><strong>例1 簡単な Zlib の例</strong></p>
   <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -27,11 +40,12 @@
   </div>
 
  </div>
- <div class="example" id="example-910">
-  <p><strong>例2 PHP 7.0.0 以降の、インクリメンタルな圧縮および伸長の API</strong></p>
+ <div class="example" id="example-818">
+  <p><strong>例2 インクリメンタルな圧縮および伸長の API</strong></p>
   <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-//&nbsp;GZIP&nbsp;圧縮<br />$deflateContext&nbsp;=&nbsp;deflate_init(ZLIB_ENCODING_GZIP);<br />$compressed&nbsp;=&nbsp;deflate_add($deflateContext,&nbsp;"Data&nbsp;to&nbsp;compress",&nbsp;ZLIB_NO_FLUSH);<br />$compressed&nbsp;.=&nbsp;deflate_add($deflateContext,&nbsp;",&nbsp;more&nbsp;data",&nbsp;ZLIB_NO_FLUSH);<br />$compressed&nbsp;.=&nbsp;deflate_add($deflateContext,&nbsp;",&nbsp;and&nbsp;even&nbsp;more&nbsp;data!",&nbsp;ZLIB_FINISH);?&gt;<br /><br />//&nbsp;GZIP&nbsp;伸長<br />$inflateContext&nbsp;=&nbsp;inflate_init(ZLIB_ENCODING_GZIP);<br />$uncompressed&nbsp;=&nbsp;inflate_add($inflateContext,&nbsp;$compressed,&nbsp;ZLIB_NO_FLUSH);<br />$uncompressed&nbsp;.=&nbsp;inflate_add($inflateContext,&nbsp;NULL,&nbsp;ZLIB_FINISH);<br />echo&nbsp;$uncompressed;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;GZIP&nbsp;圧縮<br /></span><span style="color: #0000BB">$deflateContext&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">deflate_init</span><span style="color: #007700">(</span><span style="color: #0000BB">ZLIB_ENCODING_GZIP</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$compressed&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">deflate_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$deflateContext</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Data&nbsp;to&nbsp;compress"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZLIB_NO_FLUSH</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$compressed&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #0000BB">deflate_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$deflateContext</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">",&nbsp;more&nbsp;data"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZLIB_NO_FLUSH</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$compressed&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #0000BB">deflate_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$deflateContext</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">",&nbsp;and&nbsp;even&nbsp;more&nbsp;data!"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZLIB_FINISH</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;GZIP&nbsp;伸長<br /></span><span style="color: #0000BB">$inflateContext&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">inflate_init</span><span style="color: #007700">(</span><span style="color: #0000BB">ZLIB_ENCODING_GZIP</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$uncompressed&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">inflate_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$inflateContext</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$compressed</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZLIB_NO_FLUSH</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$uncompressed&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #0000BB">inflate_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$inflateContext</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZLIB_FINISH</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$uncompressed</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
 </code></div>
   </div>
 
@@ -43,9 +57,4 @@ Data to compress, more data, and even more data!
   </div>
  </div>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="zlib.constants.html">定義済み定数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="ref.zlib.html">Zlib 関数</a></div>
- <div class="up"><a href="book.zlib.html">Zlib</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

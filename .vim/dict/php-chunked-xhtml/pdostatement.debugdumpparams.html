@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>SQL プリペアドコマンドを出力する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pdostatement.columncount.html">PDOStatement::columnCount</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pdostatement.errorcode.html">PDOStatement::errorCode</a></div>
- <div class="up"><a href="class.pdostatement.html">PDOStatement</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="pdostatement.debugdumpparams" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdostatement.columncount.html">« PDOStatement::columnCount</a></li>
+      <li style="float: right;"><a href="pdostatement.errorcode.html">PDOStatement::errorCode »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pdostatement.html">PDOStatement</a></li>
+    <li>SQL プリペアドコマンドを出力する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdostatement.debugdumpparams" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">PDOStatement::debugDumpParams</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.9.0)</p><p class="refpurpose"><span class="refname">PDOStatement::debugDumpParams</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.9.0)</p><p class="refpurpose"><span class="refname">PDOStatement::debugDumpParams</span> &mdash; <span class="dc-title">
    SQL プリペアドコマンドを出力する
   </span></p>
 
@@ -21,25 +34,23 @@
  <div class="refsect1 description" id="refsect1-pdostatement.debugdumpparams-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>PDOStatement::debugDumpParams</strong></span>
-    ( <span class="methodparam">void</span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>PDOStatement::debugDumpParams</strong></span>(): <span class="type"><span class="type">bool</span>|<span class="type">null</span></span></div>
 
   <p class="para rdfs-comment">
    プリペアドステートメントに含まれる以下のような情報を直接出力します。
-   使用する <em>SQL</em> クエリ、使用するパラメータ数
-   (<em>Params</em>)、パラメータリスト、パラメータ名、
-   パラメータの型 (<em>paramtype</em>) をあらわす整数値、
+   使用する <code class="literal">SQL</code> クエリ、使用するパラメータ数
+   (<code class="literal">Params</code>)、パラメータリスト、パラメータ名、
+   パラメータの型 (<code class="literal">paramtype</code>) をあらわす整数値、
    そのキーの名前あるいは位置、そしてクエリ内での位置
    (PDO ドライバがサポートしている場合のみ。サポートしていない場合は
-   -1 となります) 、型 (<em>param_type</em>) を表す整数値、boolean 値 <em>is_param</em>。
+   -1 となります) 、型 (<code class="literal">param_type</code>) を表す整数値、boolean 値 <code class="literal">is_param</code>。
   </p>
   <p class="para">
    これはデバッグ用関数です。結果を標準出力にそのまま出力します。
    <div class="tip"><strong class="tip">ヒント</strong><p class="simpara">ブラウザに直接結果を出力する
 すべてのものと同様に、<a href="book.outcontrol.html" class="link">出力制御関数</a>
 を使用してこの関数の出力をキャプチャーし、(例えば)文字列
-(<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)に保存することが可能です。</p></div>
+(<span class="type">string</span>)に保存することが可能です。</p></div>
   </p>
   <p class="para">
    これは、出力時にステートメント内にあるパラメータのみを出力します。
@@ -48,17 +59,54 @@
  </div>
 
 
+ <div class="refsect1 parameters" id="refsect1-pdostatement.debugdumpparams-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">この関数にはパラメータはありません。</p>
+ </div>
+
+
  <div class="refsect1 returnvalues" id="refsect1-pdostatement.debugdumpparams-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   値を返しません。
+   <strong><code>null</code></strong> を返します。エラーの場合は <strong><code>false</code></strong> を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-pdostatement.debugdumpparams-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.2.0</td>
+       <td>
+        <span class="methodname"><strong>PDOStatement::debugDumpParams()</strong></span> は、データベースに送られた
+        完全な、(プレースホルダーをバインドされた値で置き換えた) 生のSQLクエリを返すようになりました。
+        これは、プリペアドステートメントがエミュレートされていた場合のみ利用できることに注意してください。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
   </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-pdostatement.debugdumpparams-examples">
   <h3 class="title">例</h3>
-  <div class="example" id="example-1057">
+  <div class="example" id="example-990">
    <p><strong>例1 名前つきパラメータを用いた <span class="function"><strong>PDOStatement::debugDumpParams()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -88,7 +136,7 @@ param_type=2
    </div>
   </div>
 
-  <div class="example" id="example-1058">
+  <div class="example" id="example-991">
    <p><strong>例2 名前なしパラメータを用いた <span class="function"><strong>PDOStatement::debugDumpParams()</strong></span> の例</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -117,7 +165,6 @@ param_type=2
 </pre></div>
    </div>
   </div>
-
  </div>
 
 
@@ -133,9 +180,4 @@ param_type=2
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pdostatement.columncount.html">PDOStatement::columnCount</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pdostatement.errorcode.html">PDOStatement::errorCode</a></div>
- <div class="up"><a href="class.pdostatement.html">PDOStatement</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

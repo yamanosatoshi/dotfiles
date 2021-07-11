@@ -3,28 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>マルチバイト文字列が正規表現に一致するか調べる</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mb-encoding-aliases.html">mb_encoding_aliases</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mb-ereg-replace-callback.html">mb_ereg_replace_callback</a></div>
- <div class="up"><a href="ref.mbstring.html">マルチバイト文字列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.mb-ereg-match" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mb-encoding-aliases.html">« mb_encoding_aliases</a></li>
+      <li style="float: right;"><a href="function.mb-ereg-replace-callback.html">mb_ereg_replace_callback »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mbstring.html">マルチバイト文字列 関数</a></li>
+    <li>マルチバイト文字列が正規表現に一致するか調べる</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mb-ereg-match" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mb_ereg_match</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mb_ereg_match</span> &mdash; <span class="dc-title">マルチバイト文字列が正規表現に一致するか調べる</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mb_ereg_match</span> &mdash; <span class="dc-title">マルチバイト文字列が正規表現に一致するか調べる</span></p>
 
  </div>
    
  <div class="refsect1 description" id="refsect1-function.mb-ereg-match-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>mb_ereg_match</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$option</code><span class="initializer"> = &quot;msr&quot;</span></span>
-  ] )</div>
+   <span class="methodname"><strong>mb_ereg_match</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>, <span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$options</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    マルチバイト文字列に対する正規表現マッチングを行います。
@@ -63,12 +72,12 @@
     
     
      <dt>
-<code class="parameter">option</code></dt>
+<code class="parameter">options</code></dt>
 
      <dd>
 
       <p class="para">
-       
+       検索オプション。説明は、<span class="function"><a href="function.mb-regex-set-options.html" class="function">mb_regex_set_options()</a></span> を参照してください。
       </p>
      </dd>
 
@@ -83,9 +92,36 @@
   <h3 class="title">返り値</h3>
   <p class="simpara">
    <code class="parameter">string</code> が正規表現
-   <code class="parameter">pattern</code> に一致する場合に<strong><code>TRUE</code></strong> 、
-   そうでない場合に <strong><code>FALSE</code></strong> を返します。
+   <code class="parameter">pattern</code> に一致する場合に<strong><code>true</code></strong> 、
+   そうでない場合に <strong><code>false</code></strong> を返します。
   </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.mb-ereg-match-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">options</code> は、nullable になりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
  </div>
 
 
@@ -103,15 +139,10 @@
   <p class="para">
    <ul class="simplelist">
     <li class="member"><span class="function"><a href="function.mb-regex-encoding.html" class="function" rel="rdfs-seeAlso">mb_regex_encoding()</a> - 現在のマルチバイト正規表現用のエンコーディングを取得または設定する</span></li>
-    <li class="member"><span class="function"><a href="function.mb-ereg.html" class="function" rel="rdfs-seeAlso">mb_ereg()</a> - マルチバイト文字列に正規表現マッチを行う</span></li>
+    <li class="member"><span class="function"><a href="function.mb-ereg.html" class="function" rel="rdfs-seeAlso">mb_ereg()</a> - マルチバイト対応の正規表現マッチ</span></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mb-encoding-aliases.html">mb_encoding_aliases</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mb-ereg-replace-callback.html">mb_ereg_replace_callback</a></div>
- <div class="up"><a href="ref.mbstring.html">マルチバイト文字列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

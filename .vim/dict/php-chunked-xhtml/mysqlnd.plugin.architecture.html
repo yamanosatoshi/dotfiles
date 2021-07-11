@@ -3,33 +3,49 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>MySQL Native Driverプラグイン のアーキテクチャ</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqlnd.plugin.obtaining.html">mysqlnd plugin APIを取得する</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqlnd.plugin.api.html">mysqlnd のプラグインAPI</a></div>
- <div class="up"><a href="mysqlnd.plugin.html">MySQL Native Driver プラグインAPI</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqlnd.plugin.architecture" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd.plugin.obtaining.html">« mysqlnd plugin APIを取得する</a></li>
+      <li style="float: right;"><a href="mysqlnd.plugin.api.html">mysqlnd のプラグインAPI »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mysqlnd.plugin.html">MySQL Native Driver プラグインAPI</a></li>
+    <li>MySQL Native Driverプラグイン のアーキテクチャ</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd.plugin.architecture" class="section">
   <h2 class="title">MySQL Native Driverプラグイン のアーキテクチャ</h2>
   <p class="para">
-   このセクションでは、<em>mysqlnd</em>プラグイン のアーキテクチャについての概要を示します。
+   このセクションでは、<code class="literal">mysqlnd</code>プラグイン のアーキテクチャについての概要を示します。
   </p>
   <p class="para">
    <em class="emphasis"> MySQL Native Driver の概要</em>
   </p>
   <p class="para">
-   <em>mysqlnd</em>プラグイン を開発する前に、<em>mysqlnd</em> そのものがどのように成り立っているのかを少し知っておくと役に立ちます。<em>mysqlnd</em> は次に示すモジュールからなります:
+   <code class="literal">mysqlnd</code>プラグイン を開発する前に、<code class="literal">mysqlnd</code> そのものがどのように成り立っているのかを少し知っておくと役に立ちます。<code class="literal">mysqlnd</code> は次に示すモジュールからなります:
   </p>
-  <table class="doctable table">
+  <table id="mysqlnd.plugin.orgchart" class="doctable table">
    <caption><strong>mysqlnd のモジュール毎のソースコードの組み合わせを示した表</strong></caption>
    
-    <tbody class="tbody">
+    <thead>
      <tr>
-      <td>モジュールの統計情報</td>
-      <td>mysqlnd_statistics.c</td>
+      <th>モジュールの統計情報</th>
+      <th>mysqlnd_statistics.c</th>
      </tr>
 
+    </thead>
+
+    <tbody class="tbody">
      <tr>
       <td>データベース接続</td>
       <td>mysqlnd.c</td>
@@ -68,10 +84,10 @@
    <em class="emphasis">C言語のオブジェクト指向パラダイム</em>
   </p>
   <p class="para">
-   ソースコードレベルで、<em>mysqlnd</em> は オブジェクト指向を実装するためのパターンを採用しています。
+   ソースコードレベルで、<code class="literal">mysqlnd</code> は オブジェクト指向を実装するためのパターンを採用しています。
   </p>
   <p class="para">
-   C言語では、オブジェクトを表現するために <em>struct</em>(構造体) を使います。struct のメンバがオブジェクトのプロパティを表現します。関数を指している struct のメンバがメソッドを表現します。
+   C言語では、オブジェクトを表現するために <code class="literal">struct</code>(構造体) を使います。struct のメンバがオブジェクトのプロパティを表現します。関数を指している struct のメンバがメソッドを表現します。
   </p>
   <p class="para">
    C++ や Java のような言語と異なり、C言語におけるオブジェクト指向のパラダイムでは決まった継承のルールがありませんが、従う必要があるルールがいくつかあります。このルールについては後に述べます。
@@ -104,10 +120,10 @@
    <em class="emphasis">プラグインはどうやって動くか</em>
   </p>
   <p class="para">
-   <em>mysqlnd</em>プラグイン は <em>mysqlnd</em> を使うエクステンションが <em>mysqlnd</em> を呼び出すときの制御を奪うことによって動作します。これは <em>mysqlnd</em> の関数テーブルを取得し、バックアップし、カスタムの関数テーブルと置き換えることによって実現されます。この関数テーブルが、プラグインが必要とする関数を呼び出すのです。
+   <code class="literal">mysqlnd</code>プラグイン は <code class="literal">mysqlnd</code> を使うエクステンションが <code class="literal">mysqlnd</code> を呼び出すときの制御を奪うことによって動作します。これは <code class="literal">mysqlnd</code> の関数テーブルを取得し、バックアップし、カスタムの関数テーブルと置き換えることによって実現されます。この関数テーブルが、プラグインが必要とする関数を呼び出すのです。
   </p>
   <p class="para">
-   次のコードは、<em>mysqlnd</em> の関数テーブルを置き換える方法を示しています:
+   次のコードは、<code class="literal">mysqlnd</code> の関数テーブルを置き換える方法を示しています:
   </p>
 <div class="example-contents">
 <div class="cdata"><pre>
@@ -134,7 +150,7 @@ void minit_register_hooks(TSRMLS_D) {
   </p>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    <em>mysqlnd</em> の関数テーブルを管理するときに、固定サイズを割り当てるロジックは絶対に使わないでください。新しいメソッドが関数テーブルの最後に追加される可能性があるからです。関数テーブルは将来どんな場合でも変更される可能性があります。
+    <code class="literal">mysqlnd</code> の関数テーブルを管理するときに、固定サイズを割り当てるロジックは絶対に使わないでください。新しいメソッドが関数テーブルの最後に追加される可能性があるからです。関数テーブルは将来どんな場合でも変更される可能性があります。
    </p>
   </p></blockquote>
   <p class="para">
@@ -144,7 +160,7 @@ void minit_register_hooks(TSRMLS_D) {
    オリジナルの関数テーブルをバックアップしている場合、オリジナルの関数テーブルのエントリに含まれる関数を呼び出すことができます - これが親メソッドです。
   </p>
   <p class="para">
-   場合によっては、<em>Connection::stmt_init()</em> のように、派生メソッドで他のあらゆる処理より先に親メソッドを呼び出すことが決定的に重要な場合があります。
+   場合によっては、<code class="literal">Connection::stmt_init()</code> のように、派生メソッドで他のあらゆる処理より先に親メソッドを呼び出すことが決定的に重要な場合があります。
   </p>
 <div class="example-contents">
 <div class="cdata"><pre>
@@ -165,23 +181,26 @@ MYSQLND_METHOD(my_conn_class, query)(MYSQLND *conn,
    <em class="emphasis">プロパティを拡張する</em>
   </p>
   <p class="para">
-   <em>mysqlnd</em>オブジェクトは C言語の構造体で表現されます。実行時に、C言語の構造体に新たにメンバを追加することは不可能です。<em>mysqlnd</em>オブジェクト のユーザーは、プロパティを単純にオブジェクトに追加することはできません。
+   <code class="literal">mysqlnd</code>オブジェクトは C言語の構造体で表現されます。実行時に、C言語の構造体に新たにメンバを追加することは不可能です。<code class="literal">mysqlnd</code>オブジェクト のユーザーは、プロパティを単純にオブジェクトに追加することはできません。
   </p>
   <p class="para">
-   <em>mysqlnd_plugin_get_plugin_&lt;object&gt;_data()</em>ファミリーの適切な関数を使って、任意のデータ (プロパティ) を <em>mysqlnd</em> オブジェクトに追加することができます。オブジェクトをメモリに割り付ける際に、<em>mysqlnd</em> はオブジェクトの最後に 任意のデータ向けの <em>void *</em> ポインタを保持するためのメモリ空間を予約しておきます。 <em>mysqlnd</em> は プラグインひとつにつき、ひとつの <em>void *</em>ポインタ を保持する空間を予約しています。
+   <code class="literal">mysqlnd_plugin_get_plugin_&lt;object&gt;_data()</code>ファミリーの適切な関数を使って、任意のデータ (プロパティ) を <code class="literal">mysqlnd</code> オブジェクトに追加することができます。オブジェクトをメモリに割り付ける際に、<code class="literal">mysqlnd</code> はオブジェクトの最後に 任意のデータ向けの <code class="literal">void *</code> ポインタを保持するためのメモリ空間を予約しておきます。 <code class="literal">mysqlnd</code> は プラグインひとつにつき、ひとつの <code class="literal">void *</code>ポインタ を保持する空間を予約しています。
   </p>
   <p class="para">
    次の表で、特定のプラグインでポインタの位置を計算する方法を示します:
   </p>
-  <table class="doctable table">
+  <table id="mysqlnd.plugin.pointercalc" class="doctable table">
    <caption><strong>mysqlnd のポインタの位置を計算する方法</strong></caption>
    
-    <tbody class="tbody">
+    <thead>
      <tr>
-      <td>メモリアドレス</td>
-      <td>メモリの内容</td>
+      <th>メモリアドレス</th>
+      <th>メモリの内容</th>
      </tr>
 
+    </thead>
+
+    <tbody class="tbody">
      <tr>
       <td>0</td>
       <td>mysqlndオブジェクト を表現する構造体の開始</td>
@@ -202,7 +221,7 @@ MYSQLND_METHOD(my_conn_class, query)(MYSQLND *conn,
   </table>
 
   <p class="para">
-   <em>mysqlnd</em>オブジェクト のコンストラクタを継承する計画がある場合、それが許可されていることを必ず頭にいれておいてください！
+   <code class="literal">mysqlnd</code>オブジェクト のコンストラクタを継承する計画がある場合、それが許可されていることを必ず頭にいれておいてください！
   </p>
   <p class="para">
    次のコードはプロパティを拡張する方法を示しています:
@@ -240,19 +259,22 @@ static MY_CONN_PROPERTIES** get_conn_properties(const MYSQLND *conn TSRMLS_DC) {
    プラグインの開発者には、プラグイン用のデータに使われるメモリを管理する責任があります。
   </p>
   <p class="para">
-   <em>mysqlnd</em> のメモリアロケータを使うことを推奨します。これらのメモリアロケータ関数は次のような規約に従って命名されています: <em>mnd_*loc()</em> <em>mysqlnd</em> のメモリアロケーターには役に立つ機能がいくつかあります。たとえばデバッグビルドでない環境でデバッグ用のアロケータを使う機能などです。
+   <code class="literal">mysqlnd</code> のメモリアロケータを使うことを推奨します。これらのメモリアロケータ関数は次のような規約に従って命名されています: <code class="literal">mnd_*loc()</code> <code class="literal">mysqlnd</code> のメモリアロケーターには役に立つ機能がいくつかあります。たとえばデバッグビルドでない環境でデバッグ用のアロケータを使う機能などです。
   </p>
-  <table class="doctable table">
+  <table id="mysqlnd.plugin.subclass" class="doctable table">
    <caption><strong>いつ、どのように継承するか</strong></caption>
    
-    <tbody class="tbody">
+    <thead>
      <tr>
-      <td class="empty">&nbsp;</td>
-      <td>いつ継承するか?</td>
-      <td>各々のインスタンスが自分のプライベートな関数テーブルを持っているか?</td>
-      <td>どのように継承するか?</td>
+      <th class="empty">&nbsp;</th>
+      <th>いつ継承するか?</th>
+      <th>各々のインスタンスが自分のプライベートな関数テーブルを持っているか?</th>
+      <th>どのように継承するか?</th>
      </tr>
 
+    </thead>
+
+    <tbody class="tbody">
      <tr>
       <td>Connection (MYSQLND)</td>
       <td>MINIT</td>
@@ -311,17 +333,20 @@ static MY_CONN_PROPERTIES** get_conn_properties(const MYSQLND *conn TSRMLS_DC) {
   <p class="para">
    関数テーブルを共有する利点は、パフォーマンスの向上です。関数テーブルをそれぞれの、すべてのオブジェクトにコピーする必要がないからです。
   </p>
-  <table class="doctable table">
+  <table id="mysqlnd.plugin.constatus" class="doctable table">
    <caption><strong>コンストラクタの状態</strong></caption>
    
-    <tbody class="tbody">
+    <thead>
      <tr>
-      <td class="empty">&nbsp;</td>
-      <td>メモリ割り当て、オブジェクトの生成、リセット</td>
-      <td>変更可能か?</td>
-      <td>呼び出し元</td>
+      <th class="empty">&nbsp;</th>
+      <th>メモリ割り当て、オブジェクトの生成、リセット</th>
+      <th>変更可能か?</th>
+      <th>呼び出し元</th>
      </tr>
 
+    </thead>
+
+    <tbody class="tbody">
      <tr>
       <td>Connection (MYSQLND)</td>
       <td>mysqlnd_init()</td>
@@ -414,21 +439,24 @@ static MY_CONN_PROPERTIES** get_conn_properties(const MYSQLND *conn TSRMLS_DC) {
   </table>
 
   <p class="para">
-   コンストラクタを全面的に置き換えないことを強く推奨します。コンストラクタはメモリへの割り当てを実行します。<em>mysqlnd</em>プラグインAPI と オブジェクトのロジックにとってメモリへの割り当ては決定的に重要です。開発者が警告を無視してコンストラクタへのフックを強行する場合、コンストラクタで何かをする前に親のコンストラクタを少なくとも呼び出すべきです。
+   コンストラクタを全面的に置き換えないことを強く推奨します。コンストラクタはメモリへの割り当てを実行します。<code class="literal">mysqlnd</code>プラグインAPI と オブジェクトのロジックにとってメモリへの割り当ては決定的に重要です。開発者が警告を無視してコンストラクタへのフックを強行する場合、コンストラクタで何かをする前に親のコンストラクタを少なくとも呼び出すべきです。
   </p>
   <p class="para">
    すべての警告に関わらず、コンストラクタを継承することが役に立つ場合があります。コンストラクタは、オブジェクトの関数テーブルを共有されていないオブジェクトの関数テーブルと一緒に修正するのにぴったりな場所です。共有されていないオブジェクトの関数テーブルの例としては、結果セットやネットワーク、wire protocol が挙げられます。
   </p>
-  <table class="doctable table">
+  <table id="mysqlnd.plugin.deststatus" class="doctable table">
    <caption><strong>オブジェクトの破棄に関する状態</strong></caption>
    
-    <tbody class="tbody">
+    <thead>
      <tr>
-      <td class="empty">&nbsp;</td>
-      <td>継承したメソッドは親メソッドを呼ばねばならないか?</td>
-      <td>デストラクタ</td>
+      <th>Type</th>
+      <th>継承したメソッドは親メソッドを呼ばねばならないか?</th>
+      <th>デストラクタ</th>
      </tr>
 
+    </thead>
+
+    <tbody class="tbody">
      <tr>
       <td>Connection</td>
       <td>Yes, メソッドの実行後に呼び出さなければなりません</td>
@@ -470,22 +498,12 @@ static MY_CONN_PROPERTIES** get_conn_properties(const MYSQLND *conn TSRMLS_DC) {
   </table>
 
   <p class="para">
-   デストラクタは、<em>mysqlnd_plugin_get_plugin_<span class="replaceable">&lt;object&gt;</span>_data()</em> で取得したプロパティを破棄するのに適切な場所です。
+   デストラクタは、<code class="literal">mysqlnd_plugin_get_plugin_<span class="replaceable">&lt;object&gt;</span>_data()</code> で取得したプロパティを破棄するのに適切な場所です。
   </p>
   <p class="para">
-   ここで挙げたデストラクタは、オブジェクトそのものを破棄する 実際の <em>mysqlnd</em> メソッドと一致しないかもしれません。しかし、これらのデストラクタは、開発者がフックし、プラグインデータを解放する最良の場所なのです。コンストラクタに関しては、開発者がメソッドを完全に置き換えることができるものの、推奨されません。上の表に複数のメソッドが示されていた場合、<em>mysqlnd</em> がどのメソッドをはじめに呼び出したかに関わらず、開発者はここで示されているすべてのメソッドをフックし、プラグインのデータを解放する必要があります。
+   ここで挙げたデストラクタは、オブジェクトそのものを破棄する 実際の <code class="literal">mysqlnd</code> メソッドと一致しないかもしれません。しかし、これらのデストラクタは、開発者がフックし、プラグインデータを解放する最良の場所なのです。コンストラクタに関しては、開発者がメソッドを完全に置き換えることができるものの、推奨されません。上の表に複数のメソッドが示されていた場合、<code class="literal">mysqlnd</code> がどのメソッドをはじめに呼び出したかに関わらず、開発者はここで示されているすべてのメソッドをフックし、プラグインのデータを解放する必要があります。
   </p>
   <p class="para">
    プラグインに推奨されるやり方は、単純にメソッドをフックし、メモリを解放した後に親クラスの実装を速やかに呼び出すことです。
   </p>
-  <div class="caution"><strong class="caution">警告</strong>
-   <p class="para">
-    PHP 5.3.0 から 5.3.3 までは、PHPに存在するバグによって、プラグインはプラグイン固有のデータを持続的接続に結びつけることができませんでした。これは、<em>ext/mysql</em> と <em>ext/mysqli</em> が <em>mysqlnd</em> で必要な <em>end_psession()</em> メソッドを呼び出していなかったため、プラグインがメモリリークしていた可能性があったためでした。このバグは PHP 5.3.4 で修正されています。
-   </p>
-  </div>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqlnd.plugin.obtaining.html">mysqlnd plugin APIを取得する</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqlnd.plugin.api.html">mysqlnd のプラグインAPI</a></div>
- <div class="up"><a href="mysqlnd.plugin.html">MySQL Native Driver プラグインAPI</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

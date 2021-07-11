@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ファイルからの YAML ストリームをパースする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.yaml-emit.html">yaml_emit</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.yaml-parse-url.html">yaml_parse_url</a></div>
- <div class="up"><a href="ref.yaml.html">Yaml 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.yaml-parse-file" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.yaml-emit.html">« yaml_emit</a></li>
+      <li style="float: right;"><a href="function.yaml-parse-url.html">yaml_parse_url »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.yaml.html">Yaml 関数</a></li>
+    <li>ファイルからの YAML ストリームをパースする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.yaml-parse-file" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">yaml_parse_file</h1>
   <p class="verinfo">(PECL yaml &gt;= 0.4.0)</p><p class="refpurpose"><span class="refname">yaml_parse_file</span> &mdash; <span class="dc-title">ファイルからの YAML ストリームをパースする</span></p>
@@ -20,12 +33,7 @@
  <div class="refsect1 description" id="refsect1-function.yaml-parse-file-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>yaml_parse_file</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$pos</code><span class="initializer"> = 0</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$ndocs</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$callbacks</code><span class="initializer"> = null</span></span>
-  ]]] )</div>
+   <span class="methodname"><strong>yaml_parse_file</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$pos</code><span class="initializer"> = 0</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$ndocs</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$callbacks</code><span class="initializer"> = <strong><code>null</code></strong></span></span><br>): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
 
   <p class="para rdfs-comment">
    指定したファイルから読み込んだ YAML ドキュメントストリーム全体あるいはその一部を、PHP の変数に変換します。
@@ -57,8 +65,8 @@
      <dd>
 
       <p class="para">
-       ストリームから取り出すドキュメント (<em>-1</em>
-       はすべてのドキュメント、<em>0</em> は最初のドキュメント、...)。
+       ストリームから取り出すドキュメント (<code class="literal">-1</code>
+       はすべてのドキュメント、<code class="literal">0</code> は最初のドキュメント、...)。
       </p>
      </dd>
 
@@ -101,8 +109,8 @@
   <h3 class="title">返り値</h3>
   <p class="para">
    適切な PHP の型に変換した結果を返します。
-   失敗した場合に <strong><code>FALSE</code></strong> を返します。
-   <code class="parameter">pos</code> が <em>-1</em> の場合は配列を返します。
+   失敗した場合に <strong><code>false</code></strong> を返します。
+   <code class="parameter">pos</code> が <code class="literal">-1</code> の場合は配列を返します。
    配列の各要素が、ストリーム内で見つかった個々のドキュメントとなります。
   </p>
  </div>
@@ -112,12 +120,12 @@
   <h3 class="title">注意</h3>
   <div class="warning"><strong class="warning">警告</strong>
    <p class="para">
-    <em>!php/object</em> タグを使ったノードの
+    <code class="literal">!php/object</code> タグを使ったノードの
     <span class="function"><a href="function.unserialize.html" class="function">unserialize()</a></span> を有効にしている場合に、
     ユーザーからの信頼できない入力を
     <span class="function"><strong>yaml_parse_file()</strong></span>
     で処理するのは危険です。
-    この挙動を無効にするには、ini 設定の <em>yaml.decode_php</em> を利用します。
+    この挙動を無効にするには、ini 設定の <code class="literal">yaml.decode_php</code> を利用します。
    </p>
   </div>
  </div>
@@ -135,9 +143,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.yaml-emit.html">yaml_emit</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.yaml-parse-url.html">yaml_parse_url</a></div>
- <div class="up"><a href="ref.yaml.html">Yaml 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

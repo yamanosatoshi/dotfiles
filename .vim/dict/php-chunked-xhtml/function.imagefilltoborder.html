@@ -3,33 +3,40 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>特定色で塗りつぶす</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagefilledrectangle.html">imagefilledrectangle</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imagefilter.html">imagefilter</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.imagefilltoborder" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagefilledrectangle.html">« imagefilledrectangle</a></li>
+      <li style="float: right;"><a href="function.imagefilter.html">imagefilter »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">GD および Image 関数</a></li>
+    <li>特定色で塗りつぶす</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagefilltoborder" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">imagefilltoborder</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">imagefilltoborder</span> &mdash; <span class="dc-title">特定色で塗りつぶす</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagefilltoborder</span> &mdash; <span class="dc-title">特定色で塗りつぶす</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.imagefilltoborder-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>imagefilltoborder</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$image</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$x</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$y</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$border</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$color</code></span>
-   )</div>
+   <span class="methodname"><strong>imagefilltoborder</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="class.gdimage.html" class="type GdImage">GdImage</a></span> <code class="parameter">$image</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$x</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$y</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$border_color</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$color</code></span><br>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>imagefilltoborder()</strong></span>は、
-   <code class="parameter">border</code>で指定した色を境界色として塗りつぶし
+   <code class="parameter">border_color</code>で指定した色を境界色として塗りつぶし
    を行います。(<code class="parameter">x</code>,<code class="parameter">y</code>)が
    塗りつぶしの始点(左上が0, 0)で、領域内を
    <code class="parameter">color</code>色で塗りつぶします。
@@ -46,7 +53,7 @@
 image</code></dt>
 <dd>
 <p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
-のような画像作成関数が返す画像リソース。</p></dd>
+のような画像作成関数が返す <a href="class.gdimage.html" class="classname">GdImage</a> オブジェクト。</p></dd>
 
     
      <dt>
@@ -74,14 +81,12 @@ image</code></dt>
     
     
      <dt>
-<code class="parameter">border</code></dt>
+<code class="parameter">border_color</code></dt>
 
      <dd>
 
       <p class="para">
-       境界色。
-       <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span>
-       で作成した色 ID です。
+       境界色。<span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span> で作成された色識別子。
       </p>
      </dd>
 
@@ -93,9 +98,7 @@ image</code></dt>
      <dd>
 
       <p class="para">
-       塗りつぶし色。
-       <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span>
-       で作成した色 ID です。
+       塗りつぶし色。<span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span> で作成された色識別子。
       </p>
      </dd>
 
@@ -108,14 +111,45 @@ image</code></dt>
  <div class="refsect1 returnvalues" id="refsect1-function.imagefilltoborder-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.imagefilltoborder-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">image</code> は、
+  <a href="class.gdimage.html" class="classname">GdImage</a>
+  クラスのインスタンスを期待するようになりました。
+  これより前のバージョンでは、<span class="type">resource</span> が期待されていました。
+ </td>
+</tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
 
  <div class="refsect1 examples" id="refsect1-function.imagefilltoborder-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-3558">
+   <div class="example" id="example-2638">
     <p><strong>例1 楕円の塗りつぶし</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -136,9 +170,19 @@ image</code></dt>
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.imagefilledrectangle.html">imagefilledrectangle</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.imagefilter.html">imagefilter</a></div>
- <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+
+ <div class="refsect1 notes" id="refsect1-function.imagefilltoborder-notes">
+  <h3 class="title">注意</h3>
+  <p class="simpara">
+   塗りつぶしのアルゴリズムは、
+   どのピクセルが既に設定されているかについて明示的に記憶しません。
+   むしろピクセルの色からそれを推測しようとします。
+   よって、そのピクセルが既に存在していたものか、
+   新たに設定されたものなのかは区別できません。
+   これは、画像で既に使われている色で画像を塗りつぶそうとすると、
+   望ましくない結果が得られることがあるということです。
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

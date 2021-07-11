@@ -3,35 +3,45 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>指定されたデリミタの位置までのデータを一行分としてストリームから読み込む</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.stream-get-filters.html">stream_get_filters</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.stream-get-meta-data.html">stream_get_meta_data</a></div>
- <div class="up"><a href="ref.stream.html">ストリーム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.stream-get-line" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.stream-get-filters.html">« stream_get_filters</a></li>
+      <li style="float: right;"><a href="function.stream-get-meta-data.html">stream_get_meta_data »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.stream.html">ストリーム 関数</a></li>
+    <li>指定されたデリミタの位置までのデータを一行分としてストリームから読み込む</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.stream-get-line" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">stream_get_line</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">stream_get_line</span> &mdash; <span class="dc-title">指定されたデリミタの位置までのデータを一行分としてストリームから読み込む</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">stream_get_line</span> &mdash; <span class="dc-title">指定されたデリミタの位置までのデータを一行分としてストリームから読み込む</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.stream-get-line-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>stream_get_line</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$handle</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$ending</code></span>
-  ] )</div>
+   <span class="methodname"><strong>stream_get_line</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$handle</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$ending</code><span class="initializer"> = &quot;&quot;</span></span>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
    指定したハンドルから一行取得します。
   </p>
   <p class="para">
    読み込みは、<code class="parameter">length</code> バイト読まれたか、
-   <code class="parameter">ending</code> で指定された文字列がストリームに見つかった
-   か (この文字列は返値に <em class="emphasis">含まれません</em>)、あるいは
+   <code class="parameter">ending</code>
+   で指定された空でない文字列がストリームに見つかったか
+   (この文字列は返値に <em class="emphasis">含まれません</em>)、あるいは
    <acronym title="End Of File">EOF</acronym> に達したとき、のうち一番最初に遭遇したところで停止します。
   </p>
   <p class="para">
@@ -67,7 +77,11 @@
      <dd>
 
       <p class="para">
-       ハンドルから読み込むバイト数。
+       ハンドルから読み込む最大バイト数。
+       負の値はサポートされていません。
+       ゼロ(<code class="literal">0</code>) を指定すると、
+       ソケットのデフォルトのチャンクサイズ
+       つまり、<code class="literal">8192</code> を使います。
       </p>
      </dd>
 
@@ -97,7 +111,7 @@
    <code class="parameter">handle</code> で指定されたリソースから読み込んだデータを返します。
   </p>
   <p class="para">
-   エラーが発生した際には、<strong><code>FALSE</code></strong> を返します。
+   エラーが発生した際には、<strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -112,9 +126,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.stream-get-filters.html">stream_get_filters</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.stream-get-meta-data.html">stream_get_meta_data</a></div>
- <div class="up"><a href="ref.stream.html">ストリーム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

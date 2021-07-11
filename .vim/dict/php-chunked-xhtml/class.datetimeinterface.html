@@ -3,23 +3,36 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>DateTimeInterface インターフェイス</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="datetimeimmutable.sub.html">DateTimeImmutable::sub</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="datetime.diff.html">DateTime::diff</a></div>
- <div class="up"><a href="book.datetime.html">Date/Time</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="class.datetimeinterface" class="reference">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="datetimeimmutable.sub.html">« DateTimeImmutable::sub</a></li>
+      <li style="float: right;"><a href="datetime.diff.html">DateTime::diff »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.datetime.html">Date/Time</a></li>
+    <li>DateTimeInterface インターフェイス</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.datetimeinterface" class="reference">
 
  <h1 class="title">DateTimeInterface インターフェイス</h1>
  
 
- <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7)</p>
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7, PHP 8)</p>
 
 
   <div class="section" id="datetimeinterface.intro">
-   <h2 class="title">導入</h2>
+   <h2 class="title">はじめに</h2>
    <p class="para">
     DateTimeInterface は、DateTime および DateTimeImmutable をタイプヒントで使えるようにするためのインターフェイスです。
     このインターフェイスを実装したクラスをユーザー側で作ることはできません。
@@ -41,38 +54,314 @@
      </span>
      {</div>
 
-    
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 定数 */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.atom"><var class="varname">ATOM</var></a></var><span class="initializer"> = &quot;Y-m-d\TH:i:sP&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.cookie"><var class="varname">COOKIE</var></a></var><span class="initializer"> = &quot;l, d-M-Y H:i:s T&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.iso8601"><var class="varname">ISO8601</var></a></var><span class="initializer"> = &quot;Y-m-d\TH:i:sO&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.rfc822"><var class="varname">RFC822</var></a></var><span class="initializer"> = &quot;D, d M y H:i:s O&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.rfc850"><var class="varname">RFC850</var></a></var><span class="initializer"> = &quot;l, d-M-y H:i:s T&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.rfc1036"><var class="varname">RFC1036</var></a></var><span class="initializer"> = &quot;D, d M y H:i:s O&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.rfc1123"><var class="varname">RFC1123</var></a></var><span class="initializer"> = &quot;D, d M Y H:i:s O&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+      <span class="modifier">const</span>
+      <span class="type">string</span>
+       <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.rfc7231"><var class="varname">RFC7231</var></a></var><span class="initializer"> = &quot;D, d M Y H:i:s \G\M\T&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.rfc2822"><var class="varname">RFC2822</var></a></var><span class="initializer"> = &quot;D, d M Y H:i:s O&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.rfc3339"><var class="varname">RFC3339</var></a></var><span class="initializer"> = &quot;Y-m-d\TH:i:sP&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.rfc3339_extended"><var class="varname">RFC3339_EXTENDED</var></a></var><span class="initializer"> = &quot;Y-m-d\TH:i:s.vP&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.rss"><var class="varname">RSS</var></a></var><span class="initializer"> = &quot;D, d M Y H:i:s O&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.datetimeinterface.html#datetime.constants.w3c"><var class="varname">W3C</var></a></var><span class="initializer"> = &quot;Y-m-d\TH:i:sP&quot;</span>
+    ;</div>
+
+
     <div class="classsynopsisinfo classsynopsisinfo_comment">/* メソッド */</div>
     <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">DateInterval</span> <span class="methodname"><strong>diff</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="class.datetimeinterface.html" class="type DateTimeInterface">DateTimeInterface</a></span> <code class="parameter">$datetime2</code></span>
-   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$absolute</code><span class="initializer"> = false</span></span>
-  ] )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="datetime.format.html" class="methodname">format</a></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="datetime.getoffset.html" class="methodname">getOffset</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="datetime.gettimestamp.html" class="methodname">getTimestamp</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">DateTimeZone</span> <span class="methodname"><a href="datetime.gettimezone.html" class="methodname">getTimezone</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="methodname"><a href="datetime.wakeup.html" class="methodname">__wakeup</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>diff</strong></span>(<span class="methodparam"><span class="type"><a href="class.datetimeinterface.html" class="type DateTimeInterface">DateTimeInterface</a></span> <code class="parameter">$targetObject</code></span>, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$absolute</code><span class="initializer"> = <strong><code>false</code></strong></span></span>): <span class="type"><a href="class.dateinterval.html" class="type DateInterval">DateInterval</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="datetime.format.html" class="methodname">format</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="datetime.getoffset.html" class="methodname">getOffset</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="datetime.gettimestamp.html" class="methodname">getTimestamp</a></span>(): <span class="type"><span class="type">int</span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="datetime.gettimezone.html" class="methodname">getTimezone</a></span>(): <span class="type"><span class="type"><a href="class.datetimezone.html" class="type DateTimeZone">DateTimeZone</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="datetime.wakeup.html" class="methodname">__wakeup</a></span>(): <span class="type"><span class="type void">void</span></span></div>
 
    }</div>
 
 
   </div>
+
+
+  <div class="section" id="datetime.constants.types">
+   <h2 class="title">定義済み定数</h2>
+   <dl>
+
+    
+     <dt id="datetime.constants.atom"><strong><code>DateTimeInterface::ATOM</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_ATOM</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       Atom (例: 2005-08-15T15:52:01+00:00)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.cookie"><strong><code>DateTimeInterface::COOKIE</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_COOKIE</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       HTTP Cookie (例: Monday, 15-Aug-2005 15:52:01 UTC)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.iso8601"><strong><code>DateTimeInterface::ISO8601</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_ISO8601</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       ISO-8601 (例: 2005-08-15T15:52:01+0000)
+      </span>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <span class="simpara">
+        このフォーマットは、ISO-8601 と互換性がありません。
+        しかし、後方互換性を保つために残されています。
+        ISO-8601 と互換性を保つためには、
+        <strong><code>DateTime::ATOM</code></strong>
+        または <strong><code>DATE_ATOM</code></strong> を使うようにしてください。
+       </span>
+      </p></blockquote>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc822"><strong><code>DateTimeInterface::RFC822</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC822</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RFC 822 (例: Mon, 15 Aug 05 15:52:01 +0000)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc850"><strong><code>DateTimeInterface::RFC850</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC850</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RFC 850 (例: Monday, 15-Aug-05 15:52:01 UTC)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc1036"><strong><code>DateTimeInterface::RFC1036</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC1036</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RFC 1036 (例: Mon, 15 Aug 05 15:52:01 +0000)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc1123"><strong><code>DateTimeInterface::RFC1123</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC1123</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RFC 1123 (例: Mon, 15 Aug 2005 15:52:01 +0000)
+      </span>
+     </dd>
+
+    
+
+    
+      <dt id="datetime.constants.rfc7231"><strong><code>DateTimeInterface::RFC7231</code></strong></dt>
+
+      <dt>
+<strong><code>DATE_RFC7231</code></strong></dt>
+
+      <dd>
+
+       <span class="simpara">
+        RFC 7231 (PHP 7.0.19 と 7.1.5以降) (例: Sat, 30 Apr 2016 17:52:13 GMT)
+       </span>
+      </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc2822"><strong><code>DateTimeInterface::RFC2822</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC2822</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RFC 2822 (例: Mon, 15 Aug 2005 15:52:01 +0000)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc3339"><strong><code>DateTimeInterface::RFC3339</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC3339</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       <strong><code>DATE_ATOM</code></strong> と同じです
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc3339_extended"><strong><code>DateTimeInterface::RFC3339_EXTENDED</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC3339_EXTENDED</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RFC 3339 EXTENDED フォーマット (例: 2005-08-15T15:52:01.000+00:00)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rss"><strong><code>DateTimeInterface::RSS</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RSS</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RSS (例: Mon, 15 Aug 2005 15:52:01 +0000)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.w3c"><strong><code>DateTimeInterface::W3C</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_W3C</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       World Wide Web Consortium (例: 2005-08-15T15:52:01+00:00)
+      </span>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
 
  <div class="section" id="datetimeinterface.changelog">
   <h2 class="title">変更履歴</h2>
@@ -89,10 +378,10 @@
 
      <tbody class="tbody">
       <tr>
-       <td>5.5.8</td>
+       <td>7.2.0</td>
        <td>
-        <strong class="classname">DateTimeInterface</strong> を実装しようとすると fatal error が発生するようになりました。
-        それまでのバージョンではエラーは発生しませんでしたが、その挙動は間違ったものでした。
+        <a href="class.datetime.html" class="classname">DateTime</a> クラスの定数は、
+        <strong class="classname">DateTimeInterface</strong> で定義されるようになりました。
        </td>
       </tr>
 
@@ -157,9 +446,4 @@
 
 <h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="datetime.diff.html">DateTime::diff</a> — ふたつの DateTime オブジェクトの差を返す</li><li><a href="datetime.format.html">DateTime::format</a> — 指定した書式でフォーマットした日付を返す</li><li><a href="datetime.getoffset.html">DateTime::getOffset</a> — タイムゾーンのオフセットを返す</li><li><a href="datetime.gettimestamp.html">DateTime::getTimestamp</a> — Unix タイムスタンプを取得する</li><li><a href="datetime.gettimezone.html">DateTime::getTimezone</a> — 指定した DateTime に関連するタイムゾーンを返す</li><li><a href="datetime.wakeup.html">DateTime::__wakeup</a> — __wakeup ハンドラ</li></ul>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="datetimeimmutable.sub.html">DateTimeImmutable::sub</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="datetime.diff.html">DateTime::diff</a></div>
- <div class="up"><a href="book.datetime.html">Date/Time</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

@@ -3,55 +3,54 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>インストール要件</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="install.windows.html">Windows システムへのインストール</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="install.windows.pecl.html">PECL</a></div>
- <div class="up"><a href="install.windows.html">Windows システムへのインストール</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="install.windows.requirements" class="sect1">
-    <h2 class="title">インストール要件</h2>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.windows.html">« Windows システムへのインストール</a></li>
+      <li style="float: right;"><a href="install.windows.pecl.html">PECL »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="install.windows.html">Windows システムへのインストール</a></li>
+    <li>インストール要件</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.windows.requirements" class="sect1">
+  <h2 class="title">インストール要件</h2>
 
-    <p class="para">
-      PHP 5.5+ は、Windows 2008/Vista, or 2008r2, 2012, 2012r2, 2016 or 7, 8, 8.1, 10 で動きます。32ビット (x86) と64ビット (x64) のどちらでも動きます。PHP は Windows RT/WOA/ARM 上では動きません。
-    </p>
+  <p class="para">
+   PHP を動かすには、少なくとも Windows 2008/Vista が必要です。
+   32ビットまたは64ビット(<acronym>別名</acronym> X86 または X64。PHP は、Windows RT/WOA/ARM では動作しません) の環境が必要です。
+   PHP 7.2.0 以降では、
+   Windows 2008/Vista での動作はサポートしていません。 
+  </p>
 
-    <p class="para">
-      PHP は Visual C ランタイム (CRT) を必要とします。これを必要とするアプリケーションは多いので、おそらく既にインストールされているでしょう。
-    </p>
+  <p class="para">
+    PHP には、Visual C ランタイム (CRT) が必要です。これを必要とするアプリケーションは多いので、おそらく既にインストールされているでしょう。
+  </p>
 
-    <p class="para">
-      PHP 5.5 および 5.6 が必要とするのは VC CRT 11 (Visual Studio 2012) です。<a href="https://www.microsoft.com/en-us/download/details.aspx?id=30679" class="link external">&raquo;&nbsp;https://www.microsoft.com/en-us/download/details.aspx?id=30679</a> を参照ください。
-    </p>
+  <p class="para">
+   Microsoft Visual C++ 再配布可能パッケージ for Visual Studio 2019 が、これらの PHP バージョンと適合します。
+   <a href="https://visualstudio.microsoft.com/downloads/" class="link external">&raquo;&nbsp;https://visualstudio.microsoft.com/downloads/</a> を参照してください。
+  </p>
 
-    <p class="para">
-      PHP 7.0+ が必要とするのは VC CRT 14 (Visual Studio 2015) です。<a href="https://www.microsoft.com/en-us/download/details.aspx?id=48145" class="link external">&raquo;&nbsp;https://www.microsoft.com/en-us/download/details.aspx?id=48145</a> を参照ください。
-    </p>
+  <p class="para">
+    x86 版のビルドには x86 版の CRT を、そして x64 版のビルドには x64 版の CRT が必要です。
+  </p>
 
-    <p class="para">
-      x86 版のビルドには x86 版の CRT を、そして x64 版のビルドには x64 版の CRT が必要です。
-    </p>
+  <p class="para">
+    CRT が既にインストール済みである場合はインストーラがそれを検出して通知してくれます。この場合、インストーラは何も手を加えません。
+  </p>
 
-    <p class="para">
-      CRT が既にインストール済みである場合はインストーラがそれを検出して通知してくれます。この場合、インストーラは何も手を加えません。
-   </p>
-
-    <p class="para">
-      CRT のインストーラはコマンドラインオプション /quiet および /norestart に対応しているので、スクリプトで自動実行させることもできます。
-    </p>
-
-    <p class="para">
-      VC11 CRT は、DLL をローカルマシンからリモートマシンにコピーすることもできます (`コピーデプロイメント` 方式のインストール)。そうすれば、リモートマシン (アクセス権限が制限されているウェブサーバーなど) でインストーラを実行する必要がなくなります。 http://www.sitepoint.com/install-php53-windows/ を参照ください。
-    </p>
-
-    <p class="para">
-      VC14 CRT は、`コピーデプロイメント` 方式のインストールに対応していません。VC14 CRT は大量の DLL で構成されています (その多くは api-* で始まるファイル名です)。これらすべてのファイルをコピーしても、さらに作業が必要となるでしょう (リソースハッカーなどのツールを使って、コピーする DLL の一覧を取得してみましょう)。
-    </p>
-
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="install.windows.html">Windows システムへのインストール</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="install.windows.pecl.html">PECL</a></div>
- <div class="up"><a href="install.windows.html">Windows システムへのインストール</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  <p class="para">
+    CRT のインストーラはコマンドラインオプション /quiet および /norestart に対応しているので、スクリプトで自動実行させることもできます。
+  </p>
+ </div></div></div></body></html>

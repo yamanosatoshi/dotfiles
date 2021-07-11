@@ -3,27 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>指定した変数の割当を解除する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.unserialize.html">unserialize</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.var-dump.html">var_dump</a></div>
- <div class="up"><a href="ref.var.html">変数操作 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.unset" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.unserialize.html">« unserialize</a></li>
+      <li style="float: right;"><a href="function.var-dump.html">var_dump »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.var.html">変数操作 関数</a></li>
+    <li>指定した変数の割当を解除する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.unset" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">unset</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">unset</span> &mdash; <span class="dc-title">指定した変数の割当を解除する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">unset</span> &mdash; <span class="dc-title">指定した変数の割当を解除する</span></p>
 
  </div>
- 
+
  <div class="refsect1 description" id="refsect1-function.unset-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>unset</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$var</code></span>
-   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$...</code></span>
-  ] )</div>
+   <span class="methodname"><strong>unset</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$var</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">...$vars</code></span>): <span class="type"><span class="type void">void</span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>unset()</strong></span> は指定した変数を破棄します。
@@ -58,7 +68,7 @@ bar
   </p>
   <p class="para">
    グローバル変数を関数の内部で <span class="function"><strong>unset()</strong></span> するには、
-   <var class="varname"><var class="varname"><a href="reserved.variables.globals.html" class="classname">$GLOBALS</a></var></var> 配列を使います。
+   <var class="varname"><a href="reserved.variables.globals.html" class="classname">$GLOBALS</a></var> 配列を使います。
    <div class="informalexample">
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -142,7 +152,7 @@ Before unset: 3, after unset: 23
     
     
      <dt>
-<code class="parameter">...</code></dt>
+<code class="parameter">vars</code></dt>
 
      <dd>
 
@@ -169,7 +179,7 @@ Before unset: 3, after unset: 23
  <div class="refsect1 examples" id="refsect1-function.unset-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-6130">
+   <div class="example" id="example-5205">
     <p><strong>例1 <span class="function"><strong>unset()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -179,14 +189,15 @@ Before unset: 3, after unset: 23
     </div>
 
    </div>
-   <div class="example" id="example-6131">
-    <p><strong>例2 <em>(unset)</em> によるキャスト</strong></p>
+   <div class="example" id="example-5206">
+    <p><strong>例2 <code class="literal">(unset)</code> によるキャスト</strong></p>
     <div class="example-contents"><p>
-     <em>(unset)</em> によるキャストは
+     <a href="language.types.null.html#language.types.null.casting" class="link"><code class="literal">(unset)</code></a> によるキャストは
      <span class="function"><strong>unset()</strong></span> 関数と混同されがちです。
-     <em>(unset)</em> によるキャストは、
-     単に <em>NULL</em> 型へのキャストを徹底するだけであり、
+     <code class="literal">(unset)</code> によるキャストは、
+     単に <code class="literal">NULL</code> 型へのキャストを徹底するだけであり、
      キャストした変数の値を書き換えるわけではありません。
+     (unset) によるキャストは、PHP 7.2.0 で非推奨になります。
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -220,8 +231,8 @@ string(6) &quot;Felipe&quot;
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    PHP 5 以降では、オブジェクトのメソッド内で
-    <em>$this</em> を破棄することはできません。
+    オブジェクトのメソッド内で
+    <code class="literal">$this</code> を破棄することはできません。
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
@@ -239,18 +250,14 @@ string(6) &quot;Felipe&quot;
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - 変数がセットされていること、そして NULL でないことを検査する</span></li>
+    <li class="member"><span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - 変数が宣言されていること、そして null とは異なることを検査する</span></li>
     <li class="member"><span class="function"><a href="function.empty.html" class="function" rel="rdfs-seeAlso">empty()</a> - 変数が空であるかどうかを検査する</span></li>
     <li class="member"><a href="language.oop5.overloading.html#object.unset" class="link">__unset()</a></li>
     <li class="member"><span class="function"><a href="function.array-splice.html" class="function" rel="rdfs-seeAlso">array_splice()</a> - 配列の一部を削除し、他の要素で置換する</span></li>
+    <li class="member"><a href="language.types.null.html#language.types.null.casting" class="link">(unset) casting</a></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.unserialize.html">unserialize</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.var-dump.html">var_dump</a></div>
- <div class="up"><a href="ref.var.html">変数操作 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

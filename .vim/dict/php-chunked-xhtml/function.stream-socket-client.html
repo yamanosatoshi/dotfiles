@@ -3,41 +3,47 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>インターネットドメインまたは Unix ドメインのソケット接続を開く</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.stream-socket-accept.html">stream_socket_accept</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.stream-socket-enable-crypto.html">stream_socket_enable_crypto</a></div>
- <div class="up"><a href="ref.stream.html">ストリーム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.stream-socket-client" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.stream-socket-accept.html">« stream_socket_accept</a></li>
+      <li style="float: right;"><a href="function.stream-socket-enable-crypto.html">stream_socket_enable_crypto »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.stream.html">ストリーム 関数</a></li>
+    <li>インターネットドメインまたは Unix ドメインのソケット接続を開く</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.stream-socket-client" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">stream_socket_client</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">stream_socket_client</span> &mdash; <span class="dc-title">インターネットドメインまたは Unix ドメインのソケット接続を開く</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">stream_socket_client</span> &mdash; <span class="dc-title">インターネットドメインまたは Unix ドメインのソケット接続を開く</span></p>
  
  </div>
  
  <div class="refsect1 description" id="refsect1-function.stream-socket-client-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">resource</span> <span class="methodname"><strong>stream_socket_client</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$remote_socket</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$errno</code></span>
-   [, <span class="methodparam"><span class="type">string</span> <code class="parameter reference">&$errstr</code></span>
-   [, <span class="methodparam"><span class="type">float</span> <code class="parameter">$timeout</code><span class="initializer"> = ini_get(&quot;default_socket_timeout&quot;)</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = STREAM_CLIENT_CONNECT</span></span>
-   [, <span class="methodparam"><span class="type">resource</span> <code class="parameter">$context</code></span>
-  ]]]]] )</div>
+   <span class="methodname"><strong>stream_socket_client</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$remote_socket</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$errno</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter reference">&$errstr</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">float</span> <code class="parameter">$timeout</code><span class="initializer"> = ini_get(&quot;default_socket_timeout&quot;)</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = STREAM_CLIENT_CONNECT</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">resource</span> <code class="parameter">$context</code><span class="initializer"> = ?</span></span><br>): <span class="type">resource</span></div>
 
   <p class="para rdfs-comment">
    <code class="parameter">remote_socket</code> で指定された接続先との、
    ストリームまたはデータグラム接続を確立します。
-   作成されるソケットのタイプは、<em>[トランスポート]://[ターゲット]</em>
+   作成されるソケットのタイプは、<code class="literal">[トランスポート]://[ターゲット]</code>
    という形式の URL フォーマットによって指定された
    トランスポートによって決定されます。
    TCP や UDP といったインターネットドメインのソケット (AF_INET)
    には、<code class="parameter">remote_socket</code> パラメータの
-   <em>ターゲット</em> の部分は、ホスト名または IP アドレスと、
+   <code class="literal">ターゲット</code> の部分は、ホスト名または IP アドレスと、
    それに続くコロンで区切られたポート番号から構成されていなければなりません。
    Unix ドメインのソケットの場合は、<code class="parameter">ターゲット</code>
    の部分は、ファイルシステムにおけるソケットのファイルを指定しなくては
@@ -101,7 +107,7 @@
      <dd>
 
       <p class="para">
-       <em>connect()</em> システムコールがタイムアウトとなるまでの秒数。
+       <code class="literal">connect()</code> システムコールがタイムアウトとなるまでの秒数。
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <span class="simpara">
          このパラメータが適用されるのは、非同期通信を試みていない場合のみです。
@@ -169,11 +175,11 @@
   <p class="para">
    失敗した場合は、<code class="parameter">errno</code> と
    <code class="parameter">errstr</code> に
-   システムレベルの <em>connect()</em>
+   システムレベルの <code class="literal">connect()</code>
    関数の実行時に発生したシステムレベルのエラーを表す値を返します。
-   もし、<code class="parameter">errno</code> に返された値が <em>0</em>
-   で、かつ、 この関数が <strong><code>FALSE</code></strong> を返した時は、
-   <em>connect()</em> システムコールの前に何らかのエラーが
+   もし、<code class="parameter">errno</code> に返された値が <code class="literal">0</code>
+   で、かつ、 この関数が <strong><code>false</code></strong> を返した時は、
+   <code class="literal">connect()</code> システムコールの前に何らかのエラーが
    発生したことを示しています。これは、多くの場合、ソケットの初期化
    に失敗したことで起こります。<code class="parameter">errno</code> と 
    <code class="parameter">errstr</code> パラメータは常に参照渡しされることに
@@ -186,7 +192,7 @@
  <div class="refsect1 examples" id="refsect1-function.stream-socket-client-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="stream-socket-client.example.basic">
+   <div class="example" id="example-3776">
     <p><strong>例1 <span class="function"><strong>stream_socket_client()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -196,7 +202,7 @@
     </div>
 
    </div>
-   <div class="example" id="stream-socket-client.example.daytime">
+   <div class="example" id="example-3777">
     <p><strong>例2 UDP 接続の使用</strong></p>
     <div class="example-contents"><p>
      ローカルホスト上で動いている
@@ -228,8 +234,8 @@
    </p>
   </div>
   <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">数値で IPv6 アドレスを指定するときは、
-(例 <em>fe80::1</em>) アドレスを角カッコでくくらなくてはなりません。たとえば、
-<em>tcp://[fe80::1]:80</em>.</span></p></blockquote>
+(例 <code class="literal">fe80::1</code>) アドレスを角カッコでくくらなくてはなりません。たとえば、
+<code class="literal">tcp://[fe80::1]:80</code>.</span></p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     環境により、Unix ドメインや接続タイムアウトが利用できない場合があります。
@@ -261,9 +267,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.stream-socket-accept.html">stream_socket_accept</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.stream-socket-enable-crypto.html">stream_socket_enable_crypto</a></div>
- <div class="up"><a href="ref.stream.html">ストリーム 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

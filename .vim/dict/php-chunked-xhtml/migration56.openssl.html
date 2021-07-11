@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>PHP 5.6.x における OpenSSL 関連の変更</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="migration56.new-functions.html">新しい関数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="migration56.extensions.html">その他の拡張モジュールに対する変更</a></div>
- <div class="up"><a href="migration56.html">PHP 5.5.x から PHP 5.6.x への移行</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="migration56.openssl" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration56.new-functions.html">« 新しい関数</a></li>
+      <li style="float: right;"><a href="migration56.extensions.html">その他の拡張モジュールに対する変更 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration56.html">PHP 5.5.x から PHP 5.6.x への移行</a></li>
+    <li>PHP 5.6.x における OpenSSL 関連の変更</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration56.openssl" class="sect1">
  <h2 class="title">PHP 5.6.x における OpenSSL 関連の変更</h2>
 
  <div class="sect2" id="migration56.openssl.peer-verification">
@@ -36,10 +49,10 @@
     一般的にはおすすめできませんが、
     コンテキストオプション
     <a href="context.ssl.html#context.ssl.verify-peer" class="link"><code class="parameter">verify_peer</code></a>
-    を <strong><code>FALSE</code></strong> にしてリクエストでのピア証明書の検証を無効化することもできます。
+    を <strong><code>false</code></strong> にしてリクエストでのピア証明書の検証を無効化することもできます。
     また同じく、ピア名の検証も、コンテキストオプション
     <a href="context.ssl.html#context.ssl.verify-peer-name" class="link"><code class="parameter">verify_peer_name</code></a>
-    を <strong><code>FALSE</code></strong> にすれば無効化できます。
+    を <strong><code>false</code></strong> にすれば無効化できます。
    </p>
 
  </div>
@@ -53,8 +66,8 @@
    X.509 証明書からフィンガープリントを抽出します。また、
    <a href="context.ssl.html" class="link">SSL ストリームコンテキスト</a>
    に二つのオプションが追加されました。
-   <em>capture_peer_cert</em> はピアの X.509 証明書を取り込み、
-   <em>peer_fingerprint</em> はピアの証明書が指定したフィンガープリントにマッチすることを確かめます。
+   <code class="literal">capture_peer_cert</code> はピアの X.509 証明書を取り込み、
+   <code class="literal">peer_fingerprint</code> はピアの証明書が指定したフィンガープリントにマッチすることを確かめます。
   </p>
  </div>
 
@@ -84,7 +97,7 @@
    SSL/TLS の圧縮が、デフォルトで無効になりました。これは、CRIME 攻撃への対応です。
    PHP 5.4.13 で新たにコンテキストオプション
    <a href="context.ssl.html#context.ssl.disable-compression" class="link"><code class="parameter">disable_compression</code></a>
-   が加わり、圧縮を無効にできるようになりました。そのデフォルト値が <strong><code>TRUE</code></strong> （つまり圧縮が無効になっている)
+   が加わり、圧縮を無効にできるようになりました。そのデフォルト値が <strong><code>true</code></strong> （つまり圧縮が無効になっている)
    に変わったのです。
   </p>
  </div>
@@ -107,7 +120,7 @@
    <span class="function"><a href="function.stream-get-meta-data.html" class="function">stream_get_meta_data()</a></span> あるいは
    <span class="function"><a href="function.stream-context-get-options.html" class="function">stream_context_get_options()</a></span> でできるようになりました。
    これは、SSL コンテキストオプション
-   <code class="parameter">capture_session_meta</code> が <strong><code>TRUE</code></strong> になっている場合に有効です。
+   <code class="parameter">capture_session_meta</code> が <strong><code>true</code></strong> になっている場合に有効です。
   </p>
 
   <div class="informalexample">
@@ -159,7 +172,7 @@ array(4) {
 
      <p class="para">
       このオプションで、ECDH 暗号で使う曲線を選択できるようになります。
-      省略した場合は <em>prime256v1</em> を使います。
+      省略した場合は <code class="literal">prime256v1</code> を使います。
      </p>
     </dd>
 
@@ -189,7 +202,7 @@ array(4) {
     <dd>
 
      <p class="para">
-      <strong><code>TRUE</code></strong> にすると、Diffie-Hellman パラメータを使うときに、
+      <strong><code>true</code></strong> にすると、Diffie-Hellman パラメータを使うときに、
       新たな鍵ペアを作成します。これにより、前方秘匿性が向上します。
      </p>
     </dd>
@@ -202,7 +215,7 @@ array(4) {
     <dd>
 
      <p class="para">
-      <strong><code>TRUE</code></strong> にすると、ECDH 暗号スイートでのネゴシエート時に
+      <strong><code>true</code></strong> にすると、ECDH 暗号スイートでのネゴシエート時に
       新たな鍵ペアを作成します。これにより、前方秘匿性が向上します。
      </p>
     </dd>
@@ -242,37 +255,37 @@ array(4) {
     <td class="seg">任意のバージョンの TLS あるいは SSL</td>
     <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_ANY_CLIENT</code></strong></td>
     <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_ANY_SERVER</code></strong></td>
-    <td class="seg"><em>ssl://</em></td>
+    <td class="seg"><code class="literal">ssl://</code></td>
    </tr>
    <tr class="seglistitem">
     <td class="seg">任意のバージョンの TLS</td>
     <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLS_CLIENT</code></strong></td>
     <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLS_SERVER</code></strong></td>
-    <td class="seg"><em>tls://</em></td>
+    <td class="seg"><code class="literal">tls://</code></td>
    </tr>
    <tr class="seglistitem">
     <td class="seg">TLS 1.0</td>
     <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_0_CLIENT</code></strong></td>
     <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_0_SERVER</code></strong></td>
-    <td class="seg"><em>tlsv1.0://</em></td>
+    <td class="seg"><code class="literal">tlsv1.0://</code></td>
    </tr>
    <tr class="seglistitem">
     <td class="seg">TLS 1.1</td>
     <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT</code></strong></td>
     <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_1_SERVER</code></strong></td>
-    <td class="seg"><em>tlsv1.1://</em></td>
+    <td class="seg"><code class="literal">tlsv1.1://</code></td>
    </tr>
    <tr class="seglistitem">
     <td class="seg">TLS 1.2</td>
     <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT</code></strong></td>
     <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_2_SERVER</code></strong></td>
-    <td class="seg"><em>tlsv1.2://</em></td>
+    <td class="seg"><code class="literal">tlsv1.2://</code></td>
    </tr>
    <tr class="seglistitem">
     <td class="seg">SSL 3</td>
     <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_SSLv3_CLIENT</code></strong></td>
     <td class="seg"><strong><code>STREAM_CRYPTO_METHOD_SSLv3_SERVER</code></strong></td>
-    <td class="seg"><em>sslv3://</em></td>
+    <td class="seg"><code class="literal">sslv3://</code></td>
    </tr>
   </tbody></table>
 
@@ -338,7 +351,7 @@ array(8) {
    <span class="function"><a href="function.openssl-spki-verify.html" class="function">openssl_spki_verify()</a></span>、
    <span class="function"><a href="function.openssl-spki-export-challenge.html" class="function">openssl_spki_export_challenge()</a></span> そして
    <span class="function"><a href="function.openssl-spki-export.html" class="function">openssl_spki_export()</a></span> で、
-   SPKAC が HTML5 の <em>KeyGen</em> 要素から生成した
+   SPKAC が HTML5 の <code class="literal">KeyGen</code> 要素から生成した
    PEM 公開鍵とチャレンジの作成、検証、エクスポートを行います。
   </p>
 
@@ -462,9 +475,4 @@ MGw/+AwwjHBOwong/QIDAQAB
   </dl>
 
  </div>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="migration56.new-functions.html">新しい関数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="migration56.extensions.html">その他の拡張モジュールに対する変更</a></div>
- <div class="up"><a href="migration56.html">PHP 5.5.x から PHP 5.6.x への移行</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

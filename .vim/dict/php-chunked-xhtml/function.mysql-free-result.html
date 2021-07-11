@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>結果保持用メモリを開放する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-field-type.html">mysql_field_type</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mysql-get-client-info.html">mysql_get_client_info</a></div>
- <div class="up"><a href="ref.mysql.html">MySQL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.mysql-free-result" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mysql-field-type.html">« mysql_field_type</a></li>
+      <li style="float: right;"><a href="function.mysql-get-client-info.html">mysql_get_client_info »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mysql.html">MySQL 関数</a></li>
+    <li>結果保持用メモリを開放する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mysql-free-result" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mysql_free_result</h1>
   <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_free_result</span> &mdash; <span class="dc-title">結果保持用メモリを開放する</span></p>
@@ -23,12 +36,11 @@
 この拡張モジュールは PHP 5.5.0 で非推奨になり、PHP 7.0.0 で削除されました。
 <a href="book.mysqli.html" class="link">MySQLi</a> あるいは
 <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a> を使うべきです。詳細な情報は
-<a href="mysqlinfo.api.choosing.html" class="link">MySQL: API の選択</a> や
-<a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">それに関連する FAQ</a> を参照ください。
+<a href="mysqlinfo.api.choosing.html" class="link">MySQL: API の選択</a> を参照ください。
 この関数の代替として、これらが使えます。</p>
    <ul class="simplelist">
     <li class="member"><span class="function"><a href="mysqli-result.free.html" class="function">mysqli_free_result()</a></span></li>
-    <li class="member"><strong><code>NULL</code></strong> を PDO オブジェクトに代入、あるいは <span class="methodname"><a href="pdostatement.closecursor.html" class="methodname">PDOStatement::closeCursor()</a></span></li>
+    <li class="member"><strong><code>null</code></strong> を PDO オブジェクトに代入、あるいは <span class="methodname"><a href="pdostatement.closecursor.html" class="methodname">PDOStatement::closeCursor()</a></span></li>
    </ul>
   </div>
  </div>
@@ -36,9 +48,7 @@
  <div class="refsect1 description" id="refsect1-function.mysql-free-result-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>mysql_free_result</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$result</code></span>
-   )</div>
+   <span class="methodname"><strong>mysql_free_result</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$result</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>mysql_free_result()</strong></span> は、結果 ID <code class="parameter">result</code>
@@ -75,12 +85,12 @@ result</code></dt>
  <div class="refsect1 returnvalues" id="refsect1-function.mysql-free-result-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
   <p class="para">
    <code class="parameter">result</code> がリソースではなかった場合、
    E_WARNING レベルのエラーが発生します。
-   <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> が <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>
+   <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> が <span class="type">resource</span>
    を返すのは SELECT, SHOW, EXPLAIN, そして DESCRIBE
    の場合だけであることに注意しましょう。
   </p>
@@ -90,7 +100,7 @@ result</code></dt>
   <div class="refsect1 examples" id="refsect1-function.mysql-free-result-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1967">
+   <div class="example" id="example-1718">
     <p><strong>例1 <span class="function"><strong>mysql_free_result()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -125,9 +135,4 @@ result</code></dt>
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.mysql-field-type.html">mysql_field_type</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.mysql-get-client-info.html">mysql_get_client_info</a></div>
- <div class="up"><a href="ref.mysql.html">MySQL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>下位互換性のない変更点</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="migration56.html">PHP 5.5.x から PHP 5.6.x への移行</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="migration56.new-features.html">新機能</a></div>
- <div class="up"><a href="migration56.html">PHP 5.5.x から PHP 5.6.x への移行</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="migration56.incompatible" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration56.html">« PHP 5.5.x から PHP 5.6.x への移行</a></li>
+      <li style="float: right;"><a href="migration56.new-features.html">新機能 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration56.html">PHP 5.5.x から PHP 5.6.x への移行</a></li>
+    <li>下位互換性のない変更点</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration56.incompatible" class="sect1">
  <h2 class="title">下位互換性のない変更点</h2>
  <p class="simpara">
   既存の PHP 5 のコードのほとんどは変更なしで動作するはずですが、
@@ -66,8 +79,8 @@ array(3) {
 
   <p class="para">
    <span class="function"><a href="function.json-decode.html" class="function">json_decode()</a></span> は、JSON リテラル
-   <em>true</em>、<em>false</em> および
-   <em>null</em> について、すべて小文字のものしか受け付けなくなりました。
+   <code class="literal">true</code>、<code class="literal">false</code> および
+   <code class="literal">null</code> について、すべて小文字のものしか受け付けなくなりました。
    これは、JSON の仕様に基づくものです。小文字以外の場合は、<span class="function"><a href="function.json-last-error.html" class="function">json_last_error()</a></span> にエラーが設定されます。
    以前のバージョンの <span class="function"><a href="function.json-decode.html" class="function">json_decode()</a></span> は、大文字が混ざっているものでも受け付けていました。
   </p>
@@ -102,10 +115,10 @@ array(3) {
     一般的にはおすすめできませんが、
     コンテキストオプション
     <a href="context.ssl.html#context.ssl.verify-peer" class="link"><code class="parameter">verify_peer</code></a>
-    を <strong><code>FALSE</code></strong> にしてリクエストでのピア証明書の検証を無効化することもできます。
+    を <strong><code>false</code></strong> にしてリクエストでのピア証明書の検証を無効化することもできます。
     また同じく、ピア名の検証も、コンテキストオプション
     <a href="context.ssl.html#context.ssl.verify-peer-name" class="link"><code class="parameter">verify_peer_name</code></a>
-    を <strong><code>FALSE</code></strong> にすれば無効化できます。
+    を <strong><code>false</code></strong> にすれば無効化できます。
    </p>
 
  </div>
@@ -125,9 +138,9 @@ array(3) {
 
   <p class="para">
    <span class="function"><a href="function.mcrypt-encrypt.html" class="function">mcrypt_encrypt()</a></span>、<span class="function"><a href="function.mcrypt-decrypt.html" class="function">mcrypt_decrypt()</a></span>、
-   <span class="function"><a href="function.mcrypt-cbc.html" class="function">mcrypt_cbc()</a></span>、<span class="function"><a href="function.mcrypt-cfb.html" class="function">mcrypt_cfb()</a></span>、
-   <span class="function"><a href="function.mcrypt-ecb.html" class="function">mcrypt_ecb()</a></span>、<span class="function"><a href="function.mcrypt-generic.html" class="function">mcrypt_generic()</a></span> および
-   <span class="function"><a href="function.mcrypt-ofb.html" class="function">mcrypt_ofb()</a></span> は、無効なサイズのキーや IV を受け付けなくなりました。
+   <span class="function"><strong>mcrypt_cbc()</strong></span>、<span class="function"><strong>mcrypt_cfb()</strong></span>、
+   <span class="function"><strong>mcrypt_ecb()</strong></span>、<span class="function"><a href="function.mcrypt-generic.html" class="function">mcrypt_generic()</a></span> および
+   <span class="function"><strong>mcrypt_ofb()</strong></span> は、無効なサイズのキーや IV を受け付けなくなりました。
    IV が必要なブロック暗号化モードで IV が指定されていない場合にも、処理が失敗するようになりました。
   </p>
  </div>
@@ -136,13 +149,8 @@ array(3) {
   <h3 class="title"><a href="book.curl.html" class="link">cURL</a> でのファイルアップロード</h3>
 
   <p class="para">
-   @file 構文によるファイルアップロードを行う際には、CURLOPT_SAFE_UPLOAD を <strong><code>FALSE</code></strong> に設定しなければいけなくなりました。
+   @file 構文によるファイルアップロードを行う際には、CURLOPT_SAFE_UPLOAD を <strong><code>false</code></strong> に設定しなければいけなくなりました。
    この機能を使うのではなく、<a href="class.curlfile.html" class="classname">CURLFile</a> を使うべきです。
   </p>
  </div>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="migration56.html">PHP 5.5.x から PHP 5.6.x への移行</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="migration56.new-features.html">新機能</a></div>
- <div class="up"><a href="migration56.html">PHP 5.5.x から PHP 5.6.x への移行</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

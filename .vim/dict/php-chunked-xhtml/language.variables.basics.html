@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>基本的な事</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.variables.html">変数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.variables.predefined.html">定義済みの変数</a></div>
- <div class="up"><a href="language.variables.html">変数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.variables.basics" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.variables.html">« 変数</a></li>
+      <li style="float: right;"><a href="language.variables.predefined.html">定義済みの変数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.variables.html">変数</a></li>
+    <li>基本的な事</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.variables.basics" class="sect1">
    <h2 class="title">基本的な事</h2>
    
    <p class="simpara">
@@ -23,19 +36,22 @@
     有効な変数名は文字またはアンダースコアから始まり、任意の数の文字、
     数字、アンダースコアが続きます。正規表現によれば、これは次の
     ように表現することができます。
-    &#039;<em>[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*</em>&#039;
+    <code class="code">^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$</code>
    </p>
    
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <span class="simpara">
-     ここで言うところの文字とはa-z、A-Z、127から255まで
-     (<em>0x7f-0xff</em>)のバイトを意味します。
+     ここで言うところの文字とはa-z、A-Z、128から255まで
+     (<code class="literal">0x80-0xff</code>)のバイトを意味します。
     </span>
    </p></blockquote>
 
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <span class="simpara">
-     <em>$this</em> は特別な変数であり、ここに代入することはできません。
+     <code class="literal">$this</code> は特別な変数であり、ここに代入することはできません。
+     PHP 7.1.0 より前のバージョンでは、
+     (<a href="language.variables.variable.html" class="link">可変変数</a> を使った)
+     間接的な代入 が可能でした。
     </span>
    </p></blockquote>
 
@@ -52,7 +68,7 @@
     <div class="informalexample">
      <div class="example-contents"> 
 <div class="phpcode"><code><span style="color: #000000">
-$var&nbsp;=&nbsp;'Bob';<br />$Var&nbsp;=&nbsp;'Joe';<br />echo&nbsp;"$var,&nbsp;$Var";&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;"Bob,&nbsp;Joe"を出力します。<br /><br />$4site&nbsp;=&nbsp;'not&nbsp;yet';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;無効：数字で始まっている。<br />$_4site&nbsp;=&nbsp;'not&nbsp;yet';&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;有効：アンダースコアで始まっている。<br />$täyte&nbsp;=&nbsp;'mansikka';&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;有効：'ä'&nbsp;はアスキーコード228です。</span>
+$var&nbsp;=&nbsp;'Bob';<br />$Var&nbsp;=&nbsp;'Joe';<br />echo&nbsp;"$var,&nbsp;$Var";&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;"Bob,&nbsp;Joe"を出力します。<br /><br />$4site&nbsp;=&nbsp;'not&nbsp;yet';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;無効：数字で始まっている。<br />$_4site&nbsp;=&nbsp;'not&nbsp;yet';&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;有効：アンダースコアで始まっている。<br />$tayte&nbsp;=&nbsp;'mansikka';&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;有効：'a'&nbsp;はアスキーコード228です。</span>
 </code></div>
      </div>
 
@@ -78,7 +94,7 @@ $var&nbsp;=&nbsp;'Bob';<br />$Var&nbsp;=&nbsp;'Joe';<br />echo&nbsp;"$var,&nbsp;
    <p class="para">
    参照により代入を行うには、代入する変数(ソース変数)の先頭に
    アンパサンドを加えます。たとえば、次の簡単なコードは
-   &#039;<em>My name is Bob</em>&#039;を二度出力します。
+   &#039;<code class="literal">My name is Bob</code>&#039;を二度出力します。
 
     <div class="informalexample">
      <div class="example-contents">
@@ -109,12 +125,12 @@ $var&nbsp;=&nbsp;'Bob';<br />$Var&nbsp;=&nbsp;'Joe';<br />echo&nbsp;"$var,&nbsp;
    <p class="para">
     PHP では変数を初期化する必要はありませんが、そのようにするのはとてもよいことです。
     初期化されていない変数の値は、状況に応じたその型のデフォルト値
-    - boolean なら <strong><code>FALSE</code></strong>、integer や float ならゼロ、
+    - boolean なら <strong><code>false</code></strong>、integer や float ならゼロ、
     文字列 (<span class="function"><a href="function.echo.html" class="function">echo</a></span> で使う場合など)
     なら空の文字列、配列なら空の配列となります。
    </p>
    <p class="para">
-    <div class="example" id="example-115">
+    <div class="example" id="example-72">
      <p><strong>例1 初期化されていない変数のデフォルト値</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -127,18 +143,11 @@ $var&nbsp;=&nbsp;'Bob';<br />$Var&nbsp;=&nbsp;'Joe';<br />echo&nbsp;"$var,&nbsp;
    </p>
    <p class="para">
     初期化されていない変数のデフォルト値に依存すると、そのファイルを
-    include している別のファイルで同名の変数が使用されていた場合などに
-    問題を起こします。また、<a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
-    が on の場合には重大な<a href="security.globals.html" class="link">セキュリティリスク</a>
-    を抱えることになります。初期化されていない変数を使用すると、
+    include している別のファイルで同名の変数が使用されていた場合などに問題を起こします。
+    初期化されていない変数を使用すると、
     <a href="" class="link">E_NOTICE</a> レベルのエラーが発生します。
     しかし、初期化されていない配列に要素を追加する場合はエラーにはなりません。
     変数が初期化されているかどうかの判断には、<span class="function"><a href="function.isset.html" class="function">isset()</a></span>
     を使用します。
    </p>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.variables.html">変数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.variables.predefined.html">定義済みの変数</a></div>
- <div class="up"><a href="language.variables.html">変数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

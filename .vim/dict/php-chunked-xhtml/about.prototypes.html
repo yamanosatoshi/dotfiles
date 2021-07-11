@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>関数の定義(プロトタイプ)を読むには</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="about.notes.html">ユーザーノートについて</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="about.phpversions.html">本マニュアルに記載された PHP のバージョン</a></div>
- <div class="up"><a href="about.html">マニュアルについて</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="about.prototypes" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="about.notes.html">« ユーザーノートについて</a></li>
+      <li style="float: right;"><a href="about.phpversions.html">本マニュアルに記載された PHP のバージョン »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="about.html">マニュアルについて</a></li>
+    <li>関数の定義(プロトタイプ)を読むには</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="about.prototypes" class="sect1">
     <h2 class="title">関数の定義(プロトタイプ)を読むには</h2>
     <p class="para">
      各関数についてクイックリファレンスが記述されているので、
@@ -35,9 +48,9 @@
     <p class="para">
     <div class="example-contents screen">
 <div class="cdata"><pre>
- strlen
+strlen ( string $string ) : int
  
-(PHP 4, PHP 5)
+(PHP 4, PHP 5, PHP 7)
  strlen -- 文字列の長さを得る
  
  説明
@@ -71,20 +84,10 @@ int strlen ( string $string )
 
        <tr>
         <td>
-          (PHP 4, PHP 5)
+          (PHP 4, PHP 5, PHP 7)
         </td>
         <td>
-         strlen()は PHP 4 と PHP 5 のすべてのバージョンで使用できる
-        </td>
-       </tr>
-
-       <tr>
-        <td>
-         int
-        </td>
-        <td>
-         関数が戻す値の型。ここでは<span class="type"><span class="type 整数">整数</span></span>
-         (文字列の長さが数字で数えら得ている)
+         strlen()は PHP 4 と PHP 5、そして PHP 7 のすべてのバージョンで使用できる
         </td>
        </tr>
 
@@ -99,6 +102,16 @@ int strlen ( string $string )
         </td>
        </tr>
 
+       <tr>
+        <td>
+         int
+        </td>
+        <td>
+         関数が戻す値の型。ここでは整数型
+         (文字列の長さが数字で数えられている)
+        </td>
+       </tr>
+
       </tbody>
      
     </table>
@@ -110,7 +123,7 @@ int strlen ( string $string )
    <p class="para">
     <div class="example-contents screen">
 <div class="cdata"><pre>
-     returned type    function name    ( parameter type   parameter name )
+     function name    ( parameter type   parameter name ) : returned type
 </pre></div>
     </div>
    </p>
@@ -121,15 +134,15 @@ int strlen ( string $string )
    <p class="para">
     <div class="example-contents screen">    
 <div class="cdata"><pre>
-      bool in_array ( mixed $needle, array $haystack [, bool $strict = FALSE ] )
+      in_array ( mixed $needle, array $haystack , bool $strict = false ) : bool
 </pre></div>
     </div>
    </p>
    <p class="para">
     これは何を意味しているのでしょう？ in_array() は
     <a href="language.types.boolean.html" class="link">boolean</a> の値を返します。
-    成功した場合は <strong><code>TRUE</code></strong>(<code class="parameter">needle</code> が
-      <code class="parameter">haystack</code> の中にある場合)、失敗した場合に <strong><code>FALSE</code></strong> を返します
+    成功した場合は <strong><code>true</code></strong>(<code class="parameter">needle</code> が
+      <code class="parameter">haystack</code> の中にある場合)、失敗した場合に <strong><code>false</code></strong> を返します
       (<code class="parameter">needle</code> が <code class="parameter">haystack</code>
       の中にない場合)。最初の引数は <code class="parameter">needle</code>
       と名づけられており、それは多くの違った<a href="language.types.html" class="link">
@@ -140,27 +153,27 @@ int strlen ( string $string )
       <a href="language.types.array.html" class="link">配列</a>でもかまいません。
       <code class="parameter">haystack</code> (対象を探す配列)は二番目の引数です。
       三番目の<em class="emphasis">オプション</em>の引数は <code class="parameter">strict</code>
-      と名づけられています。全てのオプション引数は
-      <em class="emphasis">[</em> ブラケット <em class="emphasis">]</em>の中に表現されます。
+      と名づけられています。全てのオプション引数はデフォルト値を持ちます。
+      デフォルト値が不明な場合、<code class="literal">?</code> と表示されます。
       <code class="parameter">strict</code> パラメータはデフォルトでは boolean の
-      <strong><code>FALSE</code></strong> であるとマニュアルに述べられています。機能の詳細については
+      <strong><code>false</code></strong> であるとマニュアルに述べられています。機能の詳細については
       各関数のマニュアルをご覧ください。
    </p>
     <p class="para"> 
      さらに、&amp; (アンパサンド) 記号を関数のパラメータの前につけると、
-     そのパラメータを<a href="language.references.pass.html" class="link">参照</a>渡しにすることができます。
+     そのパラメータを<a href="language.references.pass.html" class="link">リファレンス渡し</a>にすることができます。
     </p>
     <p class="para">
      <div class="example-contents screen"> 
-<div class="cdata"><pre> 
-       int preg_match ( string $pattern , string $subject [, array &amp;$matches 
-      [, int $flags = 0 [, int $offset = 0 ]]] )
+<div class="cdata"><pre>
+       preg_match ( string $pattern , string $subject , array &amp;$matches = null,
+       int $flags = 0 , int $offset = 0 ) : int|false
 </pre></div>
      </div>
     </p>
     <p class="para">
      この例では、三番目のオプションのパラメータ <code class="parameter">&amp;$matches</code>
-     が参照渡しとなります。
+     がリファレンス渡しとなります。
     </p>
    <p class="para">
     より複雑なバージョンとの関係を有する関数もあります。以下が
@@ -168,16 +181,11 @@ int strlen ( string $string )
    </p>
    <p class="para">
     <div class="example-contents screen">    <br />
-     (PHP 4 &gt;= 4.3.0, PHP 5)<br />
+     (PHP 4 &gt;= 4.3.0, PHP 5, PHP 7)<br />
     </div>
    </p>
    <p class="para">
     これは、この関数が
     PHP 4.3.0 以降のバージョンでのみ利用可能であることを意味します。
    </p>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="about.notes.html">ユーザーノートについて</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="about.phpversions.html">本マニュアルに記載された PHP のバージョン</a></div>
- <div class="up"><a href="about.html">マニュアルについて</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

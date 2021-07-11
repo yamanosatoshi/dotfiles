@@ -2,59 +2,73 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Nginx 1.4.x on Unix systems</title>
+  <title>Nginx 1.4.x (Unix システム用)</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="install.unix.apache2.html">Apache 2.x (Unixシステム用)</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="install.unix.lighttpd-14.html">Lighttpd 1.4 (Unix システム用)</a></div>
- <div class="up"><a href="install.unix.html">Unix システムへのインストール</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="install.unix.nginx" class="sect1">
- <h2 class="title">Nginx 1.4.x on Unix systems</h2>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.unix.apache2.html">« Apache 2.x (Unixシステム用)</a></li>
+      <li style="float: right;"><a href="install.unix.lighttpd-14.html">Lighttpd 1.4 (Unix システム用) »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="install.unix.html">Unix システムへのインストール</a></li>
+    <li>Nginx 1.4.x (Unix システム用)</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.unix.nginx" class="sect1">
+ <h2 class="title">Nginx 1.4.x (Unix システム用)</h2>
 
  <p class="para">
-  This documentation will cover installing and configuring PHP with
-  PHP-FPM for a Nginx 1.4.x HTTP server.
+  このドキュメントは、Nginx 1.4.x HTTPサーバ 向けに PHP を
+  PHP-FPM とともにインストールし、設定する方法を示します。
  </p>
 
  <p class="para">
-  This guide will assume that you have built Nginx from source and therefore
-  all binaries and configuration files are located at
-  <em>/usr/local/nginx</em>. If this is not the case and you have
-  obtained Nginx through other means then please refer to the
-  <a href="http://wiki.nginx.org/Main" class="link external">&raquo;&nbsp;Nginx Wiki</a> in order to translate
-  this manual to your setup.
+  このガイドは、あなたが Nginx をソースコードからビルドしたことを想定しています。
+  よって、すべてのバイナリと設定は 
+  <code class="literal">/usr/local/nginx</code> にあると想定しています。
+  仮にこれに当てはまらず、Nginx を他の手段で取得した場合は、
+  <a href="https://www.nginx.com/resources/wiki/" class="link external">&raquo;&nbsp;Nginx Wiki</a> を参照し、
+  このマニュアルをあなたのセットアップに読み替えてください。
  </p>
 
  <p class="para">
-  This guide will cover the basics of configuring an Nginx server to
-  process PHP applications and serve them on port 80, it is recommended
-  that you study the Nginx and PHP-FPM documentation if you wish to
-  optimise your setup past the scope of this documentation.
+  このガイドは、Nginx サーバが PHP アプリケーションを実行できるように設定し、
+  それを port 80 で公開するための基本的な設定を示します。
+  あなたのセットアップを最適化したい場合、Nginx と PHP-FPM のドキュメント
+  を調べることを推奨します。セットアップの最適化は、このガイドの範囲外です。
  </p>
 
  <p class="para">
-  Please note that throughout this documentation version numbers have been
-  replaced with an &#039;x&#039; to ensure this documentation stays correct in the future,
-  please replace these as necessary with the corresponding version numbers.
+  このドキュメント全体を通して、バージョン番号は
+  ドキュメント全体が将来でも正しく保たれるようにするため、
+  &#039;x&#039; で置き換えられている点に注意してください。
+  &#039;x&#039; については、必要に応じて対応するバージョン番号に置き換えるようにしてください。
  </p>
 
  <ol type="1">
   <li class="listitem">
    <p class="para">
-    It is recomended that you visit the Nginx Wiki
-    <a href="http://wiki.nginx.org/Install" class="link external">&raquo;&nbsp;install</a> page 
-    in order to obtain and install Nginx on your system.
+    あなたのシステム向けに Nginx を取得し、インストールするために、
+    Nginx Wiki の <a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" class="link external">&raquo;&nbsp;install</a>
+    を参照することを推奨します。
    </p>
   </li>
 
   <li class="listitem">
    <p class="para">
-    Obtain and unpack the PHP source:
+    PHP のソースコードを取得し、展開します。
    </p>
 
-   <div class="example" id="install.unix.nginx.extract.php">
+   <div class="informalexample">
     <div class="example-contents screen">
 <div class="cdata"><pre>
 tar zxf php-x.x.x
@@ -65,17 +79,20 @@ tar zxf php-x.x.x
 
   <li class="listitem">
    <p class="para">
-    Configure and build PHP.  This is where you customize PHP
-    with various options, like which extensions will be enabled. Run
-    ./configure --help for a list of available options.  In our example
-    we&#039;ll do a simple configure with PHP-FPM and MySQL support.
+    PHP を configure し、ビルドします。
+    ここで PHP を様々なオプションを使ってカスタマイズできます。
+    たとえば、どの拡張機能を有効にするか、のようなものです。
+    利用できるオプションの一覧については、 ./configure --help を
+    参照してください。
+    私達の例では、PHP-FPM を MySQLi のサポートを有効にして
+    シンプルに configure することにします。
    </p>
 
-   <div class="example" id="install.unix.nginx.build.php">
+   <div class="informalexample">
     <div class="example-contents screen">
 <div class="cdata"><pre>
 cd ../php-x.x.x
-./configure --enable-fpm --with-mysql
+./configure --enable-fpm --with-mysqli
 make
 sudo make install
 </pre></div>
@@ -85,14 +102,14 @@ sudo make install
 
   <li class="listitem">
    <p class="para">
-    Obtain and move configuration files to their correct locations
+    設定ファイルを取得し、正しい場所に移動します。
    </p>
 
-   <div class="example" id="install.unix.nginx.configure.php">
+   <div class="informalexample">
     <div class="example-contents screen">
 <div class="cdata"><pre>
 cp php.ini-development /usr/local/php/php.ini
-cp /usr/local/etc/php-fpm.conf.default /usr/local/etc/php-fpm.conf
+cp /usr/local/etc/php-fpm.d/www.conf.default /usr/local/etc/php-fpm.d/www.conf
 cp sapi/fpm/php-fpm /usr/local/bin
 </pre></div>
     </div>
@@ -101,20 +118,20 @@ cp sapi/fpm/php-fpm /usr/local/bin
 
   <li class="listitem">
    <p class="para">
-    It is important that we prevent Nginx from passing requests to the
-    PHP-FPM backend if the file does not exists, allowing us to prevent
-    arbitrarily script injection.
+    ファイルが存在しなかったときは、Nginx が PHP-FPM バックエンドに、
+    リクエストを渡さないようにし、任意のスクリプトの挿入を防げるようにすることが重要です。
    </p>
    <p class="para">
-    We can fix this by setting the
-    <a href="ini.core.html#ini.cgi.fix-pathinfo" class="link">cgi.fix_pathinfo</a>
-    directive to <em>0</em> within our php.ini file.
+    php.ini ファイルで、
+    <a href="ini.core.html#ini.cgi.fix-pathinfo" class="link">cgi.fix_pathinfo</a> 
+    ディレクティブを <code class="literal">0</code> に設定することで、
+    この設定を行うことができます。
    </p>
    <p class="para">
-    Load up php.ini:
+    php.ini をエディタで読み込みます:
    </p>
 
-   <div class="example" id="install.unix.nginx.configure.ini">
+   <div class="informalexample">
     <div class="example-contents screen">
 <div class="cdata"><pre>
 vim /usr/local/php/php.ini
@@ -123,10 +140,10 @@ vim /usr/local/php/php.ini
    </div>
 
    <p class="para">
-    Locate <em>cgi.fix_pathinfo=</em> and modify it as follows:
+    <code class="literal">cgi.fix_pathinfo=</code> の行を探し、以下のように修正します:
    </p>
 
-   <div class="example" id="install.unix.nginx.configure.pathinfo">
+   <div class="informalexample">
     <div class="example-contents screen">
 <div class="cdata"><pre>
 cgi.fix_pathinfo=0
@@ -137,23 +154,23 @@ cgi.fix_pathinfo=0
 
   <li class="listitem">
    <p class="para">
-    php-fpm.conf must be modified to specify that php-fpm must run as the user
-    www-data and the group www-data before we can start the service:
+    サービスを開始する前に、php-fpm が www-data ユーザーと www-data グループで
+    必ず実行されるように、php-fpm.conf も修正しなければいけません:
    </p>
 
-   <div class="example" id="install.unix.nginx.modify.phpfpm">
+   <div class="informalexample">
     <div class="example-contents screen">
 <div class="cdata"><pre>
-vim /usr/local/etc/php-fpm.conf
+vim /usr/local/etc/php-fpm.d/www.conf
 </pre></div>
     </div>
    </div>
 
    <p class="para">
-    Find and modify the following: 
+    以下の部分を探し、修正します:
    </p>
 
-   <div class="example" id="install.unix.nginx.modify.phpfpm.usergroup">
+   <div class="informalexample">
     <div class="example-contents screen">
 <div class="cdata"><pre>
 ; Unix user/group of processes
@@ -166,10 +183,10 @@ group = www-data
    </div>
 
    <p class="para">
-    The php-fpm service can now be started:
+    ここまで来れば、php-fpm サービスを開始できます:
    </p>
 
-   <div class="example" id="install.unix.nginx.start.phpfpm">
+   <div class="informalexample">
     <div class="example-contents screen">
 <div class="cdata"><pre>
 /usr/local/bin/php-fpm
@@ -178,17 +195,17 @@ group = www-data
    </div>
 
    <p class="para">
-    This guide will not configure php-fpm any further, if you are interested
-    in further configuring php-fpm then please consult the documentation.
+    このガイドでは php-fpm をこれ以上設定しませんが、
+    php-fpm のさらなる設定に興味がある場合、ドキュメントを参照してください。
    </p>
   </li>
 
   <li class="listitem">
    <p class="para">
-    Nginx must now be configured to support the processing of PHP applications:
+    Nginx が PHP アプリケーションの実行をサポートするように設定しなければなりません。
    </p>
 
-   <div class="example" id="install.unix.nginx.configure.nginx">
+   <div class="informalexample">
     <div class="example-contents">
 <div class="cdata"><pre>
 vim /usr/local/nginx/conf/nginx.conf
@@ -198,11 +215,11 @@ vim /usr/local/nginx/conf/nginx.conf
    </div>
 
    <p class="para">
-    Modify the default location block to be aware it must attempt
-    to serve .php files:
+    Nginx が、.php ファイルをサービスすることを認識させるため、
+    デフォルトの location ブロックを修正します:
    </p>
 
-   <div class="example" id="install.unix.nginx.configure.nginx.location">
+   <div class="informalexample">
     <div class="example-contents">
 <div class="nginx-confcode"><pre class="nginx-confcode">location / {
     root   html;
@@ -214,12 +231,13 @@ vim /usr/local/nginx/conf/nginx.conf
    </div>
 
    <p class="para">
-    The next step is to ensure that .php files are passed to the
-    PHP-FPM backend. Below the commented default PHP location block,
-    enter the following:
+    次のステップは、 .php ファイルへのリクエストが
+    PHP-FPM バックエンドに渡されるようにすることです。
+    コメントアウトされているデフォルトの PHP location ブロックを
+    以下のように修正します:
    </p>
 
-   <div class="example" id="install.unix.nginx.configure.nginx.php">
+   <div class="informalexample">
     <div class="example-contents">
 <div class="nginx-confcode"><pre class="nginx-confcode">location ~* \.php$ {
     fastcgi_index   index.php;
@@ -234,10 +252,10 @@ vim /usr/local/nginx/conf/nginx.conf
    </div>
 
    <p class="para">
-    Restart Nginx.
+    Nginx を再起動します。
    </p>
 
-   <div class="example" id="install.unix.nginx.restart.nginx">
+   <div class="informalexample">
     <div class="example-contents screen">
 <div class="cdata"><pre>
 sudo /usr/local/nginx/sbin/nginx -s stop
@@ -249,10 +267,10 @@ sudo /usr/local/nginx/sbin/nginx
 
   <li class="listitem">
    <p class="para">
-    Create a test file
+    テスト用のファイルを作成します。
    </p>
 
-   <div class="example" id="install.unix.nginx.test.nginx.php">
+   <div class="informalexample">
     <div class="example-contents screen">
 <div class="cdata"><pre>
 rm /usr/local/nginx/html/index.html
@@ -262,22 +280,18 @@ echo &quot;&lt;?php phpinfo(); ?&gt;&quot; &gt;&gt; /usr/local/nginx/html/index.
    </div>
 
    <p class="para">
-    Now navigate to http://localhost. The phpinfo() should now be shown.
+    http://localhost にアクセスすれば、 phpinfo() が表示されるはずです。
    </p>
   </li>
  </ol>
 
  <p class="para">
-  Following the steps above you will have a running Nginx web server with
-  support for PHP as a <em>SAPI</em> module.  Of course there are
-  many more configuration options available for Nginx and PHP.  For more
-  information type <strong class="command">./configure --help</strong> in the corresponding
-  source tree.
+  上のステップに従うことで、
+  <code class="literal">FPM</code> <code class="literal">SAPI</code> モジュールとして
+  PHP をサポートした Nginx Web サーバを実行できるでしょう。
+  もちろん、さらに沢山の設定オプションが Nginx と PHP では利用可能です。
+  さらに多くの情報を得るには、対応するソースツリーで、
+  <strong class="command">./configure --help</strong> とタイプしてみてください。
  </p>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="install.unix.apache2.html">Apache 2.x (Unixシステム用)</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="install.unix.lighttpd-14.html">Lighttpd 1.4 (Unix システム用)</a></div>
- <div class="up"><a href="install.unix.html">Unix システムへのインストール</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

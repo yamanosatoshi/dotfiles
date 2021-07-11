@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Phar アーカイブの使用法: Phar クラスおよび PharData クラス</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="phar.using.stream.html">Phar アーカイブの使用法: phar ストリームラッパー</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="phar.creating.html">Phar アーカイブの作成</a></div>
- <div class="up"><a href="phar.using.html">Phar アーカイブの使用法</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="phar.using.object" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phar.using.stream.html">« Phar アーカイブの使用法: phar ストリームラッパー</a></li>
+      <li style="float: right;"><a href="phar.creating.html">Phar アーカイブの作成 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="phar.using.html">Phar アーカイブの使用法</a></li>
+    <li>Phar アーカイブの使用法: Phar クラスおよび PharData クラス</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phar.using.object" class="section">
  <h2 class="title">Phar アーカイブの使用法: Phar クラスおよび PharData クラス</h2>
  <p class="para">
   <a href="class.phar.html" class="classname">Phar</a> クラスは Phar アーカイブの読み込みや操作をサポートしています。
@@ -24,7 +37,7 @@
   <a href="class.phardata.html" class="classname">PharData</a> クラスは <a href="class.phar.html" class="classname">Phar</a>
   を継承したもので、実行可能でない (データ) tar アーカイブおよび
   zip アーカイブなら php.ini で
-  <em>phar.readonly</em>=1 であっても作成/変更できるようになります。
+  <code class="literal">phar.readonly</code>=1 であっても作成/変更できるようになります。
   このクラスでは
   <span class="function"><a href="phardata.setalias.html" class="function">PharData::setAlias()</a></span> と <span class="function"><a href="phardata.setstub.html" class="function">PharData::setStub()</a></span>
   は使用不可能になっています。というのもエイリアスやスタブというのは
@@ -37,7 +50,7 @@
   相対パスでは初期化に失敗します。
  </p>
  <p class="para">
-  <em>$p</em> が、次のように作成した Phar オブジェクトであるとしましょう。
+  <code class="literal">$p</code> が、次のように作成した Phar オブジェクトであるとしましょう。
  </p>
  <p class="para">
   <div class="informalexample">
@@ -51,11 +64,11 @@
   </div>
  </p>
  <p class="para">
-  空の Phar アーカイブが <em>/path/to/myphar.phar</em>
-  に作成されます。もし <em>/path/to/myphar.phar</em>
+  空の Phar アーカイブが <code class="literal">/path/to/myphar.phar</code>
+  に作成されます。もし <code class="literal">/path/to/myphar.phar</code>
   が既に存在する場合は、それを再度オープンします。
-  リテラル <em>myphar.phar</em> は、エイリアスを表します。
-  これを用いると、URL で <em>/path/to/myphar.phar</em>
+  リテラル <code class="literal">myphar.phar</code> は、エイリアスを表します。
+  これを用いると、URL で <code class="literal">/path/to/myphar.phar</code>
   を参照する際に次のようにできます。
  </p>
  <p class="para">
@@ -71,42 +84,42 @@
  </p>
  <p class="para">
   新しく作成した <a href="class.phar.html" class="classname">Phar</a> オブジェクト
-  <em>$p</em> に対して、次のような処理が可能となります。
+  <code class="literal">$p</code> に対して、次のような処理が可能となります。
   <ul class="itemizedlist">
    <li class="listitem">
     <span class="simpara">
-     <em>$a = $p[&#039;file.php&#039;]</em> とすると、
-     <em>phar://myphar.phar/file.php</em> の中身を参照する
+     <code class="literal">$a = $p[&#039;file.php&#039;]</code> とすると、
+     <code class="literal">phar://myphar.phar/file.php</code> の中身を参照する
      <a href="class.pharfileinfo.html" class="classname">PharFileInfo</a> クラスが作成されます。
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <em>$p[&#039;file.php&#039;] = $v</em> とすると、
-     <em>myphar.phar</em> の中に新しいファイル
-     (<em>phar://myphar.phar/file.php</em>)
+     <code class="literal">$p[&#039;file.php&#039;] = $v</code> とすると、
+     <code class="literal">myphar.phar</code> の中に新しいファイル
+     (<code class="literal">phar://myphar.phar/file.php</code>)
      を作成するか、あるいは同名のファイルを上書きします。
-     <em>$v</em> には、文字列あるいはファイルポインタのいずれかを指定できます。
+     <code class="literal">$v</code> には、文字列あるいはファイルポインタのいずれかを指定できます。
      ファイルポインタを指定した場合は、その中身全体をもとにして新しいファイルを作成します。
-     <em>$p-&gt;addFromString(&#039;file.php&#039;, $v)</em> は、
+     <code class="literal">$p-&gt;addFromString(&#039;file.php&#039;, $v)</code> は、
      機能的に上と同じであることに注意しましょう。また、ファイルの中身を
-     <em>$p-&gt;addFile(&#039;/path/to/file.php&#039;, &#039;file.php&#039;)</em>
+     <code class="literal">$p-&gt;addFile(&#039;/path/to/file.php&#039;, &#039;file.php&#039;)</code>
      で追加することもできます。最後に、空のディレクトリを作成するには
-     <em>$p-&gt;addEmptyDir(&#039;empty&#039;)</em> とします。
+     <code class="literal">$p-&gt;addEmptyDir(&#039;empty&#039;)</code> とします。
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <em>isset($p[&#039;file.php&#039;])</em>
-     とすると、<em>phar://myphar.phar/file.php</em> が
-     <em>myphar.phar</em> の中に存在するかどうかがわかります。
+     <code class="literal">isset($p[&#039;file.php&#039;])</code>
+     とすると、<code class="literal">phar://myphar.phar/file.php</code> が
+     <code class="literal">myphar.phar</code> の中に存在するかどうかがわかります。
     </span>
    </li>
    <li class="listitem">
     <span class="simpara">
-     <em>unset($p[&#039;file.php&#039;])</em> とすると、
-     <em>phar://myphar.phar/file.php</em> を
-     <em>myphar.phar</em> から削除します。
+     <code class="literal">unset($p[&#039;file.php&#039;])</code> とすると、
+     <code class="literal">phar://myphar.phar/file.php</code> を
+     <code class="literal">myphar.phar</code> から削除します。
     </span>
    </li>
   </ul>
@@ -130,9 +143,4 @@
   クラスを継承しており、Phar 内のファイルについての Phar
   固有の情報 (圧縮情報やメタデータなど) を扱うためのメソッドが追加されています。
  </p>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="phar.using.stream.html">Phar アーカイブの使用法: phar ストリームラッパー</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="phar.creating.html">Phar アーカイブの作成</a></div>
- <div class="up"><a href="phar.using.html">Phar アーカイブの使用法</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

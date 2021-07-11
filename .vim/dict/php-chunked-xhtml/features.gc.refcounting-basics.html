@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>参照カウント法の原理</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.gc.html">ガベージコレクション</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.gc.collecting-cycles.html">循環の収集</a></div>
- <div class="up"><a href="features.gc.html">ガベージコレクション</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="features.gc.refcounting-basics" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.gc.html">« ガベージコレクション</a></li>
+      <li style="float: right;"><a href="features.gc.collecting-cycles.html">循環の収集 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.gc.html">ガベージコレクション</a></li>
+    <li>参照カウント法の原理</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.gc.refcounting-basics" class="sect1">
    <h2 class="title">参照カウント法の原理</h2>
    <p class="para">
     PHP 変数は「zval」と呼ばれるコンテナに保管されます。
@@ -18,7 +31,7 @@
     1つ目は「is_ref」と呼ばれ、変数が「参照集合」の一部かどうかを示すブール値
     です。
     このビットによって、通常の変数と参照を区別する方法を PHP エンジンが知ります。
-    &amp;演算子によって作成されるように、PHP ではユーザーランドを参照できるので、
+    &amp;演算子によって作成されるように、PHP ではユーザーランドで参照を使えるので、
     zval コンテナもメモリー使用状況を最適化するための内部的な参照カウント機構を
     持ちます。
     追加情報の2つ目は「refcount」と呼ばれ、この1つの zval コンテナをどれだけ多くの
@@ -31,7 +44,7 @@
    <p class="para">
     新しい変数が定数値を使って作成されるとき、zval コンテナが作成されます。
     例えば、
-    <div class="example" id="example-446">
+    <div class="example" id="example-430">
      <p><strong>例1 新規 zval コンテナを作成</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -43,24 +56,24 @@
     </div>
    </p>
    <p class="para">
-    この例では、新しいシンボル名（<em>a</em>）が現在のスコープで作成され、
-    新しい変数コンテナが <span class="type"><a href="language.types.string.html" class="type string">string</a></span> 型と値 <em>new string</em>
+    この例では、新しいシンボル名（<code class="literal">a</code>）が現在のスコープで作成され、
+    新しい変数コンテナが <span class="type">string</span> 型と値 <code class="literal">new string</code>
     で作成されます。
-    「is_ref」ビットはデフォルトで <strong><code>FALSE</code></strong> にセットされます。なぜなら、ユーザーランド
+    「is_ref」ビットはデフォルトで <strong><code>false</code></strong> にセットされます。なぜなら、ユーザーランド
     参照が作成されないからです。
     この変数コンテナを利用するシンボルが1つだけあるので、「refcount」は
-    <em>1</em> に設定されます。
-    「refcount」が <em>1</em> ならば、is_ref が常に <strong><code>FALSE</code></strong> である点に
+    <code class="literal">1</code> に設定されます。
+    「refcount」が <code class="literal">1</code> ならば、is_ref が常に <strong><code>false</code></strong> である点に
     注意してください。
     もし <a href="http://xdebug.org/" class="link external">&raquo;&nbsp;Xdebug</a> をインストール済みなら、
     <span class="function"><strong>xdebug_debug_zval()</strong></span>を呼ぶと、この情報を表示できます。
    </p>
    <p class="para">
-    <div class="example" id="example-447">
+    <div class="example" id="example-431">
      <p><strong>例2 zval 情報を表示</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />xdebug_debug_zval</span><span style="color: #007700">(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"new&nbsp;string"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">xdebug_debug_zval</span><span style="color: #007700">(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
      </div>
@@ -77,7 +90,7 @@ a: (refcount=1, is_ref=0)=&#039;new string&#039;
     この変数を他の変数名に代入すると、refcount が増加します。
    </p>
    <p class="para">
-    <div class="example" id="example-448">
+    <div class="example" id="example-432">
      <p><strong>例3 zval の refcount を増加</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -95,8 +108,8 @@ a: (refcount=2, is_ref=0)=&#039;new string&#039;
     </div>
    </p>
    <p class="para">
-    この時、refcount は <em>2</em> です。なぜなら、同じ変数コンテナが
-    <var class="varname"><var class="varname">a</var></var> と <var class="varname"><var class="varname">b</var></var> にリンクされるからです。
+    この時、refcount は <code class="literal">2</code> です。なぜなら、同じ変数コンテナが
+    <var class="varname">a</var> と <var class="varname">b</var> にリンクされるからです。
     PHPは、必要ではない場合に実際の変数コンテナをコピーしないように十分スマートです。
     「refcount」がゼロに達すると、変数コンテナは破棄されます。
     変数コンテナにリンクされたあらゆるシンボルがスコープを抜ける
@@ -106,7 +119,7 @@ a: (refcount=2, is_ref=0)=&#039;new string&#039;
     下記の例でこれを示します。
    </p>
    <p class="para">
-    <div class="example" id="example-449">
+    <div class="example" id="example-433">
      <p><strong>例4 zval refcount を減少</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -126,7 +139,7 @@ a: (refcount=1, is_ref=0)=&#039;new string&#039;
     </div>
    </p>
    <p class="para">
-    次に、<em>unset($a);</em> を呼ぶと、（型と値を含む）変数コンテナが
+    次に、<code class="literal">unset($a);</code> を呼ぶと、（型と値を含む）変数コンテナが
     メモリから除去されます。
    </p>
 
@@ -134,15 +147,15 @@ a: (refcount=1, is_ref=0)=&#039;new string&#039;
     <h3 class="title">複合型</h3>
 
     <p class="para">
-     <span class="type"><a href="language.types.array.html" class="type array">array</a></span> や <span class="type"><a href="language.types.object.html" class="type object">object</a></span> のような複合型では、事情が少し
+     <span class="type">array</span> や <span class="type">object</span> のような複合型では、事情が少し
      複雑になります。
-     <span class="type"><span class="type scalar">scalar</span></span> 値とは逆に、<span class="type"><a href="language.types.array.html" class="type array">array</a></span> と <span class="type"><a href="language.types.object.html" class="type object">object</a></span>
+     <span class="type"><span class="type scalar">scalar</span></span> 値とは逆に、<span class="type">array</span> と <span class="type">object</span>
      では、それらのプロパティをそれら自身のシンボルテーブルに保管します。
      これは、以下の例が3つの zval コンテナを作成することを意味します。
     </p>
     <p class="para">
-     <div class="example" id="example-450">
-      <p><strong>例5 <span class="type"><a href="language.types.array.html" class="type array">array</a></span> zval を作成</strong></p>
+     <div class="example" id="example-434">
+      <p><strong>例5 <span class="type">array</span> zval を作成</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">'meaning'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'life'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'number'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">42&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">xdebug_debug_zval</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
@@ -170,12 +183,12 @@ a: (refcount=1, is_ref=0)=array (
      </div>
     </p>
     <p class="para">
-     3つのzvalコンテナは <var class="varname"><var class="varname">a</var></var>、<var class="varname"><var class="varname">meaning</var></var> および
-     <var class="varname"><var class="varname">number</var></var> です。「refcount」の増減に同様のルールが適用されます。
+     3つのzvalコンテナは <var class="varname">a</var>、<var class="varname">meaning</var> および
+     <var class="varname">number</var> です。「refcount」の増減に同様のルールが適用されます。
      下記では、配列に他の要素を追加して、既存の要素の内容をその値に設定します。
     </p>
     <p class="para">
-     <div class="example" id="example-451">
+     <div class="example" id="example-435">
       <p><strong>例6 既存の要素を配列に追加</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -205,9 +218,9 @@ a: (refcount=1, is_ref=0)=array (
      </div>
     </p>
     <p class="para">
-     上記の Xdebug 出力では、新旧両方の配列要素が今や、refcount が <em>2</em>
+     上記の Xdebug 出力では、新旧両方の配列要素が今や、refcount が <code class="literal">2</code>
      である zval コンテナを指すことがわかります。
-     Xdebugの出力では、<em>&#039;life&#039;</em> という値の zval コンテナが2つ
+     Xdebugの出力では、<code class="literal">&#039;life&#039;</code> という値の zval コンテナが2つ
      表示されますが、それらは同一です。
      <span class="function"><strong>xdebug_debug_zval()</strong></span> 関数はこれを表示しませんが、
      メモリ・ポインターを示すことによってもそれを確かめられます。
@@ -219,7 +232,7 @@ a: (refcount=1, is_ref=0)=array (
      除去されます。前と同じように、これを示す例です。
     </p>
     <p class="para">
-     <div class="example" id="example-452">
+     <div class="example" id="example-436">
       <p><strong>例7 配列から要素を除去</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -245,7 +258,7 @@ a: (refcount=1, is_ref=0)=array (
      さもなければ PHP がコピーを作成するでしょう。
     </p>
     <p class="para">
-     <div class="example" id="example-453">
+     <div class="example" id="example-437">
       <p><strong>例8 それ自体の要素として配列自体を追加</strong></p>
       <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -274,21 +287,21 @@ a: (refcount=2, is_ref=1)=array (
      </div>
     </p>
     <p class="para">
-     配列変数 (<var class="varname"><var class="varname">a</var></var>) が２番目の要素 (<var class="varname"><var class="varname">1</var></var>) と同様に
-     「refcount」が <em>2</em> である変数コンテナを今や指していることがわかります。
+     配列変数 (<var class="varname">a</var>) が２番目の要素 (<var class="varname">1</var>) と同様に
+     「refcount」が <code class="literal">2</code> である変数コンテナを今や指していることがわかります。
      上記の表示の「...」は入り組んだ再帰があることを示します。
      もちろんこの場合には、「...」が元の配列を指すことを意味します。
     </p>
     <p class="para">
      ちょうど前のように、変数をアンセットするとシンボルが除去されます。
      そして指す変数コンテナの参照カウントがアンセットにより減少します。
-     従って、上記のコードを実行した後に変数 <var class="varname"><var class="varname">$a</var></var> をアンセットすると、
-     <var class="varname"><var class="varname">$a</var></var> と要素「1」を指す変数コンテナの参照カウントは、
+     従って、上記のコードを実行した後に変数 <var class="varname">$a</var> をアンセットすると、
+     <var class="varname">$a</var> と要素「1」を指す変数コンテナの参照カウントは、
      アンセットにより「2」から「1」に減少します。これは次のように表現されます。
     </p>
     <p class="para">
-     <div class="example" id="example-454">
-      <p><strong>例9 <var class="varname"><var class="varname">$a</var></var> をアンセット</strong></p>
+     <div class="example" id="example-438">
+      <p><strong>例9 <var class="varname">$a</var> をアンセット</strong></p>
       <div class="example-contents screen">
 <div class="cdata"><pre>
 (refcount=1, is_ref=1)=array (
@@ -329,13 +342,8 @@ a: (refcount=2, is_ref=1)=array (
      実行中のスクリプトや、単体テストの大規模な集合で特に問題があります。
      後者は、eZ コンポーネント・ライブラリのテンプレート・コンポーネントに対して
      単体テストを実行中に問題を引き起こしました。
-     いくらかの事例で、それは 2GB 以上のメモリを必要とします。そしてテストサーバーは全く
+     事例によっては、2GB 以上のメモリが必要でしたが、テストサーバーは全く
      持っていませんでした。
     </p>
    </div>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.gc.html">ガベージコレクション</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.gc.collecting-cycles.html">循環の収集</a></div>
- <div class="up"><a href="features.gc.html">ガベージコレクション</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

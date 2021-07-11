@@ -3,18 +3,31 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>事前にオープンしているデータベース接続を閉じる</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.client-version.html">mysqli::$client_version</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.commit.html">mysqli::commit</a></div>
- <div class="up"><a href="class.mysqli.html">mysqli</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqli.close" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.character-set-name.html">« mysqli::character_set_name</a></li>
+      <li style="float: right;"><a href="mysqli.commit.html">mysqli::commit »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli.html">mysqli</a></li>
+    <li>事前にオープンしているデータベース接続を閉じる</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.close" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">mysqli::close</h1>
   <h1 class="refname">mysqli_close</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mysqli::close</span> -- <span class="refname">mysqli_close</span> &mdash; <span class="dc-title">事前にオープンしているデータベース接続を閉じる</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli::close</span> -- <span class="refname">mysqli_close</span> &mdash; <span class="dc-title">事前にオープンしているデータベース接続を閉じる</span></p>
 
  </div>
  
@@ -22,26 +35,21 @@
   <h3 class="title">説明</h3>
   <p class="para">オブジェクト指向型</p>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>mysqli::close</strong></span>
-    ( <span class="methodparam">void</span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>mysqli::close</strong></span>(): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">手続き型</p>
-  <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>mysqli_close</strong></span>
-    ( <span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter">$link</code></span>
-   )</div>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>mysqli_close</strong></span>(<span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter">$mysql</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    既に開いているデータベース接続を閉じます。
   </p>
   <p class="para">
-持続的でない MySQL 接続や結果セットは、PHP スクリプトの実行が終了する時点で自動的に破棄されます。
-そのため、オープンした接続をクローズしたり結果セットを開放したりすることは必須ではありませんが、
-そうしておくことを推奨します。
-その時点ですぐに PHP や MySQL にリソースを返せ、パフォーマンスの向上につながるからです。
-関連する除法は
-<a href="language.types.resource.html#language.types.resource.self-destruct" class="link">リソースの開放</a>を参照ください。</p>
+   既に開いている、持続的でない MySQL 接続と、
+   結果セットはオブジェクトが破棄されるとすぐに閉じられます。
+   既に開いている接続と結果セットを明示的に閉じるのはオプションですが、
+   データベースから結果を取得した後、大量に処理が残っている場合、
+   データベースに関する処理を全て実行し終わったらすぐに接続を閉じるのが望ましいです。
+  </p>
  </div>
 
 
@@ -55,7 +63,7 @@
 link</code></dt>
 <dd>
 <p class="para">手続き型のみ:
-<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> あるいは <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> が返すリンク ID。
+<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> あるいは <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span> が返す <a href="class.mysqli.html" class="classname">mysqli</a>オブジェクト。
 </p></dd>
 
    </dl>
@@ -67,16 +75,33 @@ link</code></dt>
  <div class="refsect1 returnvalues" id="refsect1-mysqli.close-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-mysqli.close-examples">
   <h3 class="title">例</h3>
-  <p class="para">
-   <span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> を参照ください。
-  </p>
+
+  <div class="example" id="example-1399">
+   <p><strong>例1 <span class="methodname"><strong>mysqli::close()</strong></span> example</strong></p>
+   <div class="example-contents"><p>オブジェクト指向型</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />mysqli_report</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLI_REPORT_ERROR&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">MYSQLI_REPORT_STRICT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;Name,&nbsp;CountryCode&nbsp;FROM&nbsp;City&nbsp;ORDER&nbsp;BY&nbsp;ID&nbsp;LIMIT&nbsp;3"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;不要になったらすぐに、接続を閉じます&nbsp;*/<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br />foreach&nbsp;(</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;データベースから取得したデータを処理します&nbsp;*/<br /></span><span style="color: #007700">}</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>手続き型</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />mysqli_report</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLI_REPORT_ERROR&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">MYSQLI_REPORT_STRICT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;Name,&nbsp;CountryCode&nbsp;FROM&nbsp;City&nbsp;ORDER&nbsp;BY&nbsp;ID&nbsp;LIMIT&nbsp;3"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;不要になったらすぐに、接続を閉じます&nbsp;*/<br /></span><span style="color: #0000BB">mysqli_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">);<br />foreach&nbsp;(</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;データベースから取得したデータを処理します&nbsp;*/<br /></span><span style="color: #007700">}</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
  </div>
 
 
@@ -97,7 +122,7 @@ link</code></dt>
   <p class="para">
    <ul class="simplelist">
     <li class="member"><span class="methodname"><a href="mysqli.construct.html" class="methodname" rel="rdfs-seeAlso">mysqli::__construct()</a> - 新規に MySQL サーバーへの接続をオープンする</span></li>
-    <li class="member"><span class="function"><a href="mysqli.init.html" class="function" rel="rdfs-seeAlso">mysqli_init()</a> - MySQLi を初期化し、mysqli_real_connect() で使用するリソースを返す</span></li>
+    <li class="member"><span class="function"><a href="mysqli.init.html" class="function" rel="rdfs-seeAlso">mysqli_init()</a> - MySQLi を初期化し、mysqli_real_connect() で使うオブジェクトを返す</span></li>
     <li class="member"><span class="function"><a href="mysqli.real-connect.html" class="function" rel="rdfs-seeAlso">mysqli_real_connect()</a> - mysql サーバーとの接続をオープンする</span></li>
     <li class="member"><span class="function"><a href="mysqli-result.free.html" class="function" rel="rdfs-seeAlso">mysqli_free_result()</a> - 結果に関連付けられたメモリを開放する</span></li>
    </ul>
@@ -105,9 +130,4 @@ link</code></dt>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.client-version.html">mysqli::$client_version</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.commit.html">mysqli::commit</a></div>
- <div class="up"><a href="class.mysqli.html">mysqli</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

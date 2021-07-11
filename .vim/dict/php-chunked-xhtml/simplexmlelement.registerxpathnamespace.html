@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>次の XPath クエリ用の prefix/ns コンテキストを作成する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="simplexmlelement.getnamespaces.html">SimpleXMLElement::getNamespaces</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="simplexmlelement.savexml.html">SimpleXMLElement::saveXML</a></div>
- <div class="up"><a href="class.simplexmlelement.html">SimpleXMLElement</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="simplexmlelement.registerxpathnamespace" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="simplexmlelement.getnamespaces.html">« SimpleXMLElement::getNamespaces</a></li>
+      <li style="float: right;"><a href="simplexmlelement.savexml.html">SimpleXMLElement::saveXML »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.simplexmlelement.html">SimpleXMLElement</a></li>
+    <li>次の XPath クエリ用の prefix/ns コンテキストを作成する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="simplexmlelement.registerxpathnamespace" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">SimpleXMLElement::registerXPathNamespace</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7)</p><p class="refpurpose"><span class="refname">SimpleXMLElement::registerXPathNamespace</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SimpleXMLElement::registerXPathNamespace</span> &mdash; <span class="dc-title">
    次の XPath クエリ用の prefix/ns コンテキストを作成する
   </span></p>
 
@@ -21,15 +34,12 @@
  <div class="refsect1 description" id="refsect1-simplexmlelement.registerxpathnamespace-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><strong>SimpleXMLElement::registerXPathNamespace</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$ns</code></span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>SimpleXMLElement::registerXPathNamespace</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespace</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    次の XPath クエリ用の prefix/ns コンテキストを作成します。特にこれが有用なのは、
    XML ドキュメントの提供者が名前空間プレフィックスを変更したような場合です。
-   <em>registerXPathNamespace</em> はプレフィックスを作成して名前空間に関連付け、
+   <code class="literal">registerXPathNamespace</code> はプレフィックスを作成して名前空間に関連付け、
    そのプレフィックスで名前空間のノードにアクセスできるようにします。
    提供者側がプレフィックスを変更したとしても、コードを書き換える必要はありません。
   </p>
@@ -78,7 +88,7 @@
  <div class="refsect1 returnvalues" id="refsect1-simplexmlelement.registerxpathnamespace-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -86,7 +96,7 @@
  <div class="refsect1 examples" id="refsect1-simplexmlelement.registerxpathnamespace-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-6340">
+   <div class="example" id="example-5361">
     <p><strong>例1 XPath クエリで使用する名前空間プレフィックスの設定</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -103,13 +113,13 @@ Chapter 2
 </pre></div>
     </div>
     <div class="example-contents"><p>
-     上の例の XML ドキュメントでは、プレフィックス <em>chap</em>
+     上の例の XML ドキュメントでは、プレフィックス <code class="literal">chap</code>
      で名前空間を指定していることを確認しておきましょう。仮に、このドキュメント
      (あるいはよく似た別のドキュメント) が以前に同じ名前空間に対してプレフィックス
-     <em>c</em> を使用していたとしましょう。プレフィックスが変わった時点で、
+     <code class="literal">c</code> を使用していたとしましょう。プレフィックスが変わった時点で、
      これまでの XPath クエリは正しい値を返さないようになります。
      そしてクエリに対して何らかの変更が必要となります。
-     <em>registerXPathNamespace</em> を使用すると、
+     <code class="literal">registerXPathNamespace</code> を使用すると、
      仮に名前空間プレフィックスが変更された場合でもクエリの変更する必要がなくなります。
     </p></div>
    </div>
@@ -128,9 +138,4 @@ Chapter 2
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="simplexmlelement.getnamespaces.html">SimpleXMLElement::getNamespaces</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="simplexmlelement.savexml.html">SimpleXMLElement::saveXML</a></div>
- <div class="up"><a href="class.simplexmlelement.html">SimpleXMLElement</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

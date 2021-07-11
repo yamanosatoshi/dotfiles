@@ -3,32 +3,42 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ファイル上のすべてのメタタグ情報を配列に展開する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.get-headers.html">get_headers</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.http-build-query.html">http_build_query</a></div>
- <div class="up"><a href="ref.url.html">URL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.get-meta-tags" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.get-headers.html">« get_headers</a></li>
+      <li style="float: right;"><a href="function.http-build-query.html">http_build_query »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.url.html">URL 関数</a></li>
+    <li>ファイル上のすべてのメタタグ情報を配列に展開する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.get-meta-tags" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">get_meta_tags</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">get_meta_tags</span> &mdash; <span class="dc-title">ファイル上のすべてのメタタグ情報を配列に展開する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">get_meta_tags</span> &mdash; <span class="dc-title">ファイル上のすべてのメタタグ情報を配列に展開する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.get-meta-tags-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>get_meta_tags</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
-   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$use_include_path</code><span class="initializer"> = false</span></span>
-  ] )</div>
+   <span class="methodname"><strong>get_meta_tags</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$use_include_path</code><span class="initializer"> = <strong><code>false</code></strong></span></span>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <code class="parameter">filename</code> 内の各行をパースし &lt;meta&gt;
    タグ内の情報を配列として返します。
-   <em>&lt;/head&gt;</em> でパースを終了します。
+   <code class="literal">&lt;/head&gt;</code> でパースを終了します。
   </p>
  </div>
 
@@ -49,7 +59,7 @@
        ローカルファイルのほか <acronym title="Uniform Resource Locator">URL</acronym> も指定できます。
       </p>
       <p class="para">
-       <div class="example" id="example-4667">
+       <div class="example" id="example-3834">
         <p><strong>例1 <span class="function"><strong>get_meta_tags()</strong></span> が何をパースするのか</strong></p>
         <div class="example-contents">
 <div class="htmlcode"><pre class="htmlcode">&lt;meta name=&quot;author&quot; content=&quot;name&quot;&gt;
@@ -74,7 +84,7 @@
      <dd>
 
       <p class="para">
-       <code class="parameter">use_include_path</code> を <strong><code>TRUE</code></strong> に指定すると、
+       <code class="parameter">use_include_path</code> を <strong><code>true</code></strong> に指定すると、
        <a href="ini.core.html#ini.include-path" class="link">include_path</a>
        ディレクティブの内容にしたがってファイルを探します。
        これはローカルファイルにのみ有効で、URL の場合は使用できません。
@@ -100,13 +110,16 @@
    それ以外は小文字に変換されます。もしも同じ名前のメタタグがある場合には
    最後のもののみが返されます。
   </p>
+  <p class="para">
+   失敗時に <strong><code>false</code></strong> を返します。
+  </p>
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.get-meta-tags-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4668">
+   <div class="example" id="example-3835">
     <p><strong>例2 <span class="function"><strong>get_meta_tags()</strong></span> が何を返すのか</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -142,9 +155,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.get-headers.html">get_headers</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.http-build-query.html">http_build_query</a></div>
- <div class="up"><a href="ref.url.html">URL 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

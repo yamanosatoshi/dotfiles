@@ -3,32 +3,72 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>PHP タグ</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.basic-syntax.html">基本的な構文</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.basic-syntax.phpmode.html">HTML からの脱出</a></div>
- <div class="up"><a href="language.basic-syntax.html">基本的な構文</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.basic-syntax.phptags" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.basic-syntax.html">« 基本的な構文</a></li>
+      <li style="float: right;"><a href="language.basic-syntax.phpmode.html">HTML からの脱出 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.basic-syntax.html">基本的な構文</a></li>
+    <li>PHP タグ</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.basic-syntax.phptags" class="sect1">
    <h2 class="title">PHP タグ</h2>
    <p class="para">
     PHP はファイルを解析して開始タグと終了タグ
-    (<em>&lt;?php</em> と <em>?&gt;</em>) を探します。
+    (<code class="literal">&lt;?php</code> と <code class="literal">?&gt;</code>) を探します。
     タグが見つかると、PHP はコードの実行を開始したり終了したりします。
     このような仕組みにより、PHP を他のあらゆる形式のドキュメント中に
     埋め込むことができるのです。つまり、開始タグと終了タグで囲まれている
     箇所以外のすべての部分は、PHP パーサに無視されます。
    </p>
+
    <p class="para">
-    PHP では、短い形式の開始タグ <em>&lt;?</em> も使えます
-    (しかしこれはおすすめしません。というのも、この形式のタグは <var class="filename">php.ini</var> で
-    <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a> を有効にするか
-    <strong class="option unknown">--enable-short-tags</strong>
- オプションつきで PHP を configure した場合でないと使えないからです)。
+    PHP では、短い形式のechoタグ <code class="literal">&lt;?=</code> も使えます。
+    これは、より冗長な <code class="code">&lt;?php echo</code> を短くしたものです。
+   </p>
+
+   <p class="para">
+    <div class="example" id="install.unix.debian.config.example">
+     <p><strong>例1 PHP の開始タグと終了タグ</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+1.&nbsp;&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'XHTMLまたはXMLドキュメントの中でPHPコードを扱いたい場合は、このタグを使いましょう'</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span><br />2.&nbsp;&nbsp;短い形式の&nbsp;echo&nbsp;タグを使って&nbsp;<span style="color: #0000BB">&lt;?=&nbsp;</span><span style="color: #DD0000">'この文字列を表示'&nbsp;</span><span style="color: #0000BB">?&gt;</span>&nbsp;とすることもできます。<br />&nbsp;&nbsp;&nbsp;&nbsp;これは&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'この文字列を表示'&nbsp;</span><span style="color: #0000BB">?&gt;</span>&nbsp;と同じ意味になります。<br /><br />3.&nbsp;&nbsp;&lt;?&nbsp;echo&nbsp;'このコードは短縮型のタグに囲まれていますが、'.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'short_open_tag&nbsp;が有効な場合にしか動作しません';&nbsp;?&gt;</span>
+</code></div>
+     </div>
+
+    </div>
    </p>
    <p class="para">
-    ファイル全体が純粋な PHP コードである場合は、ファイルの最後の終了タグは省略するのがおすすめです。
+    短縮型のタグ（例 3.）はデフォルトで有効ですが、
+    <var class="filename">php.ini</var> 設定ファイルのディレクティブ
+    <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a> で無効にすることもできますし、
+    <strong class="option unknown">--disable-short-tags</strong> オプション付きで configure した場合は、
+    デフォルトで無効にすることも出来ます。
+   </p>
+   <p class="para">
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <p class="para">
+      短縮形のタグは無効にすることができるので、
+      互換性を最大限保つために、通常のタグ
+      (<code class="code">&lt;?php ?&gt;</code> and <code class="code">&lt;?= ?&gt;</code>) を使うことを推奨します。
+     </p>
+    </p></blockquote>
+   </p>
+
+   <p class="para">
+    ファイルが PHP コードのみを含む場合は、ファイルの最後の終了タグは省略するのがおすすめです。
     終了タグの後に余分な空白や改行があると、予期せぬ挙動を引き起こす場合があるからです。
     余分な空白や改行のせいで PHP が出力バッファリングを開始し、その時点の内容を意図せず出力してしまうことになります。
     <div class="informalexample">
@@ -41,44 +81,4 @@
 
     </div>
    </p>
-   <p class="para">
-    <table class="doctable table">
-     <caption><strong>変更履歴</strong></caption>
-     
-      <thead>
-       <tr>
-        <th>バージョン</th>
-        <th>説明</th>
-       </tr>
-
-      </thead>
-
-      <tbody class="tbody">
-       <tr>
-        <td>7.0.0</td>
-         <td>
-          ASP タグ (<code class="code">&lt;%</code>, <code class="code">%&gt;</code>,
-          <code class="code">&lt;%=</code>) や script タグ
-          (<code class="code">&lt;script language=&quot;php&quot;&gt;</code>)
-          が PHP から削除されました。
-         </td>
-       </tr>
-
-       <tr>
-        <td>5.4.0</td>
-         <td>
-          short_open_tag の設定にかかわらず、&lt;?= は常に使えるようになりました。
-         </td>
-       </tr>
-
-      </tbody>
-     
-    </table>
-
-   </p>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.basic-syntax.html">基本的な構文</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.basic-syntax.phpmode.html">HTML からの脱出</a></div>
- <div class="up"><a href="language.basic-syntax.html">基本的な構文</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

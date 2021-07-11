@@ -3,44 +3,57 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ソケットへの接続を許可する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="ref.sockets.html">ソケット 関数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.socket-bind.html">socket_bind</a></div>
- <div class="up"><a href="ref.sockets.html">ソケット 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.socket-accept" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.sockets.html">« ソケット 関数</a></li>
+      <li style="float: right;"><a href="function.socket-addrinfo-bind.html">socket_addrinfo_bind »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.sockets.html">ソケット 関数</a></li>
+    <li>ソケットへの接続を許可する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.socket-accept" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">socket_accept</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">socket_accept</span> &mdash; <span class="dc-title">ソケットへの接続を許可する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">socket_accept</span> &mdash; <span class="dc-title">ソケットへの接続を許可する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.socket-accept-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">resource</span> <span class="methodname"><strong>socket_accept</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$socket</code></span>
-   )</div>
+   <span class="methodname"><strong>socket_accept</strong></span>(<span class="methodparam"><span class="type"><a href="class.socket.html" class="type Socket">Socket</a></span> <code class="parameter">$socket</code></span>): <span class="type"><span class="type"><a href="class.socket.html" class="type Socket">Socket</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><a href="function.socket-create.html" class="function">socket_create()</a></span> を使用してソケット
    <code class="parameter">socket</code> を作成した後、
    <span class="function"><a href="function.socket-bind.html" class="function">socket_bind()</a></span> で名前に関連付け、
    <span class="function"><a href="function.socket-listen.html" class="function">socket_listen()</a></span> で接続をモニタします。この関数は、
-   このソケットへの接続を許可します。接続に成功すると、新規の
-   ソケット記述子が返されます。この記述子は通信の際に使用されます。
+   このソケットへの接続を許可します。接続に成功すると、新しい
+   <a href="class.socket.html" class="classname">Socket</a> クラスのインスタンスが返されます。
+   このインスタンスは通信の際に使用されます。
    ソケット上に複数の接続がキューで待っている場合、最初の接続が使用
    されます。接続待ちがない場合、<span class="function"><strong>socket_accept()</strong></span>
    は接続が存在するまでブロックされます。
    <code class="parameter">socket</code> が
    <span class="function"><a href="function.socket-set-blocking.html" class="function">socket_set_blocking()</a></span> または
    <span class="function"><a href="function.socket-set-nonblock.html" class="function">socket_set_nonblock()</a></span> により非ブロックモードで
-   作成された場合、<strong><code>FALSE</code></strong> が返されます。
+   作成された場合、<strong><code>false</code></strong> が返されます。
   </p>
   <p class="para">
-   <span class="function"><strong>socket_accept()</strong></span> により返されたソケットリソースは、
+   <span class="function"><strong>socket_accept()</strong></span> により返された
+   <a href="class.socket.html" class="classname">Socket</a> クラスのインスタンスは、
    新規接続を許可するために使用することはできません。この場合でも
    元の接続待ちのソケット <code class="parameter">socket</code> は
    オープンされたままであり、再使用可能です。
@@ -60,7 +73,8 @@
      <dd>
 
       <p class="para">
-       <span class="function"><a href="function.socket-create.html" class="function">socket_create()</a></span> で作成したソケットリソース。
+       <span class="function"><a href="function.socket-create.html" class="function">socket_create()</a></span> で作成した
+       <a href="class.socket.html" class="classname">Socket</a> クラスのインスタンス。
       </p>
      </dd>
 
@@ -74,12 +88,42 @@
  <div class="refsect1 returnvalues" id="refsect1-function.socket-accept-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に新規ソケットリソースを、エラー時に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に新しい <a href="class.socket.html" class="classname">Socket</a> クラスのインスタンスを、
+   エラー時に <strong><code>false</code></strong> を返します。
    実際のエラーコードは、<span class="function"><a href="function.socket-last-error.html" class="function">socket_last_error()</a></span> を
    コールすることで取得可能です。このコードを
    <span class="function"><a href="function.socket-strerror.html" class="function">socket_strerror()</a></span> に渡すことで、
    エラーの内容を文字列で取得することが可能です。
   </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.socket-accept-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       成功した場合に、この関数は
+       <a href="class.socket.html" class="classname">Socket</a> クラスのインスタンスを返すようになりました。
+       これより前のバージョンでは、リソースを返していました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
  </div>
 
 
@@ -97,9 +141,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="ref.sockets.html">ソケット 関数</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.socket-bind.html">socket_bind</a></div>
- <div class="up"><a href="ref.sockets.html">ソケット 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

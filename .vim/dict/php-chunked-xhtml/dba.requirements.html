@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>要件</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="dba.setup.html">インストール/設定</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="dba.installation.html">インストール手順</a></div>
- <div class="up"><a href="dba.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="dba.requirements" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="dba.setup.html">« インストール/設定</a></li>
+      <li style="float: right;"><a href="dba.installation.html">インストール手順 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="dba.setup.html">インストール/設定</a></li>
+    <li>要件</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="dba.requirements" class="section">
   <h2 class="title">要件</h2>
   <p class="para">
    各機能の動作は、使用するデータベースの実装に依存します。
@@ -31,7 +44,7 @@
 
      <tbody class="tbody">
       <tr>
-       <td><em>dbm</em></td>
+       <td><code class="literal">dbm</code></td>
        <td>
         dbm は最も古い(元祖の)Berkeley DB 型データベースです。可能なら
         ば使用しない方が良いでしょう。DB2 および gdbm に組み込まれている
@@ -43,7 +56,7 @@
 
 
       <tr>
-       <td><em>ndbm</em></td>
+       <td><code class="literal">ndbm</code></td>
        <td>
         ndbm は、dbm に比べて新しく、dbm よりも柔軟です。
         dbm 固有の制約の多くをまだ有しています（そのため、
@@ -53,7 +66,7 @@
 
 
       <tr>
-       <td><em>gdbm</em></td>
+       <td><code class="literal">gdbm</code></td>
        <td>
         Gdbm は、<a href="ftp://ftp.gnu.org/pub/gnu/gdbm/" class="link external">&raquo;&nbsp;GNU データベースマネージャ
         </a>です。
@@ -62,7 +75,7 @@
 
 
       <tr>
-       <td><em>db2</em></td>
+       <td><code class="literal">db2</code></td>
        <td>
         DB2 は、<a href="http://www.sleepycat.com/" class="link external">&raquo;&nbsp;Oracle Berkeley DB 2</a>
         用です。これは、「スタンドアローンおよびクライアント/サーバー
@@ -73,7 +86,7 @@
 
 
       <tr>
-       <td><em>db3</em></td>
+       <td><code class="literal">db3</code></td>
        <td>
         DB3 は、<a href="http://www.sleepycat.com/" class="link external">&raquo;&nbsp;Oracle Berkeley DB
         3</a> 用です。
@@ -82,42 +95,42 @@
 
 
       <tr>
-       <td><em>db4</em></td>
+       <td><code class="literal">db4</code></td>
        <td>
         DB4 は、<a href="http://www.sleepycat.com/" class="link external">&raquo;&nbsp;Oracle Berkeley DB
-        4 あるいは 5</a> 用です。PHP 4.3.2 以降で利用可能です。
+        4 あるいは 5</a> 用です。
         BDB 5 を使用できるのは、PHP 5.3.3 以降です。
        </td>
       </tr>
 
 
       <tr>
-       <td><em>cdb</em></td>
+       <td><code class="literal">cdb</code></td>
        <td>
         cdb は「固定データベースの作成・読込み用の、高速で高信頼性の
         軽量型パッケージ」です。これは qmail の作者によるものであり、
         <a href="http://cr.yp.to/cdb.html" class="link external">&raquo;&nbsp;http://cr.yp.to/cdb.html</a> にあります。
         固定であるため、読込操作のみがサポートされます。
-        PHP 4.3.0 以降、内部的な cdb ライブラリにより（更新ではなく）
+        内部的な cdb ライブラリにより（更新ではなく）
         書き込みがサポートされています。
        </td>
       </tr>
 
 
       <tr>
-       <td><em>cdb_make</em></td>
+       <td><code class="literal">cdb_make</code></td>
        <td>
-        PHP 4.3.0 以降、付属する cdb ライブラリを使用する場合に cdb
+        付属する cdb ライブラリを使用する場合に cdb
         ファイルの（更新ではなく）作成をサポートします。
        </td>
       </tr>
 
 
       <tr>
-       <td><em>flatfile</em></td>
+       <td><code class="literal">flatfile</code></td>
        <td>
-        これは、PHP 4.3.0 以降で利用可能で、古い
-        <em>dbm</em> 拡張モジュールとの互換性の
+        これは、古い
+        <code class="literal">dbm</code> 拡張モジュールとの互換性の
         ためだけのものであり、使用するべきではありません。
         しかし、ファイルがこの形式で作成された場所でこれを使用する
         ことができます。これは、configure が外部ライブラリを見付ける
@@ -127,36 +140,45 @@
 
 
       <tr>
-       <td><em>inifile</em></td>
+       <td><code class="literal">inifile</code></td>
        <td>
-        これは PHP 4.3.3 以降で利用可能で、PHP スクリプトから php.ini
+        これは PHP スクリプトから php.ini
         ファイルを書き換えられるようにします。ini ファイルを扱う場合は、
         array(0=&gt;group,1=&gt;value_name) のような配列、あるいは
         &quot;[group]value_name&quot; のような文字列を渡します（group はオプションです）。
         <span class="function"><a href="function.dba-firstkey.html" class="function">dba_firstkey()</a></span> や <span class="function"><a href="function.dba-nextkey.html" class="function">dba_nextkey()</a></span>
-        はキーを文字列形式で返しますが、PHP 5 以降で利用できる
+        はキーを文字列形式で返しますが、
         <span class="function"><a href="function.dba-key-split.html" class="function">dba_key_split()</a></span> を用いるとそれを配列形式に
-        変換できます。その際に <strong><code>FALSE</code></strong> を失うこともありません。
+        変換できます。その際に <strong><code>false</code></strong> を失うこともありません。
        </td>
       </tr>
 
 
       <tr>
-       <td><em>qdbm</em></td>
+       <td><code class="literal">qdbm</code></td>
        <td>
-        これは PHP 5.0.0 以降で有効です。qdbm ライブラリは
-        <a href="http://fallabs.com/qdbm/index.html" class="link external">&raquo;&nbsp;http://fallabs.com/qdbm/index.html</a>
-        にあります。
+        qdbm ライブラリは
+        <a href="http://fallabs.com/qdbm/index.html" class="link external">&raquo;&nbsp;http://fallabs.com/qdbm/index.html</a> からダウンロードできます。
        </td>
       </tr>
 
 
       <tr>
-       <td><em>tcadb</em></td>
+       <td><code class="literal">tcadb</code></td>
        <td>
-        これは PHP 5.4.0 以降で有効です。Tokyo Cabinet ライブラリは
+        Tokyo Cabinet ライブラリは
         <a href="http://fallabs.com/tokyocabinet/" class="link external">&raquo;&nbsp;http://fallabs.com/tokyocabinet/</a>
-        にあります。
+        からダウンロードできます。
+       </td>
+      </tr>
+
+
+      <tr>
+       <td><code class="literal">lmdb</code></td>
+       <td>
+        PHP 7.2.0 以降で利用可能です。
+        Lightning Memory-Mapped Database ライブラリは
+        <a href="https://symas.com/lmdb/" class="link external">&raquo;&nbsp;https://symas.com/lmdb/</a> からダウンロードできます。
        </td>
       </tr>
 
@@ -173,9 +195,4 @@
    <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> または
    <span class="function"><a href="function.dba-handlers.html" class="function">dba_handlers()</a></span> をコールした際に表示されます。
   </p>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="dba.setup.html">インストール/設定</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="dba.installation.html">インストール手順</a></div>
- <div class="up"><a href="dba.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+ </div></div></div></body></html>

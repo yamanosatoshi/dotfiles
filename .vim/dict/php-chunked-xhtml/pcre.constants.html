@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>定義済み定数</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pcre.resources.html">リソース型</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pcre.examples.html">例</a></div>
- <div class="up"><a href="book.pcre.html">PCRE</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="pcre.constants" class="appendix">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pcre.resources.html">« リソース型</a></li>
+      <li style="float: right;"><a href="pcre.examples.html">例 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.pcre.html">PCRE</a></li>
+    <li>定義済み定数</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pcre.constants" class="appendix">
  <h1>定義済み定数</h1>
 
  <p class="simpara">
@@ -25,7 +38,7 @@
     <tr>
      <th>定数</th>
      <th>説明</th>
-     <th>利用可能</th>
+     <th>使用可能</th>
     </tr>
 
    </thead>
@@ -34,8 +47,8 @@
     <tr id="constant.preg-pattern-order">
      <td><strong><code>PREG_PATTERN_ORDER</code></strong></td>
      <td>
-      <var class="varname"><var class="varname">$matches[0]</var></var> はパターン全体にマッチした文字列の配列、
-      <var class="varname"><var class="varname">$matches[1]</var></var> は第 1 のキャプチャ用サブパターンにマッチした文字列の配列、
+      <var class="varname">$matches[0]</var> はパターン全体にマッチした文字列の配列、
+      <var class="varname">$matches[1]</var> は第 1 のキャプチャ用サブパターンにマッチした文字列の配列、
       といったように結果の順序を指定します。
       このフラグは、<span class="function"><a href="function.preg-match-all.html" class="function">preg_match_all()</a></span> でのみ使用されます。
      </td>
@@ -45,8 +58,8 @@
     <tr id="constant.preg-set-order">
      <td><strong><code>PREG_SET_ORDER</code></strong></td>
      <td>
-      <var class="varname"><var class="varname">$matches[0]</var></var> は 1 回目のマッチングでキャプチャした値の配列、
-      <var class="varname"><var class="varname">$matches[1]</var></var> は 2 回目のマッチングでキャプチャした値の配列、
+      <var class="varname">$matches[0]</var> は 1 回目のマッチングでキャプチャした値の配列、
+      <var class="varname">$matches[1]</var> は 2 回目のマッチングでキャプチャした値の配列、
       といったように結果の順序を指定します。
       このフラグは、<span class="function"><a href="function.preg-match-all.html" class="function">preg_match_all()</a></span> でのみ使用されます。
      </td>
@@ -58,7 +71,7 @@
      <td>
       <strong><code>PREG_SPLIT_OFFSET_CAPTURE</code></strong> の説明を参照してください。
      </td>
-     <td>4.3.0</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr id="constant.preg-split-no-empty">
@@ -77,7 +90,7 @@
       文字列分割用のパターン中のカッコによるサブパターンでキャプチャされた値も
       同時に返すようにします。
      </td>
-     <td>4.0.5</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr id="constant.preg-split-offset-capture">
@@ -89,7 +102,22 @@
       このフラグは
       <span class="function"><a href="function.preg-split.html" class="function">preg_split()</a></span> のみで使用されます。
      </td>
-     <td>4.3.0</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr id="constant.preg-unmatched-as-null">
+     <td><strong><code>PREG_UNMATCHED_AS_NULL</code></strong></td>
+     <td>
+      このフラグは、
+      <span class="function"><a href="function.preg-match.html" class="function">preg_match()</a></span> と
+      <span class="function"><a href="function.preg-match-all.html" class="function">preg_match_all()</a></span> 関数で
+      マッチしなかったサブパターンがあった場合に、
+      <var class="varname">$matches</var> に <strong><code>null</code></strong> を入れることで伝えます。
+      このフラグがないと、マッチしなかったサブパターンは
+      いかにも空文字列にマッチしたかのように空文字列として通知されます。
+      このフラグを設定することで、これらふたつの場合を区別できます。
+     </td>
+     <td>7.2.0</td>
     </tr>
 
     <tr id="constant.preg-no-error">
@@ -162,7 +190,7 @@
     <tr id="constant.pcre-version">
      <td><strong><code>PCRE_VERSION</code></strong></td>
      <td>
-      PCRE のバージョンおよびリリース日 (例: &quot;<em>7.0 18-Dec-2006</em>&quot;)。
+      PCRE のバージョンおよびリリース日 (例: &quot;<code class="literal">7.0 18-Dec-2006</code>&quot;)。
      </td>
      <td>5.2.4</td>
     </tr>
@@ -172,9 +200,4 @@
  </table>
 
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pcre.resources.html">リソース型</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pcre.examples.html">例</a></div>
- <div class="up"><a href="book.pcre.html">PCRE</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

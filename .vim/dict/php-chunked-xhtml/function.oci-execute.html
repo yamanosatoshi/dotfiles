@@ -3,35 +3,45 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>文を実行する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.oci-error.html">oci_error</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.oci-fetch-all.html">oci_fetch_all</a></div>
- <div class="up"><a href="ref.oci8.html">OCI8 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.oci-execute" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.oci-error.html">« oci_error</a></li>
+      <li style="float: right;"><a href="function.oci-fetch-all.html">oci_fetch_all »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.oci8.html">OCI8 関数</a></li>
+    <li>文を実行する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.oci-execute" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">oci_execute</h1>
-  <p class="verinfo">(PHP 5, PHP 7, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_execute</span> &mdash; <span class="dc-title">文を実行する</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_execute</span> &mdash; <span class="dc-title">文を実行する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.oci-execute-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>oci_execute</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$statement</code></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = OCI_COMMIT_ON_SUCCESS</span></span>
-  ] )</div>
+   <span class="methodname"><strong>oci_execute</strong></span>(<span class="methodparam"><span class="type">resource</span> <code class="parameter">$statement</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = OCI_COMMIT_ON_SUCCESS</span></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><a href="function.oci-parse.html" class="function">oci_parse()</a></span> が返した
    <code class="parameter">statement</code> を実行します。
   </p>
   <p class="para">
-   実行後、<em>INSERT</em> 文などの場合はデフォルトでデータをデータベースにコミットします。
-   <em>SELECT</em> 文などの場合は問い合わせを実行します。
+   実行後、<code class="literal">INSERT</code> 文などの場合はデフォルトでデータをデータベースにコミットします。
+   <code class="literal">SELECT</code> 文などの場合は問い合わせを実行します。
    問い合わせの結果をその後 PHP で取得するには
    <span class="function"><a href="function.oci-fetch-array.html" class="function">oci_fetch_array()</a></span> などの関数を使います。
   </p>
@@ -39,7 +49,7 @@
    一度パースした文は何度でも実行することができ、
    これを使えば毎回パースするコストを節約することができます。
    この方法は、<span class="function"><a href="function.oci-bind-by-name.html" class="function">oci_bind_by_name()</a></span> でデータをバインドした
-   <em>INSERT</em> 文で一般的に使われています。
+   <code class="literal">INSERT</code> 文で一般的に使われています。
   </p>
  </div>
 
@@ -147,7 +157,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.oci-execute-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -155,7 +165,7 @@
  <div class="refsect1 examples" id="refsect1-function.oci-execute-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-2227">
+   <div class="example" id="example-1783">
     <p><strong>例1 <span class="function"><strong>oci_execute()</strong></span> での問い合わせの例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -167,7 +177,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2228">
+   <div class="example" id="example-1784">
     <p><strong>例2 モードを指定せずに <span class="function"><strong>oci_execute()</strong></span> を実行する例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -179,7 +189,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2229">
+   <div class="example" id="example-1785">
     <p><strong>例3 <span class="function"><strong>oci_execute()</strong></span> で <strong><code>OCI_NO_AUTO_COMMIT</code></strong> を使う例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -191,7 +201,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2230">
+   <div class="example" id="example-1786">
     <p><strong>例4 <span class="function"><strong>oci_execute()</strong></span> でさまざまなコミットモードを使う例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -203,7 +213,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-2231">
+   <div class="example" id="example-1787">
     <p><strong>例5 <span class="function"><strong>oci_execute()</strong></span> で
      <strong><code>OCI_DESCRIBE_ONLY</code></strong> を使う例</strong></p>
     <div class="example-contents">
@@ -234,7 +244,7 @@
     それ以前の未コミットのトランザクションをコミットします。
    </p>
    <p class="para">
-    <em>CREATE</em> や <em>DROP</em> といった
+    <code class="literal">CREATE</code> や <code class="literal">DROP</code> といった
     Oracle の DDL は、未コミットのトランザクションを自動的にコミットします。
    </p>
   </p></blockquote>
@@ -259,9 +269,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.oci-error.html">oci_error</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.oci-fetch-all.html">oci_fetch_all</a></div>
- <div class="up"><a href="ref.oci8.html">OCI8 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

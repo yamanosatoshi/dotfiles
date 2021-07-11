@@ -3,28 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>生の HTTP ヘッダを送信する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.header-remove.html">header_remove</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.headers-list.html">headers_list</a></div>
- <div class="up"><a href="ref.network.html">ネットワーク 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.header" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.header-remove.html">« header_remove</a></li>
+      <li style="float: right;"><a href="function.headers-list.html">headers_list »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.network.html">ネットワーク 関数</a></li>
+    <li>生の HTTP ヘッダを送信する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.header" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">header</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">header</span> &mdash; <span class="dc-title">生の HTTP ヘッダを送信する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">header</span> &mdash; <span class="dc-title">生の HTTP ヘッダを送信する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.header-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>header</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>
-   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$replace</code><span class="initializer"> = true</span></span>
-   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$http_response_code</code></span>
-  ]] )</div>
+   <span class="methodname"><strong>header</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$header</code></span>, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$replace</code><span class="initializer"> = <strong><code>true</code></strong></span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$response_code</code><span class="initializer"> = 0</span></span>): <span class="type"><span class="type void">void</span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>header()</strong></span> は、生の
@@ -62,7 +71,7 @@
 
     
      <dt>
-<code class="parameter">string</code></dt>
+<code class="parameter">header</code></dt>
 
      <dd>
 
@@ -71,11 +80,11 @@
       </p>
       <p class="para">
        特殊な header コールが 2 種類あります。最初のものは、
-       文字列 &quot;<em>HTTP/</em>&quot;
+       文字列 &quot;<code class="literal">HTTP/</code>&quot;
        から始まる全てのヘッダ (大文字・小文字は区別されません) です。
        このヘッダは、送信する HTTP ステータスコードを示すために使用されます。
        例えば、存在しないファイルへのリクエストを処理するためにある PHP
-       スクリプトを使用するよう (<em>ErrorDocument</em>
+       スクリプトを使用するよう (<code class="literal">ErrorDocument</code>
        ディレクティブにより) Apache を設定する場合、
        そのスクリプトが正しいステータスコードを返すようにする必要があります。
       </p>
@@ -83,7 +92,7 @@
        <div class="informalexample">
         <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br />header</span><span style="color: #007700">(</span><span style="color: #DD0000">"HTTP/1.0&nbsp;404&nbsp;Not&nbsp;Found"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;この例は、"HTTP/"&nbsp;から始まる特別な場合を示しています。<br />//&nbsp;これより良い、典型的な使い方として、以下があげられます:<br />//&nbsp;1.&nbsp;header($_SERVER["SERVER_PROTOCOL"]&nbsp;.&nbsp;"&nbsp;404&nbsp;Not&nbsp;Found");<br />//&nbsp;&nbsp;&nbsp;&nbsp;(HTTP/1.0&nbsp;を使いながら、httpステータスメッセージを上書きする)<br />//&nbsp;2.&nbsp;http_response_code(404);&nbsp;(デフォルトのメッセージを使う)<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"HTTP/1.1&nbsp;404&nbsp;Not&nbsp;Found"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
         </div>
@@ -93,8 +102,8 @@
       <p class="para">
        2 番目の特別なヘッダは、&quot;Location:&quot;
        ヘッダです。このヘッダがブラウザに返されるだけではなく、
-       ブラウザに <em>REDIRECT</em> (302) ステータスコードを返します
-       (<em>201</em> や <em>3xx</em>
+       ブラウザに <code class="literal">REDIRECT</code> (302) ステータスコードを返します
+       (<code class="literal">201</code> や <code class="literal">3xx</code>
        ステータスコードが既に送信されていない場合にのみ)。
       </p>
       <p class="para">
@@ -121,7 +130,7 @@
        オプションのパラメータ <code class="parameter">replace</code> は、ヘッダが
        前に送信された類似のヘッダを置換するか、または、同じ形式の二番目の
        ヘッダを追加するかどうかを指定します。デフォルトでは、この関数は
-       置換を行ないますが、二番目の引数に <strong><code>FALSE</code></strong> を指定すると、同じ型の
+       置換を行ないますが、二番目の引数に <strong><code>false</code></strong> を指定すると、同じ型の
        複数のヘッダを強制的に生成します。例えば、
       </p>
       <p class="para">
@@ -140,13 +149,13 @@
     
     
      <dt>
-<code class="parameter">http_response_code</code></dt>
+<code class="parameter">response_code</code></dt>
 
      <dd>
 
       <p class="para">
        HTTP レスポンスコードを強制的に指定の値にします。このパラメータが意味をなすのは
-       <code class="parameter">string</code> が空文字列でないときだけであることに注意しましょう。
+       <code class="parameter">header</code> が空文字列でないときだけであることに注意しましょう。
       </p>
      </dd>
 
@@ -165,40 +174,10 @@
  </div>
 
 
- <div class="refsect1 changelog" id="refsect1-function.header-changelog">
-  <h3 class="title">変更履歴</h3>
-  <p class="para">
-   <table class="doctable informaltable">
-    
-     <thead>
-      <tr>
-       <th>バージョン</th>
-       <th>説明</th>
-      </tr>
-
-     </thead>
-
-     <tbody class="tbody">
-      <tr>
-       <td>5.1.2</td>
-       <td>
-        この関数は一度に複数のヘッダを送信できないようになりました。
-        これは、ヘッダインジェクション攻撃への対策です。
-       </td>
-      </tr>
-
-     </tbody>
-    
-   </table>
-
-  </p>
- </div>
-
-
  <div class="refsect1 examples" id="refsect1-function.header-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5030">
+   <div class="example" id="example-4427">
     <p><strong>例1 ダウンロードダイアログ</strong></p>
     <div class="example-contents"><p>
      PDF ファイルを生成した場合など、
@@ -216,7 +195,7 @@
    </div>
   </p>
   <p class="para">
-   <div class="example" id="example-5031">
+   <div class="example" id="example-4428">
     <p><strong>例2 キャッシュディレクティブ</strong></p>
     <div class="example-contents"><p>
      PHP スクリプトはしばしば動的に HTML を生成するため、クライアント
@@ -242,7 +221,7 @@
       </p>
       <p class="para">
        さらに、<span class="function"><a href="function.session-cache-limiter.html" class="function">session_cache_limiter()</a></span> および
-       設定 <em>session.cache_limiter</em> を用いると、
+       設定 <code class="literal">session.cache_limiter</code> を用いると、
        セッションが使用された際にキャッシュ関係の正しいヘッダを
        自動的に生成させることもできます。
       </p>
@@ -270,7 +249,7 @@
     <span class="function"><a href="function.ob-start.html" class="function">ob_start()</a></span> と
     <span class="function"><a href="function.ob-end-flush.html" class="function">ob_end_flush()</a></span> をスクリプトでコールするか
     <var class="filename">php.ini</var> またはサーバー設定ファイルの設定ディレクティブ
-    <em>output_buffering</em> を設定することにより
+    <code class="literal">output_buffering</code> を設定することにより
     行うことが可能です。
    </p>
   </p></blockquote>
@@ -293,22 +272,14 @@
    </p>
   </p></blockquote>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
-   <span class="simpara">
-    <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">セーフモード</a>が有効な場合は、
-    <em>WWW-Authenticate</em> ヘッダ (HTTP 認証に使用する)
-    を設定した際に、スクリプトの uid が <em>realm</em>
-    部に追加されます。
-   </span>
-  </p></blockquote>
-  <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     最近のクライアントの大半は
     <a href="http://tools.ietf.org/html/rfc7231#section-7.1.2" class="link external">&raquo;&nbsp;Location:</a>
     への引数として相対 <acronym title="Uniform Resource Identifier">URI</acronym> も受け付けますが、
     古いクライアントの中にはスキームとホスト名そして絶対パスを含む絶対 URL しか受け付けないものもあります。
     通常は、相対 URI から絶対 URI を作成するためには
-    <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['HTTP_HOST']</a></var></var>、
-    <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['PHP_SELF']</a></var></var> および
+    <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['HTTP_HOST']</a></var>、
+    <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['PHP_SELF']</a></var> および
     <span class="function"><a href="function.dirname.html" class="function">dirname()</a></span> を使用できます。
     <div class="informalexample">
      <div class="example-contents">
@@ -339,18 +310,13 @@
     <li class="member"><span class="function"><a href="function.headers-sent.html" class="function" rel="rdfs-seeAlso">headers_sent()</a> - ヘッダが既に送信されているかどうかを調べる</span></li>
     <li class="member"><span class="function"><a href="function.setcookie.html" class="function" rel="rdfs-seeAlso">setcookie()</a> - クッキーを送信する</span></li>
     <li class="member"><span class="function"><a href="function.http-response-code.html" class="function" rel="rdfs-seeAlso">http_response_code()</a> - HTTP レスポンスコードを取得または設定</span></li>
+    <li class="member"><span class="function"><a href="function.header-remove.html" class="function" rel="rdfs-seeAlso">header_remove()</a> - 以前に設定したHTTPヘッダを削除する</span></li>
     <li class="member">
-     <a href="features.http-auth.html" class="link">HTTP
-     認証</a>
+     <a href="features.http-auth.html" class="link">HTTP 認証</a>
     </li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.header-remove.html">header_remove</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.headers-list.html">headers_list</a></div>
- <div class="up"><a href="ref.network.html">ネットワーク 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

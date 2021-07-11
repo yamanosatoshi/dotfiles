@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>実行時設定</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="com.installation.html">インストール手順</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="com.resources.html">リソース型</a></div>
- <div class="up"><a href="com.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="com.configuration" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="com.installation.html">« インストール手順</a></li>
+      <li style="float: right;"><a href="com.resources.html">リソース型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="com.setup.html">インストール/設定</a></li>
+    <li>実行時設定</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="com.configuration" class="section">
  <h2 class="title">実行時設定</h2>
  <p class="simpara">
 <var class="filename">php.ini</var> の設定により動作が変化します。
@@ -34,42 +47,49 @@
      <td><a href="com.configuration.html#ini.com.allow-dcom" class="link">com.allow_dcom</a></td>
      <td>&quot;0&quot;</td>
      <td>PHP_INI_SYSTEM</td>
-     <td>PHP 4.0.5 以降で使用可能です。</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="com.configuration.html#ini.com.autoregister-typelib" class="link">com.autoregister_typelib</a></td>
      <td>&quot;0&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 4 では PHP_INI_SYSTEM です。PHP 4.1.0 以降で使用可能です。</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="com.configuration.html#ini.com.autoregister-verbose" class="link">com.autoregister_verbose</a></td>
      <td>&quot;0&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 4 では PHP_INI_SYSTEM です。PHP 4.1.0 以降で使用可能です。</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="com.configuration.html#ini.com.autoregister-casesensitive" class="link">com.autoregister_casesensitive</a></td>
      <td>&quot;1&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 4 では PHP_INI_SYSTEM です。PHP 4.1.0 以降で使用可能です。</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
     <tr>
      <td><a href="com.configuration.html#ini.com.code-page" class="link">com.code_page</a></td>
      <td>&quot;&quot;</td>
      <td>PHP_INI_ALL</td>
-     <td>PHP 5.0.0 以降で使用可能です。</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="com.configuration.html#ini.com.dotnet-version" class="link">com.dotnet_version</a></td>
+     <td>&quot;&quot;</td>
+     <td>PHP_INI_SYSTEM</td>
+     <td>PHP 8.0.0 以降で利用可能</td>
     </tr>
 
     <tr>
      <td><a href="com.configuration.html#ini.com.typelib-file" class="link">com.typelib_file</a></td>
      <td>&quot;&quot;</td>
      <td>PHP_INI_SYSTEM</td>
-     <td>PHP 4.0.5 以降で使用可能です。</td>
+     <td class="empty">&nbsp;</td>
     </tr>
 
    </tbody>
@@ -111,7 +131,8 @@
     <dd>
 
     <p class="para">
-     これを on にすると、生成したオブジェクトのタイプライブラリから取得した
+     これを on にすると、
+     生成した <a href="class.com.html" class="classname">COM</a>オブジェクトのタイプライブラリから取得した
      定数を PHP に登録しようと試みます。ただし、それはオブジェクトが
      当該情報を取得するためのインターフェイスを提供している場合のみです。
      登録する定数の大文字小文字を区別するかどうかについては、
@@ -147,7 +168,8 @@
     <dd>
 
     <p class="para">
-     これを on にすると (デフォルト)、自動読み込みされた
+     これを on にすると (デフォルト)、
+     <a href="class.com.html" class="classname">COM</a>オブジェクトをインスタンス化中に自動読み込みされた
      タイプライブラリ中に見つかった定数が、大文字小文字を区別して
      登録されます。詳細は <span class="function"><a href="function.com-load-typelib.html" class="function">com_load_typelib()</a></span>
      を参照ください。
@@ -172,17 +194,28 @@
     <p class="para">
      スクリプト中のテキストがデフォルトとは異なるエンコーディング/
      文字セットを使用している場合、このディレクティブを設定することで
-     <a href="class.com.html" class="xref">COM</a> クラスのコンストラクタのパラメータとして
+     <a href="class.com.html" class="xref">com</a> クラスのコンストラクタのパラメータとして
      コードページを指定する必要がなくなります。
      (他の PHP 設定ディレクティブとともに) このディレクティブを使用すると、
      PHP スクリプトの移植可能性が悪くなることに注意しましょう。
      できる限り、COM のコンストラクタにパラメータを指定する方式をとるべきです。
     </p>
-    <blockquote class="note"><p><strong class="note">注意</strong>: 
-     <span class="simpara">
-      この設定ディレクティブは PHP 5 以降で使用可能です。
-     </span>
-    </p></blockquote>
+    </dd>
+
+   
+
+   
+    <dt id="ini.com.dotnet-version">
+     <code class="parameter">com.dotnet_version</code>
+    </dt>
+
+    <dd>
+
+    <p class="para">
+     <a href="class.dotnet.html" class="classname">dotnet</a> オブジェクトが使う、.NET framework のバージョン。
+     この値は、framework のバージョン番号のうち、ドットで区切られた最初の3つの部分で、
+     <code class="literal">v</code> が先頭に付きます。たとえば <code class="literal">v4.0.30319</code> のようなものです。
+    </p>
     </dd>
 
    
@@ -200,8 +233,8 @@
      タイプライブラリ名として扱われ、<span class="function"><a href="function.com-load-typelib.html" class="function">com_load_typelib()</a></span>
      をコールした際にそれが読み込まれます。登録された定数は永続的に
      保持されるので、ライブラリの読み込みは一度だけでよくなります。
-     タイプライブラリの名前が <em>#cis</em> あるいは
-     <em>#case_insensitive</em> で終わる場合は、そのライブラリから
+     タイプライブラリの名前が <code class="literal">#cis</code> あるいは
+     <code class="literal">#case_insensitive</code> で終わる場合は、そのライブラリから
      読み込まれた定数は大文字小文字を区別せずに登録されます。
     </p>
     </dd>
@@ -212,9 +245,4 @@
 
  </p>
  
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="com.installation.html">インストール手順</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="com.resources.html">リソース型</a></div>
- <div class="up"><a href="com.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

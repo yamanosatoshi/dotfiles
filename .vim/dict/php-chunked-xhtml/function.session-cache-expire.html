@@ -2,31 +2,42 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>現在のキャッシュの有効期限を返す</title>
+  <title>現在のキャッシュの有効期限を取得/設定する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.session-abort.html">session_abort</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.session-cache-limiter.html">session_cache_limiter</a></div>
- <div class="up"><a href="ref.session.html">セッション関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.session-cache-expire" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.session-abort.html">« session_abort</a></li>
+      <li style="float: right;"><a href="function.session-cache-limiter.html">session_cache_limiter »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.session.html">セッション関数</a></li>
+    <li>現在のキャッシュの有効期限を取得/設定する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.session-cache-expire" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">session_cache_expire</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">session_cache_expire</span> &mdash; <span class="dc-title">現在のキャッシュの有効期限を返す</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">session_cache_expire</span> &mdash; <span class="dc-title">現在のキャッシュの有効期限を取得/設定する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.session-cache-expire-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">int</span> <span class="methodname"><strong>session_cache_expire</strong></span>
-    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$new_cache_expire</code></span>
-  ] )</div>
+   <span class="methodname"><strong>session_cache_expire</strong></span>(<span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$value</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type"><span class="type">int</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>session_cache_expire()</strong></span> は現在の
-   <em>session.cache_expire</em> の設定を返します。
+   <code class="literal">session.cache_expire</code> の設定を返します。
   </p>
   <p class="para">
    リクエストがあった時点で、キャッシュの有効期限は
@@ -46,21 +57,21 @@
 
     
      <dt>
-<code class="parameter">new_cache_expire</code></dt>
+<code class="parameter">value</code></dt>
 
      <dd>
 
       <p class="para">
-       <code class="parameter">new_cache_expire</code> が指定された場合、
+       <code class="parameter">value</code> が指定され、<strong><code>null</code></strong> でない場合、
        現在のキャッシュの有効期限は、
-       <code class="parameter">new_cache_expire</code> で置換されます。
+       <code class="parameter">value</code> で置換されます。
       </p>
       <p class="para">
        <blockquote class="note"><p><strong class="note">注意</strong>: 
         <span class="simpara">
-         <em>session.cache_limiter</em>が
-         <em>nocache</em><em class="emphasis">以外の</em>値にセットされている場合にのみ
-         <code class="parameter">new_cache_expire</code>が有効となります。
+         <code class="literal">session.cache_limiter</code>が
+         <code class="literal">nocache</code><em class="emphasis">以外の</em>値にセットされている場合にのみ
+         <code class="parameter">value</code>が有効となります。
         </span>
        </p></blockquote>
       </p>
@@ -76,16 +87,44 @@
  <div class="refsect1 returnvalues" id="refsect1-function.session-cache-expire-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <em>session.cache_expire</em> の現在の設定を返します。
+   <code class="literal">session.cache_expire</code> の現在の設定を返します。
    返り値は分単位で、デフォルトは 180 です。
+   値の変更に失敗した場合は、<strong><code>false</code></strong> を返します。
   </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.session-cache-expire-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">value</code> は、nullable になりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.session-cache-expire-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5353">
+   <div class="example" id="example-4695">
     <p><strong>例1 <span class="function"><strong>session_cache_expire()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -111,9 +150,4 @@
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.session-abort.html">session_abort</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.session-cache-limiter.html">session_cache_limiter</a></div>
- <div class="up"><a href="ref.session.html">セッション関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

@@ -2,26 +2,45 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Cond クラス</title>
+  <title>The Cond class</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mutex.unlock.html">Mutex::unlock</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="cond.broadcast.html">Cond::broadcast</a></div>
- <div class="up"><a href="book.pthreads.html">pthreads</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="class.cond" class="reference">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mutex.unlock.html">« Mutex::unlock</a></li>
+      <li style="float: right;"><a href="cond.broadcast.html">Cond::broadcast »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.pthreads.html">pthreads</a></li>
+    <li>The Cond class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.cond" class="reference">
 
- <h1 class="title">Cond クラス</h1>
+ <h1 class="title">The Cond class</h1>
  
 
- <div class="partintro"><p class="verinfo">(PECL pthreads &gt;= 2.0.0)</p>
+ <div class="partintro"><p class="verinfo">(PECL pthreads &lt; 3.0.0)</p>
 
 
   <div class="section" id="cond.intro">
-   <h2 class="title">導入</h2>
+   <h2 class="title">はじめに</h2>
+   <div class="warning"><strong class="warning">警告</strong>
+    <p class="para">
+     The <strong class="classname">Cond</strong> class has been removed in pthreads v3.
+    </p>
+   </div>
+
    <p class="para">
-    Cond クラスの静的メソッドを使えば、Posix の条件変数に直接アクセスできるようになります。
+  The static methods contained in the Cond class provide direct access to Posix Condition Variables.
    </p>
   </div>
 
@@ -46,62 +65,41 @@
    <span class="modifier">final</span> 
    <span class="modifier">public</span> 
    <span class="modifier">static</span> 
-   <span class="type">boolean</span> 
-   <span class="methodname"><a href="cond.broadcast.html" class="methodname">broadcast</a></span>
-    ( <span class="methodparam">
- <span class="type"><span class="type long">long</span></span>
+   <span class="methodname"><a href="cond.broadcast.html" class="methodname">broadcast</a></span>(<span class="methodparam">
+ <span class="type">int</span>
   <code class="parameter">$condition</code>
-  </span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span>
+  </span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
    <span class="modifier">public</span>
    <span class="modifier">static</span>
-   <span class="type">long</span> 
-   <span class="methodname"><a href="cond.create.html" class="methodname">create</a></span>
-    ( <span class="methodparam">void</span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span> 
+   <span class="methodname"><a href="cond.create.html" class="methodname">create</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> 
    <span class="modifier">public</span> 
    <span class="modifier">static</span> 
-   <span class="type">boolean</span> 
-   <span class="methodname"><a href="cond.destroy.html" class="methodname">destroy</a></span>
-    ( <span class="methodparam">
- <span class="type"><span class="type long">long</span></span>
+   <span class="methodname"><a href="cond.destroy.html" class="methodname">destroy</a></span>(<span class="methodparam">
+ <span class="type">int</span>
   <code class="parameter">$condition</code>
-  </span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span> 
+  </span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> 
    <span class="modifier">public</span> 
    <span class="modifier">static</span> 
-   <span class="type">boolean</span> 
-   <span class="methodname"><a href="cond.signal.html" class="methodname">signal</a></span>
-    ( <span class="methodparam">
-   <span class="type"><span class="type long">long</span></span>
+   <span class="methodname"><a href="cond.signal.html" class="methodname">signal</a></span>(<span class="methodparam">
+   <span class="type">int</span>
     <code class="parameter">$condition</code>
-  </span>
-   )</div>
-<div class="methodsynopsis dc-description">
-   <span class="modifier">final</span> 
+  </span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> 
    <span class="modifier">public</span> 
    <span class="modifier">static</span> 
-   <span class="type">boolean</span> 
-   <span class="methodname"><a href="cond.wait.html" class="methodname">wait</a></span>
-    ( <span class="methodparam">
-   <span class="type"><span class="type long">long</span></span>
+   <span class="methodname"><a href="cond.wait.html" class="methodname">wait</a></span>(<span class="methodparam">
+   <span class="type">int</span>
     <code class="parameter">$condition</code>
-   </span>
-   , <span class="methodparam">
-   <span class="type"><span class="type long">long</span></span>
+   </span>, <span class="methodparam">
+   <span class="type">int</span>
     <code class="parameter">$mutex</code>
-   </span>
-   [, <span class="methodparam">
-   <span class="type"><span class="type long">long</span></span>
+   </span>, <span class="methodparam">
+   <span class="type">int</span>
     <code class="parameter">$timeout</code>
-  </span>
-  ] )</div>
+  <span class="initializer"> = ?</span></span>): <span class="type">bool</span></div>
 
    }</div>
 
@@ -147,16 +145,6 @@
 
 
 
-
-
-
-
-
-<h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="cond.broadcast.html">Cond::broadcast</a> — 条件をブロードキャストする</li><li><a href="cond.create.html">Cond::create</a> — 条件を作る</li><li><a href="cond.destroy.html">Cond::destroy</a> — 条件を破棄する</li><li><a href="cond.signal.html">Cond::signal</a> — 条件を通知する</li><li><a href="cond.wait.html">Cond::wait</a> — 条件を待つ</li></ul>
+<h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="cond.broadcast.html">Cond::broadcast</a> — Broadcast a Condition</li><li><a href="cond.create.html">Cond::create</a> — Create a Condition</li><li><a href="cond.destroy.html">Cond::destroy</a> — Destroy a Condition</li><li><a href="cond.signal.html">Cond::signal</a> — Signal a Condition</li><li><a href="cond.wait.html">Cond::wait</a> — Wait for Condition</li></ul>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mutex.unlock.html">Mutex::unlock</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="cond.broadcast.html">Cond::broadcast</a></div>
- <div class="up"><a href="book.pthreads.html">pthreads</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

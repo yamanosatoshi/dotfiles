@@ -3,26 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>現在のキャッシュリミッタを取得または設定する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.session-cache-expire.html">session_cache_expire</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.session-commit.html">session_commit</a></div>
- <div class="up"><a href="ref.session.html">セッション関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.session-cache-limiter" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.session-cache-expire.html">« session_cache_expire</a></li>
+      <li style="float: right;"><a href="function.session-commit.html">session_commit »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.session.html">セッション関数</a></li>
+    <li>現在のキャッシュリミッタを取得または設定する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.session-cache-limiter" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">session_cache_limiter</h1>
-  <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">session_cache_limiter</span> &mdash; <span class="dc-title">現在のキャッシュリミッタを取得または設定する</span></p>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">session_cache_limiter</span> &mdash; <span class="dc-title">現在のキャッシュリミッタを取得または設定する</span></p>
 
  </div>
 
  <div class="refsect1 description" id="refsect1-function.session-cache-limiter-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>session_cache_limiter</strong></span>
-    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$cache_limiter</code></span>
-  ] )</div>
+   <span class="methodname"><strong>session_cache_limiter</strong></span>(<span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">null</span></span> <code class="parameter">$value</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    <span class="function"><strong>session_cache_limiter()</strong></span> は、
@@ -32,26 +43,26 @@
    キャッシュリミッタは、クライアントに送信されるキャッシュ制御用の
    HTTPヘッダを制御します。これらのヘッダは、ページの内容をクライアントやプロキシがキャッシュ
    する規則を定義します。例えば、キャッシュリミッタを
-   <em>nocache</em>に設定した場合、クライアント/プロキシのキャッ
-   シュは無効になります。しかし、<em>public</em>の場合は、
-   キャッシュを許可します。<em>private</em>と設定すること
+   <code class="literal">nocache</code>に設定した場合、クライアント/プロキシのキャッ
+   シュは無効になります。しかし、<code class="literal">public</code>の場合は、
+   キャッシュを許可します。<code class="literal">private</code>と設定すること
    も可能で、この場合、プロキシがキャッシュすることは許可しませんが
    クライアントがキャッシュすることは許可されます。
   </p>
   <p class="para">
-   <em>private</em>モードにおいて、Expireヘッダがクライア
+   <code class="literal">private</code>モードにおいて、Expireヘッダがクライア
    ントに送信されます。これは、<span class="productname">Mozilla</span>
    のようないくつかのブラウザを混乱させます。これを避けるには、
-   <em>private_no_expire</em>モードを使用してください。
-   このモードでは、<em>Expire</em>ヘッダはクライアントに送信されません。
+   <code class="literal">private_no_expire</code>モードを使用してください。
+   このモードでは、<code class="literal">Expire</code>ヘッダはクライアントに送信されません。
   </p>
   <p class="para">
-   キャッシュリミッタを <em>&#039;&#039;</em> にすると、
+   キャッシュリミッタを <code class="literal">&#039;&#039;</code> にすると、
    キャッシュヘッダの自動送信を完全に無効化します。
   </p>
   <p class="para">
    キャッシュリミッタは、リクエスト開始時に
-   <em>session.cache_limiter</em>に保存されたデフォルト値
+   <code class="literal">session.cache_limiter</code>に保存されたデフォルト値
    にリセットされます。つまり、各リクエスト毎に(アウトプットバッファ
    が無効な場合は、<span class="function"><a href="function.session-start.html" class="function">session_start()</a></span>がコールされる
    前に) <span class="function"><strong>session_cache_limiter()</strong></span>をコールする必要
@@ -67,13 +78,14 @@
 
     
      <dt>
-<code class="parameter">cache_limiter</code></dt>
+<code class="parameter">value</code></dt>
 
      <dd>
 
       <p class="para">
-       <code class="parameter">cache_limiter</code>
-       が指定された場合、現在のキャッシュリミッタは新しい値に変更されます。
+       <code class="parameter">value</code>
+       が指定され、<strong><code>null</code></strong> でない場合、
+       現在のキャッシュリミッタは新しい値に変更されます。
       </p>
       <table class="doctable table">
        <caption><strong>取り得る値</strong></caption>
@@ -88,7 +100,7 @@
 
         <tbody class="tbody">
          <tr>
-          <td><em>public</em></td>
+          <td><code class="literal">public</code></td>
           <td>
            <div class="example-contents">
 <div class="headercode"><pre class="headercode">Expires: (未来のいつか、session.cache_expires による)
@@ -101,7 +113,7 @@ Last-Modified: (セッションが最後に保存されたときのタイムス�
          </tr>
 
          <tr>
-          <td><em>private_no_expire</em></td>
+          <td><code class="literal">private_no_expire</code></td>
           <td>
            <div class="example-contents">
 <div class="headercode"><pre class="headercode">Cache-Control: private, max-age=(session.cache_expire ぶんだけ未来), pre-check=(session.cache_expire ぶんだけ未来)
@@ -113,7 +125,7 @@ Last-Modified: (セッションが最後に保存されたときのタイムス�
          </tr>
 
          <tr>
-          <td><em>private</em></td>
+          <td><code class="literal">private</code></td>
           <td>
            <div class="example-contents">
 <div class="headercode"><pre class="headercode">Expires: Thu, 19 Nov 1981 08:52:00 GMT
@@ -126,7 +138,7 @@ Last-Modified: (セッションが最後に保存されたときのタイムス�
          </tr>
 
          <tr>
-          <td><em>nocache</em></td>
+          <td><code class="literal">nocache</code></td>
           <td>
            <div class="example-contents">
 <div class="headercode"><pre class="headercode">Expires: Thu, 19 Nov 1981 08:52:00 GMT
@@ -155,14 +167,42 @@ Pragma: no-cache</pre>
   <h3 class="title">返り値</h3>
   <p class="para">
    現在のキャッシュリミッタの名前を返します。
+   値の変更に失敗した場合は、<strong><code>false</code></strong> を返します。
   </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.session-cache-limiter-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       <code class="parameter">value</code> は、nullable になりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-function.session-cache-limiter-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5354">
+   <div class="example" id="example-4696">
     <p><strong>例1 <span class="function"><strong>session_cache_limiter()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -186,9 +226,4 @@ Pragma: no-cache</pre>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.session-cache-expire.html">session_cache_expire</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.session-commit.html">session_commit</a></div>
- <div class="up"><a href="ref.session.html">セッション関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

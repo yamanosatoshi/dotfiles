@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>構築時の問題</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="faq.installation.html">インストール</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="faq.using.html">PHP の使いかた</a></div>
- <div class="up"><a href="faq.html">FAQ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="faq.build" class="chapter">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="faq.installation.html">« インストール</a></li>
+      <li style="float: right;"><a href="faq.using.html">PHP の使いかた »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li>構築時の問題</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="faq.build" class="chapter">
   <h1>構築時の問題</h1>
 
   
@@ -71,13 +84,9 @@
      
       PHP をリンクする際、未定義の参照があるというエラーが複数発生します。
      
-    </a></li><li><a href="#faq.build.apache">
-     
-      PHPをApache 1.3と組み合わせて構築する手法が分かりません。
-     
     </a></li><li><a href="#faq.build.not-running">
      
-      インストール手順に完全に基づきUnix上でApacheモジュール版をインス
+      インストール手順に完全に従ってUnix上でApacheモジュール版をインス
       トールしましたが、ブラウザでアクセスするとPHPスクリプトが表示さ
       れ、ファイルを保存しますかと尋ねられます。
      
@@ -144,7 +153,7 @@
       autoconfパッケージが必要です。Gitサーバーからソースを入手した後、
       最上位のディレクトリで<strong class="command">./buildconf</strong>を実行して下
       さい。(また、<strong class="command">configure</strong> に
-      <em>--enable-maintainer-mode</em>オプションを付けて実
+      <code class="literal">--enable-maintainer-mode</code>オプションを付けて実
       行した場合以外は、configureスクリプトは<var class="filename">configure.in</var>
       ファイルが更新された際に自動的に再構築を行いません。このため、
       <var class="filename">configure.in</var>が
@@ -168,9 +177,7 @@
      <p class="para">
       configure/setupスクリプトにApacheソースツリーの最上位の場所を指
       定する必要があります。これは、<strong class="option configure">--with-apache=/path/to/apache</strong>
-
       を指定するのであった、<strong class="option configure">--with-apache=/path/to/apache/src</strong>
-
       <em class="emphasis">ではない</em>ということです。
      </p>
     </dd>
@@ -180,7 +187,7 @@
    <dl class="qandaentry" id="faq.build.lex">
     <dt><strong>
      
-      PHPをconfigureしているときに (<em>./configure</em>)
+      PHPをconfigureしているときに (<code class="literal">./configure</code>)
       以下のようなエラーに遭遇しました。
      
      
@@ -194,7 +201,7 @@
      <p class="para">
       <a href="install.unix.html" class="link">インストール</a>の説明をよく読み、
       PHPのコンパイルにはflexとbisonの両方が必要であることに留意してください。
-      そーすかあるいはRPMのようなパッケージからbisonとflexを
+      ソースかあるいはRPMのようなパッケージからbisonとflexを
       インストールしてください。
      </p>
     </dd>
@@ -317,83 +324,10 @@
     </dd>
    </dl>
 
-   <dl class="qandaentry" id="faq.build.apache">
-    <dt><strong>
-     
-      PHPをApache 1.3と組み合わせて構築する手法が分かりません。
-     
-    </strong></dt>
-    <dd class="answer">
-     <p class="para">
-      この手順は実際には非常に簡単です。以下の手順に注意深く従って下さ
-      い。
-      <ul class="itemizedlist">
-       <li class="listitem">
-        <span class="simpara">
-         <a href="http://httpd.apache.org/download.cgi" class="link external">&raquo;&nbsp;http://httpd.apache.org/download.cgi</a>から最新
-         のApache 1.3配布ファイルを取得してください。
-        </span>
-       </li>
-       <li class="listitem">
-        <span class="simpara">
-         これをどこか、例えば、
-         <var class="filename">/usr/local/src/apache-1.3</var>で
-         ungzip、untarしてください。
-        </span>
-       </li>
-       <li class="listitem">
-        <span class="simpara">
-         まず、
-         <strong class="command">./configure
-         --with-apache=/&lt;path&gt;/apache-1.3</strong>を実行し、PHP
-         をコンパイルしてください。
-         (&lt;path&gt; の部分は実際のapache-1.3ディレクトリのパスに置
-         き換えてください)
-        </span>
-       </li>
-       <li class="listitem">
-        <span class="simpara">
-         <strong class="command">make</strong> を実行した後、<em>make
-         install</em>を実行してください。これにより、PHPが構築され、
-         必要なファイルがApacheのソースツリーにコピーされます。
-        </span>
-       </li>
-       <li class="listitem">
-        <span class="simpara">
-         ディレクトリを
-         <var class="filename">/&lt;path&gt;/apache-1.3/src</var>に移動し、
-         <var class="filename">Configuration</var>ファイルを編集してください。
-         このファイルに以下を追加してください。: 
-         <em>AddModule modules/php4/libphp4.a</em>
-        </span>
-       </li>
-       <li class="listitem">
-        <span class="simpara">
-         <strong class="command">./configure</strong> を実行した後、
-         <em>make</em>を実行してください。
-        </span>
-       </li>
-       <li class="listitem">
-        <span class="simpara">
-         以上の手順によりPHP対応のhttpdバイナリが構築できました。
-        </span>
-       </li>
-      </ul>
-     </p>
-     <p class="para">
-      <em class="emphasis">注意:</em> : Apache の新しい
-      <em>./configure</em>スクリプトを使用することも可能です。
-      Apache配布ファイルの<em>README.configure</em>ファイル
-      の指示を参照ください。また、PHP配布ファイルの
-      <var class="filename">INSTALL</var> ファイルも参照ください。
-     </p>
-    </dd>
-   </dl>
-
    <dl class="qandaentry" id="faq.build.not-running">
     <dt><strong>
      
-      インストール手順に完全に基づきUnix上でApacheモジュール版をインス
+      インストール手順に完全に従ってUnix上でApacheモジュール版をインス
       トールしましたが、ブラウザでアクセスするとPHPスクリプトが表示さ
       れ、ファイルを保存しますかと尋ねられます。
      
@@ -409,7 +343,7 @@
          実行しているhttpdバイナリが構築したばかりの新しいhttpdバイナ
          リであることを確認してください。確認を行うには以下のように入力
          します。
-         <em>/path/to/binary/httpd -l</em>
+         <code class="literal">/path/to/binary/httpd -l</code>
         </span>
         <span class="simpara">
          <var class="filename">mod_php4.c</var> がリストの中にない場合、正し
@@ -419,9 +353,9 @@
        </li>
        <li class="listitem">
         <span class="simpara">
-       <em>Apache .conf</em> ファイルの１つに正しいMIME型
+       <code class="literal">Apache .conf</code> ファイルの１つに正しいMIME型
          が追加されていることを確認してください。これは以下のようになります。
-         <em>AddType application/x-httpd-php .php</em>
+         <code class="literal">AddType application/x-httpd-php .php</code>
         </span>
         <span class="simpara"> 
          また、このAddTypeの行が、
@@ -448,9 +382,9 @@
    <dl class="qandaentry" id="faq.build.activate-module">
     <dt><strong>
      
-      <em>--activate-module=src/modules/php4/libphp4.a</em>
+      <code class="literal">--activate-module=src/modules/php4/libphp4.a</code>
       と書いてありますが、ファイルがありません。このため、
-      <em>--activate-module=src/modules/php4/libmodphp4.a</em>に
+      <code class="literal">--activate-module=src/modules/php4/libmodphp4.a</code>に
       変更しましたが、やはりだめです。何が起きているのでしょう?
      
     </strong></dt>
@@ -465,7 +399,7 @@
    <dl class="qandaentry" id="faq.build.ansi">
     <dt><strong>
      
-      <em>--activate-module=src/modules/php4/libphp4.a</em>
+      <code class="literal">--activate-module=src/modules/php4/libphp4.a</code>
       を指定し、PHPを静的モジュールとして組み込んでApacheを構築しよう
       とした際に、システムがANSI対応ではないというエラーを発生します。
      
@@ -481,8 +415,7 @@
    <dl class="qandaentry" id="faq.build.apxs">
     <dt><strong>
      
-      <strong class="option configure">--with-apxs</strong>
- を指定して
+      <strong class="option configure">--with-apxs</strong> を指定して
       PHP を構築しようとした際、奇妙なエラーメッセージが出力されます。
      
     </strong></dt>
@@ -540,7 +473,7 @@ my $CFG_LIBEXECDIR    = &#039;/usr/lib/apache&#039;; # substituted via APACI ins
     <dt><strong>
      
       <strong class="command">make</strong>の間、microtimeおよび
-      <em>RUSAGE_</em>関連で多くのエラーを発生します。
+      <code class="literal">RUSAGE_</code>関連で多くのエラーを発生します。
      
     </strong></dt>
     <dd class="answer">
@@ -590,7 +523,7 @@ $ gcc -E test.c &gt;/dev/null
     <dt><strong>
      
       MySQLを使用できるようにPHPをコンパイルする際、configureは正常に
-      実行されるが<em>make</em>の最中に以下のようなエラーが出る:
+      実行されるが<code class="literal">make</code>の最中に以下のようなエラーが出る:
       <em class="emphasis">ext/mysql/libmysqlclient/my_tempnam.o(.text+0x46): In function 
       my_tempnam&#039;: /php4/ext/mysql/libmysqlclient/my_tempnam.c:103: the 
       use of tempnam&#039; is dangerous, better use mkstemp&#039;</em>
@@ -599,8 +532,8 @@ $ gcc -E test.c &gt;/dev/null
     </strong></dt>
     <dd class="answer">
      <p class="para">
-      まず、これは<em>Warning</em>であって致命的な
-      エラーではないと認識することが重要です。<em>make</em>の
+      まず、これは<code class="literal">Warning</code>であって致命的な
+      エラーではないと認識することが重要です。<code class="literal">make</code>の
       最後のほうでこの出力がしばしば見られるため致命的なエラーと
       思われがちですがそうではありません。もちろん、Warningが
       起きるとコンパイラが停止するような設定をしている場合は別です。
@@ -673,9 +606,9 @@ $ gcc -E test.c &gt;/dev/null
      <p class="para">
       PHP のコンパイル時に 非 GNU ツールを使用すると問題を引き起こします。
       PHP を正しくコンパイルするには、GNU ツールを使用することを忘れないで
-      ください。たとえば、Solaris で使用される SunOS BSD 互換の <em>sed</em>
-      や Solaris 版の <em>sed</em> は正しく動作しません。しかし、
-      GNU 版もしくは Sun POSIX (xpg4) 版の <em>sed</em> ならうまく
+      ください。たとえば、Solaris で使用される SunOS BSD 互換の <code class="literal">sed</code>
+      や Solaris 版の <code class="literal">sed</code> は正しく動作しません。しかし、
+      GNU 版もしくは Sun POSIX (xpg4) 版の <code class="literal">sed</code> ならうまく
       動きます。以下を参照ください。
       <a href="http://www.gnu.org/software/sed/sed.html" class="link external">&raquo;&nbsp;GNU sed</a>、
       <a href="http://www.gnu.org/software/flex/flex.html" class="link external">&raquo;&nbsp;GNU flex</a> および
@@ -685,9 +618,4 @@ $ gcc -E test.c &gt;/dev/null
    </dl>
   
  </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="faq.installation.html">インストール</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="faq.using.html">PHP の使いかた</a></div>
- <div class="up"><a href="faq.html">FAQ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

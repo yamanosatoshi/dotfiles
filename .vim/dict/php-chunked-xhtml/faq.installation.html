@@ -3,21 +3,34 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>インストール</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="faq.databases.html">データベースに関する問題</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="faq.build.html">構築時の問題</a></div>
- <div class="up"><a href="faq.html">FAQ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="faq.installation" class="chapter">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="faq.databases.html">« データベースに関する問題</a></li>
+      <li style="float: right;"><a href="faq.build.html">構築時の問題 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li>インストール</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="faq.installation" class="chapter">
   <h1>インストール</h1>
 
   
 
   <p class="para">
    このセクションでは PHP のインストール方法に関する一般的な質問を扱います。
-   PHP は(OSX 以前の MacOS を除けば)、ほとんど全ての OS とウェブサーバーで
+   PHP は、ほとんど全ての OS とウェブサーバーで
    利用可能です。
   </p>
   <p class="para">
@@ -131,10 +144,9 @@ cgi error:
       直観的で簡単に習得できる言語インターフェイスにより、一つの整合性のある実体として
       見せることができます。
       PHP の柔軟性と力は、プラットフォームの安定性と堅牢性に基づいています。
-      グルーによる結合をするためには、OS や Web サーバー、サードパーティ製のライブラリを
-      必要とします。
+      グルーによる結合をするためには、OS や Web サーバー、サードパーティ製のライブラリが必要です。
       これらの一つの機能が停止した場合、PHP は問題を特定し、速やかに修正する
-      手段を必要とします。
+      手段が必要です。
       実行スレッドを完全に分離しなかったり、
       メモリセグメントを完全に分離しなかったり、
       各リクエストで使用される強力なサンドボックスを有さないことで、
@@ -245,7 +257,7 @@ cgi error:
        <li class="listitem">
         <p class="para">
          このバックトレースをバグレポートに含めてください。バグレポートは
-         <a href="http://bugs.php.net/" class="link external">&raquo;&nbsp;http://bugs.php.net/</a> 
+         <a href="https://bugs.php.net/" class="link external">&raquo;&nbsp;https://bugs.php.net/</a> 
          から送信してください。
         </p>
        </li>
@@ -345,7 +357,7 @@ LoadModule perl_module        modules/libperl.so</pre>
       ウェブサーバーが PHP を実行するときに何らかの問題が起きています。
       どんなエラーが起こっているか確認するために、コマンドラインで PHP
       実行ファイル(Windows では <var class="filename">php.exe</var>) のある
-      ディレクトリに移動して <em>php -i</em> を実行してください。
+      ディレクトリに移動して <code class="literal">php -i</code> を実行してください。
       もし PHP の実行時に問題があった場合は適切なエラーメッセージが表示されるので、
       それを手がかりに次に何をすべきかを知ることができます。画面
       一杯に HTML(<span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> 関数の出力)が表示された場合には
@@ -371,9 +383,8 @@ LoadModule perl_module        modules/libperl.so</pre>
     <dd class="answer">
      <p class="para">
       これは、PHP とは関係なく MySQL クライアントライブラリの問題です。
-      このライブラリのうちある種のものは <strong class="option configure">--with-zlib</strong>
- を必要とし、
-      他のものは必要としません。この問題は MySQL FAQ でも扱われています。
+      このライブラリのうちある種のものは <strong class="option configure">--with-zlib</strong> を指定する必要がありますが、
+      他のものは必要ありません。この問題は MySQL FAQ でも扱われています。
      </p>
     </dd>
    </dl>
@@ -417,7 +428,7 @@ cgi error:
         <var class="filename">php.exe</var>、<var class="filename">php5ts.dll</var>、
         <var class="filename">php.ini</var> もしくはロードしようとしている PHP 拡張モジュールの
         ファイルパーミッションが匿名インターネットユーザー
-        <em>IUSER_&lt;machinename&gt;</em> にアクセスできない
+        <code class="literal">IUSER_&lt;machinename&gt;</code> にアクセスできない
         ものになっている。
        </span>
       </li>
@@ -463,20 +474,20 @@ cgi error:
     <dt><strong>
      
        IIS, PWS, OmniHTTPD, Xitami上でCGIとしてPHPを実行するとき、
-       次のようなエラーが出る:<em>Security Alert! PHP CGI 
-       cannot be accessed directly.</em>
+       次のようなエラーが出る:<code class="literal">Security Alert! PHP CGI 
+       cannot be accessed directly.</code>
      
     </strong></dt>
     <dd class="answer">
      <p class="para">
       <a href="ini.core.html#ini.cgi.force-redirect" class="link">cgi.force_redirect</a>
-      に <em>0</em> をセットしてください。デフォルトでは
-      <em>1</em> にセットされていますので、そのディレクティブが
-      <em>;</em> でコメントアウトされていないことを確認してください。
+      に <code class="literal">0</code> をセットしてください。デフォルトでは
+      <code class="literal">1</code> にセットされていますので、そのディレクティブが
+      <code class="literal">;</code> でコメントアウトされていないことを確認してください。
       他のディレクティブと同様にこれは <var class="filename">php.ini</var> 上でセットされます。
      </p>
      <p class="para">
-      デフォルトは <em>1</em> なので、100% 正しく <var class="filename">php.ini</var> ファイルが
+      デフォルトは <code class="literal">1</code> なので、100% 正しく <var class="filename">php.ini</var> ファイルが
       読み込まれているかどうかが重要です。
       詳細は<a href="faq.installation.html#faq.installation.findphpini" class="link">この FAQ</a> を
       読んでください。
@@ -495,12 +506,12 @@ cgi error:
      <p class="para">
       <var class="filename">php.ini</var> とそれが PHP に読み込まれているかを確認するには
       <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> をコールして最初のほうに
-      表示されている <em>Configuration File (php.ini)</em>
+      表示されている <code class="literal">Configuration File (php.ini)</code>
       を見てください。これは PHP が認識している <var class="filename">php.ini</var> と、それが
       読み込まれているか否かを示しています。ディレクトリパスだけが
       表示されている場合は、読み込まれていないということなので、
       そのディレクトリに <var class="filename">php.ini</var> を置いてください。
-      <var class="filename">php.ini</var> が <span class="envar">PATH</span> にある場合それが読み込まれます。
+      <var class="filename">php.ini</var> が <var class="envar">PATH</var> にある場合それが読み込まれます。
      </p>
      <p class="para">
       <var class="filename">php.ini</var> が読み込まれていてかつ PHP をモジュールとして実行
@@ -516,13 +527,13 @@ cgi error:
    <dl class="qandaentry" id="faq.installation.addtopath">
     <dt><strong>
      
-      Windows で PHP のディレクトリを <span class="envar">PATH</span>
+      Windows で PHP のディレクトリを <var class="envar">PATH</var>
       に追加するにはどうすればいいのですか?
      
     </strong></dt>
     <dd class="answer">
      <p class="para">
-      Windows 7, XP, Vista, 2008, 2012 以降では、
+      Windows では、以下のようにします。
       <ul class="itemizedlist">
        <li class="listitem"><p class="para">
         コントロールパネルのシステムアイコンを選択します（スタート → コントロールパネル）。
@@ -544,46 +555,19 @@ cgi error:
        </p></li>
        <li class="listitem"><p class="para">
         その最後に &#039;;&#039; と追加し、その後に PHP のディレクトリを追加します
-        （例: <em>;C:\php</em>）。
+        （例: <code class="literal">;C:\php</code>）。
        </p></li>
        <li class="listitem"><p class="para">
         OK を押します。
        </p></li>
       </ul>
      </p>
-     <p class="para">
-      Windows 98/Me では、<var class="filename">autoexec.bat</var> を編集する必要があります。
-      <ul class="itemizedlist">
-       <li class="listitem"><p class="para">
-        メモ帳を開きます（スタート → ファイル名を指定して実行 で、
-        notepad と入力します）。
-       </p></li>
-       <li class="listitem"><p class="para">
-        <var class="filename">C:\autoexec.bat</var> ファイルを開きます。
-       </p></li>
-       <li class="listitem"><p class="para">
-        PATH=C:\WINDOWS;C:\WINDOWS\COMMAND;..... という行を探し、
-        その行の最後に <em>;C:\php</em> を追加します。
-       </p></li>
-       <li class="listitem"><p class="para">
-        ファイルを保存し、コンピュータを再起動します。
-       </p></li>
-      </ul>
-     </p>
      <blockquote class="note"><p><strong class="note">注意</strong>: 
       <span class="simpara">
        上の作業を行った後は、必ずコンピュータを再起動し、
-       <span class="envar">PATH</span> の変更が適用されていることを確認しましょう。
+       <var class="envar">PATH</var> の変更が適用されていることを確認しましょう。
       </span>
      </p></blockquote>
-     <p class="para">
-      PHP マニュアルでは、これまでファイルを Windows のシステムディレクトリに
-      コピーするよう推奨してきました。なぜなら、このディレクトリ
-      （<var class="filename">C:\Windows</var>、<var class="filename">C:\WINNT</var>、など）
-      にはデフォルトでシステムの <span class="envar">PATH</span> が通っていたからです。ファイルを
-      Windows のシステムディレクトリにコピーすることはずいぶん昔に非推奨と
-      なっており、これはさまざまな問題のもととなりえます。
-     </p>
     </dd>
    </dl>
 
@@ -595,61 +579,11 @@ cgi error:
     </strong></dt>
     <dd class="answer">
      <p class="para">
-      いくつかの方法があります。Apache を使用しているのなら、Apache
-      固有のインストール手順（<a href="install.windows.legacy.index.html#install.windows.legacy.apache1" class="link">Apache 1</a>、<a href="install.windows.legacy.index.html#install.windows.legacy.apache2" class="link">Apache 2</a>）を参照ください。
-      それ以外の場合は、環境変数 <var class="varname"><var class="varname">PHPRC</var></var> を指定する
+      いくつかの方法があります。Apache を使用しているのなら、
+      Apache のドキュメントを参照して下さい。
+      それ以外の場合は、環境変数 <var class="varname">PHPRC</var> を指定する
       必要があります。
      </p>
-     <p class="para">
-      Windows では、
-      <ul class="itemizedlist">
-       <li class="listitem"><p class="para">
-        コントロールパネルのシステムアイコンを選択します（スタート → 設定
-        → コントロールパネル → システム、あるいは
-        単に スタート → コントロールパネル → システム）。
-       </p></li>
-       <li class="listitem"><p class="para">
-        詳細設定タブに移動します。
-       </p></li>
-       <li class="listitem"><p class="para">
-        「環境変数」ボタンを押します。
-       </p></li>
-       <li class="listitem"><p class="para">
-        「システム環境変数」欄を見ます。
-       </p></li>
-       <li class="listitem"><p class="para">
-         「新規」ボタンを押し、変数名に &#039;PHPRC&#039; 、変数値に <var class="filename">php.ini</var> の
-         存在するディレクトリ（例: <em>C:\php</em>）を入力します。
-       </p></li>
-       <li class="listitem"><p class="para">
-        OK を押し、コンピュータを再起動します。
-       </p></li>
-      </ul>
-     </p>
-     <p class="para">
-      Windows 98/Me では、<var class="filename">autoexec.bat</var> を編集する必要があります。
-      <ul class="itemizedlist">
-       <li class="listitem"><p class="para">
-        メモ帳を開きます（スタート → ファイル名を指定して実行 で、
-        notepad と入力します）。
-       </p></li>
-       <li class="listitem"><p class="para">
-        <var class="filename">C:\autoexec.bat</var> ファイルを開きます。
-       </p></li>
-       <li class="listitem"><p class="para">
-        ファイルの最後に以下の内容の行を追加します。<em>set
-         PHPRC=C:\php</em>（<em>C:\php</em> を、実際に
-        <var class="filename">php.ini</var> が存在するディレクトリに置き換えます）。パスには空白文字を
-        含められないことに注意しましょう。たとえば、もし PHP を
-        <var class="filename">C:\Program Files\PHP</var> にインストールしたのなら、
-        その代わりに <var class="filename">C:\PROGRA~1\PHP</var> と入力する必要が
-        あります。
-       </p></li>
-       <li class="listitem"><p class="para">
-        ファイルを保存し、コンピュータを再起動します。
-       </p></li>
-      </ul>
-     </p>      
     </dd>
    </dl>
 
@@ -666,8 +600,8 @@ cgi error:
       うまく動作します。この FAQ が対象としているのは、リンクする
       PHP ファイルが拡張子を持っておらず、拡張子のない URL から PHP
       ファイルを判別するためにコンテントネゴシエーションを使用する方法です。
-      この場合、<em>AddType application/x-httpd-php
-      .php</em> という行を以下のように変更します。
+      この場合、<code class="literal">AddType application/x-httpd-php
+      .php</code> という行を以下のように変更します。
       <div class="example-contents">
 <div class="apache-confcode"><pre class="apache-confcode">AddHandler php5-script php
 AddType text/html php</pre>
@@ -675,7 +609,7 @@ AddType text/html php</pre>
      </div>
 
      この方法は、Apache 1 ではうまく動作しません。なぜなら PHP モジュールが
-     <em>php-script</em> をキャッチできないからです。
+     <code class="literal">php-script</code> をキャッチできないからです。
      </p>
     </dd>
    </dl>
@@ -703,9 +637,4 @@ Deny from all
    </dl>
   
  </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="faq.databases.html">データベースに関する問題</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="faq.build.html">構築時の問題</a></div>
- <div class="up"><a href="faq.html">FAQ</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

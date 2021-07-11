@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>変更された関数</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="migration71.deprecated.html">PHP 7.1.x で推奨されなくなる機能</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="migration71.other-changes.html">その他の変更</a></div>
- <div class="up"><a href="migration71.html">PHP 7.0.x から PHP 7.1.x への移行</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="migration71.changed-functions" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration71.deprecated.html">« PHP 7.1.x で推奨されなくなる機能</a></li>
+      <li style="float: right;"><a href="migration71.other-changes.html">その他の変更 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration71.html">PHP 7.0.x から PHP 7.1.x への移行</a></li>
+    <li>変更された関数</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration71.changed-functions" class="sect1">
  <h2 class="title">変更された関数</h2>
 
  <div class="sect2" id="migration71.changed-functions.core">
@@ -38,11 +51,6 @@
    </li>
    <li class="listitem">
     <span class="simpara">
-     <span class="function"><a href="function.long2ip.html" class="function">long2ip()</a></span> が、整数値のパラメータも受け付けるようになりました。
-    </span>
-   </li>
-   <li class="listitem">
-    <span class="simpara">
      <span class="function"><a href="function.output-reset-rewrite-vars.html" class="function">output_reset_rewrite_vars()</a></span> は、セッションURLリライト変数をリセットしなくなりました。
     </span>
    </li>
@@ -63,6 +71,12 @@
  <div class="sect2" id="migration71.changed-functions.filesystem">
   <h3 class="title">ファイルシステム</h3>
   <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span> 関数は、ストリームがシーク可能な場合、
+     負のシークオフセットを受け入れるようになりました。
+    </span>
+   </li>
    <li class="listitem">
     <span class="simpara">
      <span class="function"><a href="function.tempnam.html" class="function">tempnam()</a></span> がシステムの temp ディレクトリを返す場合に、notice を発行するようになりました。
@@ -107,7 +121,7 @@
    <li class="listitem">
     <span class="simpara">
      PostgreSQL 用の <span class="methodname"><a href="pdo.lastinsertid.html" class="methodname">PDO::lastInsertId()</a></span> は、
-     現在のセッション (postgres コネクション) で <em>nextval</em>
+     現在のセッション (postgres コネクション) で <code class="literal">nextval</code>
      がまだ呼ばれていない場合にエラーが発生するようになりました。
     </span>
    </li>
@@ -140,9 +154,17 @@
    </li>
   </ul>
  </div>
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="migration71.deprecated.html">PHP 7.1.x で推奨されなくなる機能</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="migration71.other-changes.html">その他の変更</a></div>
- <div class="up"><a href="migration71.html">PHP 7.0.x から PHP 7.1.x への移行</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+
+ <div class="sect2" id="migration71.changed-functions.session">
+  <h3 class="title">Session</h3>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> 関数は、
+     セッションを開始できなかった場合、<strong><code>false</code></strong> を返し、
+     <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> を初期化することはなくなりました。
+    </span>
+   </li>
+  </ul>
+ </div>
+</div></div></div></body></html>

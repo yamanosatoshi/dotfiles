@@ -3,43 +3,63 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>パーサトークンの一覧</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="types.comparisons.html">PHP 型の比較表</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="userlandnaming.html">ユーザーレベルでの命名の手引き</a></div>
- <div class="up"><a href="appendices.html">付録</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="tokens" class="appendix">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="types.comparisons.html">« PHP 型の比較表</a></li>
+      <li style="float: right;"><a href="userlandnaming.html">ユーザーレベルでの命名の手引き »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="appendices.html">付録</a></li>
+    <li>パーサトークンの一覧</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="tokens" class="appendix">
  <h1>パーサトークンの一覧</h1>
 
  <p class="para">
- PHP 言語の種々の部分は、内部的に T_SR のように表されています。PHP は、
- パーサエラーが発生した際に、これらの ID を
- <em>&quot;Parse error: unexpected T_SR, expecting &#039;,&#039;
- or &#039;;&#039; in script.php on line 10.&quot;</em> のように出力します。
+ PHP 言語の種々の部分は、内部的に トークン で表現されています。
+ 不正なトークンのシーケンスが含まれるコードスニペットの場合、
+ <code class="literal">Parse error: syntax error, unexpected token &quot;==&quot;, expecting &quot;(&quot; in script.php on line 10.&quot;</code> のようなエラーが発生します。
+ この場合、トークン <code class="code">==</code> が内部的に <strong><code>T_IS_EQUAL</code></strong> として表現されています。
  </p>
+
  <p class="para">
- ここでは、T_SR が何を意味するのかを知っていることを仮定しています。
- この対応が分からない方のために、以下にこれらの ID、PHP 構文、マニュアルでの
- 適当な参照先の一覧を示します。
+  以下の表に、全てのトークンの一覧を示します。
+  これらは、全て PHP の定数としても利用できます。
  </p>
  
  <blockquote class="note"><p><strong class="note">注意</strong>: 
   <strong>定数 T_* の使いかた</strong><br />
   <p class="para">
-   以下のトークンは、すべて PHP の定数としても定義されています。その値は、
+   T_* (T_ で始まる) 定数は、
    PHP のベースとなるパーサ基盤に基づいて自動生成されます。
    つまり、トークンの具体的な値は、PHP のバージョンが違えば変わる可能性があるということです。
-   たとえば <strong><code>T_FILE</code></strong> の値は PHP 5.3 では
-   <em>365</em> ですが、PHP 5.4 ではこの値は
-   <strong><code>T_TRAIT</code></strong> を表し、<strong><code>T_FILE</code></strong>
-   の値は <em>369</em> となります。
-   つまり、コードの中では決して T_* の実際の値を使ってはいけないということです。
-   それは PHP X.Y.Z でたまたまその値になっているだけであり、
-   その値に依存してしまえば PHP のバージョンが変わったときに互換性がなくなってしまいます。
-   その代わりに、コードでは独自の値 (たとえば <em>10000</em> のような大きな値)
-   を使い、PHP のバージョンや T_* の値が変わってもうまく動作するようにしておきましょう。
+   つまり、バージョン間で互換性を保つためには、
+   コードの中では決して T_* の実際の値を使ってはいけないということです。
+  </p>
+
+  <p class="para">
+   異なる PHP のバージョン間で互換性を保った形で T_* 定数を使うには、
+   PHP の複数のバージョン間で T_* の値が動作するように、
+   (<code class="literal">10000</code> のような大きな数を使うなどの)
+   適切な戦略を用いて、未定義の定数をユーザが定義するようにします。
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;PHP&nbsp;7.4.0&nbsp;より前のバージョンでは、定数&nbsp;T_FN&nbsp;は定義されていません<br /></span><span style="color: #0000BB">defined</span><span style="color: #007700">(</span><span style="color: #DD0000">'T_FN'</span><span style="color: #007700">)&nbsp;||&nbsp;</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'T_FN'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10001</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+   </div>
+
   </p>
  </p></blockquote> 
  
@@ -59,7 +79,7 @@
     <tr>
      <td><strong><code>T_ABSTRACT</code></strong></td>
      <td>abstract</td>
-     <td><a href="language.oop5.abstract.html" class="xref">クラスの抽象化</a> (PHP 5.0.0 以降で使用可能)</td>
+     <td><a href="language.oop5.abstract.html" class="xref">クラスの抽象化</a></td>
     </tr>
 
     <tr>
@@ -89,8 +109,10 @@
     <tr>
      <td><strong><code>T_BAD_CHARACTER</code></strong></td>
      <td class="empty">&nbsp;</td>
-     <td>ASCII 32以下の全ての文字。\t (0x09), \n (0x0a) , \r (0x0d)
-     は除く</td>
+     <td>
+       ASCII 32以下の全ての文字。\t (0x09), \n (0x0a) , \r (0x0d) は除く
+       (PHP 7.4.0 以降で利用可能です)
+     </td>
     </tr>
 
     <tr>
@@ -132,13 +154,7 @@
     <tr>
      <td><strong><code>T_CATCH</code></strong></td>
      <td>catch</td>
-     <td><a href="language.exceptions.html" class="xref">例外(exceptions)</a> (PHP 5.0.0 以降で使用可能)</td>
-    </tr>
-
-    <tr>
-     <td><strong><code>T_CHARACTER</code></strong></td>
-     <td class="empty">&nbsp;</td>
-     <td>今では使用されていません</td>
+     <td><a href="language.exceptions.html" class="xref">例外(exceptions)</a></td>
     </tr>
 
     <tr>
@@ -168,6 +184,23 @@
      <td>?&gt; or %&gt;</td>
      <td><a href="language.basic-syntax.phpmode.html" class="link">HTML
      からの脱出</a></td>
+    </tr>
+
+    <tr>
+     <td><strong><code>T_COALESCE</code></strong></td>
+     <td>??</td>
+     <td>
+      <a href="language.operators.comparison.html#language.operators.comparison.coalesce" class="link">比較演算子</a>
+     </td>
+    </tr>
+
+    <tr>
+     <td><strong><code>T_COALESCE_EQUAL</code></strong></td>
+     <td>??=</td>
+     <td>
+      <a href="language.operators.assignment.html" class="link">NULL合体代入演算子</a>
+      (PHP 7.4.0 以降で利用可能)
+     </td>
     </tr>
 
     <tr>
@@ -228,8 +261,7 @@
     <tr>
      <td><strong><code>T_DIR</code></strong></td>
      <td>__DIR__</td>
-     <td><a href="language.constants.predefined.html" class="link">マジック定数</a>
-     (PHP 5.3.0 以降で使用可能)</td>
+     <td><a href="language.constants.predefined.html" class="link">マジック定数</a></td>
     </tr>
 
     <tr>
@@ -245,17 +277,17 @@
     </tr>
 
     <tr>
+     <td><strong><code>T_DO</code></strong></td>
+     <td>do</td>
+     <td><a href="control-structures.do.while.html" class="link">do..while</a></td>
+    </tr>
+
+    <tr>
      <td><strong><code>T_DOC_COMMENT</code></strong></td>
      <td>/** */</td>
      <td>
       <a href="language.basic-syntax.comments.html" class="link">PHPDoc 形式のコメント</a>
      </td>
-    </tr>
-
-    <tr>
-     <td><strong><code>T_DO</code></strong></td>
-     <td>do</td>
-     <td><a href="control-structures.do.while.html" class="link">do..while</a></td>
     </tr>
 
     <tr>
@@ -293,8 +325,7 @@
      <td><strong><code>T_ELLIPSIS</code></strong></td>
      <td>...</td>
      <td>
-      <a href="functions.arguments.html#functions.variable-arg-list.new" class="link">関数の引数</a>
-      (PHP 5.6.0 以降で使用可能)
+      <a href="functions.arguments.html#functions.variable-arg-list" class="link">関数の引数</a>
      </td>
     </tr>
 
@@ -399,7 +430,16 @@
     <tr>
      <td><strong><code>T_FINALLY</code></strong></td>
      <td>finally</td>
-     <td><a href="language.exceptions.html" class="xref">例外(exceptions)</a> (PHP 5.5.0 以降で使用可能)</td>
+     <td><a href="language.exceptions.html" class="xref">例外(exceptions)</a></td>
+    </tr>
+
+    <tr>
+     <td><strong><code>T_FN</code></strong></td>
+     <td>fn</td>
+     <td>
+      <a href="functions.arrow.html" class="link">アロー関数</a>
+      (PHP 7.4.0 以降で利用可能)
+     </td>
     </tr>
 
     <tr>
@@ -416,7 +456,7 @@
 
     <tr>
      <td><strong><code>T_FUNCTION</code></strong></td>
-     <td>function or cfunction</td>
+     <td>function</td>
      <td><a href="language.functions.html" class="link">関数</a></td>
     </tr>
 
@@ -437,13 +477,13 @@
     <tr>
      <td><strong><code>T_GOTO</code></strong></td>
      <td>goto</td>
-     <td><a href="control-structures.goto.html" class="link"> (PHP 5.3.0 以降で使用可能)</a></td>
+     <td><a href="control-structures.goto.html" class="link">goto</a></td>
     </tr>
 
     <tr>
      <td><strong><code>T_HALT_COMPILER</code></strong></td>
      <td>__halt_compiler()</td>
-     <td><a href="function.halt-compiler.html" class="xref">__halt_compiler</a> (PHP 5.1.0 以降で使用可能)</td>
+     <td><a href="function.halt-compiler.html" class="xref">__halt_compiler</a></td>
     </tr>
 
     <tr>
@@ -494,19 +534,19 @@
     <tr>
      <td><strong><code>T_INSTEADOF</code></strong></td>
      <td>insteadof</td>
-     <td><a href="language.oop5.traits.html" class="xref">トレイト</a> (PHP 5.4.0 以降で使用可能)</td>
-    </tr>
-
-    <tr>
-     <td><strong><code>T_INT_CAST</code></strong></td>
-     <td>(int) or (integer)</td>
-     <td><a href="language.types.type-juggling.html#language.types.typecasting" class="link">型キャスト</a></td>
+     <td><a href="language.oop5.traits.html" class="xref">トレイト</a></td>
     </tr>
 
     <tr>
      <td><strong><code>T_INTERFACE</code></strong></td>
      <td>interface</td>
      <td><a href="language.oop5.interfaces.html" class="xref">オブジェクト インターフェイス</a></td>
+    </tr>
+
+    <tr>
+     <td><strong><code>T_INT_CAST</code></strong></td>
+     <td>(int) or (integer)</td>
+     <td><a href="language.types.type-juggling.html#language.types.typecasting" class="link">型キャスト</a></td>
     </tr>
 
     <tr>
@@ -549,15 +589,6 @@
      <td><strong><code>T_IS_SMALLER_OR_EQUAL</code></strong></td>
      <td>&lt;=</td>
      <td><a href="language.operators.comparison.html" class="link">比較演算子</a></td>
-    </tr>
-
-    <tr>
-     <td><strong><code>T_SPACESHIP</code></strong></td>
-     <td>&lt;=&gt;</td>
-     <td>
-      <a href="language.operators.comparison.html" class="link">比較演算子</a>
-      (PHP 7.0.0 以降で使用可能)
-     </td>
     </tr>
 
     <tr>
@@ -630,8 +661,13 @@
      <td>namespace</td>
      <td>
       <a href="language.namespaces.html" class="link">名前空間</a>
-      (PHP 5.3.0 以降で使用可能)
      </td>
+    </tr>
+
+    <tr>
+     <td><strong><code>T_NEW</code></strong></td>
+     <td>new</td>
+     <td><a href="language.oop5.html" class="link">クラスとオブジェクト</a></td>
     </tr>
 
     <tr>
@@ -639,7 +675,6 @@
      <td>__NAMESPACE__</td>
      <td>
       <a href="language.namespaces.html" class="link">名前空間</a>
-      (PHP 5.3.0 以降で使用可能)
      </td>
     </tr>
 
@@ -650,12 +685,6 @@
       <a href="language.namespaces.html" class="link">名前空間</a>
       (PHP 5.3.0 以降で使用可能)
      </td>
-    </tr>
-
-    <tr>
-     <td><strong><code>T_NEW</code></strong></td>
-     <td>new</td>
-     <td><a href="language.oop5.html" class="link">クラスとオブジェクト</a></td>
     </tr>
 
     <tr>
@@ -674,6 +703,12 @@
     <tr>
      <td><strong><code>T_OBJECT_OPERATOR</code></strong></td>
      <td>-&gt;</td>
+     <td><a href="language.oop5.html" class="link">クラスとオブジェクト</a></td>
+    </tr>
+
+    <tr>
+     <td><strong><code>T_NULLSAFE_OBJECT_OPERATOR</code></strong></td>
+     <td>?-&gt;</td>
      <td><a href="language.oop5.html" class="link">クラスとオブジェクト</a></td>
     </tr>
 
@@ -717,7 +752,6 @@
      <td>**</td>
      <td>
       <a href="language.operators.arithmetic.html" class="link">代数演算子</a>
-      (PHP 5.6.0 以降で使用可能)
      </td>
     </tr>
 
@@ -726,7 +760,6 @@
      <td>**=</td>
      <td>
       <a href="language.operators.assignment.html" class="link">代数演算子</a>
-      (PHP 5.6.0 以降で使用可能)
      </td>
     </tr>
 
@@ -745,19 +778,19 @@
     </tr>
 
     <tr>
-     <td><strong><code>T_PUBLIC</code></strong></td>
-     <td>public</td>
-     <td>
-      <a href="language.oop5.html" class="link">クラスとオブジェクト</a>
-     </td>
-    </tr>
-
-    <tr>
      <td><strong><code>T_PROTECTED</code></strong></td>
      <td>protected</td>
      <td>
       <a href="language.oop5.html" class="link">クラスとオブジェクト</a>
       (PHP 5.0.0 以降で使用可能)
+     </td>
+    </tr>
+
+    <tr>
+     <td><strong><code>T_PUBLIC</code></strong></td>
+     <td>public</td>
+     <td>
+      <a href="language.oop5.html" class="link">クラスとオブジェクト</a>
      </td>
     </tr>
 
@@ -794,6 +827,14 @@
     </tr>
 
     <tr>
+     <td><strong><code>T_SPACESHIP</code></strong></td>
+     <td>&lt;=&gt;</td>
+     <td>
+      <a href="language.operators.comparison.html" class="link">比較演算子</a>
+     </td>
+    </tr>
+
+    <tr>
      <td><strong><code>T_SR</code></strong></td>
      <td>&gt;&gt;</td>
      <td><a href="language.operators.bitwise.html" class="link">ビット演算子
@@ -824,7 +865,7 @@
      <td><strong><code>T_STRING</code></strong></td>
      <td>parent、true など</td>
      <td>
-      識別子。たとえば <em>parent</em> や <em>self</em>
+      識別子。たとえば <code class="literal">parent</code> や <code class="literal">self</code>
       といったオブジェクト指向のキーワード、そして関数名やクラス名などにマッチします。
      </td>
     </tr>
@@ -857,13 +898,13 @@
     <tr>
      <td><strong><code>T_TRAIT</code></strong></td>
      <td>trait</td>
-     <td><a href="language.oop5.traits.html" class="xref">トレイト</a> (PHP 5.4.0 以降で使用可能)</td>
+     <td><a href="language.oop5.traits.html" class="xref">トレイト</a></td>
     </tr>
 
     <tr>
      <td><strong><code>T_TRAIT_C</code></strong></td>
      <td>__TRAIT__</td>
-     <td><a href="" class="link">__TRAIT__</a> (PHP 5.4.0 以降で使用可能)</td>
+     <td><a href="" class="link">__TRAIT__</a></td>
     </tr>
 
     <tr>
@@ -887,8 +928,7 @@
     <tr>
      <td><strong><code>T_USE</code></strong></td>
      <td>use</td>
-     <td><a href="language.namespaces.html" class="link">名前空間</a>
-     (PHP 5.3.0 以降で使用可能、PHP 4.0.0 以降で予約済み)</td>
+     <td><a href="language.namespaces.html" class="link">名前空間</a></td>
     </tr>
 
     <tr>
@@ -924,9 +964,15 @@
     <tr>
      <td><strong><code>T_YIELD</code></strong></td>
      <td>yield</td>
-     <td><a href="language.generators.syntax.html#control-structures.yield" class="link">ジェネレータ</a> (PHP 5.5.0 以降で使用可能)</td>
+     <td><a href="language.generators.syntax.html#control-structures.yield" class="link">ジェネレータ</a></td>
     </tr>
 
+    <tr>
+     <td><strong><code>T_YIELD_FROM</code></strong></td>
+     <td>yield from</td>
+     <td><a href="language.generators.syntax.html#control-structures.yield.from" class="link">ジェネレータ</a></td>
+    </tr>
+ 
    </tbody> 
   
  </table>
@@ -935,9 +981,4 @@
   <span class="function"><a href="function.token-name.html" class="function">token_name()</a></span> も参照ください。
  </p>
 </div>
-<hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="types.comparisons.html">PHP 型の比較表</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="userlandnaming.html">ユーザーレベルでの命名の手引き</a></div>
- <div class="up"><a href="appendices.html">付録</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></body></html>

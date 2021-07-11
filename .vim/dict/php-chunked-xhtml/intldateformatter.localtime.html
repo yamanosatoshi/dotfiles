@@ -3,18 +3,31 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>文字列をパースして、フィールドベースの時刻値にする</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="intldateformatter.islenient.html">IntlDateFormatter::isLenient</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="intldateformatter.parse.html">IntlDateFormatter::parse</a></div>
- <div class="up"><a href="class.intldateformatter.html">IntlDateFormatter</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="intldateformatter.localtime" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="intldateformatter.islenient.html">« IntlDateFormatter::isLenient</a></li>
+      <li style="float: right;"><a href="intldateformatter.parse.html">IntlDateFormatter::parse »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.intldateformatter.html">IntlDateFormatter</a></li>
+    <li>文字列をパースして、フィールドベースの時刻値にする</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="intldateformatter.localtime" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">IntlDateFormatter::localtime</h1>
   <h1 class="refname">datefmt_localtime</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PECL intl &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">IntlDateFormatter::localtime</span> -- <span class="refname">datefmt_localtime</span> &mdash; <span class="dc-title">文字列をパースして、フィールドベースの時刻値にする</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL intl &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">IntlDateFormatter::localtime</span> -- <span class="refname">datefmt_localtime</span> &mdash; <span class="dc-title">文字列をパースして、フィールドベースの時刻値にする</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-intldateformatter.localtime-description">
@@ -23,20 +36,12 @@
    オブジェクト指向型
   </p>
    <div class="methodsynopsis dc-description">
-    <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><strong>IntlDateFormatter::localtime</strong></span>
-     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
-    [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$position</code></span>
-   ] )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>IntlDateFormatter::localtime</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$offset</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    手続き型
   </p>
-  <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>datefmt_localtime</strong></span>
-   ( <span class="methodparam"><span class="type"><a href="class.intldateformatter.html" class="type IntlDateFormatter">IntlDateFormatter</a></span> <code class="parameter">$fmt</code></span>
-  , <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
-  [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$position</code></span>
-  ] )</div>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>datefmt_localtime</strong></span>(<span class="methodparam"><span class="type"><a href="class.intldateformatter.html" class="type IntlDateFormatter">IntlDateFormatter</a></span> <code class="parameter">$formatter</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$offset</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type"><span class="type">array</span>|<span class="type"><span class="type false">false</span></span></span></div>
 
   <p class="para rdfs-comment">
    文字列 $value を変換し、フィールドベースの時刻値 (各フィールドを含む配列)
@@ -52,7 +57,7 @@
 
     
      <dt>
-<code class="parameter">fmt</code></dt>
+<code class="parameter">formatter</code></dt>
 
      <dd>
 
@@ -64,7 +69,7 @@
     
     
      <dt>
-<code class="parameter">value</code></dt>
+<code class="parameter">string</code></dt>
 
      <dd>
 
@@ -76,7 +81,7 @@
     
     
      <dt>
-<code class="parameter">position</code></dt>
+<code class="parameter">offset</code></dt>
 
      <dd>
 
@@ -103,13 +108,14 @@
   <p class="para">
    Localtime 互換の、整数値の配列を返します。
    tm_hour フィールド内の、24 時間制の時刻の値を含みます。
+   失敗した場合に <strong><code>false</code></strong> を返します
    </p>
  </div>
 
  
  <div class="refsect1 examples" id="refsect1-intldateformatter.localtime-examples">
   <h3 class="title">例</h3>
-   <div class="example" id="example-2917">
+   <div class="example" id="example-2406">
     <p><strong>例1 <span class="function"><strong>datefmt_localtime()</strong></span> の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -119,7 +125,7 @@
     </div>
 
    </div>
-   <div class="example" id="example-2918">
+   <div class="example" id="example-2407">
     <p><strong>例2 オブジェクト指向の例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -152,9 +158,4 @@ tm_mday : 31 , tm_wday : 4 , tm_yday : 365 , tm_mon : 11 , tm_isdst : 0 ,
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="intldateformatter.islenient.html">IntlDateFormatter::isLenient</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="intldateformatter.parse.html">IntlDateFormatter::parse</a></div>
- <div class="up"><a href="class.intldateformatter.html">IntlDateFormatter</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

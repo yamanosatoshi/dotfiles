@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>PHP ファイルの実行</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.options.html">オプション</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.commandline.io-streams.html">I/O ストリーム</a></div>
- <div class="up"><a href="features.commandline.html">コマンドラインの使用法</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="features.commandline.usage" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.commandline.options.html">« オプション</a></li>
+      <li style="float: right;"><a href="features.commandline.io-streams.html">I/O ストリーム »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.commandline.html">コマンドラインの使用法</a></li>
+    <li>PHP ファイルの実行</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.commandline.usage" class="section">
   <h2 class="title">PHP ファイルの実行</h2>
   
   
@@ -32,19 +45,17 @@ $ php -f my_script.php
       </div>
      </div>
      <p class="para">
-      上記の方法は共に(<strong class="option unknown">-f</strong>
- スイッチの使用の如何に関らず)
+      上記の方法は共に(<strong class="option unknown">-f</strong> スイッチの使用の如何に関らず)
       指定したファイル <var class="filename">my_script.php</var> を実行します。
       実行ファイルとしてあらゆるファイルを指定することができ、
       PHP スクリプトは拡張子
-      <em>.php</em> で終わる必要がなく、任意の名前や拡張子を
+      <code class="literal">.php</code> で終わる必要がなく、任意の名前や拡張子を
       使用することができます。
      </p>
      <blockquote class="note"><p><strong class="note">注意</strong>: 
       <p class="para">
-       <strong class="option unknown">-f</strong>
- スイッチを使用している時にスクリプトに引数を渡したい場合は、
-       最初の引数として <em>--</em> を渡す必要があります。
+       <strong class="option unknown">-f</strong> スイッチを使用している時にスクリプトに引数を渡したい場合は、
+       最初の引数として <code class="literal">--</code> を渡す必要があります。
       </p>
      </p></blockquote>
     </li>
@@ -65,8 +76,7 @@ $ php -r &#039;print_r(get_defined_constants());&#039;
      <blockquote class="note"><p><strong class="note">注意</strong>: 
       <p class="para">
        この例をよくみてください。開始/終了タグがありません!
-       <strong class="option unknown">-r</strong>
- スイッチを使用した場合、これらのタグは不要と
+       <strong class="option unknown">-r</strong> スイッチを使用した場合、これらのタグは不要と
        なります。これらのタグを使用するとパーサエラーを発生します。
       </p>
      </p></blockquote>
@@ -74,7 +84,7 @@ $ php -r &#039;print_r(get_defined_constants());&#039;
     <li class="listitem">
      <p class="para">
       実行する PHP コードを標準入力
-      (<em>stdin</em>)で指定する。
+      (<code class="literal">stdin</code>)で指定する。
      </p>
      <p class="para">
       これは強力な機能で、以下の(仮想的な)例に示すように、動的に
@@ -100,29 +110,28 @@ $ some_application | some_filter | php | sort -u &gt; final_output.txt
    引数の数は PHP による制限を受けません
    (シェルは指定可能な文字数の最大値を設定しています。通常、この制限値を
    越えることはできません)。スクリプトに指定した引数は、グローバル配列
-   <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var></var> でアクセス可能です。
+   <var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var> でアクセス可能です。
    最初のインデックス (添字 0) には常に、
    コマンドラインからコールしたスクリプト名が含まれています。
    コマンドラインスイッチ
-   <strong class="option unknown">-r</strong>
- を使ってインラインでコードを実行した場合は、
-   <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv[0]</a></var></var> の値はダッシュ (<em>-</em>)
-   となることに注意しましょう。<em>STDIN</em>
+   <strong class="option unknown">-r</strong> を使ってインラインでコードを実行した場合は、
+   <var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv[0]</a></var> の値はダッシュ (<code class="literal">-</code>)
+   となることに注意しましょう。<code class="literal">STDIN</code>
    の内容をパイプ経由で実行した場合も同じです。
   </p>
 
   <p class="para">
-   登録される第 2 のグローバル変数は <var class="varname"><var class="varname"><a href="reserved.variables.argc.html" class="classname">$argc</a></var></var> で
+   登録される第 2 のグローバル変数は <var class="varname"><a href="reserved.variables.argc.html" class="classname">$argc</a></var> で
    (スクリプトに指定された引数の数では<em class="emphasis">なく
-   </em>)、配列 <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var></var> の要素数が含まれます。
+   </em>)、配列 <var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var> の要素数が含まれます。
   </p>
   
   <p class="para">
-   スクリプトに指定する引数が文字 <em>-</em> で始まっていない
+   スクリプトに指定する引数が文字 <code class="literal">-</code> で始まっていない
    限り、特に留意すべきことはありません。スクリプトに指定する引数が文字
-   <em>-</em> で始まる場合、PHP 自体がこれを
+   <code class="literal">-</code> で始まる場合、PHP 自体がこれを
    パースする必要があるとみなすため、問題を発生します。
-   これを防止するため、引数リストセパレータ <em>--</em> を
+   これを防止するため、引数リストセパレータ <code class="literal">--</code> を
    使用してください。PHP にパースされる引数の後に
    このセパレータを置くと、その後の全ての引数はそのままパースされずに
    スクリプトに渡されます。
@@ -150,7 +159,7 @@ array(2) {
   
   <p class="para">
    Unix システムでは、PHP をシェルスクリプトとして使用する他の手段があります。
-   最初の行が <em>#!/usr/bin/php</em>
+   最初の行が <code class="literal">#!/usr/bin/php</code>
    (必要に応じて、PHP <acronym title="Command Line Interpreter/Interface">CLI</acronym> バイナリのパスを置き換えてください)
    で始まり、PHP の開始/終了タグの中に通常の
    PHP コードが続くスクリプトを書き、適当なファイル
@@ -158,7 +167,7 @@ array(2) {
    この方法は、通常のシェル/Perl スクリプトと同様に実行することができます。
   </p>
   
-  <div class="example" id="example-434">
+  <div class="example" id="example-418">
    <p><strong>例1 シェルスクリプトとしての PHP スクリプトの実行</strong></p>
    <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -190,7 +199,7 @@ array(4) {
   </div>
   
   <p class="para">
-   見て分かるように、<em>-</em> で始まるスクリプトのパラメータを
+   見て分かるように、<code class="literal">-</code> で始まるスクリプトのパラメータを
    指定する際に、特に注意する必要はありません。
   </p>
   
@@ -200,7 +209,7 @@ array(4) {
    実行可能とするためには PHP スクリプトの先頭に特別な一行を追加する必要が
    あります。これにより、システムがそのスクリプトを実行するプログラムを
    知ることができます。
-   Windows 環境では、<em>.php</em> ファイルのダブルクリック
+   Windows 環境では、<code class="literal">.php</code> ファイルのダブルクリック
    オプションに <var class="filename">php.exe</var> を関連づけることができます。
    または、PHP によりスクリプトを実行するバッチファイルを作成することも
    可能です。Unix 上で動作させるためにスクリプトに追加された先頭行は、
@@ -210,7 +219,7 @@ array(4) {
   </p>
   
   <p class="para">
-   <div class="example" id="example-435">
+   <div class="example" id="example-419">
     <p><strong>例2 コマンドラインから実行されることを意図したスクリプト(script.php)</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -227,21 +236,17 @@ array(4) {
    PHP により実行されることを示しています。ここでは <acronym title="Command Line Interpreter/Interface">CLI</acronym> 版を使用しているため、
    <acronym title="Hypertext Transfer Protocol">HTTP</acronym> ヘッダは出力されません。PHP で
    コマンドラインアプリケーションを使用する際には、2 つの変数
-   <var class="varname"><var class="varname"><a href="reserved.variables.argc.html" class="classname">$argc</a></var></var> および <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var></var> を使用することが
+   <var class="varname"><a href="reserved.variables.argc.html" class="classname">$argc</a></var> および <var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var> を使用することが
    できます。
    最初の変数は、引数の数に 1 (実行中のスクリプトの名前)を加えたものです。
    2 番目の変数は、引数を保持する配列で、スクリプト名を有する
-   要素 0 (<var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv[0]</a></var></var>) から始まっています。
+   要素 0 (<var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv[0]</a></var>) から始まっています。
   </p>
   
   <p class="para">
    上のプログラムでは、引数が 1 より少ないかまたは多いかを調べています。
-   また、引数が <strong class="option unknown">--help</strong>
-, <strong class="option unknown">-help</strong>
-,
-   <strong class="option unknown">-h</strong>
- または <strong class="option unknown">-?</strong>
- の場合、
+   また、引数が <strong class="option unknown">--help</strong>, <strong class="option unknown">-help</strong>,
+   <strong class="option unknown">-h</strong> または <strong class="option unknown">-?</strong> の場合、
    ヘルプメッセージを出力し、動的にスクリプト名を出力します。
    他の引数を受け取った場合、これを出力します。
   </p>
@@ -254,7 +259,7 @@ array(4) {
   </p>
   
   <p class="para">
-   <div class="example" id="example-436">
+   <div class="example" id="example-420">
     <p><strong>例3 コマンドライン PHP スクリプトを実行するバッチファイル(script.bat)</strong></p>
     <div class="example-contents">
 <div class="shellcode"><pre class="shellcode">@echo OFF
@@ -282,13 +287,16 @@ array(4) {
   
   <p class="para">
    Windows 環境で使用している場合、PHP の設定によって
-   <var class="filename">C:\php\php.exe</var> や拡張子 <em>.php</em>
-   の指定を不要にすることもできます。<a href="install.windows.legacy.index.html#install.windows.legacy.commandline" class="link">Micosoft
+   <var class="filename">C:\php\php.exe</var> や拡張子 <code class="literal">.php</code>
+   の指定を不要にすることもできます。<a href="install.windows.commandline.html" class="link">Micosoft
    Windows コマンドラインでの PHP</a> を参照ください。
   </p>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.options.html">オプション</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="features.commandline.io-streams.html">I/O ストリーム</a></div>
- <div class="up"><a href="features.commandline.html">コマンドラインの使用法</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    Windows では、実際に存在するユーザーアカウントの権限で PHP を実行することを推奨します。
+    &quot;アカウント名とセキュリティID の間のマッピングは実行されませんでした。&quot; というエラーのため、
+    ネットワークサービス経由で実行する特定の操作は失敗する場合があります
+   </p>
+  </p></blockquote>
+ </div></div></div></body></html>

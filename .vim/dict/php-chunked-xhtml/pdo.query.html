@@ -3,17 +3,30 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>SQL ステートメントを実行し、結果セットを PDOStatement オブジェクトとして返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pdo.prepare.html">PDO::prepare</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pdo.quote.html">PDO::quote</a></div>
- <div class="up"><a href="class.pdo.html">PDO</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="pdo.query" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.prepare.html">« PDO::prepare</a></li>
+      <li style="float: right;"><a href="pdo.quote.html">PDO::quote »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pdo.html">PDO</a></li>
+    <li>SQL ステートメントを実行し、結果セットを PDOStatement オブジェクトとして返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdo.query" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">PDO::query</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.0)</p><p class="refpurpose"><span class="refname">PDO::query</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.2.0)</p><p class="refpurpose"><span class="refname">PDO::query</span> &mdash; <span class="dc-title">
    SQL ステートメントを実行し、結果セットを PDOStatement オブジェクトとして返す
   </span></p>
 
@@ -21,34 +34,16 @@
  <div class="refsect1 description" id="refsect1-pdo.query-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span> <span class="methodname"><strong>PDO::query</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>PDO::query</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$query</code></span>, <span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$fetchMode</code><span class="initializer"> = <strong><code>null</code></strong></span></span>): <span class="type"><span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
 
-  <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span> <span class="methodname"><strong>PDO::query</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$PDO::FETCH_COLUMN</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$colno</code></span>
-   )</div>
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>PDO::query</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$query</code></span>, <span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$fetchMode</code><span class="initializer"> = PDO::FETCH_COLUMN</span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$colno</code></span>): <span class="type"><span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
 
-  <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span> <span class="methodname"><strong>PDO::query</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$PDO::FETCH_CLASS</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$classname</code></span>
-   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$ctorargs</code></span>
-   )</div>
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>PDO::query</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$query</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$fetchMode</code><span class="initializer"> = PDO::FETCH_CLASS</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$classname</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">array</span> <code class="parameter">$constructorArgs</code></span><br>): <span class="type"><span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
 
-  <div class="methodsynopsis dc-description">
-   <span class="modifier">public</span> <span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span> <span class="methodname"><strong>PDO::query</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$PDO::FETCH_INTO</code></span>
-   , <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
-   )</div>
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><strong>PDO::query</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$query</code></span>, <span class="methodparam"><span class="type"><span class="type">int</span>|<span class="type">null</span></span> <code class="parameter">$fetchMode</code><span class="initializer"> = PDO::FETCH_INTO</span></span>, <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>): <span class="type"><span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
 
 
   <p class="para rdfs-comment">
@@ -72,9 +67,9 @@
 
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
-    この関数はパラメータをひとつだけしかとらないと記述されていますが、
-    追加のパラメータを渡すことも可能です。これらのパラメータは、
-    返される結果のオブジェクトに対して
+    ひとつ以上の引数をこの関数に渡すと、
+    ふたつめ以降の引数は、
+    返されるステートメントオブジェクトに対して
     <span class="function"><a href="pdostatement.setfetchmode.html" class="function">PDOStatement::setFetchMode()</a></span>
     をコールするのと同じような扱いになります。
    </p>
@@ -89,7 +84,7 @@
 
     
      <dt>
-<code class="parameter">statement</code></dt>
+<code class="parameter">query</code></dt>
 
       <dd>
 
@@ -112,7 +107,7 @@
   <h3 class="title">返り値</h3>
   <p class="para">
     <span class="function"><strong>PDO::query()</strong></span> は、PDOStatement オブジェクトを返します。
-    失敗した場合は <strong><code>FALSE</code></strong> を返します。
+    失敗した場合は <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
@@ -120,7 +115,7 @@
  <div class="refsect1 examples" id="refsect1-pdo.query-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-1044">
+   <div class="example" id="example-977">
     <p><strong>例1 PDO::query の例</strong></p>
     <div class="example-contents"><p>
      <span class="function"><strong>PDO::query()</strong></span> の優れた機能は、
@@ -129,7 +124,7 @@
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">getFruit</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;color,&nbsp;calories&nbsp;FROM&nbsp;fruit&nbsp;ORDER&nbsp;BY&nbsp;name'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\t"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'color'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\t"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'calories'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+<span style="color: #0000BB">&lt;?php<br />$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;color,&nbsp;calories&nbsp;FROM&nbsp;fruit&nbsp;ORDER&nbsp;BY&nbsp;name'</span><span style="color: #007700">;<br />foreach&nbsp;(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\t"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'color'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\t"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'calories'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
 </span>
 </code></div>
     </div>
@@ -165,9 +160,4 @@ watermelon      pink    90
 
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="pdo.prepare.html">PDO::prepare</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="pdo.quote.html">PDO::quote</a></div>
- <div class="up"><a href="class.pdo.html">PDO</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

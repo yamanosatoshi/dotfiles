@@ -2,45 +2,90 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>このノードが HTML ドキュメントであるかどうかを調べる</title>
+  <title>このノードが HTML要素 であるかどうかを調べる</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="tidynode.iscomment.html">tidyNode::isComment</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="tidynode.isjste.html">tidyNode::isJste</a></div>
- <div class="up"><a href="class.tidynode.html">tidyNode</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="tidynode.ishtml" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="tidynode.iscomment.html">« tidyNode::isComment</a></li>
+      <li style="float: right;"><a href="tidynode.isjste.html">tidyNode::isJste »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.tidynode.html">tidyNode</a></li>
+    <li>このノードが HTML要素 であるかどうかを調べる</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="tidynode.ishtml" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">tidyNode::isHtml</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.0.1, PHP 7)</p><p class="refpurpose"><span class="refname">tidyNode::isHtml</span> &mdash; <span class="dc-title">このノードが HTML ドキュメントであるかどうかを調べる</span></p>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">tidyNode::isHtml</span> &mdash; <span class="dc-title">このノードが HTML要素 であるかどうかを調べる</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-tidynode.ishtml-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>tidyNode::isHtml</strong></span>
-    ( <span class="methodparam">void</span>
-   )</div>
+   <span class="modifier">public</span> <span class="methodname"><strong>tidyNode::isHtml</strong></span>(): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
-   このノードが HTML ドキュメントの一部であるかどうかを調べます。
+   このノードが ルート要素 以外の HTML要素 であるかを調べます。
   </p>
  </div>
 
  
+ <div class="refsect1 parameters" id="refsect1-tidynode.ishtml-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">この関数にはパラメータはありません。</p>
+ </div>
+
+
  <div class="refsect1 returnvalues" id="refsect1-tidynode.ishtml-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   ノードが HTML ドキュメントの一部である場合に <strong><code>TRUE</code></strong>、それ以外の場合に <strong><code>FALSE</code></strong> を返します。
+   ノードが ルート要素 以外の HTML要素 である場合に <strong><code>true</code></strong>、それ以外の場合に <strong><code>false</code></strong> を返します。
   </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-tidynode.ishtml-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>7.3.24, 7.4.12</td>
+      <td>
+       適切な振る舞いをするように修正されました。 
+       これより前のバージョンでは、ほとんど全てのノードをHTML要素だと報告していました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
  </div>
 
 
  <div class="refsect1 examples" id="refsect1-tidynode.ishtml-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4647">
+   <div class="example" id="example-3808">
     <p><strong>例1 HTML ドキュメントからの HTML コードの抽出</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -84,19 +129,10 @@ Hello WorldOutside HTML
 
 
 # html node #3
-&lt;?php echo &#039;&lt;title&gt;title&lt;/title&gt;&#039;; ?&gt;
-
-# html node #4
-&lt;# 
-  /* JSTE code */
-  alert(&#039;Hello World&#039;); 
-#&gt;
-
-# html node #5
 &lt;title&gt;&lt;/title&gt;
 
 
-# html node #6
+# html node #4
 &lt;body&gt;
 &lt;?php
   // PHP code
@@ -107,29 +143,6 @@ Hello WorldOutside HTML
 %&gt;&lt;!-- Comments --&gt;
 Hello WorldOutside HTML
 &lt;/body&gt;
-
-
-# html node #7
-&lt;?php
-  // PHP code
-  echo &#039;hello world!&#039;;
-?&gt;
-
-# html node #8
-&lt;%
-  /* ASP code */
-  response.write(&quot;Hello World!&quot;)
-%&gt;
-
-# html node #9
-&lt;!-- Comments --&gt;
-
-
-# html node #10
-Hello World
-
-# html node #11
-Outside HTML
 </pre></div>
     </div>
    </div>
@@ -137,20 +150,4 @@ Outside HTML
  </div>
 
  
- <div class="refsect1 notes" id="refsect1-tidynode.ishtml-notes">
-  <h3 class="title">注意</h3>
-  <blockquote class="note"><p><strong class="note">注意</strong>: 
-   <p class="para">
-    この関数は、PHP 4/Tidy 1 では
-    <span class="function"><strong>tidy_node::is_html()</strong></span>
-    という名前でした。
-   </p>
-  </p></blockquote>
- </div>
-
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="tidynode.iscomment.html">tidyNode::isComment</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="tidynode.isjste.html">tidyNode::isJste</a></div>
- <div class="up"><a href="class.tidynode.html">tidyNode</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

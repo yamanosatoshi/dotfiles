@@ -4,17 +4,31 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>ユーザーが指定したコールバック関数を利用し、
    追加された添字の確認を含めて配列の差を計算する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.array-diff-key.html">array_diff_key</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.array-diff-ukey.html">array_diff_ukey</a></div>
- <div class="up"><a href="ref.array.html">配列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.array-diff-uassoc" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.array-diff-key.html">« array_diff_key</a></li>
+      <li style="float: right;"><a href="function.array-diff-ukey.html">array_diff_ukey »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">配列 関数</a></li>
+    <li>ユーザーが指定したコールバック関数を利用し、
+   追加された添字の確認を含めて配列の差を計算する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.array-diff-uassoc" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">array_diff_uassoc</h1>
-  <p class="verinfo">(PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">array_diff_uassoc</span> &mdash; <span class="dc-title">
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">array_diff_uassoc</span> &mdash; <span class="dc-title">
    ユーザーが指定したコールバック関数を利用し、
    追加された添字の確認を含めて配列の差を計算する
   </span></p>
@@ -24,16 +38,11 @@
  <div class="refsect1 description" id="refsect1-function.array-diff-uassoc-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">array</span> <span class="methodname"><strong>array_diff_uassoc</strong></span>
-    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$array1</code></span>
-   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$array2</code></span>
-   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$...</code></span>
-   ], <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$key_compare_func</code></span>
-   )</div>
+   <span class="methodname"><strong>array_diff_uassoc</strong></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter">$array</code></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">...$arrays</code></span>, <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$key_compare_func</code></span>): <span class="type">array</span></div>
 
   <p class="para rdfs-comment">
-   <code class="parameter">array1</code> のキーを
-   <code class="parameter">array2</code> のキーと比較し、その差を返します。
+   <code class="parameter">array</code> のキーを
+   <code class="parameter">arrays</code> のキーと比較し、その差を返します。
    この関数は <span class="function"><a href="function.array-diff.html" class="function">array_diff()</a></span> に似ていますが、
    配列のキーを用いて比較するという点が異なります。
   </p>
@@ -52,7 +61,7 @@
 
     
      <dt>
-<code class="parameter">array1</code></dt>
+<code class="parameter">array</code></dt>
 
      <dd>
 
@@ -65,7 +74,7 @@
 
     
      <dt>
-<code class="parameter">array2</code></dt>
+<code class="parameter">arrays</code></dt>
 
      <dd>
 
@@ -78,27 +87,14 @@
 
     
      <dt>
-<code class="parameter">...</code></dt>
-
-     <dd>
-
-      <p class="para">
-       さらに比較する対象となる配列。
-      </p>
-     </dd>
-
-    
-
-    
-     <dt>
 <code class="parameter">key_compare_func</code></dt>
 
      <dd>
 
       <p class="para">
-       比較関数は、最初の引数と二番目の引数の比較結果を返します。最初の引数のほうが二番目の引数より大きい場合は正の数を、二番目の引数と等しい場合はゼロを、そして二番目の引数より小さい場合は負の数を返す必要があります。PHP 7.0.0 より前のバージョンでは、この整数が -2147483648 から 2147483647 までの範囲におさまる必要がありました。
+       比較関数は、最初の引数と二番目の引数の比較結果を返します。最初の引数のほうが二番目の引数より大きい場合は正の数を、二番目の引数と等しい場合はゼロを、そして二番目の引数より小さい場合は負の数を返す必要があります。
       </p>
-      <div class="methodsynopsis dc-description"><span class="type">int</span> <span class="methodname"><span class="replaceable">callback</span></span> ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$a</code></span>, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$b</code></span> )</div>
+      <div class="methodsynopsis dc-description"><span class="methodname"><span class="replaceable">callback</span></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$a</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$b</code></span>): <span class="type">int</span></div>
 
      </dd>
 
@@ -113,7 +109,7 @@
  <div class="refsect1 returnvalues" id="refsect1-function.array-diff-uassoc-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   <code class="parameter">array1</code> の要素のうち、
+   <code class="parameter">array</code> の要素のうち、
    その他の配列のいずれにも含まれないものだけを残した配列を返します。
   </p>
  </div>
@@ -124,14 +120,14 @@
  <div class="refsect1 examples" id="refsect1-function.array-diff-uassoc-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5541">
+   <div class="example" id="example-4885">
     <p><strong>例1 <span class="function"><strong>array_diff_uassoc()</strong></span> の例</strong></p>
     <div class="example-contents"><p>
-     <em>&quot;a&quot; =&gt; &quot;green&quot;</em> の組み合わせが両方の配列に存在し、
+     <code class="literal">&quot;a&quot; =&gt; &quot;green&quot;</code> の組み合わせが両方の配列に存在し、
      関数の出力には存在しないことが確認できます。
-     これとは異なり、<em>0 =&gt; &quot;red&quot;</em> は出力されています。
-     なぜなら 2 つめの引数の <em>&quot;red&quot;</em> は、キーが
-     <em>1</em> だからです。
+     これとは異なり、<code class="literal">0 =&gt; &quot;red&quot;</code> は出力されています。
+     なぜなら 2 つめの引数の <code class="literal">&quot;red&quot;</code> は、キーが
+     <code class="literal">1</code> だからです。
     </p></div>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -165,7 +161,7 @@ Array
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     この関数は n 次元配列の一つの次元しかチェックしません。
-    もちろん、<em>array_diff_uassoc($array1[0], $array2[0], &quot;key_compare_func&quot;);</em>
+    もちろん、<code class="literal">array_diff_uassoc($array1[0], $array2[0], &quot;key_compare_func&quot;);</code>
     のようにすることでより深い次元でのチェックもできます。
    </p>
   </p></blockquote>
@@ -195,9 +191,4 @@ Array
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.array-diff-key.html">array_diff_key</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.array-diff-ukey.html">array_diff_ukey</a></div>
- <div class="up"><a href="ref.array.html">配列 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

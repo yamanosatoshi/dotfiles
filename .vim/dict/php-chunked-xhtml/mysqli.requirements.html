@@ -3,29 +3,56 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>要件</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.setup.html">インストール/設定</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.installation.html">インストール手順</a></div>
- <div class="up"><a href="mysqli.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="mysqli.requirements" class="section">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.setup.html">« インストール/設定</a></li>
+      <li style="float: right;"><a href="mysqli.installation.html">インストール手順 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mysqli.setup.html">インストール/設定</a></li>
+    <li>要件</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.requirements" class="section">
   <h2 class="title">要件</h2>
   <p class="para">
    これらの関数を有効にするには、mysqli 拡張サポートを
    有効にして PHP をコンパイルする必要があります。
   </p>
-  <blockquote class="note"><p><strong class="note">注意</strong>: 
-   <p class="para">
-    mysqli 拡張サポートは MySQL 4.1.3 以上、あるいは 5.0.7 以上で動作するよう設計されています。
-    それ以前のバージョンについては <a href="intro.mysql.html" class="link">MySQL</a>
-    拡張サポートのドキュメントをご覧ください。
-   </p>
-  </p></blockquote>
- </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="mysqli.setup.html">インストール/設定</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="mysqli.installation.html">インストール手順</a></div>
- <div class="up"><a href="mysqli.setup.html">インストール/設定</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  
+  <p class="para">
+    <em class="emphasis">MySQL 8</em>
+  </p>
+
+  <p class="para">
+     PHP 7.1.16 より前のバージョン、もしくは PHP 7.2.4 より前の 7.2系の PHP では、
+     MySQL 8 サーバのデフォルトパスワードプラグインを
+     <em class="emphasis">mysql_native_password</em> に設定するようにしてください。
+     さもないと、
+     <em class="emphasis">The server requested authentication method unknown to the client [caching_sha2_password]</em>
+     のようなエラーを見ることになります。たとえあなたが
+     <em class="emphasis">caching_sha2_password</em> を使っていなくても、です。
+  </p>
+  <p class="para">
+     これは MySQL 8 のデフォルトが 古い PHP (mysqlnd) 
+     のリリースが認識していないプラグイン caching_sha2_password だからです。
+     かわりに、<var class="filename">my.cnf</var> の設定を
+     <code class="literal">default_authentication_plugin=mysql_native_password</code>
+     と変更してください。
+     <em class="emphasis">caching_sha2_password</em> プラグインは、
+     将来のPHPのリリースでサポートされます。
+     しばらくの間は、 <a href="book.mysql-xdevapi.html" class="link">mysql_xdevapi</a>
+     拡張機能がサポートを行うことになるでしょう。
+  </p>
+
+ </div></div></div></body></html>

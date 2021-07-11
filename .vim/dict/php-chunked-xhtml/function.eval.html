@@ -3,26 +3,37 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>文字列を PHP コードとして評価する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.die.html">die</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.exit.html">exit</a></div>
- <div class="up"><a href="ref.misc.html">その他の関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.eval" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.die.html">« die</a></li>
+      <li style="float: right;"><a href="function.exit.html">exit »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.misc.html">その他の関数</a></li>
+    <li>文字列を PHP コードとして評価する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.eval" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">eval</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">eval</span> &mdash; <span class="dc-title">文字列を PHP コードとして評価する</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">eval</span> &mdash; <span class="dc-title">文字列を PHP コードとして評価する</span></p>
 
  </div>
  
  <div class="refsect1 description" id="refsect1-function.eval-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>eval</strong></span>
-    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$code</code></span>
-   )</div>
+   <span class="methodname"><strong>eval</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$code</code></span>): <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
 
   <p class="para rdfs-comment">
    指定した <code class="parameter">code</code>
@@ -58,20 +69,20 @@
       <p class="para">
        <a href="language.basic-syntax.phpmode.html" class="link">PHP
        開始タグ</a>を含めてはいけません。つまり、
-       <em>&#039;&lt;?php echo &quot;Hi!&quot;; ?&gt;&#039;</em> ではなく
-       <em>&#039;echo &quot;Hi!&quot;;&#039;</em> を渡さなければならないということです。
+       <code class="literal">&#039;&lt;?php echo &quot;Hi!&quot;; ?&gt;&#039;</code> ではなく
+       <code class="literal">&#039;echo &quot;Hi!&quot;;&#039;</code> を渡さなければならないということです。
        適切に PHP タグを使えば、PHP モードからいったん抜けてもう一度 PHP モードに戻るということも可能です。
        たとえば、このようになります。
-       <em>&#039;echo &quot;PHP モード!&quot;; ?&gt;HTML モード!&lt;?php echo &quot;ふたたび PHP モード!&quot;;&#039;</em>
+       <code class="literal">&#039;echo &quot;PHP モード!&quot;; ?&gt;HTML モード!&lt;?php echo &quot;ふたたび PHP モード!&quot;;&#039;</code>
       </p>
       <p class="para">
        それはさておき、渡すコードは PHP として有効な形式でなければなりません。
        つまり、すべての文はセミコロンで終了する必要があるということです。
-       たとえば <em>&#039;echo &quot;やあ!&quot;&#039;</em> はパースエラーになりますが、
-       <em>&#039;echo &quot;やあ!&quot;;&#039;</em> は動作します。
+       たとえば <code class="literal">&#039;echo &quot;やあ!&quot;&#039;</code> はパースエラーになりますが、
+       <code class="literal">&#039;echo &quot;やあ!&quot;;&#039;</code> は動作します。
       </p>
       <p class="para">
-       <em>return</em> 文は、コードの評価をただちに終了します。
+       <code class="literal">return</code> 文は、コードの評価をただちに終了します。
       </p>
       <p class="para">
        コードの実行は、<span class="function"><strong>eval()</strong></span> を呼び出したスコープ内で行われます。
@@ -90,13 +101,13 @@
  <div class="refsect1 returnvalues" id="refsect1-function.eval-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   評価されるコードの中で <em>return</em> が
-   コールされない限り、<span class="function"><strong>eval()</strong></span> は <strong><code>NULL</code></strong> を返します。
-   <em>return</em> がコールされた場合は、その値を返します。
+   評価されるコードの中で <code class="literal">return</code> が
+   コールされない限り、<span class="function"><strong>eval()</strong></span> は <strong><code>null</code></strong> を返します。
+   <code class="literal">return</code> がコールされた場合は、その値を返します。
    PHP 7 以降、評価されるコードの中でパースエラーが発生した場合は、
    <span class="function"><strong>eval()</strong></span> は ParseError 例外をスローします。
    PHP 7 より前のバージョンでは、この場合に
-   <span class="function"><strong>eval()</strong></span> は <strong><code>FALSE</code></strong> を返していました。
+   <span class="function"><strong>eval()</strong></span> は <strong><code>false</code></strong> を返していました。
    それ以降のコードは通常通り実行されます。
    <span class="function"><strong>eval()</strong></span> の中でのパースエラーを
    <span class="function"><a href="function.set-error-handler.html" class="function">set_error_handler()</a></span>
@@ -108,7 +119,7 @@
  <div class="refsect1 examples" id="refsect1-function.eval-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-4352">
+   <div class="example" id="example-3478">
     <p><strong>例1 <span class="function"><strong>eval()</strong></span> の例 - 簡単なテキストのマージ</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -139,7 +150,7 @@ This is a cup with my coffee in it.
   <div class="tip"><strong class="tip">ヒント</strong><p class="simpara">ブラウザに直接結果を出力する
 すべてのものと同様に、<a href="book.outcontrol.html" class="link">出力制御関数</a>
 を使用してこの関数の出力をキャプチャーし、(例えば)文字列
-(<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)に保存することが可能です。</p></div>
+(<span class="type">string</span>)に保存することが可能です。</p></div>
   <blockquote class="note"><p><strong class="note">注意</strong>: 
    <p class="para">
     評価されるコードの中で致命的なエラーが発生した場合は、
@@ -158,9 +169,4 @@ This is a cup with my coffee in it.
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.die.html">die</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.exit.html">exit</a></div>
- <div class="up"><a href="ref.misc.html">その他の関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

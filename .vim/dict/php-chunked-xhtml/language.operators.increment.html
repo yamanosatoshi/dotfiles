@@ -3,14 +3,27 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>加算子/減算子</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.operators.execution.html">実行演算子</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.operators.logical.html">論理演算子</a></div>
- <div class="up"><a href="language.operators.html">演算子</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="language.operators.increment" class="sect1">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.operators.execution.html">« 実行演算子</a></li>
+      <li style="float: right;"><a href="language.operators.logical.html">論理演算子 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.operators.html">演算子</a></li>
+    <li>加算子/減算子</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.operators.increment" class="sect1">
    <h2 class="title">加算子/減算子</h2>
    <p class="para">
     PHP は C 言語形式の加算子/減算子（前置・後置ともに）をサポートします。
@@ -18,9 +31,9 @@
    <blockquote class="note"><p><strong class="note">注意</strong>: 
     <span class="simpara">
      加算子/減算子は、数値や文字列にしか影響を及ぼしません。
-     配列やオブジェクトそしてリソースには、何も変更を加えません。
-     同じく <strong><code>NULL</code></strong> に減算子を適用しても何も起こりませんが、<strong><code>NULL</code></strong> に加算子を
-     適用すると <em>1</em> となります。
+     配列やオブジェクト、boolean、そしてリソースには、何も変更を加えません。
+     同じく <strong><code>null</code></strong> に減算子を適用しても何も起こりませんが、<strong><code>null</code></strong> に加算子を
+     適用すると <code class="literal">1</code> となります。
     </span>
    </p></blockquote>
    <table class="doctable table">
@@ -39,25 +52,25 @@
       <tr>
        <td>++$a</td>
        <td>前置加算子</td>
-       <td><var class="varname"><var class="varname">$a</var></var> に 1 を加え、<var class="varname"><var class="varname">$a</var></var> を返します。</td>
+       <td><var class="varname">$a</var> に 1 を加え、<var class="varname">$a</var> を返します。</td>
       </tr>
 
       <tr>
        <td>$a++</td>
        <td>後置加算子</td>
-       <td><var class="varname"><var class="varname">$a</var></var> を返し、<var class="varname"><var class="varname">$a</var></var> に1を加えます。</td>
+       <td><var class="varname">$a</var> を返し、<var class="varname">$a</var> に1を加えます。</td>
       </tr>
 
       <tr>
        <td>--$a</td>
        <td>前置減算子</td>
-       <td><var class="varname"><var class="varname">$a</var></var> から 1 を引き、<var class="varname"><var class="varname">$a</var></var> を返します。</td>
+       <td><var class="varname">$a</var> から 1 を引き、<var class="varname">$a</var> を返します。</td>
       </tr>
 
       <tr>
        <td>$a--</td>
        <td>後置減算子</td>
-       <td><var class="varname"><var class="varname">$a</var></var> を返し、<var class="varname"><var class="varname">$a</var></var> から 1 を引きます。</td>
+       <td><var class="varname">$a</var> を返し、<var class="varname">$a</var> から 1 を引きます。</td>
       </tr>
 
      </tbody>
@@ -78,15 +91,15 @@
    </p>
    <p class="para">
     PHP は、算術演算子で文字変数を扱った場合に C ではなく Perl の慣習に
-    従います。例えば、PHP や Perl では <em>$a = &#039;Z&#039;; $a++;</em>
-    の結果として <em>$a</em> が <em>&#039;AA&#039;</em> になりますが
-    C では <em>a = &#039;Z&#039;; a++;</em> の結果として
-    <em>a</em> は <em>&#039;[&#039;</em> になります
-    (<em>&#039;Z&#039;</em> の ASCII 値は 90、そして <em>&#039;[&#039;</em> の ASCII 値は 91 です)。
+    従います。例えば、PHP や Perl では <code class="literal">$a = &#039;Z&#039;; $a++;</code>
+    の結果として <code class="literal">$a</code> が <code class="literal">&#039;AA&#039;</code> になりますが
+    C では <code class="literal">a = &#039;Z&#039;; a++;</code> の結果として
+    <code class="literal">a</code> は <code class="literal">&#039;[&#039;</code> になります
+    (<code class="literal">&#039;Z&#039;</code> の ASCII 値は 90、そして <code class="literal">&#039;[&#039;</code> の ASCII 値は 91 です)。
     文字変数はインクリメントされることは可能ですがデクリメントは不可能であるということ、
     またプレーンな ASCII 文字と数字 (a-z、A-Z、そして 0-9) のみがサポートされるということに注意しましょう。
     その他の文字変数のインクリメント/デクリメントは何の効果もなく、元の文字列は変更されません。
-    <div class="example" id="example-145">
+    <div class="example" id="example-101">
      <p><strong>例1 文字変数に対する算術演算子の使用</strong></p>
      <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -125,9 +138,4 @@ A14
    <p class="para">
     論理型に対する加算/減算は何の影響も及ぼしません。
    </p>
-  </div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="language.operators.execution.html">実行演算子</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="language.operators.logical.html">論理演算子</a></div>
- <div class="up"><a href="language.operators.html">演算子</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+  </div></div></div></body></html>

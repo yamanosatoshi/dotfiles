@@ -3,25 +3,36 @@
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>オブジェクトのクラス名を返す</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.get-class-vars.html">get_class_vars</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.get-declared-classes.html">get_declared_classes</a></div>
- <div class="up"><a href="ref.classobj.html">クラス/オブジェクト関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.get-class" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.get-class-vars.html">« get_class_vars</a></li>
+      <li style="float: right;"><a href="function.get-declared-classes.html">get_declared_classes »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.classobj.html">クラス/オブジェクト関数</a></li>
+    <li>オブジェクトのクラス名を返す</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.get-class" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">get_class</h1>
-  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">get_class</span> &mdash; <span class="dc-title">オブジェクトのクラス名を返す</span></p>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">get_class</span> &mdash; <span class="dc-title">オブジェクトのクラス名を返す</span></p>
 
  </div>
  <div class="refsect1 description" id="refsect1-function.get-class-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">string</span> <span class="methodname"><strong>get_class</strong></span>
-    ([ <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
-  ] )</div>
+   <span class="methodname"><strong>get_class</strong></span>(<span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code><span class="initializer"> = ?</span></span>): <span class="type">string</span></div>
 
   <p class="para rdfs-comment">
    指定した <code class="parameter">object</code> のクラス名を取得します。
@@ -42,6 +53,19 @@
       <p class="para">
        調べるオブジェクト。クラスの内部ではこのパラメータを省略することもできます。
       </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       <span class="simpara">
+        <code class="parameter">object</code> に明示的に <strong><code>null</code></strong> を渡すことは、
+        PHP 7.2.0 以降許されなくなりました。
+       </span>
+       <span class="simpara">
+        このパラメータは未だオプションです。
+        <span class="function"><strong>get_class()</strong></span> 関数を
+        クラスの内部からパラメータなしに呼び出しても動作します。
+        しかし、<strong><code>null</code></strong> を渡してしまうと
+        <strong><code>E_WARNING</code></strong> レベルの警告が発生します。
+       </span>
+      </p></blockquote>
      </dd>
 
     
@@ -55,11 +79,16 @@
   <p class="para">
    オブジェクト <code class="parameter">object</code> がインスタンス
    であるクラスの名前を返します。<code class="parameter">object</code>
-   がオブジェクトでない場合には<strong><code>FALSE</code></strong>が返されます。
+   がオブジェクトでない場合には<strong><code>false</code></strong>が返されます。
   </p>
   <p class="para">
    クラスの内部で <code class="parameter">object</code> を省略すると、
    そのクラスの名前を返します。
+  </p>
+  <p class="para">
+   <code class="parameter">object</code> が
+   名前空間の中に存在しているクラスのインスタンスだった場合、
+   名前空間で修飾されたクラス名が返されます。
   </p>
  </div>
 
@@ -86,11 +115,13 @@
 
      <tbody class="tbody">
       <tr>
-       <td>5.3.0</td>
+       <td>7.2.0</td>
        <td>
-        <strong><code>NULL</code></strong> が <code class="parameter">object</code> のデフォルトとなりました。
-        したがって、<strong><code>NULL</code></strong> を <code class="parameter">object</code>
-        に渡すのは何も指定しないのと同じ意味ということになります。
+        <strong><code>null</code></strong> は、<code class="parameter">object</code> のデフォルトのパラメータとして
+        扱われなくなり、
+        正しい入力ではなくなりました。
+        これより前のバージョンでは、<code class="parameter">object</code>
+        のデフォルトのパラメータは <strong><code>null</code></strong> であり、何も値を渡さないのと同じ意味でした。
        </td>
       </tr>
 
@@ -104,7 +135,7 @@
  <div class="refsect1 examples" id="refsect1-function.get-class-examples">
   <h3 class="title">例</h3>
   <p class="para">
-   <div class="example" id="example-5654">
+   <div class="example" id="example-5003">
     <p><strong>例1 <span class="function"><strong>get_class()</strong></span> の使用例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -121,7 +152,7 @@ My name is foo
 </pre></div>
     </div>
    </div>
-   <div class="example" id="example-5655">
+   <div class="example" id="example-5004">
     <p><strong>例2 <span class="function"><strong>get_class()</strong></span> のスーパークラスでの使用例</strong></p>
     <div class="example-contents">
 <div class="phpcode"><code><span style="color: #000000">
@@ -135,6 +166,22 @@ My name is foo
 <div class="cdata"><pre>
 string(3) &quot;foo&quot;
 string(3) &quot;bar&quot;
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="function.usort.examples.basic">
+    <p><strong>例3 名前空間の中にあるクラスを <span class="function"><strong>get_class()</strong></span> で使う</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">\</span><span style="color: #0000BB">Bar</span><span style="color: #007700">;<br /><br />class&nbsp;</span><span style="color: #0000BB">Baz&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$baz&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Foo</span><span style="color: #007700">\</span><span style="color: #0000BB">Bar</span><span style="color: #007700">\</span><span style="color: #0000BB">Baz</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$baz</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(11) &quot;Foo\Bar\Baz&quot;
 </pre></div>
     </div>
    </div>
@@ -153,9 +200,4 @@ string(3) &quot;bar&quot;
   </p>
  </div>
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.get-class-vars.html">get_class_vars</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.get-declared-classes.html">get_declared_classes</a></div>
- <div class="up"><a href="ref.classobj.html">クラス/オブジェクト関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>

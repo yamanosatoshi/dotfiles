@@ -2,32 +2,46 @@
 <html>
  <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Set the directory path for a given backend</title>
+  <title>指定されたバックエンドの辞書のパスを設定する</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
 
  </head>
- <body><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.enchant-broker-request-pwl-dict.html">enchant_broker_request_pwl_dict</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.enchant-broker-set-ordering.html">enchant_broker_set_ordering</a></div>
- <div class="up"><a href="ref.enchant.html">Enchant 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div><hr /><div id="function.enchant-broker-set-dict-path" class="refentry">
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.enchant-broker-request-pwl-dict.html">« enchant_broker_request_pwl_dict</a></li>
+      <li style="float: right;"><a href="function.enchant-broker-set-ordering.html">enchant_broker_set_ordering »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.enchant.html">Enchant 関数</a></li>
+    <li>指定されたバックエンドの辞書のパスを設定する</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.enchant-broker-set-dict-path" class="refentry">
  <div class="refnamediv">
   <h1 class="refname">enchant_broker_set_dict_path</h1>
-  <p class="verinfo">(PHP 5 &gt;= 5.3.1, PHP 7, PECL enchant &gt;= 1.0.1)</p><p class="refpurpose"><span class="refname">enchant_broker_set_dict_path</span> &mdash; <span class="dc-title">Set the directory path for a given backend</span></p>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.1, PHP 7, PHP 8, PECL enchant &gt;= 1.0.1)</p><p class="refpurpose"><span class="refname">enchant_broker_set_dict_path</span> &mdash; <span class="dc-title">指定されたバックエンドの辞書のパスを設定する</span></p>
 
  </div>
  
+ <div id="function.enchant-broker-set-dict-path-refsynopsisdiv">
+   <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は PHP 8.0.0 で
+<em class="emphasis">非推奨</em>になります。この関数に頼らないことを強く推奨します。</p></div>
+ </div>
+
  <div class="refsect1 description" id="refsect1-function.enchant-broker-set-dict-path-description">
   <h3 class="title">説明</h3>
   <div class="methodsynopsis dc-description">
-   <span class="type">bool</span> <span class="methodname"><strong>enchant_broker_set_dict_path</strong></span>
-    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$broker</code></span>
-   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$dict_type</code></span>
-   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
-   )</div>
+   <span class="methodname"><strong>enchant_broker_set_dict_path</strong></span>(<span class="methodparam"><span class="type"><a href="class.enchantbroker.html" class="type EnchantBroker">EnchantBroker</a></span> <code class="parameter">$broker</code></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>): <span class="type">bool</span></div>
 
   <p class="para rdfs-comment">
-   Set the directory path for a given backend.
+   指定されたバックエンドの辞書のパスを設定します。
   </p>
  </div>
 
@@ -44,32 +58,31 @@
      <dd>
 
       <p class="para">
-       Broker resource.
+       <span class="function"><a href="function.enchant-broker-init.html" class="function">enchant_broker_init()</a></span> によって返される Enchant ブローカー。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">dict_type</code></dt>
+<code class="parameter">type</code></dt>
 
      <dd>
 
       <p class="para">
-       The type of the dictionaries, i.e. <strong><code>ENCHANT_MYSPELL</code></strong>
-       or <strong><code>ENCHANT_ISPELL</code></strong>.
+       辞書のタイプ。たとえば、<strong><code>ENCHANT_MYSPELL</code></strong> または <strong><code>ENCHANT_ISPELL</code></strong>。
       </p>
      </dd>
 
     
     
      <dt>
-<code class="parameter">value</code></dt>
+<code class="parameter">path</code></dt>
 
      <dd>
 
       <p class="para">
-       The path of the dictionary directory.
+       辞書のディレクトリパス。
       </p>
      </dd>
 
@@ -83,24 +96,57 @@
  <div class="refsect1 returnvalues" id="refsect1-function.enchant-broker-set-dict-path-returnvalues">
   <h3 class="title">返り値</h3>
   <p class="para">
-   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   成功した場合に <strong><code>true</code></strong> を、失敗した場合に <strong><code>false</code></strong> を返します。
   </p>
  </div>
 
 
-  <div class="refsect1 seealso" id="refsect1-function.enchant-broker-set-dict-path-seealso">
+ <div class="refsect1 changelog" id="refsect1-function.enchant-broker-set-dict-path-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">broker</code> は、<a href="class.enchantbroker.html" class="classname">EnchantBroker</a> クラスのインスタンスを期待するようになりました。
+  これより前のバージョンでは、<a href="language.types.resource.html" class="link">リソース</a> が期待されていました。
+ </td>
+</tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.enchant-broker-set-dict-path-notes">
+  <h3 class="title">注意</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    この関数は、拡張機能が Enchant v1 を使ってコンパイルされた場合にのみ利用可能です。
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.enchant-broker-set-dict-path-seealso">
   <h3 class="title">参考</h3>
   <p class="para">
    <ul class="simplelist">
-    <li class="member"><span class="function"><a href="function.enchant-broker-get-dict-path.html" class="function" rel="rdfs-seeAlso">enchant_broker_get_dict_path()</a> - Get the directory path for a given backend</span></li>
+    <li class="member"><span class="function"><a href="function.enchant-broker-get-dict-path.html" class="function" rel="rdfs-seeAlso">enchant_broker_get_dict_path()</a> - 指定されたバックエンドの辞書のパスを取得する</span></li>
    </ul>
   </p>
  </div>
 
 
-</div><hr /><div class="manualnavbar" style="text-align: center;">
- <div class="prev" style="text-align: left; float: left;"><a href="function.enchant-broker-request-pwl-dict.html">enchant_broker_request_pwl_dict</a></div>
- <div class="next" style="text-align: right; float: right;"><a href="function.enchant-broker-set-ordering.html">enchant_broker_set_ordering</a></div>
- <div class="up"><a href="ref.enchant.html">Enchant 関数</a></div>
- <div class="home"><a href="index.html">PHP Manual</a></div>
-</div></body></html>
+</div></div></div></body></html>
