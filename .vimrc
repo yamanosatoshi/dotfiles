@@ -69,11 +69,13 @@ if has('iconv')
 endif
 "}}}
 
+
 " runtimepath追加"{{{
 set runtimepath^=$HOME/.vim
 set runtimepath+=$HOME/.vim/after
 set runtimepath+=$HOME/.vim/bundle/vital.vim
 "}}}
+
 
 
 " dein{{{
@@ -474,8 +476,27 @@ if has('gui') && IsWindows()
     set showtabline=2
 endif
 
-set statusline=%<%f\ %m%r%h%w\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%l,%c][%p%%]\ [LEN=%L]\ %{'['.(&fenc!=''?&fenc:&enc)}:%{&ff}]\ [%Y]%=%V%8P
+function! SetStatusLine()
+  if mode() =~ 'n'
+    let c = 1
+    let mode_name = 'Normal'
+  elseif mode() =~ 'i'
+    let c = 2
+    let mode_name = 'Insert'
+  elseif mode() =~ 'R'
+    let c = 3
+    let mode_name = 'Replace'
+  else
+    let c = 4
+    let mode_name = 'Visual'
+  endif
+  return '%' . c . '*[' . mode_name . ']%* %<%F %m%r%h%w [ASCII=%03.3b] [HEX=%02.2B] [POS=%l/%L,%c][%p%%]%=[%{(&fenc!=""?&fenc:&enc)}:%{&ff}] [%Y]%=%V%8P'
+endfunction
+ 
+set statusline=%!SetStatusLine()
+
 "}}}
+
 
 set dir=~/
 
@@ -742,6 +763,11 @@ else
     colorscheme hybrid
     set bg=dark
 endif
+
+hi User1 gui=bold ctermbg=blue ctermfg=white guibg=black guifg=white
+hi User2 gui=bold ctermbg=green ctermfg=black guibg=blue guifg=white
+hi User3 gui=bold ctermbg=red ctermfg=white guibg=coral guifg=white
+hi User4 gui=bold ctermbg=yellow ctermfg=black guibg=green guifg=black
 
 augroup TransparentBG
     autocmd!
