@@ -490,7 +490,7 @@ function! SetStatusLine()
     let c = 4
     let mode_name = 'Visual'
   endif
-  return '%' . c . '*[' . mode_name . ']%* %<%F %m%r%h%w [ASCII=%03.3b] [HEX=%02.2B] [POS=%l/%L,%c][%p%%]%=[%{(&fenc!=""?&fenc:&enc)}:%{&ff}] [%Y]%=%V%8P'
+  return '%' . c . '*[' . mode_name . ']%* %<%F %m%r%h%w [ASCII=%03.3b] [HEX=%02.2B] [X=%v:%c] [Y=%l/%L] [%2p%%:%3P] %=%V[%{(&fenc!=""?&fenc:&enc)}:%{&ff}] [%Y]'
 endfunction
  
 set statusline=%!SetStatusLine()
