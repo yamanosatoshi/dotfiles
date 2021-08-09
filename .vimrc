@@ -117,12 +117,6 @@ if dein#load_state(s:dein_dir)
    " You can specify revision/branch/tag.
     call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
-    if s:has_lua()
-        call dein#add('Shougo/neocomplete', {'lazy': 0})
-    else
-        call dein#add('Shougo/neocomplcache.vim', {'lazy': 0})
-    endif
-
     call dein#end()
     call dein#save_state()
 endif
@@ -442,7 +436,6 @@ endif
 "augroup END
 "}}}
 
-
 "ウィンドウの位置とサイズを記憶する" {{{
 "if has('gui')
   "let g:save_window_file = expand('~/_vimwinpos')
@@ -617,45 +610,6 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 " Plugin Settings"{{{
 
-
-"neocomplcache"{{{
-
-if s:has_lua()
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#max_list = 20
-
-    " Use smartcase.
-    let g:neocomplete#enable_smart_case = 1
-    " Use camel case completion.
-    let g:neocomplete#enable_camel_case_completion = 0
-    " Use underbar completion.
-    let g:neocomplete#enable_underbar_completion = 0
-    " Set minimum syntax keyword length.
-    let g:neocomplete#min_syntax_length = 3
-    " Set manual completion length.
-    let g:neocomplete#auto_completion_start_length = 2
-
-    let g:neocomplete#snippets_dir = $HOME.'/.vim/dict/funclist.txt'
-else
-    let g:neocomplcache_enable_at_startup = 1
-    let g:neocomplcache_max_list = 20
-
-    " Use smartcase.
-    let g:neocomplcache_enable_smart_case = 1
-    " Use camel case completion.
-    let g:neocomplcache_enable_camel_case_completion = 0
-    " Use underbar completion.
-    let g:neocomplcache_enable_underbar_completion = 0
-    " Set minimum syntax keyword length.
-    let g:neocomplcache_min_syntax_length = 3
-    " Set manual completion length.
-    let g:neocomplcache_auto_completion_start_length = 2
-
-    let g:neocomplcache_snippets_dir = $HOME.'/.vim/dict/funclist.txt'
-endif
-
-"}}}
-
 "emmet-vim"{{{
 let g:user_emmet_leader_key = '<C-E>'
 "}}}
@@ -741,6 +695,42 @@ let g:wildfire_water_map = "<BS>"
 let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "a'", 'a"', "a)", "a]", "a}", "a>", "ap", "at"]
 "}}}
 
+" ddc.vim"{{{
+" Customize global settings
+" Use around source.
+" https://github.com/Shougo/ddc-around
+call ddc#custom#patch_global('sources', ['around'])
+
+" Use matcher_head and sorter_rank.
+" https://github.com/Shougo/ddc-matcher_head
+" https://github.com/Shougo/ddc-sorter_rank
+call ddc#custom#patch_global('sourceOptions', {
+      \ '_': {
+      \   'matchers': ['matcher_head'],
+      \   'sorters': ['sorter_rank']},
+      \ })
+
+" Change source options
+call ddc#custom#patch_global('sourceOptions', {
+      \ 'around': {'mark': 'A'},
+      \ })
+call ddc#custom#patch_global('sourceParams', {
+      \ 'around': {'maxSize': 500},
+      \ })
+
+" Customize settings on a filetype
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
+      \ 'clangd': {'mark': 'C'},
+      \ })
+call ddc#custom#patch_filetype('markdown', 'sourceParams', {
+      \ 'around': {'maxSize': 100},
+      \ })
+
+" Use ddc.
+call ddc#enable()
+"}}}
+
 "}}}
 
 " Color scheme{{{
@@ -762,5 +752,4 @@ augroup TransparentBG
     autocmd Colorscheme * highlight EndOfBuffer ctermbg=none 
 augroup END
 "}}}
-
 
