@@ -1,3 +1,6 @@
+scriptencoding utf-8
+set encoding=utf-8
+
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
@@ -25,6 +28,7 @@ endfunction
 if has('win16') || has('win32')
   set termencoding=cp932
 endif
+
 
 "http://www.kawaz.jp/pukiwiki/?vim#content_1_7 
 if &encoding !=# 'utf-8'
@@ -73,7 +77,7 @@ endif
 " runtimepath追加"{{{
 set runtimepath^=$HOME/.vim
 set runtimepath+=$HOME/.vim/after
-set runtimepath+=$HOME/.vim/bundle/vital.vim
+"set runtimepath+=$HOME/.vim/bundle/vital.vim
 "}}}
 
 
@@ -132,97 +136,14 @@ endif
 
 "}}}
 
-" NeoBundle (やがて消す) {{{
-
-"デバッグよう
-"let g:neobundle#log_filename = $HOME . "/neobundle.log"
-
-"set nocompatible
-"filetype off
-"if has('vim_starting')
-"  set runtimepath+=~/.vim/bundle/neobundle.vim/
-"endif
-"call neobundle#begin(expand('~/.vim/bundle/'))
-"
-"
-"" Installation check.
-"if neobundle#exists_not_installed_bundles()
-"  echomsg 'Not installed bundles : ' .
-"        \ string(neobundle#get_not_installed_bundle_names())
-"  echomsg 'Please execute ":NeoBundleInstall" command.'
-"  "finish
-"endif
-
-"
-"プラグインをNeoBundle
-"
-"NeoBundle 'vim-jp/vital.vim'
-"NeoBundle 'gmarik/vundle'
-"NeoBundle 'scrooloose/nerdcommenter'
-""NeoBundle 'thinca/vim-quickrun'
-"NeoBundle 'thinca/vim-ref'
-""NeoBundle 'kana/vim-fakeclip'
-"NeoBundle 'mattn/emmet-vim'
-""NeoBundle 'scrooloose/nerdtree' " from dein
-""NeoBundle 'vim-scripts/The-NERD-tree'
-""NeoBundle 'yanktmp.vim'
-"NeoBundle 'vim-scripts/YankRing.vim'
-"NeoBundle 'mbbill/undotree'
-"NeoBundle 'kana/vim-textobj-user'
-"NeoBundle 'h1mesuke/textobj-wiw'
-"NeoBundle 'tpope/vim-surround'
-"NeoBundle 'gcmt/wildfire.vim'
-"NeoBundle 'chriskempson/base16-vim'
-"NeoBundle 'othree/html5.vim'
-"NeoBundle 'haya14busa/vim-migemo'
-"NeoBundle 'editorconfig/editorconfig-vim'
-""NeoBundle 'wakatime/vim-wakatime'
-
-
-
-" Color Schemes "{{{
-
-"" カラースキーム一覧表示に Unite.vim を使う
-"NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'ujihisa/unite-colorscheme'
-"
-""NeoBundle 'freeo/vim-kalisi'
-""NeoBundle 'altercation/vim-colors-solarized'
-""NeoBundle 'croaker/mustang-vim'
-""NeoBundle 'nanotech/jellybeans.vim'
-""NeoBundle 'vim-scripts/Lucius'
-""NeoBundle 'vim-scripts/Zenburn'
-""NeoBundle 'mrkn/mrkn256.vim'
-""NeoBundle 'tomasr/molokai'
-""NeoBundle 'daylerees/colour-schemes'
-""NeoBundle 'chriskempson/vim-tomorrow-theme'
-""NeoBundle 'therubymug/vim-pyte'
-"NeoBundle 'Haron-Prime/Antares'
-"NeoBundle 'jeffreyiacono/vim-colors-wombat'
-"NeoBundle 'sickill/vim-monokai'
-"NeoBundle 'google/vim-colorscheme-primary'
-"NeoBundle 'sjl/badwolf'
-"NeoBundle 'cocopon/iceberg.vim'
-"NeoBundle 'jgdavey/vim-railscasts'
-"NeoBundle 'pasela/edark.vim'
-"NeoBundle 'w0ng/vim-hybrid'
-
-
-
+"" vital.vim"{{{
+"let g:V = vital#of('vital').load(
+"\  ['Math'],
+"\  ['DateTime'],
+"\  ['System.Filepath'],
+"\  ['Data.List'],
+"\  ['Data.String'])
 ""}}}
-
-"call neobundle#end()
-
-"}}} neoBundle
-
-" vital.vim"{{{
-let g:V = vital#of('vital').load(
-\  ['Math'],
-\  ['DateTime'],
-\  ['System.Filepath'],
-\  ['Data.List'],
-\  ['Data.String'])
-"}}}
 
 " General"{{{
 
@@ -276,7 +197,6 @@ set clipboard=unnamed
 " ターミナルでマウスを使用できるようにする
 set mouse=a
 set guioptions+=a
-set ttymouse=xterm2
 
 "insertモードを抜けるとIMEオフ
 set noimdisable
@@ -462,12 +382,12 @@ endif
 
 " migemo search "{{{
 "set grepprg=internal
-if has('migemo')
-  " a 'migemo' option changes the behavior of "g?".
-  " NOTE: 'migemo' option is local to buffer.
-  set nomigemo migemodict=$HOME/.vim/dict/utf-8/migemo-dict
-  nnoremap / g/
-endif
+"if has('migemo')
+"  " a 'migemo' option changes the behavior of "g?".
+"  " NOTE: 'migemo' option is local to buffer.
+"  set nomigemo migemodict=$HOME/.vim/dict/utf-8/migemo-dict
+"  nnoremap / g/
+"endif
 "}}}
 
 " statusline settings"{{{
@@ -629,14 +549,19 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 " }}} Autocompletion using the TAB key
 
 
-" Plugin Settings"{{{
-
 "emmet-vim"{{{
 let g:user_emmet_leader_key = '<C-E>'
 "}}}
 
 "NERDTree"{{{
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+"nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-e> :NERDTreeToggle<CR>
+"nnoremap <C-f> :NERDTreeFind<CR>
+
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable  = '▶'
+let g:NERDTreeDirArrowCollapsible = '▼'
+
 "}}}
 
 " {{{ ref.vim
@@ -756,14 +681,6 @@ call ddc#enable()
 
 " Color scheme{{{
 
-if has('gui') && IsWindows()
-    colorscheme hybrid
-    set bg=dark
-else
-    colorscheme hybrid
-    set bg=dark
-endif
-
 hi User1 gui=bold ctermbg=blue ctermfg=white guibg=black guifg=white
 hi User2 gui=bold ctermbg=green ctermfg=black guibg=blue guifg=white
 hi User3 gui=bold ctermbg=red ctermfg=white guibg=coral guifg=white
@@ -777,5 +694,15 @@ augroup TransparentBG
     autocmd Colorscheme * highlight Folded ctermbg=none
     autocmd Colorscheme * highlight EndOfBuffer ctermbg=none 
 augroup END
+
+if has('gui') && IsWindows()
+    colorscheme hybrid
+    set bg=dark
+else
+    colorscheme hybrid
+    set bg=dark
+endif
+
+
 "}}}
 
