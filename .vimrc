@@ -114,7 +114,6 @@ if dein#load_state(s:dein_dir)
 
     let g:rc_dir    = expand('~/.cache/dein')
 
-
     if ! exists('g:vscode')
       " TOMLファイルにpluginを記述
       call dein#load_toml(expand('~/.vim/dein.plugins.toml'),       {'lazy': 0} ) " main
@@ -124,7 +123,7 @@ if dein#load_state(s:dein_dir)
       call dein#load_toml(expand('~/.vim/dein.plugins.vscode.toml'),       {'lazy': 0} ) " main
     endif
 
-   " You can specify revision/branch/tag.
+    " You can specify revision/branch/tag.
     call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
     call dein#end()
@@ -257,9 +256,9 @@ set gfn=MS_Gothic:h10:cDEFAULT
 " Don't show :intro when startup.
 "set shortmess& shortmess+=I
 
-if exists('g:vscode') || has('kaoriya') && IsWindows() && has('gui_running')
+if has('kaoriya') && IsWindows() && has('gui_running')
   set ambiwidth=auto
-else
+elseif ! exists('g:vscode')
   set ambiwidth=double
 endif
 
@@ -460,12 +459,14 @@ nmap ,,l :call FTLint('-d short_open_tag=0')<CR>
 " mappings "{{{
 
 "検索結果のハイライトをオフ
+nmap <ESC><ESC> :nohlsearch<CR><ESC>
+"選択した文字列を検索
+vnoremap <silent> // y/<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
+"選択した文字列を置換
 if ! exists('g:vscode')
-  nmap <ESC><ESC> :nohlsearch<CR><ESC>
-  "選択した文字列を検索
-  vnoremap <silent> // y/<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
-  "選択した文字列を置換
   vnoremap /r "xy:%s/<C-R>=escape(@x, '\\/.*$^~[]')<CR>//gc<Left><Left><Left>
+else
+  vnoremap /r "xy:%s/<C-R>=escape(@x, '\\/.*$^~[]')<CR>//gc
 endif
 "s*置換後文字列/g<Cr>でカーソル下のキーワードを置換
 nnoremap <expr> s* ':%substitute/\<' . expand('<cword>') . '\>/'
@@ -480,7 +481,6 @@ noremap n nzzzv
 noremap N Nzzzv
 
 " Very magic by default.
-if ! exists('g:vscode')
 nnoremap / /\v
 nnoremap ? ?\v
 cnoremap <expr> s/ getcmdline() =~# '^\A*$' ? 's/\v' : 's/'
@@ -489,7 +489,6 @@ cnoremap <expr> v/ getcmdline() =~# '^\A*$' ? 'v/\v' : 'v/'
 cnoremap s// s//
 cnoremap g// g//
 cnoremap v// v//
-endif
 
 "}}}
 
@@ -649,41 +648,43 @@ let g:wildfire_water_map = "<BS>"
 let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "a'", 'a"', "a)", "a]", "a}", "a>", "ap", "at"]
 "}}}
 
-" ddc.vim"{{{
-" Customize global settings
-" Use around source.
-" https://github.com/Shougo/ddc-around
-call ddc#custom#patch_global('sources', ['around'])
+if ! exists('g:vscode')
+  " ddc.vim"{{{
+  " Customize global settings
+  " Use around source.
+  " https://github.com/Shougo/ddc-around
+  call ddc#custom#patch_global('sources', ['around'])
 
-" Use matcher_head and sorter_rank.
-" https://github.com/Shougo/ddc-matcher_head
-" https://github.com/Shougo/ddc-sorter_rank
-call ddc#custom#patch_global('sourceOptions', {
-      \ '_': {
-      \   'matchers': ['matcher_head'],
-      \   'sorters': ['sorter_rank']},
-      \ })
+  " Use matcher_head and sorter_rank.
+  " https://github.com/Shougo/ddc-matcher_head
+  " https://github.com/Shougo/ddc-sorter_rank
+  call ddc#custom#patch_global('sourceOptions', {
+        \ '_': {
+        \   'matchers': ['matcher_head'],
+        \   'sorters': ['sorter_rank']},
+        \ })
 
-" Change source options
-call ddc#custom#patch_global('sourceOptions', {
-      \ 'around': {'mark': 'A'},
-      \ })
-call ddc#custom#patch_global('sourceParams', {
-      \ 'around': {'maxSize': 500},
-      \ })
+  " Change source options
+  call ddc#custom#patch_global('sourceOptions', {
+        \ 'around': {'mark': 'A'},
+        \ })
+  call ddc#custom#patch_global('sourceParams', {
+        \ 'around': {'maxSize': 500},
+        \ })
 
-" Customize settings on a filetype
-call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
-call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
-      \ 'clangd': {'mark': 'C'},
-      \ })
-call ddc#custom#patch_filetype('markdown', 'sourceParams', {
-      \ 'around': {'maxSize': 100},
-      \ })
+  " Customize settings on a filetype
+  call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
+  call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
+        \ 'clangd': {'mark': 'C'},
+        \ })
+  call ddc#custom#patch_filetype('markdown', 'sourceParams', {
+        \ 'around': {'maxSize': 100},
+        \ })
 
-" Use ddc.
-call ddc#enable()
-"}}}
+  " Use ddc.
+  call ddc#enable()
+  "}}}
+endif
 
 "}}}
 
@@ -725,12 +726,14 @@ augroup TransparentBG
     autocmd Colorscheme * highlight EndOfBuffer ctermbg=none 
 augroup END
 
-if has('gui') && IsWindows()
-    colorscheme hybrid
-    set bg=dark
-else
-    colorscheme hybrid
-    set bg=dark
+if ! exists('g:vscode')
+  if has('gui') && IsWindows()
+      colorscheme hybrid
+      set bg=dark
+  else
+      colorscheme hybrid
+      set bg=dark
+  endif
 endif
 
 
