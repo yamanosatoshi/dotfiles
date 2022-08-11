@@ -253,7 +253,7 @@ set gfn=MS_Gothic:h10:cDEFAULT
 " Don't show :intro when startup.
 "set shortmess& shortmess+=I
 
-if has('kaoriya') && IsWindows() && has('gui_running')
+if exists('g:vscode') || has('kaoriya') && IsWindows() && has('gui_running')
   set ambiwidth=auto
 else
   set ambiwidth=double
@@ -456,11 +456,13 @@ nmap ,,l :call FTLint('-d short_open_tag=0')<CR>
 " mappings "{{{
 
 "検索結果のハイライトをオフ
-nmap <ESC><ESC> :nohlsearch<CR><ESC>
-"選択した文字列を検索
-vnoremap <silent> // y/<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
-"選択した文字列を置換
-vnoremap /r "xy:%s/<C-R>=escape(@x, '\\/.*$^~[]')<CR>//gc<Left><Left><Left>
+if ! exists('g:vscode')
+  nmap <ESC><ESC> :nohlsearch<CR><ESC>
+  "選択した文字列を検索
+  vnoremap <silent> // y/<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
+  "選択した文字列を置換
+  vnoremap /r "xy:%s/<C-R>=escape(@x, '\\/.*$^~[]')<CR>//gc<Left><Left><Left>
+endif
 "s*置換後文字列/g<Cr>でカーソル下のキーワードを置換
 nnoremap <expr> s* ':%substitute/\<' . expand('<cword>') . '\>/'
 
@@ -474,6 +476,7 @@ noremap n nzzzv
 noremap N Nzzzv
 
 " Very magic by default.
+if ! exists('g:vscode')
 nnoremap / /\v
 nnoremap ? ?\v
 cnoremap <expr> s/ getcmdline() =~# '^\A*$' ? 's/\v' : 's/'
@@ -482,6 +485,7 @@ cnoremap <expr> v/ getcmdline() =~# '^\A*$' ? 'v/\v' : 'v/'
 cnoremap s// s//
 cnoremap g// g//
 cnoremap v// v//
+endif
 
 "}}}
 
@@ -678,6 +682,28 @@ call ddc#enable()
 "}}}
 
 "}}}
+
+" Get folding working with vscode neovim plugin
+"if(exists("g:vscode"))
+"    nnoremap zM :call VSCodeNotify('editor.foldAll')<CR>
+"    nnoremap zR :call VSCodeNotify('editor.unfoldAll')<CR>
+"    nnoremap zc :call VSCodeNotify('editor.fold')<CR>
+"    nnoremap zC :call VSCodeNotify('editor.foldRecursively')<CR>
+"    nnoremap zo :call VSCodeNotify('editor.unfold')<CR>
+"    nnoremap zO :call VSCodeNotify('editor.unfoldRecursively')<CR>
+"    nnoremap za :call VSCodeNotify('editor.toggleFold')<CR>
+"
+"    #function! MoveCursor(direction) abort
+"    #    if(reg_recording() == '' && reg_executing() == '')
+"    #        return 'g'.a:direction
+"    #    else
+"    #        return a:direction
+"    #    endif
+"    #endfunction
+"
+"    #nmap <expr> j MoveCursor('j')
+"    #nmap <expr> k MoveCursor('k')
+"endif
 
 " Color scheme{{{
 
