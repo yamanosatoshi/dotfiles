@@ -115,10 +115,14 @@ if dein#load_state(s:dein_dir)
     let g:rc_dir    = expand('~/.cache/dein')
 
 
-    " TOMLファイルにpluginを記述
-    call dein#load_toml(expand('~/.vim/dein.plugins.toml'),       {'lazy': 0} ) " main
-    call dein#load_toml(expand('~/.vim/dein.plugins.colors.toml'),{'lazy': 0} ) " colorscheme
-    call dein#load_toml(expand('~/.vim/dein.plugins-lazy.toml'),  {'lazy': 1} ) " others for lazy
+    if ! exists('g:vscode')
+      " TOMLファイルにpluginを記述
+      call dein#load_toml(expand('~/.vim/dein.plugins.toml'),       {'lazy': 0} ) " main
+      call dein#load_toml(expand('~/.vim/dein.plugins.colors.toml'),{'lazy': 0} ) " colorscheme
+      call dein#load_toml(expand('~/.vim/dein.plugins-lazy.toml'),  {'lazy': 1} ) " others for lazy
+    else
+      call dein#load_toml(expand('~/.vim/dein.plugins.vscode.toml'),       {'lazy': 0} ) " main
+    endif
 
    " You can specify revision/branch/tag.
     call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
