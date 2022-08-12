@@ -83,70 +83,65 @@ set runtimepath+=$HOME/.vim/after
 
 
 " dein{{{
+  "dein.vim dark power
+  if ! exists('g:vscode')
+    let s:dein_dir = expand('~/.cache/dein')
+  else
+    let s:dein_dir = expand('~/.cache/vsdein')
+  endif
+
+  let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+  if &compatible
+      set nocompatible               " Be iMproved
+  endif
+  " dein.vim をインストールしていない場合は自動インストール
+  if !isdirectory(s:dein_repo_dir)
+    set notimeout
+    echo "install dein.vim..."
+    "execute '!git clone git://github.com/Shougo/dein.vim' s:dein_repo_dir
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . s:dein_repo_dir
+
+  "---------------------------
+  " Start dein.vim Settings.
+  "---------------------------
 
 
-"dein.vim dark power
-let s:dein_dir = expand('~/.cache/dein')
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+  " neocon
+  function! s:has_lua()
+      return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+  endfunction
 
-if &compatible
-    set nocompatible               " Be iMproved
-endif
-" dein.vim をインストールしていない場合は自動インストール
-if !isdirectory(s:dein_repo_dir)
-  echo "install dein.vim..."
-  execute '!git clone git://github.com/Shougo/dein.vim' s:dein_repo_dir
-endif
-execute 'set runtimepath^=' . s:dein_repo_dir
+  if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
 
-"---------------------------
-" Start dein.vim Settings.
-"---------------------------
+      if ! exists('g:vscode')
+        let g:rc_dir    = expand('~/.cache/dein')
+        " TOMLファイルにpluginを記述
+        call dein#load_toml(expand('~/.vim/dein.plugins.toml'),       {'lazy': 0} ) " main
+        call dein#load_toml(expand('~/.vim/dein.plugins.colors.toml'),{'lazy': 0} ) " colorscheme
+        call dein#load_toml(expand('~/.vim/dein.plugins-lazy.toml'),  {'lazy': 1} ) " others for lazy
+      else
+        let g:rc_dir    = expand('~/.cache/vsdein')
+        call dein#load_toml(expand('~/.vim/dein.plugins.vscode.toml'),       {'lazy': 0} ) " main
+      endif
 
+      " You can specify revision/branch/tag.
+      call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
-" neocon
-function! s:has_lua()
-    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-endfunction
-
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-
-    let g:rc_dir    = expand('~/.cache/dein')
-
-    if ! exists('g:vscode')
-      " TOMLファイルにpluginを記述
-      call dein#load_toml(expand('~/.vim/dein.plugins.toml'),       {'lazy': 0} ) " main
-      call dein#load_toml(expand('~/.vim/dein.plugins.colors.toml'),{'lazy': 0} ) " colorscheme
-      call dein#load_toml(expand('~/.vim/dein.plugins-lazy.toml'),  {'lazy': 1} ) " others for lazy
-    else
-      call dein#load_toml(expand('~/.vim/dein.plugins.vscode.toml'),       {'lazy': 0} ) " main
-    endif
-
-    " You can specify revision/branch/tag.
-    call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-
-    call dein#end()
-    call dein#save_state()
-endif
+      call dein#end()
+      call dein#save_state()
+  endif
 
 
 
-" 未インストールを確認
-if dein#check_install()
-  call dein#install()
-endif
-
+  " 未インストールを確認
+  if dein#check_install()
+    call dein#install()
+  endif
 "}}}
-
-"" vital.vim"{{{
-"let g:V = vital#of('vital').load(
-"\  ['Math'],
-"\  ['DateTime'],
-"\  ['System.Filepath'],
-"\  ['Data.List'],
-"\  ['Data.String'])
-""}}}
 
 " General"{{{
 
@@ -648,45 +643,42 @@ let g:wildfire_water_map = "<BS>"
 let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "a'", 'a"', "a)", "a]", "a}", "a>", "ap", "at"]
 "}}}
 
-if ! exists('g:vscode')
-  " ddc.vim"{{{
-  " Customize global settings
-  " Use around source.
-  " https://github.com/Shougo/ddc-around
-  call ddc#custom#patch_global('sources', ['around'])
+" ddc.vim"{{{
+" Customize global settings
+" Use around source.
+" https://github.com/Shougo/ddc-around
+call ddc#custom#patch_global('sources', ['around'])
 
-  " Use matcher_head and sorter_rank.
-  " https://github.com/Shougo/ddc-matcher_head
-  " https://github.com/Shougo/ddc-sorter_rank
-  call ddc#custom#patch_global('sourceOptions', {
-        \ '_': {
-        \   'matchers': ['matcher_head'],
-        \   'sorters': ['sorter_rank']},
-        \ })
+" Use matcher_head and sorter_rank.
+" https://github.com/Shougo/ddc-matcher_head
+" https://github.com/Shougo/ddc-sorter_rank
+call ddc#custom#patch_global('sourceOptions', {
+      \ '_': {
+      \   'matchers': ['matcher_head'],
+      \   'sorters': ['sorter_rank']},
+      \ })
 
-  " Change source options
-  call ddc#custom#patch_global('sourceOptions', {
-        \ 'around': {'mark': 'A'},
-        \ })
-  call ddc#custom#patch_global('sourceParams', {
-        \ 'around': {'maxSize': 500},
-        \ })
+" Change source options
+call ddc#custom#patch_global('sourceOptions', {
+      \ 'around': {'mark': 'A'},
+      \ })
+call ddc#custom#patch_global('sourceParams', {
+      \ 'around': {'maxSize': 500},
+      \ })
 
-  " Customize settings on a filetype
-  call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
-  call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
-        \ 'clangd': {'mark': 'C'},
-        \ })
-  call ddc#custom#patch_filetype('markdown', 'sourceParams', {
-        \ 'around': {'maxSize': 100},
-        \ })
+" Customize settings on a filetype
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
+      \ 'clangd': {'mark': 'C'},
+      \ })
+call ddc#custom#patch_filetype('markdown', 'sourceParams', {
+      \ 'around': {'maxSize': 100},
+      \ })
 
-  " Use ddc.
-  call ddc#enable()
-  "}}}
-endif
-
+" Use ddc.
+call ddc#enable()
 "}}}
+
 
 " Get folding working with vscode neovim plugin
 "if(exists("g:vscode"))
