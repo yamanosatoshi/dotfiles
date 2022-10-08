@@ -294,12 +294,14 @@ if has("syntax")
 endif
 
 " カーソル行をハイライト
-set cursorline
-augroup cch
-    autocmd! cch
-    autocmd WinLeave * set nocursorline
-    autocmd WinEnter,BufRead * set cursorline
-augroup END
+if ! exists('g:vscode')
+  set cursorline
+  augroup cch
+      autocmd! cch
+      autocmd WinLeave * set nocursorline
+      autocmd WinEnter,BufRead * set cursorline
+  augroup END
+endif
 
 
 " カーソルライン
@@ -704,21 +706,21 @@ call ddc#enable()
 
 " Color scheme{{{
 
-hi User1 gui=bold ctermbg=blue ctermfg=white guibg=black guifg=white
-hi User2 gui=bold ctermbg=green ctermfg=black guibg=blue guifg=white
-hi User3 gui=bold ctermbg=red ctermfg=white guibg=coral guifg=white
-hi User4 gui=bold ctermbg=yellow ctermfg=black guibg=green guifg=black
-
-augroup TransparentBG
-    autocmd!
-    autocmd Colorscheme * highlight Normal ctermbg=none
-    autocmd Colorscheme * highlight NonText ctermbg=none
-    autocmd Colorscheme * highlight LineNr ctermbg=none
-    autocmd Colorscheme * highlight Folded ctermbg=none
-    autocmd Colorscheme * highlight EndOfBuffer ctermbg=none 
-augroup END
-
 if ! exists('g:vscode')
+  hi User1 gui=bold ctermbg=blue ctermfg=white guibg=black guifg=white
+  hi User2 gui=bold ctermbg=green ctermfg=black guibg=blue guifg=white
+  hi User3 gui=bold ctermbg=red ctermfg=white guibg=coral guifg=white
+  hi User4 gui=bold ctermbg=yellow ctermfg=black guibg=green guifg=black
+
+  augroup TransparentBG
+      autocmd!
+      autocmd Colorscheme * highlight Normal ctermbg=none
+      autocmd Colorscheme * highlight NonText ctermbg=none
+      autocmd Colorscheme * highlight LineNr ctermbg=none
+      autocmd Colorscheme * highlight Folded ctermbg=none
+      autocmd Colorscheme * highlight EndOfBuffer ctermbg=none 
+  augroup END
+
   if has('gui') && IsWindows()
       colorscheme hybrid
       set bg=dark
