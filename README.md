@@ -2,7 +2,11 @@
 
 After clone
 ========
-    $ /bin/sh install.sh
+Run the install script to set up the symlinks.
 
+```sh
+$ ./install.sh
+```
 
-* existing .vim/ & .vimrc will be deleted.
+Existing files are backed up with a timestamp suffix before new
+symlinks are created.
