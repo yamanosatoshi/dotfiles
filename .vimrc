@@ -129,6 +129,7 @@ if has('gui') && IsWindows()
   set guioptions-=l "左スクロールバーなし
   set guioptions-=L
   set guioptions-=b "下スクロールバーなし
+  set guioptions+=a
 endif
 
 set showcmd
@@ -143,7 +144,6 @@ set clipboard=unnamed
 
 " ターミナルでマウスを使用できるようにする
 set mouse=a
-set guioptions+=a
 
 "insertモードを抜けるとIMEオフ
 set noimdisable
