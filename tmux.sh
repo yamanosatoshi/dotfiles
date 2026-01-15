@@ -1,55 +1,56 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-set -e
+SESSION="main"
+LAYOUT="${1:-default}"
 
 layout_default() {
-  tmux split-window -v
-  tmux split-window -h
-  tmux resize-pane -D 15
-  tmux select-pane -t 1
+  tmux split-window -t "$SESSION":0 -v
+  tmux split-window -t "$SESSION":0 -h
+  tmux resize-pane  -t "$SESSION":0 -D 15
+  tmux select-pane  -t "$SESSION":0.0
 }
-
 layout_one() {
-  tmux split-window -v
-  tmux resize-pane -D 15
-  tmux select-pane -D
-  clear
+  tmux split-window -t "$SESSION":0 -v
+  tmux resize-pane  -t "$SESSION":0 -D 15
+  tmux select-pane  -t "$SESSION":0.1
+  tmux send-keys    -t "$SESSION":0.1 "clear" C-m
 }
-
 layout_two() {
-  tmux split-window -h
-  tmux split-window -v
-  tmux resize-pane -D 15
-  tmux select-pane -t 1
-  tmux split-window -v
-  tmux select-pane -t 1
-  clear
+  tmux split-window -t "$SESSION":0 -h
+  tmux split-window -t "$SESSION":0.1 -v
+  tmux resize-pane  -t "$SESSION":0 -D 15
+  tmux split-window -t "$SESSION":0.0 -v
+  tmux select-pane  -t "$SESSION":0.0
+  tmux send-keys    -t "$SESSION":0.0 "clear" C-m
 }
-
 layout_three() {
-  cd ~/Desktop/python
-  tmux split-window -v
-  tmux split-window -h
-  tmux resize-pane -D 15
-  tmux select-pane -t 1
-  vi .
-  clear
+  tmux send-keys -t "$SESSION":0.0 "cd ~/Desktop/python" C-m
+  tmux split-window -t "$SESSION":0 -v
+  tmux split-window -t "$SESSION":0 -h
+  tmux resize-pane  -t "$SESSION":0 -D 15
+  tmux select-pane  -t "$SESSION":0.0
+  tmux send-keys    -t "$SESSION":0.0 "vi ." C-m
 }
 
-usage() {
-  echo "Usage: $0 [1|2|3]" >&2
-}
+# tmux が無ければ終了
+command -v tmux >/dev/null 2>&1 || { echo "tmux command not found" >&2; exit 1; }
 
-command -v tmux >/dev/null 2>&1 || {
-  echo "tmux command not found" >&2
-  exit 1
-}
+# セッションが無ければ作る
+if ! tmux has-session -t "$SESSION" 2>/dev/null; then
+  tmux new-session -d -s "$SESSION" -n main
+  case "$LAYOUT" in
+    default|"") layout_default ;;
+    1) layout_one ;;
+    2) layout_two ;;
+    3) layout_three ;;
+    *) echo "Usage: $0 [1|2|3]" >&2; exit 1 ;;
+  esac
+fi
 
-case "$1" in
-  "" ) layout_default ;;
-  1 ) layout_one ;;
-  2 ) layout_two ;;
-  3 ) layout_three ;;
-  * ) usage ; exit 1 ;;
-esac
-
+# tmux内なら切替、外ならattach
+if [[ -n "${TMUX:-}" ]]; then
+  tmux switch-client -t "$SESSION"
+else
+  tmux attach -t "$SESSION"
+fi
