@@ -7,6 +7,10 @@ if !1 | finish | endif
 " environment detect"{{{
 let s:is_windows = has('win16') || has('win32') || has('win64')
 let s:is_cygwin = has('win32unix')
+let s:osrelease = filereadable('/proc/sys/kernel/osrelease')
+      \ ? readfile('/proc/sys/kernel/osrelease', 0, 1)
+      \ : []
+let s:is_wsl = has('wsl') || (!empty(s:osrelease) && s:osrelease[0] =~? 'microsoft')
 let s:is_sudo = $SUDO_USER != '' && $USER !=# $SUDO_USER
       \ && $HOME !=# expand('~'.$USER)
       \ && $HOME ==# expand('~'.$SUDO_USER)
@@ -17,9 +21,7 @@ endfunction
 
 function! IsMac()
   return !s:is_windows && !s:is_cygwin
-      \ && (has('mac') || has('macunix') || has('gui_macvim') ||
-      \   (!executable('xdg-open') &&
-      \     system('uname') =~? '^darwin'))
+      \ && (has('mac') || has('macunix') || has('gui_macvim'))
 endfunction
 "}}}
 
@@ -49,9 +51,9 @@ set runtimepath+=$HOME/.vim/after
     set notimeout
     echo "install dein.vim..."
     "execute '!git clone git://github.com/Shougo/dein.vim' s:dein_repo_dir
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+    execute '!git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir)
   endif
-  execute 'set runtimepath^=' . s:dein_repo_dir
+  execute 'set runtimepath^=' . fnameescape(s:dein_repo_dir)
 
   "---------------------------
   " Start dein.vim Settings.
@@ -98,7 +100,11 @@ set runtimepath+=$HOME/.vim/after
 set hidden
 
 set expandtab
-set t_Co=256
+if has('termguicolors')
+  set termguicolors
+elseif !has('gui_running')
+  set t_Co=256
+endif
 set ts=4 sw=4 sts=4
 set fo+=r
 set shortmess+=I
@@ -114,10 +120,8 @@ set nolist
 set wrap
 set cmdheight=2
 set title
-set shortmess+=I
 set nrformats=
 set nobackup
-syn on
 set visualbell
 set noerrorbells
 
@@ -134,13 +138,15 @@ endif
 
 set showcmd
 set incsearch
-set nocompatible
 set hlsearch
 
 " OSのクリップボードを使用する
-set clipboard+=unnamed
 " ヤンクした文字は、システムのクリップボードに入れる
-set clipboard=unnamed
+if has('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif
 
 " ターミナルでマウスを使用できるようにする
 set mouse=a
@@ -171,7 +177,6 @@ set autoindent
 set smartindent
 set iminsert=0
 set imsearch=-1
-set cindent
 set whichwrap=b,s,h,l,<,> ",[,] 行末はやめとく
 
 " display
@@ -225,12 +230,12 @@ set listchars=tab:>_,trail:~,nbsp:_,extends:>,precedes:<
 function! SOLSpaceHilight()
     syntax match SOLSpace /\s\+/ display containedin=ALL
     "highlight SOLSpace term=underline ctermbg=LightGray guibg=#efffef
-endf
+endfunction
 " 全角スペースをハイライトさせる。
 function! JISX0208SpaceHilight()
     syntax match JISX0208Space /　/ display containedin=ALL
     highlight JISX0208Space term=underline ctermbg=LightCyan gui=underline guibg=#dddddd
-endf
+endfunction
 " syntaxの有無をチェックし、新規バッファと新規読み込み時にハイライトさせる
 if has("syntax")
     filetype plugin indent on
@@ -262,7 +267,7 @@ endif
 "}}}
 
 " WSLクリップボード共有{{{
-if system('uname -a | grep Microsoft') != ''
+if s:is_wsl
     augroup myYank
         autocmd!
         autocmd TextYankPost * :call system('clip.exe', @")
@@ -279,33 +284,6 @@ if v:servername == 'GVIM1' || v:servername == 'GVIM2'
 endif
 "}}}
 
-
-"no use HankakuSpace() "{{{
-"function! HankakuSpace()
-"  "HankakuSpaceをカラーファイルで設定するなら次の行は削除
-"  highlight HankakuSpace cterm=underline ctermfg=lightblue guibg=#334333
-"  "半角スペースを明示的に表示する。
-"  silent! match HankakuSpace / /
-"endfunction
-"
-"if has('syntax')
-"  augroup HankakuSpace
-"    autocmd!
-"    autocmd VimEnter,BufEnter * call HankakuSpace()
-"  augroup END
-"endif
-
-" Hack #22: XMLの閉じタグを補完するようにする
-" http://vim-users.jp/2009/06/hack22/
-"augroup MyXML
-"  autocmd!
-"  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-"  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
-"  autocmd Filetype php inoremap <buffer> </ </<C-x><C-o>
-"  autocmd Filetype phtml inoremap <buffer> </ </<C-x><C-o>
-"  autocmd Filetype xhtml inoremap <buffer> </ </<C-x><C-o>
-"augroup END
-"}}}
 
 "ウィンドウの位置とサイズを記憶する" {{{
 if has('gui')
@@ -324,19 +302,9 @@ if has('gui')
   augroup END
 
   if filereadable(g:save_window_file)
-    execute 'source' g:save_window_file
+    execute 'source ' . fnameescape(g:save_window_file)
   endif
 endif
-"}}}
-
-" migemo search "{{{
-"set grepprg=internal
-"if has('migemo')
-"  " a 'migemo' option changes the behavior of "g?".
-"  " NOTE: 'migemo' option is local to buffer.
-"  set nomigemo migemodict=$HOME/.vim/dict/utf-8/migemo-dict
-"  nnoremap / g/
-"endif
 "}}}
 
 " statusline settings"{{{
@@ -370,14 +338,14 @@ set statusline=%!SetStatusLine()
 set dir=~/
 
 if has("autocmd")
-    autocmd BufNewFile,Bufread *.php,*.php3,*.php4 set keywordprg="help"
+    autocmd BufNewFile,BufRead *.php,*.php3,*.php4 set keywordprg="help"
 endif
 
 
 " VDsplit windowsの%入りパス対応版
 command! -nargs=1 -complete=file VDS call <SID>EscVDsplit('<args>')
 function! s:EscVDsplit(file)
-    execute "vertical diffsplit " . escape(a:file, "%")
+    execute 'vertical diffsplit ' . fnameescape(a:file)
 endfunction
 
 "php checker"{{{
@@ -390,10 +358,12 @@ set errorformat=%m\ in\ %f\ on\ line\ %l
 " @author halt feits <halt.feits at gmail.com>
 "
 function! FTLint(option)
-  if &ft == 'html'
-    let result = system( 'php -l '.a:option.' ' . bufname(""))
+  let l:file = shellescape(expand('%:p'))
+  let l:option = empty(a:option) ? '' : a:option . ' '
+  if &ft ==# 'html'
+    let result = system('php -l ' . l:option . l:file)
   else
-    let result = system( &ft . ' -l '.a:option.' ' . bufname(""))
+    let result = system(shellescape(&ft) . ' -l ' . l:option . l:file)
   endif
   echo result
 endfunction
@@ -450,8 +420,8 @@ inoremap ( ()<LEFT>
 
 " {{{ Wrap visual selections with chars
 
-:vnoremap ( "zdi(<C-R>z)<ESC>
-:vnoremap { "zdi{<C-R>z}<ESC>
+vnoremap ( "zdi(<C-R>z)<ESC>
+vnoremap { "zdi{<C-R>z}<ESC>
 ":vnoremap [ "zdi[<C-R>z]<ESC>
 ":vnoremap ' "zdi'<C-R>z'<ESC>
 ":vnoremap " "zdi"<C-R>z"<ESC>
@@ -551,21 +521,18 @@ nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
 " 全部乗せ
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
+augroup UniteMappings
+  autocmd!
 " ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+autocmd FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 " ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+autocmd FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 " ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
-"}}}
-
-" yanktmp"{{{
-"map <silent> sy :call YanktmpYank()<CR>
-"map <silent> sp :call YanktmpPaste_p()<CR>
-"map <silent> sP :call YanktmpPaste_P()<CR>
+autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+augroup END
 "}}}
 
 " undotree.vim"{{{
@@ -631,28 +598,6 @@ call ddc#enable()
 "}}}
 
 
-" Get folding working with vscode neovim plugin
-"if(exists("g:vscode"))
-"    nnoremap zM :call VSCodeNotify('editor.foldAll')<CR>
-"    nnoremap zR :call VSCodeNotify('editor.unfoldAll')<CR>
-"    nnoremap zc :call VSCodeNotify('editor.fold')<CR>
-"    nnoremap zC :call VSCodeNotify('editor.foldRecursively')<CR>
-"    nnoremap zo :call VSCodeNotify('editor.unfold')<CR>
-"    nnoremap zO :call VSCodeNotify('editor.unfoldRecursively')<CR>
-"    nnoremap za :call VSCodeNotify('editor.toggleFold')<CR>
-"
-"    #function! MoveCursor(direction) abort
-"    #    if(reg_recording() == '' && reg_executing() == '')
-"    #        return 'g'.a:direction
-"    #    else
-"    #        return a:direction
-"    #    endif
-"    #endfunction
-"
-"    #nmap <expr> j MoveCursor('j')
-"    #nmap <expr> k MoveCursor('k')
-"endif
-
 " Color scheme{{{
 
 if ! exists('g:vscode')
@@ -684,4 +629,3 @@ endif
 
 
 "}}}
-
